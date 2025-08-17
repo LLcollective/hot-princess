@@ -11,43 +11,72 @@
     <div class="contact-container">
       <h1 class="contact-title">Ready to Find Your Balance?</h1>
       <p class="contact-intro">Let’s connect</p>
-<form method="POST" action="/api/send"> 
 
-  <form id="contactForm" novalidate>
-  <input name="firstName" required>
-  <input name="lastName">
-  <input name="email" type="email" required>
-  <input name="subject">
-  <textarea name="message" required></textarea>
-  <button type="submit">Send</button>
-  <p id="formStatus"></p>
-</form>
-<script>
-  const f = document.getElementById('contactForm');
-  const s = document.getElementById('formStatus');
-  f.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    s.textContent = 'Sending…';
-    const payload = Object.fromEntries(new FormData(f).entries());
-    try {
-      const r = await fetch('/api/send', {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify(payload)
+      <!-- Single, final form -->
+      <form id="contactForm" class="contact-form" method="POST" action="/api/send" novalidate>
+        <div class="form-row">
+          <input name="firstName" type="text" placeholder="First Name" autocomplete="given-name" required />
+          <input name="lastName"  type="text" placeholder="Last Name"  autocomplete="family-name" />
+        </div>
+
+        <div class="form-row">
+          <input name="email"   type="email" placeholder="Email"   autocomplete="email" required />
+          <input name="subject" type="text"  placeholder="Subject" />
+        </div>
+
+        <div class="form-row">
+          <textarea name="message" rows="6" placeholder="Your message..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Send</button>
+        <p id="formStatus" style="margin-top:.75rem;"></p>
+      </form>
+
+      <noscript>
+        <p style="margin-top:1rem;color:#444">
+          JavaScript is disabled. The form will attempt a direct post to <code>/api/send</code>.
+        </p>
+      </noscript>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const form = document.getElementById('contactForm');
+      const statusEl = document.getElementById('formStatus');
+
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        // AJAX submission (keeps the user on the page)
+        e.preventDefault();
+        statusEl.textContent = 'Sending…';
+
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        try {
+          const res = await fetch('/api/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          const json = await res.json().catch(() => ({}));
+
+          if (!res.ok || !json.ok) {
+            throw new Error(json.error || 'Failed to send');
+          }
+
+          statusEl.style.color = 'green';
+          statusEl.textContent = '✅ Sent! We’ll be in touch.';
+          form.reset();
+        } catch (err) {
+          console.error(err);
+          statusEl.style.color = 'crimson';
+          statusEl.textContent = '❌ Could not send. Check logs.';
+        }
       });
-      const j = await r.json().catch(()=>({}));
-      if (!r.ok || !j.ok) throw new Error(j.error || 'Failed');
-      s.textContent = '✅ Sent!'; f.reset();
-    } catch (err) {
-      s.textContent = '❌ Could not send. Check logs.';
-      console.error(err);
-    }
-  });
-</script>
-
-
-
-
-
+    })();
+  </script>
 </body>
 </html>
