@@ -1,0 +1,650 @@
+/* =========================================================
+   Lace & Lime – Global Styles (Clean + Consolidated)
+   ========================================================= */
+
+/* ---------- Design tokens ---------- */
+:root{
+  --coral:#b34a3e;
+  --coral-soft:#ffd9d3;
+  --ivory:#fffdfa;
+  --ink:#1e1e1e;
+  --muted:#6a6a6a;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font-family:'Work Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ---------------------------------------------------------
+   Header / Navigation (fixed & slim)
+   --------------------------------------------------------- */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  color:#000; /* header text = black */
+}
+.top-banner{
+  width:100%;
+  background:var(--coral-soft);
+  color:#111;
+  text-align:center;
+}
+.top-banner p{
+  margin:0;
+  font-family:'Tenor Sans', serif;
+  font-size:.92rem;
+  letter-spacing:.45px;
+  padding:6px 10px;
+}
+
+.nav{
+  max-width:1100px;
+  margin:0 auto;
+  padding:.6rem 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.5rem;
+}
+.brand{
+  font-family:'Tenor Sans', serif;
+  font-size:1.35rem;
+  letter-spacing:.02em;
+  color:#000;                /* black brand text */
+  text-decoration:none;
+}
+.tm{ font-size:.65em; }
+
+.menu-toggle{
+  display:inline-flex;
+  flex-direction:column;
+  gap:4px;
+  width:34px;
+  height:28px;
+  justify-content:center;
+  align-items:center;
+  background:transparent;
+  border:0;
+  padding:0;
+  cursor:pointer;
+}
+.menu-toggle span{
+  display:block;
+  width:22px;
+  height:2px;
+  background:#333;
+}
+
+.nav-links{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:none;              /* mobile default: hidden */
+  flex-direction:column;
+  gap:.25rem;
+  width:100%;
+}
+.nav-links.open{ display:flex; }  /* shown when JS toggles 'open' */
+
+.nav-links > li{
+  display:inline-flex;
+  align-items:center;        /* vertical align for About/Account */
+}
+
+.nav-links a,
+.sub-toggle{
+  font-family:'Tenor Sans', serif;
+  font-size:1rem;
+  color:#000;                /* header links = black */
+  text-decoration:none;
+  padding:.35rem .5rem;
+  border-radius:10px;
+  line-height:1;
+}
+.nav-links a:hover,
+.sub-toggle:hover{ color:var(--coral); }
+
+/* Dropdowns */
+.has-sub{ position:relative; }
+.sub-toggle{
+  background:transparent;
+  border:0;
+  cursor:pointer;
+  outline-offset:2px;
+}
+.submenu{
+  list-style:none;
+  margin:.3rem 0 0;
+  padding:.4rem;
+  display:none;
+  flex-direction:column;
+  gap:.15rem;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:12px;
+  box-shadow:0 10px 28px rgba(0,0,0,.06);
+  z-index:40;
+}
+.has-sub.open .submenu{ display:flex; }
+.submenu.right{ right:0; left:auto; }
+
+/* Hover bridge to prevent flicker moving into submenu */
+.has-sub::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:100%; height:12px;
+}
+
+.nav-links .icon{
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  padding:.35rem .5rem;
+}
+
+/* Desktop nav layout */
+@media (min-width:860px){
+  .menu-toggle{ display:none; }
+  .nav{ padding:.5rem 1rem; }
+  .nav-links{
+    display:flex;
+    flex-direction:row;
+    width:auto;
+    gap:1.1rem;
+    align-items:center;
+  }
+  .has-sub:hover .submenu{
+    display:flex;
+    position:absolute;
+    top:calc(100% + .55rem);
+    left:0;
+    min-width:220px;
+  }
+}
+
+/* Active link */
+.nav-links a.active{
+  border-bottom:2px solid var(--coral);
+  border-radius:0;
+}
+
+/* ---------------------------------------------------------
+   Hero
+   --------------------------------------------------------- */
+.hero{
+  position:relative;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-large{ min-height:64vh; background:url('assets/hero-16x9.webp') center/cover no-repeat; }
+.hero-small{ min-height:36vh; background:url('assets/hero-16x9.webp') center/cover no-repeat; }
+.hero-overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.25)); }
+.hero-content{ position:relative; z-index:1; color:#fff; padding:0 1rem; }
+.lead{ max-width:720px; margin:.6rem auto 0; }
+
+/* ---------------------------------------------------------
+   Sections & Containers
+   --------------------------------------------------------- */
+.section{ padding:2.2rem 0; }
+.container{ max-width:1100px; margin:0 auto; padding:0 1rem; }
+.container.narrow{ max-width:760px; }
+
+/* ---------------------------------------------------------
+   Explore-style Image Cards (image-only)
+   --------------------------------------------------------- */
+.explore-section{
+  padding:60px 20px;
+  background:#fff;
+  text-align:center;
+}
+.explore-container{ max-width:1200px; margin:0 auto; }
+.explore-title{
+  font-family:'Tenor Sans', serif;
+  font-size:1.9rem;
+  margin:0 0 36px;
+  color:var(--ink);
+}
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:24px;
+}
+@media (max-width:980px){ .card-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+@media (max-width:640px){ .card-grid{ grid-template-columns:1fr; } }
+
+.card{
+  display:block;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
+}
+.card img{
+  display:block;
+  width:100%;
+  height:240px;
+  object-fit:contain;       /* keep PNG/illustrations intact */
+  background:#fafafa;       /* soft backdrop behind transparent PNGs */
+  padding:20px;
+}
+
+/* Generic link style used in cards */
+.link{
+  color:var(--coral);
+  text-decoration:none;
+  border-bottom:2px solid rgba(244,124,107,.35);
+  padding-bottom:2px;
+}
+.link:hover{
+  background:var(--coral);
+  color:#fff;
+  border-bottom-color:transparent;
+  border-radius:8px;
+  padding:.18rem .45rem;
+}
+
+/* ---------------------------------------------------------
+   Who We Are – three card row with icons (optional)
+   --------------------------------------------------------- */
+.center-intro{ text-align:center; }
+.center-intro .intro{
+  max-width:760px;
+  margin:.5rem auto 2rem auto;
+  padding:0 1rem;
+}
+.wwacards .card{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:18px 18px;
+}
+.wwacards .card-icon{
+  width:68px; height:auto; flex:0 0 68px;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.12));
+}
+@media (max-width:700px){
+  .wwacards .card{ flex-direction:column; gap:12px; }
+  .wwacards .card-icon{ width:72px; }
+}
+
+/* ---------------------------------------------------------
+   Forms (global)
+   --------------------------------------------------------- */
+.form-card{
+  padding:1rem;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  background:#fff;
+}
+.form-card input,
+.form-card textarea{
+  width:100%;
+  padding:.75rem .9rem;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,.12);
+  font:inherit;
+  background:#fff;
+}
+.check{ display:flex; gap:.6rem; align-items:flex-start; line-height:1.4; flex-wrap:wrap; }
+.check a{ color:var(--coral); text-decoration:underline; }
+.form-card input[type="checkbox"]{
+  width:18px; height:18px; accent-color:var(--coral); flex:0 0 auto; margin-top:2px;
+}
+
+/* Buttons */
+.btn{
+  display:inline-block;
+  border-radius:999px;
+  background:#fff;
+  color:var(--coral);
+  border:1px solid rgba(0,0,0,.08);
+  padding:.65rem 1.1rem;
+  text-decoration:none;
+  font-weight:600;
+  transition:background .2s,color .2s,transform .06s,box-shadow .2s;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+}
+.btn:hover{ background:#A8D080; color:#fff; }
+.btn.ghost{ background:transparent; border:1px solid var(--coral); color:var(--coral); }
+.btn.ghost:hover{ background:var(--coral); color:#fff; }
+
+/* ---------------------------------------------------------
+   Contact Page (scoped + hard-locked layout)
+   --------------------------------------------------------- */
+/* You can use either .contact-section or .contact with a centered container.
+   The ID #contactForm ensures overrides elsewhere won't break the layout. */
+
+.contact-section{
+  background:#fff;
+  padding:64px 20px 80px;
+}
+.contact-container{ max-width:960px; margin:0 auto; text-align:center; }
+.contact-title,
+.contact-section h2{
+  font-family:'Tenor Sans', serif;
+  font-size:2rem;
+  margin:0 0 .25rem;
+}
+.contact-intro,
+.contact-section p{ color:#444; margin:0 0 32px; }
+
+/* Specific contact form ID to win against any duplicate rules */
+#contactForm{
+  max-width:1200px;
+  margin:0 auto;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  box-shadow:0 10px 26px rgba(0,0,0,.08);
+  padding:24px;
+
+  display:grid !important;
+  grid-template-columns:1fr 1fr;
+  gap:16px 24px;
+  text-align:left;
+}
+#contactForm .form-row{ display:contents; }
+#contactForm input,
+#contactForm textarea{
+  width:100% !important;
+  min-width:0;
+  font:inherit;
+  color:#1e1e1e;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.18);
+  border-radius:12px;
+  padding:.9rem 1rem;
+  outline:0;
+  box-shadow:none !important;
+  -webkit-appearance:none; appearance:none;
+}
+#contactForm textarea{
+  grid-column:1 / -1;
+  min-height:200px;
+  resize:vertical;
+}
+#contactForm .btn{
+  grid-column:1 / -1;
+  justify-self:start; /* change to 'center' if you prefer centered button */
+}
+
+/* mobile stack */
+@media (max-width:820px){
+  #contactForm{ grid-template-columns:1fr; }
+  #contactForm .btn{ justify-self:stretch; }
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+.site-footer{
+  border-top:1px solid rgba(0,0,0,.06);
+  background:#fff;
+  text-align:center;
+  padding:1.6rem 1rem 2.2rem;
+  color:#000; /* footer text = black */
+}
+.footer-icons{ margin-bottom:.4rem; }
+.site-footer .icon{
+  display:inline-block;
+  width:28px; height:28px;
+  margin:0 .4rem;
+  color:#000;                 /* footer icon color = black */
+  opacity:.9;
+  transition:opacity .2s, filter .2s, transform .2s, border-color .2s;
+  border-bottom:2px solid transparent;
+}
+.site-footer .icon:hover{
+  filter:brightness(0) saturate(100%) invert(39%) sepia(30%) saturate(858%) hue-rotate(323deg) brightness(97%) contrast(91%);
+  border-bottom-color:var(--coral);
+  transform:translateY(-1px);
+}
+
+/* ---------------------------------------------------------
+   Animations
+   --------------------------------------------------------- */
+.fade-lift{ opacity:0; transform:translateY(15px); animation:fadeLift .95s ease forwards; }
+@keyframes fadeLift{ to{ opacity:1; transform:translateY(0); } }
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s, transform .6s; }
+.reveal.visible{ opacity:1; transform:translateY(0); }
+
+/* ---------------------------------------------------------
+   Misc helpers
+   --------------------------------------------------------- */
+a{ color:inherit; } /* inherit black in header/footer; controlled by hover above */
+
+
+
+/* Force Explore section into 3x2x1 grid */
+.container.grid6 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 980px){
+  .container.grid6 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px){
+  .container.grid6 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card styling (can replace or extend what you already have) */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+  padding: 22px;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.12);
+}
+.card h3 {
+  margin: 0 0 8px;
+  font-family: 'Tenor Sans', serif;
+}
+.card p {
+  margin: 0 0 14px;
+  color: #444;
+}
+.card .link {
+  margin-top: auto;
+  align-self: flex-start;
+  color: var(--coral);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(244,124,107,.35);
+  padding-bottom: 2px;
+}
+.card .link:hover {
+  background: var(--coral);
+  color: #fff;
+  border-bottom-color: transparent;
+  border-radius: 8px;
+  padding: .18rem .45rem;
+}
+
+
+
+/* Coral → Beige background only */
+.gradient-bg{
+  background: linear-gradient(to bottom, #FABEB5 0%, #FADAD3 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Center everything inside the hero */
+.hero.gradient-bg{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;                          /* vertical center */
+  align-items: center;                              /* horizontal center */
+  min-height: calc(100svh - var(--header-h, 64px) - var(--banner-h, 36px));
+  /* ^ subtracts sticky header + banner height */
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* Button row */
+.cta-row, .actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Lime Accent Line Above Footer */
+.site-footer{
+  border-top: 4px solid #a8e063; /* fresh lime shade */
+  padding-top: 20px;
+}
+
+
+/* push content down under the sticky header */
+.with-sticky{ padding-top: 72px; } /* adjust if your header is taller/shorter */
+
+/* hero sizing/contrast */
+.hero-small{
+  min-height: 36vh;
+  display: flex;
+  align-items: center;
+}
+.hero h1{ color:#fff; margin:0 0 .5rem; }
+.hero .lead{ color:#fff; opacity:.95; }
+
+/* ensure footer never becomes a grid item if HTML is accidentally nested */
+.container.grid6 > .site-footer { grid-column: 1 / -1; }
+
+/* light, mobile-safe gradient (no fixed attachment on small screens) */
+.gradient-bg{
+  background-image: linear-gradient(to bottom, #fabeb5 0%, #fadad3 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* mobile friendly */
+}
+@media (min-width:1100px){
+  .gradient-bg{ background-attachment: fixed; } /* subtle parallax on large screens */
+}
+
+/* keep footer full width */
+.site-footer{ width:100%; }
+
+
+
+
+/* home hero tweaks */
+.hero-large{
+  min-height: 80vh;                 /* roomy but not too tall */
+  display: flex;
+  align-items: center;
+}
+.home-cta{
+  margin-top: 1.1rem;
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+}
+
+/* mobile spacing improvements */
+@media (max-width: 640px){
+  .hero-large{ min-height: 46vh; }
+  .home-cta{ gap: .5rem; }
+}
+
+/* make hero cover sticky padding gap */
+.with-sticky > .hero.gradient-bg {
+  margin-top: -60px;   /* pull hero back up */
+  padding-top: calc(60px + 3rem); /* re-add spacing inside */
+}
+
+
+/* ===== Hard-lock hero centering + kill header gap ===== */
+
+/* Adjust this if your header+banner total height is different */
+:root { --header-total: 96px; }  /* try 96–120px if needed */
+
+/* No extra gap after the sticky header/top banner */
+.site-header,
+.top-banner { margin: 0 !important; }
+.site-header + .gradient-bg,
+.top-banner + .gradient-bg { margin-top: 0 !important; }
+
+/* The hero that has the gradient MUST own the height and centering */
+.hero.gradient-bg{
+  /* background already defined elsewhere */
+  display: grid !important;
+  place-items: center !important;     /* centers both axes */
+  min-height: calc(100dvh - var(--header-total)) !important;
+  text-align: center;
+  padding: 0 1rem;
+  margin: 0 !important;
+}
+
+/* Inner container (optional) */
+.hero .hero-inner{
+  max-width: 900px;
+  width: min(90vw, 900px);
+}
+
+/* Buttons row */
+.cta-row{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 1rem;
+}
+
+/* Make sure .btns behave as expected */
+.btn{ display: inline-flex; align-items: center; justify-content: center; }
+
+/* Mobile tweak so it still centers tightly */
+@media (max-width: 640px){
+  :root { --header-total: 112px; } /* header+banner are often taller on mobile */
+  .cta-row{ flex-wrap: wrap; }
+}
+
+/* Default for ALL pages */
+.hero.gradient-bg {
+  display: grid;
+  place-items: center;
+  min-height: 40vh;       /* shorter hero for subpages */
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* Homepage only */
+body.home .hero.gradient-bg {
+  min-height: calc(100dvh - var(--header-total));
+}

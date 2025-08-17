@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Lace & Lime</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="gradient-bg">
+  <main class="contact-section">
+    <div class="contact-container">
+      <h1 class="contact-title">Ready to Find Your Balance?</h1>
+      <p class="contact-intro">Let’s connect</p>
+
+  <form id="contactForm" novalidate>
+  <input name="firstName" required>
+  <input name="lastName">
+  <input name="email" type="email" required>
+  <input name="subject">
+  <textarea name="message" required></textarea>
+  <button type="submit">Send</button>
+  <p id="formStatus"></p>
+</form>
+<script>
+  const f = document.getElementById('contactForm');
+  const s = document.getElementById('formStatus');
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    s.textContent = 'Sending…';
+    const payload = Object.fromEntries(new FormData(f).entries());
+    try {
+      const r = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const j = await r.json().catch(()=>({}));
+      if (!r.ok || !j.ok) throw new Error(j.error || 'Failed');
+      s.textContent = '✅ Sent!'; f.reset();
+    } catch (err) {
+      s.textContent = '❌ Could not send. Check logs.';
+      console.error(err);
+    }
+  });
+</script>
+
+
+
+
+
+</body>
+</html>
