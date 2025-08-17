@@ -52,6 +52,39 @@ export default async function handler(req, res) {
     return res.status(400).json({ ok:false, error:'Missing required fields' });
   }
 
+
+
+
+
+try {
+  const url = process.env.SHEETS_WEBHOOK_URL;
+  const token = process.env.SHEETS_WEBHOOK_TOKEN;
+  if (url && token) {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        token,
+        firstName, lastName, email, subject, message
+      })
+    }).then(r => r.json()).then(j => {
+      if (!j?.ok) console.error('Sheets webhook error:', j);
+    });
+  } else {
+    console.warn('Sheets webhook not configured.');
+  }
+} catch (err) {
+  console.error('Sheets logging failed:', err);
+}
+
+
+
+
+
+
+
+
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: { user: SMTP_USER, pass: SMTP_PASS }
