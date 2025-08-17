@@ -1,7 +1,6 @@
-// /api/send.js — Vercel serverless function (Node + Nodemailer)
+// /api/send.js
 import nodemailer from 'nodemailer';
 
-// helper to parse the request body
 async function readBody(req) {
   if (req.headers['content-type']?.includes('application/json')) {
     return req.body || {};
@@ -21,13 +20,18 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method Not Allowed' });
   }
 
-  const SMTP_USER = process.env.SMTP_USER;   // Gmail address
-  const SMTP_PASS = process.env.SMTP_PASS;   // 16-char Gmail App Password (no spaces)
-  const MAIL_TO   = process.env.MAIL_TO || SMTP_USER;
+  // Accept BOTH NODEMAILER_* and SMTP_* to avoid mismatch
+  const SMTP_USER = process.env.NODEMAILER_USER || process.env.SMTP_USER;
+  const SMTP_PASS = process.env.NODEMAILER_PASS || process.env.SMTP_PASS;
+  const MAIL_TO   =
+    process.env.NODEMAILER_TO ||
+    process.env.MAIL_TO ||
+    SMTP_USER;
+
   const FROM_NAME = process.env.MAIL_FROM || 'Lace & Lime Forms';
 
   if (!SMTP_USER || !SMTP_PASS) {
-    console.error('MISSING_ENV', { hasUser: !!SMTP_USER, hasPass: !!SMTP_PASS });
+    console.error('ENV_DEBUG', { hasUser: !!SMTP_USER, hasPass: !!SMTP_PASS });
     return res.status(500).json({ ok: false, error: 'Server email not configured' });
   }
 
@@ -35,7 +39,7 @@ export default async function handler(req, res) {
   try { data = await readBody(req); }
   catch (e) {
     console.error('BODY_PARSE_ERROR', e);
-    return res.status(400).json({ ok: false, error: 'Invalid body' });
+    return res.status(400).json({ ok:false, error:'Invalid body' });
   }
 
   const firstName = (data.firstName || data.name || '').trim();
@@ -45,7 +49,7 @@ export default async function handler(req, res) {
   const message   = (data.message   || '').trim();
 
   if (!firstName || !email || !message) {
-    return res.status(400).json({ ok: false, error: 'Missing required fields' });
+    return res.status(400).json({ ok:false, error:'Missing required fields' });
   }
 
   const transporter = nodemailer.createTransport({
@@ -53,24 +57,25 @@ export default async function handler(req, res) {
     auth: { user: SMTP_USER, pass: SMTP_PASS }
   });
 
-  try { await transporter.verify(); }
-  catch (err) {
+  try {
+    await transporter.verify();
+  } catch (err) {
     console.error('SMTP_VERIFY_FAIL', err?.response || err?.message || err);
-    return res.status(500).json({ ok: false, error: 'Email auth failed' });
+    return res.status(500).json({ ok:false, error:'Email auth failed' });
   }
 
   try {
     const info = await transporter.sendMail({
-      from: `"${FROM_NAME}" <${SMTP_USER}>`,
+      from: `"${FROM_NAME}" <${SMTP_USER}>`, // must match auth user for Gmail
       to: MAIL_TO,
       replyTo: email,
       subject: subject || 'New Contact Form Message',
       text: `Name: ${firstName}${lastName ? ' ' + lastName : ''}\nEmail: ${email}\n\n${message}`
     });
     console.log('MAIL_OK', info.messageId);
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok:true });
   } catch (err) {
     console.error('MAIL_SEND_FAIL', err?.response || err?.message || err);
-    return res.status(500).json({ ok: false, error: 'Could not send email' });
+    return res.status(500).json({ ok:false, error:'Could not send email' });
   }
 }
