@@ -28,7 +28,19 @@
       <li><a href="join.html">Join</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li class="account has-sub">
-        <button class="sub-toggle icon" aria-label="Account" aria-expanded="false">👤</button>
+        <button class="sub-toggle icon" aria-label="Account" aria-expanded="false"><!-- Lime account icon -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="22" height="22" 
+     fill="none" 
+     stroke="#BADA55" 
+     stroke-width="2" 
+     stroke-linecap="round" 
+     stroke-linejoin="round" 
+     class="icon-account">
+  <circle cx="11" cy="7" r="4"></circle>
+  <path d="M3 20c2-4 14-4 16 0"></path>
+</svg>
+</button>
         <ul class="submenu right">
           <li><a href="login.html">Login</a></li>
           <li><a href="register.html">Register</a></li>
@@ -36,9 +48,8 @@
       </li>
     </ul>
   </nav>
-  <div class="top-banner"><p>Coming Soon ↓</p></div>
+  <div class="top-banner"><p>Coming Soon ↓ Join the Spiral for Now</p></div>
 </header>
-
 
 
 <main class="with-sticky">
@@ -47,9 +58,38 @@
   <section class="hero gradient-bg hero-small">
     <div class="container">
       <h1 class="fade-lift">Join the Circle</h1>
-      <p class="lead">Founders Perks</p>
+<p><em>Inside the Circle, you'll receive:</p></em>
+ <div class="perks">
+      <ul>
+        <li>→ Early notice when the journal launches</li>
+        <li>→ Founders circle perks as it comes to life</li>
+        <li>→ A chance to help shape what's next</li>
+        <li>→ Clarity-led prompts and content to support your momentum</li>
+        <li>→ You <em>might</em> even see a few early lines before the rest of the world does</li>
+      </ul>
+ <p class="lead">Founders Perks through 2025</p>
+    </div>
     </div></main>
+<!-- Join the Circle Section -->
+<section id="join-circle" class="join-circle">
+  <div class="container">
+    <h2></h2>
+    <div class="perks">
 
+    <form class="subscribe-form">
+      <label>
+        <input type="text" name="firstName" placeholder="First Name" required>
+      </label>
+      <label>
+        <input type="email" name="email" placeholder="email@example.com" required>
+      </label>
+      <label>
+        <textarea name="note" placeholder="Leave a note (optional)..."></textarea>
+      </label>
+      <button type="submit">Join the Circle →</button>
+    </form>
+  </div>
+</section>
 
 
 

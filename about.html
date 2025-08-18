@@ -14,19 +14,37 @@
     <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li class="has-sub">
-        <button class="sub-toggle" aria-expanded="false">About</button>
-        <ul class="submenu">
-          <li><a href="who-we-are.html">Who We Are</a></li>
-          <li><a href="founder.html">Founder</a></li>
-        </ul>
-      </li>
+
+    <li class="has-sub">
+  <button class="sub-toggle" aria-haspopup="true" aria-expanded="false">
+    About
+    <span aria-hidden="true">▾</span>
+  </button>
+  <ul class="submenu">
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/founder.html">Founder’s Note</a></li>
+    <li><a href="/framework.html">Our Mission & Vibe</a></li>
+  </ul>
+</li>
+
       <li><a href="journal.html">Journal</a></li>
       <li><a href="explore.html">Explore</a></li>
       <li><a href="join.html">Join</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li class="account has-sub">
-        <button class="sub-toggle icon" aria-label="Account" aria-expanded="false">👤</button>
+        <button class="sub-toggle icon" aria-label="Account" aria-expanded="false"><!-- Lime account icon -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="22" height="22" 
+     fill="none" 
+     stroke="#BADA55" 
+     stroke-width="2" 
+     stroke-linecap="round" 
+     stroke-linejoin="round" 
+     class="icon-account">
+  <circle cx="11" cy="7" r="4"></circle>
+  <path d="M3 20c2-4 14-4 16 0"></path>
+</svg>
+</button>
         <ul class="submenu right">
           <li><a href="login.html">Login</a></li>
           <li><a href="register.html">Register</a></li>
@@ -42,9 +60,35 @@
   <!-- HERO (coral → beige) -->
   <section class="hero gradient-bg hero-small">
     <div class="container">
-      <h1 class="fade-lift">About</h1>
-      <p class="lead">2025</p>
+     <i> <h1 class="fade-lift">About Lace & Lime™ LLC</h1>
+<P>Our Mission, Our Business, Our Vibe<p class="lead"></p>
     </div></main>
+
+
+
+  <!-- CARD GRID -->
+  <section class="explore-section">
+    <div class="container grid6">
+      <article class="card">
+        <h3>Our Mission</h3>
+        <i><p>Empowering individuals and communities with tools, guided reflection, and actionable plans that turn awareness into lasting change.</p></i>
+      </article>
+
+      <article class="card">
+        <h3>Our Business</h3>
+       <i><p>Lace & Lime™ LLC is a health, wellness, and empowerment initiative dedicated to bridging awareness with action. Founded on Long Island, NY, we create guided journals, resources, and community-centered workshops that empower people to move from reflection to lasting change.</p></i>
+      </article>
+
+      <article class="card">
+        <h3>Our Vibe</h3>
+        <i><p>Founded and led by Sharon, Lace & Lime™ began as a vision to make wellness and empowerment more accessible across Long Island and beyond. Balance-forward, intentional, and rooted in community. We believe growth happens where clarity meets action — and where people feel both grounded and uplifted.</p></i>
+        <a class="/founder.html" href="#">Learn more →</a>
+      </article>
+
+
+
+
+
 
 
 <footer class="site-footer">
