@@ -1143,3 +1143,192 @@ body.home .hero.gradient-bg{
   height: auto;
   min-height: calc(1.4em * 3) !important ; /* 3 rows */
 }
+
+
+
+
+.founder-card {
+  text-align: center;
+}
+
+.founder-card h3 {
+  margin-bottom: 1rem;
+}
+
+.founder-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;   /* smooth rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* subtle shadow like your cards */
+}
+
+
+
+.soft-italic { font-style: italic; }
+.link {
+  color: var(--coral);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(244,124,107,.35);
+  padding-bottom: 2px;
+}
+.link:hover {
+  background: var(--coral);
+  color: #fff;
+  border-bottom-color: transparent;
+  border-radius: 8px;
+  padding: .18rem .45rem;
+}
+.about-flow .kicker{
+  font-family: 'Tenor Sans', serif;
+  font-size: 1.25rem;
+  letter-spacing: .02em;
+  margin: 0 0 .5rem;
+}
+.about-flow .flow-item{
+  max-width: 900px;
+  margin: 0 auto;
+}
+.flow-divider{
+  border: 0;
+  height: 1px;
+  margin: 28px auto;
+  width: 100%;
+  background: linear-gradient(to right, transparent, #e8e1dc 15%, #e8e1dc 85%, transparent);
+}
+
+
+
+
+/* Sticky header with banner underneath */
+:root{
+  --nav-height: 64px;
+  --banner-height: 36px;
+}
+.site-header{ position: sticky; top: 0; z-index: 1000; background: var(--ivory); }
+.nav{ height: var(--nav-height); display:flex; align-items:center; max-width:1100px; margin:0 auto; padding: .5rem 1rem; }
+.top-banner{ height: var(--banner-height); display:flex; align-items:center; justify-content:center; margin:0; }
+
+/* Brand + links */
+.brand{ font-family:'Tenor Sans', serif; text-decoration:none; color:#000; letter-spacing:.02em; }
+.tm{ font-size:.65em; }
+
+/* Mobile toggle */
+.menu-toggle{
+  display:inline-flex; flex-direction:column; gap:4px; width:34px; height:28px;
+  justify-content:center; align-items:center; background:transparent; border:0; padding:0; cursor:pointer;
+}
+.menu-toggle span{ display:block; width:22px; height:2px; background:#333; }
+
+/* Links container */
+.nav-links{
+  list-style:none; margin:0; padding:0; display:none; flex-direction:column; gap:.25rem; width:100%;
+}
+.nav-links.open{ display:flex; }
+
+/* Desktop layout */
+@media (min-width:860px){
+  .menu-toggle{ display:none; }
+  .nav-links{ display:flex; flex-direction:row; width:auto; gap:1.1rem; align-items:center; }
+}
+
+/* Parent+caret pattern */
+.has-sub{ position:relative; display:inline-flex; align-items:center; gap:.25rem; }
+.has-sub > .parent-link{ padding:.35rem .5rem; text-decoration:none; color:#000; }
+.sub-caret{
+  background:transparent; border:0; cursor:pointer; font:inherit; line-height:1; padding:.35rem .4rem;
+}
+
+/* Submenu */
+.submenu{
+  display:none; position:absolute; top:calc(100% + .5rem); left:0; min-width:200px;
+  list-style:none; margin:0; padding:.4rem; background:#fff; border:1px solid rgba(0,0,0,.07);
+  border-radius:12px; box-shadow:0 10px 28px rgba(0,0,0,.08); z-index:40;
+}
+.has-sub.open > .submenu{ display:block; }
+.submenu.right{ left:auto; right:0; }
+
+/* Desktop hover open (keeps caret click for mobile) */
+@media (hover:hover) and (min-width:860px){
+  .has-sub:hover > .submenu{ display:block; }
+}
+
+
+:root{
+  --nav-height: 64px;          /* actual nav height */
+  --banner-height: 36px;       /* your "Content unfolding…" bar */
+}
+
+
+
+/* --- NAV: tighter cluster & balanced spacing --- */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--ivory);
+}
+
+/* Nav row aligns to a max width and stays compact */
+.nav{
+  max-width: 1200px;
+  margin: 0 auto;
+  height: var(--nav-height);
+  padding: 8px 12px;                  /* tighter vertical + small horizontal */
+  display: flex;
+  align-items: center;
+  gap: 10px;                          /* small intrinsic gap only */
+}
+
+/* Brand hugs the left; links will push to the right */
+.brand{
+  margin-right: auto;
+  letter-spacing: .02em;
+  text-decoration: none;
+  color: #000;
+}
+
+/* Link cluster on the right, closer spacing */
+.nav-links{
+  margin-left: auto;                  /* push to far right */
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;                        /* tighten */
+}
+
+/* Smaller hit-box without changing font size */
+.nav-links a,
+.sub-toggle,
+.sub-caret{
+  padding: .25rem .25rem;             /* compact */
+  line-height: 1.1;
+}
+
+/* Optional: squeeze the very last icon (account) a bit more */
+.nav-links > li:last-child{
+  margin-left: .25rem;
+}
+
+/* Desktop: a little more separation is fine if you like */
+@media (min-width: 1100px){
+  .nav-links{ gap: 1.05rem; }
+}
+
+
+/* Homepage full-height hero (fills viewport minus nav + banner) */
+body.home .hero-large,
+body.home .hero.gradient-bg{
+  min-height: calc(100dvh - var(--nav-height) - var(--banner-height));
+  display: flex;
+  align-items: center;       /* vertically center content */
+  padding: 0 1rem;           /* no extra top padding needed */
+}
+
+/* Subpages can stay shorter; tune to your taste */
+body:not(.home) .hero-large,
+body:not(.home) .hero.gradient-bg.hero-small{
+  min-height: 36vh;
+}
+
+/* If you still see a stray top-gap on the hero, hard-kill it */
+.hero{ margin-top: 0; }
+
