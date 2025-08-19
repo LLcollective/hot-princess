@@ -5,43 +5,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
 <script src="contact/script.js"></script>
-</head><body><header class="site-header">
-  <nav class="nav" aria-label="Primary">
+</head><body>
+
+
+      <header class="site-header" role="banner">
+  <div class="nav-wrap">
     <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
 
-
-
-
-
-
-
-
-
-
-    <button class="menu-toggle" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <!-- Hamburger -->
+    <button class="hamburger" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+      ☰
     </button>
 
-    <ul id="primary-nav" class="nav-links">
-      <li><a href="index.html">Home</a></li>
-
-      <li class="has-sub">
-        <a href="about.html" class="parent-link">About</a>
-        <button class="sub-caret"
-                aria-label="Open About menu"
-                aria-expanded="false"
-                aria-controls="about-sub">▾</button>
-        <ul id="about-sub" class="submenu">
-          <li><a href="founder.html">Founders Note</a></li>
-        </ul>
-      </li>
-
-      <li><a href="journal.html">Journal</a></li>
-      <li><a href="explore.html">Explore</a></li>
-      <li><a href="join.html">Join</a></li>
-      <li><a href="contact.html">Contact</a></li>
-
-      <li class="account has-sub">
+    <!-- Nav -->
+    <nav aria-label="Primary">
+      <ul id="primary-nav" class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="journal.html">Journal</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="join.html">Join</a></li>
+        <li><a href="contact.html">Contact</a></li>
+ <li class="account has-sub">
         <button class="sub-caret icon" aria-label="Account" aria-expanded="false" aria-controls="acct-sub">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
                stroke="#BADA55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -56,9 +40,15 @@
         </ul>
       </li>
     </ul>
-  </nav>
-  <div class="top-banner"><p>Coming Soon ↓</p></div>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Keep your announcement bar if you want -->
+  <div class="top-banner"><p>Now Available</p></div>
 </header>
+
+
   </div>
 
 <!-- HERO (coral → beige) -->

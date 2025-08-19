@@ -1589,3 +1589,173 @@ background: #bad455;   /* your green */
 border: none;
 color: white;          /* hamburger icon */
 
+/* Default: Desktop view */
+.hamburger {
+  display: none; /* hide hamburger on big screens */
+}
+
+.nav-links {
+  display: flex; /* show normal nav */
+  gap: 2rem; /* space between links */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* show hamburger */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: none; /* hide nav by default on mobile */
+    flex-direction: column;
+    gap: 1.5rem;
+    background: #fff;
+    padding: 1rem;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #eee;
+  }
+
+  .nav-links.active {
+    display: flex; /* show when hamburger clicked */
+  }
+}
+
+
+
+/* MOBILE (default) */
+.hamburger{ display:inline-flex; }             /* show burger */
+#primary-nav .nav-links{
+  display:none;                                /* hidden until .open */
+}
+#primary-nav .nav-links.open{ display:block; } /* slide-out panel shows */
+.nav-panel{ position:fixed; inset:64px 0 0 0; } /* only used on mobile */
+
+/* DESKTOP */
+@media (min-width: 860px){
+  .hamburger{ display:none; }                  /* hide burger */
+  .nav-panel{ position:static; inset:auto; }   /* no fixed overlay */
+  #primary-nav .nav-links{
+    display:flex;                              /* horizontal menu */
+    flex-direction:row;
+    gap: 1.25rem;
+    position:static;
+    padding:0;
+    background:transparent;
+  }
+  body.nav-open{ overflow:auto; }              /* re-enable scroll */
+}
+
+
+
+/* Align brand left and nav right */
+.nav-wrap {
+  display: flex;
+  justify-content: space-between; /* pushes brand left, nav right */
+  align-items: center; /* vertically centers them */
+  padding: 0 2rem;
+}
+
+/* Brand styling */
+.nav-wrap .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+
+
+.nav-wrap {
+  position: relative;
+}
+
+.nav-links {
+  position: absolute;
+  top: 60px; /* just under header */
+  right: 0;
+  flex-direction: column;
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+/* --- DESKTOP LAYOUT: logo left, nav right --- */
+.site-header .nav-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;   /* pushes brand left, nav right */
+  gap:1rem;
+  padding:0 2rem;
+}
+
+/* keep list inline on desktop */
+#primary-nav,
+#primary-nav.nav-links{
+  display:flex !important;         /* beat any earlier display:block */
+  flex-direction:row !important;
+  align-items:center;
+  gap:2rem;
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:static;                 /* remove any mobile positioning */
+  background:transparent;
+  box-shadow:none;
+}
+
+/* hide hamburger on desktop */
+.menu-toggle,
+.hamburger{
+  display:none;
+}
+
+/* --- MOBILE: hamburger + dropdown --- */
+@media (max-width: 860px){
+  .menu-toggle,
+  .hamburger{ display:inline-flex; align-items:center; justify-content:center; }
+
+  /* start hidden; will be opened by JS toggling a class */
+  #primary-nav{
+    display:none;
+    position:fixed;
+    right:1rem;
+    top:var(--nav-height,64px);
+    flex-direction:column !important;
+    gap:1rem;
+    padding:1rem 1.25rem;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 10px 26px rgba(0,0,0,.12);
+    z-index:999;
+  }
+
+  /* when you add .nav-open to <body> (or .open to the nav), show it */
+  body.nav-open #primary-nav,
+  #primary-nav.open{ display:flex; }
+}
