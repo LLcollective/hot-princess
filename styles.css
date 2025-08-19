@@ -1794,3 +1794,26 @@ color: white;          /* hamburger icon */
   /* optional page scroll lock when menu open */
   .nav-open{ overflow:hidden; }
 }
+
+
+
+@media (max-width: 860px) {
+  .nav-links {
+    position: absolute;   /* take it out of flow */
+    top: 100%;            /* drop just below the header */
+    left: 0;
+    right: 0;
+    background: var(--ivory, #fff);
+    display: none;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    z-index: 1200;        /* stays above hero/banner */
+  }
+
+  /* show when open */
+  .nav-open #primary-nav {
+    display: flex;
+  }
+}
