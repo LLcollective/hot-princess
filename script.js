@@ -134,3 +134,30 @@ document.querySelectorAll('.has-sub > .sub-toggle').forEach(btn => {
   });
 });
 
+
+
+
+
+<script>
+  const btn = document.querySelector('.hamburger');
+  const list = document.getElementById('primary-nav');
+  if (btn && list) {
+    btn.addEventListener('click', () => {
+      const open = list.classList.toggle('show');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+
+</script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+});
+
+

@@ -1513,3 +1513,79 @@ img{ max-width:100%; height:auto; display:block; }
   .brand{ font-size: 1rem; }
   .nav{ padding: 0 .6rem; }
 }
+
+
+
+/* Hide nav links on small screens */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px; /* below the header */
+    right: 0;
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 28px;
+    padding: 0.5rem;
+  }
+}
+
+
+
+/* Hide nav links on small screens */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px; /* below the header */
+    right: 0;
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 28px;
+    padding: 0.5rem;
+  }
+}
+
+
+.hamburger {
+  display: none;
+  background: #fff;          /* White background */
+  border: 2px solid #000;    /* Circle border */
+  border-radius: 50%;        /* Makes it round */
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+background: #bad455;   /* your green */
+border: none;
+color: white;          /* hamburger icon */
+
