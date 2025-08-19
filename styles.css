@@ -1340,3 +1340,176 @@ body:not(.home) .hero.gradient-bg.hero-small{
 /* If you still see a stray top-gap on the hero, hard-kill it */
 .hero{ margin-top: 0; }
 
+-----------------------------
+/* =========================================================
+   MOBILE-FIRST POLISH (drop-in overrides)
+   Paste this at the very end of styles.css
+   ========================================================= */
+
+/* ---------- Core sizes & fluid typography ---------- */
+:root{
+  /* header + banner heights (desktop defaults) */
+  --nav-height: 64px;
+  --banner-height: 36px;
+  --header-total: calc(var(--nav-height) + var(--banner-height));
+}
+
+/* Fluid type that never gets tiny or huge */
+h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.2; }
+h2 { font-size: clamp(1.25rem, 3.5vw, 1.6rem); line-height: 1.25; }
+h3 { font-size: clamp(1.1rem, 3vw, 1.35rem); }
+p, li, input, textarea, button { font-size: clamp(1rem, 2.9vw, 1.05rem); }
+
+/* ---------- Sticky header: slimmer, cleaner ---------- */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--ivory);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.nav{
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .9rem;                 /* tighter left/right */
+  gap: .25rem;
+}
+
+.brand{
+  font-size: clamp(1.1rem, 3.8vw, 1.35rem);
+  letter-spacing: .02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* compact account icon hitbox */
+.account-link{ display:inline-flex; align-items:center; padding:.4rem; }
+
+/* banner sits below nav and is slim */
+.top-banner{
+  height: var(--banner-height);
+  display:flex; align-items:center; justify-content:center;
+  margin:0; padding:0 .75rem;
+}
+
+/* push content below sticky header+banner */
+main.with-sticky{ padding-top: var(--header-total); }
+
+/* ---------- Mobile navigation (hamburger) ---------- */
+.menu-toggle{
+  display: inline-flex; flex-direction: column; gap: 4px;
+  width: 36px; height: 28px; justify-content: center; align-items: center;
+  background: transparent; border: 0; padding: 0; cursor: pointer;
+}
+.menu-toggle span{ width: 22px; height: 2px; background: #333; }
+
+/* collapsed list by default on small screens */
+.nav-links{
+  list-style:none; margin:0; padding:.5rem 1rem;
+  display:none; flex-direction:column; gap:.35rem;
+  background: var(--ivory);
+  border-top:1px solid rgba(0,0,0,.06);
+}
+
+/* open state toggled by JS */
+.nav-links.open{ display:flex; }
+
+/* submenu */
+.has-sub{ position:relative; }
+.submenu{
+  list-style:none; margin:.25rem 0 0; padding:.35rem;
+  display:none; flex-direction:column; gap:.15rem;
+  background:#fff; border:1px solid rgba(0,0,0,.06);
+  border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,.08);
+}
+.has-sub.open .submenu{ display:flex; }
+
+/* links (no layout jump on underline) */
+.nav-links a, .sub-toggle{
+  display:inline-flex; align-items:center;
+  padding:.5rem .6rem .6rem;
+  text-decoration:none;
+  border-bottom:2px solid transparent;  /* reserve space */
+}
+
+/* ---------- Hero: true center, sane width ---------- */
+.hero{
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center; text-align:center;
+  min-height: 62svh;                   /* phones: a bit shorter than full */
+  padding: 2rem 1rem;
+}
+.hero .container{ width:min(92vw, 900px); }
+
+/* About flow inside hero (optional blocks) */
+.about-flow{
+  width:100%;
+  margin: 1.25rem auto 0;
+  text-align:left;
+  display:grid; gap: .9rem;
+}
+.flow-divider{ border:0; height:1px; background: rgba(0,0,0,.08); }
+
+/* ---------- Cards / grids collapse nicely ---------- */
+.container.grid6,
+.card-grid{
+  display:grid; gap: 18px;
+  grid-template-columns: 1fr;          /* 1 column on phones */
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.75rem 1.1rem; border-radius:999px; font-weight:600;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  transition: transform .06s ease, box-shadow .2s, background .2s, color .2s;
+}
+.btn:active{ transform: translateY(1px); }
+
+/* make important CTAs full-width on small */
+@media (max-width: 520px){
+  .btn.full, .contact-form .btn{ width:100%; }
+}
+
+/* ---------- Forms (finger-friendly) ---------- */
+input, textarea, select{
+  width:100%;
+  padding:.9rem 1rem;
+  border:1px solid rgba(0,0,0,.14);
+  border-radius:12px;
+  line-height:1.35;
+  -webkit-appearance:none; appearance:none;
+}
+textarea{ min-height: 140px; resize: vertical; }
+.form-status{ margin-top: .5rem; }
+
+/* Contact two-column -> one column on phones */
+#contactForm{ display:grid; gap:14px; }
+#contactForm .form-row.two{ display:grid; gap:14px; grid-template-columns:1fr; }
+
+/* ---------- Images ---------- */
+img{ max-width:100%; height:auto; display:block; }
+
+/* ---------- Desktop enhancements ---------- */
+@media (min-width: 860px){
+  :root{ --nav-height: 64px; --banner-height: 36px; }
+  .menu-toggle{ display:none; }
+  .nav{ padding: 0 1rem; }
+  .nav-links{
+    display:flex !important;           /* always visible on desktop */
+    flex-direction:row; align-items:center; gap:1.1rem;
+    background:transparent; border-top:0; padding:0;
+  }
+  .hero{ min-height: 78svh; }          /* roomier hero on desktop */
+  .container.grid6,
+  .card-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* ---------- Ultra small phones fix ---------- */
+@media (max-width: 360px){
+  .brand{ font-size: 1rem; }
+  .nav{ padding: 0 .6rem; }
+}
