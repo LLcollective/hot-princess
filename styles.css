@@ -1759,3 +1759,38 @@ color: white;          /* hamburger icon */
   body.nav-open #primary-nav,
   #primary-nav.open{ display:flex; }
 }
+
+
+
+/* Make sure header is on top of the page */
+.site-header{ position:sticky; top:0; z-index:1000; background:var(--ivory); }
+.top-banner{ position:relative; z-index:900; }
+
+/* Hamburger visible above everything */
+.hamburger{ display:none; position:relative; z-index:1100; background:transparent; border:0; font-size:28px; line-height:1; padding:.25rem .5rem; cursor:pointer; }
+
+/* Default desktop nav */
+.nav-wrap{ display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.nav-links{ display:flex; gap:2rem; align-items:center; }
+
+/* Mobile layout */
+@media (max-width: 860px){
+  .hamburger{ display:inline-flex; }
+  .nav-links{
+    /* hidden off-canvas by default */
+    display:none;
+    position:fixed;
+    left:0; right:0; top:var(--nav-height,64px);
+    background:var(--ivory);
+    padding:16px;
+    flex-direction:column;
+    gap:12px;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+    z-index:1050;
+  }
+  /* when open */
+  .nav-open #primary-nav{ display:flex; }
+
+  /* optional page scroll lock when menu open */
+  .nav-open{ overflow:hidden; }
+}

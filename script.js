@@ -170,3 +170,27 @@ hamburger.addEventListener("click", () => {
 
 
 
+// mobile nav toggle
+(function () {
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('primary-nav');
+  if (!btn || !nav) return;
+
+  function toggle(open) {
+    const isOpen = open ?? !document.body.classList.contains('nav-open');
+    document.body.classList.toggle('nav-open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  btn.addEventListener('click', () => toggle());
+
+  // close when a link is tapped
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) toggle(false);
+  });
+
+  // close on Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') toggle(false);
+  });
+})();
