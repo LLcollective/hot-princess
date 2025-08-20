@@ -1,156 +1,365 @@
-<!DOCTYPE html><html lang='en'><head><meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Explore | Lace & Lime™</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
-<script src="script.js" defer></script>
-</head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lace & Lime™ | Explore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body{ background:#FAF9F6; }
 
+    /* —— Hero (linen + soft gradient) —— */
+    .explore-hero{
+      padding: 4rem 1.25rem 3rem;
+      text-align:center;
+      background:
+        radial-gradient(800px 400px at -10% 40%, rgba(255,182,172,.25), transparent 70%),
+        radial-gradient(900px 420px at 90% 0%, rgba(152,195,154,.25), transparent 70%),
+        linear-gradient(135deg, #faf9f6, #f7f7f5);
+    }
+    .explore-hero h1{
+      font-family:'Tenor Sans',serif;
+      font-size:2.4rem;
+      margin-bottom:.65rem;
+    }
+    .explore-hero .lead{ max-width:700px; margin:0 auto; color:#444; }
 
+    /* —— Shared section layout —— */
+    .explore-wrap{ max-width:1100px; margin:0 auto; padding:1rem 1rem 3rem; }
+    .section{ margin-top:1.75rem; }
+    .section h2{ font-family:'Tenor Sans',serif; font-size:1.5rem; margin-bottom:.6rem; }
+    .section .sub{ color:#586066; margin-bottom:.75rem; }
 
-  <header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+    .grid{
+      display:grid; gap:18px;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+    @media (max-width:900px){ .grid{ grid-template-columns:1fr 1fr; } }
+    @media (max-width:650px){ .grid{ grid-template-columns:1fr; } }
 
-    <!-- Hamburger -->
-    <button class="hamburger" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
-      ☰
-    </button>
+    .card{
+      background:#fff; border:1px solid #EDEDED; border-radius:14px;
+      padding:1.1rem 1.1rem 1.25rem; box-shadow:0 1px 3px rgba(0,0,0,.05);
+      display:flex; flex-direction:column; gap:.5rem;
+    }
+    .card h3{ font-family:'Tenor Sans',serif; font-size:1.2rem; }
+    .card p{ color:#586066; }
 
-    <!-- Nav -->
-    <nav aria-label="Primary">
-      <ul id="primary-nav" class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="journal.html">Journal</a></li>
-        <li><a href="explore.html">Explore</a></li>
-        <li><a href="join.html">Join</a></li>
-        <li><a href="contact.html">Contact</a></li>
- <li class="account has-sub">
-        <button class="sub-caret icon" aria-label="Account" aria-expanded="false" aria-controls="acct-sub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-               stroke="#BADA55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-               class="icon-account">
-            <circle cx="11" cy="7" r="4"></circle>
-            <path d="M3 20c2-4 14-4 16 0"></path>
+    .pill{
+      align-self:flex-start;
+      font-size:.8rem; padding:.32rem .6rem; border-radius:999px;
+      background:#E9F7EE; color:#2f6b47; font-weight:600;
+    }
+    .pill.muted{ background:#eee; color:#757e85; }
+
+    .btn,
+    .btn-primary{
+      display:inline-block;
+      padding:.6rem .95rem;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      transition:.2s ease;
+    }
+    .btn{ background:#E9F7EE; color:#2f6b47; }
+    .btn:hover{ filter:brightness(.98); }
+    .btn-primary{ background:#5BA472; color:#fff; }
+    .btn-primary:hover{ filter:brightness(.95); }
+
+    .card .dash-link{ margin-top:.25rem; font-weight:600; color:#5BA472; }
+
+    /* —— Playlist as its own row —— */
+    .grid--single{
+      display:grid; grid-template-columns:1fr 1fr; gap:18px;
+      max-width:1100px; margin:2rem auto 0; padding:0 1rem;
+    }
+    .card.playlist-card{
+      display:flex; align-items:center; gap:18px;
+    }
+    .playlist-info{ flex:1 1 520px; }
+    .playlist-info h2{
+      font-family:'Tenor Sans',serif; font-size:1.5rem; margin:0 0 .4rem;
+    }
+    .playlist-info p{ margin:0; color:#586066; }
+    .playlist-actions{ display:flex; gap:10px; margin-top:.9rem; flex-wrap:wrap; }
+
+    @media (max-width:780px){
+      .grid--single{ grid-template-columns:1fr; }
+      .card.playlist-card{ flex-direction:column; align-items:stretch; text-align:left; }
+    }
+
+    /* —— Join strip CTA (page-level) —— */
+    .join-strip{
+      max-width:1100px; margin:2rem auto 0; padding:1.1rem;
+      background:#fff; border:1px solid #EDEDED; border-radius:14px;
+      box-shadow:0 1px 3px rgba(0,0,0,.05);
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+    }
+    .join-strip p{ margin:0; color:#444; }
+    @media(max-width:700px){
+      .join-strip{ flex-direction:column; text-align:center; }
+    }
+
+    /* —— NAV FIX (force match index) —— */
+    .ll-header .ll-bar{
+      max-width:1100px; margin:0 auto; padding:12px 16px;
+      display:flex; align-items:center !important;
+    }
+    .ll-header .ll-right{
+      margin-left:auto !important;
+      display:flex !important; align-items:center !important;
+      gap:1.05rem !important;
+    }
+    .ll-header .ll-right a{
+      margin:0 !important; padding:.25rem 0 !important;
+      text-decoration:none; color:#111;
+    }
+    .ll-header .ll-right a.active{ border-bottom:2px solid #111; }
+    .ll-header .ll-account svg{
+      width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:2;
+      display:block;
+    }
+    .ll-burger{ margin-left:12px; margin-right:-4px; display:none; background:transparent; border:0; }
+    @media (max-width:860px){
+      .ll-header .ll-right{ display:none !important; }
+      .ll-burger{ display:inline-block !important; }
+      .ll-drawer{ position:absolute; left:0; right:0; top:56px; background:#fff; border-top:1px solid #eee; padding:10px 16px; display:none; }
+      .ll-drawer.open{ display:block !important; }
+      .ll-drawer a{ display:block; padding:10px 0; color:#111; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="ll-header">
+    <div class="ll-bar">
+      <a href="index.html" class="ll-brand">LACE AND LIME<span class="ll-tm">™</span></a>
+
+      <nav class="ll-right" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+       <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html" class="active">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
           </svg>
-        </button>
-        <ul id="acct-sub" class="submenu right">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
-        </ul>
-      </li>
-    </ul>
-      </ul>
-    </nav>
-  </div>
+        </a>
+      </nav>
 
-  <!-- Keep your announcement bar if you want -->
-  <div class="top-banner"><p>Coming September</p></div>
-</header>
+      <button class="ll-burger" id="ll-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-
-
-
-
-<main class="with-sticky">
-
-  <!-- HERO (coral → beige) -->
-  <section class="hero gradient-bg hero-small">
-    <div class="container">
-      <h1 class="fade-lift">Explore</h1>
-      <p class="lead"> <section class="hero gradient-bg hero-small">
-    <div class="container">
-      <h1 class="fade-lift"><a
-  class="journal-btn"
-  href="https://laceandlime.kit.com/a2a88f640a"
-  target="_blank"
-  rel="noopener noreferrer"
->
- Follow your curiosity →
-</a></h1>
+      <nav class="ll-drawer" id="ll-drawer" aria-label="Mobile menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html" class="active">Explore</a>
+        <a href="contact.html">Contact</a>
+        <hr />
+        <a href="account.html" aria-label="Account">Account</a>
+      </nav>
     </div>
+  </header>
 
+  <!-- Hero -->
+  <section class="explore-hero">
+    <h1>Explore</h1>
+    <p class="lead">Discover resources, tools, and vibes curated for your Lace & Lime™ journey.</p>
+  </section>
 
+  <!-- Playlist + Join row -->
+  <section class="grid--single" aria-label="Featured playlist">
+    <article class="card playlist-card">
+      <div class="playlist-info">
+        <span class="pill">Now playing</span>
+        <h2>Lace & Lime™ Vibes</h2>
+        <p>A curated playlist to set the tone — reflection, action, and balance-forward energy.</p>
+        <div class="playlist-actions">
+          <a class="btn-primary"
+             href="https://open.spotify.com/playlist/7fzL3lCumo5OhjjddCyyfg"
+             target="_blank" rel="noopener">▶ Play on Spotify</a>
+          <a class="btn" href="#" id="reveal-embed">Show Player</a>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <span class="pill">Join us</span>
+      <h3>Join the Circle</h3>
+      <p>Get new prompts, playlists, and tools straight to your inbox. Be part of the Lace & Lime™ spiral.</p>
+      <a class="btn-primary" href="https://laceandlime.kit.com/a2a88f640a" target="_blank" rel="noopener">Subscribe</a>
+    </article>
+  </section>
 
+  <!-- Hidden player -->
+  <iframe
+    id="hidden-playlist"
+    src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
+    width="100%" height="120"
+    style="display:none;border:0;border-radius:12px;max-width:1100px;justify-self:center;"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>
 
+  <main class="explore-wrap">
+    <!-- Prompts -->
+    <section class="section" id="prompts">
+      <h2>Prompts</h2>
+      <p class="sub">Short reflection cues to spark clarity. Add your first set here later.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="pill">Sample</span>
+          <h3>Today’s mini prompt</h3>
+          <p>What would “clear and steady” feel like in the next hour?</p>
+          <a class="dash-link" href="account.html?next=/dashboard.html#prompts">See more in Dashboard →</a>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Weekly prompt pack</h3>
+          <p>A 7-day set that pairs with the Clear & Steady playlist.</p>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Community prompts</h3>
+          <p>Top reflections submitted by Lace & Lime™ members.</p>
+        </article>
+      </div>
+    </section>
 
+    <!-- Rituals -->
+    <section class="section" id="rituals">
+      <h2>Rituals</h2>
+      <p class="sub">Simple, repeatable actions to anchor your day.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="pill">Sample</span>
+          <h3>3-breath reset</h3>
+          <p>Inhale clarity, hold for presence, exhale what’s not yours.</p>
+          <a class="dash-link" href="account.html?next=/dashboard.html#rituals">See more in Dashboard →</a>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>AM alignment</h3>
+          <p>5-minute morning check-in + micro-action cue.</p>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>PM unwind</h3>
+          <p>Release, reset, and prep for tomorrow’s yes.</p>
+        </article>
+      </div>
+    </section>
 
+    <!-- Guides -->
+    <section class="section" id="guides">
+      <h2>Guides</h2>
+      <p class="sub">Deeper dives on sets, frameworks, and practice.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Clear & Steady Guide</h3>
+          <p>How to use Set A with prompts, rituals, and music.</p>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Speak the Unsaid</h3>
+          <p>Language, boundaries, and courageous communication.</p>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Edge of Enough</h3>
+          <p>Finding capacity, pacing progress, saying no.</p>
+        </article>
+      </div>
+    </section>
 
-</main>
+    <!-- Workshop Kits -->
+    <section class="section" id="workshop-kits">
+      <h2>Workshop Kits</h2>
+      <p class="sub">Facilitator-ready packets for groups and orgs.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Intro Session</h3>
+          <p>90-minute framework overview + interactive activities.</p>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Team Reset</h3>
+          <p>Group alignment ritual + shared action plan.</p>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Community Night</h3>
+          <p>Playlists, prompts, and conversation starters.</p>
+        </article>
+      </div>
+    </section>
 
+    <!-- Community Stories -->
+    <section class="section" id="community">
+      <h2>Community Stories</h2>
+      <p class="sub">Wins, reflections, and momentum from the Lace & Lime™ community.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Spotlight #1</h3>
+          <p>How journaling with music changed a morning routine.</p>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Spotlight #2</h3>
+          <p>From stuck to steady: a micro-action case study.</p>
+        </article>
+        <article class="card">
+          <span class="pill muted">Coming soon</span>
+          <h3>Spotlight #3</h3>
+          <p>Community ritual that’s working right now.</p>
+        </article>
+      </div>
+    </section>
+  </main>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Lace & Lime™ LLC. All rights reserved.</p>
+  </footer>
 
+  <!-- Drawer + reveal-embed JS -->
+  <script>
+    (function(){
+      const b=document.getElementById('ll-burger');
+      const d=document.getElementById('ll-drawer');
+      if(b&&d){
+        b.addEventListener('click',e=>{
+          e.stopPropagation();
+          d.classList.toggle('open');
+          b.setAttribute('aria-expanded', d.classList.contains('open'));
+        });
+        document.addEventListener('click',()=>{ d.classList.remove('open'); b.setAttribute('aria-expanded','false');});
+        d.addEventListener('click',e=>e.stopPropagation());
+      }
 
-
-
-
-
-<footer class="site-footer">
-  <div class="footer-icons">
-    <a href="#" aria-label="Spotify" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".08"/><path d="M6 14.5c4.6-1.1 8.4-.5 11 1 .4.3.5.8.2 1.2-.3.4-.8.5-1.2.2-2.2-1.3-5.6-1.8-9.5-.9-.5.1-1-.2-1.1-.7s.2-1 .6-1.1zM6.5 11.6c3.9-1.2 8.8-.7 12 1.2.4.2.6.7.3 1.1-.2.4-.7.6-1.1.3-2.9-1.7-7.3-2.1-10.8-1.1-.5.2-1-.1-1.2-.6-.1-.5.2-1 .8-1.1zM6.9 9c3.7-1.1 9.4-.9 12.8 1.1.4.2.6.7.4 1.1-.2.4-.7.6-1.1.4-3.1-1.8-8.2-2-11.5-1-.5.1-1-.2-1.1-.7-.1-.5.2-1 .5-1z" fill="currentColor"/></svg></a>
-    <a href="https://instagram.com/laceandlime.llc" target="_blank" aria-label="Instagram" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
-    <a href="#" aria-label="Podcasts" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 13v7M8 22v-4M16 22v-4" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
-  </div>
-  <p>© 2025 Lace & Lime™ LLC. All Rights Reserved.</p>
-</footer>
-
-
-
-
-<script>
-  // Mobile menu
-  const menuBtn  = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('#primary-nav') || document.querySelector('.nav-links');
-  if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', String(open));
-    });
-  }
-
-  // Submenu caret toggles
-  document.addEventListener('click', (e) => {
-    const caret = e.target.closest('.sub-caret');
-    const item  = caret?.closest('.has-sub');
-
-    // Outside click closes any open menus
-    if (!caret && !e.target.closest('.has-sub')) {
-      document.querySelectorAll('.has-sub.open').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.sub-caret')?.setAttribute('aria-expanded', 'false');
-      });
-      return;
-    }
-
-    if (!caret || !item) return;
-
-    const expanded = caret.getAttribute('aria-expanded') === 'true';
-
-    // Close others first
-    document.querySelectorAll('.has-sub.open').forEach(el => {
-      if (el !== item) el.classList.remove('open');
-      el.querySelector('.sub-caret')?.setAttribute('aria-expanded', 'false');
-    });
-
-    // Toggle this one
-    item.classList.toggle('open', !expanded);
-    caret.setAttribute('aria-expanded', String(!expanded));
-  });
-
-  // ESC closes menus
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    document.querySelectorAll('.has-sub.open').forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.sub-caret')?.setAttribute('aria-expanded', 'false');
-    });
-    // also close mobile menu
-    if (navLinks?.classList.contains('open')) {
-      navLinks.classList.remove('open');
-      menuBtn?.setAttribute('aria-expanded', 'false');
-    }
-  });
-</script>
-
-</body></html>
+      // reveal hidden embed
+      const revealBtn = document.getElementById('reveal-embed');
+      const hidden = document.getElementById('hidden-playlist');
+      if(revealBtn && hidden){
+        revealBtn.addEventListener('click', function(e){
+          e.preventDefault();
+          hidden.style.display = hidden.style.display === 'none' ? 'block' : 'none';
+          this.textContent = hidden.style.display === 'none' ? 'Show Player' : 'Hide Player';
+          hidden.scrollIntoView({behavior:'smooth', block:'center'});
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

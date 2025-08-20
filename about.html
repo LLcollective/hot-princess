@@ -1,134 +1,149 @@
-<!DOCTYPE html><html lang='en'><head><meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About | Lace & Lime™</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
-<script src="script.js" defer></script>
-</head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lace & Lime™ | About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* linen background */
+    body{ background: #FAF9F6; }
 
+    /* hero with soft green + coral gradient overlay (reusing journal vibe) */
+    .jl-hero{
+      padding: 4rem 1.25rem 3rem;
+      text-align:center;
+      background:
+        radial-gradient(800px 400px at -10% 40%, rgba(255, 182, 172, 0.25), transparent 70%),
+        radial-gradient(900px 420px at 90% 0%, rgba(152, 195, 154, 0.25), transparent 70%),
+        linear-gradient(135deg, #faf9f6, #f7f7f5);
+    }
+    .jl-hero h1{
+      font-family:'Tenor Sans',serif;
+      font-size:2.4rem;
+      margin-bottom:.65rem;
+    }
+    .jl-hero .lead{ max-width:700px; margin:0 auto; color:#444; }
 
+    /* about content */
+    .about-wrap{ max-width:1100px; margin:0 auto; padding:2rem 1rem 3rem; }
+    .about-grid{
+      display:grid; gap:18px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .about-card{
+      background:#fff; border:1px solid #EDEDED; border-radius:14px;
+      padding:1.2rem 1.2rem 1.35rem; box-shadow:0 1px 3px rgba(0,0,0,.06);
+    }
+    .about-card h2{ font-size:1.35rem; margin-bottom:.4rem; font-family:'Tenor Sans',serif; }
+    .about-card p{ color:#586066; }
+    @media (max-width:900px){ .about-grid{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
 
+  <!-- Header -->
+  <header class="ll-header">
+    <div class="ll-bar">
+      <a href="index.html" class="ll-brand">LACE AND LIME<span class="ll-tm">™</span></a>
 
-  <header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-
-    <!-- Hamburger -->
-    <button class="hamburger" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
-      ☰
-    </button>
-
-    <!-- Nav -->
-    <nav aria-label="Primary">
-      <ul id="primary-nav" class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="journal.html">Journal</a></li>
-        <li><a href="explore.html">Explore</a></li>
-        <li><a href="join.html">Join</a></li>
-        <li><a href="contact.html">Contact</a></li>
- <li class="account has-sub">
-        <button class="sub-caret icon" aria-label="Account" aria-expanded="false" aria-controls="acct-sub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-               stroke="#BADA55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-               class="icon-account">
-            <circle cx="11" cy="7" r="4"></circle>
-            <path d="M3 20c2-4 14-4 16 0"></path>
+      <nav class="ll-right" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="founder.html">Founder</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
           </svg>
-        </button>
-        <ul id="acct-sub" class="submenu right">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
-        </ul>
-      </li>
-    </ul>
-      </ul>
-    </nav>
-  </div>
+        </a>
+      </nav>
 
-  <!-- Keep your announcement bar if you want -->
-  <div class="top-banner"><p>Welcome !</p></div>
+      <button class="ll-burger" id="ll-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-
-
-
-</header><main class="with-sticky">
-
-
-
-<!-- HERO with journal-style layout -->
-<section class="hero gradient-bg hero-small">
-  <div class="container">
-    <h1 class="fade-lift">About Lace &amp; Lime™ LLC</h1>
-    <p class="lead">Our Mission · What We Do · Our Vibe</p>
-
-    <!-- FLOW CONTENT moved inside hero -->
-    <div class="about-flow">
-      <article class="flow-item">
-        <h2 class="kicker">Our Mission</h2>
-        <p>
-          Empowering individuals and communities with tools, guided reflection,
-          and actionable plans that turn awareness into lasting change.
-        </p>
-      </article>
-
-      <hr class="flow-divider" />
-
-      <article class="flow-item">
-        <h2 class="kicker">What We Do</h2>
-        <p>
-          Lace &amp; Lime™ LLC is a wellness and empowerment initiative rooted
-          in Long Island, NY. We create guided journals, resources, and
-          community-centered workshops that help people move from reflection to
-          action with confidence and clarity.
-        </p>
-      </article>
-
-      <hr class="flow-divider" />
-
-      <article class="flow-item">
-        <h2 class="kicker">Our Vibe</h2>
-        <p>
-          Founded and led by Sharon, Lace &amp; Lime™ began as a vision to make
-          wellness and empowerment more accessible across Long Island and
-          beyond. Balance-forward, intentional, and rooted in community, we
-          believe growth happens where clarity meets action—and where people
-          feel both grounded and uplifted.
-        </p>
-        <p><a class="link" href="founder.html">Founders' Note →</a></p>
-      </article>
+      <nav class="ll-drawer" id="ll-drawer" aria-label="Mobile menu">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="founder.html">Founder</a>
+        <hr />
+        <a href="account.html" aria-label="Account">Account</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
+  <!-- Hero -->
+  <section class="jl-hero">
+    <h1>About Lace & Lime™</h1>
+    <p class="lead">Balance-forward wellness and empowerment bridging NYC and suburban Long Island communities.</p>
+  </section>
 
+  <!-- Content -->
+  <main class="about-wrap">
+    <section class="about-grid">
+      <article class="about-card">
+        <h2>Our Story</h2>
+        <p>
+          Lace & Lime™ began with the vision of creating a bridge—between clarity and action, reflection and empowerment,
+          softness and strength. Grounded in public health and lived community experience, we provide tools and spaces
+          for people to reconnect with their own momentum.
+        </p>
+      </article>
 
+      <article class="about-card">
+        <h2>Mission</h2>
+        <p>
+          We support under-engaged communities with accessible wellness education, empowerment frameworks, and civic
+          awareness rooted in trust. By honoring both stillness and action, Lace & Lime™ helps individuals and groups
+          move forward with clarity and conviction.
+        </p>
+      </article>
 
+      <article class="about-card">
+        <h2>What We Build</h2>
+        <p>
+          Evidence-informed prompts, rituals, and music-driven sets that translate insight into practice—so awareness
+          becomes a sustainable way of moving through the world.
+        </p>
+      </article>
 
+      <article class="about-card">
+        <h2>Who It’s For</h2>
+        <p>
+          Under-engaged communities, and anyone ready to step into momentum with presence—NYC, Long Island, and beyond.
+        </p>
+      </article>
+    </section>
+  </main>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Lace & Lime™ LLC. All rights reserved.</p>
+  </footer>
 
-
-
-<footer class="site-footer">
-  <div class="footer-icons">
-    <a href="#" aria-label="Spotify" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".08"/><path d="M6 14.5c4.6-1.1 8.4-.5 11 1 .4.3.5.8.2 1.2-.3.4-.8.5-1.2.2-2.2-1.3-5.6-1.8-9.5-.9-.5.1-1-.2-1.1-.7s.2-1 .6-1.1zM6.5 11.6c3.9-1.2 8.8-.7 12 1.2.4.2.6.7.3 1.1-.2.4-.7.6-1.1.3-2.9-1.7-7.3-2.1-10.8-1.1-.5.2-1-.1-1.2-.6-.1-.5.2-1 .8-1.1zM6.9 9c3.7-1.1 9.4-.9 12.8 1.1.4.2.6.7.4 1.1-.2.4-.7.6-1.1.4-3.1-1.8-8.2-2-11.5-1-.5.1-1-.2-1.1-.7-.1-.5.2-1 .5-1z" fill="currentColor"/></svg></a>
-    <a href="https://instagram.com/laceandlime.llc" target="_blank" aria-label="Instagram" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
-    <a href="#" aria-label="Podcasts" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 13v7M8 22v-4M16 22v-4" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
-  </div>
-  <p>© 2025 Lace & Lime™ LLC. All Rights Reserved.</p>
-
-
-
-
-
-
-
-
-
-
-<script src="script.js" defer></script>
-
-</footer>
-</body></html>
-
-
+  <!-- Drawer JS (keep) -->
+  <script>
+    (function(){
+      const b=document.getElementById('ll-burger');
+      const d=document.getElementById('ll-drawer');
+      if(!b||!d) return;
+      b.addEventListener('click',e=>{
+        e.stopPropagation();
+        d.classList.toggle('open');
+        b.setAttribute('aria-expanded', d.classList.contains('open'));
+      });
+      document.addEventListener('click',()=>{ d.classList.remove('open'); b.setAttribute('aria-expanded','false');});
+      d.addEventListener('click',e=>e.stopPropagation());
+    })();
+  </script>
+</body>
+</html>

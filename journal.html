@@ -1,198 +1,131 @@
-<!DOCTYPE html><html lang='en'><head><meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Journal | Lace & Lime™</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
-<script src="script.js" defer></script>
-</head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lace & Lime™ | Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* linen background */
+    body{ background: #FAF9F6; }
 
+    /* hero with soft green + coral gradient overlay */
+    .jl-hero{
+      padding: 4rem 1.25rem 3rem;
+      text-align:center;
+      background:
+        radial-gradient(800px 400px at -10% 40%, rgba(255, 182, 172, 0.25), transparent 70%),
+        radial-gradient(900px 420px at 90% 0%, rgba(152, 195, 154, 0.25), transparent 70%),
+        linear-gradient(135deg, #faf9f6, #f7f7f5);
+    }
+    .jl-hero h1{
+      font-family:'Tenor Sans',serif;
+      font-size:2.4rem;
+      margin-bottom:.65rem;
+    }
+    .jl-hero .lead{ max-width:700px; margin:0 auto; color:#444; }
+  </style>
+</head>
+<body>
 
+  <!-- Header -->
+  <header class="ll-header">
+    <div class="ll-bar">
+      <a href="index.html" class="ll-brand">LACE AND LIME<span class="ll-tm">™</span></a>
 
-<header class="site-header" role="banner">
-  <div class="nav-wrap">
-    <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-
-    <!-- Hamburger -->
-    <button class="hamburger" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
-      ☰
-    </button>
-
-    <!-- Nav -->
-    <nav aria-label="Primary">
-      <ul id="primary-nav" class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="journal.html">Journal</a></li>
-        <li><a href="explore.html">Explore</a></li>
-        <li><a href="join.html">Join</a></li>
-        <li><a href="contact.html">Contact</a></li>
- <li class="account has-sub">
-        <button class="sub-caret icon" aria-label="Account" aria-expanded="false" aria-controls="acct-sub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-               stroke="#BADA55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-               class="icon-account">
-            <circle cx="11" cy="7" r="4"></circle>
-            <path d="M3 20c2-4 14-4 16 0"></path>
+      <nav class="ll-right" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="journal.html" class="active">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="founder.html">Founder</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
           </svg>
-        </button>
-        <ul id="acct-sub" class="submenu right">
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
-        </ul>
-      </li>
-    </ul>
-      </ul>
-    </nav>
-  </div>
+        </a>
+      </nav>
 
-  <!-- Keep your announcement bar if you want -->
-  <div class="top-banner"><p>Chapter rollout & accompanying playlist scheduled to begin 9.31 (subject to earlier release)</p></div>
-</header>
+      <button class="ll-burger" id="ll-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
+      <nav class="ll-drawer" id="ll-drawer" aria-label="Mobile menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="journal.html" class="active">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="founder.html">Founder</a>
+        <hr />
+        <a href="account.html" aria-label="Account">Account</a>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Main -->
+  <main class="jl-wrap">
+    <section class="jl-hero">
+      <h1>Journal Sets</h1>
+      <p class="lead">Reflection and action cycles designed to help you balance awareness with forward movement.</p>
+    </section>
 
-<main class="with-sticky">
+    <div class="jl-start">Start Here</div>
 
-  <!-- HERO (coral → beige) -->
-  <section class="hero gradient-bg hero-small">
-    <div class="container">
-      <h1 class="fade-lift">Journal by Lace and Lime™</h1>
-      <p class="lead">Join the Spiral™ — be the first to access our guided journal.</p>
-<p>                </p>
-<!-- CTA to Kit waitlist -->
-  <a
-    class="journal-btn"
-    href="https://laceandlime.kit.com/a2a88f640a"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Join the Spiral waitlist on Kit"
-  >
-    Join the Spiral →
-  </a>
-</div>
+    <section aria-label="Sets">
+      <!-- Set A (playlist) -->
+      <article class="jl-set">
+        <div class="jl-info">
+          <h2 class="jl-title">Set A: Clear and Steady</h2>
+          <p class="jl-desc">Anchor yourself in presence and clarity.</p>
+        </div>
+        <div class="jl-extra">
+          <iframe src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"></iframe>
+          <span class="jl-badge jl-badge--ok">Playlist available</span>
+        </div>
+      </article>
 
+      <!-- Locked sets -->
+      <article class="jl-set"><div class="jl-info"><h2 class="jl-title">Set B: What’s No Longer Mine</h2></div><div class="jl-extra"><p class="jl-desc">Details coming soon.</p><span class="jl-badge jl-badge--muted">Playlist coming soon</span></div></article>
+      <article class="jl-set"><div class="jl-info"><h2 class="jl-title">Set C: Speak the Unsaid</h2></div><div class="jl-extra"><p class="jl-desc">Details coming soon.</p><span class="jl-badge jl-badge--muted">Playlist coming soon</span></div></article>
+      <article class="jl-set"><div class="jl-info"><h2 class="jl-title">Set D: The Edge of Enough</h2></div><div class="jl-extra"><p class="jl-desc">Details coming soon.</p><span class="jl-badge jl-badge--muted">Playlist coming soon</span></div></article>
+      <article class="jl-set"><div class="jl-info"><h2 class="jl-title">Set E: Claim the Yes</h2></div><div class="jl-extra"><p class="jl-desc">Details coming soon.</p><span class="jl-badge jl-badge--muted">Playlist coming soon</span></div></article>
+      <article class="jl-set"><div class="jl-info"><h2 class="jl-title">Set F: Next Is Now</h2></div><div class="jl-extra"><p class="jl-desc">Details coming soon.</p><span class="jl-badge jl-badge--muted">Playlist coming soon</span></div></article>
+    </section>
 
-    </div></main>
+    <!-- Optional CTA -->
+    <section class="playlist" style="text-align:center; margin-top:28px;">
+      <h2 style="font-family:'Tenor Sans',serif; font-weight:400; margin-bottom:.75rem;">Unfold with us</h2>
+      <p style="color:#555; margin-bottom:1rem;">Get the next playlist + prompts as they drop.</p>
+      <a class="btn" href="founder.html">Meet the Founder</a>
+    </section>
+  </main>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Lace & Lime™ LLC. All rights reserved.</p>
+  </footer>
 
-
-
-
-
-<section class="two-grid">
-  <div class="grid-item">
-    <h1></h1>
-    
-    <!-- Replace with your real image path -->
-    <img src="assets/journal.jpg" alt="The Stillness Spiral Journal cover" />
-  
-  </div>
-
-
-
-
-
-
-  <div class="grid-item"><center>
- <i>  <p>A curated playlist accompanies each Lace & Lime™ chapter, from Set A through Set F. Here's the preview. Songs are updated as the rhythm shifts.</p></center></i>
-<p>
-</p>
-<div class="playlist-block">
-  <!-- Spotify Embed -->
-  <iframe
-    style="border-radius:12px"
-    src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
-    width="100%" height="100" frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy">
-  </iframe>
-
-<p>Set A: Chapter Title & Solo Playlist Released 9.31<br>
-Set B-F : TBA</p>
-
-<a
-  class="journal-btn"
-  href="https://laceandlime.kit.com/a2a88f640a"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Get First Notice →
-</a>
-</div>
-</section>
-
-
-<footer class="site-footer">
-  <div class="footer-icons">
-    <a href="#" aria-label="Spotify" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".08"/><path d="M6 14.5c4.6-1.1 8.4-.5 11 1 .4.3.5.8.2 1.2-.3.4-.8.5-1.2.2-2.2-1.3-5.6-1.8-9.5-.9-.5.1-1-.2-1.1-.7s.2-1 .6-1.1zM6.5 11.6c3.9-1.2 8.8-.7 12 1.2.4.2.6.7.3 1.1-.2.4-.7.6-1.1.3-2.9-1.7-7.3-2.1-10.8-1.1-.5.2-1-.1-1.2-.6-.1-.5.2-1 .8-1.1zM6.9 9c3.7-1.1 9.4-.9 12.8 1.1.4.2.6.7.4 1.1-.2.4-.7.6-1.1.4-3.1-1.8-8.2-2-11.5-1-.5.1-1-.2-1.1-.7-.1-.5.2-1 .5-1z" fill="currentColor"/></svg></a>
-    <a href="https://instagram.com/laceandlime.llc" target="_blank" aria-label="Instagram" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
-    <a href="#" aria-label="Podcasts" class="icon"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 13v7M8 22v-4M16 22v-4" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
-  </div>
-  <p>© 2025 Lace & Lime™ LLC. All Rights Reserved.</p>
-</footer>
-
-
-
-
-<script>
-  // Mobile menu
-  const menuBtn  = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('#primary-nav') || document.querySelector('.nav-links');
-  if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', String(open));
-    });
-  }
-
-  // Submenu caret toggles
-  document.addEventListener('click', (e) => {
-    const caret = e.target.closest('.sub-caret');
-    const item  = caret?.closest('.has-sub');
-
-    // Outside click closes any open menus
-    if (!caret && !e.target.closest('.has-sub')) {
-      document.querySelectorAll('.has-sub.open').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.sub-caret')?.setAttribute('aria-expanded', 'false');
+  <!-- Drawer JS -->
+  <script>
+    (function(){
+      const b=document.getElementById('ll-burger');
+      const d=document.getElementById('ll-drawer');
+      if(!b||!d) return;
+      b.addEventListener('click',e=>{
+        e.stopPropagation();
+        d.classList.toggle('open');
+        b.setAttribute('aria-expanded', d.classList.contains('open'));
       });
-      return;
-    }
-
-    if (!caret || !item) return;
-
-    const expanded = caret.getAttribute('aria-expanded') === 'true';
-
-    // Close others first
-    document.querySelectorAll('.has-sub.open').forEach(el => {
-      if (el !== item) el.classList.remove('open');
-      el.querySelector('.sub-caret')?.setAttribute('aria-expanded', 'false');
-    });
-
-    // Toggle this one
-    item.classList.toggle('open', !expanded);
-    caret.setAttribute('aria-expanded', String(!expanded));
-  });
-
-  // ESC closes menus
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    document.querySelectorAll('.has-sub.open').forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.sub-caret')?.setAttribute('aria-expanded', 'false');
-    });
-    // also close mobile menu
-    if (navLinks?.classList.contains('open')) {
-      navLinks.classList.remove('open');
-      menuBtn?.setAttribute('aria-expanded', 'false');
-    }
-  });
-</script>
-
-
-
-
-
-<script src="script.js" defer></script>
-
-</body></html>
+      document.addEventListener('click',()=>{ d.classList.remove('open'); b.setAttribute('aria-expanded','false');});
+      d.addEventListener('click',e=>e.stopPropagation());
+    })();
+  </script>
+</body>
+</html>
