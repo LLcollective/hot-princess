@@ -8,19 +8,83 @@
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- ===== HOTFIX styles (safe overrides). Move into styles.css later. ===== -->
+  <!-- ===== HOTFIX styles (safe overrides). Move into styles.css later.) ===== -->
   <style>
-    /* Theme variables (baseline + variants) */
-    :root { --bg:#FAF9F6; --text:#203042; --muted:#5E7181; --accent:#2E7D5B; --line:rgba(32,48,66,.12); }
+    /* ---------- Theme tokens ---------- */
+    :root { --bg:#FAF9F6; --text:#203042; --muted:#5E7181; --accent:#5C8E37; --line:rgba(32,48,66,.12); }
     body[data-theme="coastal"]{ --bg:#fdfdfd; --text:#1a2e3f; --accent:#31708e; }
-    body[data-theme="dusk"]   { --bg:#1e1d2b; --text:#f5f4f2; --accent:#9c6ade; }
-    body[data-theme="citrus"] { --bg:#fffdf7; --text:#222;   --accent:#ff7b3d; }
-    body{ background:var(--bg); color:var(--text); }
+    body[data-theme="fresh-lime"]{ --bg:#F4F8EE; --text:#203042; --accent:#5C8E37; }
 
-    /* Keep normal links as text, not filled buttons */
-    a { color: var(--accent); text-decoration: none; }
+    body{ background:var(--bg); color:var(--text); margin:0; }
+    a { color: var(--text); text-decoration: none; }
 
-    /* Centered hero layout + readable CTA buttons */
+    /* ---------- Header / Nav ---------- */
+    .ll-nav { position:sticky; top:0; z-index:1000; background:var(--bg); border-bottom:1px solid transparent; }
+    .ll-nav .wrap{ display:flex; align-items:center; gap:16px; padding:12px 16px; max-width:1120px; margin:0 auto; }
+
+    .brand{ font-family:"Tenor Sans",serif; letter-spacing:.08em; color:var(--accent); font-size:20px; text-decoration:none; }
+    .brand .tm{ font-size:.7em; vertical-align:super; opacity:.85 }
+
+    /* Desktop menu hidden by default (mobile-first) */
+    .menu{ display:none; gap:22px; align-items:center; margin-left:auto; }
+    .menu a{ color:var(--text); font:600 15px/1 "Work Sans",sans-serif; }
+    .menu a.active{ color:var(--accent); text-decoration:underline; text-underline-offset:4px; }
+
+    /* Burger */
+    #nav-toggle{ position:absolute; opacity:0; pointer-events:none; }
+    .burger{
+      margin-left:auto; width:40px; height:40px; display:inline-flex; flex-direction:column;
+      justify-content:center; align-items:center; gap:5px; cursor:pointer; z-index:1001;
+    }
+    .burger span{ width:22px; height:2px; background:var(--accent); border-radius:2px; }
+
+    /* Drawer (mobile) */
+    .drawer{
+      position:absolute; top:60px; left:12px; right:12px; display:none; flex-direction:column; gap:14px;
+      background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.08); padding:16px; z-index:1000;
+      border-top:2px solid var(--accent);
+    }
+    .drawer a{ color:var(--text); font:600 16px/1 "Work Sans",sans-serif; }
+    .drawer a:hover{ color:var(--accent); }
+    #nav-toggle:checked ~ .drawer{ display:flex; }
+
+    /* Desktop breakpoint */
+    @media (min-width:768px){
+      .burger,.drawer{ display:none !important; }
+      .menu{ display:flex; }
+    }
+
+    /* ---------- Theme icon buttons (heart + star) ---------- */
+    .theme-switch{ display:flex; gap:8px; }
+    .theme-switch button{
+      border:1px solid var(--accent); background:transparent; color:var(--accent);
+      border-radius:999px; padding:6px 10px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
+    }
+    .theme-switch button.active, .theme-switch button:hover{ background:var(--accent); color:#fff; }
+    .theme-switch svg{ width:18px; height:18px; display:block; stroke:currentColor; fill:none; stroke-width:2; }
+
+    /* ---------- Moving strip (text links with underline) ---------- */
+    .cat-rail{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.5);
+      overflow:hidden;
+      -webkit-mask-image:linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+              mask-image:linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    }
+    .cat-rail .track{
+      display:inline-flex; gap:22px; padding:10px 0; white-space:nowrap;
+      will-change:transform; animation: catmarquee 28s linear infinite;
+      align-items:center;
+    }
+    .cat-rail a{
+      font:600 14px/1 "Work Sans",sans-serif; color:var(--text);
+      border-bottom:2px solid var(--text); padding-bottom:4px;
+    }
+    .cat-rail a:hover{ color:var(--accent); border-color:var(--accent); }
+    @keyframes catmarquee{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+
+    /* ---------- Hero & UI ---------- */
     .hero--stack .wrap{ text-align:center; }
     .hero--stack .hero-sub{ max-width:720px; margin:14px auto 18px; color:var(--muted); }
     .cta-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
@@ -28,123 +92,79 @@
     .btn-primary{ background:var(--accent); color:#fff !important; border:none; }
     .btn-ghost{ background:transparent; border:1.5px solid var(--text); color:var(--text) !important; }
 
-    /* Theme switcher pills */
-    .ll-nav .wrap{ display:flex; align-items:center; gap:16px; }
-    .menu{ margin-left:auto; display:flex; gap:22px; align-items:center; }
-    .theme-switch{ display:flex; gap:8px; margin-right:auto; }
-    .theme-switch [data-set-theme]{
-      border:1px solid var(--accent); background:transparent; color:var(--accent);
-      border-radius:999px; padding:6px 12px; font:600 14px/1 "Work Sans",sans-serif; cursor:pointer;
-    }
-    .theme-switch [data-set-theme].active, .theme-switch [data-set-theme]:hover{ background:var(--accent); color:#fff; }
-
-    /* Headline glitter (text-clip, no navy block) */
     .tagline{
       font:700 clamp(36px,6vw,64px)/1.08 "Tenor Sans",serif; letter-spacing:.3px;
       background-image:linear-gradient(120deg,#203042 0%,#203042 30%,#E8766C 50%,#FFB6AC 60%,#203042 85%,#203042 100%);
       background-size:200% 100%; background-position:0% center;
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
     }
-    .tagline em{ font-style:normal; color:inherit; }
     @keyframes shimmer-text{ from{background-position:0% center} to{background-position:200% center} }
     .tagline.glitter, .tagline:hover{ animation: shimmer-text 1.6s ease-out 1; }
 
-    /* Ticker */
-    .ticker{ overflow:hidden; white-space:nowrap; margin-top:10px;
-      -webkit-mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-              mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    }
-    .ticker .roll{ display:inline-block; will-change:transform; animation: roll 24s linear infinite; }
-    .ticker .roll span{ display:inline-block; padding:0 18px; font-weight:600; opacity:.9; }
-    @keyframes roll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-    /* Interchangeables underline on mobile (auto) */
-    .ix-tabs{ position:relative; display:grid; grid-auto-flow:column; grid-auto-columns:max-content; gap:20px;
-      overflow-x:auto; padding:8px 6px 14px; border-bottom:1px solid var(--line); scrollbar-width:none; }
-    .ix-tabs::-webkit-scrollbar{ display:none; }
-    .ix-tab{ font:600 15px/1.2 "Work Sans",sans-serif; color:#5E7181; padding:10px 6px; white-space:nowrap; cursor:pointer; position:relative; }
-    .ix-tab:hover{ color:var(--text); }
-    .ix-underline{ position:absolute; height:2.5px; background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); bottom:0; left:0; width:0; border-radius:2px; }
-    /* active state color */
-    #ix-a:checked ~ .ix-tabs label[for="ix-a"],
-    #ix-b:checked ~ .ix-tabs label[for="ix-b"],
-    #ix-c:checked ~ .ix-tabs label[for="ix-c"],
-    #ix-d:checked ~ .ix-tabs label[for="ix-d"]{ color:var(--text); }
-    /* show selected panel */
-    .ix-panel{ display:none; }
-    #ix-a:checked ~ .ix-panels #ix-panel-a,
-    #ix-b:checked ~ .ix-panels #ix-panel-b,
-    #ix-c:checked ~ .ix-panels #ix-panel-c,
-    #ix-d:checked ~ .ix-panels #ix-panel-d{ display:block; }
-    /* mobile underline attaches to active tab */
-    @media (max-width:780px){
-      .ix-underline{ width:0; }
-      #ix-a:checked ~ .ix-tabs label[for="ix-a"]::after,
-      #ix-b:checked ~ .ix-tabs label[for="ix-b"]::after,
-      #ix-c:checked ~ .ix-tabs label[for="ix-c"]::after,
-      #ix-d:checked ~ .ix-tabs label[for="ix-d"]::after{
-        content:""; position:absolute; left:0; right:0; bottom:-1px; height:2.5px;
-        background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); border-radius:2px;
-      }
-    }
-
-    /* Long banner cards + chips */
-    .cards-grid{ display:grid; grid-template-columns:1fr; gap:22px; }
-    .card{ display:flex; flex-direction:column; justify-content:flex-start; padding:22px; border-radius:18px;
-      border:1px solid var(--line); box-shadow:0 10px 30px rgba(20,40,30,.08); color:var(--text); text-decoration:none; }
+    /* ---------- Layout helpers & Cards ---------- */
+    .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
+    .cards-grid{ display:grid; grid-template-columns:1fr; gap:22px; margin:28px auto 64px; }
+    @media (min-width:800px){ .cards-grid{ grid-template-columns:repeat(2,1fr); } }
+    .card{ display:flex; flex-direction:column; padding:22px; border-radius:18px; border:1px solid var(--line);
+      box-shadow:0 10px 30px rgba(20,40,30,.08); color:var(--text); text-decoration:none; }
+    .card h3{ margin:0 0 6px; font-family:"Tenor Sans",serif; }
     .card p{ margin:6px 0 12px; color:var(--muted); }
-    .chip{ display:inline-block; align-self:flex-start; margin-top:14px; padding:8px 14px; border-radius:999px;
-      border:2px solid var(--text); background:#fff; color:var(--text); font:700 14px/1 "Work Sans",sans-serif; }
-    .chip:hover{ background:var(--text); color:#fff; }
 
-    /* Progress bar */
+    /* ---------- Progress bar ---------- */
     .progress{ position:fixed; left:0; top:0; height:3px; width:100%; background:transparent; z-index:60; }
     .progress span{ display:block; height:100%; width:0; background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); }
   </style>
   <!-- ===== HOTFIX styles end ===== -->
 </head>
 
-<body data-theme="dusk">
+<body data-theme="fresh-lime">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Header -->
   <header class="ll-nav">
     <div class="wrap">
 
-      <!-- Theme Switcher -->
+      <!-- Theme Switcher (Heart = coastal, Star = lime) -->
       <div class="theme-switch">
-        <button data-set-theme="coastal">Coastal</button>
-        <button data-set-theme="dusk">Dusk</button>
-        <button data-set-theme="fresh-lime">Lime</button>
+        <button data-set-theme="coastal" aria-label="Coastal (Heart)">
+          <!-- Heart outline -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 12 21 12 21z"/>
+          </svg>
+        </button>
+        <button data-set-theme="fresh-lime" class="active" aria-label="Lime (Star)">
+          <!-- Star outline -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 3.3 1.2-7-5-4.9 7-1L12 2z"/>
+          </svg>
+        </button>
       </div>
 
       <!-- Brand -->
-      <a class="brand" href="/">LACE AND LIME<span class="tm">™</span></a>
+      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
 
-      <!-- desktop menu -->
-    <!-- desktop menu -->
-<nav class="menu">
-  <a href="index.html" class="active">Home</a>
-  <a href="about.html">About</a>
-  <a href="founder.html">Founder</a>
-  <a href="journal.html">Journal</a>
-  <a href="explore.html">Explore</a>
-  <a href="contact.html">Contact</a>
-  <a href="account.html" class="ll-account" aria-label="Account">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-         fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
-      <circle cx="12" cy="8" r="4"></circle>
-      <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-    </svg>
-  </a>
-</nav>
+      <!-- Desktop menu -->
+      <nav class="menu" aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+          </svg>
+        </a>
+      </nav>
 
-
-      <!-- hamburger (CSS-only) -->
+      <!-- Mobile burger (checkbox toggles drawer) -->
       <input type="checkbox" id="nav-toggle" aria-label="Open menu">
       <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
 
-      <!-- mobile drawer -->
+      <!-- Mobile drawer -->
       <nav class="drawer" aria-label="Mobile">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
@@ -161,19 +181,19 @@
         </a>
       </nav>
     </div>
+
+
   </header>
 
   <!-- Progress bar -->
   <div class="progress" aria-hidden="true"><span></span></div>
 
   <main id="main">
-
     <!-- HERO -->
     <section class="hero hero--stack">
       <div class="wrap">
-        <span class="eyebrow">MODERN TOOLS FOR REAL LIFE</span>
+        <span class="eyebrow">MODERN TOOLS</span>
 
-        <!-- glitter runs on hover/tap -->
         <h1 class="tagline">
           Reflection that moves. <em>Action that sticks.</em> Growth you can feel.
         </h1>
@@ -183,78 +203,43 @@
         </p>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="/journal">Start the Journal</a>
-          <a class="btn btn-ghost" href="/about">Explore the Approach</a>
-        </div>
-
-        <!-- Ticker INSIDE hero -->
-        <div class="ticker" aria-hidden="true">
-          <div class="roll">
-            <span>Accessible Tools</span><span>Guided Prompts</span><span>Community Workshops</span>
-            <span>Founder Insights</span><span>Framework-First</span>
-            <!-- duplicate for seamless loop -->
-            <span>Accessible Tools</span><span>Guided Prompts</span><span>Community Workshops</span>
-            <span>Founder Insights</span><span>Framework-First</span>
-          </div>
+          <a class="btn btn-primary" href="journal.html">Start the Journal</a>
+          <a class="btn btn-ghost" href="explore.html">Explore the Approach</a>
         </div>
       </div>
     </section>
 
-    <!-- INTERCHANGEABLES (CSS-only tabs) -->
-    <section class="ix">
-      <!-- hidden radios control state -->
-      <input type="radio" name="ix" id="ix-a" checked>
-      <input type="radio" name="ix" id="ix-b">
-      <input type="radio" name="ix" id="ix-c">
-      <input type="radio" name="ix" id="ix-d">
+    <!-- CARDS -->
+    <section class="wrap">
+      <div class="cards-grid">
+        <a class="card sky" href="journal.html">
+          <h3>Journal</h3>
+          <p>4×4 cycles for clarity → action.</p>
+        </a>
 
+        <a class="card lime" href="explore.html#prompts">
+          <h3>Guided Prompts</h3>
+          <p>Short, grounded prompts with nudges.</p>
+        </a>
 
-      <!-- panels -->
-<div class="ix-panels">
+        <a class="card mint" href="workshops.html">
+          <h3>Community Workshops</h3>
+          <p>Low-barrier, high-care sessions near you.</p>
+        </a>
 
-  <div id="ix-panel-a" class="ix-panel" role="tabpanel">
-    <a class="card sky" href="/journal">
-      <h3>Journal</h3>
-      <p>4×4 cycles for clarity → action.</p>
-      <span class="chip">Open</span>
-    </a>
-  </div>
-
-  <div id="ix-panel-b" class="ix-panel" role="tabpanel">
-    <a class="card lime" href="/prompts">
-      <h3>Guided Prompts</h3>
-      <p>Short, grounded prompts with nudges.</p>
-      <span class="chip">Browse</span>
-    </a>
-  </div>
-
-  <div id="ix-panel-c" class="ix-panel" role="tabpanel">
-    <a class="card mint" href="/workshops">
-      <h3>Community Workshops</h3>
-      <p>Low-barrier, high-care sessions near you.</p>
-      <span class="chip">See dates</span>
-    </a>
-  </div>
-
-  <div id="ix-panel-d" class="ix-panel" role="tabpanel">
-    <a class="card peach" href="/stories">
-      <h3>Founder Insights</h3>
-      <p>Stories, frameworks, and field notes.</p>
-      <span class="chip">Read</span>
-    </a>
-  </div>
-
-</div>
-
-
-
+        <a class="card peach" href="founder.html#insights">
+          <h3>Founder Insights</h3>
+          <p>Stories, frameworks, and field notes.</p>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
     <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
   </footer>
 
-  <!-- Scripts: all at the end -->
+  <!-- ===== Scripts (each in its own tag) ===== -->
   <script>
     // Progress bar
     (function () {
@@ -265,8 +250,10 @@
         bar.style.width = ((h.scrollTop) / (h.scrollHeight - h.clientHeight)) * 100 + '%';
       }, { passive: true });
     })();
+  </script>
 
-    // Headline glitter: play once and on click/tap
+  <script>
+    // Headline glitter: play once and on tap
     (function () {
       const tl = document.querySelector('.tagline');
       if (!tl) return;
@@ -275,11 +262,13 @@
       tl.addEventListener('click', play);
       tl.addEventListener('touchstart', play, { passive: true });
     })();
+  </script>
 
-    // Theme switcher: set & remember; mark active button
+  <script>
+    // Theme switcher (heart = coastal, star = lime)
     (function () {
       const saved = localStorage.getItem('theme');
-      const initial = saved || document.body.dataset.theme || 'coastal';
+      const initial = saved || document.body.dataset.theme || 'fresh-lime';
       document.body.dataset.theme = initial;
       setActive(initial);
 
@@ -298,6 +287,5 @@
       }
     })();
   </script>
-
 </body>
 </html>

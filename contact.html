@@ -4,28 +4,104 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Lace & Lime™</title>
-  <meta name="description" content="Get in touch with Lace & Lime™. Send a note, ask a question, or explore collaboration." />
+  <meta name="description" content="Contact Lace & Lime™ — questions, collaborations, and workshop requests." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { --bg:#FAF9F6; --text:#203042; --muted:#5E7181; --accent:#5C8E37; --line:rgba(32,48,66,.12); }
+    body[data-theme="coastal"]{ --bg:#fdfdfd; --text:#1a2e3f; --accent:#31708e; }
+    body[data-theme="fresh-lime"]{ --bg:#F4F8EE; --text:#203042; --accent:#5C8E37; }
+    body{ background:var(--bg); color:var(--text); margin:0; }
+    a { color: var(--accent); text-decoration: none; }
+
+    /* Header/nav (same as inner pages) */
+    .ll-nav { position:sticky; top:0; z-index:1000; background:var(--bg); border-bottom:1px solid transparent; }
+    .ll-nav .wrap{ display:flex; align-items:center; gap:16px; padding:12px 16px; max-width:1120px; margin:0 auto; }
+    .brand{ font-family:"Tenor Sans",serif; letter-spacing:.08em; color:var(--accent); font-size:20px; text-decoration:none; }
+    .brand .tm{ font-size:.7em; vertical-align:super; opacity:.85 }
+    .menu{ display:none; gap:22px; align-items:center; margin-left:auto; }
+    .menu a{ color:var(--text); font:600 15px/1 "Work Sans",sans-serif; }
+    .menu a.active{ text-decoration:underline; color:var(--accent); text-underline-offset:4px; }
+    #nav-toggle{ position:absolute; opacity:0; pointer-events:none; }
+    .burger{ margin-left:auto; width:40px; height:40px; display:inline-flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; cursor:pointer; z-index:1001; }
+    .burger span{ width:22px; height:2px; background:var(--accent); border-radius:2px; }
+    .drawer{ position:absolute; top:60px; left:12px; right:12px; display:none; flex-direction:column; gap:14px; background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.08); padding:16px; z-index:1000; border-top:2px solid var(--accent); }
+    .drawer a{ color:var(--text); font:600 16px/1 "Work Sans",sans-serif; }
+    .drawer a:hover{ color:var(--accent); }
+    #nav-toggle:checked ~ .drawer{ display:flex; }
+    @media (min-width:768px){ .burger,.drawer{ display:none !important; } .menu{ display:flex; } }
+
+    /* Theme buttons */
+    .theme-switch{ display:flex; gap:8px; }
+    .theme-switch button{
+      border:1px solid var(--accent); background:transparent; color:var(--accent);
+      border-radius:999px; padding:6px 10px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
+    }
+    .theme-switch button.active, .theme-switch button:hover{ background:var(--accent); color:#fff; }
+    .theme-switch svg{ width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2; display:block; }
+
+    /* Hero */
+    .hero--stack .wrap{ text-align:center; }
+    .hero-sub{ max-width:720px; margin:14px auto 18px; color:var(--muted); }
+
+    /* Form layout */
+    .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
+    .form-shell{ display:grid; grid-template-columns:1fr; gap:16px; max-width:720px; margin:28px auto 64px; }
+    .field{ display:flex; flex-direction:column; gap:6px; }
+    .field label{ font:600 14px/1 "Work Sans",sans-serif; color:var(--text); }
+    .help{ color:var(--muted); font-size:13px; }
+    input[type="text"], input[type="email"], textarea, select{
+      appearance:none; -webkit-appearance:none;
+      padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--text);
+      font:400 15px/1.4 "Work Sans",sans-serif;
+    }
+    textarea{ min-height:140px; resize:vertical; }
+    .row{ display:grid; gap:16px; grid-template-columns:1fr; }
+    @media (min-width:640px){ .row{ grid-template-columns:1fr 1fr; } }
+
+    .btn{ display:inline-block; padding:12px 16px; border-radius:12px; font:600 15px/1 "Work Sans",sans-serif; cursor:pointer; }
+    .btn-primary{ background:var(--accent); color:#fff; border:none; }
+    .btn-ghost{ background:transparent; border:1.5px solid var(--text); color:var(--text) }
+    .actions{ display:flex; gap:12px; align-items:center; }
+
+    /* Status messages */
+    .status{ margin-top:4px; font:600 14px/1.2 "Work Sans",sans-serif; }
+    .status.ok{ color:#2E7D5B; }
+    .status.err{ color:#B3261E; }
+
+    /* Progress bar */
+    .progress{ position:fixed; left:0; top:0; height:3px; width:100%; background:transparent; z-index:60; }
+    .progress span{ display:block; height:100%; width:0; background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); }
+
+    /* Tagline shimmer (shared) */
+    .tagline{
+      font:700 clamp(36px,6vw,64px)/1.08 "Tenor Sans",serif; letter-spacing:.3px;
+      background-image:linear-gradient(120deg,#203042 0%,#203042 30%,#E8766C 50%,#FFB6AC 60%,#203042 85%,#203042 100%);
+      background-size:200% 100%; background-position:0% center;
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+    }
+    @keyframes shimmer-text{ from{background-position:0% center} to{background-position:200% center} }
+    .tagline.glitter, .tagline:hover{ animation: shimmer-text 1.6s ease-out 1; }
+  </style>
 </head>
 
-<body data-theme="coastal">
+<body data-theme="fresh-lime">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header -->
   <header class="ll-nav">
     <div class="wrap">
-      <!-- Theme Switcher -->
+      <!-- theme icon buttons -->
       <div class="theme-switch">
-        <button data-set-theme="coastal">Coastal</button>
-        <button data-set-theme="dusk">Dusk</button>
-        <button data-set-theme="fresh-lime">Lime</button>
+        <button data-set-theme="coastal" aria-label="Coastal (Heart)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 12 21 12 21z"/></svg>
+        </button>
+        <button data-set-theme="fresh-lime" class="active" aria-label="Lime (Star)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 3.3 1.2-7-5-4.9 7-1L12 2z"/></svg>
+        </button>
       </div>
 
-      <!-- Brand -->
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
 
-      <!-- Desktop menu -->
       <nav class="menu" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -34,19 +110,13 @@
         <a href="explore.html">Explore</a>
         <a href="contact.html" class="active">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
-            <circle cx="12" cy="8" r="4"></circle>
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
         </a>
       </nav>
 
-      <!-- Hamburger (CSS-only) -->
       <input type="checkbox" id="nav-toggle" aria-label="Open menu">
-      <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+      <label class="burger" for="nav-toggle"><span></span><span></span><span></span></label>
 
-      <!-- Mobile drawer -->
       <nav class="drawer" aria-label="Mobile">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -55,89 +125,68 @@
         <a href="explore.html">Explore</a>
         <a href="contact.html" class="active">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
-            <circle cx="12" cy="8" r="4"></circle>
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
         </a>
       </nav>
     </div>
   </header>
 
-  <!-- Progress bar -->
   <div class="progress" aria-hidden="true"><span></span></div>
 
   <main id="main">
-    <!-- Hero -->
     <section class="hero hero--stack">
       <div class="wrap">
-        <span class="eyebrow">GET IN TOUCH</span>
-        <h1 class="tagline">Let’s connect</h1>
-        <p class="hero-sub">Send a note, ask a question, or explore how we can work together.</p>
+        <span class="eyebrow">CONTACT</span>
+        <h1 class="tagline">Say hello.</h1>
+        <p class="hero-sub">Questions, collaborations, or workshop requests — send a note and we’ll get back to you.</p>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="wrap" style="padding:24px 0 40px;">
-      <!-- Form card -->
-      <div class="card contact-card" style="max-width:900px;margin:0 auto 20px;">
-        <h2>Send a message</h2>
-
-        <form id="contactForm" method="post" action="api/send" novalidate>
-          <!-- Hidden timestamp (filled on submit) -->
-          <input type="hidden" name="timestamp" id="tsField">
-
-          <!-- First / Last -->
-          <div class="form-row form-row-2">
-            <div>
-              <label class="sr-only" for="first">First name</label>
-              <input id="first" type="text" name="first" placeholder="First name" autocomplete="given-name" required />
-            </div>
-            <div>
-              <label class="sr-only" for="last">Last name (optional)</label>
-              <input id="last" type="text" name="last" placeholder="Last name (optional)" autocomplete="family-name" />
-            </div>
+    <!-- Contact form -->
+    <section class="wrap">
+      <form id="contactForm" class="form-shell" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
           </div>
-
-          <!-- Email -->
-          <div class="form-row">
-            <label class="sr-only" for="email">Email</label>
-            <input id="email" type="email" name="email" placeholder="Email" autocomplete="email" required />
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
           </div>
+        </div>
 
-          <!-- Subject -->
-          <div class="form-row">
-            <label class="sr-only" for="subject">Subject</label>
-            <input id="subject" type="text" name="subject" placeholder="Subject" required />
+        <div class="row">
+          <div class="field">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option value="">Choose one…</option>
+              <option>General</option>
+              <option>Workshops</option>
+              <option>Consulting</option>
+              <option>Journal</option>
+              <option>Other</option>
+            </select>
+            <div class="help">Optional, but helps us route your message.</div>
           </div>
-
-          <!-- Message -->
-          <div class="form-row">
-            <label class="sr-only" for="message">Message</label>
-            <textarea id="message" name="message" rows="2" placeholder="Your message" required></textarea>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="text" inputmode="tel" autocomplete="tel" />
+            <div class="help">Optional.</div>
           </div>
+        </div>
 
-          <!-- Honeypot (unchanged; must stay named "honeypot") -->
-          <label class="hidden-field" aria-hidden="true">
-            Leave this field empty
-            <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
-          </label>
+        <div class="field">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
 
-          <div class="form-actions">
-            <button id="sendBtn" type="submit" class="btn btn-primary">Send</button>
-          </div>
-        </form>
-
-        <div id="formResponse" class="form-response" aria-live="polite"></div>
-      </div>
-
-      <!-- Other ways -->
-      <div class="card" style="max-width:900px;margin:0 auto;">
-        <h2>Other ways</h2>
-        <p>Email: <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a></p>
-        <p>Follow us on <a href="#" rel="noopener">Instagram</a> and <a href="#" rel="noopener">LinkedIn</a></p>
-      </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="submitBtn" type="submit">Send</button>
+          <button class="btn btn-ghost" type="reset">Clear</button>
+          <span id="formStatus" class="status" aria-live="polite"></span>
+        </div>
+      </form>
     </section>
   </main>
 
@@ -148,66 +197,68 @@
   <!-- Scripts -->
   <script>
     // Progress bar
-    (function(){
-      const bar = document.querySelector('.progress span');
-      if (!bar) return;
-      addEventListener('scroll', () => {
-        const h = document.documentElement;
-        bar.style.width = ((h.scrollTop)/(h.scrollHeight - h.clientHeight))*100 + '%';
-      }, { passive:true });
-    })();
+    (function(){const bar=document.querySelector('.progress span');if(!bar)return;addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});})();
+
+    // Headline glitter
+    (function(){const tl=document.querySelector('.tagline');if(!tl)return;const play=()=>{tl.classList.add('glitter');setTimeout(()=>tl.classList.remove('glitter'),1600);};play();tl.addEventListener('click',play);tl.addEventListener('touchstart',play,{passive:true});})();
 
     // Theme switcher
-    (function(){
-      const saved = localStorage.getItem("theme");
-      const initial = saved || document.body.dataset.theme || "coastal";
-      document.body.dataset.theme = initial;
-      mark(initial);
-      document.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-set-theme]");
-        if (!btn) return;
-        const t = btn.dataset.setTheme;
-        document.body.dataset.theme = t;
-        localStorage.setItem("theme", t);
-        mark(t);
-      });
-      function mark(t){
-        document.querySelectorAll(".theme-switch [data-set-theme]")
-          .forEach(b => b.classList.toggle("active", b.dataset.setTheme === t));
-      }
+    (function(){const saved=localStorage.getItem('theme');const initial=saved||document.body.dataset.theme||'fresh-lime';
+      document.body.dataset.theme=initial;mark(initial);
+      document.addEventListener('click',e=>{const b=e.target.closest('[data-set-theme]');if(!b)return;
+        const t=b.dataset.setTheme;document.body.dataset.theme=t;localStorage.setItem('theme',t);mark(t);});
+      function mark(t){document.querySelectorAll('.theme-switch [data-set-theme]').forEach(b=>b.classList.toggle('active',b.dataset.setTheme===t));}
     })();
 
-    // Contact form AJAX — includes timestamp + honeypot
-    (function(){
+    // Contact form handler (POST to Google Apps Script)
+    (function () {
       const form = document.getElementById('contactForm');
-      const resp = document.getElementById('formResponse');
-      const btn  = document.getElementById('sendBtn');
-      const tsEl = document.getElementById('tsField');
-      if (!form) return;
+      const status = document.getElementById('formStatus');
+      const btn = document.getElementById('submitBtn');
+      const ENDPOINT = 'YOUR_GAS_WEB_APP_URL'; // <— replace after deploying Apps Script
+
+      if(!form) return;
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        status.textContent = '';
+        if (!form.reportValidity()) return;
 
-        // set timestamp for Sheets/API (ISO UTC is safest)
-        if (tsEl) tsEl.value = new Date().toISOString();
+        const payload = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          topic: form.topic.value,
+          phone: form.phone.value.trim(),
+          message: form.message.value.trim(),
+          page: location.pathname,
+          ua: navigator.userAgent
+        };
 
-        const fd = new FormData(form);
-        if (fd.get('honeypot')) return; // bot detected
+        btn.disabled = true; btn.textContent = 'Sending…';
 
-        try{
-          btn.disabled = true;
-          btn.textContent = 'Sending…';
-          const res = await fetch(form.action, { method:'POST', body: fd });
-          const data = await res.json().catch(() => ({}));
-          resp.textContent = data?.message || (data?.ok ? 'Thanks for reaching out!' : 'Thanks! If you do not get a reply, email us directly.');
-          if (data?.ok) form.reset();
-        }catch{
-          resp.textContent = 'Something went wrong. Please try again later.';
+        try {
+          const res = await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            mode: 'cors',
+          });
+
+          if (!res.ok) throw new Error('Network response was not ok');
+          const data = await res.json();
+          if (data && data.success) {
+            status.textContent = 'Thanks! Your message was sent.'; status.className = 'status ok';
+            form.reset();
+          } else {
+            throw new Error(data && data.error ? data.error : 'Unknown error');
+          }
+        } catch (err) {
+          status.textContent = 'Sorry, something went wrong. Please try again.'; status.className = 'status err';
+          console.error(err);
         } finally {
-          btn.disabled = false;
-          btn.textContent = 'Send';
+          btn.disabled = false; btn.textContent = 'Send';
         }
-      });
+      }, { passive:false });
     })();
   </script>
 </body>
