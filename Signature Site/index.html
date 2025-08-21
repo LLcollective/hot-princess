@@ -299,20 +299,5 @@
     })();
   </script>
 
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("nav a").forEach(link => {
-      if (!link.href.endsWith("index.html")) {
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          alert("This page isn’t available yet.");
-        });
-        link.style.pointerEvents = "none"; // makes it not clickable
-        link.style.opacity = "0.5";        // optional: dims it so it looks inactive
-      }
-    });
-  });
-</script>
 </body>
 </html>
