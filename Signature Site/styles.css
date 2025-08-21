@@ -1,0 +1,763 @@
+/* ===== Tokens ===== */
+:root {
+  --bg: #FAF9F6;
+  --text: #203042;
+  --muted: #5E7181;
+  --accent: #2E7D5B;
+  --line: rgba(32,48,66,.12);
+  --shadow: 0 10px 30px rgba(20,40,30,.08);
+}
+
+* { box-sizing: border-box }
+html, body { height: 100% }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 16px/1.6 "Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px }
+h1, h2, h3 { margin: 0 0 .5rem }
+h1 {
+  font: 700 clamp(36px,6vw,64px)/1.08 "Tenor Sans", serif;
+  letter-spacing: .3px;
+}
+h3 { font: 700 22px/1.2 "Tenor Sans", serif }
+a { color: var(--accent); text-decoration: none }
+
+/* ===== THEMES ===== */
+
+/* coastal */
+body[data-theme="coastal"] {
+  --bg: #fdfdfd;
+  --text: #1a2e3f;
+  --accent: #31708e;
+}
+
+/* dusk */
+body[data-theme="dusk"]{
+  /* theme tokens tuned for readability */
+  --bg: #1b1c2d;
+  --text: #ffffff;
+  --muted: #cfd3ff;           /* lighter subtitle/body-muted */
+  --accent: #c77dff;
+  --card-bg: #2a2c3f;
+  --gradient: none;           /* kill background gradients in this theme */
+
+}
+
+/* fresh-lime */
+
+body[data-theme="fresh-lime"] {
+  --bg: #f9fff6;
+  --text: #0d290d;
+  --accent: #8bc34a;
+  --accent-contrast: #ffffff;
+  --card-bg: #ecf9e5;
+  --gradient: linear-gradient(135deg, #c8ffb5, #f9fff6);
+}
+
+
+/* Apply accent to buttons only */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+
+/* ===== Header ===== */
+.ll-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.ll-nav .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.brand{font:700 18px/1 "Tenor Sans",serif;letter-spacing:.12em}
+.brand .tm{font:700 12px/1 "Work Sans",sans-serif;margin-left:2px}
+.menu{display:flex;gap:22px;margin-left:auto}
+.menu a{font:600 15px/1 "Work Sans",sans-serif;opacity:.9}
+.menu a.active,.menu a:hover{opacity:1}
+
+/* Hamburger (CSS-only) */
+#nav-toggle{position:absolute;left:-9999px}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line);border-radius:10px;place-items:center;cursor:pointer}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);margin:3px 0;transition:.2s}
+.drawer{display:none}
+
+@media (max-width:880px){
+  .menu{display:none}
+  .burger{display:grid;margin-left:auto}
+  #nav-toggle:checked + .burger + .drawer{
+    display:block; position:absolute; left:0; right:0; top:64px;
+    background:#fff; border-bottom:1px solid var(--line);
+  }
+  .drawer a{display:block; padding:12px 16px; font-weight:600}
+}
+
+/* Progress bar */
+.progress{position:fixed; left:0; top:0; height:3px; width:100%; background:transparent; z-index:60}
+.progress span{display:block; height:100%; width:0; background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A)}
+
+/* ===== Hero ===== */
+.hero{
+  padding:56px 0 22px;
+  background:
+    radial-gradient(900px 420px at -10% 40%, rgba(190,230,210,.35), transparent 70%),
+    radial-gradient(900px 420px at 92% -10%, rgba(255,182,172,.35), transparent 70%);
+}
+.eyebrow{
+  display:inline-block; padding:8px 12px; border-radius:16px;
+  background:#E9F5EF; color:#2E7D5B; font:700 12px/1 "Work Sans",sans-serif;
+  letter-spacing:.12em; margin-bottom:14px;
+}
+.hero-sub{max-width:700px; margin:14px 0 18px; color:var(--muted)}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap}
+
+/* Buttons */
+.btn{display:inline-block; padding:11px 16px; border-radius:12px; font:600 15px/1 "Work Sans",sans-serif}
+.btn-primary{background:var(--brand); color:#fff; box-shadow:0 8px 20px rgba(46,125,91,.18)}
+.btn-ghost{border:1.5px solid var(--ink); color:var(--ink); background:transparent}
+
+/* ===== Tagline shimmer — no navy block ===== */
+.tagline{position:relative; isolation:isolate}
+.tagline em{font-style:normal; color:#E75F58}
+.tagline::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(120deg,
+             rgba(255,255,255,0) 20%,
+             rgba(255,255,255,.45) 40%,
+             rgba(255,255,255,0) 60%);
+  transform:translateX(-120%); opacity:0; mix-blend-mode:soft-light;
+}
+@keyframes ll-shimmer{
+  0%{transform:translateX(-120%);opacity:0}
+  10%,60%{opacity:.9}
+  100%{transform:translateX(120%);opacity:0}
+}
+.tagline:hover::after,
+.tagline.shine::after{ animation: ll-shimmer 1.4s ease-out 1; }
+
+/* ===== Ticker (moving) ===== */
+.ticker{overflow:hidden; white-space:nowrap; margin-top:10px;
+  -webkit-mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+          mask-image:linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.ticker .roll{display:inline-block; will-change:transform; animation: roll 24s linear infinite}
+.ticker .roll span{display:inline-block; padding:0 18px; font-weight:600; opacity:.9}
+@keyframes roll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ===== Feature cards (banners) ===== */
+.feature-cards{padding:22px 0 56px}
+.cards-grid{display:grid; grid-template-columns:1fr; gap:22px}
+.card{
+  display:flex; flex-direction:column; justify-content:flex-start;
+  padding:22px 22px 18px; border-radius:18px; border:1px solid var(--line);
+  box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; color:var(--ink);
+}
+.card:hover{transform:translateY(-4px); box-shadow:0 16px 40px rgba(20,40,30,.12)}
+.card p{margin:6px 0 12px; color:var(--muted)}
+/* tints */
+.sky{background:linear-gradient(180deg,#C0E0FF,#A8D4FF)}
+.lime{background:linear-gradient(180deg,#CFF5CF,#B8EBB8)}
+.peach{background:linear-gradient(180deg,#FFD8CD,#FFC3B3)}
+
+/* CTA pill that hugs the word */
+.card-cta{
+  display:inline-block; width:auto; padding:8px 16px;
+  border:2px solid var(--ink); border-radius:999px;
+  font:600 14px/1 "Work Sans",sans-serif; background:transparent; color:var(--ink);
+}
+.card-cta:hover{background:var(--ink); color:#fff}
+
+/* ===== Footer ===== */
+.site-footer{border-top:1px solid var(--line); padding:24px 0; color:var(--muted); font-size:14px}
+
+
+/* Stacked/centered hero layout */
+.hero--stack .wrap { text-align: center; }
+.hero--stack .eyebrow { margin-left: auto; margin-right: auto; }
+.hero--stack .cta-row { justify-content: center; }
+.hero--stack .ticker { margin-left: auto; margin-right: auto; }
+
+
+/* Headline with animated text-clip shimmer */
+.tagline{
+  /* gradient lives INSIDE the letters */
+  background-image: linear-gradient(120deg,
+      #203042 0%, #203042 30%,
+      #E8756B 50%,
+      #FFB6AC 60%,
+      #203042 85%, #203042 100%);
+  background-size: 200% 100%;
+  background-position: 0% center;
+
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+
+  /* type */
+  font: 700 clamp(36px,6vw,64px)/1.08 "Tenor Sans", serif;
+  letter-spacing: .3px;
+}
+
+/* play once on load, again on hover */
+@keyframes shimmer-text {
+  from { background-position: 0% center; }
+  to   { background-position: 200% center; }
+}
+
+.tagline.glitter,          /* a class we add once on load */
+.tagline:hover {           /* also replay on hover/tap */
+  animation: shimmer-text 1.6s ease-out 1;
+}
+
+
+.cards-grid{ display:grid; grid-template-columns:1fr; gap:22px; }
+.card-cta{ display:inline-block; width:auto; padding:8px 16px;
+  border:2px solid var(--ink); border-radius:999px; font:600 14px/1 "Work Sans",sans-serif;
+  background:transparent; color:var(--ink); }
+
+
+
+
+
+/* basics you already have… keep tokens, fonts, buttons, etc. */
+
+/* stacked hero */
+.hero--stack .wrap{ text-align:center; }
+.hero--stack .eyebrow{ margin-left:auto; margin-right:auto; }
+.hero--stack .cta-row{ justify-content:center; }
+
+/* headline glitter (works desktop + mobile; no “navy block”) */
+.tagline{
+  background-image:linear-gradient(120deg,
+    #203042 0%, #203042 30%,
+    #E8766C 50%, #FFB6AC 60%,
+    #203042 85%, #203042 100%);
+  background-size:200% 100%;
+  background-position:0% center;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+.tagline em{ font-style:normal; color:inherit; } /* stays inside the gradient */
+
+/* play once when .glitter is added, and on hover */
+@keyframes shimmer-text{ from{background-position:0% center} to{background-position:200% center} }
+.tagline.glitter,
+.tagline:hover{ animation: shimmer-text 1.6s ease-out 1; }
+
+/* =============== Interchangeables =============== */
+.ix{ margin:28px auto; max-width:1100px; padding:0 16px; }
+.ix > input[type=radio]{ position:absolute; inset:0; width:0; height:0; opacity:0; pointer-events:none; }
+
+/* tab bar */
+.ix-tabs{
+  position:relative; display:grid; grid-auto-flow:column; grid-auto-columns:max-content;
+  gap:22px; overflow-x:auto; padding:8px 6px 14px; border-bottom:1px solid rgba(32,48,66,.12);
+  scrollbar-width:none;
+}
+.ix-tabs::-webkit-scrollbar{ display:none; }
+.ix-tab{ font:600 15px/1.2 "Work Sans",system-ui,sans-serif; color:#5E7181; padding:10px 6px; white-space:nowrap; cursor:pointer; }
+.ix-tab:hover{ color:#203042; }
+
+/* underline indicator (desktop sizes for first paint) */
+.ix-underline{ position:absolute; bottom:0; left:0; height:2.5px; width:0;
+  background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); border-radius:2px;
+  transition:transform .28s ease, width .28s ease;
+}
+
+/* panels */
+.ix-panels{ padding:16px 0; }
+.ix-panel{ display:none; }
+
+/* show selected panel */
+#ix-a:checked ~ .ix-panels #ix-panel-a,
+#ix-b:checked ~ .ix-panels #ix-panel-b,
+#ix-c:checked ~ .ix-panels #ix-panel-c,
+#ix-d:checked ~ .ix-panels #ix-panel-d{ display:block; }
+
+/* active tab color */
+#ix-a:checked ~ .ix-tabs label[for="ix-a"],
+#ix-b:checked ~ .ix-tabs label[for="ix-b"],
+#ix-c:checked ~ .ix-tabs label[for="ix-c"],
+#ix-d:checked ~ .ix-tabs label[for="ix-d"]{ color:#203042; }
+
+/* underline positions (desktop estimate; mobile uses the auto method below) */
+#ix-a:checked ~ .ix-tabs .ix-underline{ width:140px; transform:translateX(0); }
+#ix-b:checked ~ .ix-tabs .ix-underline{ width:142px; transform:translateX(162px); }
+#ix-c:checked ~ .ix-tabs .ix-underline{ width:220px; transform:translateX(320px); }
+#ix-d:checked ~ .ix-tabs .ix-underline{ width:170px; transform:translateX(560px); }
+
+/* mobile: underline attaches to the label automatically (no hard widths) */
+@media (max-width:780px){
+  .ix-underline{ width:0; transform:none; }
+  #ix-a:checked ~ .ix-tabs label[for="ix-a"]::after,
+  #ix-b:checked ~ .ix-tabs label[for="ix-b"]::after,
+  #ix-c:checked ~ .ix-tabs label[for="ix-c"]::after,
+  #ix-d:checked ~ .ix-tabs label[for="ix-d"]::after{
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:2.5px;
+    background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); border-radius:2px;
+  }
+}
+
+/* long banner cards inside each panel */
+.card{
+  display:flex; flex-direction:column; justify-content:flex-start;
+  padding:22px; border-radius:18px; border:1px solid rgba(32,48,66,.12);
+  box-shadow:0 10px 30px rgba(20,40,30,.08); text-decoration:none; color:#203042;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover{ transform:translateY(-4px); box-shadow:0 16px 40px rgba(20,40,30,.12); }
+.card h3{ font:700 24px/1.2 "Tenor Sans",serif; margin:2px 0 8px; }
+.card p{ margin:0; color:#5E7181; }
+
+/* chip CTA fits the word */
+.chip{
+  display:inline-block; margin-top:14px; padding:8px 14px; border-radius:999px;
+  border:2px solid #203042; background:#fff; color:#203042; font:700 14px/1 "Work Sans",sans-serif;
+}
+.chip:hover{ background:#203042; color:#fff; }
+
+/* tints */
+.sky{ background:linear-gradient(180deg,#B4DAFF,#9ED1FF); }
+.lime{ background:linear-gradient(180deg,#CFF5CF,#B8EBB8); }
+.mint{ background:linear-gradient(180deg,#D5F2E4,#C5ECD8); }
+.peach{ background:linear-gradient(180deg,#FFD8CD,#FFC3B3); }
+
+
+
+.theme-switch {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto; /* pushes to right if inside flex container */
+}
+
+.theme-switch button {
+  background: none;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.theme-switch button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+
+/* Centered hero layout */
+.hero--stack .wrap { text-align: center; }
+.hero--stack .hero-sub { max-width: 720px; margin: 14px auto 18px; }
+.hero--stack .cta-row { justify-content: center; }
+
+
+/* temp override so all ix-panels show */
+.ix-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.ix-panel {
+  display: block !important;  /* override tab system hiding them */
+}
+
+
+/* --- DUSK THEME FIX --- */
+body[data-theme="dusk"] {
+  --bg: #1b1c2d; /* background */
+  --text: #ffffff; /* make all primary text white */
+  --accent: #c77dff; 
+  --accent-contrast: #1b1c2d;
+  --card-bg: #2a2c3f; /* solid container background */
+  --gradient: none;   /* remove gradients */
+}
+
+/* Ensure hero headline/subtitle uses white */
+body[data-theme="dusk"] .hero h1,
+body[data-theme="dusk"] .hero p {
+  color: #ffffff !important;
+}
+
+/* Ensure cards don’t inherit gradient */
+body[data-theme="dusk"] .card {
+  background: var(--card-bg) !important;
+}
+
+
+
+/* ===== ABOUT PAGE ADD-ON ===== */
+
+/* Theme palettes (keep names consistent with Home) */
+body[data-theme="coastal"]{
+  --bg:#f4fcff; --text:#0a2f3c; --muted:#4d6a79;
+  --accent:#2f9c95; --accent-contrast:#ffffff;
+  --card-bg:#e9f6f8; --gradient:none;
+}
+body[data-theme="dusk"]{
+  --bg:#1b1c2d; --text:#ffffff; --muted:#cfd3ff;
+  --accent:#c77dff; --accent-contrast:#1b1c2d;
+  --card-bg:#2a2c3f; --gradient:none;
+}
+body[data-theme="fresh-lime"]{
+  --bg:#f9fff6; --text:#0d290d; --muted:#365a36;
+  --accent:#8bc34a; --accent-contrast:#ffffff;
+  --card-bg:#ecf9e5; --gradient:none;
+}
+
+/* Header layout keeps switcher to the left, menu to the right */
+.ll-nav .wrap{ display:flex; align-items:center; gap:16px; }
+.theme-switch{ display:flex; gap:8px; margin-right:auto; }
+.theme-switch [data-set-theme]{
+  border:1px solid var(--accent);
+  background:transparent; color:var(--accent);
+  border-radius:999px; padding:6px 12px; font:600 14px/1 "Work Sans",sans-serif; cursor:pointer;
+}
+.theme-switch [data-set-theme].active,
+.theme-switch [data-set-theme]:hover{ background:var(--accent); color:#fff; }
+
+/* Progress bar (matches Home) */
+.progress{ position:fixed; left:0; top:0; height:3px; width:100%; background:transparent; z-index:60; }
+.progress span{ display:block; height:100%; width:0; background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); }
+
+/* Centered hero */
+.hero--stack .wrap{ text-align:center; }
+.hero--stack .hero-sub{ max-width:720px; margin:14px auto 18px; color:var(--muted); }
+
+/* Shimmer headline defaults (still works on light themes) */
+.tagline{
+  background-image:linear-gradient(120deg,#203042 0%,#203042 30%,#E8766C 50%,#FFB6AC 60%,#203042 85%,#203042 100%);
+  background-size:200% 100%; background-position:0% center;
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+}
+@keyframes shimmer-text{ from{background-position:0% center} to{background-position:200% center} }
+.tagline.glitter, .tagline:hover{ animation: shimmer-text 1.6s ease-out 1; }
+
+/* Dusk: make headline solid white (no gradient), readable chips/buttons */
+body[data-theme="dusk"] .tagline{
+  background-image:none !important;
+  -webkit-background-clip:initial !important;
+  background-clip:initial !important;
+  -webkit-text-fill-color:#fff !important; color:#fff !important;
+}
+body[data-theme="dusk"] .btn-ghost{ border-color:#fff; color:#fff !important; }
+
+/* Cards/chips readable across themes */
+.card{ background:var(--card-bg, #fff); color:var(--text); }
+.card p{ color:var(--muted); }
+.chip{
+  display:inline-block; align-self:flex-start; margin-top:14px; padding:8px 14px; border-radius:999px;
+  border:2px solid var(--text); background:#fff; color:var(--text);
+  font:700 14px/1 "Work Sans",sans-serif;
+}
+body[data-theme="dusk"] .chip{ background:transparent; color:#fff; border-color:#fff; }
+body[data-theme="dusk"] .chip:hover{ background:#fff; color:#1b1c2d; }
+
+/* About blocks (mobile-first) */
+.about-blocks{ padding:28px 0 8px; }
+.about-blocks .wrap{ display:grid; gap:22px; }
+.about-item{
+  background:var(--card-bg, #fff);
+  border:1px solid var(--line, rgba(32,48,66,.12));
+  border-radius:16px;
+  padding:18px 16px;
+  box-shadow:0 10px 26px rgba(16,30,24,.06);
+}
+.about-item h2{
+  font:700 24px/1.2 "Tenor Sans",serif;
+  margin:0 0 10px;
+}
+.about-item p{ margin:0 0 12px; color:var(--muted); }
+
+.link-arrow{ font-weight:600; text-underline-offset:3px; }
+
+/* Wider screens: arrange blocks in a tidy grid */
+@media (min-width: 880px){
+  .about-blocks .wrap{
+    grid-template-columns: repeat(12, 1fr);
+  }
+  #mission{ grid-column: span 12; }
+  #what{ grid-column: span 12; }
+  #vibe{ grid-column: span 12; }
+  /* If you want two columns instead, switch to: 
+     #mission{grid-column:1 / span 6} #what{grid-column:7 / span 6} #vibe{grid-column:1 / span 12} */
+}
+
+/* Buttons (ensure legible across themes) */
+.btn{ display:inline-block; padding:11px 16px; border-radius:12px; font:600 15px/1 "Work Sans",sans-serif; text-decoration:none; }
+.btn-primary{ background:var(--accent); color:#fff !important; border:none; box-shadow:0 8px 20px rgba(0,0,0,.12); }
+.btn-ghost{ background:transparent; border:1.5px solid var(--text); color:var(--text) !important; }
+
+
+
+
+/* explore page subscribe button */
+.explore-subscribe button,
+.explore-subscribe input[type="submit"] {
+  display: inline-block;   /* stop full-width stretching */
+  max-width: 240px;        /* cap the size */
+  width: auto;             /* shrink to fit text */
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  border-radius: 8px;      /* match your rounded style */
+}
+
+.explore-subscribe {
+  display: flex;
+  justify-content: center;   /* centers under playlist */
+}
+
+
+/* Stop full-width buttons inside cards */
+.card { align-items: flex-start; }                     /* prevent children from stretching */
+.card .btn, .card .btn-primary {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: max-content;
+  align-self: flex-start;                              /* keep left-aligned */
+}
+/* Explore page: subscribe button under playlist */
+.grid--single .card .btn-primary {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: max-content;
+  align-self: flex-start;
+}
+
+
+
+/* Explore page cards: center + restrict width */
+.explore-page .card {
+  max-width: 900px;     /* adjust this number (850–950px) to taste */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Optional: space between cards like About */
+.explore-page .grid--single {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;          /* same vertical rhythm as About page */
+}
+
+
+
+/* Founder intro card — force content height, no stretch */
+.fd-card.card{
+  display:grid !important;
+  grid-template-columns: 120px 1fr;   /* avatar | text */
+  align-items:start;                  /* top-align content */
+  gap:20px;
+  height:auto !important;
+  min-height:0 !important;
+  padding-bottom:16px;
+}
+
+/* avatar sizing stays tidy */
+.fd-card .fd-avatar img{
+  width:120px; height:120px; border-radius:50%; object-fit:cover; display:block;
+}
+
+/* remove any sneaky extra space from last elements */
+.fd-card .fd-bio p:last-child{ margin-bottom:0; }
+.fd-card .tag:last-child{ margin-bottom:0; }
+
+/* in case a global "stretch children" rule exists on .card */
+.fd-card.card > *{ align-self:start !important; }
+
+/* safety: if any theme added min-height to general cards */
+.card{ min-height:auto; }
+
+
+
+/* ===== Explore sections inline layout ===== */
+.explore-page .explore-wrap .section {
+  max-width: 1100px;
+  margin: 0 auto 40px auto;
+  padding: 0 16px;
+}
+
+.explore-page .explore-wrap .section > h2,
+.explore-page .explore-wrap .section > .sub {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ===== EXPLORE: sections as inline card grids (applies to ALL sections) ===== */
+
+/* Center the page content like About */
+.explore-page .grid--single,
+.explore-page .explore-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Shared section container */
+.explore-page .explore-wrap .section{
+  margin: 28px 0 40px;
+}
+
+/* Center titles / subtitles */
+.explore-page .explore-wrap .section > h2,
+.explore-page .explore-wrap .section > .sub{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+}
+
+/* INLINE GRID for all section items */
+.explore-page .explore-wrap .section .grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* inline cards */
+  gap: 20px;
+  align-items: start;
+}
+
+/* Keep cards at a tidy size (no full-width stretch) */
+.explore-page .explore-wrap .section .card{
+  width: 100%;
+  max-width: 340px;                  /* adjust 320–360 if you prefer */
+  margin: 0 auto;                    /* center each card in its grid cell */
+  align-items: flex-start;           /* prevent inner children from stretching */
+}
+
+/* Buttons inside cards should hug text */
+.explore-page .explore-wrap .section .card .btn,
+.explore-page .explore-wrap .section .card .btn-primary{
+  display: inline-block !important;
+  width: auto !important;
+  max-width: max-content;
+  align-self: flex-start;
+}
+
+/* Top “playlist + join” row should also not stretch */
+.explore-page .grid--single{
+  display: grid;
+  gap: 18px;
+}
+.explore-page .grid--single .card{
+  max-width: 900px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* Fix the long Subscribe button under Join the Circle */
+.explore-page .grid--single .card .btn-primary{
+  display: inline-block !important;
+  width: auto !important;
+  max-width: 260px;
+  align-self: flex-start;
+}
+
+/* ===== EXPLORE top row (playlist + join side-by-side) ===== */
+.explore-page .grid--single {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 2 cards side by side */
+  gap: 24px;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+
+.explore-page .grid--single .card {
+  max-width: 500px;   /* prevents them from getting huge like before */
+  margin: 0 auto;
+}
+
+
+/* two-up layout for first/last on larger screens */
+.form-row-2 { display: grid; gap: 12px; }
+@media (min-width: 720px){ .form-row-2 { grid-template-columns: 1fr 1fr; } }
+
+/* form visuals to match cards/buttons */
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  font: 400 16px/1.4 "Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+.contact-card textarea { resize: vertical; }
+.contact-card input:focus,
+.contact-card textarea:focus {
+  outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px var(--ring);
+}
+.form-actions { margin-top: 6px; }
+.form-response { margin-top: 12px; color: var(--muted); font-size: 14px; }
+
+/* helpers */
+.sr-only { position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.hidden-field { position:absolute; left:-9999px; }
+
+
+/* --- Contact polish --- */
+.contact-card {
+  padding: 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(207, 230, 218, .22); /* subtle tint that matches theme */
+  box-shadow: var(--shadow);
+}
+
+.contact-card h2 {
+  font: 700 28px/1.2 "Tenor Sans", serif;
+  margin: 0 0 12px;
+}
+
+.form-row { margin-bottom: 12px; }
+.form-row-2 { display: grid; gap: 12px; }
+@media (min-width: 720px){ .form-row-2 { grid-template-columns: 1fr 1fr; } }
+
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  font: 400 16px/1.4 "Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+
+/* SPOTIFY PLAYLIST SIZE */
+
+.jl-extra iframe {
+  height: 80px;              /* compact height */
+  max-width: 30px;          /* doesn’t get oversized */
+  width: 30%;               /* shrinks on mobile */
+  display: block;            /* centers with margin auto */
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 0;
+}
+
+
+
+.jl-extra iframe {
+  width: 30%;
+  max-width: 80px;  /* same as the card width */
+  height: 80px;     /* same height Spotify normally uses */
+  border: none;
+}
+
+.jl-set.card {
+  min-height: 80px; /* adjust until Set A matches the others */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.playlist-placeholder {
+  width: 30%;
+  max-width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.05); /* soft grey placeholder */
+}

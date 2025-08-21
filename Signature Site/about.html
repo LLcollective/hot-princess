@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Lace & Lime™</title>
+  <meta name="description" content="About Lace & Lime™ — our story, mission, and approach to turning awareness into momentum." />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-theme="coastal">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header (same structure as Home) -->
+  <header class="ll-nav">
+    <div class="wrap">
+      <!-- Theme Switcher -->
+      <div class="theme-switch">
+        <button data-set-theme="coastal">Coastal</button>
+        <button data-set-theme="dusk">Dusk</button>
+        <button data-set-theme="fresh-lime">Lime</button>
+      </div>
+
+      <!-- Brand -->
+      <a class="brand" href="/">LACE AND LIME<span class="tm">™</span></a>
+
+      <!-- Desktop menu -->
+<nav class="menu">
+  <a href="index.html" class="active">Home</a>
+  <a href="about.html">About</a>
+  <a href="founder.html">Founder</a>
+  <a href="journal.html">Journal</a>
+  <a href="explore.html">Explore</a>
+  <a href="contact.html">Contact</a>
+  <a href="account.html" class="ll-account" aria-label="Account">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+      <circle cx="12" cy="8" r="4"></circle>
+      <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+    </svg>
+  </a>
+</nav>
+
+
+      <!-- Hamburger (CSS only) -->
+      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
+      <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
+      <!-- Mobile drawer -->
+      <nav class="drawer" aria-label="Mobile">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Progress bar (same as Home) -->
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <main id="main">
+
+    <!-- Hero (mobile-first, stacked) -->
+    <section class="hero hero--stack">
+      <div class="wrap">
+        <span class="eyebrow">ABOUT LACE & LIME</span>
+        <h1 class="tagline">Clarity meets action.</h1>
+        <p class="hero-sub">We’re here to make wellness and empowerment more grounded, intentional, and accessible — so change can actually stick.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/journal">Start the Journal</a>
+          <a class="btn btn-ghost" href="/explore">Explore the Approach</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About blocks -->
+    <section class="about-blocks">
+      <div class="wrap">
+        <article class="about-item" id="mission">
+          <h2>Our Mission</h2>
+          <p>Empowering individuals and communities with tools, guided reflection, and actionable plans that turn awareness into lasting change.</p>
+        </article>
+
+        <article class="about-item" id="what">
+          <h2>What We Do</h2>
+          <p>Lace & Lime™ LLC is a wellness and empowerment initiative rooted in Long Island, NY. We create guided journals, resources, and community-centered workshops that help people move from reflection to action with confidence and clarity.</p>
+        </article>
+
+        <article class="about-item" id="vibe">
+          <h2>Our Vibe</h2>
+          <p>Founded and led by Sharon, Lace & Lime™ began as a vision to make wellness and empowerment more accessible across Long Island and beyond. Balance-forward, intentional, and rooted in community, we believe growth happens where clarity meets action — and where people feel both grounded and uplifted.</p>
+          <p><a class="link-arrow" href="/founder">Founders’ Note →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Soft CTA cards -->
+    <section class="feature-cards" style="padding-top:0">
+      <div class="wrap cards-grid">
+        <a class="card lime" href="/workshops">
+          <h3>Community Workshops</h3>
+          <p>High-care, low-barrier sessions that bring reflection and action closer to home.</p>
+          <span class="chip">See dates</span>
+        </a>
+
+        <a class="card sky" href="/journal">
+          <h3>Start the Journal</h3>
+          <p>4×4 cycles that translate insight into steps — week by week.</p>
+          <span class="chip">Open</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
+  </footer>
+
+  <!-- Scripts (same behavior as Home) -->
+  <script>
+    // progress bar
+    (function () {
+      const bar = document.querySelector('.progress span');
+      if (!bar) return;
+      addEventListener('scroll', () => {
+        const h = document.documentElement;
+        bar.style.width = ((h.scrollTop)/(h.scrollHeight - h.clientHeight)) * 100 + '%';
+      }, { passive:true });
+    })();
+
+    // headline shimmer: play once + on tap/hover
+    (function () {
+      const tl = document.querySelector('.tagline');
+      if (!tl) return;
+      const play = () => { tl.classList.add('glitter'); setTimeout(() => tl.classList.remove('glitter'), 1600); };
+      play();
+      tl.addEventListener('click', play);
+      tl.addEventListener('touchstart', play, { passive:true });
+    })();
+
+    // theme switcher with memory + active state
+    (function () {
+      const saved = localStorage.getItem('theme');
+      const initial = saved || document.body.dataset.theme || 'coastal';
+      document.body.dataset.theme = initial;
+      markActive(initial);
+
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-set-theme]');
+        if (!btn) return;
+        const theme = btn.dataset.setTheme;
+        document.body.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+        markActive(theme);
+      });
+
+      function markActive(theme){
+        document.querySelectorAll('.theme-switch [data-set-theme]')
+          .forEach(b => b.classList.toggle('active', b.dataset.setTheme === theme));
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Lace & Lime™</title>
+  <meta name="description" content="Get in touch with Lace & Lime™. Send a note, ask a question, or explore collaboration." />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-theme="coastal">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
+  <header class="ll-nav">
+    <div class="wrap">
+      <!-- Theme Switcher -->
+      <div class="theme-switch">
+        <button data-set-theme="coastal">Coastal</button>
+        <button data-set-theme="dusk">Dusk</button>
+        <button data-set-theme="fresh-lime">Lime</button>
+      </div>
+
+      <!-- Brand -->
+      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+
+      <!-- Desktop menu -->
+      <nav class="menu" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+          </svg>
+        </a>
+      </nav>
+
+      <!-- Hamburger (CSS-only) -->
+      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
+      <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
+      <!-- Mobile drawer -->
+      <nav class="drawer" aria-label="Mobile">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Progress bar -->
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero--stack">
+      <div class="wrap">
+        <span class="eyebrow">GET IN TOUCH</span>
+        <h1 class="tagline">Let’s connect</h1>
+        <p class="hero-sub">Send a note, ask a question, or explore how we can work together.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="wrap" style="padding:24px 0 40px;">
+      <!-- Form card -->
+      <div class="card contact-card" style="max-width:900px;margin:0 auto 20px;">
+        <h2>Send a message</h2>
+
+        <form id="contactForm" method="post" action="api/send" novalidate>
+          <!-- Hidden timestamp (filled on submit) -->
+          <input type="hidden" name="timestamp" id="tsField">
+
+          <!-- First / Last -->
+          <div class="form-row form-row-2">
+            <div>
+              <label class="sr-only" for="first">First name</label>
+              <input id="first" type="text" name="first" placeholder="First name" autocomplete="given-name" required />
+            </div>
+            <div>
+              <label class="sr-only" for="last">Last name (optional)</label>
+              <input id="last" type="text" name="last" placeholder="Last name (optional)" autocomplete="family-name" />
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-row">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="Email" autocomplete="email" required />
+          </div>
+
+          <!-- Subject -->
+          <div class="form-row">
+            <label class="sr-only" for="subject">Subject</label>
+            <input id="subject" type="text" name="subject" placeholder="Subject" required />
+          </div>
+
+          <!-- Message -->
+          <div class="form-row">
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" rows="2" placeholder="Your message" required></textarea>
+          </div>
+
+          <!-- Honeypot (unchanged; must stay named "honeypot") -->
+          <label class="hidden-field" aria-hidden="true">
+            Leave this field empty
+            <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
+          </label>
+
+          <div class="form-actions">
+            <button id="sendBtn" type="submit" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+
+        <div id="formResponse" class="form-response" aria-live="polite"></div>
+      </div>
+
+      <!-- Other ways -->
+      <div class="card" style="max-width:900px;margin:0 auto;">
+        <h2>Other ways</h2>
+        <p>Email: <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a></p>
+        <p>Follow us on <a href="#" rel="noopener">Instagram</a> and <a href="#" rel="noopener">LinkedIn</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Progress bar
+    (function(){
+      const bar = document.querySelector('.progress span');
+      if (!bar) return;
+      addEventListener('scroll', () => {
+        const h = document.documentElement;
+        bar.style.width = ((h.scrollTop)/(h.scrollHeight - h.clientHeight))*100 + '%';
+      }, { passive:true });
+    })();
+
+    // Theme switcher
+    (function(){
+      const saved = localStorage.getItem("theme");
+      const initial = saved || document.body.dataset.theme || "coastal";
+      document.body.dataset.theme = initial;
+      mark(initial);
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-set-theme]");
+        if (!btn) return;
+        const t = btn.dataset.setTheme;
+        document.body.dataset.theme = t;
+        localStorage.setItem("theme", t);
+        mark(t);
+      });
+      function mark(t){
+        document.querySelectorAll(".theme-switch [data-set-theme]")
+          .forEach(b => b.classList.toggle("active", b.dataset.setTheme === t));
+      }
+    })();
+
+    // Contact form AJAX — includes timestamp + honeypot
+    (function(){
+      const form = document.getElementById('contactForm');
+      const resp = document.getElementById('formResponse');
+      const btn  = document.getElementById('sendBtn');
+      const tsEl = document.getElementById('tsField');
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // set timestamp for Sheets/API (ISO UTC is safest)
+        if (tsEl) tsEl.value = new Date().toISOString();
+
+        const fd = new FormData(form);
+        if (fd.get('honeypot')) return; // bot detected
+
+        try{
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+          const res = await fetch(form.action, { method:'POST', body: fd });
+          const data = await res.json().catch(() => ({}));
+          resp.textContent = data?.message || (data?.ok ? 'Thanks for reaching out!' : 'Thanks! If you do not get a reply, email us directly.');
+          if (data?.ok) form.reset();
+        }catch{
+          resp.textContent = 'Something went wrong. Please try again later.';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Send';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

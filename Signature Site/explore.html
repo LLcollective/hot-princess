@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Explore | Lace & Lime™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-theme="coastal">
+<body class="explore-page">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header (shared) -->
+  <header class="ll-nav">
+    <div class="wrap">
+      <div class="theme-switch">
+        <button data-set-theme="coastal">Coastal</button>
+        <button data-set-theme="dusk">Dusk</button>
+        <button data-set-theme="fresh-lime">Lime</button>
+      </div>
+      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+
+      <nav class="menu" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html" class="active">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </a>
+      </nav>
+
+      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
+      <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
+      <nav class="drawer" aria-label="Mobile">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html" class="active">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero--stack">
+      <div class="wrap">
+        <span class="eyebrow">EXPLORE</span>
+        <h1 class="tagline">Find your next steady step.</h1>
+        <p class="hero-sub">Resources, prompts, rituals, and guides — curated to move you from clarity to action.</p>
+      </div>
+    </section>
+
+    <!-- Featured playlist + join -->
+    <section class="grid--single">
+      <article class="card playlist-card">
+        <div class="playlist-info">
+          <span class="pill">Now playing</span>
+          <h2>Lace & Lime™ Vibes</h2>
+          <p>A curated playlist to set the tone — reflection, action, and balance-forward energy.</p>
+          <div class="playlist-actions">
+            <a class="btn btn-primary"
+               href="https://open.spotify.com/playlist/7fzL3lCumo5OhjjddCyyfg"
+               target="_blank" rel="noopener">▶ Play on Spotify</a>
+            <a class="btn" href="#" id="reveal-embed">Show Player</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="pill">Join us</span>
+        <h3>Join the Circle</h3>
+        <p>Get new prompts, playlists, and tools straight to your inbox.</p>
+        <a class="btn btn-primary" href="https://laceandlime.kit.com/a2a88f640a" target="_blank" rel="noopener">Subscribe</a>
+      </article>
+    </section>
+
+    <iframe
+      id="hidden-playlist"
+      src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
+      width="100%" height="120"
+      style="display:none;border:0;border-radius:12px;max-width:1100px;justify-self:center;"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+
+    <!-- Prompts / Rituals / Guides / Kits / Stories (cards) -->
+    <main class="explore-wrap">
+      <!-- Prompts -->
+      <section class="section" id="prompts">
+        <h2>Prompts</h2>
+        <p class="sub">Short reflection cues to spark clarity.</p>
+        <div class="grid">
+          <article class="card"><span class="pill">Sample</span><h3>Today’s mini prompt</h3><p>What would “clear and steady” feel like in the next hour?</p><a class="dash-link" href="account.html?next=/dashboard.html#prompts">See more in Dashboard →</a></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Weekly prompt pack</h3><p>A 7-day set that pairs with the Clear & Steady playlist.</p></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Community prompts</h3><p>Top reflections submitted by members.</p></article>
+        </div>
+      </section>
+
+      <!-- Rituals -->
+      <section class="section" id="rituals">
+        <h2>Rituals</h2>
+        <p class="sub">Simple, repeatable actions to anchor your day.</p>
+        <div class="grid">
+          <article class="card"><span class="pill">Sample</span><h3>3-breath reset</h3><p>Inhale clarity, hold for presence, exhale what’s not yours.</p><a class="dash-link" href="account.html?next=/dashboard.html#rituals">See more in Dashboard →</a></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>AM alignment</h3><p>5-minute morning check-in + micro-action cue.</p></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>PM unwind</h3><p>Release, reset, and prep for tomorrow’s yes.</p></article>
+        </div>
+      </section>
+
+      <!-- Guides -->
+      <section class="section" id="guides">
+        <h2>Guides</h2>
+        <p class="sub">Deeper dives on sets, frameworks, and practice.</p>
+        <div class="grid">
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Clear & Steady Guide</h3><p>How to use Set A with prompts, rituals, and music.</p></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Speak the Unsaid</h3><p>Language, boundaries, and courageous communication.</p></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Edge of Enough</h3><p>Finding capacity, pacing progress, saying no.</p></article>
+        </div>
+      </section>
+
+      <!-- Workshop Kits -->
+      <section class="section" id="workshop-kits">
+        <h2>Workshop Kits</h2>
+        <p class="sub">Facilitator-ready packets for groups and orgs.</p>
+        <div class="grid">
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Intro Session</h3><p>90-minute framework overview + interactive activities.</p></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Team Reset</h3><p>Group alignment ritual + shared action plan.</p></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Community Night</h3><p>Playlists, prompts, and conversation starters.</p></article>
+        </div>
+      </section>
+
+      <!-- Community Stories -->
+      <section class="section" id="community">
+        <h2>Community Stories</h2>
+        <p class="sub">Wins, reflections, and momentum from the community.</p>
+        <div class="grid">
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Spotlight #1</h3><p>How journaling with music changed a morning routine.</p></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Spotlight #2</h3><p>From stuck to steady: a micro-action case study.</p></article>
+          <article class="card"><span class="pill muted">Coming soon</span><h3>Spotlight #3</h3><p>Community ritual that’s working right now.</p></article>
+        </div>
+      </section>
+    </main>
+  </main>
+
+  <footer class="site-footer"><div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div></footer>
+
+  <!-- Shared scripts -->
+  <script>
+    // progress bar
+    (function(){const bar=document.querySelector('.progress span');if(!bar)return;addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});})();
+    // shimmer
+    (function(){const tl=document.querySelector('.tagline');if(!tl)return;const play=()=>{tl.classList.add('glitter');setTimeout(()=>tl.classList.remove('glitter'),1600);};play();tl.addEventListener('click',play);tl.addEventListener('touchstart',play,{passive:true});})();
+    // theme + active state
+    (function(){const saved=localStorage.getItem('theme');const initial=saved||document.body.dataset.theme||'coastal';document.body.dataset.theme=initial;mark(initial);document.addEventListener('click',e=>{const b=e.target.closest('[data-set-theme]');if(!b)return;const t=b.dataset.setTheme;document.body.dataset.theme=t;localStorage.setItem('theme',t);mark(t);});function mark(t){document.querySelectorAll('.theme-switch [data-set-theme]').forEach(b=>b.classList.toggle('active',b.dataset.setTheme===t));}})();
+    // reveal embed
+    (function(){const btn=document.getElementById('reveal-embed');const iframe=document.getElementById('hidden-playlist');if(btn&&iframe){btn.addEventListener('click',e=>{e.preventDefault();const show=iframe.style.display==='none';iframe.style.display=show?'block':'none';btn.textContent=show?'Hide Player':'Show Player';iframe.scrollIntoView({behavior:'smooth',block:'center'});});}})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Founder | Lace & Lime™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-theme="coastal">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="ll-nav">
+    <div class="wrap">
+      <div class="theme-switch">
+        <button data-set-theme="coastal">Coastal</button>
+        <button data-set-theme="dusk">Dusk</button>
+        <button data-set-theme="fresh-lime">Lime</button>
+      </div>
+      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+
+      <nav class="menu" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </a>
+      </nav>
+
+      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
+      <label class="burger" for="nav-toggle"><span></span><span></span><span></span></label>
+
+      <nav class="drawer" aria-label="Mobile">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <main id="main">
+    <section class="hero hero--stack">
+      <div class="wrap">
+        <span class="eyebrow">FOUNDER</span>
+        <h1 class="tagline">Grounded in community health.</h1>
+        <p class="hero-sub">Rooted in culture. Moving with clarity and momentum.</p>
+      </div>
+    </section>
+
+    <!-- Founder card -->
+    <section class="feature-cards" style="padding-top:0">
+      <div class="wrap">
+        <div class="fd-card card" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+          <div class="fd-avatar">
+            <img src="assets/founder-ceo-laceandlimellc-sharon-gutierrez-mph-ches.jpg" alt="Founder of Lace & Lime" style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
+          </div>
+          <div class="fd-bio" style="flex:1 1 520px;">
+            <p>I’m the force behind Lace & Lime™—a balance-forward approach to wellness and empowerment bridging NYC and suburban Long Island. I design tools and spaces that help people name what matters, move what’s stuck, and act with steadiness.</p>
+            <div class="fd-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:.6rem;">
+              <span class="tag mint">Public Health</span>
+              <span class="tag peach">Community</span>
+              <span class="tag sky">Wellness</span>
+              <span class="tag mint">Action Plans</span>
+              <span class="tag sky">Consulting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlights grid -->
+        <div class="fd-grid" style="display:grid;gap:18px;margin-top:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+          <article class="card"><h3>Why Lace & Lime™</h3><p>A bridge between clarity and action—softness + spark.</p></article>
+          <article class="card"><h3>What I Build</h3><p>Evidence-informed prompts, rituals, and music-driven sets.</p></article>
+          <article class="card"><h3>Who It’s For</h3><p>Under-engaged communities and anyone ready for steady momentum.</p></article>
+          <article class="card"><h3>Approach</h3><p>Slow the mind, listen to the body, align energy, then move.</p></article>
+          <article class="card"><h3>Sets & Playlists</h3><p>Start with <em>Clear and Steady</em> in the Journal.</p></article>
+          <article class="card"><h3>Connect</h3><p>Bring Lace & Lime™ to your org via the Contact page.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div></footer>
+
+  <!-- Shared scripts -->
+  <script>
+    (function(){const bar=document.querySelector('.progress span');if(!bar)return;addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});})();
+    (function(){const tl=document.querySelector('.tagline');if(!tl)return;const play=()=>{tl.classList.add('glitter');setTimeout(()=>tl.classList.remove('glitter'),1600);};play();tl.addEventListener('click',play);tl.addEventListener('touchstart',play,{passive:true});})();
+    (function(){const saved=localStorage.getItem('theme');const initial=saved||document.body.dataset.theme||'coastal';document.body.dataset.theme=initial;mark(initial);document.addEventListener('click',e=>{const b=e.target.closest('[data-set-theme]');if(!b)return;const t=b.dataset.setTheme;document.body.dataset.theme=t;localStorage.setItem('theme',t);mark(t);});function mark(t){document.querySelectorAll('.theme-switch [data-set-theme]').forEach(b=>b.classList.toggle('active',b.dataset.setTheme===t));}})();
+  </script>
+</body>
+</html>

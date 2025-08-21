@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lace & Lime™ | Account</title>
+  <meta name="description" content="Create or access your Lace & Lime™ account to continue your journey." />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Theme-driven backgrounds */
+    body[data-theme="coastal"] {
+      background: linear-gradient(135deg, #cdeef0, #eafafc);
+    }
+    body[data-theme="dusk"] {
+      background: linear-gradient(135deg, #d5c4f0, #f0e6ff);
+    }
+    body[data-theme="fresh-lime"] {
+      background: linear-gradient(135deg, #d9f7be, #f6ffed);
+    }
+
+    .acc-hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+    .acc-hero h1 {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .acc-hero .lead {
+      color: #555;
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .acc-wrap {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-family: 'Tenor Sans', sans-serif;
+      color: var(--accent, #333);
+    }
+    .card .sub {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+    .field {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .field label {
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"] {
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 1rem;
+    }
+    .pw-wrap { position: relative; }
+    .pw-toggle {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: #555;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+    .row button, .row a.btn {
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+
+<body data-theme="coastal">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
+  <header class="ll-nav">
+    <div class="wrap">
+      <div class="theme-switch">
+        <button data-set-theme="coastal">Coastal</button>
+        <button data-set-theme="dusk">Dusk</button>
+        <button data-set-theme="fresh-lime">Lime</button>
+      </div>
+
+      <a class="brand" href="/">LACE AND LIME<span class="tm">™</span></a>
+
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+          </svg>
+        </a>
+      </nav>
+
+      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
+      <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
+      <nav class="drawer" aria-label="Mobile">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html" class="ll-account" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+ <section class="hero hero--stack">
+  <div class="wrap">
+    <span class="eyebrow">ACCOUNT</span>
+    <h1 class="tagline">Welcome back to Lace & Lime™</h1>
+    <p class="hero-sub">Create your account or sign in to continue your journey with prompts, playlists, and your dashboard.</p>
+  </div>
+</section>
+
+    <div class="acc-wrap">
+      <!-- Register -->
+      <section class="card" id="register">
+        <h2>Create your account</h2>
+        <p class="sub">Start fresh with prompts, playlists, and your dashboard.</p>
+        <form id="registerForm" method="post" action="/api/register" novalidate>
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" name="firstName" required />
+          </div>
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" name="lastName" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="field pw-wrap">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required minlength="8" />
+            <button type="button" class="pw-toggle" data-target="password">Show</button>
+          </div>
+          <div class="row">
+            <label><input type="checkbox" name="tos" required /> I agree to the Terms and Privacy Policy.</label>
+          </div>
+          <div class="row">
+            <button class="btn-primary" type="submit">Create account</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Login -->
+      <section class="card" id="login">
+        <h2>Welcome back</h2>
+        <p class="sub">Sign in to your account.</p>
+        <form id="loginForm" method="post" action="/api/login" novalidate>
+          <div class="field">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" name="email" required />
+          </div>
+          <div class="field pw-wrap">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" name="password" required />
+            <button type="button" class="pw-toggle" data-target="loginPassword">Show</button>
+          </div>
+          <div class="row" style="justify-content: space-between;">
+            <label><input type="checkbox" name="remember" /> Remember me</label>
+            <a class="muted" href="/reset.html">Forgot password?</a>
+          </div>
+          <div class="row">
+            <button class="btn-primary" type="submit">Sign in</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Lace & Lime™ LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // theme switcher
+    document.querySelectorAll("[data-set-theme]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.body.setAttribute("data-theme", btn.getAttribute("data-set-theme"));
+      });
+    });
+    // password toggle
+    document.querySelectorAll('.pw-toggle').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id=btn.getAttribute('data-target');
+        const input=document.getElementById(id);
+        if(!input) return;
+        input.type = input.type === 'password' ? 'text' : 'password';
+        btn.textContent = input.type === 'password' ? 'Show' : 'Hide';
+      });
+    });
+  </script>
+</body>
+</html>
