@@ -4,294 +4,146 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Lace & Lime™</title>
-  <meta name="description" content="Contact Lace & Lime™ — questions, collaborations, and workshop requests." />
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Get in touch with Lace & Lime™. Send a note, ask a question, or explore collaboration." />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    :root { --bg:#FAF9F6; --text:#203042; --muted:#5E7181; --accent:#5C8E37; --line:rgba(32,48,66,.12); }
-    body[data-theme="coastal"]{ --bg:#fdfdfd; --text:#1a2e3f; --accent:#31708e; }
-    body[data-theme="fresh-lime"]{ --bg:#F4F8EE; --text:#203042; --accent:#5C8E37; }
-    body{ background:var(--bg); color:var(--text); margin:0; }
-    a { color: var(--accent); text-decoration: none; }
-
-    /* Header/nav (same as inner pages) */
-    .ll-nav { position:sticky; top:0; z-index:1000; background:var(--bg); border-bottom:1px solid transparent; }
-    .ll-nav .wrap{ display:flex; align-items:center; gap:16px; padding:12px 16px; max-width:1120px; margin:0 auto; }
-    .brand{ font-family:"Tenor Sans",serif; letter-spacing:.08em; color:var(--accent); font-size:20px; text-decoration:none; }
-    .brand .tm{ font-size:.7em; vertical-align:super; opacity:.85 }
-    .menu{ display:none; gap:22px; align-items:center; margin-left:auto; }
-    .menu a{ color:var(--text); font:600 15px/1 "Work Sans",sans-serif; }
-    .menu a.active{ text-decoration:underline; color:var(--accent); text-underline-offset:4px; }
-    #nav-toggle{ position:absolute; opacity:0; pointer-events:none; }
-    .burger{ margin-left:auto; width:40px; height:40px; display:inline-flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; cursor:pointer; z-index:1001; }
-    .burger span{ width:22px; height:2px; background:var(--accent); border-radius:2px; }
-    .drawer{ position:absolute; top:60px; left:12px; right:12px; display:none; flex-direction:column; gap:14px; background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.08); padding:16px; z-index:1000; border-top:2px solid var(--accent); }
-    .drawer a{ color:var(--text); font:600 16px/1 "Work Sans",sans-serif; }
-    .drawer a:hover{ color:var(--accent); }
-    #nav-toggle:checked ~ .drawer{ display:flex; }
-    @media (min-width:768px){ .burger,.drawer{ display:none !important; } .menu{ display:flex; } }
-
-    /* Theme buttons */
-    .theme-switch{ display:flex; gap:8px; }
-    .theme-switch button{
-      border:1px solid var(--accent); background:transparent; color:var(--accent);
-      border-radius:999px; padding:6px 10px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
-    }
-    .theme-switch button.active, .theme-switch button:hover{ background:var(--accent); color:#fff; }
-    .theme-switch svg{ width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2; display:block; }
-
-    /* Hero */
-    .hero--stack .wrap{ text-align:center; }
-    .hero-sub{ max-width:720px; margin:14px auto 18px; color:var(--muted); }
-
-    /* Form layout */
-    .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
-    .form-shell{ display:grid; grid-template-columns:1fr; gap:16px; max-width:720px; margin:28px auto 64px; }
-    .field{ display:flex; flex-direction:column; gap:6px; }
-    .field label{ font:600 14px/1 "Work Sans",sans-serif; color:var(--text); }
-    .help{ color:var(--muted); font-size:13px; }
-    input[type="text"], input[type="email"], textarea, select{
-      appearance:none; -webkit-appearance:none;
-      padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--text);
-      font:400 15px/1.4 "Work Sans",sans-serif;
-    }
-    textarea{ min-height:140px; resize:vertical; }
-    .row{ display:grid; gap:16px; grid-template-columns:1fr; }
-    @media (min-width:640px){ .row{ grid-template-columns:1fr 1fr; } }
-
-    .btn{ display:inline-block; padding:12px 16px; border-radius:12px; font:600 15px/1 "Work Sans",sans-serif; cursor:pointer; }
-    .btn-primary{ background:var(--accent); color:#fff; border:none; }
-    .btn-ghost{ background:transparent; border:1.5px solid var(--text); color:var(--text) }
-    .actions{ display:flex; gap:12px; align-items:center; }
-
-    /* Status messages */
-    .status{ margin-top:4px; font:600 14px/1.2 "Work Sans",sans-serif; }
-    .status.ok{ color:#2E7D5B; }
-    .status.err{ color:#B3261E; }
-
-    /* Progress bar */
-    .progress{ position:fixed; left:0; top:0; height:3px; width:100%; background:transparent; z-index:60; }
-    .progress span{ display:block; height:100%; width:0; background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); }
-
-    /* Tagline shimmer (shared) */
-    .tagline{
-      font:700 clamp(36px,6vw,64px)/1.08 "Tenor Sans",serif; letter-spacing:.3px;
-      background-image:linear-gradient(120deg,#203042 0%,#203042 30%,#E8766C 50%,#FFB6AC 60%,#203042 85%,#203042 100%);
-      background-size:200% 100%; background-position:0% center;
-      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
-    }
-    @keyframes shimmer-text{ from{background-position:0% center} to{background-position:200% center} }
-    .tagline.glitter, .tagline:hover{ animation: shimmer-text 1.6s ease-out 1; }
-  </style>
 </head>
-
 <body data-theme="fresh-lime">
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="ll-nav">
-    <div class="wrap">
-      <!-- theme icon buttons -->
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <div class="brand">Lace & Lime™</div>
+      <nav class="main-nav" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="explore.html">Explore</a>
+        <a href="journal.html">Journal</a>
+        <a href="founder.html">Founder</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="account.html">Account</a>
+      </nav>
+      <button class="burger" id="burgerBtn" aria-label="Menu">☰</button>
       <div class="theme-switch">
-        <button data-set-theme="coastal" aria-label="Coastal (Heart)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 12 21 12 21z"/></svg>
-        </button>
-        <button data-set-theme="fresh-lime" class="active" aria-label="Lime (Star)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 3.3 1.2-7-5-4.9 7-1L12 2z"/></svg>
-        </button>
+        <button data-set-theme="heart">♡</button>
+        <button data-set-theme="star" class="active">☆</button>
       </div>
-
-      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-
-      <nav class="menu" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html">Founder</a>
-        <a href="journal.html">Journal</a>
-        <a href="explore.html">Explore</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
-        </a>
-      </nav>
-
-      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
-      <label class="burger" for="nav-toggle"><span></span><span></span><span></span></label>
-
-      <nav class="drawer" aria-label="Mobile">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html">Founder</a>
-        <a href="journal.html">Journal</a>
-        <a href="explore.html">Explore</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
-        </a>
-      </nav>
     </div>
   </header>
 
-  <div class="progress" aria-hidden="true"><span></span></div>
-
-  <main id="main">
-    <section class="hero hero--stack">
-      <div class="wrap">
-        <span class="eyebrow">CONTACT</span>
-        <h1 class="tagline">Say hello.</h1>
-        <p class="hero-sub">Questions, collaborations, or workshop requests — send a note and we’ll get back to you.</p>
-      </div>
-    </section>
-
-    <!-- Contact form -->
-    <section class="wrap">
-      <form id="contactForm" class="form-shell" novalidate>
+  <!-- CONTACT FORM -->
+  <main class="wrap">
+    <section class="contact">
+      <h1>Contact</h1>
+      <form id="contactForm">
         <div class="row">
           <div class="field">
             <label for="name">Name *</label>
-            <input id="name" name="name" type="text" autocomplete="name" required />
+            <input id="name" name="name" type="text" required />
           </div>
           <div class="field">
             <label for="email">Email *</label>
-            <input id="email" name="email" type="email" autocomplete="email" required />
+            <input id="email" name="email" type="email" required />
           </div>
         </div>
 
         <div class="row">
-          <div class="field">
-            <label for="topic">Topic</label>
-            <select id="topic" name="topic">
-              <option value="">Choose one…</option>
-              <option>General</option>
-              <option>Workshops</option>
-              <option>Consulting</option>
-              <option>Journal</option>
-              <option>Other</option>
-            </select>
-            <div class="help">Optional, but helps us route your message.</div>
-          </div>
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="text" inputmode="tel" autocomplete="tel" />
-            <div class="help">Optional.</div>
+          <div class="field full">
+            <label for="subject">Subject *</label>
+            <input id="subject" name="subject" type="text" required />
           </div>
         </div>
 
-        <div class="field">
-          <label for="message">Message *</label>
-          <textarea id="message" name="message" required></textarea>
+        <div class="row">
+          <div class="field full">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="3" required></textarea>
+          </div>
         </div>
 
-        <div class="actions">
-          <button class="btn btn-primary" id="submitBtn" type="submit">Send</button>
-          <button class="btn btn-ghost" type="reset">Clear</button>
-          <span id="formStatus" class="status" aria-live="polite"></span>
-        </div>
+        <button id="submitBtn" type="submit">Send</button>
+        <div id="formStatus" class="status"></div>
       </form>
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2025 Lace & Lime™</p>
+    </div>
   </footer>
 
-  <!-- Scripts -->
-<script>
-  // Progress bar
-  (function(){
-    const bar=document.querySelector('.progress span');
-    if(!bar)return;
-    addEventListener('scroll',()=>{
-      const h=document.documentElement;
-      bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight))*100+'%';
-    },{passive:true});
-  })();
+  <!-- SCRIPT -->
+  <script>
+    // Burger menu
+    (function () {
+      const btn = document.getElementById('burgerBtn');
+      const nav = document.getElementById('navMenu');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', () => nav.classList.toggle('open'));
+    })();
 
-  // Headline glitter
-  (function(){
-    const tl=document.querySelector('.tagline');
-    if(!tl)return;
-    const play=()=>{
-      tl.classList.add('glitter');
-      setTimeout(()=>tl.classList.remove('glitter'),1600);
-    };
-    play();
-    tl.addEventListener('click',play);
-    tl.addEventListener('touchstart',play,{passive:true});
-  })();
+    // Theme switcher
+    (function(){
+      const saved=localStorage.getItem('theme');
+      const initial=saved||document.body.dataset.theme||'star';
+      document.body.dataset.theme=initial; mark(initial);
+      document.addEventListener('click',e=>{
+        const b=e.target.closest('[data-set-theme]');if(!b)return;
+        const t=b.dataset.setTheme;
+        document.body.dataset.theme=t;
+        localStorage.setItem('theme',t);
+        mark(t);
+      });
+      function mark(t){
+        document.querySelectorAll('.theme-switch [data-set-theme]').forEach(b=>
+          b.classList.toggle('active',b.dataset.setTheme===t));
+      }
+    })();
 
-  // Theme switcher
-  (function(){
-    const saved=localStorage.getItem('theme');
-    const initial=saved||document.body.dataset.theme||'fresh-lime';
-    document.body.dataset.theme=initial;mark(initial);
-    document.addEventListener('click',e=>{
-      const b=e.target.closest('[data-set-theme]');
-      if(!b)return;
-      const t=b.dataset.setTheme;
-      document.body.dataset.theme=t;
-      localStorage.setItem('theme',t);
-      mark(t);
-    });
-    function mark(t){
-      document.querySelectorAll('.theme-switch [data-set-theme]')
-        .forEach(b=>b.classList.toggle('active',b.dataset.setTheme===t));
-    }
-  })();
+    // Contact form handler
+    (function () {
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+      const btn = document.getElementById('submitBtn');
+      const ENDPOINT = '/api/send'; // your server/API or Google Apps Script endpoint
 
-  // Contact form handler
-  (function () {
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-    const btn = document.getElementById('submitBtn');
-    const ENDPOINT = '/api/send'; // or your GAS URL
+      if(!form) return;
 
-    if(!form) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = '';
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      status.textContent = '';
-      if (!form.reportValidity()) return;
+        if (!form.reportValidity()) return;
 
-      const payload = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        subject: form.subject.value.trim(),
-        message: form.message.value.trim()
-      };
+        const payload = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          subject: form.subject.value.trim(),
+          message: form.message.value.trim()
+        };
 
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
+        btn.disabled = true; btn.textContent = 'Sending…';
 
-      try {
-        const r = await fetch(ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          mode: 'cors'
-        });
-        if (!r.ok) throw new Error('Send failed');
-
-        const data = await r.json().catch(()=>null);
-        if (data && data.success) {
+        try {
+          const res = await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) throw new Error('Send failed');
           status.textContent = '✅ Message sent successfully!';
           status.className = 'status ok';
           form.reset();
-        } else {
-          throw new Error(data && data.error ? data.error : 'Unknown error');
+        } catch (err) {
+          status.textContent = '❌ Could not send. Please email laceandlime.llc@gmail.com for additional support.';
+          status.className = 'status err';
+          console.error(err);
+        } finally {
+          btn.disabled = false; btn.textContent = 'Send';
         }
-      } catch (err) {
-        status.textContent = '❌ Could not send. Please email laceandlime.llc@gmail.com for additional support.';
-        status.className = 'status err';
-        console.error(err);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Send';
-      }
-    });
-  })();
-</script>
-
-
-
+      });
+    })();
+  </script>
 </body>
 </html>
