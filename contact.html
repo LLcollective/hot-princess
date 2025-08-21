@@ -195,71 +195,103 @@
   </footer>
 
   <!-- Scripts -->
-  <script>
-    // Progress bar
-    (function(){const bar=document.querySelector('.progress span');if(!bar)return;addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});})();
+<script>
+  // Progress bar
+  (function(){
+    const bar=document.querySelector('.progress span');
+    if(!bar)return;
+    addEventListener('scroll',()=>{
+      const h=document.documentElement;
+      bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight))*100+'%';
+    },{passive:true});
+  })();
 
-    // Headline glitter
-    (function(){const tl=document.querySelector('.tagline');if(!tl)return;const play=()=>{tl.classList.add('glitter');setTimeout(()=>tl.classList.remove('glitter'),1600);};play();tl.addEventListener('click',play);tl.addEventListener('touchstart',play,{passive:true});})();
+  // Headline glitter
+  (function(){
+    const tl=document.querySelector('.tagline');
+    if(!tl)return;
+    const play=()=>{
+      tl.classList.add('glitter');
+      setTimeout(()=>tl.classList.remove('glitter'),1600);
+    };
+    play();
+    tl.addEventListener('click',play);
+    tl.addEventListener('touchstart',play,{passive:true});
+  })();
 
-    // Theme switcher
-    (function(){const saved=localStorage.getItem('theme');const initial=saved||document.body.dataset.theme||'fresh-lime';
-      document.body.dataset.theme=initial;mark(initial);
-      document.addEventListener('click',e=>{const b=e.target.closest('[data-set-theme]');if(!b)return;
-        const t=b.dataset.setTheme;document.body.dataset.theme=t;localStorage.setItem('theme',t);mark(t);});
-      function mark(t){document.querySelectorAll('.theme-switch [data-set-theme]').forEach(b=>b.classList.toggle('active',b.dataset.setTheme===t));}
-    })();
+  // Theme switcher
+  (function(){
+    const saved=localStorage.getItem('theme');
+    const initial=saved||document.body.dataset.theme||'fresh-lime';
+    document.body.dataset.theme=initial;mark(initial);
+    document.addEventListener('click',e=>{
+      const b=e.target.closest('[data-set-theme]');
+      if(!b)return;
+      const t=b.dataset.setTheme;
+      document.body.dataset.theme=t;
+      localStorage.setItem('theme',t);
+      mark(t);
+    });
+    function mark(t){
+      document.querySelectorAll('.theme-switch [data-set-theme]')
+        .forEach(b=>b.classList.toggle('active',b.dataset.setTheme===t));
+    }
+  })();
 
-    // Contact form handler (POST to Google Apps Script)
-    (function () {
-      const form = document.getElementById('contactForm');
-      const status = document.getElementById('formStatus');
-      const btn = document.getElementById('submitBtn');
-      const ENDPOINT = 'YOUR_GAS_WEB_APP_URL'; // <— replace after deploying Apps Script
+  // Contact form handler
+  (function () {
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const btn = document.getElementById('submitBtn');
+    const ENDPOINT = '/api/send'; // or your GAS URL
 
-      if(!form) return;
+    if(!form) return;
 
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        status.textContent = '';
-        if (!form.reportValidity()) return;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      if (!form.reportValidity()) return;
 
-        const payload = {
-          name: form.name.value.trim(),
-          email: form.email.value.trim(),
-          topic: form.topic.value,
-          phone: form.phone.value.trim(),
-          message: form.message.value.trim(),
-          page: location.pathname,
-          ua: navigator.userAgent
-        };
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        subject: form.subject.value.trim(),
+        message: form.message.value.trim()
+      };
 
-        btn.disabled = true; btn.textContent = 'Sending…';
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
 
-        try {
-          const res = await fetch(ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-            mode: 'cors',
-          });
+      try {
+        const r = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          mode: 'cors'
+        });
+        if (!r.ok) throw new Error('Send failed');
 
-          if (!res.ok) throw new Error('Network response was not ok');
-          const data = await res.json();
-          if (data && data.success) {
-            status.textContent = 'Thanks! Your message was sent.'; status.className = 'status ok';
-            form.reset();
-          } else {
-            throw new Error(data && data.error ? data.error : 'Unknown error');
-          }
-        } catch (err) {
-          status.textContent = 'Sorry, something went wrong. Please try again.'; status.className = 'status err';
-          console.error(err);
-        } finally {
-          btn.disabled = false; btn.textContent = 'Send';
+        const data = await r.json().catch(()=>null);
+        if (data && data.success) {
+          status.textContent = '✅ Message sent successfully!';
+          status.className = 'status ok';
+          form.reset();
+        } else {
+          throw new Error(data && data.error ? data.error : 'Unknown error');
         }
-      }, { passive:false });
-    })();
-  </script>
+      } catch (err) {
+        status.textContent = '❌ Could not send. Please email laceandlime.llc@gmail.com for additional support.';
+        status.className = 'status err';
+        console.error(err);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send';
+      }
+    });
+  })();
+</script>
+
+
+
 </body>
 </html>
