@@ -299,6 +299,45 @@
   font-size: 0.85rem;
   color: #666;
 }
+
+/* Keep nav links inline width */
+nav ul li a {
+  display: inline-block; /* instead of block */
+  padding: 0.5rem 0.75rem;
+  width: auto;           /* prevents full bar width */
+}
+
+/* Active link underline */
+nav ul li a.active {
+  border-bottom: 2px solid var(--accent, #2d5a27); /* underline just text */
+  display: inline-block;
+}
+
+/* Fix hamburger alignment */
+.nav-toggle {
+  margin-left: auto; /* pushes it to far right */
+  display: flex;
+  align-items: center;
+}
+
+/* On mobile collapse */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul li a {
+    width: 100%; /* allow tappable width in menu */
+    border-bottom: none; /* no weird full bar */
+  }
+
+  nav ul li a.active {
+    border-bottom: 2px solid var(--accent, #2d5a27);
+    width: auto; /* underline matches text only */
+  }
+}
+
 </style>
 
         </a>
