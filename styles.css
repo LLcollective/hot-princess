@@ -1383,10 +1383,6 @@ header.ll-nav {
 .circle-form button {
   margin-top: 0.5rem;
 }
-.explore-card {
-  background: pink !important;
-}
-
 
 .explore-grid {
   display: grid;
@@ -1409,32 +1405,4 @@ header.ll-nav {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
-/* Citrus Circle form */
-.circle-form {
-  display: flex;
-  gap: 0.5rem;          /* space between fields */
-  align-items: stretch; /* keeps all inputs/buttons same height */
-}
 
-.circle-form input,
-.circle-form button {
-  flex: 1;              /* inputs expand equally */
-  padding: 0.6rem 0.8rem;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  font-size: 0.95rem;
-}
-
-.circle-form button {
-  flex: 0;              /* button only as wide as its text */
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.circle-form button:hover {
-  background: var(--accent-hover, var(--accent));
-}
