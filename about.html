@@ -126,17 +126,19 @@
       <!-- Brand -->
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
 
-      <!-- Desktop menu -->
+        <!-- Desktop nav -->
       <nav class="menu" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About</a>
         <a href="founder.html">Founder</a>
+        <a href="sessions.html">Sessions</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+               fill="none" stroke="currentColor" stroke-width="2"
+               width="22" height="22" aria-hidden="true">
             <circle cx="12" cy="8" r="4"></circle>
             <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
           </svg>
@@ -147,17 +149,19 @@
       <input type="checkbox" id="nav-toggle" aria-label="Open menu">
       <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
 
-      <!-- Mobile drawer -->
+      <!-- Mobile nav -->
       <nav class="drawer" aria-label="Mobile">
         <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
+        <a href="about.html"class="active">About</a>
         <a href="founder.html">Founder</a>
+        <a href="sessions.html" >Sessions</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+               fill="none" stroke="currentColor" stroke-width="2"
+               width="22" height="22" aria-hidden="true">
             <circle cx="12" cy="8" r="4"></circle>
             <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
           </svg>
@@ -165,6 +169,7 @@
       </nav>
     </div>
   </header>
+
 
   <!-- Progress bar -->
   <div class="progress" aria-hidden="true"><span></span></div>
@@ -178,48 +183,115 @@
         <p class="hero-sub">Balance-forward tools where clarity meets action, that’s Lace & Lime™.</p>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="journal.html">Start the Journal</a>
-          <a class="btn btn-ghost" href="explore.html">Explore the Approach</a>
-        </div>
-      </div>
+          <a class="btn btn-primary" href="founder.html">Meet the Founder</a>
+       </div>
     </section>
 
-    <!-- ABOUT CONTENT -->
-   <section class="wrap" style="margin-top:2rem;">
-  <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-    
-    <article class="card">
-      <h3>Purpose</h3>
-      <p>To make wellness and empowerment accessible, clear, and actionable. Lace & Lime™ exists to help people move from awareness to aligned action in ways that last.</p>
-    </article>
 
-    <article class="card">
-      <h3>Foundation</h3>
-      <p>Born from lived experience in healthcare, nonprofits, and emergency response, Lace & Lime™ reflects the truth that resilience is strongest when clarity and compassion work together.</p>
-    </article>
+<!-- ABOUT CARDS CAROUSEL -->
+<section class="about-carousel wrap">
+  <div class="carousel">
+    <div class="carousel-track">
 
-    <article class="card">
-      <h3>Principles</h3>
-      <p>Wellness and strategy support each other; small, steady shifts create sustainable change; knowledge and tools are shared with clarity and intention.</p>
-    </article>
+      <!-- WHY Lace & Lime -->
+      <article class="card">
+        <h3>Why Lace & Lime™</h3>
+        <p><em>Lace & Lime™ exists to make wellness and empowerment accessible, clear, and actionable.</em></p>
+      </article>
+      <article class="card">
+        <p>
+          Born from lived experience in healthcare, nonprofits, and community work, we carry forward the truth 
+          that resilience is strongest when clarity and compassion work together.
+        </p>
+      </article>
 
-    <article class="card">
-      <h3>Method</h3>
-      <p>We design evidence-informed prompts, guided practices, and tools that invite both reflection and action. Each resource is structured to help people pause, realign, and then move forward with confidence.</p>
-    </article>
+      <!-- HOW We Work -->
+      <article class="card">
+        <h3>How We Work</h3>
+        <p><em>Clarity becomes lasting when it’s practiced with intention.</em></p>
+      </article>
+      <article class="card">
+        <p>
+          Through prompts, guided practices, and steady strategies, Lace & Lime™ blends reflection with action. 
+          Our approach helps people pause, realign, and take steps that create sustainable change.
+        </p>
+      </article>
 
-    <article class="card">
-      <h3>Workshops</h3>
-      <p>Through tailored sessions and strategic partnerships, we deliver experiences that help people reflect, reset, and strengthen habits they can carry into everyday life.</p>
-    </article>
+      <!-- WHAT We Offer -->
+      <article class="card">
+        <h3>What We Offer</h3>
+        <p><em>Resources designed to support momentum.</em></p>
+      </article>
+      <article class="card">
+        <p>
+          From guided prompts and workshops to forthcoming journals and clarity tools, Lace & Lime™ delivers 
+          what you need to reflect, reset, and move forward with balance.
+        </p>
+      </article>
 
-    <article class="card">
-      <h3>Tools & Resources</h3>
-      <p>Lace & Lime™ continues to build guided resources, including a forthcoming journal, designed to support reflection, alignment, and sustainable momentum.</p>
-    </article>
+    </div>
+  </div>
 
+  <!-- Controls -->
+  <div class="carousel-controls">
+    <button class="prev">‹</button>
+    <button class="next">›</button>
   </div>
 </section>
+
+<style>
+/* Container */
+.about-carousel {
+  position: relative;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Track */
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Cards */
+.carousel-track .card {
+  flex: 0 0 100%;        /* each card takes full width */
+  max-width: 100%;       /* don’t spill */
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+  white-space: normal;   /* wrap text */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+/* Controls */
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.carousel-controls button {
+  background: var(--accent, #2d5a27);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+</style>
+
 
 
     <!-- CTA CARDS (optional, like Index) -->
@@ -230,7 +302,7 @@
     <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
   </footer>
 
-  <!-- ===== Scripts (same as index) ===== -->
+    <!-- ===== Scripts (same as index) ===== -->
   <script>
     // Progress bar
     (function () {
@@ -248,11 +320,50 @@
     (function () {
       const tl = document.querySelector('.tagline');
       if (!tl) return;
-      const play = () => { tl.classList.add('glitter'); setTimeout(() => tl.classList.remove('glitter'), 1600); };
+      const play = () => { 
+        tl.classList.add('glitter'); 
+        setTimeout(() => tl.classList.remove('glitter'), 1600); 
+      };
       play();
       tl.addEventListener('click', play);
       tl.addEventListener('touchstart', play, { passive: true });
     })();
+  </script>
+
+  <!-- CAROUSEL -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.querySelector('.carousel-track');
+      if (!track) return; // safety check
+
+      const prev = document.querySelector('.prev');
+      const next = document.querySelector('.next');
+      const cards = Array.from(track.children);
+
+      let index = 0;
+
+      function updateCarousel() {
+        const cardWidth = track.parentElement.offsetWidth; // use visible container width
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
+      }
+
+      next?.addEventListener('click', () => {
+        if (index < cards.length - 1) {
+          index++;
+          updateCarousel();
+        }
+      });
+
+      prev?.addEventListener('click', () => {
+        if (index > 0) {
+          index--;
+          updateCarousel();
+        }
+      });
+
+      window.addEventListener('resize', updateCarousel);
+      updateCarousel(); // set initial position
+    });
   </script>
 
   <script>
@@ -280,3 +391,4 @@
   </script>
 </body>
 </html>
+

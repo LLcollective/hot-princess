@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Explore | Lace & Lime™</title>
-  <meta name="description" content="Explore Lace & Lime™ — prompts, frameworks, and tools that turn awareness into momentum." />
+  <title>About | Lace & Lime™</title>
+  <meta name="description" content="About Lace & Lime™ — our story, mission, and approach to turning awareness into momentum." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 
-  <!-- ===== HOTFIX styles (match inner pages) ===== -->
+
+  <!-- ===== HOTFIX styles (same baseline as index) ===== -->
   <style>
+    /* ---------- Theme tokens ---------- */
     :root { --bg:#FAF9F6; --text:#203042; --muted:#5E7181; --accent:#5C8E37; --line:rgba(32,48,66,.12); }
     body[data-theme="coastal"]{ --bg:#fdfdfd; --text:#1a2e3f; --accent:#31708e; }
     body[data-theme="fresh-lime"]{ --bg:#F4F8EE; --text:#203042; --accent:#5C8E37; }
@@ -17,27 +19,45 @@
     body{ background:var(--bg); color:var(--text); margin:0; }
     a { color: var(--accent); text-decoration: none; }
 
+    /* ---------- Header / Nav ---------- */
     .ll-nav { position:sticky; top:0; z-index:1000; background:var(--bg); border-bottom:1px solid transparent; }
     .ll-nav .wrap{ display:flex; align-items:center; gap:16px; padding:12px 16px; max-width:1120px; margin:0 auto; }
 
     .brand{ font-family:"Tenor Sans",serif; letter-spacing:.08em; color:var(--accent); font-size:20px; text-decoration:none; }
     .brand .tm{ font-size:.7em; vertical-align:super; opacity:.85 }
 
+    /* Desktop menu hidden by default (mobile-first) */
     .menu{ display:none; gap:22px; align-items:center; margin-left:auto; }
     .menu a{ color:var(--text); font:600 15px/1 "Work Sans",sans-serif; }
-    .menu a.active{ text-decoration:underline; color:var(--accent); text-underline-offset:4px; }
+    .menu a.active{ text-decoration:underline; }
 
+    /* Burger */
     #nav-toggle{ position:absolute; opacity:0; pointer-events:none; }
-    .burger{ margin-left:auto; width:40px; height:40px; display:inline-flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; cursor:pointer; z-index:1001; }
+    .burger{
+      margin-left:auto; width:40px; height:40px; display:inline-flex; flex-direction:column;
+      justify-content:center; align-items:center; gap:5px; cursor:pointer; z-index:1001;
+    }
     .burger span{ width:22px; height:2px; background:var(--accent); border-radius:2px; }
 
-    .drawer{ position:absolute; top:60px; left:12px; right:12px; display:none; flex-direction:column; gap:14px; background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.08); padding:16px; z-index:1000; border-top:2px solid var(--accent); }
+    /* Drawer (mobile) */
+    .drawer{
+      position:absolute; top:60px; left:12px; right:12px; display:none; flex-direction:column; gap:14px;
+      background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.08); padding:16px; z-index:1000;
+      border-top:2px solid var(--accent);
+    }
     .drawer a{ color:var(--text); font:600 16px/1 "Work Sans",sans-serif; }
     .drawer a:hover{ color:var(--accent); }
+
+    /* Toggle drawer when checked */
     #nav-toggle:checked ~ .drawer{ display:flex; }
 
-    @media (min-width:768px){ .burger,.drawer{ display:none !important; } .menu{ display:flex; } }
+    /* Desktop breakpoint */
+    @media (min-width:768px){
+      .burger,.drawer{ display:none !important; }
+      .menu{ display:flex; }
+    }
 
+    /* ---------- Theme icon buttons (heart + star) ---------- */
     .theme-switch{ display:flex; gap:8px; }
     .theme-switch button{
       border:1px solid var(--accent); background:transparent; color:var(--accent);
@@ -46,8 +66,9 @@
     .theme-switch button.active, .theme-switch button:hover{ background:var(--accent); color:#fff; }
     .theme-switch svg{ width:18px; height:18px; display:block; stroke:currentColor; fill:none; stroke-width:2; }
 
+    /* ---------- Hero & UI ---------- */
     .hero--stack .wrap{ text-align:center; }
-    .hero-sub{ max-width:720px; margin:14px auto 18px; color:var(--muted); }
+    .hero--stack .hero-sub{ max-width:720px; margin:14px auto 18px; color:var(--muted); }
     .cta-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
     .btn{ display:inline-block; padding:11px 16px; border-radius:12px; font:600 15px/1 "Work Sans",sans-serif; }
     .btn-primary{ background:var(--accent); color:#fff !important; border:none; }
@@ -62,111 +83,535 @@
     @keyframes shimmer-text{ from{background-position:0% center} to{background-position:200% center} }
     .tagline.glitter, .tagline:hover{ animation: shimmer-text 1.6s ease-out 1; }
 
+    /* ---------- Layout helpers & Cards ---------- */
     .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
     .cards-grid{ display:grid; grid-template-columns:1fr; gap:22px; margin:28px auto 64px; }
     @media (min-width:800px){ .cards-grid{ grid-template-columns:repeat(2,1fr); } }
-    .card{ display:flex; flex-direction:column; padding:22px; border-radius:18px; border:1px solid var(--line); box-shadow:0 10px 30px rgba(20,40,30,.08); color:var(--text); text-decoration:none; }
+    .card{ display:flex; flex-direction:column; padding:22px; border-radius:18px; border:1px solid var(--line);
+      box-shadow:0 10px 30px rgba(20,40,30,.08); color:var(--text); text-decoration:none; }
     .card h3{ margin:0 0 6px; font-family:"Tenor Sans",serif; }
     .card p{ margin:6px 0 12px; color:var(--muted); }
+    .chip{ display:inline-block; align-self:flex-start; margin-top:14px; padding:8px 14px; border-radius:999px;
+      border:2px solid var(--text); background:#fff; color:var(--text); font:700 14px/1 "Work Sans",sans-serif; }
+    .chip:hover{ background:var(--text); color:#fff; }
 
+    /* ---------- Progress bar ---------- */
     .progress{ position:fixed; left:0; top:0; height:3px; width:100%; background:transparent; z-index:60; }
     .progress span{ display:block; height:100%; width:0; background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); }
+
+
+
+
+/* Explore page only */
+.explore-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+.explore-card {
+  max-width: 520px;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(20,40,30,.08);
+  background: #fff;
+}
+
+.explore-card h3 {
+  font-family: "Tenor Sans", serif;
+  margin: 0 0 0.75rem;
+}
+
+.explore-card p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.explore-card .button-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;   /* keeps content centered like other pages */
+  margin: 2rem auto;   /* centers the grid */
+  padding: 0 1rem;     /* adds breathing room on small screens */
+}
+
+.explore-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.explore-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* Explore page themed buttons */
+.explore-card .btn-primary {
+  display: inline-block;
+  background: var(--accent);   /* theme accent color */
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.explore-card .btn-primary:hover {
+  background: var(--accent-hover, var(--accent));
+}
+
+.explore-card .btn-secondary {
+  display: inline-block;
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.explore-card .btn-secondary:hover {
+  background: var(--accent);
+  color: #fff;
+}
+/* Citrus Circle form */
+.circle-form {
+  display: flex;
+  gap: 0.5rem;          /* space between fields */
+  align-items: stretch; /* keeps all inputs/buttons same height */
+}
+
+.circle-form input,
+.circle-form button {
+  flex: 1;              /* inputs expand equally */
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.circle-form button {
+  flex: 0;              /* button only as wide as its text */
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.circle-form button:hover {
+  background: var(--accent-hover, var(--accent));
+}
+
+
+
+
+.circle-form {
+  display: flex;
+  flex-direction: row;   /* force row layout */
+  gap: 0.5rem;           /* spacing between items */
+  flex-wrap: nowrap;     /* keep them in one line */
+  margin-top: 1rem;
+}
+
+.circle-form input,
+.circle-form button {
+  height: 2.2rem;        /* shorter than default */
+  padding: 0 0.75rem;    /* slimmer padding */
+  font-size: 0.9rem;     /* slightly smaller font */
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.circle-form input {
+  flex: 1;               /* name and email expand evenly */
+  min-width: 140px;      /* prevents collapsing on small screens */
+}
+
+.circle-form button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;   /* keeps text on one line */
+  transition: background 0.2s ease;
+}
+
+.circle-form button:hover {
+  background: var(--accent-hover, var(--accent));
+}
+
+
   </style>
+  <!-- ===== HOTFIX styles end ===== -->
 </head>
 
 <body data-theme="fresh-lime">
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Header (matches Index) -->
   <header class="ll-nav">
     <div class="wrap">
+      <!-- Theme Switcher (heart = coastal, star = lime) -->
       <div class="theme-switch">
         <button data-set-theme="coastal" aria-label="Coastal (Heart)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 12 21 12 21z"/></svg>
+          <!-- Heart outline -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 12 21 12 21z"/>
+          </svg>
         </button>
         <button data-set-theme="fresh-lime" class="active" aria-label="Lime (Star)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 3.3 1.2-7-5-4.9 7-1L12 2z"/></svg>
+          <!-- Star outline -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 3.3 1.2-7-5-4.9 7-1L12 2z"/>
+          </svg>
         </button>
       </div>
 
+      <!-- Brand -->
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
 
+        <!-- Desktop nav -->
       <nav class="menu" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="founder.html">Founder</a>
+        <a href="sessions.html">Sessions</a>
         <a href="journal.html">Journal</a>
-        <a href="explore.html" class="active">Explore</a>
+   <a href="explore.html" class="active">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+          </svg>
         </a>
       </nav>
 
+      <!-- Mobile burger -->
       <input type="checkbox" id="nav-toggle" aria-label="Open menu">
-      <label class="burger" for="nav-toggle"><span></span><span></span><span></span></label>
+      <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
 
+      <!-- Mobile nav -->
       <nav class="drawer" aria-label="Mobile">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="founder.html">Founder</a>
+        <a href="sessions.html">Sessions</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html" class="active">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               width="22" height="22" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+          </svg>
         </a>
       </nav>
     </div>
   </header>
 
+
+  <!-- Progress bar -->
   <div class="progress" aria-hidden="true"><span></span></div>
 
   <main id="main">
+    <!-- HERO -->
     <section class="hero hero--stack">
       <div class="wrap">
         <span class="eyebrow">EXPLORE</span>
-        <h1 class="tagline">Framework-first, life-ready.</h1>
-        <p class="hero-sub">Prompts, rituals, and tools designed to carry clarity into action — in seasons, weeks, and small moments.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="journal.html">Start the Journal</a>
-          <a class="btn btn-ghost" href="#prompts">Browse Prompts</a>
-        </div>
-      </div>
-    </section>
+        <h1 class="tagline">Discover your Lace & Lime™ journey.</h1>
+        <p class="hero-sub">Resources, tools, and music curated to help you turn awareness into momentum. From the the seasons, weeks, to the small moments.
+</p></section>
 
-    <!-- Sections -->
-    <section class="wrap cards-grid" id="prompts">
-      <article class="card">
-        <h3>Guided Prompts</h3>
-        <p>Short, grounded prompts with micro-nudges to shape action the same day.</p>
-      </article>
-      <article class="card">
-        <h3>Rituals</h3>
-        <p>Lightweight, repeatable practices for mornings, resets, and transitions.</p>
-      </article>
-      <article class="card">
-        <h3>Playlists</h3>
-        <p>Music-guided arcs that set tone and tempo across seasons and sets.</p>
-      </article>
-      <article class="card">
-        <h3>Frameworks</h3>
-        <p>From 4×4 cycles to energy mapping — scaffolds that make momentum stick.</p>
-      </article>
-    </section>
-  </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
-  </footer>
+<!-- Citrus Circle + Spotify Explore Section -->
+<section class="explore-grid">
 
-  <!-- Scripts -->
-  <script>
-    // Progress
-    (function(){const bar=document.querySelector('.progress span');if(!bar)return;addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=((h.scrollTop)/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});})();
-    // Glitter
-    (function(){const tl=document.querySelector('.tagline');if(!tl)return;const play=()=>{tl.classList.add('glitter');setTimeout(()=>tl.classList.remove('glitter'),1600);};play();tl.addEventListener('click',play);tl.addEventListener('touchstart',play,{passive:true});})();
-    // Theme
-    (function(){const saved=localStorage.getItem('theme');const initial=saved||document.body.dataset.theme||'fresh-lime';document.body.dataset.theme=initial;mark(initial);document.addEventListener('click',e=>{const b=e.target.closest('[data-set-theme]');if(!b)return;const t=b.dataset.setTheme;document.body.dataset.theme=t;localStorage.setItem('theme',t);mark(t);});function mark(t){document.querySelectorAll('.theme-switch [data-set-theme]').forEach(b=>b.classList.toggle('active',b.dataset.setTheme===t));}})();
-  </script>
+  <!-- Spotify Card -->
+  <article class="explore-card spotify-card">
+    <div class="card-header">
+      <span class="badge">Now playing</span>
+      <h3>Lace & Lime™ Vibes</h3>
+    </div>
+    <p>A curated playlist to set the tone - reflection, action, and balance-forward energy.</p>
+    <div class="button-row">
+      <!-- Spotify button with icon (theme-based secondary style) -->
+      <a href="https://open.spotify.com/playlist/7fzL3lCumo5OhjjddCyyfg" 
+         target="_blank" class="btn-secondary btn-spotify">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
+             viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.371 0 0 5.371 0 12c0 6.629 5.371 12 
+                   12 12s12-5.371 12-12c0-6.629-5.371-12-12-12zm5.508 
+                   17.375a.747.747 0 0 1-1.027.248c-2.811-1.719-6.355-2.109-10.543-1.152a.749.749 
+                   0 1 1-.322-1.465c4.609-1.016 8.566-.566 
+                   11.664 1.316.352.215.465.676.228 1.053zm1.465-3.264a.936.936 
+                   0 0 1-1.287.293c-3.223-1.988-8.137-2.566-11.934-1.402a.938.938 
+                   0 1 1-.576-1.785c4.301-1.387 9.668-.742 
+                   13.402 1.566a.936.936 0 0 1 .395 1.328zm.129-3.422c-3.703-2.203-9.922-2.406-13.492-1.313a1.124 
+                   1.124 0 0 1-.654-2.145c4.121-1.262 
+                   11.102-1.012 15.34 1.523a1.124 
+                   1.124 0 0 1-1.195 1.934z"/>
+        </svg>
+        Play on Spotify
+      </a>
+      <button class="btn-secondary" onclick="togglePlayer()">Show Player</button>
+    </div>
+    <div id="spotify-player" style="display:none; margin-top:1rem;">
+      <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
+        width="100%" height="152" frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>
+    </div>
+  </article>
+
+  <!-- Citrus Circle Card -->
+  <article class="explore-card citrus-card">
+    <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
+    <p>
+      All the essentials in fresh squeeze, not a flood.  
+      Delivered with Lace & Lime™.
+    </p>
+    <form class="circle-form">
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <button type="submit" class="btn-citrus">Join the Circle</button>
+    </form>
+    <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
+  </article>
+
+</section>
+</main>
+
+<style>
+/* -------------------------
+   Shared Card Style
+-------------------------- */
+.card, .explore-card {
+  padding: 1.5rem;
+  border: 1px solid var(--line, #e5e5e5);
+  border-radius: 12px;
+  background: #fefefc;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin: 0;
+}
+
+/* Citrus Card */
+.citrus-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--accent-dark, #2d5a27);
+}
+.citrus-note {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Form */
+.circle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.circle-form input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+@media (min-width: 768px) {
+  .circle-form {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .circle-form input {
+    flex: 1 1 auto;
+    max-width: 200px;
+  }
+}
+
+/* Buttons */
+.btn-citrus {
+  appearance: none;
+  font-weight: 600;
+  border: none;
+  background: linear-gradient(135deg, #8bc34a, #ffca28);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-citrus:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--accent, #2d5a27);
+  color: var(--accent-dark, #2d5a27);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  background: var(--accent, #2d5a27);
+  color: #fff;
+}
+
+/* Spotify button piggybacks secondary */
+.btn-spotify svg {
+  flex-shrink: 0;
+}
+
+/* Shared Grid */
+.explore-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Citrus Form (no button styling here!) */
+.circle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.circle-form input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+@media (min-width: 768px) {
+  .circle-form {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .circle-form input {
+    flex: 1 1 auto;
+    max-width: 200px;
+  }
+
+/* ✅ Citrus Gradient Button */
+.btn-citrus {
+  appearance: none;
+  font-weight: 600;
+  border: none;
+  background: linear-gradient(135deg, #8bc34a, #ffca28) !important; /* lock in gradient */
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  text-align: center;
+}
+.btn-citrus:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Badge (Now playing) */
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #8bc34a, #ffca28); /* lime → lemon */
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px; /* pill shape */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+/* Shared Grid */
+.explore-grid {
+  display: grid;
+  gap: 24px; /* a bit more breathing room */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-content: center;      /* ✅ keeps them centered */
+  align-items: start;
+  max-width: 1000px;            /* ✅ narrower container */
+  margin: 0 auto;               /* center the whole section */
+  padding: 0 1rem;
+}
+
+.explore-card {
+  max-width: 460px;             /* ✅ prevents stretching */
+  margin: 0 auto;               /* keep each card centered */
+}
+
+</style>
+
+<!-- Scripts -->
+<script>
+  // Spotify toggle
+  function togglePlayer() {
+    const player = document.getElementById("spotify-player");
+    player.style.display = (player.style.display === "none") ? "block" : "none";
+  }
+
+  // Theme switcher
+  document.addEventListener("DOMContentLoaded", () => {
+    const root = document.body;
+    const themeButtons = document.querySelectorAll(".theme-switch button");
+
+    themeButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const theme = button.getAttribute("data-set-theme");
+        root.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        // Update active button styling
+        themeButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+      });
+    });
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      root.setAttribute("data-theme", savedTheme);
+      document.querySelector(`.theme-switch button[data-set-theme="${savedTheme}"]`)?.classList.add("active");
+    }
+  });
+</script>
 </body>
 </html>

@@ -143,47 +143,50 @@
       <!-- Brand -->
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
 
-      <!-- Desktop menu -->
+      <!-- Desktop nav -->
       <nav class="menu" aria-label="Primary">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
+        <a href="index.html"class="active">Home</a>
+        <a href="about.html" >About</a>
         <a href="founder.html">Founder</a>
+        <a href="sessions.html">Sessions</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+               fill="none" stroke="currentColor" stroke-width="2"
+               width="22" height="22" aria-hidden="true">
             <circle cx="12" cy="8" r="4"></circle>
             <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
           </svg>
         </a>
       </nav>
 
-      <!-- Mobile burger (checkbox toggles drawer) -->
+      <!-- Mobile burger -->
       <input type="checkbox" id="nav-toggle" aria-label="Open menu">
       <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
 
-      <!-- Mobile drawer -->
+      <!-- Mobile nav -->
       <nav class="drawer" aria-label="Mobile">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html"class="active">Home</a>
         <a href="about.html">About</a>
         <a href="founder.html">Founder</a>
+        <a href="sessions.html" >Sessions</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" width="22" height="22" aria-hidden="true">
+               fill="none" stroke="currentColor" stroke-width="2"
+               width="22" height="22" aria-hidden="true">
             <circle cx="12" cy="8" r="4"></circle>
             <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
           </svg>
         </a>
       </nav>
     </div>
-
-
   </header>
+
 
   <!-- Progress bar -->
   <div class="progress" aria-hidden="true"><span></span></div>
@@ -198,42 +201,108 @@
           Reflection that moves. <em>Action that sticks.</em> Growth you can feel.
         </h1>
 
-        <p class="hero-sub">
-          Lace & Lime™ blends clear prompts with aligned steps—turning awareness into momentum.
-        </p>
+        <p class="hero-sub">Lace & Lime™ blends reflection with aligned steps, turning awareness into momentum.</p>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="journal.html">Start the Journal</a>
-          <a class="btn btn-ghost" href="explore.html">Explore the Approach</a>
+          <a class="btn btn-primary" href="about.html">Our Story</a>
+          <a class="btn btn-ghost" href="founder.html">Founder</a>
         </div>
       </div>
     </section>
 
-    <!-- CARDS -->
-    <section class="wrap">
-      <div class="cards-grid">
-        <a class="card sky" href="journal.html">
-          <h3>Journal</h3>
-          <p>4×4 cycles for clarity → action.</p>
-        </a>
+ <!-- CITRUS CIRCLE SIGNUP -->
+<section class="wrap" style="margin-top:2rem;">
+  <article class="card citrus-card">
+    <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
+    <p class="citrus-text">
+      Some pages are still in progress. Join the Circle to be notified as soon as the full soft launch is complete.  
+      Be the first to hear about upcoming launches, projects, and resources - all in fresh squeeze, not a flood.  
+      Delivered with Lace & Lime™.
+    </p>
 
-        <a class="card lime" href="explore.html#prompts">
-          <h3>Guided Prompts</h3>
-          <p>Short, grounded prompts with embedded mini-rituals.</p>
-        </a>
+    <form class="circle-form">
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email Address">
+      <button type="submit">Join the Circle</button>
+    </form>
 
-        <a class="card mint" href="explore.html">
-          <h3>Workshops</h3>
-          <p>Low-barrier, high-care sessions.</p>
-        </a>
+    <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
+  </article>
+</section>
 
-        <a class="card peach" href="founder.html#insights">
-          <h3>Founder Insights</h3>
-          <p>Stories, frameworks, and field notes.</p>
+<style>
+/* Citrus Circle Card Styling */
+.citrus-card {
+  padding: 1.5rem;
+  border: 1px solid var(--line, #e5e5e5);
+  border-radius: 12px;
+  background: #fefefc; /* light citrus background */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.citrus-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--accent-dark, #2d5a27);
+}
+
+.citrus-text {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+/* Citrus Circle Form */
+.circle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.circle-form input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--line, #ccc);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.circle-form input:focus {
+  border-color: var(--accent, #2d5a27);
+}
+
+.circle-form button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #8bc34a, #ffca28); /* lime → lemon */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.circle-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.citrus-note {
+  font-size: 0.85rem;
+  color: #666;
+}
+</style>
+
         </a>
-      </div>
-    </section>
-  </main>
+   </main>
 
   <footer class="site-footer" role="contentinfo">
     <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>

@@ -1141,3 +1141,300 @@ nav ul.active {
 .full-width {
   flex: 100%;
 }
+
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel .slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.carousel .card {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+
+.newsletter-card {
+  max-width: 480px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--surface, #fff);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.newsletter-card h2 {
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--text, #222);
+}
+
+.newsletter-card .sub {
+  color: var(--accent, #6BA539);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.newsletter-card .note {
+  color: var(--accent, #6BA539);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-card form {
+  margin-top: 1rem;
+}
+
+.newsletter-card input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--accent, #6BA539);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.newsletter-card button {
+  background: var(--accent, #6BA539);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.newsletter-card button:hover {
+  background: #588b2f; /* darker lime hover */
+}
+
+.newsletter-card small {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* prevents forcing extra space */
+  height: auto;               /* make card shrink to fit content */
+  min-height: unset;          /* remove any minimum height */
+  padding-bottom: 1rem;       /* just enough breathing room */
+}
+.card form {
+  margin-bottom: 0; /* remove extra margin after the form */
+}
+
+.card .form-footer, 
+.card .formkit-guarantee {
+  margin-bottom: 0.5rem; /* smaller space after unsubscribe text */
+}
+
+
+.card.join-circle {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-bottom: 1rem !important;
+}
+
+.card.join-circle form,
+.card.join-circle .formkit-guarantee {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Default (fresh-lime) */
+body[data-theme="fresh-lime"] {
+  --bg: #fdfdfc;
+  --text: #1d1d1d;
+  --accent: #4a8f3f;
+  --accent-contrast: #ffffff;
+}
+
+/* Coastal theme */
+body[data-theme="coastal"] {
+  --bg: #f0f9ff;
+  --text: #003049;
+  --accent: #006d77;
+  --accent-contrast: #ffffff;
+}
+
+/* Apply vars globally */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a, .btn, .form-button {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+header.ll-nav {
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.circle-form input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.circle-form button {
+  background: #4b8b3b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.explore-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 700px;   /* keep them smaller */
+  width: 100%;        /* responsive */
+}
+/* Explore page cards only */
+.explore-card {
+  max-width: 500px;   /* keep cards from stretching across screen */
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.explore-card h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: var(--text-color);
+}
+
+.circle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.circle-form input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.circle-form button {
+  margin-top: 0.5rem;
+}
+.explore-card {
+  background: pink !important;
+}
+
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;   /* keeps content centered like other pages */
+  margin: 2rem auto;   /* centers the grid */
+  padding: 0 1rem;     /* adds breathing room on small screens */
+}
+
+.explore-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.explore-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+/* Citrus Circle form */
+.circle-form {
+  display: flex;
+  gap: 0.5rem;          /* space between fields */
+  align-items: stretch; /* keeps all inputs/buttons same height */
+}
+
+.circle-form input,
+.circle-form button {
+  flex: 1;              /* inputs expand equally */
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.circle-form button {
+  flex: 0;              /* button only as wide as its text */
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.circle-form button:hover {
+  background: var(--accent-hover, var(--accent));
+}
