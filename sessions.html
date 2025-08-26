@@ -275,42 +275,49 @@
   <div class="carousel">
     <div class="carousel-track">
 
-      <!-- Session 1 -->
-      <article class="card">
-        <h3>Career Clarity & Next Steps</h3>
-        <p>Define your direction and map out actionable moves that align with your strengths, values, and vision. We’ll also address how to present yourself — from resumes and profiles to authentic branding — so you can show up with confidence in every space.</p>
-        <a href="contact.html" class="btn-citrus">Book a Consultation</a>
-      </article>
+   <!-- Session 1 -->
+<article class="card">
+  <h3>Career Clarity & Next Steps</h3>
+  <p>Define your direction and map out actionable moves that align with your strengths, values, and vision. We’ll also address how to present yourself; from resumes and digital profiles to authentic branding, so you can show up with confidence in every space.</p>
+  <a href="contact.html" class="btn-citrus">Book a Consultation</a>
+</article>
 
-      <!-- Session 2 -->
-      <article class="card">
-        <h3>Burnout Recovery & Self-Leadership</h3>
-        <p>Recover from burnout with personalized strategies that restore your energy, resilience, and sense of control. Learn how to set boundaries, protect your focus, and build self-leadership practices that sustain you long-term.</p>
-        <a href="contact.html" class="btn-citrus">Book a Consultation</a>
-      </article>
+<!-- Session 2 -->
+<article class="card">
+  <h3>Burnout Recovery & Self-Leadership</h3>
+  <p>Recover from burnout with personalized strategies that restore your energy, resilience, and sense of control. You’ll learn how to set boundaries, protect your focus, and build self-leadership practices that sustain you over time.</p>
+  <a href="contact.html" class="btn-citrus">Book a Consultation</a>
+</article>
 
-            <!-- Session 3 -->
-      <article class="card">
-        <h3>Grant & Proposal Strategy</h3>
-        <p>Strengthen your proposals and project plans for clarity, impact, and funding success. Whether you’re shaping your first grant or refining a complex application, I help you build persuasive strategies rooted in nonprofit, public health, and startup experience.</p>
-        <a href="contact.html" class="btn-citrus">Book a Consultation</a>
-      </article>
+<!-- Session 3 -->
+<article class="card">
+  <h3>Grant & Proposal Strategy</h3>
+  <p>Strengthen your proposals and project plans with clarity, structure, and impact. Whether you’re shaping your first grant or refining a complex application, you’ll gain persuasive strategies grounded in nonprofit, public health, and startup experience.</p>
+  <a href="contact.html" class="btn-citrus">Book a Consultation</a>
+</article>
 
     </div>
   </div>
 
-  <!-- Controls -->
-  <div class="carousel-controls">
-    <button class="prev">‹</button>
-    <button class="next">›</button>
-  </div>
-</section>
+<!-- Controls -->
+<div class="carousel-controls">
+  <button class="prev" aria-label="Previous">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button class="next" aria-label="Next">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M9 6l6 6-6 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
 
 <style>
 /* --- Sessions Carousel Styles --- */
 .sessions-carousel {
   position: relative;
-  max-width: 1000px;
+  max-width: 900px;
   margin: 2rem auto;
 }
 
@@ -324,33 +331,90 @@
   transition: transform 0.4s ease-in-out;
 }
 
+/* Card styling (mirrors About look) */
 .sessions-carousel .card {
-  flex: 0 0 100%; /* one card per viewport width */
-  max-width: 100%;
+  flex: 0 0 90%;
+  max-width: 700px;
+  margin: 0 auto;
   padding: 1.5rem;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   text-align: left;
   box-sizing: border-box;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.sessions-carousel .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
+.sessions-carousel .card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--accent-dark, #2d5a27);
+}
+
+.sessions-carousel .card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.sessions-carousel .card a.btn-citrus {
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Controls (gradient buttons, bigger arrows) */
 .sessions-carousel .carousel-controls {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .sessions-carousel .carousel-controls button {
-  background: var(--accent, #2d5a27);
-  color: #fff;
+  background: linear-gradient(135deg, #8bc34a, #ffca28);
   border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  border-radius: 6px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.sessions-carousel .carousel-controls button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.sessions-carousel .carousel-controls svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff; /* keep arrows visible */
+}
+
+.sessions-carousel .card {
+  flex: 0 0 100%;   /* full width card */
+  max-width: 100%;  /* prevent clipping */
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+  box-sizing: border-box;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
 </style>
 
 <!-- Footer -->
@@ -445,3 +509,4 @@
 
 </body>
 </html>
+

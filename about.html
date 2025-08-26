@@ -232,14 +232,80 @@
     </div>
   </div>
 
-  <!-- Controls -->
+   <!-- Controls -->
   <div class="carousel-controls">
-    <button class="prev">‹</button>
-    <button class="next">›</button>
+    <button class="prev" aria-label="Previous">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="next" aria-label="Next">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M9 6l6 6-6 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   </div>
 </section>
 
 <style>
+/* --- About Carousel Styles --- */
+.about-carousel {
+  position: relative;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.about-carousel .carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.about-carousel .carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.about-carousel .card {
+  flex: 0 0 100%; /* one card at a time */
+  max-width: 100%;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.about-carousel .carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.about-carousel .carousel-controls button {
+  background: linear-gradient(135deg, #8bc34a, #ffca28); /* lime → lemon */
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about-carousel .carousel-controls button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.about-carousel .carousel-controls button svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* Container */
 .about-carousel {
   position: relative;
@@ -282,14 +348,26 @@
 }
 
 .carousel-controls button {
-  background: var(--accent, #2d5a27);
+   background: var(--accent, #2d5a27);
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+ 
 }
+.sessions-carousel .carousel-controls button:hover {
+  background: var(--accent-dark, #24481f);
+  transform: scale(1.05);
+}
+
+
 </style>
 
 
