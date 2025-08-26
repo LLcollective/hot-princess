@@ -304,7 +304,24 @@
     left: 12px;
     right: 12px;
   }
+
+
+/* --- TEMP FIX: stop green nav covering logo --- */
+header, 
+nav {
+  background: var(--bg, #fff) !important; /* force light bg */
 }
+
+header .brand, 
+header .brand a {
+  color: var(--text, #000) !important; /* make sure logo text shows */
+  z-index: 1001; /* stays on top of burger overlay */
+}
+
+.drawer {
+  background: #fff; /* keep mobile drawer background white */
+}
+
 </style>
 
 </main>
