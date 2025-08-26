@@ -209,14 +209,13 @@
         </div>
       </div>
     </section>
-
- <!-- CITRUS CIRCLE SIGNUP -->
+<!-- CITRUS CIRCLE SIGNUP -->
 <section class="wrap" style="margin-top:2rem;">
   <article class="card citrus-card">
     <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
     <p class="citrus-text">
       Some pages are still in progress. Join the Circle to be notified as soon as the full soft launch is complete.  
-      Be the first to hear about upcoming launches, projects, and resources - all in fresh squeeze, not a flood.  
+      Be the first to hear about upcoming launches, projects, and resources – all in fresh squeeze, not a flood.  
       Delivered with Lace & Lime™.
     </p>
 
@@ -236,20 +235,15 @@
   padding: 1.5rem;
   border: 1px solid var(--line, #e5e5e5);
   border-radius: 12px;
-  background: #fefefc; /* light citrus background */
+  background: #fefefc;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
 }
-
-
-.citrus-text {
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 1.25rem;
-  line-height: 1.5;
-}
+.citrus-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent-dark, #2d5a27); }
+.citrus-text { font-size: 1rem; color: #333; margin-bottom: 1.25rem; line-height: 1.5; }
+.citrus-note { font-size: 0.85rem; color: #666; }
 
 /* Citrus Circle Form */
 .circle-form {
@@ -258,7 +252,6 @@
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
-
 .circle-form input {
   padding: 0.75rem 1rem;
   font-size: 1rem;
@@ -267,7 +260,6 @@
   outline: none;
   transition: border-color 0.2s;
 }
-
 .circle-form button {
   padding: 0.75rem 1rem;
   font-size: 1rem;
@@ -279,38 +271,12 @@
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-
 .circle-form button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.citrus-note {
-  font-size: 0.85rem;
-  color: #666;
-}
-
-/* Keep nav links inline width */
-nav ul li a {
-  display: inline-block; /* instead of block */
-  padding: 0.5rem 0.75rem;
-  width: auto;           /* prevents full bar width */
-}
-
-/* Fix hamburger alignment */
-.nav-toggle {
-  margin-left: auto; /* pushes it to far right */
-  display: flex;
-  align-items: center;
-}
-
-/* On mobile collapse */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-/* --- FIXED Nav overrides --- */
+/* --- Nav Fixes --- */
 
 /* Desktop nav links */
 .menu a {
@@ -331,9 +297,7 @@ nav ul li a {
   padding: 0.5rem 0.25rem;
 }
 
-/* Burger alignment already handled in .burger — no .nav-toggle needed */
-
-/* Mobile tweaks */
+/* Mobile drawer spacing */
 @media (max-width: 768px) {
   .drawer {
     width: calc(100% - 24px);
@@ -341,64 +305,64 @@ nav ul li a {
     right: 12px;
   }
 }
-
-
 </style>
 
-        </a>
-   </main>
+</main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
-  </footer>
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
+</footer>
 
-  <!-- ===== Scripts (each in its own tag) ===== -->
-  <script>
-    // Progress bar
-    (function () {
-      const bar = document.querySelector('.progress span');
-      if (!bar) return;
-      addEventListener('scroll', () => {
-        const h = document.documentElement;
-        bar.style.width = ((h.scrollTop) / (h.scrollHeight - h.clientHeight)) * 100 + '%';
-      }, { passive: true });
-    })();
-  </script>
+<!-- ===== Scripts (each in its own tag) ===== -->
+<script>
+  // Progress bar
+  (function () {
+    const bar = document.querySelector('.progress span');
+    if (!bar) return;
+    addEventListener('scroll', () => {
+      const h = document.documentElement;
+      bar.style.width = ((h.scrollTop) / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+    }, { passive: true });
+  })();
+</script>
 
-  <script>
-    // Headline glitter: play once and on tap
-    (function () {
-      const tl = document.querySelector('.tagline');
-      if (!tl) return;
-      const play = () => { tl.classList.add('glitter'); setTimeout(() => tl.classList.remove('glitter'), 1600); };
-      play();
-      tl.addEventListener('click', play);
-      tl.addEventListener('touchstart', play, { passive: true });
-    })();
-  </script>
+<script>
+  // Headline glitter
+  (function () {
+    const tl = document.querySelector('.tagline');
+    if (!tl) return;
+    const play = () => {
+      tl.classList.add('glitter');
+      setTimeout(() => tl.classList.remove('glitter'), 1600);
+    };
+    play();
+    tl.addEventListener('click', play);
+    tl.addEventListener('touchstart', play, { passive: true });
+  })();
+</script>
 
-  <script>
-    // Theme switcher (heart = coastal, star = lime)
-    (function () {
-      const saved = localStorage.getItem('theme');
-      const initial = saved || document.body.dataset.theme || 'fresh-lime';
-      document.body.dataset.theme = initial;
-      setActive(initial);
+<script>
+  // Theme switcher
+  (function () {
+    const saved = localStorage.getItem('theme');
+    const initial = saved || document.body.dataset.theme || 'fresh-lime';
+    document.body.dataset.theme = initial;
+    setActive(initial);
 
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('[data-set-theme]');
-        if (!btn) return;
-        const theme = btn.dataset.setTheme;
-        document.body.dataset.theme = theme;
-        localStorage.setItem('theme', theme);
-        setActive(theme);
-      });
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-set-theme]');
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      document.body.dataset.theme = theme;
+      localStorage.setItem('theme', theme);
+      setActive(theme);
+    });
 
-      function setActive(theme) {
-        document.querySelectorAll('.theme-switch [data-set-theme]')
-          .forEach(b => b.classList.toggle('active', b.dataset.setTheme === theme));
-      }
-    })();
-  </script>
+    function setActive(theme) {
+      document.querySelectorAll('.theme-switch [data-set-theme]')
+        .forEach(b => b.classList.toggle('active', b.dataset.setTheme === theme));
+    }
+  })();
+</script>
 </body>
 </html>
