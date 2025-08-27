@@ -1,244 +1,159 @@
 /* =========================================
-   Shared Layout: Nav, Hero, Footer, etc.
+   Lace & Lime™ Global Styles
    ========================================= */
 
-/* ---------- Theme tokens ---------- */
+/* ---------- Theme Tokens ---------- */
 :root {
   --bg:#FAF9F6;
   --text:#203042;
   --muted:#5E7181;
   --accent:#2E7D5B;
   --line:rgba(32,48,66,.12);
+  --shadow:0 10px 30px rgba(20,40,30,.08);
 }
 
-body[data-theme="coastal"] {
-  --bg:#e6f7ff;
-  --text:#1a2e3f;
-  --accent:#31708e;
-}
-
+/* Themes */
 body[data-theme="fresh-lime"] {
   --bg:#F4F8EE;
   --text:#203042;
   --accent:#5C8E37;
 }
-
+body[data-theme="coastal"] {
+  --bg:#fdfdfd;
+  --text:#1a2e3f;
+  --accent:#31708e;
+}
 body[data-theme="dusk"] {
   --bg:#1b1c2d;
-  --text:#ffffff;
+  --text:#fff;
   --muted:#cfd3ff;
   --accent:#c77dff;
+  --card-bg:#2a2c3f;
 }
 
-
+/* ---------- Base ---------- */
 body {
-  background: var(--bg);
-  color: var(--text);
-  margin: 0;
-  font-family: "Work Sans", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  margin:0;
+  font-family:"Work Sans",sans-serif;
 }
-a { color: var(--accent); text-decoration: none; }
+a { color:var(--accent); text-decoration:none; }
+img { max-width:100%; height:auto; display:block; }
 
-/* ---------- Header / Nav ---------- */
+/* Layout wrapper */
+.wrap {
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 16px;
+}
+
+/* Skip link */
+.skip-link {
+  position:absolute;
+  left:-999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.skip-link:focus {
+  left:0;
+  top:0;
+  background:var(--accent);
+  color:#fff;
+  padding:8px;
+  z-index:10000;
+}
+
+/* ---------- Header & Nav ---------- */
 .ll-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--bg);
-  border-bottom: 1px solid transparent;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
 }
 .ll-nav .wrap {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 16px;
-  max-width: 1120px;
-  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:12px 16px;
 }
 
 .brand {
-  font-family: "Tenor Sans", serif;
-  letter-spacing: .08em;
-  color: var(--accent);
-  font-size: 20px;
-  text-decoration: none;
+  font-family:"Tenor Sans",serif;
+  letter-spacing:.08em;
+  color:var(--accent);
+  font-size:20px;
+  text-decoration:none;
 }
-.brand .tm { font-size: .7em; vertical-align: super; opacity: .85 }
+.brand .tm { font-size:.7em; vertical-align:super; opacity:.85 }
 
-/* Desktop menu */
+/* Desktop nav */
 .menu {
-  display: none;
-  gap: 22px;
-  align-items: center;
-  margin-left: auto;
+  display:none;
+  gap:22px;
+  align-items:center;
+  margin-left:auto;
 }
 .menu a {
-  color: var(--text);
-  font: 600 15px/1 "Work Sans", sans-serif;
+  color:var(--text);
+  font:600 15px/1 "Work Sans",sans-serif;
 }
 .menu a.active {
-  text-decoration: underline;
-  color: var(--accent);
-  text-underline-offset: 4px;
+  text-decoration:underline;
+  color:var(--accent);
+  text-underline-offset:4px;
 }
 
 /* Burger */
-#nav-toggle {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
+#nav-toggle { position:absolute; opacity:0; pointer-events:none; }
 .burger {
-  margin-left: auto;
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  z-index: 1001;
+  margin-left:auto;
+  width:40px; height:40px;
+  display:inline-flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  cursor:pointer;
+  z-index:1001;
 }
 .burger span {
-  width: 22px;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
+  width:22px; height:2px;
+  background:var(--accent);
+  border-radius:2px;
 }
 
-/* Drawer (mobile) */
+/* Drawer (mobile menu) */
 .drawer {
-  position: absolute;
-  top: 60px;
-  left: 12px;
-  right: 12px;
-  display: none;
-  flex-direction: column;
-  gap: 14px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0,0,0,.08);
-  padding: 16px;
-  z-index: 1000;
-  border-top: 2px solid var(--accent);
+  position:absolute;
+  top:60px; left:12px; right:12px;
+  display:none;
+  flex-direction:column;
+  gap:14px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:0 12px 28px rgba(0,0,0,.08);
+  padding:16px;
+  z-index:1000;
 }
 .drawer a {
-  color: var(--text);
-  font: 600 16px/1 "Work Sans", sans-serif;
+  color:var(--text);
+  font:600 16px/1 "Work Sans",sans-serif;
 }
-.drawer a:hover { color: var(--accent); }
-#nav-toggle:checked ~ .drawer { display: flex; }
+.drawer a:hover { color:var(--accent); }
+#nav-toggle:checked ~ .drawer { display:flex; }
 
 /* Desktop breakpoint */
 @media (min-width:768px) {
-  .burger, .drawer { display: none !important; }
-  .menu { display: flex;
+  .burger,.drawer { display:none!important; }
+  .menu { display:flex; }
 }
 
 /* ---------- Theme switch buttons ---------- */
-.theme-switch { display: flex; gap: 8px; }
-.theme-switch button {
-  border: 1px solid var(--accent);
-  background: transparent;
-  color: var(--accent);
-  border-radius: 999px;
-  padding: 6px 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.theme-switch button.active,
-.theme-switch button:hover {
-  background: var(--accent);
-  color: #fff;
-}
-.theme-switch svg {
-  width: 18px;
-  height: 18px;
-  display: block;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
-}
-
-/* ---------- Hero & UI ---------- */
-.hero--stack .wrap { text-align: center; }
-.hero--stack .hero-sub {
-  max-width: 720px;
-  margin: 14px auto 18px;
-  color: var(--muted);
-}
-.cta-row {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.btn {
-  display: inline-block;
-  padding: 11px 16px;
-  border-radius: 12px;
-  font: 600 15px/1 "Work Sans", sans-serif;
-}
-.btn-primary { background: var(--accent); color: #fff !important; border: none; }
-.btn-ghost { background: transparent; border: 1.5px solid var(--text); color: var(--text) !important; }
-
-.tagline {
-  font: 700 clamp(36px,6vw,64px)/1.08 "Tenor Sans", serif;
-  letter-spacing: .3px;
-  background-image: linear-gradient(
-    120deg,
-    #203042 0%, #203042 30%,
-    #E8766C 50%, #FFB6AC 60%,
-    #203042 85%, #203042 100%
-  );
-  background-size: 200% 100%;
-  background-position: 0% center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-@keyframes shimmer-text {
-  from { background-position: 0% center }
-  to { background-position: 200% center }
-}
-.tagline.glitter, .tagline:hover { animation: shimmer-text 1.6s ease-out 1; }
-
-/* ---------- Layout helpers ---------- */
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
-
-/* ---------- Footer ---------- */
-.site-footer {
-  border-top: 1px solid var(--line);
-  margin-top: 4rem;
-  padding: 1.5rem 0;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-/* ---------- Progress bar ---------- */
-.progress {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 3px;
-  width: 100%;
-  background: transparent;
-  z-index: 60;
-}
-.progress span {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A);
-}
-
-/* ---------- Theme switcher (Heart + Star) ---------- */
 .theme-switch { display:flex; gap:8px; }
 .theme-switch button {
   border:1px solid var(--accent);
@@ -257,38 +172,22 @@ a { color: var(--accent); text-decoration: none; }
   color:#fff;
 }
 .theme-switch svg {
-  width:18px;
-  height:18px;
+  width:18px; height:18px;
   display:block;
   stroke:currentColor;
   fill:none;
   stroke-width:2;
 }
 
-/* ---------- Hero CTA buttons ---------- */
-.cta-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-.btn {
-  display:inline-block;
-  padding:11px 16px;
-  border-radius:12px;
-  font:600 15px/1 "Work Sans",sans-serif;
-  text-decoration:none;
+/* ---------- Hero ---------- */
+.hero--stack .wrap { text-align:center; padding:2.5rem 1rem; }
+.hero--stack .hero-sub {
+  max-width:720px;
+  margin:14px auto 18px;
+  color:var(--muted);
 }
-.btn-primary {
-  background:var(--accent);
-  color:#fff !important;
-  border:none;
-}
-.btn-ghost {
-  background:transparent;
-  border:1.5px solid var(--text);
-  color:var(--text) !important;
-}
-
-
 .tagline {
-  font:700 clamp(36px,6vw,64px)/1.08 "Tenor Sans",serif;
-  letter-spacing:.3px;
+  font:700 clamp(32px,6vw,64px)/1.08 "Tenor Sans",serif;
   background-image:linear-gradient(
     120deg,
     #203042 0%, #203042 30%,
@@ -306,259 +205,120 @@ a { color: var(--accent); text-decoration: none; }
   from { background-position:0% center }
   to { background-position:200% center }
 }
-.tagline.glitter, .tagline:hover {
-  animation: shimmer-text 1.6s ease-out 1;
+.tagline.glitter,.tagline:hover { animation:shimmer-text 1.6s ease-out 1; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display:inline-block;
+  padding:11px 16px;
+  border-radius:12px;
+  font:600 15px/1 "Work Sans",sans-serif;
+  text-decoration:none;
 }
-
-
-.theme-switch svg {
-  width: 18px;
-  height: 18px;
-  display: block;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
+.btn-primary { background:var(--accent); color:#fff!important; border:none; }
+.btn-ghost { background:transparent; border:1.5px solid var(--text); color:var(--text)!important; }
+.btn-citrus {
+  display:inline-block;
+  appearance:none;
+  font-weight:600;
+  border:none;
+  background:linear-gradient(135deg,#8bc34a,#ffca28);
+  color:#fff!important;
+  border-radius:8px;
+  padding:0.75rem 1.25rem;
+  cursor:pointer;
+  transition:transform 0.2s,box-shadow 0.2s;
+  text-align:center;
 }
+.btn-citrus:hover { transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.1); }
 
-/FOUNDER PAGE BIO PIC basically shape and size/
-.fd-intro {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.fd-photo img {
-  max-width: 280px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-}
-.fd-bio {
-  flex: 1;
-  min-width: 280px;
-}
-
-
-/* =========================================
-   Founder Page Styles
-   ========================================= */
-
-/* Intro row: photo + bio */
-.fd-intro {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  align-items: start;
-}
-
-.fd-photo img {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-}
-
-.fd-bio {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Responsive layout: side by side on desktop */
-@media (min-width: 768px) {
-  .fd-intro {
-    grid-template-columns: 1fr 2fr;
-  }
-}
-
-/* Tag bubbles */
-.tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 0.6rem;
-}
-
-.tag {
-  display: inline-block;
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1;
-  text-transform: capitalize;
-}
-
-.tag.mint { background: #4caf7d; }
-.tag.peach { background: #ff9e80; }
-.tag.sky { background: #4fa8e0; }
-.tag.lavender { background: #a28ae5; }
-
-/* Founder highlights grid */
-.founder-grid {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-
-/* Citrus Card (reused on multiple pages) */
-.citrus-card {
-  padding: 1.5rem;
-  border: 1px solid var(--line, #e5e5e5);
-  border-radius: 12px;
-  background: #fefefc;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  text-align: center;
-}
-
-.citrus-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-
-.citrus-note {
-  font-size: 0.85rem;
-  color: #666;
-}
-
-/* Citrus form (stacked for founder, inline elsewhere) */
+/* ---------- Citrus Circle (stacked globally) ---------- */
+.circle-form,
 .circle-form-stacked {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 1rem 0;
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+  align-items:stretch;
+  width:100%;
+  max-width:420px;
+  margin:1rem auto 0;
 }
-
+.circle-form input,
 .circle-form-stacked input {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding:0.75rem 1rem;
+  font-size:1rem;
+  border:1px solid var(--line,#ccc);
+  border-radius:8px;
+}
+.circle-form button,
+.circle-form-stacked button { composes:btn-citrus; }
+
+/* Citrus note */
+.citrus-note {
+  font-size:0.85rem;
+  color:var(--muted,#666);
+  margin-top:0.5rem;
+  text-align:center;
 }
 
-.circle-form-stacked button,
-.btn-citrus {
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #8bc34a, #ffca28); /* lime → lemon */
-  color: #fff !important;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-decoration: none;
+/* ---------- Cards ---------- */
+.card {
+  padding:1.5rem;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  text-align:left;
+  box-sizing:border-box;
 }
 
-.circle-form-stacked button:hover,
-.btn-citrus:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* ---------- Grid helpers ---------- */
+.cards-grid {
+  display:grid;
+  gap:1.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  margin-top:2rem;
 }
-/* ================================
-   Explore Page Styles
-   ================================ */
+.founder-grid { display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+.tag-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:.6rem; }
 
-/* Explore grid */
-.explore-grid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  justify-content: center;
-  align-items: start;
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+/* ---------- Tag bubbles ---------- */
+.tag {
+  display:inline-block;
+  padding:0.3rem 0.75rem;
+  border-radius:999px;
+  font-size:0.8rem;
+  font-weight:600;
+  color:#fff;
+  line-height:1;
+  text-transform:capitalize;
 }
+.tag.mint { background:#4caf7d; }
+.tag.peach { background:#ff9e80; }
+.tag.sky { background:#4fa8e0; }
+.tag.lavender { background:#a28ae5; }
 
-/* Explore cards */
-.explore-card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--line, #e5e5e5);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  max-width: 460px;
-  margin: 0 auto;
-}
-.explore-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-}
-.explore-card h3 {
-  font-family: "Tenor Sans", serif;
-  margin: 0 0 0.75rem;
-}
-.explore-card p {
-  margin: 0 0 1rem;
-  color: var(--muted);
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top:1px solid var(--line);
+  margin-top:4rem;
+  padding:1.5rem 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:0.9rem;
 }
 
-/* Buttons inside cards */
-.explore-card .btn-primary {
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.2s ease;
+/* ---------- Progress bar ---------- */
+.progress {
+  position:fixed;
+  left:0; top:0;
+  height:3px; width:100%;
+  background:transparent;
+  z-index:60;
 }
-.explore-card .btn-primary:hover {
-  background: var(--accent-hover, var(--accent));
-}
-
-.explore-card .btn-secondary {
-  background: transparent;
-  border: 1.5px solid var(--accent);
-  color: var(--accent);
-  font-weight: 600;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.2s ease;
-}
-.explore-card .btn-secondary:hover {
-  background: var(--accent);
-  color: #fff;
-}
-
-/* Citrus Circle gradient button */
-.btn-citrus {
-  appearance: none;
-  font-weight: 600;
-  border: none;
-  background: linear-gradient(135deg, #8bc34a, #ffca28);
-  color: #fff;
-  border-radius: 8px;
-  padding: 0.75rem 1.25rem;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-align: center;
-}
-.btn-citrus:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* Badge */
-.badge {
-  display: inline-block;
-  background: linear-gradient(135deg, #8bc34a, #ffca28);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
+.progress span {
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A);
 }
