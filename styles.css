@@ -636,8 +636,7 @@ SPOTIFY?
 ==============================
    Mobile Burger Menu
 ============================== */
-
-/* Burger button base */
+/* ===== Burger Button ===== */
 .burger {
   margin-left: auto;
   width: 40px;
@@ -649,7 +648,6 @@ SPOTIFY?
   gap: 6px;
   cursor: pointer;
   z-index: 1001;
-  transition: transform 0.3s ease;
 }
 .burger span {
   width: 22px;
@@ -659,32 +657,45 @@ SPOTIFY?
   transition: all 0.3s ease;
 }
 
-/* Hidden nav toggle */
+/* Hide the checkbox input */
 #nav-toggle {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Drawer (mobile menu panel) */
+/* Chevron ">" animation instead of X */
+#nav-toggle:checked ~ .burger span:nth-child(1) {
+  transform: rotate(25deg) translate(4px, 3px);
+}
+#nav-toggle:checked ~ .burger span:nth-child(2) {
+  opacity: 0;
+}
+#nav-toggle:checked ~ .burger span:nth-child(3) {
+  transform: rotate(25deg) translate(4px, -3px);
+}
+
+/* ===== Drawer Menu ===== */
 .drawer {
   position: absolute;
   top: 60px;
-  left: 12px;
-  right: 12px;
+  right: 16px;            /* 👈 keep it near burger */
   display: none;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 12px;
   box-shadow: 0 12px 28px rgba(0,0,0,.08);
-  padding: 16px;
-  z-index: 1000;
+  padding: 12px 16px;
+  width: auto;            /* 👈 auto-sized, not full screen */
+  min-width: 160px;       /* ensure not too tiny */
 }
 .drawer a {
   color: var(--text);
-  font: 600 16px/1 "Work Sans", sans-serif;
+  font: 600 15px/1 "Work Sans", sans-serif;
+  padding: 6px 0;         /* slim clickable space */
+  white-space: nowrap;    /* keeps one line */
 }
 .drawer a:hover {
   color: var(--accent);
@@ -693,28 +704,9 @@ SPOTIFY?
   display: flex;
 }
 
-/* Chevron animation when active */
-#nav-toggle:checked ~ .burger span:nth-child(1) {
-  transform: rotate(35deg) translate(4px, 4px);
-}
-#nav-toggle:checked ~ .burger span:nth-child(2) {
-  opacity: 0;
-}
-#nav-toggle:checked ~ .burger span:nth-child(3) {
-  transform: rotate(-35deg) translate(4px, -4px);
-}
-
-
-/* Hide burger on desktop */
+/* Desktop: no burger/drawer */
 @media (min-width: 768px) {
-  .burger {
-    display: none;
-  }
-  .drawer {
-    display: none !important;
-  }
-  .menu {
-    display: flex;
-    gap: 22px;
-    margin-left: auto;
-  }
+  .burger { display: none; }
+  .drawer { display: none !important; }
+  .menu { display: flex; margin-left: auto; gap: 22px; }
+}
