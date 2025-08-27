@@ -185,11 +185,6 @@ img { max-width:100%; height:auto; display:block; }
 .drawer a:hover { color:var(--accent); }
 #nav-toggle:checked ~ .drawer { display:flex; }
 
-@media (min-width:768px) {
-  .burger,.drawer { display:none!important; }
-  .menu { display:flex; }
-}
-
 /* ---------- Hero ---------- */
 .hero--stack .wrap { text-align:center; padding:2.5rem 1rem; }
 .hero--stack .hero-sub {
@@ -629,3 +624,99 @@ img { max-width:100%; height:auto; display:block; }
   .spotify-card .button-row a,
   .spotify-card .button-row button{ width: 100%; }
 }
+
+
+
+SPOTIFY? 
+@media (min-width:200px) {
+  .burger,.drawer { display:none!important; }
+  .menu { display:flex; }
+}
+
+/* ==============================
+   Mobile Burger Menu
+============================== */
+
+/* Burger button base */
+.burger {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+.burger span {
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hidden nav toggle */
+#nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Drawer (mobile menu panel) */
+.drawer {
+  position: absolute;
+  top: 60px;
+  left: 12px;
+  right: 12px;
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  padding: 16px;
+  z-index: 1000;
+}
+.drawer a {
+  color: var(--text);
+  font: 600 16px/1 "Work Sans", sans-serif;
+}
+.drawer a:hover {
+  color: var(--accent);
+}
+#nav-toggle:checked ~ .drawer {
+  display: flex;
+}
+
+/* Chevron animation when active */
+#nav-toggle:checked + .burger span:nth-child(1) {
+  transform: rotate(35deg) translate(4px, 4px);
+}
+#nav-toggle:checked + .burger span:nth-child(2) {
+  opacity: 0;
+}
+#nav-toggle:checked + .burger span:nth-child(3) {
+  transform: rotate(-35deg) translate(4px, -4px);
+}
+
+/* Hide burger on desktop */
+@media (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+  .drawer {
+    display: none !important;
+  }
+  .menu {
+    display: flex;
+    gap: 22px;
+    margin-left: auto;
+  }
+}
+
+
