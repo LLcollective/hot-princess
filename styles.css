@@ -571,12 +571,6 @@ img { max-width:100%; height:auto; display:block; }
   .spotify-card .button-row button { flex: 1 1 100%; }
 }
 
-SPOTIFY? 
-@media (min-width:768px) {
-  .burger,.drawer { display:none }
-  .menu { display:flex; }
-}
-
 /* ==============================
    Explore Spotify Card Spacing Fix
    ============================== */
