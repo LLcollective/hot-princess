@@ -626,39 +626,8 @@ img { max-width:100%; height:auto; display:block; }
 }
 
 
-/* Ensure burger is visible on mobile */
-.burger {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 32px;
-  height: 24px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
 
-.burger span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-
-/* Sleek animation: turn into X when active */
-#nav-toggle:checked + .burger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-#nav-toggle:checked + .burger span:nth-child(2) {
-  opacity: 0;
-}
-#nav-toggle:checked + .burger span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* ==============================
+==============================
    Mobile Burger Menu
 ============================== */
 
@@ -742,7 +711,6 @@ img { max-width:100%; height:auto; display:block; }
     gap: 22px;
     margin-left: auto;
   }
-}
 
 SPOTIFY? 
 @media (min-width:768px) {
