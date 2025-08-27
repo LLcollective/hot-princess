@@ -571,6 +571,12 @@ img { max-width:100%; height:auto; display:block; }
   .spotify-card .button-row button { flex: 1 1 100%; }
 }
 
+SPOTIFY? 
+@media (min-width:768px) {
+  .burger,.drawer { display:none }
+  .menu { display:flex; }
+}
+
 /* ==============================
    Explore Spotify Card Spacing Fix
    ============================== */
@@ -688,15 +694,16 @@ img { max-width:100%; height:auto; display:block; }
 }
 
 /* Chevron animation when active */
-#nav-toggle:checked + .burger span:nth-child(1) {
+#nav-toggle:checked ~ .burger span:nth-child(1) {
   transform: rotate(35deg) translate(4px, 4px);
 }
-#nav-toggle:checked + .burger span:nth-child(2) {
+#nav-toggle:checked ~ .burger span:nth-child(2) {
   opacity: 0;
 }
-#nav-toggle:checked + .burger span:nth-child(3) {
+#nav-toggle:checked ~ .burger span:nth-child(3) {
   transform: rotate(-35deg) translate(4px, -4px);
 }
+
 
 /* Hide burger on desktop */
 @media (min-width: 768px) {
@@ -711,9 +718,3 @@ img { max-width:100%; height:auto; display:block; }
     gap: 22px;
     margin-left: auto;
   }
-
-SPOTIFY? 
-@media (min-width:768px) {
-  .burger,.drawer { display:none!important; }
-  .menu { display:flex; }
-}
