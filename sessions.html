@@ -3,509 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Founder | Lace & Lime™</title>
-  <meta name="description" content="Founder — Lace & Lime™. Grounded in community health. Rooted in culture. Moving with clarity and momentum." />
+  <title>Sessions | Lace & Lime™</title>
+  <meta name="description" content="Explore 1:1 Lace & Lime™ support sessions designed to bring clarity, steadiness, and actionable growth." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- ===== HOTFIX styles (match About) ===== -->
-  <style>
-    /* ---------- Theme tokens ---------- */
-    :root { --bg:#FAF9F6; --text:#203042; --muted:#5E7181; --accent:#5C8E37; --line:rgba(32,48,66,.12); }
-    body[data-theme="coastal"]{ --bg:#fdfdfd; --text:#1a2e3f; --accent:#31708e; }
-    body[data-theme="fresh-lime"]{ --bg:#F4F8EE; --text:#203042; --accent:#5C8E37; }
-
-    body{ background:var(--bg); color:var(--text); margin:0; }
-    a { color: var(--accent); text-decoration: none; }
-
-    /* ---------- Header / Nav ---------- */
-    .ll-nav { position:sticky; top:0; z-index:1000; background:var(--bg); border-bottom:1px solid transparent; }
-    .ll-nav .wrap{ display:flex; align-items:center; gap:16px; padding:12px 16px; max-width:1120px; margin:0 auto; }
-
-    .brand{ font-family:"Tenor Sans",serif; letter-spacing:.08em; color:var(--accent); font-size:20px; text-decoration:none; }
-    .brand .tm{ font-size:.7em; vertical-align:super; opacity:.85 }
-
-    /* Desktop menu hidden by default (mobile-first) */
-    .menu{ display:none; gap:22px; align-items:center; margin-left:auto; }
-    .menu a{ color:var(--text); font:600 15px/1 "Work Sans",sans-serif; }
-    .menu a.active{ text-decoration:underline; color:var(--accent); text-underline-offset:4px; }
-
-    /* Burger */
-    #nav-toggle{ position:absolute; opacity:0; pointer-events:none; }
-    .burger{
-      margin-left:auto; width:40px; height:40px; display:inline-flex; flex-direction:column;
-      justify-content:center; align-items:center; gap:5px; cursor:pointer; z-index:1001;
-    }
-    .burger span{ width:22px; height:2px; background:var(--accent); border-radius:2px; }
-
-    /* Drawer (mobile) */
-    .drawer{
-      position:absolute; top:60px; left:12px; right:12px; display:none; flex-direction:column; gap:14px;
-      background:var(--bg); border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.08); padding:16px; z-index:1000;
-      border-top:2px solid var(--accent);
-    }
-    .drawer a{ color:var(--text); font:600 16px/1 "Work Sans",sans-serif; }
-    .drawer a:hover{ color:var(--accent); }
-    #nav-toggle:checked ~ .drawer{ display:flex; }
-
-    /* Desktop breakpoint */
-    @media (min-width:768px){
-      .burger,.drawer{ display:none !important; }
-      .menu{ display:flex; }
-    }
-
-    /* ---------- Theme icon buttons (heart + star outlines) ---------- */
-    .theme-switch{ display:flex; gap:8px; }
-    .theme-switch button{
-      border:1px solid var(--accent); background:transparent; color:var(--accent);
-      border-radius:999px; padding:6px 10px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
-    }
-    .theme-switch button.active, .theme-switch button:hover{ background:var(--accent); color:#fff; }
-    .theme-switch svg{ width:18px; height:18px; display:block; stroke:currentColor; fill:none; stroke-width:2; }
-
-    /* ---------- Hero & UI ---------- */
-    .hero--stack .wrap{ text-align:center; }
-    .hero--stack .hero-sub{ max-width:720px; margin:14px auto 18px; color:var(--muted); }
-    .cta-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-    .btn{ display:inline-block; padding:11px 16px; border-radius:12px; font:600 15px/1 "Work Sans",sans-serif; }
-    .btn-primary{ background:var(--accent); color:#fff !important; border:none; }
-    .btn-ghost{ background:transparent; border:1.5px solid var(--text); color:var(--text) !important; }
-
-    .tagline{
-      font:700 clamp(36px,6vw,64px)/1.08 "Tenor Sans",serif; letter-spacing:.3px;
-      background-image:linear-gradient(120deg,#203042 0%,#203042 30%,#E8766C 50%,#FFB6AC 60%,#203042 85%,#203042 100%);
-      background-size:200% 100%; background-position:0% center;
-      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
-    }
-    @keyframes shimmer-text{ from{background-position:0% center} to{background-position:200% center} }
-    .tagline.glitter, .tagline:hover{ animation: shimmer-text 1.6s ease-out 1; }
-
-    /* ---------- Layout helpers & Cards ---------- */
-    .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
-    .cards-grid{ display:grid; grid-template-columns:1fr; gap:22px; margin:28px auto 64px; }
-    @media (min-width:800px){ .cards-grid{ grid-template-columns:repeat(2,1fr); } }
-    .card{ display:flex; flex-direction:column; padding:22px; border-radius:18px; border:1px solid var(--line);
-      box-shadow:0 10px 30px rgba(20,40,30,.08); color:var(--text); text-decoration:none; }
-    .card h3{ margin:0 0 6px; font-family:"Tenor Sans",serif; }
-    .card p{ margin:6px 0 12px; color:var(--muted); }
-    .tag{ display:inline-block; padding:6px 10px; border-radius:999px; border:1.5px solid var(--line); font:600 12px/1 "Work Sans",sans-serif; color:var(--text); background:#fff; }
-
-    /* ---------- Progress bar ---------- */
-    .progress{ position:fixed; left:0; top:0; height:3px; width:100%; background:transparent; z-index:60; }
-    .progress span{ display:block; height:100%; width:0; background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A); }
-
-/* === Founder photo: center on mobile, leave desktop alone === */
-@media (max-width: 768px){
-  /* Stack photo above bio and center everything */
-  .fd-intro{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:center !important;
-    text-align:center !important;
-    gap:18px !important;
-  }
-
-  /* Override the inline flex:0 0 200px and center the image */
-  .fd-photo{
-    flex:0 0 auto !important;
-    width:100% !important;
-    display:flex !important;
-    justify-content:center !important;
-    margin:0 !important;
-  }
-
-  /* Reduce size a bit on phones and keep it circular */
-  .fd-photo img{
-    width:160px !important;
-    height:160px !important;
-    border-radius:50% !important;
-    object-fit:cover !important;
-    display:block !important;
-  }
-
-  /* Let the bio take natural width under the centered image */
-  .fd-bio{
-    flex:1 1 auto !important;
-    width:100% !important;
-  }
-}
-
-
-
-/* === Founder layout (desktop defaults) === */
-.fd-intro{
-  display:flex;
-  gap:32px;
-  align-items:flex-start;
-  flex-wrap:wrap;
-}
-.fd-photo{ flex:0 0 auto; }
-.fd-photo img{
-  display:block;
-  width:200px !important;      /* beat global img max-width */
-  height:200px !important;     /* keep perfect circle */
-  border-radius:50%;
-  object-fit:cover;
-}
-.fd-bio{ flex:1 1 520px; }
-
-/* === Mobile: center photo above text === */
-@media (max-width:768px){
-  .fd-intro{
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:18px;
-  }
-  .fd-photo{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    margin:0;
-  }
-  .fd-photo img{
-    width:160px !important;
-    height:160px !important;
-  }
-  .fd-bio{ width:100%; }
-}
-
-  </style>
-
-
-
-
-
-
-
-
-  <!-- ===== HOTFIX styles end ===== -->
 </head>
 
 <body data-theme="fresh-lime">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header (matches About) -->
+  <!-- ===== Header ===== -->
   <header class="ll-nav">
     <div class="wrap">
-      <!-- Theme Switcher (heart = coastal, star = lime) -->
+      <!-- Theme Switch -->
       <div class="theme-switch">
         <button data-set-theme="coastal" aria-label="Coastal (Heart)">
-          <!-- Heart outline -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 12 21 12 21z"/>
+            <path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 
+                     2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 
+                     5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 
+                     12 21 12 21z"/>
           </svg>
         </button>
         <button data-set-theme="fresh-lime" class="active" aria-label="Lime (Star)">
-          <!-- Star outline -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 3.3 1.2-7-5-4.9 7-1L12 2z"/>
+            <path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 
+                     3.3 1.2-7-5-4.9 7-1L12 2z"/>
           </svg>
         </button>
       </div>
 
       <!-- Brand -->
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-<!-- Desktop nav -->
+
+      <!-- Desktop Nav -->
       <nav class="menu" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="about.html" >About</a>
+        <a href="about.html">About</a>
         <a href="founder.html">Founder</a>
-        <a href="sessions.html"class="active">Sessions</a>
+        <a href="sessions.html" class="active">Sessions</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2"
-               width="22" height="22" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+               stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" width="22" height="22">
             <circle cx="12" cy="8" r="4"></circle>
             <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
           </svg>
         </a>
       </nav>
 
-      <!-- Mobile burger -->
+      <!-- Mobile -->
       <input type="checkbox" id="nav-toggle" aria-label="Open menu">
-      <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+      <label class="burger" for="nav-toggle"><span></span><span></span><span></span></label>
 
-      <!-- Mobile nav -->
       <nav class="drawer" aria-label="Mobile">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="founder.html">Founder</a>
-        <a href="sessions.html"class="active">Sessions</a>
+        <a href="sessions.html" class="active">Sessions</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
-        <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2"
-               width="22" height="22" aria-hidden="true">
-            <circle cx="12" cy="8" r="4"></circle>
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-          </svg>
-        </a>
+        <a href="account.html" class="ll-account">Account</a>
       </nav>
     </div>
   </header>
 
-
   <!-- Progress bar -->
   <div class="progress" aria-hidden="true"><span></span></div>
 
+  <!-- ===== Main ===== -->
   <main id="main">
-    <!-- HERO -->
     <section class="hero hero--stack">
       <div class="wrap">
         <span class="eyebrow">SESSIONS</span>
         <h1 class="tagline">Where systems meet people, steadiness follows.</h1>
         <p class="hero-sub">Booking page coming soon</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="contact.html">Connect</a>
-          <a class="btn btn-ghost" href="explore.html">Explore</a>
+          <a class="btn btn-ghost" href="explore.html">Connect</a>
         </div>
       </div>
     </section>
 
-<!-- SUPPORT SESSIONS CAROUSEL -->
-<section class="sessions-carousel wrap">
-  <h2>1:1 Support Sessions</h2>
+    <!-- SUPPORT SESSIONS CAROUSEL -->
+    <section class="sessions-carousel wrap">
+      <h2>1:1 Support Sessions</h2>
+      <div class="carousel">
+        <div class="carousel-track">
 
-  <div class="carousel">
-    <div class="carousel-track">
+          <!-- Session 1 -->
+          <article class="card">
+            <h3>Career Clarity & Next Steps</h3>
+            <p>Define your direction and map out actionable moves that align with your strengths, values, and vision. We’ll also address how to present yourself; from resumes and digital profiles to authentic branding, so you can show up with confidence in every space.</p>
+            <a href="contact.html" class="btn-citrus">Book a Consultation</a>
+          </article>
 
-   <!-- Session 1 -->
-<article class="card">
-  <h3>Career Clarity & Next Steps</h3>
-  <p>Define your direction and map out actionable moves that align with your strengths, values, and vision. We’ll also address how to present yourself; from resumes and digital profiles to authentic branding, so you can show up with confidence in every space.</p>
-  <a href="contact.html" class="btn-citrus">Book a Consultation</a>
-</article>
+          <!-- Session 2 -->
+          <article class="card">
+            <h3>Burnout Recovery & Self-Leadership</h3>
+            <p>Recover from burnout with personalized strategies that restore your energy, resilience, and sense of control. You’ll learn how to set boundaries, protect your focus, and build self-leadership practices that sustain you over time.</p>
+            <a href="contact.html" class="btn-citrus">Book a Consultation</a>
+          </article>
 
-<!-- Session 2 -->
-<article class="card">
-  <h3>Burnout Recovery & Self-Leadership</h3>
-  <p>Recover from burnout with personalized strategies that restore your energy, resilience, and sense of control. You’ll learn how to set boundaries, protect your focus, and build self-leadership practices that sustain you over time.</p>
-  <a href="contact.html" class="btn-citrus">Book a Consultation</a>
-</article>
+          <!-- Session 3 -->
+          <article class="card">
+            <h3>Grant & Proposal Strategy</h3>
+            <p>Strengthen your proposals and project plans with clarity, structure, and impact. Whether you’re shaping your first grant or refining a complex application, you’ll gain persuasive strategies grounded in nonprofit, public health, and startup experience.</p>
+            <a href="contact.html" class="btn-citrus">Book a Consultation</a>
+          </article>
 
-<!-- Session 3 -->
-<article class="card">
-  <h3>Grant & Proposal Strategy</h3>
-  <p>Strengthen your proposals and project plans with clarity, structure, and impact. Whether you’re shaping your first grant or refining a complex application, you’ll gain persuasive strategies grounded in nonprofit, public health, and startup experience.</p>
-  <a href="contact.html" class="btn-citrus">Book a Consultation</a>
-</article>
+        </div>
+      </div>
 
-    </div>
-  </div>
+      <!-- Controls -->
+      <div class="carousel-controls">
+        <button class="prev" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="next" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M9 6l6 6-6 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+  </main>
 
-<!-- Controls -->
-<div class="carousel-controls">
-  <button class="prev" aria-label="Previous">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-  <button class="next" aria-label="Next">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M9 6l6 6-6 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-</div>
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
+  </footer>
 
-<style>
-/* --- Sessions Carousel Styles --- */
-.sessions-carousel {
-  position: relative;
-  max-width: 900px;
-  margin: 2rem auto;
-}
-
-.sessions-carousel .carousel {
-  overflow: hidden;
-  width: 100%;
-}
-
-.sessions-carousel .carousel-track {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-}
-
-/* Card styling (mirrors About look) */
-.sessions-carousel .card {
-  flex: 0 0 90%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: left;
-  box-sizing: border-box;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.sessions-carousel .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-}
-
-.sessions-carousel .card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
- }
-
-.sessions-carousel .card p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 1rem;
-}
-
-.sessions-carousel .card a.btn-citrus {
-  display: inline-block;
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-/* Controls (gradient buttons, bigger arrows) */
-.sessions-carousel .carousel-controls {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.sessions-carousel .carousel-controls button {
-  background: linear-gradient(135deg, #8bc34a, #ffca28);
-  border: none;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.sessions-carousel .carousel-controls button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-}
-
-.sessions-carousel .carousel-controls svg {
-  width: 22px;
-  height: 22px;
-  stroke: #fff; /* keep arrows visible */
-}
-
-.sessions-carousel .card {
-  flex: 0 0 100%;   /* full width card */
-  max-width: 100%;  /* prevent clipping */
-  margin: 0 auto;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: left;
-  box-sizing: border-box;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-</style>
-
-<!-- Footer -->
-<footer>
-  © 2025 Lace & Lime™ LLC. All rights reserved.
-</footer>
-
-<!-- Scripts -->
-<script>
-  // Theme switcher
-  document.addEventListener("DOMContentLoaded", () => {
-    const root = document.body;
-    const themeButtons = document.querySelectorAll(".theme-switch button");
-
-    themeButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const theme = button.getAttribute("data-set-theme");
-        root.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-
-        themeButtons.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-      });
-    });
-
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      root.setAttribute("data-theme", savedTheme);
-      document.querySelector(
-        `.theme-switch button[data-set-theme="${savedTheme}"]`
-      )?.classList.add("active");
-    }
-  });
-</script>
-
-<script>
-  // Seamless looping sessions carousel
-  document.addEventListener("DOMContentLoaded", () => {
-    const track = document.querySelector(".sessions-carousel .carousel-track");
-    if (!track) return;
-
-    const prev = document.querySelector(".sessions-carousel .prev");
-    const next = document.querySelector(".sessions-carousel .next");
-    const cards = Array.from(track.children);
-
-    // Clone first and last slides
-    const firstClone = cards[0].cloneNode(true);
-    const lastClone = cards[cards.length - 1].cloneNode(true);
-    firstClone.id = "first-clone";
-    lastClone.id = "last-clone";
-    track.appendChild(firstClone);
-    track.insertBefore(lastClone, cards[0]);
-
-    let index = 1; // start on the real first card
-    let cardWidth = track.parentElement.offsetWidth;
-
-    track.style.transform = `translateX(-${index * cardWidth}px)`;
-
-    function updateCarousel(smooth = true) {
-      track.style.transition = smooth ? "transform 0.4s ease-in-out" : "none";
-      track.style.transform = `translateX(-${index * cardWidth}px)`;
-    }
-
-    next?.addEventListener("click", () => {
-      index++;
-      updateCarousel();
-    });
-
-    prev?.addEventListener("click", () => {
-      index--;
-      updateCarousel();
-    });
-
-    track.addEventListener("transitionend", () => {
-      const slides = track.children;
-      if (slides[index].id === "first-clone") {
-        index = 1;
-        updateCarousel(false);
-      }
-      if (slides[index].id === "last-clone") {
-        index = slides.length - 2;
-        updateCarousel(false);
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      cardWidth = track.parentElement.offsetWidth;
-      updateCarousel(false);
-    });
-  });
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
-

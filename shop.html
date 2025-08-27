@@ -1,136 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lace & Lime™ | Shop</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+<!-- ===== HEADER ===== -->
+<header class="ll-nav">
+  <div class="wrap">
 
-<body data-theme="fresh-lime" class="shop-page">
-  <!-- Header -->
-  <header class="ll-nav">
-    <div class="wrap">
-      <div class="theme-switch">
-        <button data-set-theme="coastal">Coastal</button>
-        <button data-set-theme="dusk">Dusk</button>
-        <button data-set-theme="fresh-lime">Lime</button>
-      </div>
-
-      <a class="brand" href="index.html">Lace & Lime<span class="tm">™</span></a>
-
-      <!-- Desktop nav -->
-      <nav class="menu" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html">Founder</a>
-        <a href="journal.html">Journal</a>
-        <a href="explore.html">Explore</a>
-        <a href="shop.html" class="active">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2"
-               width="22" height="22" aria-hidden="true">
-            <circle cx="12" cy="8" r="4"></circle>
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-          </svg>
-        </a>
-      </nav>
-
-      <!-- Burger -->
-      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
-      <label class="burger" for="nav-toggle" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </label>
-
-      <!-- Mobile drawer -->
-      <nav class="drawer" aria-label="Mobile">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html">Founder</a>
-        <a href="journal.html">Journal</a>
-        <a href="explore.html">Explore</a>
-        <a href="shop.html" class="active">Shop</a>
-        <a href="contact.html">Contact</a>
-        <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2"
-               width="22" height="22" aria-hidden="true">
-            <circle cx="12" cy="8" r="4"></circle>
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-          </svg>
-        </a>
-      </nav>
+    <!-- Theme Switcher (Heart = coastal, Star = lime) -->
+    <div class="theme-switch">
+      <button data-set-theme="coastal" aria-label="Coastal (Heart)">
+        <!-- Heart outline -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7
+                   2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4
+                   c1.8-2 5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7
+                   C18.2 16.7 12 21 12 21z"/>
+        </svg>
+      </button>
+      <button data-set-theme="fresh-lime" class="active" aria-label="Lime (Star)">
+        <!-- Star outline -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3
+                   -6.3 3.3 1.2-7-5-4.9 7-1L12 2z"/>
+        </svg>
+      </button>
     </div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="wrap">
-      <h1>Shop</h1>
-      <p>Empowerment tools, journals, and essentials by Lace & Lime™</p>
+    <!-- Brand -->
+    <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+
+    <!-- Desktop nav -->
+    <nav class="menu" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="founder.html">Founder</a>
+      <a href="sessions.html">Sessions</a>
+      <a href="journal.html">Journal</a>
+      <a href="explore.html">Explore</a>
+      <a href="contact.html">Contact</a>
+      <a href="account.html" class="ll-account" aria-label="Account">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+        </svg>
+      </a>
+    </nav>
+
+    <!-- Mobile burger -->
+    <input type="checkbox" id="nav-toggle" aria-label="Open menu">
+    <label class="burger" for="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
+    <!-- Mobile nav -->
+    <nav class="drawer" aria-label="Mobile">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="founder.html">Founder</a>
+      <a href="sessions.html">Sessions</a>
+      <a href="journal.html">Journal</a>
+      <a href="explore.html">Explore</a>
+      <a href="contact.html">Contact</a>
+      <a href="account.html" class="ll-account" aria-label="Account">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+        </svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== PROGRESS BAR ===== -->
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero hero--stack">
+  <div class="wrap">
+    <span class="eyebrow">MODERN TOOLS</span>
+
+    <h1 class="tagline">
+      Reflection that moves. <em>Action that sticks.</em> Growth you can feel.
+    </h1>
+
+    <p class="hero-sub">Lace & Lime™ blends reflection with aligned steps, turning awareness into momentum.</p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="about.html">Our Story</a>
+      <a class="btn btn-ghost" href="founder.html">Founder</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Shop grid -->
-  <main class="jl-wrap">
-    <section class="feature-cards">
-      <div class="wrap">
-        <article class="card">
-          <img src="images/journal.jpg" alt="Lace & Lime Guided Journal">
-          <h2>Lace & Lime™ Guided Journal</h2>
-          <p>Find balance through reflection and action with our signature journal.</p>
-          <button class="btn">Add to Cart</button>
-        </article>
-
-        <article class="card">
-          <img src="images/tote.jpg" alt="Empowerment Tote Bag">
-          <h2>Empowerment Tote</h2>
-          <p>A minimal tote with our balance-forward message, perfect for everyday use.</p>
-          <button class="btn">Add to Cart</button>
-        </article>
-
-        <article class="card">
-          <img src="images/hoodie.jpg" alt="Energy Aligned Hoodie">
-          <h2>Energy Aligned Hoodie</h2>
-          <p>Cozy and statement-making, embroidered with our signature phrase.</p>
-          <button class="btn">Add to Cart</button>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="ll-footer">
-    <div class="wrap">
-      <p>&copy; 2025 Lace & Lime™. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script>
-    // Theme switcher: remember + mark active
-    (function () {
-      const saved = localStorage.getItem('theme');
-      const initial = saved || document.body.dataset.theme || 'coastal';
-      document.body.dataset.theme = initial;
-      setActive(initial);
-
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('[data-set-theme]');
-        if (!btn) return;
-        const theme = btn.dataset.setTheme;
-        document.body.dataset.theme = theme;
-        localStorage.setItem('theme', theme);
-        setActive(theme);
-      });
-
-      function setActive(theme) {
-        document.querySelectorAll('.theme-switch [data-set-theme]')
-          .forEach(b => b.classList.toggle('active', b.dataset.setTheme === theme));
-      }
-    })();
-  </script>
-</body>
-</html>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
+</footer>
