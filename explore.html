@@ -87,44 +87,47 @@
       </div>
     </section>
 
-    <!-- Explore Grid -->
-    <section class="explore-grid">
+<!-- Explore Grid -->
+<section class="explore-grid-pair">
 
-      <!-- Spotify Card -->
-      <article class="explore-card spotify-card">
-        <div class="card-header">
-          <span class="badge">Now playing</span>
-          <h3>Lace & Lime™ Vibes</h3>
-        </div>
-        <p>A curated playlist to set the tone – reflection, action, and balance-forward energy.</p>
-        <div class="button-row">
-          <a href="https://open.spotify.com/playlist/7fzL3lCumo5OhjjddCyyfg" 
-             target="_blank" class="btn-secondary btn-spotify">Play on Spotify</a>
-          <button class="btn-secondary" onclick="togglePlayer()">Show Player</button>
-        </div>
-        <div id="spotify-player" style="display:none; margin-top:1rem;">
-          <iframe style="border-radius:12px"
-            src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
-            width="100%" height="152" frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"></iframe>
-        </div>
-      </article>
+  <!-- Spotify Card -->
+  <article class="card explore-card spotify-card">
+    <div class="card-header">
+      <span class="badge">Now playing</span>
+      <h3>Lace & Lime™ Vibes</h3>
+    </div>A curated playlist to set the tone - reflection, action, and balance-forward energy.
+    <div class="button-row">
+      <a href="https://open.spotify.com/playlist/7fzL3lCumo5OhjjddCyyfg" 
+         target="_blank" class="btn-citrus">Play on Spotify</a></div>
+    <div id="spotify-player" style="display:none; margin-top:1rem;">
+      <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
+        width="100%" height="100" frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>
+    </div>
+  </article>
 
-      <!-- Citrus Circle -->
-      <article class="explore-card citrus-card">
-        <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
-        <p>All the essentials in fresh squeeze, not a flood. Delivered with Lace & Lime™.</p>
-        <form class="circle-form">
-          <input type="text" placeholder="Name">
-          <input type="email" placeholder="Email">
-          <button type="submit" class="btn-citrus">Join the Circle</button>
-        </form>
-        <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
-      </article>
+  <!-- Citrus Circle Card -->
+  <article class="card citrus-card">
+    <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
+    <p class="citrus-text">
+      Be the first to hear about upcoming launches, projects, and resources — 
+      all in fresh squeeze, not a flood. Delivered with Lace & Lime™.
+    </p>
+    <form class="circle-form">
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <button type="submit" class="btn-citrus">Join the Circle</button>
+    </form>
+    <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
+  </article>
 
-    </section>
-  </main>
+</section>
+
+
+
+
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home | Lace & Lime™</title>
+  <title>About | Lace & Lime™</title>
   <meta name="description" content="Lace & Lime™ blends reflection with aligned steps, turning awareness into momentum." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
@@ -83,182 +83,67 @@
       <div class="wrap">
         <span class="eyebrow">ABOUT</span>
         <h1 class="tagline">
-          Our Story</h1>
+          Our Story</h1><p>
         <p class="hero-sub">Balance-forward tools where clarity meets action, that's Lace & Lime™.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="founder.html">Founder</a>
-          <a class="btn btn-ghost" href="explore.html">Discover</a>
+          <a class="btn btn-ghost" href="sessinos.html">Sessions</a>
         </div>
       </div>
     </section>
 
 
 <!-- ABOUT CARDS CAROUSEL -->
-<section class="about-carousel wrap">
-  <div class="carousel">
-    <div class="carousel-track">
+<section class="carousel-section about-carousel">
+  <div class="carousel-track">
 
-      <!-- WHY Lace & Lime -->
-      <article class="card">
-        <h3>Why Lace & Lime™</h3>
-        <p><em>Lace & Lime™ exists to make wellness and empowerment accessible, clear, and actionable.</em></p>
-      </article>
-      <article class="card">
-        <p>
-          Born from lived experience in healthcare, nonprofits, and community work, we carry forward the truth 
-          that resilience is strongest when clarity and compassion work together.
-        </p>
-      </article>
+    <!-- WHY Lace & Lime -->
+    <article class="carousel-card">
+      <h3>Why Lace & Lime™</h3>
+      <p><em>Lace & Lime™ exists to make wellness and empowerment accessible, clear, and actionable.</em></p>
+    </article>
+    <article class="carousel-card">
+      <p>
+        Born from lived experience in healthcare, nonprofits, and community work, we carry forward the truth 
+        that resilience is strongest when clarity and compassion work together.
+      </p>
+    </article>
 
-      <!-- HOW We Work -->
-      <article class="card">
-        <h3>How We Work</h3>
-        <p><em>Clarity becomes lasting when it’s practiced with intention.</em></p>
-      </article>
-      <article class="card">
-        <p>
-          Through prompts, guided practices, and steady strategies, Lace & Lime™ blends reflection with action. 
-          Our approach helps people pause, realign, and take steps that create sustainable change.
-        </p>
-      </article>
+    <!-- HOW We Work -->
+    <article class="carousel-card">
+      <h3>How We Work</h3>
+      <p><em>Clarity becomes lasting when it’s practiced with intention.</em></p>
+    </article>
+    <article class="carousel-card">
+      <p>
+        Through prompts, guided practices, and steady strategies, Lace & Lime™ blends reflection with action. 
+        Our approach helps people pause, realign, and take steps that create sustainable change.
+      </p>
+    </article>
 
-      <!-- WHAT We Offer -->
-      <article class="card">
-        <h3>What We Offer</h3>
-        <p><em>Resources designed to support momentum.</em></p>
-      </article>
-      <article class="card">
-        <p>
-          From guided prompts and workshops to forthcoming journals and clarity tools, Lace & Lime™ delivers 
-          what you need to reflect, reset, and move forward with balance.
-        </p>
-      </article>
+    <!-- WHAT We Offer -->
+    <article class="carousel-card">
+      <h3>What We Offer</h3>
+      <p><em>Resources designed to support momentum.</em></p>
+    </article>
+    <article class="carousel-card">
+      <p>
+        From guided prompts and workshops to forthcoming journals and clarity tools, Lace & Lime™ delivers 
+        what you need to reflect, reset, and move forward with balance.
+      </p>
+    </article>
 
-    </div>
   </div>
 
-   <!-- Controls -->
+  <!-- CONTROL ARROWS UNDER CARDS -->
   <div class="carousel-controls">
-    <button class="prev" aria-label="Previous">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M15 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <button class="next" aria-label="Next">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M9 6l6 6-6 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
+    <button class="carousel-btn prev-btn" aria-label="Previous">‹</button>
+    <button class="carousel-btn next-btn" aria-label="Next">›</button>
   </div>
 </section>
-
-<style>
-/* --- About Carousel Styles --- */
-.about-carousel {
-  position: relative;
-  max-width: 1000px;
-  margin: 2rem auto;
-}
-
-.about-carousel .carousel {
-  overflow: hidden;
-  width: 100%;
-}
-
-.about-carousel .carousel-track {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-}
-
-/* Cards */
-.about-carousel .card {
-  flex: 0 0 100%;
-  max-width: 100%;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: left;
-  box-sizing: border-box;
-  white-space: normal;
-  overflow-wrap: break-word;
-}
-
-/* Controls */
-.about-carousel .carousel-controls {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.about-carousel .carousel-controls button {
-  background: linear-gradient(135deg, #8bc34a, #ffca28); /* lime → lemon */
-  border: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.about-carousel .carousel-controls button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-/* SVG icons inside buttons */
-.about-carousel .carousel-controls button svg {
-  width: 20px;
-  height: 20px;
-  stroke: #fff;          /* white arrow */
-  stroke-width: 2;
-  fill: none;
-}
-
-/* About Carousel Styles */
-.about-carousel {
-  position: relative;
-  max-width: 1000px;
-  margin: 2rem auto;
-}
-
-.about-carousel .carousel-track {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-}
-
-.about-carousel .card {
-  flex: 0 0 100%;
-  max-width: 100%;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: left;
-  box-sizing: border-box;
-  white-space: normal;
-  overflow-wrap: break-word;
-}
-
-.about-carousel .carousel-controls button {
-  background: linear-gradient(135deg, #6aa82e, #e6b820); /* darker lime → lemon */
-}
-
-.about-carousel .carousel-controls button svg {
-  stroke: var(--text);
-}
-
-</style>
-
-
-
-    <!-- CTA CARDS (optional, like Index) -->
-
   </main>
+
+
 
   <footer class="site-footer" role="contentinfo">
     <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>

@@ -7,87 +7,7 @@
   <meta name="description" content="Meet the founder of Lace & Lime™. Public health roots, community-driven clarity, and balance-forward empowerment." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Founder page custom layout */
-    .fd-intro {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 2rem;
-      align-items: start;
-      margin: 2rem auto;
-      max-width: 1000px;
-    }
-    .fd-photo img {
-      width: 100%;
-      max-width: 280px;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-    .fd-bio p {
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .tag {
-      display: inline-block;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #fff;
-    }
-    .tag.mint { background: #4caf7d; }
-    .tag.peach { background: #ff9e80; }
-    .tag.sky { background: #4fa8e0; }
-    .tag.lavender { background: #a28ae5; }
-    .tag.green { background: #66bb6a; }
-
-    /* Founder grid for cards */
-    .founder-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem auto;
-      max-width: 1000px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .btn-citrus {
-      display: inline-block;
-      background: linear-gradient(135deg, #8bc34a, #ffca28);
-      color: #fff;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      padding: 0.75rem 1.25rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-citrus:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    /* Mobile stacking */
-    @media (max-width: 768px) {
-      .fd-intro {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .fd-photo img {
-        margin: 0 auto;
-      }
-      .fd-bio { text-align: left; }
-    }
-  </style>
+  
 </head>
 
 <body data-theme="fresh-lime">
@@ -121,7 +41,7 @@
 
       <!-- Desktop Nav -->
       <nav class="menu" aria-label="Primary">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="founder.html"class="active">Founder</a>
         <a href="sessions.html">Sessions</a>
@@ -158,68 +78,80 @@
   <!-- Progress bar -->
   <div class="progress" aria-hidden="true"><span></span></div>
 
-  <!-- ===== Main ===== -->
-  <main id="main">
-    <section class="hero hero--stack">
-      <div class="wrap">
-        <span class="eyebrow">FOUNDER</span>
-        <h1 class="tagline">Meet the Founder</h1>
-        <p class="hero-sub">Where systems meet people, steadiness follows.</p>
+<!-- ===== Main ===== -->
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero hero--stack">
+    <div class="wrap">
+      <span class="eyebrow">FOUNDER</span>
+      <h1 class="tagline">Meet the Founder</h1>
+      <p class="hero-sub">Where systems meet people, steadiness follows.</p>
+    </div>
+  </section>
+
+  <!-- Intro (photo left, bio right) -->
+  <section class="wrap fd-intro">
+    <div class="fd-photo">
+      <img src="assets/founder.jpg" alt="Founder portrait" loading="lazy">
+    </div>
+    <div class="fd-bio">
+      <p>
+        After years working in hospitals, nonprofits, and emergency federal response, I’ve seen firsthand how resilience depends on more than strategy alone; it thrives when clarity and compassion move together. Lace & Lime™ grew out of that truth.<br><br>Today, my work blends public health roots with community-driven clarity. The goal is simple: to make wellness and empowerment accessible, steady, and sustainable. This isn’t about quick fixes, it’s about creating rhythms and tools that help people pause, realign, and grow with balance.
+      </p>
+      <div class="tag-row">
+        <span class="tag purple">Public Health</span>
+        <span class="tag orange">Community</span>
+        <span class="tag blue">Wellness</span>
+        <span class="tag pink">Action Plans</span>
+        <span class="tag green">Consulting</span>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Intro (photo left, bio right) -->
-    <section class="wrap fd-intro">
-      <div class="fd-photo">
-        <img src="assets/founder.jpg" alt="Founder portrait" loading="lazy">
-      </div>
-      <div class="fd-bio">
-        <p>
-          After years working in hospitals, nonprofits, and emergency federal response, I’ve seen firsthand how resilience depends on more than strategy alone; it thrives when clarity and compassion move together. Lace & Lime™ grew out of that truth. 
-        </p>
-        <p>
-          Today, my work blends public health roots with community-driven clarity. The goal is simple: to make wellness and empowerment accessible, steady, and sustainable. This isn’t about quick fixes, it’s about creating rhythms and tools that help people pause, realign, and grow with balance.
-        </p>
-        <div class="tag-row">
-          <span class="tag mint">Public Health</span>
-          <span class="tag peach">Community</span>
-          <span class="tag sky">Wellness</span>
-          <span class="tag lavender">Action Plans</span>
-          <span class="tag green">Consulting</span>
-        </div>
-      </div>
-    </section>
 
-    <!-- Cards Grid -->
-    <section class="wrap founder-grid">
-      <article class="card connect-card">
-        <h3>Let's Connect</h3>
-        <p>
-          Workshops, consulting, collaborations, Lace & Lime™ is designed to turn awareness into momentum. Reach out to explore what’s possible together.
-        </p>
-        <a class="btn-citrus" href="contact.html">Connect</a>
-      </article>
 
-      <article class="card citrus-card">
-        <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
-        <p>
-          Join our newsletter to be the first to hear about upcoming launches, projects, and resources. A fresh squeeze, not a flood. Delivered with Lace & Lime™.
-        </p>
-        <form class="circle-form-stacked">
-          <input type="text" placeholder="Your Name">
-          <input type="email" placeholder="Your Email Address">
-          <button type="submit">Join the Circle</button>
-        </form>
-        <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
-      </article>
-    </section>
-  </main>
+ <!-- Cards Row -->
+<section class="wrap founder-grid">
+  
+  <!-- Citrus Circle (first, primary CTA) -->
+  <!-- Let's Connect -->
+  <article class="card connect-card">
+    <h3>Let’s Connect</h3>
+    <p>
+      Workshops, consulting, and collaborations. Lace & Lime™ is built to 
+      turn awareness into momentum. Let’s explore what’s possible together.
+    </p>
+    <ul class="connect-list">
+      <li>🌿 1:1 Support Sessions</li>
+      <li>💡 Collaborations & Speaking</li>
+      <li>🤝 Community Partnerships</li>
+    </ul>
+    <div class="cta-row">
+      <a class="btn-citrus" href="contact.html">Connect</a>
+    </div>
+  </article>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
-  </footer>
+ <article class="card citrus-card">
+    <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
+    <p class="citrus-text">
+      Be the first to hear about upcoming launches, projects, and resources. All in fresh squeeze, not a flood. Delivered with Lace & Lime™.
+    </p>
+    <form class="circle-form">
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <button type="submit" class="btn-citrus">Join the Circle</button>
+    </form>
+    <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
+  </article>
+</section>
+</main>
 
-  <script src="script.js"></script>
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="wrap">© 2025 Lace & Lime™ LLC. All rights reserved.</div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

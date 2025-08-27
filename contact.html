@@ -203,58 +203,11 @@
   </footer>
 
   <!-- Scripts: glitter, theme switcher, form POST -->
-  <script>
-    // Glitter headline
-    (function(){const tl=document.querySelector('.tagline');if(!tl)return;
-      const play=()=>{tl.classList.add('glitter');setTimeout(()=>tl.classList.remove('glitter'),1600)};
-      play(); tl.addEventListener('click',play); tl.addEventListener('touchstart',play,{passive:true});
-    })();
+ 
 
-    // Theme switcher (heart = coastal, star = lime)
-    (function(){
-      const saved=localStorage.getItem('theme');
-      const initial=saved||document.body.dataset.theme||'fresh-lime';
-      document.body.dataset.theme=initial; mark(initial);
-      document.addEventListener('click',e=>{
-        const b=e.target.closest('[data-set-theme]'); if(!b) return;
-        const t=b.dataset.setTheme; document.body.dataset.theme=t; localStorage.setItem('theme',t); mark(t);
-      });
-      function mark(t){ document.querySelectorAll('.theme-switch [data-set-theme]').forEach(b=>b.classList.toggle('active',b.dataset.setTheme===t)); }
-    })();
 
-    // Contact form -> POST /api/send
-    (function () {
-      const form=document.getElementById('contactForm');
-      const status=document.getElementById('formStatus');
-      const btn=document.getElementById('submitBtn');
-      const ENDPOINT='/api/send';
-      if(!form) return;
+    <!-- ===== Scripts (same as index) ===== -->
 
-      form.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        status.textContent='';
-        if(!form.reportValidity()) return;
-
-        const payload={
-          firstName:form.firstName.value.trim(),
-          lastName:form.lastName.value.trim(),
-          email:form.email.value.trim(),
-          subject:form.subject.value.trim(),
-          message:form.message.value.trim(),
-          page:location.pathname
-        };
-
-        btn.disabled=true; btn.textContent='Sending…';
-        try{
-          const res=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-          if(!res.ok) throw new Error('Send failed');
-          form.reset(); status.className='status ok'; status.textContent='✅ Message sent successfully!';
-        }catch(err){
-          console.error(err); status.className='status err';
-          status.textContent='❌ Could not send. Please email laceandlime.llc@gmail.com for additional support.';
-        }finally{ btn.disabled=false; btn.textContent='Send'; }
-      });
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
