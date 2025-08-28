@@ -112,7 +112,9 @@
   });
 })();
 
-// Universal Carousel (buttons + swipe + wrap)
+// ==============================
+// Universal Carousel (buttons + swipe + responsive width)
+// ==============================
 document.querySelectorAll('.carousel-section').forEach(section => {
   const track  = section.querySelector('.carousel-track');
   const cards  = section.querySelectorAll('.carousel-card');
@@ -121,7 +123,14 @@ document.querySelectorAll('.carousel-section').forEach(section => {
   if (!track || cards.length < 1) return;
 
   let index = 0;
-  const go = i => { index = (i + cards.length) % cards.length; track.style.transform = `translateX(-${index * 100}%)`; };
+
+  function go(i) {
+    // clamp to valid range first
+    index = (i + cards.length) % cards.length;
+    const cardWidth = cards[0].offsetWidth;   // responsive width
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+  }
+
   const nextSlide = () => go(index + 1);
   const prevSlide = () => go(index - 1);
 
@@ -129,16 +138,25 @@ document.querySelectorAll('.carousel-section').forEach(section => {
   prev && prev.addEventListener('click', prevSlide);
 
   // Chrome-mobile swipe (preventDefault only on real horizontal move)
-  let startX = 0, dragging = false, moved = false;
-  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragging = true; moved = false; }, { passive:true });
+  let startX = 0, dragging = false;
+  track.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    dragging = true;
+  }, { passive:true });
+
   track.addEventListener('touchmove', e => {
     if (!dragging) return;
     const dx = e.touches[0].clientX - startX;
-    if (Math.abs(dx) > 10) { e.preventDefault(); moved = true; }   // block vertical only when really swiping
+    if (Math.abs(dx) > 10) e.preventDefault(); // block only if real swipe
     if (dx > 50)  { prevSlide(); dragging = false; }
     if (dx < -50) { nextSlide(); dragging = false; }
   }, { passive:false });
+
   track.addEventListener('touchend', () => { dragging = false; });
 
+  // Recalculate on resize
+  window.addEventListener('resize', () => go(index));
+
+  // Init
   go(0);
 });

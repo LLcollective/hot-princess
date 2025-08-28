@@ -1179,7 +1179,7 @@ body[data-theme="lavender-lime"] textarea:focus {
 @media (min-width:768px){ .burger,.drawer{display:none!important;} .menu{display:flex;} }
 
 /* Chrome mobile: prevent “half-card” clipping + smooth swipe */
-.carousel-section{ overflow:hidden; padding:0 1rem; border-radius:14px; }
+.carousel-section{ overflow:hidden; padding:0rem; border-radius:14px; }
 .carousel-track{
   display:flex; transition:transform .55s ease; will-change:transform;
   touch-action: pan-y;           /* allow vertical scroll + horizontal custom swipe */
@@ -1190,4 +1190,74 @@ body[data-theme="lavender-lime"] textarea:focus {
   padding:2rem 1.5rem; background:var(--card-bg);
   border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow);
   margin:0;                      /* no margins that break 100% math */
+}
+
+
+/* ==============================
+   Responsive Card Tweaks
+============================== */
+
+/* All cards flex naturally */
+.card,
+.carousel-card,
+.journal-card {
+  flex: 0 0 100%;            /* each slide takes full width on mobile */
+  max-width: 100%;           /* don't lock to 480/520px */
+  box-sizing: border-box;
+}
+
+/* Grid wrappers scale nicely */
+.explore-grid-pair,
+.founder-grid,
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .carousel-section {
+    max-width: 100%;
+    padding: 0;
+  }
+  .carousel-card,
+  .journal-card {
+    padding: 1.25rem;
+  }
+}
+
+
+/* Force burger → chevron ( > ) */
+.burger span {
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all .3s ease;
+}
+
+/* Reset baseline so lines stack normally */
+.burger span:nth-child(1),
+.burger span:nth-child(2),
+.burger span:nth-child(3) {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* On open: hide 2 lines, angle the others into > */
+#nav-toggle:checked + .burger span:nth-child(1) {
+  transform: rotate(35deg) translate(4px, 5px);
+  width: 12px;
+}
+#nav-toggle:checked + .burger span:nth-child(2) {
+  opacity: 0;
+}
+#nav-toggle:checked + .burger span:nth-child(3) {
+  transform: rotate(-35deg) translate(4px, -5px);
+  width: 12px;
 }
