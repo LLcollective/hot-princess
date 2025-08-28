@@ -10,30 +10,19 @@
   
 </head>
 
-<body data-theme="fresh-lime">
+<body data-theme="lavender-lime">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ===== Header ===== -->
   <header class="ll-nav">
     <div class="wrap">
 
-      <!-- Theme Switch -->
-      <div class="theme-switch">
-  <button data-set-theme="coastal" aria-label="Coastal (Heart)">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 
-               2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 
-               5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 
-               12 21 12 21z"/>
-    </svg>
-  </button>
-  <button data-set-theme="fresh-lime" class="active" aria-label="Lime (Star)">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 
-               3.3 1.2-7-5-4.9 7-1L12 2z"/>
-    </svg>
-  </button>
+         <!-- Theme Switch -->
+      <div class="theme-switch" role="group" aria-label="Theme switch">
+  <button type="button" data-set-theme="lacelime" aria-pressed="false" title="LaceLime">💙</button>
+  <button type="button" data-set-theme="lavender-lime" aria-pressed="false" title="Lavender + Lime">💜</button>
 </div>
+
 
 
       <!-- Brand -->
@@ -85,38 +74,52 @@
   <section class="hero hero--stack">
     <div class="wrap">
       <span class="eyebrow">FOUNDER</span>
-      <h1 class="tagline">Meet the Founder</h1>
-      <p class="hero-sub">Where systems meet people, steadiness follows.</p>
+      <h1 class="tagline">Where systems meet people, steadiness follows.</h1>
+      <p class="hero-sub"></p>
     </div>
   </section>
 
-  <!-- Intro (photo left, bio right) -->
-  <section class="wrap fd-intro">
-    <div class="fd-photo">
-      <img src="assets/founder.jpg" alt="Founder portrait" loading="lazy">
+<section class="founder">
+  <div class="founder-wrap">
+    <!-- Founder Image -->
+    <div class="founder-photo">
+      <img src="assets/founder.jpg" alt="Sharon Gutierrez" />
     </div>
-    <div class="fd-bio">
+
+    <!-- Founder Bio -->
+    <div class="founder-bio">
+      <h2 class="founder-heading">Meet the Founder</h2>
       <p>
-        After years working in hospitals, nonprofits, and emergency federal response, I’ve seen firsthand how resilience depends on more than strategy alone; it thrives when clarity and compassion move together. Lace & Lime™ grew out of that truth.<br><br>Today, my work blends public health roots with community-driven clarity. The goal is simple: to make wellness and empowerment accessible, steady, and sustainable. This isn’t about quick fixes, it’s about creating rhythms and tools that help people pause, realign, and grow with balance.
+        After years working in hospitals, nonprofits, and emergency federal response, 
+        I’ve seen firsthand how resilience depends on more than strategy alone; 
+        it thrives when clarity and compassion move together. 
+        Lace & Lime™ grew out of that truth.
       </p>
-      <div class="tag-row">
-        <span class="tag purple">Public Health</span>
-        <span class="tag orange">Community</span>
-        <span class="tag blue">Wellness</span>
-        <span class="tag pink">Action Plans</span>
-        <span class="tag green">Consulting</span>
+      <p>
+        Today, my work blends public health roots with community-driven clarity. 
+        The goal is simple: to make wellness and empowerment accessible, steady, and sustainable. 
+        This isn’t about quick fixes, it’s about creating rhythms and tools 
+        that help people pause, realign, and grow with balance.
+      </p>
+
+      <!-- Tags -->
+      <div class="founder-tags">
+        <span class="tag">🌍 Public Health</span>
+        <span class="tag">🤝 Community</span>
+        <span class="tag">🌿 Wellness</span>
+        <span class="tag">📝 Action Plans</span>
+        <span class="tag">💡 Consulting</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 
- <!-- Cards Row -->
-<section class="wrap founder-grid">
   
-  <!-- Citrus Circle (first, primary CTA) -->
   <!-- Let's Connect -->
-  <article class="card connect-card">
+<section class="founder-cards">
+ <article class="card connect-card">
     <h3>Let’s Connect</h3>
     <p>
       Workshops, consulting, and collaborations. Lace & Lime™ is built to 

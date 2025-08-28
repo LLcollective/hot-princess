@@ -1,166 +1,235 @@
 /* ==============================
-   Lace & Lime™ Global Styles
-   ============================== */
-
-/* ---------- Theme Tokens ---------- */
+   1. Base Tokens
+============================== */
 :root {
   --bg:#FAF9F6;
+  --surface:#FFFFFF;
+  --card-bg:#FFFFFF;
   --text:#203042;
   --muted:#5E7181;
   --accent:#2E7D5B;
+  --accent-hover:#245C47;
+  --accent-contrast:#fff;
   --line:rgba(32,48,66,.12);
   --shadow:0 10px 30px rgba(20,40,30,.08);
 }
 
-/* ===== Global Typography Fix ===== */
-html, body {
-  font-family: "Work Sans", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ==============================
+   2. Themes
+============================== */
+body[data-theme="lacelime"] {
+  --bg: linear-gradient(180deg,#CBEFFF 0%,#E6F4FF 100%);
+  --surface:#E6F4FF;
+  --card-bg:#F2F0FF;
+  --text:#14253A;
+  --muted:#405970;
+
+  --accent:#7A66FF;
+  --accent-hover:#5E47E0;
+  --accent-alt:#E83F7D;
+  --brand-accent:#7A66FF;
+  --accent-contrast:#fff;
+
+  --line: rgba(20,30,50,.15);
+  --shadow: 0 6px 20px rgba(20,40,30,.06);
 }
 
-/* Headings always use Tenor Sans */
-h1, h2, h3, h4, h5, h6,
-.brand, .tagline {
-  font-family: "Tenor Sans", serif;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+body[data-theme="lavender-lime"] {
+  --bg: linear-gradient(180deg,#F1E6FF 0%,#FBF8FF 100%);
+  --surface:#F6F0FF;
+  --card-bg:#F6FFF4;
+  --text:#2E4D2E;
+  --muted:#587658;
+
+  --accent:#3FA75C;
+  --accent-hover:#2E8749;
+  --accent-alt:#E83F7D;
+  --brand-accent:#3FA75C;
+  --accent-contrast:#fff;
+
+  --line: rgba(46,77,46,.18);
+  --shadow: 0 6px 20px rgba(20,40,30,.06);
 }
 
-/* Themes */
-body[data-theme="fresh-lime"] {
-  --bg:#F4F8EE;
-  --text:#203042;
-  --accent:#5C8E37;
-}
-body[data-theme="coastal"] {
-  --bg:#fdfdfd;
-  --text:#1a2e3f;
-  --accent:#31708e;
-}
-body[data-theme="dusk"] {
-  --bg:#1b1c2d;
-  --text:#fff;
-  --muted:#cfd3ff;
-  --accent:#c77dff;
-  --card-bg:#2a2c3f;
-}
-
-/* ----------Star/Heart Theme Switch Buttons ---------- */
-.theme-switch button {
-  border: 1px solid var(--accent);
-  background: transparent;
-  color: var(--accent);          /* icon color (via stroke/fill) */
-  border-radius: 999px;
-  padding: 6px 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.theme-switch button.active,
-.theme-switch button:hover {
-  background: var(--accent);
-  color: #fff;
-}
-
-.theme-switch svg {
-  width: 18px;
-  height: 18px;
-  display: block;
-  stroke: currentColor;
-  fill: transparent;   /* 👈 ensures heart/star fill instead of just outline */
-  stroke-width: 1;      /* optional: remove outline if you want solid shapes */
-}
-
-/--STAR AND HEART FOR DESKTOP AND MOBILE ABOVE/
-/* ---------- Base ---------- */
+/* ==============================
+   3. Base + Utilities
+============================== */
 body {
-  background:var(--bg);
-  color:var(--text);
-  margin:0;
+  position: relative;
+  background: var(--surface);
+  color: var(--text);
+  margin: 0;
   font-family:"Work Sans",sans-serif;
+  transition: background .4s ease, color .4s ease, border-color .4s ease;
 }
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: -1;
+  pointer-events: none;
+}
+
 a { color:var(--accent); text-decoration:none; }
-img { max-width:100%; height:auto; display:block; }
-
-.wrap {
-  max-width:1120px;
-  margin:0 auto;
-  padding:0 16px;
+a:hover { color:var(--accent-alt); text-decoration:underline; }
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
-/* Skip link */
-.skip-link {
-  position:absolute;
-  left:-999px;
-}
-.skip-link:focus {
-  left:0;
-  top:0;
-  background:var(--accent);
-  color:#fff;
-  padding:8px;
-  z-index:10000;
+html { scroll-behavior: smooth; }
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
-/* ---------- Header & Nav ---------- */
+/* ==============================
+   4. Typography
+============================== */
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  margin: 2rem 0 1rem;
+  font-family: "Tenor Sans", serif;
+}
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.3;
+  margin: 1.5rem 0 0.75rem;
+  font-family: "Work Sans", sans-serif;
+}
+p {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--text);
+}
+small, .citrus-note { font-size: .85rem; line-height: 1.5; }
+
+/* ==============================
+   5. Navigation
+============================== */
 .ll-nav {
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:var(--bg);
+  position:sticky; top:0; z-index:1000;
+  background:var(--surface);
   border-bottom:1px solid var(--line);
 }
 .ll-nav .wrap {
-  display:flex;
-  align-items:center;
-  gap:16px;
+  display:flex; align-items:center; gap:16px;
   padding:12px 16px;
 }
 .brand {
   font-family:"Tenor Sans",serif;
   letter-spacing:.08em;
-  color:var(--accent);
+  color:var(--brand-accent);
   font-size:20px;
+  white-space:nowrap;
 }
 .brand .tm { font-size:.7em; vertical-align:super; opacity:.85 }
 
-/* Desktop nav */
-.menu {
-  display:none;
-  gap:22px;
-  margin-left:auto;
-}
+/* Desktop Nav */
+.menu { display:none; gap:22px; margin-left:auto; }
 .menu a {
   color:var(--text);
   font:600 15px/1 "Work Sans",sans-serif;
 }
 .menu a.active {
   text-decoration:underline;
-  color:var(--accent);
+  color:var(--brand-accent);
   text-underline-offset:4px;
 }
 
+/* Mobile Nav */
+#nav-toggle { position:absolute; opacity:0; pointer-events:none; }
+.burger {
+  margin-left:auto; width:42px; height:42px;
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  gap:6px; cursor:pointer; z-index:1002;
+  border:1px solid var(--line); border-radius:10px;
+  background:var(--surface);
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+}
+.burger span {
+  width:22px; height:2px;
+  background:var(--accent);
+  border-radius:2px;
+  transition:all .3s ease;
+}
+.drawer {
+  position:fixed; top:70px; left:50%;
+  transform:translateX(-50%) translateY(-12px);
+  width:90%; max-width:380px;
+  display:flex; flex-direction:column; gap:14px;
+  background:var(--surface);
+  border:1px solid var(--line); border-radius:14px;
+  box-shadow:0 12px 28px rgba(0,0,0,.08);
+  padding:18px; z-index:1001;
+  opacity:0; pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.drawer a {
+  color:var(--text);
+  font:600 16px/1.4 "Work Sans",sans-serif;
+  padding:10px 0; border-radius:6px;
+}
+.drawer a:hover {
+  color:var(--accent);
+  background:rgba(0,0,0,.03);
+  padding-left:6px;
+}
+#nav-toggle:checked ~ .drawer { opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+@media(min-width:768px){ .burger,.drawer{display:none!important;} .menu{display:flex;} }
 
-/* ---------- Hero ---------- */
-.hero--stack .wrap { text-align:center; padding:2.5rem 1rem; }
-.hero--stack .hero-sub {
-  max-width:720px;
-  margin:14px auto 18px;
+/* ==============================
+   6. Hero
+============================== */
+.hero--stack {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:3rem 1rem;
+}
+.hero--stack .wrap {
+  max-width:1200px;
+  margin:0 auto;
+}
+.hero--stack .eyebrow {
+  display:block;
+  font-size:0.9rem;
+  letter-spacing:1px;
+  margin-bottom:0.5rem;
   color:var(--muted);
 }
-
-/* Glitter headline */
+.hero--stack .tagline { margin:0.5rem 0 1rem; }
+.hero--stack .hero-sub {
+  max-width:640px;
+  margin:0 auto;
+  color:var(--muted);
+  line-height:1.5;
+}
 .tagline {
   font:700 clamp(32px,6vw,64px)/1.08 "Tenor Sans",serif;
   background-image: linear-gradient(
-    120deg,#203042 0%,#203042 25%,#E8766C 50%,#FFB6AC 60%,#203042 75%,#203042 100%
+    120deg,
+    #2E4D2E 0%,
+    #4CA94C 20%,
+    #E83F7D 50%,
+    #FFB6AC 65%,
+    #4CA94C 80%,
+    #2E4D2E 100%
   );
   background-size:400% 100%;
   -webkit-background-clip:text;
@@ -173,195 +242,618 @@ img { max-width:100%; height:auto; display:block; }
   to { background-position:200% center; }
 }
 
-/* ---------- Buttons ---------- */
-.btn {
+/* ==============================
+   7. Cards
+============================== */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+/* ==============================
+   8. Grids
+============================== */
+.explore-grid-pair,
+.founder-grid,
+.journal-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+  max-width:1100px;
+  margin:2rem auto;
+}
+
+/* ==============================
+   9. Carousels
+============================== */
+.carousel-section {
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 3rem auto;
+  border-radius: 14px;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
+.carousel-card {
+  flex: 0 0 100%;
+  padding: 2rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.carousel-controls {
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  margin-top:1rem;
+}
+.carousel-btn {
+  border:2px solid var(--accent);
+  background:transparent;
+  color:var(--accent);
+  border-radius:50%;
+  width:42px; height:42px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+.carousel-btn:hover { background:var(--accent); color:var(--accent-contrast); }
+
+/* ==============================
+   10. Buttons
+============================== */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-cta,
+.btn-citrus {
   display:inline-block;
   padding:11px 16px;
-  border-radius:12px;
+  border-radius:10px;
   font:600 15px/1 "Work Sans",sans-serif;
-  text-decoration:none;
+  cursor:pointer;
+  transition:all .25s ease;
 }
-.btn-primary { background:var(--accent); color:#fff!important; border:none; }
-.btn-ghost { border:1.5px solid var(--text); color:var(--text)!important; }
+
+.btn-primary {
+  background:var(--accent);
+  color:var(--accent-contrast) !important;
+  border:none;
+}
+.btn-primary:hover { background:var(--accent-hover); transform:translateY(-2px); }
+
+.btn-secondary {
+  background:transparent;
+  border:2px solid var(--accent);
+  color:var(--accent);
+}
+.btn-secondary:hover {
+  background:var(--accent);
+  color:var(--accent-contrast);
+  transform:translateY(-2px);
+}
+
+.btn-cta {
+  border:2px solid var(--accent);
+  background:transparent;
+  color:var(--accent);
+}
+.btn-cta:hover {
+  background:var(--accent);
+  color:var(--accent-contrast);
+}
+
 .btn-citrus {
-  background:linear-gradient(135deg,#8bc34a,#ffca28);
-  color:#fff!important;
-  border-radius:8px;
+  border:2px solid var(--brand-accent);
+  background:transparent;
+  color:var(--brand-accent);
+}
+.btn-citrus:hover {
+  background:var(--brand-accent);
+  color:var(--accent-contrast);
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+/* ==============================
+   11. Forms
+============================== */
+.contact {
+  margin: 1rem auto;
+  max-width: 800px;
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.form-row { display:flex; gap:1rem; }
+.form-group { flex:1; display:flex; flex-direction:column; }
+.form-group.full-width { flex:100%; }
+label { font-weight:600; margin-bottom:6px; font-size:0.95rem; color:var(--text); }
+input, textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(76, 169, 76, 0.2);
+  outline: none;
+}
+#submitBtn {
+  align-self: flex-start;
+  border:2px solid var(--accent);
+  background:transparent;
+  color:var(--accent);
   padding:0.75rem 1.25rem;
+  border-radius:10px;
   font-weight:600;
   cursor:pointer;
-  transition:transform 0.2s,box-shadow 0.2s;
+  transition:all 0.2s ease;
 }
-.btn-citrus:hover { transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+#submitBtn:hover { background:var(--accent); color:var(--accent-contrast); }
+.status { margin-top:0.5rem; font-size:0.9rem; }
+.status.ok { color:green; }
+.status.err { color:red; }
+@media(max-width:600px){ .form-row { flex-direction:column; } }
 
-/* ---------- Footer ---------- */
+/* ==============================
+   12. Footer
+============================== */
 .site-footer {
   border-top:1px solid var(--line);
   margin-top:4rem;
   padding:1.5rem 0;
   text-align:center;
+  background:var(--surface);
   color:var(--muted);
-  font-size:0.9rem;
+  font-size:.9rem;
 }
 
-/* ---------- Progress bar ---------- */
-.progress {
-  position:fixed;
-  left:0; top:0;
-  height:3px; width:100%;
-  background:transparent;
-  z-index:60;
-}
-.progress span {
-  display:block;
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,#2E7D5B,#69B07A,#FF9E8A);
-}
 
-/* ---------- Founder Intro ---------- */
-.fd-intro {
-  display:grid;
-  grid-template-columns:0.8fr 1.5fr;
-  gap:2rem;
-  margin:2.5rem auto;
-  max-width:1120px;
-}
-.fd-photo img {
-  width:220px; height:220px;
-  border-radius:50%;
-  object-fit:cover;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08);
-  margin:0 auto;
-}
-.fd-bio { display:flex; flex-direction:column; gap:1.2rem; line-height:1.6; }
-.fd-bio .tag-row { display:flex; flex-wrap:wrap; gap:0.5rem; }
-@media (max-width:768px) {
-  .fd-intro { grid-template-columns:1fr; text-align:center; }
-  .fd-photo img { margin-bottom:1rem; }
-  .fd-bio .tag-row { justify-content:center; }
-}
-
-/* ---------- Founder Grid ---------- */
-.founder-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:2rem;
-  margin:2rem auto;
-  max-width:1100px;
-}
-.founder-grid .card {
-  background:#fff;
-  padding:1.5rem;
-  border-radius:12px;
-  border:1px solid var(--line);
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
-}
-@media (max-width:768px) {
-  .founder-grid { grid-template-columns:1fr; }
-  .connect-card,.citrus-card { text-align:center; }
-}
-
-/* ---------- Citrus Circle ---------- */
-.citrus-card {
-  text-align:center;
-  background:#fff;
-  padding:1.5rem;
-  border:1px solid var(--line);
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
-  max-width:520px;
-  margin:2rem auto;
-}
-.citrus-title { font-size:1.4rem; font-weight:700; margin-bottom:0.75rem; }
-.citrus-text { margin-bottom:1rem; color:var(--muted); }
-.citrus-note { font-size:0.85rem; color:#666; margin-top:0.75rem; display:block; }
-.circle-form {
-  display:flex; flex-direction:column; gap:0.75rem; margin:1rem 0; width:100%;
-}
-.circle-form input {
-  padding:0.75rem 1rem; border:1px solid #ccc; border-radius:8px; width:100%;
-}
-.circle-form button { composes:btn-citrus; width:100%; }
-@media (min-width:768px) {
-  .circle-form { flex-direction:row; align-items:center; }
-  .circle-form input { flex:1; }
-  .circle-form button { flex:0; white-space:nowrap; }
-}
-
-/* ---------- Tag Bubbles ---------- */
-.tag {
-  display:inline-block;
-  padding:0.35rem 0.8rem;
-  border-radius:999px;
-  font-size:0.8rem;
-  font-weight:600;
-  color:#fff;
-}
-.tag.purple { background:#c7b8ea; }
-.tag.pink { background:#f7c4d9; }
-.tag.blue { background:#b6d8f7; }
-.tag.green { background:#b8eac7; }
-.tag.orange { background:#f9d1a2; }
 
 /* ==============================
-   Carousel Section (1 card per view, responsive)
+   Founder Section
+============================== */
+.founder {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 1rem 1rem;
+  max-width: 1100px;
+  margin: 0rem auto;
+  box-shadow: var(--shadow);
+}
+
+.founder-wrap {
+  display: grid;
+  grid-template-columns: 220px 1fr;   /* tighter balance */
+  gap: 2rem;
+  align-items: start;
+}
+
+.founder-photo img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  margin: 0 auto;
+  display: block;
+}
+
+.founder-heading {
+  font: 700 1.9rem "Tenor Sans", serif;
+  margin-bottom: 1rem;
+  color: var(--brand-accent);
+}
+
+.founder-bio p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+.founder-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.tag {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* Founder Cards (Let's Connect + Join the Circle) */
+.founder-cards {
+  display: grid;
+  grid-template-columns: 1fr;   /* stack by default */
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.founder-cards .card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.founder-cards .card:hover {
+  transform: translateY(-3px);
+}
+
+@media (min-width: 900px) {
+  .founder-wrap {
+    grid-template-columns: 200px 1fr;  /* photo + text nicely balanced */
+    align-items: center;
+  }
+  .founder-photo img {
+    width: 160px;
+    height: 160px;
+  }
+  .founder-cards {
+    grid-template-columns: 1fr 1fr;   /* 2 side-by-side cards on desktop */
+  }
+}
+
+
+/* ==============================
+   Founder Section — Enhanced
+   ============================== */
+.founder {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: 3rem auto;
+  box-shadow: 0 10px 24px rgba(0,0,0,.06);
+}
+
+/* 1. Balanced grid for photo + text */
+.founder-wrap {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: center;     /* centers photo with heading */
+}
+
+/* 2. Refined photo styling */
+.founder-photo img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* 3. Subtle hover zoom for approachability */
+.founder-photo img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 28px rgba(0,0,0,.12);
+}
+
+/* 4. Heading polish */
+.founder-heading {
+  font: 700 2rem "Tenor Sans", serif;
+  margin-bottom: 1rem;
+  color: var(--brand-accent);
+  letter-spacing: .5px;
+}
+
+/* 5. Bio readability */
+.founder-bio p {
+  margin-bottom: 1rem;
+  line-height: 1.65;
+  max-width: 60ch;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* 6. Tag refinement */
+.founder-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: 1.25rem;
+}
+.tag {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  font-size: .9rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+/* 7. Cards layout (connect + circle) */
+.founder-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.founder-cards .card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+/* 8. Interactive lift */
+.founder-cards .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+/* 9. Side-by-side on desktop */
+@media (min-width: 900px) {
+  .founder-wrap {
+    grid-template-columns: 200px 1fr;
+  }
+  .founder-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 10. Mobile optimization */
+@media (max-width: 768px) {
+  .founder-wrap { grid-template-columns: 1fr; text-align: center; }
+  .founder-photo img { margin: 0 auto 1.5rem; }
+  .founder-tags { justify-content: center; }
+}
+
+
+/* ==============================
+   Founder Section — Enhanced
+   ============================== */
+.founder {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: 3rem auto;
+  box-shadow: 0 10px 24px rgba(0,0,0,.06);
+}
+
+/* 1. Balanced grid for photo + text */
+.founder-wrap {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: center;     /* centers photo with heading */
+}
+
+/* 2. Refined photo styling */
+.founder-photo img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* 3. Subtle hover zoom for approachability */
+.founder-photo img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 28px rgba(0,0,0,.12);
+}
+
+/* 4. Heading polish */
+.founder-heading {
+  font: 700 2rem "Tenor Sans", serif;
+  margin-bottom: 1rem;
+  color: var(--brand-accent);
+  letter-spacing: .5px;
+}
+
+/* 5. Bio readability */
+.founder-bio p {
+  margin-bottom: 1rem;
+  line-height: 1.65;
+  max-width: 60ch;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* 6. Tag refinement */
+.founder-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: 1.25rem;
+}
+.tag {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  font-size: .9rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+/* 7. Cards layout (connect + circle) */
+.founder-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.founder-cards .card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+/* 8. Interactive lift */
+.founder-cards .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+/* 9. Side-by-side on desktop */
+@media (min-width: 900px) {
+  .founder-wrap {
+    grid-template-columns: 200px 1fr;
+  }
+  .founder-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 10. Mobile optimization */
+@media (max-width: 768px) {
+  .founder-wrap { grid-template-columns: 1fr; text-align: center; }
+  .founder-photo img { margin: 0 auto 1.5rem; }
+  .founder-tags { justify-content: center; }
+}
+
+/* ==============================
+   Journal Carousel Enhancements
 ============================== */
 
-.carousel-section {
-  position: relative;
-  overflow: hidden;
-  max-width: 700px;
-  margin: 2rem auto;
+/* Carousel wrapper */
+.journal-carousel.carousel-section {
+  max-width: 900px;         /* wider, but still contained */
+  margin: 3rem auto;
+  padding: 1rem;
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-align: center;
 }
 
-.carousel-track {
+/* Track spacing */
+.journal-carousel .carousel-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  align-items: stretch;
+  transition: transform 0.6s ease;
+  gap: 1rem;                /* breathing room between cards */
 }
 
-/* Card styling */
-.carousel-card {
-  min-width: 100%;           /* one card per view */
+/* Journal cards */
+.journal-card {
   flex: 0 0 100%;
   box-sizing: border-box;
-  padding: 2rem 1.5rem;
-  background: #fff;
+  padding: 2rem 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;   /* natural flow */
-  gap: 1rem;
-  height: auto;
-}
-
-/* Headings centered */
-.carousel-card h3 {
+  box-shadow: var(--shadow);
   text-align: center;
-  font-weight: 700;
+  text-decoration: none;   /* remove underline */
+  color: var(--text);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.journal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  border-color: var(--accent);
+}
+
+/* Journal card heading */
+.journal-card h3 {
   margin-bottom: 0.5rem;
+  font-family: "Tenor Sans", serif;
+  font-size: 1.6rem;
+  color: var(--brand-accent);
 }
 
-/* Paragraphs left-aligned for readability */
-.carousel-card p {
-  text-align: left;
-  font-weight: 400;
-  line-height: 1.6;
-  margin: 0;
+/* Journal card text */
+.journal-card p {
+  margin: 0 auto;
+  max-width: 40ch;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 1rem;
 }
 
-/* Keep buttons always centered under text */
-.carousel-card .btn-citrus {
-  align-self: center;   /* button stays centered even if text is left */
-  margin-top: 1rem;
+/* Controls below carousel */
+.journal-carousel .carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
 }
 
-/* ==============================
-   Navigation Buttons (underneath carousel)
-============================== */
+.journal-carousel .carousel-btn {
+  border: 2px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.journal-carousel .carousel-btn:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+
+/* 40 --- Cards hover polish */
+.card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+/* Theme switch pulse */
+.theme-switch button:active svg {
+  transform: scale(0.85) rotate(-10deg);
+  transition: transform 0.2s ease;
+}
+.theme-switch button svg {
+  transition: transform 0.25s ease;
+}
 .carousel-controls {
   display: flex;
   justify-content: center;
@@ -370,303 +862,244 @@ img { max-width:100%; height:auto; display:block; }
 }
 
 .carousel-btn {
-  background: #5C8E37;
-  color: #fff;
-  border: none;
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 1.4rem;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: background 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .carousel-btn:hover {
-  background: #2e7d32;
-}
-
-/* Bigger arrows on mobile for tap targets */
-@media (max-width: 600px) {
-  .carousel-btn {
-    width: 60px;
-    height: 60px;
-    font-size: 2rem;
-  }
-}
-/* ---------- Carousel Cards ---------- */
-.carousel-card {
-  min-width: 100%;
-  flex: 0 0 100%;
-  box-sizing: border-box;
-  padding: 2rem 1.5rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;   /* keeps things balanced */
-  gap: 1rem;
-  text-align: center;    /* default center */
-}
-
-.carousel-card h3 {
-  font-family: "Work Sans", sans-serif;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.carousel-card p {
-  font-family: "Work Sans", sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  margin: 0;
-  max-width: 600px;
-}
-
-.carousel-card .btn-citrus {
-  margin-top: 1rem;
+  background: var(--accent);
+  color: var(--accent-contrast);
 }
 
 
-
-/* Explore Grid (pair layout like Founder) */
-.explore-grid-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: 2rem auto;
-  max-width: 1100px;
-}
-
-.explore-grid-pair .card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--line, #e5e5e5);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Stack on mobile */
-@media (max-width: 768px) {
-  .explore-grid-pair {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== Explore (and reusable) paired grid polish ===== */
-.explore-grid-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 2rem auto;
-  align-items: stretch;              /* make both cards the same height */
-}
-
-/* Shared card look */
-.explore-grid-pair .card {
-  background: #fff;
-  border: 1px solid var(--line, #e5e5e5);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;            /* lets footer content sit at the bottom */
-}
-
-/* Header & spacing niceties */
-.explore-grid-pair .card h3 { margin: 0 0 .5rem; }
-.explore-grid-pair .card p { margin: 0 0 1rem; }
-
-/* Keep last child snug to the bottom so both cards look level */
-.explore-grid-pair .card > *:last-child { margin-bottom: 0; }
-
-/* Spotify actions aligned & tidy */
-.spotify-card .button-row {
-  margin-top: auto;                  /* pushes controls to the bottom */
-  display: flex;
-  gap: .6rem;
-  flex-wrap: wrap;
-}
-
-/* Make “Play on Spotify” use your citrus gradient too (matches the site) */
-.spotify-card .btn-secondary.btn-spotify {
-  background: linear-gradient(135deg, #8bc34a, #ffca28);
-  color: #fff;
-  border: none;
-  font-weight: 600;
-  padding: .75rem 1.25rem;
+/* ==============================
+   Consistent Form Outlines
+============================== */
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--brand-accent); /* always brand accent */
   border-radius: 8px;
-}
-.spotify-card .btn-secondary.btn-spotify:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font: 15px "Work Sans", sans-serif;
+  color: var(--text);
+  background: transparent;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  margin-bottom: 12px;
+  box-sizing: border-box;
 }
 
-/* Optional: de-emphasize “Now playing” label if you’d like */
-.explore-grid-pair .badge,
-.explore-grid-pair .card-header span {
-  display:inline-block;
-  font-size:.8rem;
+form input::placeholder,
+form textarea::placeholder {
   color: var(--muted);
-  margin-bottom: .35rem;
+  opacity: 0.7;
 }
 
-/* Mobile: stack, full-width actions */
-@media (max-width: 768px) {
-  .explore-grid-pair { grid-template-columns: 1fr; }
+/* Focus glow */
+form input:focus,
+form textarea:focus {
+  border-color: var(--accent-hover); /* stronger highlight */
+  box-shadow: 0 0 0 3px rgba(63,167,92,0.2); /* lime glow */
+}
 
-  /* Full-width inputs & buttons for the Citrus form */
-  .citrus-card .circle-form { flex-direction: column; align-items: stretch; }
-  .citrus-card .circle-form input,
-  .citrus-card .circle-form button { width: 100%; }
+/* Citrus Circle + Contact Buttons */
+form button,
+#submitBtn,
+.btn-citrus {
+  border: 2px solid var(--brand-accent);
+  background: transparent;
+  color: var(--brand-accent);
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
 
-  /* Full-width Spotify controls */
-  .spotify-card .button-row a,
-  .spotify-card .button-row button { flex: 1 1 100%; }
+form button:hover,
+#submitBtn:hover,
+.btn-citrus:hover {
+  background: var(--brand-accent);
+  color: var(--accent-contrast);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+form button:active,
+#submitBtn:active,
+.btn-citrus:active {
+  transform: scale(0.97);
+}
+
+
+/* Make Join the Circle full width like inputs */
+form button.btn-citrus {
+  width: 100%;              /* span full row */
+  margin-top: 5px;
+  text-align: center;
 }
 
 /* ==============================
-   Explore Spotify Card Spacing Fix
-   ============================== */
+   Final Polish: Forms, Cards, Buttons
+============================== */
 
-/* keep "LACE AND LIME™" on one line in the header */
-.brand { white-space: nowrap; }
-
-/* ===== Explore → Spotify card: compact spacing ===== */
-.spotify-card{
-  padding: 1rem 1.25rem;        /* was 1.5rem */
-}
-.spotify-card .badge{
-  margin: 0 0 .25rem;
-  font-size: .85rem;
-}
-.spotify-card h3{
-  margin: 0 0 .4rem;
-  line-height: 1.15;
-}
-.spotify-card p{
-  margin: .4rem 0 .6rem;        /* tighter paragraph spacing */
-  line-height: 1.45;
+/* 1. Align input + button heights */
+.citrus-form-row input,
+.citrus-form-row button {
+  height: 48px;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
-/* button row + embed spacing */
-.spotify-card .button-row{
-  margin-top: .6rem;            /* was larger */
-  gap: .5rem;
-}
-#spotify-player{                 /* iframe container */
-  margin-top: .6rem;
+/* 2. Mobile card padding */
+@media (max-width: 600px) {
+  .card {
+    padding: 1.25rem;
+  }
 }
 
-/* make both cards in the pair always the same visual height */
-.explore-grid-pair{
-  align-items: stretch;
+/* 3. Button micro-interactions */
+.btn-citrus:hover,
+.btn-cta:hover,
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px) scale(1.02);
 }
-.explore-grid-pair .card{
-  display: flex;
-  flex-direction: column;
-}
-.explore-grid-pair .card > *:last-child{
-  margin-top: auto;             /* pushes last block (buttons / note) to the bottom */
-}
-
-/* mobile polish */
-@media (max-width: 768px){
-  .spotify-card{ padding: .9rem 1rem; }
-  .spotify-card p{ margin: .35rem 0 .5rem; }
-  /* full-width actions on mobile */
-  .spotify-card .button-row a,
-  .spotify-card .button-row button{ width: 100%; }
+.btn-citrus:active,
+.btn-cta:active,
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.98);
 }
 
-
-
-/* ===========================
-   Mobile Burger Menu (Chevron)
-   =========================== */
-
-/* Hide the checkbox itself */
-#nav-toggle {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+/* 4. Input focus glow */
+input:focus,
+textarea:focus {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 6px rgba(122, 102, 255, 0.3); /* default violet glow */
+  outline: none;
+}
+body[data-theme="lavender-lime"] input:focus,
+body[data-theme="lavender-lime"] textarea:focus {
+  box-shadow: 0 0 6px rgba(63, 167, 92, 0.3); /* lime glow in Lavender-Lime */
 }
 
-/* Burger button */
-.burger {
+/* 5. Universal card max-width */
+.card {
+  max-width: 520px;
   margin-left: auto;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  z-index: 1001;
+  margin-right: auto;
 }
+
+
+/* ==============================
+   THEME SWITCH (polished)
+   - Works with your existing data-set-theme="…"
+   - Per-button color even before activation
+============================== */
+.theme-switch {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.theme-switch button {
+  /* Larger, tappable, outlined tokens */
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-switch button:hover { transform: translateY(-1px); }
+.theme-switch button:active { transform: scale(.98); }
+.theme-switch button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Per-button accent color (so they look “edited” even when not active) */
+.theme-switch button[data-set-theme="lacelime"]      { color: #7A66FF; border-color: rgba(122,102,255,.35); }
+.theme-switch button[data-set-theme="lavender-lime"] { color: #3FA75C; border-color: rgba(63,167,92,.35); }
+
+/* SVG in the buttons (if present) */
+.theme-switch button svg {
+  width: 20px; height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.75;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Active state = filled pill with contrast icon/text */
+.theme-switch button.active {
+  background: currentColor;         /* use the per-button color as fill */
+  color: #fff;                      /* icon/text becomes white */
+  border-color: currentColor;
+  box-shadow: 0 6px 14px rgba(0,0,0,.08);
+}
+
+/* If you still use emoji in buttons, enlarge & center nicely */
+.theme-switch button:where(:not(:has(svg))) { font-size: 18px; }
+
+/* ==============================
+   BURGER → CHEVRON (when open)
+   keeps your structure: <label class="burger"><span/><span/><span/></label>
+============================== */
+.burger {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  z-index: 1002;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.burger:hover { background: rgba(0,0,0,.03); }
 .burger span {
-  width: 22px;
-  height: 2px;
+  position: absolute;
+  width: 22px; height: 2px;
   background: var(--accent);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: transform .3s ease, opacity .2s ease, top .3s ease;
 }
+.burger span:nth-child(1) { top: 16px; }
+.burger span:nth-child(2) { top: 21px; }
+.burger span:nth-child(3) { top: 26px; }
 
-/* Drawer (mobile nav) */
-.drawer {
-  position: absolute;
-  top: 60px;
-  left: 12px;
-  right: 12px;
-  display: none;
-  flex-direction: column;
-  gap: 14px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0,0,0,.08);
-  padding: 16px;
-  z-index: 1000;
-}
-.drawer a {
-  color: var(--text);
-  font: 600 16px/1 "Work Sans", sans-serif;
-}
-.drawer a:hover {
-  color: var(--accent);
-}
-
-/* Toggle open */
-#nav-toggle:checked ~ .drawer {
-  display: flex;
-}
-
-/* Chevron animation */
+/* On open: turn bars into a down chevron ˇ (two diagonals) */
 #nav-toggle:checked ~ .burger span:nth-child(1) {
-  transform: rotate(35deg) translate(4px, 4px);
+  top: 20px; transform: rotate(35deg);
 }
 #nav-toggle:checked ~ .burger span:nth-child(2) {
   opacity: 0;
 }
 #nav-toggle:checked ~ .burger span:nth-child(3) {
-  transform: rotate(-35deg) translate(4px, -4px);
+  top: 20px; transform: rotate(-35deg);
 }
 
-/* Hide burger on desktop */
-@media (min-width: 768px) {
-  .burger { display: none; }
-  .drawer { display: none !important; }
-  .menu { display: flex; gap: 22px; margin-left: auto; }
-}
-
+/* ==============================
+   MOBILE HEADER SAFE AREA + TAP FEEL
+============================== */
+.ll-nav { padding-top: env(safe-area-inset-top); }
+* { -webkit-tap-highlight-color: transparent; }
 

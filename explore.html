@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body data-theme="fresh-lime">
+<body data-theme="lacelime">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ===== Header ===== -->
@@ -17,26 +17,11 @@
     <div class="wrap">
 
       <!-- Theme Switch -->
-      <div class="theme-switch">
-  <button data-set-theme="coastal" aria-label="Coastal (Heart)">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M12 21s-6.2-4.3-9.3-8.4c-2-2.7-1.7-6.6.9-8.7 
-               2.1-1.7 5.3-1.4 7.1.6l1.3 1.4 1.3-1.4c1.8-2 
-               5-2.3 7.1-.6 2.6 2.1 2.9 6 1 8.7C18.2 16.7 
-               12 21 12 21z"/>
-    </svg>
-  </button>
-  <button data-set-theme="fresh-lime" class="active" aria-label="Lime (Star)">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 7-6.3-3.3-6.3 
-               3.3 1.2-7-5-4.9 7-1L12 2z"/>
-    </svg>
-  </button>
+      <div class="theme-switch" role="group" aria-label="Theme switch">
+  <button type="button" data-set-theme="lacelime" aria-pressed="false" title="LaceLime">💙</button>
+  <button type="button" data-set-theme="lavender-lime" aria-pressed="false" title="Lavender + Lime">💜</button>
 </div>
 
-
-      <!-- Brand -->
-      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
 
       <!-- Desktop Nav -->
       <nav class="menu" aria-label="Primary">
@@ -45,7 +30,7 @@
         <a href="founder.html">Founder</a>
         <a href="sessions.html">Sessions</a>
         <a href="journal.html">Journal</a>
-        <a href="explore.html"class="active">Explore</a>
+        <a href="explore.html" class="active">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account" aria-label="Account">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -67,7 +52,7 @@
         <a href="founder.html">Founder</a>
         <a href="sessions.html">Sessions</a>
         <a href="journal.html">Journal</a>
-        <a href="explore.html"class="active">Explore</a>
+        <a href="explore.html" class="active">Explore</a>
         <a href="contact.html">Contact</a>
         <a href="account.html" class="ll-account">Account</a>
       </nav>
@@ -87,47 +72,46 @@
       </div>
     </section>
 
-<!-- Explore Grid -->
-<section class="explore-grid-pair">
+    <!-- Explore Grid -->
+    <section class="explore-grid-pair">
 
-  <!-- Spotify Card -->
-  <article class="card explore-card spotify-card">
-    <div class="card-header">
-      <span class="badge">Now playing</span>
-      <h3>Lace & Lime™ Vibes</h3>
-    </div>A curated playlist to set the tone - reflection, action, and balance-forward energy.
-    <div class="button-row">
-      <a href="https://open.spotify.com/playlist/7fzL3lCumo5OhjjddCyyfg" 
-         target="_blank" class="btn-citrus">Play on Spotify</a></div>
-    <div id="spotify-player" style="display:none; margin-top:1rem;">
-      <iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
-        width="100%" height="100" frameborder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"></iframe>
-    </div>
-  </article>
+      <!-- Spotify Card -->
+      <article class="card explore-card spotify-card">
+        <div class="card-header">
+          <span class="badge">Now playing</span>
+          <h3>Lace & Lime™ Vibes</h3>
+        </div>
+        A curated playlist to set the tone — reflection, action, and balance-forward energy.
+        <div class="button-row">
+          <a href="https://open.spotify.com/playlist/7fzL3lCumo5OhjjddCyyfg" 
+             target="_blank" class="btn-citrus">Play on Spotify</a>
+        </div>
+        <div id="spotify-player" style="display:none; margin-top:1rem;">
+          <iframe style="border-radius:12px"
+            src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
+            width="100%" height="100" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+        </div>
+      </article>
 
-  <!-- Citrus Circle Card -->
-  <article class="card citrus-card">
-    <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
-    <p class="citrus-text">
-      Be the first to hear about upcoming launches, projects, and resources — 
-      all in fresh squeeze, not a flood. Delivered with Lace & Lime™.
-    </p>
-    <form class="circle-form">
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <button type="submit" class="btn-citrus">Join the Circle</button>
-    </form>
-    <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
-  </article>
+      <!-- Citrus Circle Card -->
+      <article class="card citrus-card">
+        <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
+        <p class="citrus-text">
+          Be the first to hear about upcoming launches, projects, and resources — 
+          all in fresh squeeze, not a flood. Delivered with Lace & Lime™.
+        </p>
+        <form class="circle-form">
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email">
+          <button type="submit" class="btn-citrus">Join the Circle</button>
+        </form>
+        <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
+      </article>
 
-</section>
-
-
-
-
+    </section>
+  </main>
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
