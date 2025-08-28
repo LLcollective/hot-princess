@@ -47,20 +47,24 @@
         </a>
       </nav>
 
-      <!-- Mobile -->
-      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
-      <label class="burger" for="nav-toggle"><span></span><span></span><span></span></label>
+      <!-- Mobile Nav -->
+<input type="checkbox" id="nav-toggle" aria-label="Open menu" />
+<label class="burger" for="nav-toggle" aria-controls="drawer-menu" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
 
-      <nav class="drawer" aria-label="Mobile">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html"class="active">Founder</a>
-        <a href="sessions.html">Sessions</a>
-        <a href="journal.html">Journal</a>
-        <a href="explore.html">Explore</a>
-        <a href="contact.html">Contact</a>
-        <a href="account.html" class="ll-account">Account</a>
-      </nav>
+<nav class="drawer" id="drawer-menu" aria-label="Mobile Navigation">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="founder.html" class="active">Founder</a>
+  <a href="sessions.html">Sessions</a>
+  <a href="journal.html">Journal</a>
+  <a href="explore.html">Explore</a>
+  <a href="contact.html">Contact</a>
+  <a href="account.html" class="ll-account">Account</a>
+</nav>
     </div>
   </header>
 
@@ -113,8 +117,6 @@
     </div>
   </div>
 </section>
-
-
 
   
   <!-- Let's Connect -->
