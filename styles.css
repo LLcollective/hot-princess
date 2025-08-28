@@ -178,14 +178,14 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
 
 .burger span {
   display: block;
-  width: 14px;              /* wider chevron */
-  height: 14px;             /* taller chevron */
-  border-left: 3px solid transparent;
-  border-right: 3px solid transparent;
-  border-top: 1px solid var(--accent); /* thicker stroke */
-  transform: rotate(0deg);
+  width: 14px;
+  height: 14px;
+  border-left: 1.5px solid transparent;
+  border-right: 1.5px solid transparent;
+  border-top: 1.5px solid var(--accent); /* balanced thickness */
   transition: transform .3s ease, border-top-color .3s ease;
 }
+
 
 #nav-toggle:checked + .burger span {
   transform: rotate(180deg);  /* ▲ */
