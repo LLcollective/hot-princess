@@ -178,23 +178,23 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
 
 .burger span {
   display: block;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid var(--accent); /* ▼ chevron */
+  width: 14px;              /* wider chevron */
+  height: 14px;             /* taller chevron */
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 1px solid var(--accent); /* thicker stroke */
+  transform: rotate(0deg);
   transition: transform .3s ease, border-top-color .3s ease;
+}
+
+#nav-toggle:checked + .burger span {
+  transform: rotate(180deg);  /* ▲ */
+  border-top-color: var(--accent-hover);
 }
 
 .burger:hover {
   background: rgba(0,0,0,.03);
   border-color: var(--accent-hover);
-}
-
-/* When menu is open, chevron rotates up */
-#nav-toggle:checked + .burger span {
-  transform: rotate(180deg); /* ▲ */
-  border-top-color: var(--accent-hover);
 }
 
 /* Drawer (unchanged) */
