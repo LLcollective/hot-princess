@@ -504,87 +504,6 @@ input:focus, textarea:focus {
   font-size:.9rem;
 }
 
-
-
-/* ==============================
-   Founder Section
-============================== */
-.founder {
-  background: var(--surface);
-  border-radius: 16px;
-  padding: 1rem 1rem;
-  max-width: 1100px;
-  margin: 0rem auto;
-  box-shadow: var(--shadow);
-}
-
-.founder-wrap {
-  display: grid;
-  grid-template-columns: 220px 1fr;   /* tighter balance */
-  gap: 2rem;
-  align-items: start;
-}
-
-.founder-photo img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--accent);
-  box-shadow: 0 6px 16px rgba(0,0,0,.08);
-  margin: 0 auto;
-  display: block;
-}
-
-.founder-heading {
-  font: 700 1.9rem "Tenor Sans", serif;
-  margin-bottom: 1rem;
-  color: var(--brand-accent);
-}
-
-.founder-bio p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-  max-width: 65ch;
-}
-
-.founder-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
-.tag {
-  background: var(--accent);
-  color: var(--accent-contrast);
-  font-weight: 600;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.9rem;
-}
-
-/* Founder Cards (Let's Connect + Join the Circle) */
-.founder-cards {
-  display: grid;
-  grid-template-columns: 1fr;   /* stack by default */
-  gap: 2rem;
-  margin-top: 2.5rem;
-}
-
-.founder-cards .card {
-  background: var(--card-bg);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  padding: 1.5rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.founder-cards .card:hover {
-  transform: translateY(-3px);
-}
-
 @media (min-width: 900px) {
   .founder-wrap {
     grid-template-columns: 200px 1fr;  /* photo + text nicely balanced */
@@ -600,108 +519,6 @@ input:focus, textarea:focus {
 }
 
 
-/* ==============================
-   Founder Section — Enhanced
-   ============================== */
-.founder {
-  background: var(--surface);
-  border-radius: 18px;
-  padding: 3rem 2rem;
-  max-width: 1100px;
-  margin: 3rem auto;
-  box-shadow: 0 10px 24px rgba(0,0,0,.06);
-}
-
-/* 1. Balanced grid for photo + text */
-.founder-wrap {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 2.5rem;
-  align-items: center;     /* centers photo with heading */
-}
-
-/* 2. Refined photo styling */
-.founder-photo img {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--accent);
-  box-shadow: 0 8px 20px rgba(0,0,0,.08);
-  margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-/* 3. Subtle hover zoom for approachability */
-.founder-photo img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 28px rgba(0,0,0,.12);
-}
-
-/* 4. Heading polish */
-.founder-heading {
-  font: 700 2rem "Tenor Sans", serif;
-  margin-bottom: 1rem;
-  color: var(--brand-accent);
-  letter-spacing: .5px;
-}
-
-/* 5. Bio readability */
-.founder-bio p {
-  margin-bottom: 1rem;
-  line-height: 1.65;
-  max-width: 60ch;
-  font-size: 1.05rem;
-  color: var(--text);
-}
-
-/* 6. Tag refinement */
-.founder-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .6rem;
-  margin-top: 1.25rem;
-}
-.tag {
-  background: var(--accent);
-  color: var(--accent-contrast);
-  font-weight: 600;
-  padding: .45rem 1rem;
-  border-radius: 999px;
-  font-size: .9rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,.08);
-}
-
-/* 7. Cards layout (connect + circle) */
-.founder-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2.5rem;
-}
-.founder-cards .card {
-  background: var(--card-bg);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 1.75rem;
-  box-shadow: var(--shadow);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-/* 8. Interactive lift */
-.founder-cards .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 22px rgba(0,0,0,.08);
-}
-
-/* 9. Side-by-side on desktop */
-@media (min-width: 900px) {
-  .founder-wrap {
-    grid-template-columns: 200px 1fr;
-  }
-  .founder-cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 /* 10. Mobile optimization */
 @media (max-width: 768px) {
   .founder-wrap { grid-template-columns: 1fr; text-align: center; }
@@ -710,91 +527,6 @@ input:focus, textarea:focus {
 }
 
 
-/* ==============================
-   Founder Section — Enhanced
-   ============================== */
-.founder {
-  background: var(--surface);
-  border-radius: 18px;
-  padding: 3rem 2rem;
-  max-width: 1100px;
-  margin: 3rem auto;
-  box-shadow: 0 10px 24px rgba(0,0,0,.06);
-}
-
-/* 1. Balanced grid for photo + text */
-.founder-wrap {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 2.5rem;
-  align-items: center;     /* centers photo with heading */
-}
-
-/* 2. Refined photo styling */
-.founder-photo img {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--accent);
-  box-shadow: 0 8px 20px rgba(0,0,0,.08);
-  margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-/* 3. Subtle hover zoom for approachability */
-.founder-photo img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 28px rgba(0,0,0,.12);
-}
-
-/* 4. Heading polish */
-.founder-heading {
-  font: 700 2rem "Tenor Sans", serif;
-  margin-bottom: 1rem;
-  color: var(--brand-accent);
-  letter-spacing: .5px;
-}
-
-/* 5. Bio readability */
-.founder-bio p {
-  margin-bottom: 1rem;
-  line-height: 1.65;
-  max-width: 60ch;
-  font-size: 1.05rem;
-  color: var(--text);
-}
-
-/* 6. Tag refinement */
-.founder-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .6rem;
-  margin-top: 1.25rem;
-}
-.tag {
-  background: var(--accent);
-  color: var(--accent-contrast);
-  font-weight: 600;
-  padding: .45rem 1rem;
-  border-radius: 999px;
-  font-size: .9rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,.08);
-}
-
-/* 7. Cards layout (connect + circle) */
-.founder-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2.5rem;
-}
-.founder-cards .card {
-  background: var(--card-bg);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 1.75rem;
-  box-shadow: var(--shadow);
-  transition: transform .2s ease, box-shadow .2s ease;
 }
 /* 8. Interactive lift */
 .founder-cards .card:hover {
@@ -1270,3 +1002,219 @@ body[data-theme="lavender-lime"] textarea:focus {
   margin-left: 2px;        /* little space from 'E' */
   opacity: 0.85;
 }
+
+
+/* Big Title (Name or main headline) */
+.title1 {
+  font-family: "Tenor Sans", serif;
+  font-size: 2rem;              /* larger */
+  font-weight: 600;
+  color: var(--brand-accent);   /* theme accent */
+  margin: 0 0 0.5rem 0;
+}
+
+/* Small Title (subheading or credentials) */
+.title2 {
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.2rem;            /* smaller */
+  font-weight: 600;
+  color: var(--muted);          /* softer tone */
+  margin: 0 0 1.5rem 0;
+}
+
+/* Paragraph (unchanged) */
+.founder-bio p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 60ch;
+}
+/* ==============================
+   Founder Spotlight (Revamped)
+============================== */
+.founder.spotlight {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  max-width: 850px;
+  margin: 3rem auto;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+/* Founder Photo */
+.founder.spotlight .founder-photo img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  margin-bottom: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.founder.spotlight .founder-photo img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
+/* Heading */
+.founder.spotlight .founder-heading {
+  font: 700 2rem "Tenor Sans", serif;
+  color: var(--brand-accent);
+  margin-bottom: 1rem;
+}
+
+/* Bio Paragraphs */
+.founder.spotlight .founder-bio {
+  line-height: 1.65;
+  max-width: 60ch;
+  margin: 0 auto 0rem;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* Tags */
+.founder.spotlight .founder-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem;
+  margin-top: 0.5rem;
+}
+.founder.spotlight .tag {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+/* Founder Spotlight Tweaks */
+.founder.spotlight .founder-bio {
+  line-height: 1.7;
+  max-width: 90ch;   /* wider text line, closer to edges */
+  margin: 0 auto 1.25rem;
+  font-size: 1.05rem;
+  color: var(--text);
+  text-align: justify; /* optional: aligns text left instead of center */
+}
+/* ==============================
+   Certifications & Credentials
+============================== */
+.credentials-card .card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.credentials-card .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.08);
+}
+
+/* Title */
+.credentials-title {
+  font-family: "Tenor Sans", serif;
+  font-size: 2rem;
+  color: var(--brand-accent);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Section Toggles */
+.credentials-card details {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+.credentials-card details:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+.credentials-card summary {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color 0.25s ease;
+}
+.credentials-card summary span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.credentials-card summary::marker {
+  display: none;
+}
+.credentials-card details[open] summary {
+  color: var(--brand-accent);
+}
+
+/* Credentials List */
+.credentials-list {
+  list-style: none;
+  margin: 0.75rem 0 0 0;
+  padding: 0 0 0 1.25rem;
+}
+.credentials-list li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: var(--text);
+  position: relative;
+  padding-left: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.credentials-list li::before {
+  content: "•";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Paragraphs inside sections */
+.credentials-content p {
+  margin: 0.75rem 0;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Date badges */
+.badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-left: 0.25rem;
+  line-height: 1.4;
+}
+
+/* Issued = subtle gray */
+.badge-issued {
+  background: rgba(0,0,0,0.05);
+  color: var(--muted);
+}
+
+/* Expires = brand accent */
+.badge-expires {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+
