@@ -1112,3 +1112,13 @@ body[data-theme="lavender-lime"] textarea:focus {
 
 /* If you still use emoji in buttons, enlarge & center nicely */
 .theme-switch button:where(:not(:has(svg))) { font-size: 18px; }
+
+/* Target Chrome only */
+@supports (-webkit-appearance:none) and (not (-webkit-touch-callout:none)) {
+  .burger span {
+    border-top-width: 1.5px;
+    transform: scaleY(0.7);
+    transform-origin: center;
+  }
+}
+

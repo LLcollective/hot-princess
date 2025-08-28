@@ -112,77 +112,58 @@
   });
 })();
 
-/* ==============================
-   Universal Carousel (Infinite Loop + Swipe)
-   Works for: .carousel-section (about, journal, sessions, explore…)
-============================== */
-document.querySelectorAll('.carousel-section').forEach(section => {
-  const track = section.querySelector('.carousel-track');
-  if (!track) return;
+// ==============================
+// Universal Carousel Logic
+// ==============================
+document.querySelectorAll(".carousel-section").forEach(section => {
+  const track = section.querySelector(".carousel-track");
+  const cards = section.querySelectorAll(".carousel-card");
+  const prevBtn = section.querySelector(".prev-btn");
+  const nextBtn = section.querySelector(".next-btn");
 
-  const slides = Array.from(track.children);
-  const prevBtn = section.querySelector('.prev-btn, .carousel-btn.prev');
-  const nextBtn = section.querySelector('.next-btn, .carousel-btn.next');
+  if (!track || cards.length === 0) return;
 
-  if (slides.length === 0) return;
+  let index = 0;
 
-  // Clone first and last slides
-  const firstClone = slides[0].cloneNode(true);
-  const lastClone = slides[slides.length - 1].cloneNode(true);
-
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, slides[0]);
-
-  let currentIndex = 1; // start at "real" first slide
-  let slideWidth = slides[0].getBoundingClientRect().width;
-
-  // Initial position
-  track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
-
-  function moveToSlide(i) {
-    track.style.transition = 'transform 0.5s ease-in-out';
-    currentIndex = i;
-    track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
   }
 
-  function snapWithoutAnimation(i) {
-    track.style.transition = 'none';
-    currentIndex = i;
-    track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  function nextSlide() {
+    index = (index + 1) % cards.length;
+    updateCarousel();
   }
 
-  // Next
-  nextBtn?.addEventListener('click', () => {
-    moveToSlide(currentIndex + 1);
-  });
+  function prevSlide() {
+    index = (index - 1 + cards.length) % cards.length;
+    updateCarousel();
+  }
 
-  // Prev
-  prevBtn?.addEventListener('click', () => {
-    moveToSlide(currentIndex - 1);
-  });
+  // Buttons
+  if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+  if (prevBtn) prevBtn.addEventListener("click", prevSlide);
 
-  // Handle looping
-  track.addEventListener('transitionend', () => {
-    if (currentIndex >= slides.length + 1) {
-      snapWithoutAnimation(1); // loop back to start
-    }
-    if (currentIndex <= 0) {
-      snapWithoutAnimation(slides.length); // loop to end
-    }
-  });
-
-  // Resize handling
-  window.addEventListener('resize', () => {
-    slideWidth = slides[0].getBoundingClientRect().width;
-    snapWithoutAnimation(currentIndex);
-  });
-
-  // Swipe for mobile
+  // Swipe (mobile)
   let startX = 0;
-  track.addEventListener('touchstart', e => (startX = e.touches[0].clientX));
-  track.addEventListener('touchend', e => {
-    let dx = e.changedTouches[0].clientX - startX;
-    if (dx > 50) prevBtn?.click();
-    if (dx < -50) nextBtn?.click();
+  let isDragging = false;
+
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  }, { passive: true });
+
+  track.addEventListener("touchmove", e => {
+    if (!isDragging) return;
+    e.preventDefault(); // prevent vertical scroll hijack in Chrome
+    const dx = e.touches[0].clientX - startX;
+    if (dx > 50) { prevSlide(); isDragging = false; }
+    if (dx < -50) { nextSlide(); isDragging = false; }
+  }, { passive: false });
+
+  track.addEventListener("touchend", () => {
+    isDragging = false;
   });
+
+  // Initialize
+  updateCarousel();
 });
