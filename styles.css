@@ -1113,6 +1113,10 @@ body[data-theme="lavender-lime"] textarea:focus {
 /* If you still use emoji in buttons, enlarge & center nicely */
 .theme-switch button:where(:not(:has(svg))) { font-size: 18px; }
 
+/* ==============================
+   Chrome Burger Chevron Fix
+============================== */
+
 /* Target Chrome only */
 @supports (-webkit-appearance:none) and (not (-webkit-touch-callout:none)) {
   .burger span {
@@ -1122,3 +1126,23 @@ body[data-theme="lavender-lime"] textarea:focus {
   }
 }
 
+/* Universal Burger Chevron Styling */
+.burger span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: 2px;
+  border-left: none;
+  border-right: none;
+  border-top: 2px solid var(--accent);
+  transform: scaleY(0.7);
+  transform-origin: center;
+  -webkit-font-smoothing: antialiased;
+  -webkit-transform: scaleY(0.7);
+}
+
+/* Open menu = chevron up */
+#nav-toggle:checked + .burger span {
+  transform: rotate(180deg) scaleY(0.7);
+  border-top-color: var(--accent-hover);
+}
