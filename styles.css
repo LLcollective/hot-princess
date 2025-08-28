@@ -150,46 +150,89 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
 }
 
 /* Mobile Nav */
-#nav-toggle { position:absolute; opacity:0; pointer-events:none; }
+#nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .burger {
-  margin-left:auto; width:42px; height:42px;
-  display:flex; flex-direction:column;
-  justify-content:center; align-items:center;
-  gap:6px; cursor:pointer; z-index:1002;
-  border:1px solid var(--line); border-radius:10px;
-  background:var(--surface);
-  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  margin-left: auto;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1002;
+  border: 2px solid var(--accent);   /* stronger outline */
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: 0 4px 10px rgba(0,0,0,.06);
+  transition: background .25s ease, border-color .25s ease;
 }
+
 .burger span {
-  width:22px; height:2px;
-  background:var(--accent);
-  border-radius:2px;
-  transition:all .3s ease;
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all .25s ease;
 }
+
+/* subtle hover */
+.burger:hover {
+  background: rgba(0,0,0,.03);
+  border-color: var(--accent-hover);
+}
+
 .drawer {
-  position:fixed; top:70px; left:50%;
-  transform:translateX(-50%) translateY(-12px);
-  width:90%; max-width:380px;
-  display:flex; flex-direction:column; gap:14px;
-  background:var(--surface);
-  border:1px solid var(--line); border-radius:14px;
-  box-shadow:0 12px 28px rgba(0,0,0,.08);
-  padding:18px; z-index:1001;
-  opacity:0; pointer-events:none;
-  transition:opacity .25s ease, transform .25s ease;
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  width: 90%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  padding: 18px;
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
 }
+
 .drawer a {
-  color:var(--text);
-  font:600 16px/1.4 "Work Sans",sans-serif;
-  padding:10px 0; border-radius:6px;
+  color: var(--text);
+  font: 600 16px/1.4 "Work Sans", sans-serif;
+  padding: 10px 0;
+  border-radius: 6px;
 }
+
 .drawer a:hover {
-  color:var(--accent);
-  background:rgba(0,0,0,.03);
-  padding-left:6px;
+  color: var(--accent);
+  background: rgba(0,0,0,.03);
+  padding-left: 6px;
 }
-#nav-toggle:checked ~ .drawer { opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto; }
-@media(min-width:768px){ .burger,.drawer{display:none!important;} .menu{display:flex;} }
+
+#nav-toggle:checked ~ .drawer {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+@media(min-width:768px){
+  .burger,.drawer { display:none!important; }
+  .menu { display:flex; }
+}
+
 
 /* ==============================
    6. Hero
@@ -1056,50 +1099,3 @@ body[data-theme="lavender-lime"] textarea:focus {
 
 /* If you still use emoji in buttons, enlarge & center nicely */
 .theme-switch button:where(:not(:has(svg))) { font-size: 18px; }
-
-/* ==============================
-   BURGER → CHEVRON (when open)
-   keeps your structure: <label class="burger"><span/><span/><span/></label>
-============================== */
-.burger {
-  width: 44px; height: 44px;
-  border-radius: 10px;
-  border: 1.5px solid var(--line);
-  background: var(--surface);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  position: relative;
-  z-index: 1002;
-  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
-}
-.burger:hover { background: rgba(0,0,0,.03); }
-.burger span {
-  position: absolute;
-  width: 22px; height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: transform .3s ease, opacity .2s ease, top .3s ease;
-}
-.burger span:nth-child(1) { top: 16px; }
-.burger span:nth-child(2) { top: 21px; }
-.burger span:nth-child(3) { top: 26px; }
-
-/* On open: turn bars into a down chevron ˇ (two diagonals) */
-#nav-toggle:checked ~ .burger span:nth-child(1) {
-  top: 20px; transform: rotate(35deg);
-}
-#nav-toggle:checked ~ .burger span:nth-child(2) {
-  opacity: 0;
-}
-#nav-toggle:checked ~ .burger span:nth-child(3) {
-  top: 20px; transform: rotate(-35deg);
-}
-
-/* ==============================
-   MOBILE HEADER SAFE AREA + TAP FEEL
-============================== */
-.ll-nav { padding-top: env(safe-area-inset-top); }
-* { -webkit-tap-highlight-color: transparent; }
-
