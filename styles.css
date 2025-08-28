@@ -178,25 +178,24 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
 
 .burger span {
   display: block;
-  width: 12px;   /* narrower */
-  height: 12px;
-  margin-top: 2px; /* nudge down so it looks centered */
-  border-left: 1.5px solid transparent;
-  border-right: 1.5px solid transparent;
-  border-top: 1.5px solid var(--accent);
+  width: 14px;
+  height: 14px;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 1.5px solid var(--accent); /* balanced thickness */
   transition: transform .3s ease, border-top-color .3s ease;
 }
+#nav-toggle:checked + .burger span {
+  transform: rotate(180deg);
+  border-top-color: var(--accent-hover);
+}
+
 
 .burger:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
 
-
-#nav-toggle:checked + .burger span {
-  transform: rotate(180deg);  /* ▲ */
-  border-top-color: var(--accent-hover);
-}
 
 .burger:hover {
   background: rgba(0,0,0,.03);
@@ -1113,25 +1112,3 @@ body[data-theme="lavender-lime"] textarea:focus {
 
 /* If you still use emoji in buttons, enlarge & center nicely */
 .theme-switch button:where(:not(:has(svg))) { font-size: 18px; }
-
-
-/* =========================================
-   BURGER CHEVRON FIX (Chrome mobile override)
-========================================= */
-.burger span {
-  display: block;
-  width: 14px;
-  height: 14px;
-  border-left: 2px solid transparent;
-  border-right: 2px solid transparent;
-  border-top: 2px solid var(--accent); /* crisp line */
-  transform: scaleY(0.8);              /* keeps it optically thinner */
-  transition: transform .3s ease, border-top-color .3s ease;
-}
-
-/* When menu is open, flip chevron */
-#nav-toggle:checked + .burger span {
-  transform: rotate(180deg) scaleY(0.8);
-  border-top-color: var(--accent-hover);
-}
-

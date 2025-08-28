@@ -186,30 +186,3 @@ document.querySelectorAll('.carousel-section').forEach(section => {
     if (dx < -50) nextBtn?.click();
   });
 });
-/* =========================================
-   CAROUSEL SWIPE FIX (Chrome mobile override)
-========================================= */
-document.querySelectorAll('.carousel-section').forEach(section => {
-  const track = section.querySelector('.carousel-track');
-  const slides = Array.from(track.children);
-  let index = 0;
-  let startX = 0;
-
-  function updateCarousel() {
-    track.style.transition = 'transform 0.5s ease'; // ensure smooth move
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  // Touch start
-  track.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  }, { passive: true });
-
-  // Touch end
-  track.addEventListener('touchend', e => {
-    let dx = e.changedTouches[0].clientX - startX;
-    if (dx > 50) index = (index - 1 + slides.length) % slides.length; // swipe right
-    if (dx < -50) index = (index + 1) % slides.length; // swipe left
-    updateCarousel();
-  }, { passive: true });
-});
