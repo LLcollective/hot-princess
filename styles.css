@@ -149,7 +149,10 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
   text-underline-offset:4px;
 }
 
-/* Mobile Nav */
+/* ==============================
+   Chevron Burger Button
+============================== */
+
 #nav-toggle {
   position: absolute;
   opacity: 0;
@@ -164,30 +167,37 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 6px;
   cursor: pointer;
   z-index: 1002;
-  border: 2px solid var(--accent);   /* stronger outline */
+  border: 2px solid var(--accent); /* outline */
   border-radius: 10px;
   background: var(--surface);
   box-shadow: 0 4px 10px rgba(0,0,0,.06);
-  transition: background .25s ease, border-color .25s ease;
+  transition: border-color .25s ease, background .25s ease;
 }
 
 .burger span {
-  width: 22px;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: all .25s ease;
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--accent); /* ▼ chevron */
+  transition: transform .3s ease, border-top-color .3s ease;
 }
 
-/* subtle hover */
 .burger:hover {
   background: rgba(0,0,0,.03);
   border-color: var(--accent-hover);
 }
 
+/* When menu is open, chevron rotates up */
+#nav-toggle:checked + .burger span {
+  transform: rotate(180deg); /* ▲ */
+  border-top-color: var(--accent-hover);
+}
+
+/* Drawer (unchanged) */
 .drawer {
   position: fixed;
   top: 70px;
@@ -209,30 +219,28 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
   transition: opacity .25s ease, transform .25s ease;
 }
 
-.drawer a {
-  color: var(--text);
-  font: 600 16px/1.4 "Work Sans", sans-serif;
-  padding: 10px 0;
-  border-radius: 6px;
-}
-
-.drawer a:hover {
-  color: var(--accent);
-  background: rgba(0,0,0,.03);
-  padding-left: 6px;
-}
-
 #nav-toggle:checked ~ .drawer {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
   pointer-events: auto;
 }
 
-@media(min-width:768px){
-  .burger,.drawer { display:none!important; }
-  .menu { display:flex; }
+.drawer a {
+  color: var(--text);
+  font: 600 16px/1.4 "Work Sans", sans-serif;
+  padding: 10px 0;
+  border-radius: 6px;
+}
+.drawer a:hover {
+  color: var(--accent);
+  background: rgba(0,0,0,.03);
+  padding-left: 6px;
 }
 
+@media(min-width:768px){
+  .burger, .drawer { display:none!important; }
+  .menu { display:flex; }
+}
 
 /* ==============================
    6. Hero
