@@ -1107,3 +1107,37 @@ body[data-theme="lavender-lime"] textarea:focus {
 
 /* If you still use emoji in buttons, enlarge & center nicely */
 .theme-switch button:where(:not(:has(svg))) { font-size: 18px; }
+
+
+/* ==============================
+   Burger → Chevron Override
+   ============================== */
+
+/* Base burger lines (reset to vertical chevron look) */
+.burger span {
+  width: 18px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Make top & bottom lines angled like a chevron when checked */
+#nav-toggle:checked + .burger span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+#nav-toggle:checked + .burger span:nth-child(2) {
+  opacity: 0; /* hide the middle line */
+}
+
+#nav-toggle:checked + .burger span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Drawer open state */
+#nav-toggle:checked ~ .drawer {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
