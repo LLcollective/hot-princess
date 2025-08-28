@@ -9,19 +9,17 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class=index data-theme="lavender-lime">
+<body data-theme="lavender-lime">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ===== Header ===== -->
   <header class="ll-nav">
     <div class="wrap">
-
       <!-- Theme Switch -->
       <div class="theme-switch" role="group" aria-label="Theme switch">
-  <button type="button" data-set-theme="lacelime" aria-pressed="false" title="LaceLime">💙</button>
-  <button type="button" data-set-theme="lavender-lime" aria-pressed="false" title="Lavender + Lime">💜</button>
-</div>
-
+        <button type="button" data-set-theme="lacelime" aria-pressed="false" title="LaceLime">💙</button>
+        <button type="button" data-set-theme="lavender-lime" aria-pressed="false" title="Lavender + Lime">💜</button>
+      </div>
 
       <!-- Brand -->
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
@@ -81,13 +79,25 @@
       </div>
     </section>
 
-    <!-- Citrus Circle (first, primary CTA) -->
-  <article class="card citrus-card">
-    <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
-    <p class="citrus-text">
-           Some pages are still in progress. Join the Circle to be notified as soon as the full soft launch is complete.  
-      Be the first to hear about upcoming launches, projects, and resources – all in fresh squeeze, not a flood.  
-      Delivered with Lace & Lime™.
+       <!-- Citrus Circle (first, primary CTA) -->
+    <div class="content-container">
+      <article class="card citrus-card">
+        <h3 class="citrus-title">Join the Citrus Circle 🍋</h3>
+        <p class="citrus-text">
+          Some pages are still in progress. Join the Circle to be notified as soon as the full soft launch is complete.
+          Be the first to hear about upcoming launches, projects, and resources – all in fresh squeeze, not a flood.
+          Delivered with Lace & Lime™.
+        </p>
+        <form class="circle-form">
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email">
+          <button type="submit" class="btn-citrus">Join the Circle</button>
+        </form>
+        <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
+      </article>
+    </div>
+  </main>
+
  
     </p>
     <form class="circle-form">

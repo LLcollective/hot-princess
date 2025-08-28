@@ -39,7 +39,7 @@ body[data-theme="lavender-lime"] {
   --surface:#F6F0FF;
   --card-bg:#F6FFF4;
   --text:#2E4D2E;
-  --muted:#587658;
+  --muted:#4d664d;
 
   --accent:#3FA75C;
   --accent-hover:#2E8749;
@@ -54,6 +54,10 @@ body[data-theme="lavender-lime"] {
 /* ==============================
    3. Base + Utilities
 ============================== */
+
+.brand { white-space: nowrap; }
+
+
 body {
   position: relative;
   background: var(--surface);
@@ -148,9 +152,8 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
   color:var(--brand-accent);
   text-underline-offset:4px;
 }
-
 /* ==============================
-   Chevron Burger Button
+   Hamburger → Chevron ( > )
 ============================== */
 
 #nav-toggle {
@@ -167,9 +170,10 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 6px;
   cursor: pointer;
   z-index: 1002;
-  border: 2px solid var(--accent); /* outline */
+  border: 2px solid var(--accent);
   border-radius: 10px;
   background: var(--surface);
   box-shadow: 0 4px 10px rgba(0,0,0,.06);
@@ -177,17 +181,30 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
 }
 
 .burger span {
-  display: block;
-  width: 14px;
-  height: 14px;
-  border-left: 2px solid transparent;
-  border-right: 2px solid transparent;
-  border-top: 1.5px solid var(--accent); /* balanced thickness */
-  transition: transform .3s ease, border-top-color .3s ease;
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all .3s ease;
+
+  /* Add these for Chrome consistency */
+  -webkit-font-smoothing: antialiased;
+  transform-origin: center;
 }
-#nav-toggle:checked + .burger span {
-  transform: rotate(180deg);
-  border-top-color: var(--accent-hover);
+
+
+
+/* When menu is open → turn 3 lines into chevron > */
+#nav-toggle:checked + .burger span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 6px);
+  width: 14px;
+}
+#nav-toggle:checked + .burger span:nth-child(2) {
+  opacity: 0; /* hide middle line */
+}
+#nav-toggle:checked + .burger span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -6px);
+  width: 14px;
 }
 
 
@@ -1113,44 +1130,7 @@ body[data-theme="lavender-lime"] textarea:focus {
 /* If you still use emoji in buttons, enlarge & center nicely */
 .theme-switch button:where(:not(:has(svg))) { font-size: 18px; }
 
-/* ==============================
-   HARD OVERRIDES (Always Win)
-   ============================== */
 
-/* --- Mobile Nav Drawer --- */
-#nav-toggle:checked ~ .drawer {
-  opacity: 1 !important;
-  transform: translateX(-50%) translateY(0) !important;
-  pointer-events: auto !important;
-}
-
-/* --- Burger Chevron --- */
-label.burger span {
-  display: block !important;
-  width: 14px !important;
-  height: 14px !important;
-  margin-top: 2px !important;
-  border-top: 2px solid var(--accent) !important;
-  border-left: none !important;
-  border-right: none !important;
-  transition: transform .3s ease, border-top-color .3s ease !important;
-}
-
-#nav-toggle:checked + label.burger span {
-  transform: rotate(180deg) !important;
-  border-top-color: var(--accent-hover) !important;
-}
-
-/* --- Carousel Track + Cards --- */
 .carousel-track {
-  display: flex !important;
-  transition: transform 0.6s ease-in-out !important;
-  width: 100% !important;
-  will-change: transform !important;
-}
-
-.carousel-card {
-  min-width: 100% !important;
-  flex-shrink: 0 !important;
-  box-sizing: border-box !important;
+  touch-action: pan-y;
 }

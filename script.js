@@ -112,58 +112,33 @@
   });
 })();
 
-// ==============================
-// Universal Carousel Logic
-// ==============================
-document.querySelectorAll(".carousel-section").forEach(section => {
-  const track = section.querySelector(".carousel-track");
-  const cards = section.querySelectorAll(".carousel-card");
-  const prevBtn = section.querySelector(".prev-btn");
-  const nextBtn = section.querySelector(".next-btn");
-
-  if (!track || cards.length === 0) return;
+// Universal Carousel (buttons + swipe + wrap)
+document.querySelectorAll('.carousel-section').forEach(section => {
+  const track  = section.querySelector('.carousel-track');
+  const cards  = section.querySelectorAll('.carousel-card');
+  const prev   = section.querySelector('.prev-btn');
+  const next   = section.querySelector('.next-btn');
+  if (!track || cards.length < 1) return;
 
   let index = 0;
+  const go = i => { index = (i + cards.length) % cards.length; track.style.transform = `translateX(-${index * 100}%)`; };
+  const nextSlide = () => go(index + 1);
+  const prevSlide = () => go(index - 1);
 
-  function updateCarousel() {
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }
+  next && next.addEventListener('click', nextSlide);
+  prev && prev.addEventListener('click', prevSlide);
 
-  function nextSlide() {
-    index = (index + 1) % cards.length;
-    updateCarousel();
-  }
-
-  function prevSlide() {
-    index = (index - 1 + cards.length) % cards.length;
-    updateCarousel();
-  }
-
-  // Buttons
-  if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-  if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-
-  // Swipe (mobile)
-  let startX = 0;
-  let isDragging = false;
-
-  track.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-  }, { passive: true });
-
-  track.addEventListener("touchmove", e => {
-    if (!isDragging) return;
-    e.preventDefault(); // prevent vertical scroll hijack in Chrome
+  // Chrome-mobile swipe (preventDefault only on real horizontal move)
+  let startX = 0, dragging = false, moved = false;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragging = true; moved = false; }, { passive:true });
+  track.addEventListener('touchmove', e => {
+    if (!dragging) return;
     const dx = e.touches[0].clientX - startX;
-    if (dx > 50) { prevSlide(); isDragging = false; }
-    if (dx < -50) { nextSlide(); isDragging = false; }
-  }, { passive: false });
+    if (Math.abs(dx) > 10) { e.preventDefault(); moved = true; }   // block vertical only when really swiping
+    if (dx > 50)  { prevSlide(); dragging = false; }
+    if (dx < -50) { nextSlide(); dragging = false; }
+  }, { passive:false });
+  track.addEventListener('touchend', () => { dragging = false; });
 
-  track.addEventListener("touchend", () => {
-    isDragging = false;
-  });
-
-  // Initialize
-  updateCarousel();
+  go(0);
 });
