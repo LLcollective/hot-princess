@@ -1167,14 +1167,14 @@ body[data-theme="lavender-lime"] textarea:focus {
 .credentials-list {
   list-style: none;
   margin: 0.75rem 0 0 0;
-  padding: 0 0 0 1.25rem;
+  padding: 0; /* removed padding so text runs full width */
 }
 .credentials-list li {
   margin-bottom: 0.75rem;
   line-height: 1.6;
   color: var(--text);
   position: relative;
-  padding-left: 1rem;
+  padding-left: 0.9rem; /* just enough space for bullet */
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -1217,4 +1217,26 @@ body[data-theme="lavender-lime"] textarea:focus {
   color: var(--accent-contrast);
 }
 
+
+/* FORCE FOR CREDENTIALS FULL WIDTH (EDU) */
+.credentials-card .credentials-content,
+.credentials-card .credentials-content p,
+.credentials-card .credentials-list,
+.credentials-card .credentials-list li {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+  white-space: normal;
+  word-break: normal;
+}
+
+.tagline {
+  font-size: 3.5rem; /* or whatever you’re using */
+  font-weight: 700;
+  line-height: 1.2;       /* ensure room for g, y, p, q */
+  padding-bottom: 0.2em;  /* adds breathing space below */
+  overflow: visible;      /* ensures descenders are not clipped */
+}
 
