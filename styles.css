@@ -109,15 +109,15 @@ h3 {
   margin: 1.5rem 0 0.75rem;
   font-family: "Work Sans", sans-serif;
 }
+
 p {
   max-width: 65ch;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
-  font-size: 1rem;
+  font-size: 1.125rem; /* ~18px */
   color: var(--text);
 }
-small, .citrus-note { font-size: .85rem; line-height: 1.5; }
 
 /* ==============================
    5. Navigation
@@ -350,7 +350,7 @@ small, .citrus-note { font-size: .85rem; line-height: 1.5; }
   position: relative;
   overflow: hidden;
   max-width: 900px;
-  margin: 3rem auto;
+  margin: 0rem auto;
   border-radius: 14px;
 }
 .carousel-track {
@@ -1037,7 +1037,7 @@ body[data-theme="lavender-lime"] textarea:focus {
   border-radius: 16px;
   padding: 2.5rem 2rem;
   max-width: 850px;
-  margin: 3rem auto;
+  margin: 0 auto 1rem; /* top = 0, left/right = auto, bottom = 1rem */
   text-align: center;
   box-shadow: var(--shadow);
 }
@@ -1109,8 +1109,8 @@ body[data-theme="lavender-lime"] textarea:focus {
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 2.5rem 2rem;
-  margin: 3rem auto;
-  max-width: 900px;
+  margin: 1 rem auto;
+  max-width: 1000px;
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -1137,7 +1137,7 @@ body[data-theme="lavender-lime"] textarea:focus {
 }
 .credentials-card details:first-of-type {
   border-top: none;
-  padding-top: 0;
+  padding-top: 2;
 }
 .credentials-card summary {
   font-family: "Work Sans", sans-serif;
@@ -1219,6 +1219,7 @@ body[data-theme="lavender-lime"] textarea:focus {
 
 
 /* FORCE FOR CREDENTIALS FULL WIDTH (EDU) */
+.credentials-card .card > p,
 .credentials-card .credentials-content,
 .credentials-card .credentials-content p,
 .credentials-card .credentials-list,
@@ -1227,10 +1228,12 @@ body[data-theme="lavender-lime"] textarea:focus {
   width: 100% !important;
   margin-right: 0 !important;
   padding-right: 0 !important;
-  box-sizing: border-box;
+  box-sizing: z-box;
   white-space: normal;
   word-break: normal;
 }
+
+
 
 .tagline {
   font-size: 3.5rem; /* or whatever you’re using */
@@ -1240,3 +1243,130 @@ body[data-theme="lavender-lime"] textarea:focus {
   overflow: visible;      /* ensures descenders are not clipped */
 }
 
+/* Force contact form to always be white background */
+.contact {
+  background: #fff !important;
+}
+
+
+/* Neutralize inputs */
+.contact input,
+.contact textarea {
+  background: #fff !important;
+  border: 1px solid #ccc !important;
+  color: #000 !important;
+}
+
+/* Buttons keep brand accent, but consistent */
+.contact #submitBtn {
+  border: 2px solid var(--brand-accent) !important;
+  color: var(--brand-accent) !important;
+}
+.contact #submitBtn:hover {
+  background: var(--brand-accent) !important;
+  color: #fff !important;
+}
+
+/* Lavender + Lime theme */
+body[data-theme="lavender-lime"] .card,
+body[data-theme="lavender-lime"] .explore-card,
+body[data-theme="lavender-lime"] .spotify-card,
+body[data-theme="lavender-lime"] .citrus-card,
+body[data-theme="lavender-lime"] .carousel-card,
+body[data-theme="lavender-lime"] .connect-card,
+body[data-theme="lavender-lime"] .credentials-card .card,
+body[data-theme="lavender-lime"] .founder.spotlight,
+body[data-theme="lavender-lime"] .contact {
+  background: linear-gradient(135deg, #E6E6FA, #DFFFD6) !important;
+}
+
+/* LaceLime (blue + lime) theme */
+body[data-theme="lacelime"] .card,
+body[data-theme="lacelime"] .explore-card,
+body[data-theme="lacelime"] .spotify-card,
+body[data-theme="lacelime"] .citrus-card,
+body[data-theme="lacelime"] .carousel-card,
+body[data-theme="lacelime"] .connect-card,
+body[data-theme="lacelime"] .credentials-card .card,
+body[data-theme="lacelime"] .founder.spotlight,
+body[data-theme="lacelime"] .contact {
+  background: linear-gradient(135deg, #d0e7ff, #d9ffd6) !important;
+}
+
+.hero-cta {
+  text-align: center;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.info-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.info-icon .popover {
+  visibility: hidden;
+  opacity: 0;
+  width: 260px;
+  background: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  position: absolute;
+  z-index: 1;
+  top: 130%; /* below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.25s ease;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Arrow under popover */
+.info-icon .popover::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}
+
+/* Show on hover or focus */
+.info-icon:hover .popover,
+.info-icon:focus .popover {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Force Spotify "Now Playing" badge to behave */
+.spotify-card .card-header {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start !important;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  text-align: left !important;
+}
+
+.spotify-card .card-header .badge {
+  background: var(--accent) !important;
+  color: var(--accent-contrast) !important;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.25rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
