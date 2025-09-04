@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Founder | Lace & Lime</title>
-  <meta name="description" content="Founder and credentials — Sharon Gutierrez, MPH, CHES. IRB certified for human subject research and ethics. Outcomes, case snapshots, and accessible tools." />
+  <meta name="description" content="Founder — Sharon Gutierrez, MPH, CHES. Outcomes, case snapshots, and credentials that show fast, steady results." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --surface:#E6F4FF; --text:#1A2238; --muted:#405970; --line: rgba(26,34,56,.15);
       --card:#FFFFFF; --shadow: 0 6px 20px rgba(26,34,56,.08);
-      --brand:#4f46e5; --brand-pill:#F3F4FF; --ok:#0f766e;
+      --brand:#4f46e5; --brand-pill:#F3F4FF;
     }
-    html,body{margin:0; padding:0}
+    html,body{margin:0; padding:0; overflow-x:hidden}
     body{
       background:transparent !important; color:var(--text);
       font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.55;
@@ -78,7 +78,7 @@
     .profile{ display:grid; grid-template-columns:180px 1fr; gap:1rem; align-items:start }
     .profile img{ width:100%; height:auto; border-radius:.9rem; border:1px solid var(--line); box-shadow:var(--shadow) }
     .chips{ display:flex; gap:.45rem; flex-wrap:wrap; margin-top:.4rem }
-    .chip{ background:var(--brand-pill); color:var(--brand); font-weight:700; border:1px solid var(--line); padding:.35rem .55rem; border-radius:.7rem; white-space:nowrap }
+    .chip{ background:var(--brand-pill); color:var(--brand); font-weight:700; border:1px solid var(--line); padding:.35rem .55rem; border-radius:.7rem; white-space:nowrap; overflow-wrap:anywhere; max-width:100% }
     @media (max-width:640px){ .profile{ grid-template-columns:1fr } }
 
     /* Accordions */
@@ -102,17 +102,24 @@
 
     .site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
     .site-footer .wrap{padding:1rem}
+    .muted{color:var(--muted)}
 
     /* Back to top button */
     #toTop{ position:fixed; right:14px; bottom:16px; z-index:1100; display:none;
       background:#fff; border:1px solid var(--line); box-shadow:var(--shadow); border-radius:.7rem; padding:.5rem .7rem; font-weight:700; }
 
-    /* By the numbers tiles */
+    /* KPIs */
     .kpis{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.6rem }
     .kpi{ background:#fff; border:1px solid var(--line); border-radius:.8rem; box-shadow:var(--shadow); padding:.75rem .8rem; text-align:center }
     .kpi .num{ font-family:'Tenor Sans',serif; font-size:1.3rem; color:var(--brand); }
     .kpi .label{ color:var(--muted); font-size:.9rem }
     @media (max-width:860px){ .kpis{ grid-template-columns:repeat(2,minmax(0,1fr)) } }
+    @media (max-width:480px){ .kpis{ grid-template-columns:1fr } }
+
+    @media (max-width: 640px){
+      .tagline{ font-size: clamp(1.6rem, 4.5vw + 1rem, 2.2rem); }
+      .brand{ font-size:18px; }
+    }
   </style>
 </head>
 <body>
@@ -158,11 +165,50 @@
             <img src="assets/founder.jpg" alt="Headshot of Sharon Gutierrez" loading="lazy" />
             <div>
               <h2 class="section-title">Credentials at a glance</h2>
-              <div class="chips" role="list"><span class="chip" role="listitem">MPH · Adelphi University (NY)</span><span class="chip" role="listitem">CHES</span><span class="chip" role="listitem">IRB certified · human subject research and ethics</span><span class="chip" role="listitem">BS · Math for Technology, Biology, Psychology · SUNY</span><span class="chip" role="listitem">Google Project Management Certificate</span><span class="chip" role="listitem">Google Data Analytics Certificate</span></div>
+              <div class="chips" role="list">
+                <span class="chip" role="listitem">MPH · Adelphi University (NY)</span>
+                <span class="chip" role="listitem">CHES</span>
+                <span class="chip" role="listitem">IRB certified · human subject research and ethics</span>
+                <span class="chip" role="listitem">BS · Math for Technology, Biology, Psychology · SUNY</span>
+                <span class="chip" role="listitem">Google Project Management Certificate</span>
+                <span class="chip" role="listitem">Google Data Analytics Certificate</span>
+              </div>
               <p style="margin:.7rem 0 0">I bridge analytical structure with people first practice. My background includes higher ed operations, accreditation workflows, community health programming, and resident education in New York.</p>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- CHES & Coursework (compact) -->
+    <section class="content-container" style="padding:1rem 1rem 0">
+      <div class="wrap grid cols-2">
+        <article class="card">
+          <h2 class="section-title">CHES® competencies</h2>
+          <div class="chips" role="list">
+            <span class="chip" role="listitem">Assessment of Needs & Capacity</span>
+            <span class="chip" role="listitem">Planning</span>
+            <span class="chip" role="listitem">Advocacy</span>
+            <span class="chip" role="listitem">Implementation</span>
+            <span class="chip" role="listitem">Evaluation & Research</span>
+            <span class="chip" role="listitem">Communication</span>
+            <span class="chip" role="listitem">Leadership & Management</span>
+            <span class="chip" role="listitem">Ethics & Professionalism</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 class="section-title">MPH coursework highlights</h2>
+          <div class="chips" role="list">
+            <span class="chip" role="listitem">Epidemiology</span>
+            <span class="chip" role="listitem">Quantitative Analysis</span>
+            <span class="chip" role="listitem">Program Planning & Evaluation</span>
+            <span class="chip" role="listitem">Social & Behavioral Health</span>
+            <span class="chip" role="listitem">Informatics / Data</span>
+            <span class="chip" role="listitem">Health Care Finance</span>
+            <span class="chip" role="listitem">Capstone — U.S. vs international systems & reimbursement</span>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -172,7 +218,7 @@
         <article class="card">
           <h2 class="section-title">By the numbers</h2>
           <div class="kpis">
-            <div class="kpi"><div class="num">~2 weeks</div><div class="label">to close a compliance gap</div></div>
+            <div class="kpi"><div class="num">2 weeks</div><div class="label">to close a compliance gap</div></div>
             <div class="kpi"><div class="num">25+</div><div class="label">sessions facilitated</div></div>
             <div class="kpi"><div class="num">on time</div><div class="label">vendor payments restored</div></div>
             <div class="kpi"><div class="num">fewer delays</div><div class="label">with light automations</div></div>
@@ -187,10 +233,10 @@
         <article class="card">
           <h2 class="section-title">Selected outcomes</h2>
           <ul style="margin:.2rem 0 0; padding-left:1.1rem">
-            <li>Visa documentation brought current in about two weeks. No citations noted in pre review.</li>
-            <li>Resident curriculum aligned to current ACGME expectations. Higher faculty participation and better rotation readiness.</li>
+            <li>Visa documentation brought current in 2 weeks; zero findings in pre‑review.</li>
+            <li>Resident curriculum aligned to current ACGME expectations; rotation readiness improved and faculty participation increased.</li>
             <li>Finance tracking view stabilized reporting and kept vendor payments on schedule during a staffing gap.</li>
-            <li>SharePoint and Google Workspace with Trello plus lightweight automations using Power Automate or Apps Script reduced handoff delays and manual follow ups.</li>
+            <li>SharePoint/Teams or Google/Trello with Power Automate or Apps Script reduced handoff delays and manual follow ups.</li>
           </ul>
         </article>
       </div>
@@ -211,86 +257,29 @@
           <details class="accordion" open>
             <summary><span class="chev"></span><span>Corrective action plan · GME visa documentation</span></summary>
             <div class="body">
-              <p><strong>Context.</strong> An internal review showed documents were confirmed but not uploaded, creating compliance risk.</p>
-              <p><strong>What I did.</strong> Coordinated stakeholder notification, set a 48 hour upload policy, added system alerts in the platform, delivered short trainings, and set monthly checks with a small quarterly audit.</p>
-              <p><strong>Outcome.</strong> Files were brought current within a few weeks. Delays decreased. No documentation issues were flagged in pre review.</p>
+              <p><strong>Context.</strong> Documents were confirmed but not uploaded, creating compliance risk.</p>
+              <p><strong>What I did.</strong> Coordinated stakeholder notification; set 48‑hour upload policy; added system alerts; delivered short trainings; set monthly checks with a quarterly audit.</p>
+              <p><strong>Outcome.</strong> All missing files uploaded in 2 weeks; zero findings in pre‑review.</p>
             </div>
           </details>
 
           <details class="accordion">
             <summary><span class="chev"></span><span>Resident curriculum refresh · ACGME alignment</span></summary>
             <div class="body">
-              <p><strong>Context.</strong> Training content was dated and uneven across cohorts.</p>
-              <p><strong>What I did.</strong> Ran a quick needs assessment, co designed updated modules with case discussions and compliance elements, and added simple competency checks.</p>
-              <p><strong>Outcome.</strong> Residents were better prepared for rotations and faculty engagement improved. Materials aligned with current ACGME expectations.</p>
+              <p><strong>Context.</strong> Training content was dated and uneven.</p>
+              <p><strong>What I did.</strong> Ran a needs assessment; co‑designed updated modules with case discussions and compliance elements; added simple competency checks.</p>
+              <p><strong>Outcome.</strong> Better rotation readiness; higher faculty participation.</p>
             </div>
           </details>
 
           <details class="accordion">
             <summary><span class="chev"></span><span>Community health initiative · program management</span></summary>
             <div class="body">
-              <p><strong>Context.</strong> Insurance exits created coverage gaps that limited access to essential services.</p>
-              <p><strong>What I did.</strong> Ran a needs assessment, developed a logic model and grant proposal, coordinated partners, and planned health fairs and mobile clinics with educational workshops. Set clear workflows and trained staff.</p>
-              <p><strong>Outcome.</strong> Access improved through screenings and enrollment support. Funding was secured to sustain the work. The approach was reused on later efforts.</p>
+              <p><strong>Context.</strong> Insurance exits created coverage gaps.</p>
+              <p><strong>What I did.</strong> Ran a needs assessment; developed a logic model and proposal; coordinated partners; planned health fairs / mobile clinics with educational workshops; trained staff.</p>
+              <p><strong>Outcome.</strong> Funding secured; screenings and enrollments increased.</p>
             </div>
           </details>
-        </article>
-      </div>
-    </section>
-
-    <!-- Artifacts -->
-    <section class="content-container" style="padding:1rem 1rem 0">
-      <div class="wrap">
-        <article class="card">
-          <h2 class="section-title">Artifacts</h2>
-          <p class="small" style="color:var(--muted)">Redacted samples coming soon.</p>
-          <div class="chips">
-            <a class="chip" href="#" aria-disabled="true">Policy snippet PDF</a>
-            <a class="chip" href="#" aria-disabled="true">Checklist and SOP PDF</a>
-            <a class="chip" href="#" aria-disabled="true">Two week action plan PDF</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Testimonial placeholder -->
-    <section class="content-container" style="padding:1rem 1rem 0">
-      <div class="wrap">
-        <article class="card">
-          <h2 class="section-title">What others say</h2>
-          <blockquote style="margin:0 0 .6rem 0">
-            <p style="margin:0 0 .4rem 0"><em>Testimonial coming soon.</em></p>
-            <p class="small" style="color:#405970; margin:0">
-                        </p>
-            <p class="small" style="color:#405970; margin:.2rem 0 0 0"></p>
-          </blockquote>
-        </article>
-      </div>
-    </section>
-
-    <!-- Principles and tools -->
-    <section class="content-container" style="padding:1rem 1rem 0">
-      <div class="wrap grid cols-2">
-        <article class="card">
-          <h2 class="section-title">Principles</h2>
-          <ul style="margin:.2rem 0 0; padding-left:1.1rem">
-            <li>Clarity first</li>
-            <li>One step you can finish this week</li>
-            <li>Measure outcomes, not effort</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h2 class="section-title">Tools we slot into</h2>
-          <p class="small" style="color:var(--muted)">Examples. We adapt to your stack.</p>
-          <div class="chips">
-            <span class="chip">SharePoint</span>
-            <span class="chip">Google Workspace</span>
-            <span class="chip">Teams</span>
-            <span class="chip">Trello</span>
-            <span class="chip">ClickUp</span>
-            <span class="chip">Power Automate</span>
-            <span class="chip">Apps Script</span>
-          </div>
         </article>
       </div>
     </section>
@@ -308,7 +297,8 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p class="small" style="color:var(--muted)">© 2025 Lace & Lime LLC. All rights reserved. · <a href="privacy-terms.html">Privacy and Terms</a></p>
+      <p class="muted">Works in SharePoint/Teams or Google/Trello; automations via Power Automate or Apps Script.</p>
+      <p class="small muted">© 2025 Lace & Lime LLC. All rights reserved. · <a href="privacy-terms.html">Privacy and Terms</a></p>
     </div>
   </footer>
 
