@@ -8,20 +8,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== Tokens ===== */
     :root{
       --surface:#E6F4FF; --text:#1A2238; --muted:#405970; --line:rgba(26,34,56,.15);
       --brand:#4f46e5; --brand-pill:#F3F4FF; --shadow:0 6px 20px rgba(26,34,56,.08);
+      --card:#FFFFFF;
     }
-
-    html,body{margin:0;padding:0}
+    html,body{margin:0;padding:0; overflow-x:hidden}
     body{
       background:transparent !important;
       color:var(--text);
       font-family:"Work Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       line-height:1.5;
     }
-    /* Ombré bg (always visible) */
+    /* Ombré background */
     body::before{
       content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
@@ -29,7 +28,7 @@
     a{color:var(--brand); text-decoration:none}
     .wrap{ width:min(1120px,92vw); margin-inline:auto }
 
-    /* ===== Header: one line, logo left, nav right ===== */
+    /* Header */
     .ll-nav{ position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line) }
     .ll-nav .wrap{ padding:12px 16px; display:flex; align-items:center; gap:16px; flex-wrap:nowrap }
     .brand{ font-family:'Tenor Sans',serif; font-weight:600; letter-spacing:.08em; color:var(--brand); font-size:20px; white-space:nowrap }
@@ -40,7 +39,7 @@
     nav.menu a.active{ background:var(--brand-pill); color:var(--brand) }
     nav.menu a.active::after{ content:""; position:absolute; left:10%; right:10%; bottom:-8px; height:4px; background:currentColor; border-radius:999px }
 
-    /* ===== Burger → chevron + floating menu (mobile) ===== */
+    /* Burger → chevron + floating menu (mobile) */
     .burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem; background:#fff; cursor:pointer; align-items:center; justify-content:center }
     .burger .icon{ position:relative; width:18px; height:18px }
     .burger .icon::before, .burger .icon::after, .burger .icon span{
@@ -56,15 +55,15 @@
     .mobile-menu .active{ background:var(--brand-pill); color:var(--brand) }
     @media (max-width:860px){ nav.menu{display:none} .burger{display:inline-flex} .ll-nav .wrap{position:relative} }
 
-    /* ===== Progress band ===== */
+    /* Progress band */
     .progress{ height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top,64px); z-index:999 }
     .progress span{ display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear }
 
-    /* ===== Hero ===== */
+    /* Hero */
     .hero{ border-bottom:1px solid var(--line) }
     .hero .wrap{ padding:2.25rem 1rem 1.25rem }
     .eyebrow{ display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700 }
-    /* Match Workshops H1 sizing exactly */
+
     .tagline{
       font-family:"Tenor Sans",serif;
       font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem);
@@ -77,14 +76,32 @@
       -webkit-text-fill-color:transparent; color:transparent;
     }
     .tagline *{ -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent }
-    /* Run shimmer continuously (can tap to restart burst if you like) */
     .tagline.glitter{ animation: shimmer-text 8s ease-in-out infinite; will-change: background-position; }
     @keyframes shimmer-text{ 0%{background-position:0% 0} 50%{background-position:100% 0} 100%{background-position:0% 0} }
 
-
     .hero-sub{ color:var(--muted); max-width:60ch }
 
-    /* ===== Bottom CTA (centered) ===== */
+    /* Feature cards */
+    .section{ padding:1.25rem 1rem 0 }
+    .grid{ display:grid; gap:.9rem }
+    .grid.cols-3{ grid-template-columns:repeat(3,minmax(0,1fr)) }
+    @media (max-width:920px){ .grid.cols-3{ grid-template-columns:1fr 1fr } }
+    @media (max-width:600px){ .grid.cols-3{ grid-template-columns:1fr } }
+
+    .card{ background:var(--card); border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem }
+    .card h3{ margin:.25rem 0 .4rem; font-family:'Tenor Sans',serif; color:var(--brand) }
+    .muted{ color:var(--muted) }
+    .chips{ display:flex; gap:.45rem; flex-wrap:wrap; margin-top:.4rem }
+    .chip{ background:var(--brand-pill); color:var(--brand); font-weight:700; border:1px solid var(--line); padding:.35rem .55rem; border-radius:.7rem; white-space:nowrap }
+
+    /* Citrus circle */
+    .citrus{ padding:1.25rem 1rem 0 }
+    .citrus .card{ max-width:720px; margin:0 auto }
+    .circle-form{ display:grid; grid-template-columns:1fr 1fr auto; gap:.5rem; margin:.6rem 0 .35rem }
+    .circle-form input{ border:1px solid var(--line); border-radius:.6rem; padding:.6rem .7rem; font:inherit }
+    @media (max-width:640px){ .circle-form{ grid-template-columns:1fr; } }
+
+    /* Bottom CTA */
     .bottom-cta{ padding:1.25rem 1rem 1.6rem }
     .bottom-cta .cta-box{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap }
     .btn, .btn-primary, .btn-secondary{
@@ -94,7 +111,7 @@
     .btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
     .btn-secondary{ background:#fff }
 
-    /* ===== Footer ===== */
+    /* Footer */
     .site-footer{ border-top:1px solid var(--line); margin-top:1.25rem }
     .site-footer .wrap{ padding:1rem }
   </style>
@@ -128,39 +145,70 @@
     <section class="hero">
       <div class="wrap">
         <span class="eyebrow">MODERN RESOURCES, WITH A TWIST</span>
-        <!-- FIXED: only one class attribute, correct quotes -->
         <h1 class="tagline glitter">Reflection that moves. <em>Action that sticks.</em> Growth you can feel.</h1>
         <p class="hero-sub">Lace & Lime blends reflection with aligned steps, turning awareness into momentum.</p>
       </div>
     </section>
 
-    <!-- Your content blocks would go here... -->
+    <!-- Feature cards -->
+    <section class="section">
+      <div class="wrap grid cols-3">
+        <article class="card">
+          <h3>Workshops: results in two weeks</h3>
+          <p class="muted">Single sessions or bundles. Options add up live so you always know the total.</p>
+          <div class="chips">
+            <span class="chip">14‑day action plan</span>
+            <span class="chip">Live total as you add options</span>
+            <span class="chip">Scripts & checklists</span>
+          </div>
+          <p style="margin:.7rem 0 0"><a class="btn btn-secondary" href="workshops.html">Explore workshops</a></p>
+        </article>
+        <article class="card">
+          <h3>Journal: 4×4 cycles for steadiness</h3>
+          <p class="muted">Reflect, map, act, and check‑in — then repeat. Built for steady weekly progress.</p>
+          <div class="chips">
+            <span class="chip">4×4 framework</span>
+            <span class="chip">Weekly check-in</span>
+            <span class="chip">Printable &amp; mobile-friendly</span>
+          </div>
+          <p style="margin:.7rem 0 0"><a class="btn btn-secondary" href="journal.html">See the journal</a></p>
+          <small class="muted"><a href="journal.html#sets">See all 6 sets →</a></small>
+        </article>
+        <article class="card">
+          <h3>Founder: results in weeks</h3>
+          <p class="muted">MPH, CHES, IRB certified. Outcomes, case snapshots, and a clear approach.</p>
+          <div class="chips">
+            <span class="chip">results in two weeks</span>
+            <span class="chip">Audit‑ready</span>
+            <span class="chip">Light automations</span>
+          </div>
+          <p style="margin:.7rem 0 0"><a class="btn btn-secondary" href="founder.html">Meet Sharon</a></p>
+        </article>
+      </div>
+    </section>
 
-<!-- Citrus Circle -->
-<section class="content-container">
-  <div class="wrap">
-    <article class="card" style="max-width:720px;margin:0 auto">
-      <h3 class="citrus-title" style="margin:.2rem 0 .3rem;font-family:'Tenor Sans',serif;color:var(--brand)">Join the Citrus Circle 🍋</h3>
-      <p class="citrus-text">Be first to hear about launches and resources, all in one fresh squeeze, not a flood.</p>
-      <form class="circle-form" onsubmit="event.preventDefault(); alert('Thanks! You’re on the list.');" style="display:grid;grid-template-columns:1fr 1fr auto;gap:.5rem;margin:.6rem 0 .35rem">
-        <input type="text" placeholder="Name" aria-label="Name" style="border:1px solid var(--line);border-radius:.6rem;padding:.6rem .7rem;font:inherit">
-        <input type="email" placeholder="Email" aria-label="Email" style="border:1px solid var(--line);border-radius:.6rem;padding:.6rem .7rem;font:inherit">
-        <button type="submit" class="btn btn-primary">Join</button>
-      </form>
-      <small class="citrus-note" style="color:var(--muted)">Fresh updates, never spam. Opt out anytime.</small>
-    </article>
-  </div>
-</section>
-
-
-
+    <!-- Citrus Circle -->
+    <section class="citrus">
+      <div class="wrap">
+        <article class="card">
+          <h3 class="citrus-title" style="margin:.2rem 0 .3rem;font-family:'Tenor Sans',serif;color:var(--brand)">Join the Citrus Circle 🍋</h3>
+          <p class="citrus-text">Be first to hear about launches and resources, all in one fresh squeeze, not a flood.</p>
+          <form class="circle-form" onsubmit="event.preventDefault(); alert('Thanks! You’re on the list.');">
+            <input type="text" placeholder="Name" aria-label="Name">
+            <input type="email" placeholder="Email" aria-label="Email">
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+          <small class="muted">Fresh updates, never spam. Opt out anytime.</small>
+        </article>
+      </div>
+    </section>
 
     <!-- Bottom CTAs -->
     <section class="bottom-cta">
       <div class="wrap">
         <div class="cta-box">
-          <a class="btn btn-primary" href="about.html">Our Story</a>
-          <a class="btn btn-secondary" href="founder.html">Meet the Founder</a>
+          <a class="btn btn-primary" href="workshops.html">Book a workshop</a>
+          <a class="btn btn-secondary" href="contact.html">Contact</a>
         </div>
       </div>
     </section>
@@ -203,7 +251,7 @@
       });
     })();
 
-    // Optional: tap headline to restart shimmer burst (even though it loops)
+    // Shimmer replay on tap (optional)
     (function () {
       const tl = document.querySelector('.tagline');
       if (!tl) return;
