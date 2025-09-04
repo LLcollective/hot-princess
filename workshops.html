@@ -4,140 +4,496 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Workshops | Lace & Lime™</title>
-  <meta name="description" content="Explore 1:1 Lace & Lime™ support workshops designed to bring clarity, steadiness, and actionable growth." />
+  <meta name="description" content="Choose a Lace & Lime™ workshop or bundle, then add options that fit. Clear outcomes, simple pricing." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ===== Core tokens ===== */
+    :root{
+      --surface:#E6F4FF; /* header bg + gradient start */
+      --text:#1A2238;
+      --muted:#405970;
+      --line: rgba(26,34,56,.15);
+      --card:#FFFFFF;
+      --shadow: 0 6px 20px rgba(26,34,56,.08);
+      --brand:#4f46e5;
+      --brand-pill:#F3F4FF;
+    }
+
+    html,body{margin:0}
+    body{
+      background:transparent !important; /* let the overlay show */
+      color:var(--text);
+      font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.5;
+    }
+    /* Ombre overlay (like About, slightly more dramatic at bottom) */
+    body::before{
+      content:""; position:fixed; inset:0;
+      background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
+      z-index:-1; pointer-events:none;
+    }
+    a{color:var(--brand); text-decoration:none}
+    .wrap{ width:min(1120px,92vw); margin-inline:auto }
+
+    /* ===== One-line header: logo left, nav right (no wrapping) ===== */
+    .ll-nav{
+      position:sticky; top:0; z-index:1000;
+      background:var(--surface);
+      border-bottom:1px solid var(--line);
+    }
+    .ll-nav .wrap{
+      padding:12px 16px;
+      display:flex; align-items:center; gap:16px; flex-wrap:nowrap;
+    }
+    /* Logo (left) */
+    .brand{display:flex; align-items:center; flex:0 1 auto; min-width:0; white-space:nowrap; font-family:"Tenor Sans",serif; letter-spacing:.08em; color:var(--brand); font-size:20px; }
+    .brand img, .brand svg{height:32px; width:auto; display:block;}
+    .tm{font-size:.7em; vertical-align:super}
+    @media (max-width:380px){ .brand img, .brand svg{height:28px;} }
+    /* Nav (right) */
+    nav.menu{
+      margin-left:auto;
+      display:flex; align-items:center; gap:18px;
+      flex-wrap:nowrap; white-space:nowrap; flex:0 0 auto;
+      overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    nav.menu::-webkit-scrollbar{display:none}
+    nav.menu a{
+      flex:0 0 auto;
+      font-weight:600; color:var(--text);
+      padding:.35rem .6rem; border-radius:.6rem; position:relative;
+    }
+    nav.menu a.active{ background:var(--brand-pill); color:var(--brand); }
+    nav.menu a.active::after{
+      content:""; position:absolute; left:10%; right:10%; bottom:-8px; height:4px;
+      background:currentColor; border-radius:999px;
+    }
+    /* Kill any theme/heart controls if present */
+    .ll-nav [class*="theme"], .ll-nav [id*="theme"],
+    .ll-nav [class*="switch"], .ll-nav [class*="mode"],
+    .ll-nav .heart, .ll-nav [data-theme]{ display:none !important; }
+
+    /* ===== Progress band (fixed under header; fills as you scroll) ===== */
+    .progress{height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top, 64px); z-index:999}
+    .progress span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear}
+
+    /* ===== Hero ===== */
+    .hero{border-bottom:1px solid var(--line)}
+    .hero .wrap{padding:2.25rem 1rem 1.25rem}
+    .eyebrow{display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700}
+    .tagline{font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .6rem}
+    .hero-sub{color:var(--muted); max-width:60ch}
+
+    /* ===== Cards / grids ===== */
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem}
+    .card{background:#fff; border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem; display:flex; flex-direction:column; gap:.5rem}
+    .card h3{margin:.2rem 0 .1rem; font-size:1.05rem; color:var(--brand)}
+    .muted{color:#405970; font-size:.95rem}
+    /* fun, non-theme UI */
+    .card{ transition: transform .18s ease, box-shadow .18s ease; }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 8px 28px rgba(26,34,56,.12); }
+
+    /* ===== Workshops ===== */
+    .workshops{padding:1.25rem 1rem 0}
+    .workshops h2{font-family:"Tenor Sans",serif; font-size:clamp(1.4rem,2.2vw,2rem); margin:0 0 .5rem}
+
+    /* ===== Bundles ===== */
+    .bundles{padding:1.25rem 1rem 0}
+    .bundles h2{font-family:"Tenor Sans",serif; font-size:clamp(1.4rem,2.2vw,2rem); margin:0 0 .5rem}
+    .bundle .includes{display:flex; flex-wrap:wrap; gap:.35rem}
+    .bundle .pill{font-weight:600; font-size:.85rem; padding:.25rem .55rem; border-radius:999px; background:#F3F4FF; border:1px solid var(--line)}
+
+    /* ===== Add‑ons ===== */
+    .addons{padding:1.25rem 1rem 2.5rem}
+    .addons h2{font-family:"Tenor Sans",serif; font-size:clamp(1.4rem,2.2vw,2rem); margin:0 0 .75rem}
+    .addons p.lead{color:#405970; margin:.25rem 0 1rem}
+    .addons-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem}
+    .qty{display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:.6rem; overflow:hidden}
+    .qty button{background:#fff; border:0; padding:.45rem .6rem; font-weight:800; cursor:pointer}
+    .qty input{width:3rem; border:0; text-align:center; padding:.45rem 0}
+    .qty button:active{transform:translateY(1px)}
+
+    /* ===== Sticky total bar ===== */
+    .total-bar{position:sticky; bottom:0; background:rgba(246,248,255,.9); backdrop-filter:saturate(120%) blur(6px); border-top:1px solid var(--line); padding:.75rem 1rem}
+    .total-wrap{width:min(1120px,92vw); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+    .total{font:700 1.05rem/1 "Work Sans",sans-serif;}
+    .actions{display:flex; gap:.5rem; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:.45rem; padding:.6rem .9rem; border-radius:.7rem; font-weight:700; border:1px solid var(--line); background:#fff; cursor:pointer}
+    .btn-primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn-secondary{background:#fff}
+  
+/* ==== Brand normalization ==== */
+.brand{ font-weight: 600; letter-spacing:.08em; } /* consistent across pages */
+.brand .tm{ font-size:.7em; vertical-align: super; }
+
+/* ==== Mobile burger + floating menu ==== */
+.burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem;
+  background:#fff; cursor:pointer; align-items:center; justify-content:center; }
+.burger .icon{ position:relative; width:18px; height:18px; }
+.burger .icon::before, .burger .icon::after, .burger .icon span{
+  content:""; position:absolute; left:0; right:0; height:0; border-top:2px solid currentColor; border-bottom:2px solid transparent;
+  border-radius:2px;
+}
+.burger .icon span{ top:8px; }
+.burger .icon::before{ top:2px; }
+.burger .icon::after{ bottom:2px; }
+
+/* open state -> chevron */
+.burger[aria-expanded="true"] .icon::before,
+.burger[aria-expanded="true"] .icon::after{
+  top:auto; bottom:auto; border-bottom:0;
+}
+.burger[aria-expanded="true"] .icon::before{
+  transform:translateX(4px) rotate(40deg); transform-origin:left center;
+  width:12px; left:3px; top:4px;
+}
+.burger[aria-expanded="true"] .icon::after{
+  transform:translateX(4px) rotate(-40deg); transform-origin:left center;
+  width:12px; left:3px; top:12px;
+}
+.burger[aria-expanded="true"] .icon span{ opacity:0; }
+
+/* floating menu panel (auto-sized, not full width) */
+.mobile-menu{ position:absolute; top:100%; right:12px; z-index:1200; display:none;
+  background:#fff; border:1px solid var(--line); border-radius:.9rem; box-shadow:0 10px 28px rgba(26,34,56,.14);
+  padding:.4rem; min-width:180px; width:max-content; max-width:92vw; }
+.mobile-menu a{ display:block; padding:.55rem .8rem; border-radius:.6rem; color:var(--text); font-weight:600; white-space:nowrap; }
+.mobile-menu a:hover{ background:rgba(0,0,0,.04) }
+.mobile-menu .active{ background:var(--brand-pill); color:var(--brand) }
+
+@media (max-width: 860px){
+  nav.menu{ display:none; }          /* hide desktop row */
+  .burger{ display:inline-flex; }    /* show burger */
+  header.ll-nav{ position:sticky; }  /* keep stickiness */
+  .ll-nav .wrap{ position:relative; }/* anchor for absolute menu */
+}
+
+/* ==== Bottom CTA (centered) ==== */
+.bottom-cta{ padding:1.25rem 1rem 1.6rem }
+.bottom-cta .cta-box{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap }
+.btn, .btn-primary, .btn-secondary{
+  display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
+  padding:.6rem .9rem; border-radius:.7rem; font-weight:700; border:1px solid var(--line);
+  cursor:pointer; text-decoration:none;
+}
+.btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
+.btn-secondary{ background:#fff }
+</style>
 </head>
-
-<body data-theme="lavender-lime">
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <!-- ===== Header ===== -->
-  <header class="ll-nav">
+<body>
+  <!-- Header -->
+  <header class="ll-nav" role="banner">
     <div class="wrap">
-      <!-- Theme Switch -->
-      <div class="theme-switch" role="group" aria-label="Theme switch">
-        <button type="button" data-set-theme="lacelime" aria-pressed="false" title="LaceLime">💙</button>
-        <button type="button" data-set-theme="lavender-lime" aria-pressed="false" title="Lavender + Lime">💜</button>
-      </div>
+      <a class="brand" href="index.html" aria-label="Lace and Lime">LACE AND LIME<span class="tm">™</span></a>
 
-
-
-      <!-- Brand -->
-      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-
-      <!-- Desktop Nav -->
       <nav class="menu" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="founder.html">Founder</a>
-        <a href="workshops.html" class="active">Workshops</a>
+        <a href="workshops.html" class="active" aria-current="page">Workshops</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
-        <a href="#" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-               stroke="currentColor" stroke-width="2"
-               viewBox="0 0 24 24" width="22" height="22">
-            <circle cx="12" cy="8" r="4"></circle>
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-          </svg>
-        </a>
-      </nav>
-
-      <!-- Mobile -->
-      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
-      <label class="burger" for="nav-toggle"><span></span><span></span><span></span></label>
-
-      <nav class="drawer" aria-label="Mobile">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html">Founder</a>
-        <a href="workshops.html" class="active">Workshops</a>
-        <a href="journal.html">Journal</a>
-        <a href="explore.html">Explore</a>
-        <a href="contact.html">Contact</a>
-        <a href="#" class="ll-account">Account</a>
       </nav>
     </div>
   </header>
 
-  <!-- Progress bar -->
-  <div class="progress" aria-hidden="true"><span></span></div>
+  <!-- Progress band -->
+  <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
 
-<!-- ===== Main ===== -->
-<main id="main">
-  <section class="hero hero--stack">
-    <div class="wrap">
-      <span class="eyebrow">Workshops</span>
-      <h1 class="tagline">LACED TOGETHER™</h1>
-      <p class="hero-sub">
-        Connection becomes clarity with personalized strategies to help you realign, grow, and move forward. 
-        Wellness and empowerment practiced laced together.
-      </p><br>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">WORKSHOPS</span>
+        <h1 class="tagline">Start where it moves the needle most</h1>
+        <p class="hero-sub">Pick a single session or bundle, then add options. Your total updates automatically.</p>
+      </div>
+    </section>
 
-    <!-- Hero CTAs -->
-<div class="cta-row">
-  <a class="btn-secondary" href="contact.html">Book a Workshop</a>
-  <a class="btn-primary" 
-     href=https://docs.google.com/forms/d/e/1FAIpQLScixvYG_okyEanW5XPHkW4PTqR7h6OblZGSv_5hkJ81-MPKEQ/viewform?usp=header"
-     target="_blank">
-    Submit Resume</a>
-</div>
+    <!-- Six Workshops -->
+    <section class="workshops" id="workshops">
+      <div class="wrap">
+        <h2>Workshops</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Career Workshop</h3>
+            <p class="muted">Clarify story, strengths, and next steps for search or growth.</p>
+          </article>
+          <article class="card">
+            <h3>Confidence in Communication</h3>
+            <p class="muted">Speak with clarity under pressure. Presence, advocacy, and language.</p>
+          </article>
+          <article class="card">
+            <h3>Everyday Respect</h3>
+            <p class="muted">Handle tense moments; scripts for real‑life interactions that land.</p>
+          </article>
+          <article class="card">
+            <h3>Boundaries & Balance</h3>
+            <p class="muted">Define what’s enough, protect energy, plan sustainable momentum.</p>
+          </article>
+          <article class="card">
+            <h3>Self‑Leadership</h3>
+            <p class="muted">Recover energy & decision clarity; values → actions bridge.</p>
+          </article>
+          <article class="card">
+            <h3>Next is Now</h3>
+            <p class="muted">Integrate lessons into habits; close the clarity → action gap.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<!-- Info icon with popover (optional add-on note) -->
-<div class="cta-note">
-  <span class="info-icon" tabindex="0">💡
-    <span class="popover">Submit your resume at no cost. You’ll also have the option for extra support.</span>
-  </span>
-</div>
-  </section>
-</main>
+    <!-- Bundles -->
+    <section class="bundles" id="bundles">
+      <div class="wrap">
+        <h2>Bundles</h2>
+        <div class="grid">
+          <article class="card bundle">
+            <h3>Clarity & Voice</h3>
+            <p class="muted">Career + Communication</p>
+            <div class="includes">
+              <span class="pill">Career</span>
+              <span class="pill">Communication</span>
+            </div>
+          </article>
+          <article class="card bundle">
+            <h3>Boundaries & Respect</h3>
+            <p class="muted">Boundaries + Everyday Respect</p>
+            <div class="includes">
+              <span class="pill">Boundaries</span>
+              <span class="pill">Respect</span>
+            </div>
+          </article>
+          <article class="card bundle">
+            <h3>Leadership & Lift‑Off</h3>
+            <p class="muted">Self‑Leadership + Next is Now</p>
+            <div class="includes">
+              <span class="pill">Self‑Leadership</span>
+              <span class="pill">Next is Now</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <!-- Carousel -->
-  <section class="carousel-section sessions-carousel">
-    <div class="carousel-track-wrapper">
-      <div class="carousel-track">
+    <!-- Add‑ons -->
+    <section class="addons" id="addons" aria-labelledby="addons-title">
+      <div class="wrap">
+        <h2 id="addons-title">Add‑ons & Options</h2>
+        <p class="lead">Pick any extras you want. We’ll add them to your total below.</p>
 
-        <article class="carousel-card">
-          <h3>Career Workshop</h3>
-          <p>Gain clarity, strengthen confidence, and map out actionable next steps for professional growth tailored to your strengths and goals.</p>
-        </article>
+        <div class="addons-grid" id="addons-grid">
+          <article class="card" data-key="journal" data-price="18">
+            <h3>Reflection Journal</h3>
+            <p class="muted">Printed workbook for participants.</p>
+            <div class="controls">
+              <span class="price">$18 / each</span>
+              <div class="qty" data-qty>
+                <button type="button" aria-label="decrease">−</button>
+                <input type="number" value="0" min="0" inputmode="numeric" aria-label="Quantity">
+                <button type="button" aria-label="increase">+</button>
+              </div>
+            </div>
+          </article>
 
-        <article class="carousel-card">
-          <h3>Self-Leadership Workshop</h3>
-          <p>Deepen awareness, improve decision-making, and take ownership of your path forward. Recover from burnout with strategies that balance reflection, rest, and sustainable action.</p>
-        </article>
+          <article class="card" data-key="oneonone" data-price="95">
+            <h3>1:1 Clarity Calls</h3>
+            <p class="muted">Private 25‑min sessions for follow‑through.</p>
+            <div class="controls">
+              <span class="price">$95 / person</span>
+              <div class="qty" data-qty>
+                <button type="button" aria-label="decrease">−</button>
+                <input type="number" value="0" min="0" inputmode="numeric" aria-label="Quantity">
+                <button type="button" aria-label="increase">+</button>
+              </div>
+            </div>
+          </article>
 
-        <article class="carousel-card">
-          <h3>Grant & Proposal Workshop</h3>
-          <p>Strengthen your proposals and project plans with clarity-driven guidance. Refine your writing strategies, highlight impact, and prepare the practical steps that follow once funding is secured.</p>
-        </article>
+          <article class="card" data-key="recording" data-price="120">
+            <h3>Recording + Transcript</h3>
+            <p class="muted">Hosted link + searchable transcript.</p>
+            <div class="controls">
+              <label class="chip"><input type="checkbox" /> Add</label>
+              <span class="price">$120</span>
+            </div>
+          </article>
 
+          <article class="card" data-key="worksheets" data-price="85">
+            <h3>Custom Worksheets</h3>
+            <p class="muted">Tailored prompts aligned to your team.</p>
+            <div class="controls">
+              <label class="chip"><input type="checkbox" /> Add</label>
+              <span class="price">$85</span>
+            </div>
+          </article>
+
+          <article class="card" data-key="slides" data-price="45">
+            <h3>Slide Deck + Notes</h3>
+            <p class="muted">PDF slides + facilitator notes.</p>
+            <div class="controls">
+              <label class="chip"><input type="checkbox" /> Add</label>
+              <span class="price">$45</span>
+            </div>
+          </article>
+
+          <article class="card" data-key="followup" data-price="140">
+            <h3>Follow‑up Micro‑Session</h3>
+            <p class="muted">30‑min momentum check‑in (group).</p>
+            <div class="controls">
+              <label class="chip"><input type="checkbox" /> Add</label>
+              <span class="price">$140</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="total-bar" role="region" aria-label="Order total">
+      <div class="total-wrap">
+        <div class="total">Total: <span id="total-amount">$0.00</span></div>
+        <div class="actions">
+          <button class="btn btn-secondary" id="reset" type="button">Reset</button>
+          <a class="btn btn-primary" href="#contact">Proceed</a>
+        </div>
       </div>
     </div>
+  </main>
 
-    <!-- CONTROL ARROWS -->
-    <div class="carousel-controls">
-      <button class="carousel-btn prev-btn" aria-label="Previous">‹</button>
-      <button class="carousel-btn next-btn" aria-label="Next">›</button>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="muted">© 2025 Lace & Lime™ LLC. All rights reserved. <br><a href="privacy-terms.html">Privacy & Terms</a></p>
     </div>
-  </section>
-</main>
+  </footer>
 
+  <script>
+    // Keep active state synced (in case file is duplicated/renamed)
+    (() => {
+      document.querySelectorAll('.menu a').forEach(a => {
+        const here = (a.getAttribute('href')||'').toLowerCase().includes('workshops');
+        a.classList.toggle('active', here);
+        if(here) a.setAttribute('aria-current','page');
+      });
+    })();
 
+    // Progress width = scroll percent; stick under header height
+    (() => {
+      const fill = document.getElementById('progress-fill');
+      const header = document.querySelector('.ll-nav');
+      function place(){
+        const h = header?.getBoundingClientRect().height || 56;
+        document.documentElement.style.setProperty('--progress-top', h + 'px');
+      }
+      function pct(){
+        const doc = document.documentElement;
+        const sc = Math.max(doc.scrollTop, document.body.scrollTop);
+        const max = (doc.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+        const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
+        if(fill) fill.style.width = (r*100).toFixed(2) + '%';
+      }
+      place(); pct();
+      window.addEventListener('resize', place, {passive:true});
+      window.addEventListener('scroll', pct, {passive:true});
+    })();
 
+    // Add‑ons compute + Reset
+    (() => {
+      const $$ = sel => Array.from(document.querySelectorAll(sel));
+      const money = cents => `$${(cents/100).toFixed(2)}`;
+      function cents(n){ return Math.round(Number(n)*100); }
+      function compute(){
+        let total = 0;
+        $$('#addons-grid .card').forEach(card => {
+          const unit = cents(card.dataset.price || 0);
+          const qtyBox = card.querySelector('[data-qty]');
+          if(qtyBox){
+            const qty = Math.max(0, Number(qtyBox.querySelector('input')?.value || 0));
+            total += unit * qty;
+          }else{
+            const ck = card.querySelector('input[type="checkbox"]');
+            if(ck?.checked) total += unit;
+          }
+        });
+        document.getElementById('total-amount').textContent = money(total);
+      }
+      $$('#addons-grid [data-qty]').forEach(box => {
+        const input = box.querySelector('input');
+        const [dec, inc] = box.querySelectorAll('button');
+        inc?.addEventListener('click', () => { input.value = Number(input.value||0) + 1; compute(); });
+        dec?.addEventListener('click', () => { input.value = Math.max(0, Number(input.value||0) - 1); compute(); });
+        input.addEventListener('input', compute);
+      });
+      $$('#addons-grid .chip input[type="checkbox"]').forEach(ck => {
+        const chip = ck.closest('.chip');
+        const set = () => chip.setAttribute('aria-pressed', ck.checked ? 'true' : 'false');
+        ck.addEventListener('change', () => { set(); compute(); }); set();
+        chip.addEventListener('click', (e) => { if(e.target!==ck){ ck.checked=!ck.checked; ck.dispatchEvent(new Event('change')); } });
+      });
+      document.getElementById('reset')?.addEventListener('click', () => {
+        $$('#addons-grid [type="checkbox"]').forEach(c => c.checked = false);
+        $$('#addons-grid [data-qty] input').forEach(i => i.value = 0);
+        $$('#addons-grid .chip').forEach(chip => chip.setAttribute('aria-pressed','false'));
+        compute();
+      });
+      compute();
+    })();
+  </script>
+<script>
+// === Mobile menu: clone links and toggle ===
+(() => {
+  const header = document.querySelector('.ll-nav .wrap');
+  if(!header) return;
 
- <!=====Footer====!>
-<footer class="site-footer">
-  <div class="wrap">
-    <p>© 2025 Lace & Lime™ LLC. All rights reserved.  
-    <br>
-    <a href="privacy-terms.html">Privacy & Terms</p></a>
-  </div>
-</footer>
+  // ensure burger button exists
+  let burger = header.querySelector('#burger');
+  if(!burger){
+    burger = document.createElement('button');
+    burger.id = 'burger';
+    burger.className = 'burger';
+    burger.type = 'button';
+    burger.setAttribute('aria-label','Open menu');
+    burger.setAttribute('aria-expanded','false');
+    burger.innerHTML = '<span class="icon"><span></span></span>';
+    header.appendChild(burger);
+  }
 
+  // build floating panel if missing
+  let panel = header.querySelector('#mobileMenu');
+  if(!panel){
+    panel = document.createElement('nav');
+    panel.id = 'mobileMenu';
+    panel.className = 'mobile-menu';
+    panel.setAttribute('aria-label','Mobile');
+    header.appendChild(panel);
+  }
 
-  <script src="script.js"></script>
+  // copy links from desktop nav.menu
+  const desktop = header.querySelector('nav.menu');
+  if(desktop && panel && !panel.dataset.bound){
+    panel.innerHTML = desktop.innerHTML;
+    panel.dataset.bound = '1';
+  }
+
+  // close on outside click / escape
+  function close(){
+    burger.setAttribute('aria-expanded','false');
+    panel.style.display = 'none';
+  }
+  document.addEventListener('click', (e) => {
+    if(!panel.contains(e.target) && !burger.contains(e.target)) close();
+  }, {passive:true});
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') close();
+  });
+
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    panel.style.display = open ? 'none' : 'block';
+  });
+})();
+</script>
 </body>
 </html>

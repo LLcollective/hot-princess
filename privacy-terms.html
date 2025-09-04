@@ -1,155 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy & Terms | Lace & Lime™</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Privacy Policy and Terms of Use for Lace & Lime™ — clear, respectful, and legally complete to protect you and us." />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Tokens ===== */
+    :root{
+      --surface:#E6F4FF;
+      --text:#1A2238;
+      --muted:#405970;
+      --line: rgba(26,34,56,.15);
+      --brand:#4f46e5;
+      --brand-pill:#F3F4FF;
+      --shadow: 0 6px 20px rgba(26,34,56,.08);
+      --warn:#a16207;
+    }
+    html,body{margin:0; padding:0}
+    body{
+      background:transparent !important;
+      color:var(--text);
+      font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.55;
+    }
+    /* Ombré overlay */
+    body::before{
+      content:""; position:fixed; inset:0;
+      background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
+      z-index:-1; pointer-events:none;
+    }
+    a{color:var(--brand); text-decoration:none}
+    .wrap{ width:min(1120px,92vw); margin-inline:auto }
+
+    /* Header */
+    .ll-nav{ position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line) }
+    .ll-nav .wrap{ padding:12px 16px; display:flex; align-items:center; gap:16px; flex-wrap:nowrap }
+    .brand{display:flex; align-items:center; flex:0 1 auto; white-space:nowrap; font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px;}
+    nav.menu{ margin-left:auto; display:flex; align-items:center; gap:18px; white-space:nowrap; overflow-x:auto }
+    nav.menu::-webkit-scrollbar{display:none}
+    nav.menu a{ font-weight:600; color:var(--text); padding:.35rem .6rem; border-radius:.6rem; position:relative }
+    nav.menu a.active{ background:var(--brand-pill); color:var(--brand) }
+    nav.menu a.active::after{ content:""; position:absolute; left:10%; right:10%; bottom:-8px; height:4px; background:currentColor; border-radius:999px }
+
+    /* Progress */
+    .progress{height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top,64px); z-index:999}
+    .progress span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear}
+
+    /* Hero */
+    .hero{ border-bottom:1px solid var(--line) }
+    .hero .wrap{ padding:2.25rem 1rem 1.25rem }
+    .eyebrow{ display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700 }
+    .tagline{ font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .4rem }
+    .hero-sub{ color:var(--muted) }
+    .small{ font-size:.92rem; color:var(--muted) }
+
+    /* TOC */
+    .toc{ padding:1rem 1rem 0 }
+    .toc .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:.75rem }
+    .toc a{ display:flex; align-items:center; gap:.5rem; background:#fff; border:1px solid var(--line); border-radius:.75rem; padding:.6rem .75rem; box-shadow:var(--shadow) }
+    .toc a::before{ content:"•"; color:var(--brand); font-weight:900 }
+
+    /* Sections */
+    section.card{ background:#fff; border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem; margin:1rem auto 0; width:min(100%, 1120px); }
+    section.card h2{ margin:.2rem 0 .5rem; color:var(--brand) }
+    h3{ margin:.6rem 0 .25rem; font-size:1.05rem }
+    ul{ margin:.2rem 0 .6rem; padding-left:1.25rem }
+    code.k{ background:#F6F7FB; border:1px solid var(--line); border-radius:.35rem; padding:.08rem .35rem; font-size:.92em }
+
+    /* Footer */
+    .site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
+    .site-footer .wrap{padding:1rem}
+  
+/* ==== Brand normalization ==== */
+.brand{ font-weight: 600; letter-spacing:.08em; }
+.brand .tm{ font-size:.7em; vertical-align: super; }
+
+/* ==== Mobile burger + floating menu ==== */
+.burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem;
+  background:#fff; cursor:pointer; align-items:center; justify-content:center; }
+.burger .icon{ position:relative; width:18px; height:18px; }
+.burger .icon::before, .burger .icon::after, .burger .icon span{
+  content:""; position:absolute; left:0; right:0; height:0; border-top:2px solid currentColor; border-bottom:2px solid transparent;
+  border-radius:2px;
+}
+.burger .icon span{ top:8px; }
+.burger .icon::before{ top:2px; }
+.burger .icon::after{ bottom:2px; }
+
+/* open state -> chevron */
+.burger[aria-expanded="true"] .icon::before,
+.burger[aria-expanded="true"] .icon::after{
+  top:auto; bottom:auto; border-bottom:0;
+}
+.burger[aria-expanded="true"] .icon::before{
+  transform:translateX(4px) rotate(40deg); transform-origin:left center;
+  width:12px; left:3px; top:4px;
+}
+.burger[aria-expanded="true"] .icon::after{
+  transform:translateX(4px) rotate(-40deg); transform-origin:left center;
+  width:12px; left:3px; top:12px;
+}
+.burger[aria-expanded="true"] .icon span{ opacity:0; }
+
+/* floating menu panel (auto-sized, not full width) */
+.mobile-menu{ position:absolute; top:100%; right:12px; z-index:1200; display:none;
+  background:#fff; border:1px solid var(--line); border-radius:.9rem; box-shadow:0 10px 28px rgba(26,34,56,.14);
+  padding:.4rem; min-width:180px; width:max-content; max-width:92vw; }
+.mobile-menu a{ display:block; padding:.55rem .8rem; border-radius:.6rem; color:var(--text); font-weight:600; white-space:nowrap; }
+.mobile-menu a:hover{ background:rgba(0,0,0,.04) }
+.mobile-menu .active{ background:var(--brand-pill); color:var(--brand) }
+
+@media (max-width: 860px){
+  nav.menu{ display:none; }
+  .burger{ display:inline-flex; }
+  header.ll-nav{ position:sticky; }
+  .ll-nav .wrap{ position:relative; }
+}
+
+/* ==== Bottom CTA (centered) ==== */
+.bottom-cta{ padding:1.25rem 1rem 1.6rem }
+.bottom-cta .cta-box{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap }
+.btn, .btn-primary, .btn-secondary{
+  display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
+  padding:.6rem .9rem; border-radius:.7rem; font-weight:700; border:1px solid var(--line);
+  cursor:pointer; text-decoration:none;
+}
+.btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
+.btn-secondary{ background:#fff }
+</style>
 </head>
-<body data-theme="lavender-lime">
+<body>
+  <!-- Header -->
+  <header class="ll-nav" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+      <nav class="menu" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="workshops.html">Workshops</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-terms.html" class="active" aria-current="page">Privacy & Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Progress -->
+  <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
+
   <main id="main">
-    <section class="hero hero--stack">
+    <section class="hero">
       <div class="wrap">
-        <span class="eyebrow">Legal</span>
+        <span class="eyebrow">LEGAL</span>
         <h1 class="tagline">Privacy & Terms</h1>
-        <p class="hero-sub">Our commitment to clarity, respect, and transparency in everything we do.</p>
-        <p class="hero-sub small">
-          First created: January 2025 · Last updated: August 2025
-        </p>
-        <p class="hero-sub small">
-          We believe clarity and respect should extend to how we handle your information 
-          and our shared work. That’s why we’ve outlined our privacy, terms, and protections below.
-        </p>
+        <p class="hero-sub">Clarity and respect — for your data, your choices, and our shared work.</p>
+        <p class="small">Effective: January 15, 2025 · Last updated: September 3, 2025</p>
       </div>
     </section>
 
-    <!-- Privacy Policy -->
-    <section class="card explore-card">
+    <!-- Quick table of contents -->
+    <section class="toc">
+      <div class="wrap">
+        <div class="grid">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#cookies">Cookies & Analytics</a>
+          <a href="#rights">Your Rights (GDPR/CCPA)</a>
+          <a href="#processors">Third‑Party Processors</a>
+          <a href="#security">Security</a>
+          <a href="#children">Children’s Privacy</a>
+          <a href="#terms">Terms of Use</a>
+          <a href="#purchases">Purchases & Refunds</a>
+          <a href="#medical">No Medical/Legal Advice</a>
+          <a href="#liability">Disclaimers & Liability</a>
+          <a href="#arbitration">Arbitration & Disputes</a>
+          <a href="#updates">Changes</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section id="privacy" class="card">
       <h2>Privacy Policy</h2>
-      <p>
-        We respect your privacy. When you share your name, email, or other information through Lace & Lime™, 
-        it is used only to deliver the services or communications you signed up for — such as workshops, 
-        journal updates, or the Citrus Circle™ newsletter. We never sell your data.
-      </p>
-      <p>
-        We may use third-party tools (such as Google Forms, ConvertKit, or Stripe) to process sign-ups, 
-        payments, or communications. These tools have their own privacy policies, which we encourage you to review.
-      </p>
-      <p>
-        Cookies may be used to improve your browsing experience and understand how our site is used. 
-        You can disable cookies in your browser settings if you prefer.
-      </p>
+      <p><strong>Who we are.</strong> Lace & Lime™ LLC (“we,” “us,” “our”). Contact: <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
+      <p><strong>What we collect.</strong> Information you give us (e.g., name, email, messages, form inputs), transactional data for paid offerings, and limited technical data (IP address, device/browser metadata) to keep the site reliable and secure.</p>
+      <p><strong>Why we collect.</strong> To provide requested services (e.g., workshop bookings, journal updates, Citrus Circle), respond to inquiries, process payments, prevent abuse, and improve the website.</p>
+      <p><strong>Lawful bases (GDPR).</strong> We rely on <em>contract</em> (to deliver what you request), <em>consent</em> (e.g., newsletter opt‑ins), and <em>legitimate interests</em> (e.g., security, analytics proportionate to risk).</p>
+      <p><strong>Retention.</strong> We keep personal data only as long as needed for the purpose collected or as required by law, then delete or anonymize it.</p>
+      <p><strong>International transfers.</strong> If data moves outside your country, we use appropriate safeguards (e.g., SCCs) where applicable.</p>
+    </section>
+
+    <!-- Cookies & Analytics -->
+    <section id="cookies" class="card">
+      <h2>Cookies & Analytics</h2>
+      <p>We use necessary cookies for core functionality and may use optional analytics (aggregated, non‑sensitive) to understand usage and improve content. You can control cookies in your browser settings. If legally required in your region, we’ll present a consent banner for non‑essential cookies.</p>
+    </section>
+
+    <!-- Rights -->
+    <section id="rights" class="card">
+      <h2>Your Rights (GDPR/CCPA/CPRA)</h2>
+      <ul>
+        <li><strong>Access/Portability:</strong> request a copy of your data.</li>
+        <li><strong>Correction/Deletion:</strong> fix or delete your data (subject to legal obligations).</li>
+        <li><strong>Opt‑out:</strong> of non‑essential emails at any time; for California residents, opt‑out of “sale”/“sharing” of personal information (we do not sell personal data).</li>
+        <li><strong>Restriction/Objection:</strong> restrict certain processing or object where we rely on legitimate interests.</li>
+        <li><strong>Appeal/Complain:</strong> contact us first; you can also complain to your local data authority.</li>
+      </ul>
+      <p>To exercise rights, email <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>. We may need to verify your identity before acting on a request.</p>
+    </section>
+
+    <!-- Processors -->
+    <section id="processors" class="card">
+      <h2>Third‑Party Processors</h2>
+      <p>We use reputable vendors to operate the site and deliver services. Examples include payments (e.g., Stripe/Square/PayPal), email delivery (e.g., Gmail/ConvertKit), analytics, and hosting. Each processor is bound by contract to protect your data and act only on our instructions.</p>
+      <p><strong>DPA:</strong> A Data Processing Addendum is available upon request for qualifying business clients.</p>
+    </section>
+
+    <!-- Security -->
+    <section id="security" class="card">
+      <h2>Security</h2>
+      <p>We apply reasonable technical and organizational measures to protect personal data (e.g., HTTPS in transit, access controls). No method is 100% secure; please use unique passwords and be cautious with email.</p>
+      <p><strong>Breach notification:</strong> If a data breach poses a risk to your rights, we’ll notify you and, where required, regulators.</p>
+    </section>
+
+    <!-- Children -->
+    <section id="children" class="card">
+      <h2>Children’s Privacy</h2>
+      <p>Our site and services are not directed to children under 13. We do not knowingly collect information from children. If you believe a child has provided personal data, contact us to delete it.</p>
     </section>
 
     <!-- Terms of Use -->
-    <section class="card explore-card">
+    <section id="terms" class="card">
       <h2>Terms of Use</h2>
-      <p>
-        By accessing this site, you agree to use Lace & Lime™ resources, workshops, and content responsibly. 
-        All content, including journaling prompts, workshop materials, graphics, and brand language 
-        (such as Lace & Lime™, Laced Together™, Citrus Circle™) 
-        are protected as intellectual property and may not be copied or redistributed without permission.
-      </p>
-      <p>
-        Users are responsible for providing accurate information when registering 
-        for services or submitting forms. Misuse of our site, including spam or 
-        fraudulent activity, may result in denied access to services.
-      </p>
-      <p>
-        We may update services, pricing, or offerings without prior notice. Any disputes arising 
-        from the use of this site or services will be handled under the laws of New York State, USA.
-      </p>
-      <p><em>
-        In short: you’re welcome to use Lace & Lime™ resources for your own growth, 
-        but please don’t copy, resell, or redistribute them.
-      </em></p>
-    </section>
-
-    <!-- Disclaimer -->
-    <section class="card explore-card">
-      <h2>Disclaimer</h2>
-      <p>
-        Lace & Lime™ does not provide medical, legal, or financial advice. 
-        Sharon Gutierrez, MPH, CHES® is a health educator and community strategist, 
-        not a licensed physician, therapist, or attorney. 
-      </p>
-      <p>
-        Our services — including workshops, journals, digital tools, and 1:1 sessions — 
-        are for educational, reflective, and empowerment purposes only 
-        and should not replace professional care.
-      </p>
-      <p>
-        Any guidance, feedback, or resources provided are for general informational and 
-        educational purposes only and do not establish a professional-client, medical, 
-        or therapeutic relationship.
-      </p>
-      <p><em>
-        Think of our resources as tools for clarity and empowerment — not substitutes for professional care.
-      </em></p>
-    </section>
-
-    <!-- Confidentiality -->
-    <section class="card explore-card">
-      <h2>Confidentiality</h2>
-      <p>
-        1:1 sessions and conversations are treated with privacy and respect. 
-        While these are not clinical or therapeutic services, they are designed 
-        to provide a safe and supportive space. We will never share your personal 
-        information or discussions without your consent, unless required by law.
-      </p>
-      <p><em>
-        Our goal is to make sure you feel supported, not exposed.
-      </em></p>
+      <h3>License & Intellectual Property</h3>
+      <p>All content (including prompts, workshop materials, journal content, graphics, and brand language like Lace & Lime™, Laced Together™, Citrus Circle™) is owned by Lace & Lime™ LLC or its licensors and is protected by IP laws. You receive a personal, non‑transferable license to use materials for your own non‑commercial use unless otherwise agreed in writing. No copying, redistribution, or derivative works without permission.</p>
+      <h3>Acceptable Use</h3>
+      <ul>
+        <li>No scraping, automated collection, or security probing.</li>
+        <li>No infringement, harassment, or abusive behavior.</li>
+        <li>No attempts to bypass access controls or paywalls.</li>
+      </ul>
+      <h3>User Content & Feedback</h3>
+      <p>If you submit content (e.g., testimonials, messages), you grant us a non‑exclusive license to use it to operate the service. Feedback may be used without restriction and without compensation.</p>
+      <h3>Accounts</h3>
+      <p>You’re responsible for the accuracy of information you provide and for any activity under your account or email.</p>
     </section>
 
     <!-- Purchases -->
-    <section class="card explore-card">
-      <h2>Purchases & Payments</h2>
-      <p>
-        Some offerings, such as personalized resume reviews, guided journals, or future merchandise, 
-        may require payment. Transactions are processed securely through trusted third-party services (e.g., Stripe, PayPal).
-      </p>
-      <p>
-        All sales are final unless otherwise noted. Digital products, downloadable content, and live workshop registrations 
-        are non-refundable once delivered or confirmed.
-      </p>
-      <p>
-        By completing a purchase, you confirm you are authorized to use the 
-        payment method provided. Taxes or processing fees may apply where required.
-      </p>
+    <section id="purchases" class="card">
+      <h2>Purchases & Refunds</h2>
+      <p>Payments are processed by trusted vendors (e.g., Stripe, Square, PayPal). By purchasing, you confirm you’re authorized to use the payment method and agree to any applicable taxes/fees.</p>
+      <ul>
+        <li><strong>Digital goods/workshops:</strong> All sales final once delivered/confirmed unless otherwise noted.</li>
+        <li><strong>Scheduling:</strong> We may adjust or reschedule workshops; if we cancel, you’ll be offered a refund or credit.</li>
+        <li><strong>Chargebacks:</strong> Contact us first — we’ll work to resolve issues quickly.</li>
+      </ul>
     </section>
 
-    <!-- Limitation of Liability -->
-    <section class="card explore-card">
-      <h2>Limitation of Liability</h2>
-      <p>
-        Lace & Lime™ is not responsible for any direct, indirect, or incidental consequences 
-        arising from the use or misuse of its content, workshops, or materials. 
-        By participating, you accept responsibility for your own actions and choices.
-      </p>
-      <p><em>
-        You bring the choice and action — we bring the tools. What you do with them is in your hands.
-      </em></p>
+    <!-- No Medical/Legal Advice -->
+    <section id="medical" class="card">
+      <h2>No Medical, Legal, or Financial Advice</h2>
+      <p>Lace & Lime™ provides educational and reflective resources. Sharon Gutierrez, MPH, CHES® is a health educator and community strategist, not a physician, therapist, or attorney. Our materials and sessions are not a substitute for professional care.</p>
+    </section>
+
+    <!-- Disclaimers & Liability -->
+    <section id="liability" class="card">
+      <h2>Disclaimers & Limitation of Liability</h2>
+      <p><strong>AS IS.</strong> Services and content are provided “as is” and “as available” without warranties of any kind, express or implied.</p>
+      <p><strong>LIMITATION.</strong> To the fullest extent permitted by law, Lace & Lime™ LLC will not be liable for any indirect, incidental, special, consequential, or exemplary damages. Our total liability for any claim shall not exceed the amount you paid to us in the 6 months preceding the claim, or USD $100, whichever is greater.</p>
+      <p><strong>Indemnity.</strong> You agree to indemnify and hold harmless Lace & Lime™ LLC from claims arising out of your misuse of the site or violation of these terms.</p>
+    </section>
+
+    <!-- Arbitration & Disputes -->
+    <section id="arbitration" class="card">
+      <h2>Dispute Resolution; Arbitration; Governing Law</h2>
+      <p><strong>Informal resolution.</strong> Contact us first — most issues can be resolved quickly.</p>
+      <p><strong>Arbitration & venue.</strong> Any dispute not resolved informally will be settled by binding arbitration on an individual basis under the rules of the American Arbitration Association. No class actions. Venue and governing law: New York State, USA.</p>
+      <p class="small" style="color:var(--warn)"><strong>Opt‑out:</strong> You may opt out of arbitration within 30 days of first use by emailing <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> with subject “Arbitration Opt‑Out.”</p>
     </section>
 
     <!-- Updates -->
-    <section class="card explore-card">
-      <h2>Policy Updates</h2>
-      <p>
-        We may update this Privacy & Terms page from time to time to reflect changes 
-        in services, policies, or legal requirements. Continued use of this site 
-        indicates acceptance of the latest version.
-      </p>
-      <p><em>
-        If we update these policies, we’ll always aim to explain them as clearly as we can.
-      </em></p>
+    <section id="updates" class="card">
+      <h2>Changes to These Terms</h2>
+      <p>We may update this page to reflect changes in services or legal requirements. We’ll update the “Last updated” date above and, for material changes, provide notice where feasible. Continued use means you accept the updated terms.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Questions or requests? Email <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
+      <p>Business name: Lace & Lime™ LLC · Jurisdiction: New York, USA</p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© 2025 Lace & Lime™ · All Rights Reserved · 
-      <a href="privacy-terms.html">Privacy & Terms</a>
-    </p>
+    <div class="wrap">
+      <p>© 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy-terms.html" aria-current="page">Privacy & Terms</a></p>
+    </div>
   </footer>
+
+  <script>
+    // Mark active nav + progress
+    (() => {
+      document.querySelectorAll('.menu a').forEach(a => {
+        const isHere = (a.getAttribute('href')||'').toLowerCase().includes('privacy-terms');
+        a.classList.toggle('active', isHere);
+        if (isHere) a.setAttribute('aria-current','page');
+      });
+      const fill = document.getElementById('progress-fill');
+      const header = document.querySelector('.ll-nav');
+      const place = () => {
+        const h = header?.getBoundingClientRect().height || 56;
+        document.documentElement.style.setProperty('--progress-top', h + 'px');
+      };
+      const pct = () => {
+        const doc = document.documentElement;
+        const sc = Math.max(doc.scrollTop, document.body.scrollTop);
+        const max = (doc.scrollHeight || document.body.scrollHeight) - innerHeight;
+        const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
+        if(fill) fill.style.width = (r*100).toFixed(2) + '%';
+      };
+      place(); pct();
+      addEventListener('resize', place, {passive:true});
+      addEventListener('scroll', pct, {passive:true});
+    })();
+  </script>
+<script>
+// === Mobile menu: clone links and toggle ===
+(() => {
+  const header = document.querySelector('.ll-nav .wrap');
+  if(!header) return;
+
+  let burger = header.querySelector('#burger');
+  if(!burger){
+    burger = document.createElement('button');
+    burger.id = 'burger';
+    burger.className = 'burger';
+    burger.type = 'button';
+    burger.setAttribute('aria-label','Open menu');
+    burger.setAttribute('aria-expanded','false');
+    burger.innerHTML = '<span class="icon"><span></span></span>';
+    header.appendChild(burger);
+  }
+
+  let panel = header.querySelector('#mobileMenu');
+  if(!panel){
+    panel = document.createElement('nav');
+    panel.id = 'mobileMenu';
+    panel.className = 'mobile-menu';
+    panel.setAttribute('aria-label','Mobile');
+    header.appendChild(panel);
+  }
+
+  const desktop = header.querySelector('nav.menu');
+  if(desktop && panel && !panel.dataset.bound){
+    panel.innerHTML = desktop.innerHTML;
+    panel.dataset.bound = '1';
+  }
+
+  function close(){
+    burger.setAttribute('aria-expanded','false');
+    panel.style.display = 'none';
+  }
+  document.addEventListener('click', (e) => {
+    if(!panel.contains(e.target) && !burger.contains(e.target)) close();
+  }, {passive:true});
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    panel.style.display = open ? 'none' : 'block';
+  });
+})();
+</script>
+
+<script>
+(() => {
+  const fill = document.getElementById('progress-fill') || document.querySelector('.progress span');
+  const header = document.querySelector('.ll-nav');
+  function place(){
+    const h = header?.getBoundingClientRect().height || 56;
+    document.documentElement.style.setProperty('--progress-top', h + 'px');
+  }
+  function pct(){
+    const doc = document.documentElement;
+    const sc = Math.max(doc.scrollTop, document.body.scrollTop);
+    const max = (doc.scrollHeight || document.body.scrollHeight) - innerHeight;
+    const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
+    if(fill) fill.style.width = (r*100).toFixed(2) + '%';
+  }
+  place(); pct();
+  addEventListener('resize', place, {passive:true});
+  addEventListener('scroll', pct, {passive:true});
+})();
+</script>
+
 </body>
 </html>

@@ -3,30 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About | Lace & Lime™</title>
-  <meta name="description" content="Lace & Lime™ blends reflection with aligned steps, turning awareness into momentum." />
+  <title>Contact | Lace & Lime™</title>
+  <meta name="description" content="Get in touch with Lace & Lime™ — workshops, journals, and clarity tools." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root{
+      --surface:#E6F4FF; --text:#1A2238; --muted:#405970; --line: rgba(26,34,56,.15);
+      --card:#FFFFFF; --shadow: 0 6px 20px rgba(26,34,56,.08);
+      --brand:#4f46e5; --brand-pill:#F3F4FF; --ok:#0f766e; --err:#b91c1c;
+    }
+    html,body{margin:0; padding:0}
+    body{ background:transparent !important; color:var(--text);
+      font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.5; }
+    body::before{ content:""; position:fixed; inset:0;
+      background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
+      z-index:-1; pointer-events:none; }
+    a{color:var(--brand); text-decoration:none}
+    .wrap{ width:min(1120px,92vw); margin-inline:auto }
+
+    /* Header */
+    .ll-nav{ position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line) }
+    .ll-nav .wrap{ padding:12px 16px; display:flex; align-items:center; gap:16px; flex-wrap:nowrap }
+    .brand{ font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px; font-weight:600; }
+    .brand .tm{ font-size:.7em; vertical-align: super; }
+    nav.menu{ margin-left:auto; display:flex; align-items:center; gap:18px; white-space:nowrap; overflow-x:auto }
+    nav.menu::-webkit-scrollbar{display:none}
+    nav.menu a{ font-weight:600; color:var(--text); padding:.35rem .6rem; border-radius:.6rem; position:relative }
+    nav.menu a.active{ background:var(--brand-pill); color:var(--brand) }
+    nav.menu a.active::after{ content:""; position:absolute; left:10%; right:10%; bottom:-8px; height:4px; background:currentColor; border-radius:999px }
+
+    /* Burger → Chevron + floating menu */
+    .burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem;
+      background:#fff; cursor:pointer; align-items:center; justify-content:center; }
+    .burger .icon{ position:relative; width:18px; height:18px; }
+    .burger .icon::before, .burger .icon::after, .burger .icon span{
+      content:""; position:absolute; left:0; right:0; height:0; border-top:2px solid currentColor; border-bottom:2px solid transparent; border-radius:2px;
+    }
+    .burger .icon span{ top:8px; } .burger .icon::before{ top:2px; } .burger .icon::after{ bottom:2px; }
+    .burger[aria-expanded="true"] .icon::before{ transform:translateX(4px) rotate(40deg); transform-origin:left center; width:12px; left:3px; top:4px; }
+    .burger[aria-expanded="true"] .icon::after{ transform:translateX(4px) rotate(-40deg); transform-origin:left center; width:12px; left:3px; top:12px; }
+    .burger[aria-expanded="true"] .icon span{ opacity:0; }
+    .mobile-menu{ position:absolute; top:100%; right:12px; z-index:1200; display:none;
+      background:#fff; border:1px solid var(--line); border-radius:.9rem; box-shadow:0 10px 28px rgba(26,34,56,.14);
+      padding:.4rem; min-width:180px; width:max-content; max-width:92vw; }
+    .mobile-menu a{ display:block; padding:.55rem .8rem; border-radius:.6rem; color:var(--text); font-weight:600; white-space:nowrap; }
+    .mobile-menu a:hover{ background:rgba(0,0,0,.04) }
+    .mobile-menu .active{ background:var(--brand-pill); color:var(--brand) }
+    @media (max-width: 860px){ nav.menu{ display:none; } .burger{ display:inline-flex; } .ll-nav .wrap{ position:relative; } }
+
+    /* Progress */
+    .progress{height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top,64px); z-index:999}
+    .progress span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear}
+
+    /* Hero */
+    .hero{ border-bottom:1px solid var(--line) }
+    .hero .wrap{ padding:2.25rem 1rem 1.25rem }
+    .eyebrow{ display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700 }
+    .tagline{ font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .2rem }
+    .hero-sub{ color:var(--muted); max-width:60ch }
+
+    /* Form */
+    .contact{ padding:1.25rem 1rem 2rem }
+    form#contactForm{ background:#fff; border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem }
+    .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:.75rem }
+    .form-group{ display:flex; flex-direction:column; gap:.3rem }
+    .form-group.full{ grid-column:1 / -1 }
+    label{ font-weight:600 }
+    input, textarea{ border:1px solid var(--line); border-radius:.6rem; padding:.65rem .75rem; font:inherit }
+    textarea{ min-height:140px; resize:vertical }
+    .controls{ display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; margin-top:.75rem }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.45rem; padding:.6rem .9rem; border-radius:.7rem; font-weight:700; border:1px solid var(--line); background:#fff; cursor:pointer }
+    .btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
+    .status{ margin-top:.5rem; font-weight:600 }
+    .status.ok{ color:var(--ok) } .status.err{ color:var(--err) }
+    .small{ color:var(--muted); font-size:.9rem }
+
+    /* Bottom CTA */
+    .bottom-cta{ padding:1.25rem 1rem 1.6rem }
+    .bottom-cta .cta-box{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap }
+    .btn-secondary{ background:#fff }
+
+    /* Footer */
+    .site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
+    .site-footer .wrap{padding:1rem}
+  
+/* ==== Mobile/iOS form overflow & grid fixes ==== */
+html, body { max-width: 100%; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+.ll-nav { padding-top: constant(safe-area-inset-top); padding-top: env(safe-area-inset-top); }
+.contact .wrap{ width:min(720px, 92vw); }
+form#contactForm{ max-width:100%; overflow:hidden; }
+.form-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:.75rem;
+}
+.form-group{ min-width:0; }
+input, textarea, select{ width:100%; min-width:0; max-width:100%; -webkit-appearance:none; font-size:16px; }
+textarea{ width:100%; }
+@media (max-width: 640px){
+  .form-row{ grid-template-columns:1fr !important; }
+}
+
+/* Prevent long placeholders from widening columns */
+::placeholder{ text-overflow:ellipsis; }
+
+/* Mobile menu panel containment */
+.mobile-menu{ max-width: 92vw; overflow:auto; }
+</style>
 </head>
-
-<body data-theme="lavender-lime">
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <!-- ===== Header ===== -->
-  <header class="ll-nav">
+<body>
+  <!-- Header -->
+  <header class="ll-nav" role="banner">
     <div class="wrap">
-      <!-- Theme Switch -->
-      <div class="theme-switch" role="group" aria-label="Theme switch">
-        <button type="button" data-set-theme="lacelime" aria-pressed="false" title="LaceLime">💙</button>
-        <button type="button" data-set-theme="lavender-lime" aria-pressed="false" title="Lavender + Lime">💜</button>
-      </div>
-
-
-
-      <!-- Brand -->
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-
-      <!-- Desktop Nav -->
       <nav class="menu" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -34,123 +125,194 @@
         <a href="workshops.html">Workshops</a>
         <a href="journal.html">Journal</a>
         <a href="explore.html">Explore</a>
-        <a href="contact.html"class="active">Contact</a>
-        <a href="account.html" class="ll-account" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-               stroke="currentColor" stroke-width="2"
-               viewBox="0 0 24 24" width="22" height="22">
-            <circle cx="12" cy="8" r="4"></circle>
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-          </svg>
-        </a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
       </nav>
-
-      <!-- Mobile -->
-      <input type="checkbox" id="nav-toggle" aria-label="Open menu">
-      <label class="burger" for="nav-toggle"><span></span><span></span><span></span></label>
-
-      <nav class="drawer" aria-label="Mobile">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html">Founder</a>
-        <a href="workshops.html">Workshops</a>
-        <a href="journal.html">Journal</a>
-        <a href="explore.html">Explore</a>
-        <a href="contact.html"class="active">Contact</a>
-        <a href="account.html" class="ll-account">Account</a>
-      </nav>
+      <button id="burger" class="burger" aria-label="Open menu" aria-expanded="false">
+        <span class="icon"><span></span></span>
+      </button>
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile"></nav>
     </div>
   </header>
 
-  <!-- Progress bar -->
-  <div class="progress" aria-hidden="true"><span></span></div>
+  <!-- Progress -->
+  <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
 
-<!-- ===== Main ===== -->
-<main id="main">
-  <section class="hero hero--stack">
-    <div class="wrap">
-      <span class="eyebrow">CONTACT</span>
-      <h1 class="tagline">
-        Let's start a collaboration.<br><em>Ask anything.</em>
-      </h1>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">CONTACT</span>
+        <h1 class="tagline">Say hello</h1>
+        <p class="hero-sub">Questions, workshops, bundles, or partnerships — send a note and we’ll reply shortly.</p>
+      </div>
+    </section>
 
-      <div class="hero-cta">
-        <a class="btn-primary" 
-           href="https://docs.google.com/forms/d/e/1FAIpQLScixvYG_okyEanW5XPHkW4PTqR7h6OblZGSv_5hkJ81-MPKEQ/viewform?usp=header" 
-           target="_blank">
-          Submit Resume</a>
+    <section class="contact">
+      <div class="wrap">
+        <form id="contactForm" action="/api/send" method="POST" novalidate>
+          <!-- Honeypot + timing (anti‑spam) -->
+          <input type="text" name="hp_company" autocomplete="organization" tabindex="-1" aria-hidden="true" style="position:absolute;left:-5000px;opacity:.01;height:0;width:0" />
+          <input type="hidden" name="startedAt" id="startedAt" />
 
-        <!-- Info icon with popover -->
-        <span class="info-icon" tabindex="0">💡
-          <span class="popover">
-            Submit your resume at no cost. You’ll also have the option for extra support.
-          </span>
-        </span>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First name</label>
+              <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button id="submitBtn" type="submit" class="btn btn-primary">Send</button>
+            <span id="formStatus" class="status" role="status" aria-live="polite"></span>
+          </div>
+
+          <p class="small">Prefer email? Write us at <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="bottom-cta">
+      <div class="wrap">
+        <div class="cta-box">
+          <a class="btn btn-primary" href="workshops.html">Book a workshop</a>
+          <a class="btn btn-secondary" href="journal.html">Explore the journal</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Thank‑You Modal -->
+  <dialog id="thankYou" class="modal" style="border:0;border-radius:1rem;padding:0;width:min(92vw,520px)}">
+    <div class="modal-card" role="document" style="background:#fff;border:1px solid var(--line);border-radius:1rem;box-shadow:0 20px 48px rgba(0,0,0,.18);padding:1rem">
+      <h3 style="margin:.2rem 0 .4rem;font-family:'Tenor Sans',serif;color:var(--brand)">Thank you!</h3>
+      <p>Your message is on its way. We’ll reply shortly.</p>
+      <div class="modal-actions" style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem">
+        <button id="closeModal" class="btn btn-primary">Close</button>
       </div>
     </div>
-  </section>
-</main>
+  </dialog>
 
-
-
-
-  <!-- Contact form -->
-  <main id="main" class="wrap">
-    <section class="contact">
- <form id="contactForm" action="https://script.google.com/macros/s/your-script-id/exec" method="POST">
-  <div class="form-row">
-    <div class="form-group">
-      <label for="firstName">First Name *</label>
-      <input type="text" id="firstName" name="firstName" required>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="small">© 2025 Lace & Lime™ LLC. All rights reserved. <br><a href="privacy-terms.html">Privacy & Terms</a></p>
     </div>
-    <div class="form-group">
-      <label for="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName">
-    </div>
-  </div>
+  </footer>
 
-  <div class="form-row">
-    <div class="form-group">
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-      <label for="subject">Subject *</label>
-      <input type="text" id="subject" name="subject" required>
-    </div>
-  </div>
+  <script>
+    // Progress
+    (() => {
+      const fill = document.getElementById('progress-fill');
+      const header = document.querySelector('.ll-nav');
+      function place(){ const h = header?.getBoundingClientRect().height || 56; document.documentElement.style.setProperty('--progress-top', h + 'px'); }
+      function pct(){ const doc = document.documentElement; const sc = Math.max(doc.scrollTop, document.body.scrollTop);
+        const max = (doc.scrollHeight || document.body.scrollHeight) - innerHeight; const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
+        if(fill) fill.style.width = (r*100).toFixed(2) + '%'; }
+      place(); pct(); addEventListener('resize', place, {passive:true}); addEventListener('scroll', pct, {passive:true});
+    })();
 
-  <div class="form-row">
-    <div class="form-group full-width">
-      <label for="message">Message *</label>
-      <textarea id="message" name="message" rows="3" required></textarea>
-    </div>
-  </div>
-        <button id="submitBtn" type="submit">Send</button>
-        <div id="formStatus" class="status" role="status" aria-live="polite"></div>
+    // Burger → chevron + floating menu
+    (() => {
+      const header = document.querySelector('.ll-nav .wrap');
+      const burger = document.getElementById('burger');
+      const panel = document.getElementById('mobileMenu');
+      const desktop = header.querySelector('nav.menu');
+      if (desktop && panel) panel.innerHTML = desktop.innerHTML;
 
-        <p class="hero-sub" style="margin-top:10px">
-          Prefer email? Write us at
-          <a href="mailto:withlaceandlime@gmail.com">withlaceandlime@gmail.com</a>.
-        </p>
-      </form>
-    </section>
- </main>
+      function close(){ burger.setAttribute('aria-expanded','false'); panel.style.display = 'none'; }
+      document.addEventListener('click', (e)=>{ if(!panel.contains(e.target) && !burger.contains(e.target)) close(); }, {passive:true});
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+      burger.addEventListener('click', ()=>{
+        const open = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', String(!open));
+        panel.style.display = open ? 'none' : 'block';
+      });
+    })();
 
+    // Contact form (progressive enhancement: try fetch URL-encoded; else allow native submit)
+    (function () {
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+      const btn = document.getElementById('submitBtn');
+      const hp = form?.querySelector('[name="hp_company"]');
+      const startedAt = document.getElementById('startedAt');
+      if (!form) return;
+      startedAt.value = String(Date.now());
 
+      function showThanks(){
+        const dlg = document.getElementById('thankYou');
+        const closeBtn = document.getElementById('closeModal');
+        if (closeBtn) closeBtn.onclick = () => dlg.close();
+        try { dlg.showModal(); } catch(e) { dlg.open = true; }
+      }
 
-<!=====Footer====!>
-<footer class="site-footer">
-  <div class="wrap">
-    <p>© 2025 Lace & Lime™ LLC. All rights reserved.  
-    <br>
-    <a href="privacy-terms.html">Privacy & Terms</p></a>
-  </div>
-</footer>
+      form.addEventListener('submit', async (e) => {
+        // basic native validation first
+        if (!form.reportValidity()) return;
 
+        // honeypot + dwell time
+        const dwellOk = Date.now() - Number(startedAt.value || 0) >= 5000;
+        if ((hp && hp.value) || !dwellOk) {
+          e.preventDefault();
+          status.className = 'status err';
+          status.textContent = '❌ Please try again.';
+          return;
+        }
 
-    <!-- ===== Scripts (same as index) ===== -->
+        // If fetch is available, enhance with URL-encoded async submit and modal
+        if (window.fetch && window.URLSearchParams && window.FormData) {
+          e.preventDefault();
+          status.textContent = '';
+          btn.disabled = true; btn.textContent = 'Sending…';
 
-  <script src="script.js"></script>
+          try {
+            const body = new URLSearchParams(new FormData(form)).toString();
+            const res = await fetch(form.action || '/api/send', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body
+            });
+            if (!res.ok) throw new Error('Send failed');
+            form.reset();
+            status.className = 'status ok';
+            status.textContent = '✅ Message sent successfully!';
+            showThanks();
+          } catch (err) {
+            console.error(err);
+            status.className = 'status err';
+            status.textContent = '❌ Could not send. Please email laceandlime.llc@gmail.com for support.';
+          } finally {
+            btn.disabled = false; btn.textContent = 'Send';
+            startedAt.value = String(Date.now());
+          }
+        }
+        // Else: no preventDefault(), let the browser submit natively (x-www-form-urlencoded)
+      });
+    })();
+  </script>
 </body>
 </html>
