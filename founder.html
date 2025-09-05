@@ -57,7 +57,7 @@
     .card{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1rem;margin:1rem 0}
 
     /* KPI highlights */
-    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem}
     .kpi{border:1px solid var(--line);border-radius:.8rem;padding:.75rem;text-align:center}
     .kpi:nth-child(1){background:var(--green);}
     .kpi:nth-child(2){background:var(--blue);}
@@ -84,22 +84,48 @@
     details.accordion .body {padding:.6rem .9rem;border-top:1px solid var(--line);background:#fff;}
     .body ul{columns:2;margin:0;padding-left:1.2rem}
 
+    /* Systems CTA button */
+    .button {
+      background:var(--brand);
+      color:#fff;
+      border:none;
+      padding:.6rem 1.2rem;
+      border-radius:.6rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:background .3s ease;
+    }
+    .button:hover {background:#3a34b5;}
+
     footer{border-top:1px solid var(--line);margin-top:2rem;padding:1rem;text-align:left}
     .ll-nav{position:sticky;top:0;z-index:1000;background:var(--surface);border-bottom:1px solid var(--line)}
     .ll-nav .wrap{display:flex;align-items:center;gap:16px;padding:.8rem 1rem}
     .brand{font-family:'Tenor Sans',serif;letter-spacing:.08em;color:var(--brand);font-size:20px;font-weight:600;white-space:nowrap;text-decoration:none;}
     .brand .tm{font-size:.7em;vertical-align:super}
+
     nav.menu{margin-left:auto;display:flex;gap:18px}
     nav.menu a{font-weight:600;color:var(--text);padding:.35rem .6rem;border-radius:.6rem;position:relative;text-decoration:none}
     nav.menu a.active{background:var(--brand-pill);color:var(--brand)}
     nav.menu a.active::after{content:"";position:absolute;left:10%;right:10%;bottom:-8px;height:4px;background:currentColor;border-radius:999px}
+
+    /* Mobile nav */
+    .burger {display:none;flex-direction:column;gap:4px;cursor:pointer;}
+    .burger span{width:24px;height:3px;background:var(--text);border-radius:2px;}
+    @media (max-width:768px){
+      nav.menu{display:none;flex-direction:column;gap:10px;position:absolute;top:60px;right:1rem;background:#fff;padding:1rem;border:1px solid var(--line);border-radius:.6rem;}
+      nav.menu.show{display:flex;}
+      .burger{display:flex;}
+    }
   </style>
 </head>
 <body>
   <header class="ll-nav">
     <div class="wrap">
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-      <nav class="menu">
+      <div class="burger" id="burger">
+        <span></span><span></span><span></span>
+      </div>
+      <nav class="menu" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="founder.html" class="active">Founder</a>
@@ -121,7 +147,7 @@
           <h1 class="tagline">Hi, I’m Sharon.</h1>
           <p class="hero-sub">After years working in hospitals, nonprofits, and emergency federal response, I saw that resilience depends on more than strategy alone. It thrives when clarity and compassion move together.</p>
           <p class="hero-sub">Lace & Lime™ grew out of that truth. It’s an approach to wellness and empowerment where structure meets intuition and growth feels both grounded and sustainable. At its core, it’s about creating rhythms and tools that support alignment, clarity, and a life that feels attainable.</p>
- <p class="hero-sub">I’ve never seen my career as a straight ladder or a fixed role. Instead, I’ve focused on acquiring tools that bring impact where they’re needed most. Along the way, I’ve developed an auditor’s eye for systems, cutting waste, streamlining platforms, and saving organizations real money.</p>
+          <p class="hero-sub">I’ve never measured my career by titles. For me, the focus has always been on acquiring the tools and methods that bring the most impact where they’re needed most. Along the way, I’ve developed an auditor’s eye for systems, cutting waste, streamlining platforms, and saving organizations real money.</p>
           <p class="hero-sub">That expertise comes from compliance and accreditation roles, including as a public health advisor in federal response, an accreditation manager for post-graduate medical education, and a nonprofit program manager. It’s also grounded in my capstone on systems and reimbursements, where I analyzed policy gaps and proposed real-world recommendations. These experiences taught me how to design systems that meet standards and save money while creating the space for time, clarity, and education, the conditions that support real wellness and empowerment.</p>
           <div class="chips">
             <span class="chip">MPH · Adelphi University</span>
@@ -260,6 +286,11 @@
     // Modal
     document.getElementById("systems-btn").addEventListener("click",()=>{
       document.getElementById("systems-modal").style.display="flex";
+    });
+
+    // Burger nav toggle
+    document.getElementById("burger").addEventListener("click",()=>{
+      document.getElementById("nav-menu").classList.toggle("show");
     });
   </script>
 </body>
