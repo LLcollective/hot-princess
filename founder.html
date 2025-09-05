@@ -25,46 +25,27 @@
       margin-bottom:.6rem;
     }
     .hero{padding:2rem 0;border-bottom:1px solid var(--line)}
-    .eyebrow {
-      font-size:.8rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-weight:700;
-      color:var(--brand);
-      display:block;
-      margin-bottom:.4rem;
-    }
+    .eyebrow {font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--brand);display:block;margin-bottom:.4rem;}
     .tagline{font-size:clamp(1.8rem,2.3vw+1rem,2.6rem);margin:.4rem 0}
     .hero-sub{color:var(--muted);margin-bottom:1rem;max-width:100%}
     .profile{display:grid;grid-template-columns:180px 1fr;gap:1rem;align-items:start;margin-top:1rem}
     .profile img{width:100%;border-radius:.9rem;border:1px solid var(--line)}
-    
+    @media (max-width: 768px) {
+      .profile { grid-template-columns: 1fr; }
+      .profile img { max-width: 200px; margin: 0 auto 1rem; }
+    }
+
     /* Credential chips */
-    .chips {
-      display:flex;
-      flex-wrap:wrap;
-      gap:.4rem;
-      margin:.6rem 0;
-    }
+    .chips {display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0;}
     .chip{padding:.35rem .55rem;border-radius:.7rem;font-weight:600;font-size:.9rem;background:var(--brand-pill);color:var(--brand)}
-    
+
     /* Tool chips */
-    .tool-chips {
-      display:flex;
-      flex-wrap:wrap;
-      gap:.6rem;
-      margin:.8rem 0;
-    }
+    .tool-chips {display:flex;flex-wrap:wrap;gap:.6rem;margin:.8rem 0;}
     .tool-chip {
-      font-family:"Work Sans",sans-serif;
-      font-size:1rem;
-      font-weight:500;
-      padding:.5rem .9rem;
-      border-radius:1rem;
-      background:var(--brand-pill);
-      border:1px solid var(--line);
-      cursor:pointer;
-      transition:background .3s ease, transform .2s ease;
+      font-family:"Work Sans",sans-serif;font-size:1rem;font-weight:500;
+      padding:.5rem .9rem;border-radius:1rem;
+      background:var(--brand-pill);border:1px solid var(--line);
+      cursor:pointer;transition:background .3s ease, transform .2s ease;
     }
     .tool-chip:hover {transform:translateY(-2px);}
     .tool-chip.active[data-color="green"] {background:var(--green);}
@@ -84,74 +65,34 @@
     .kpi:nth-child(4){background:var(--lavender);}
     .kpi .num{font-family:'Tenor Sans',serif;font-size:1.3rem;color:var(--brand)}
     .kpi .label{color:var(--muted);font-size:.9rem}
-
-    /* Proof highlights (lavender background) */
-    .highlight {
-      background:var(--lavender);
-      border:1px solid var(--line);
-      border-radius:.6rem;
-      padding:.6rem .8rem;
-      margin:.5rem 0;
-      font-weight:500;
+    @media (max-width: 768px) {
+      .kpi { padding:.5rem; }
+      .kpi .num { font-size:1rem; }
+      .kpi .label { font-size:.75rem; }
     }
 
+    /* Proof highlights */
+    .highlight {background:var(--lavender);border:1px solid var(--line);border-radius:.6rem;padding:.6rem .8rem;margin:.5rem 0;font-weight:500;}
     .fade {opacity:0;transition:opacity .4s ease;}
     .fade.show {opacity:1;}
 
     /* Accordion */
-    details.accordion {
-      background:var(--lavender);
-      color:var(--text);
-      border:1px solid var(--line);
-      border-radius:.6rem;
-      margin:.6rem 0;
-    }
-    details.accordion summary {
-      cursor:pointer;
-      font-weight:600;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:.45rem .7rem;
-    }
+    details.accordion {background:var(--lavender);color:var(--text);border:1px solid var(--line);border-radius:.6rem;margin:.6rem 0;}
+    details.accordion summary {cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:space-between;padding:.45rem .7rem;}
     details.accordion summary .arrow {transition:transform .25s ease;display:inline-block;}
     details.accordion[open] summary .arrow {transform:rotate(90deg);}
-    details.accordion .body {
-      padding:.6rem .9rem;
-      border-top:1px solid var(--line);
-      background:#fff;
-    }
+    details.accordion .body {padding:.6rem .9rem;border-top:1px solid var(--line);background:#fff;}
     .body ul{columns:2;margin:0;padding-left:1.2rem}
 
     footer{border-top:1px solid var(--line);margin-top:2rem;padding:1rem;text-align:left}
     .ll-nav{position:sticky;top:0;z-index:1000;background:var(--surface);border-bottom:1px solid var(--line)}
     .ll-nav .wrap{display:flex;align-items:center;gap:16px;padding:.8rem 1rem}
-    .brand{font-family:'Tenor Sans',serif;letter-spacing:.08em;color:var(--brand);font-size:20px;font-weight:600;white-space:nowrap}
+    .brand{font-family:'Tenor Sans',serif;letter-spacing:.08em;color:var(--brand);font-size:20px;font-weight:600;white-space:nowrap;text-decoration:none;}
     .brand .tm{font-size:.7em;vertical-align:super}
     nav.menu{margin-left:auto;display:flex;gap:18px}
     nav.menu a{font-weight:600;color:var(--text);padding:.35rem .6rem;border-radius:.6rem;position:relative;text-decoration:none}
     nav.menu a.active{background:var(--brand-pill);color:var(--brand)}
     nav.menu a.active::after{content:"";position:absolute;left:10%;right:10%;bottom:-8px;height:4px;background:currentColor;border-radius:999px}
-
-    .progress{height:3px;background:rgba(122,102,255,.15);position:fixed;left:0;right:0;top:64px;z-index:999}
-    .progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#7B6CF6,#9BE080);transition:width .08s linear}
-
-    a.button, button.button {
-      display:inline-block;
-      margin-top:.8rem;
-      padding:.6rem 1.2rem;
-      background:var(--brand);
-      color:#fff;
-      font-weight:600;
-      border-radius:.6rem;
-      text-decoration:none;
-      border:none;
-      cursor:pointer;
-      transition:background .25s ease;
-    }
-    a.button:hover, button.button:hover {
-      background:#372f9e;
-    }
   </style>
 </head>
 <body>
@@ -170,19 +111,18 @@
     </div>
   </header>
 
-  <div class="progress"><span id="progress-fill"></span></div>
-
   <main class="wrap">
     <!-- Hero -->
     <section class="hero">
       <div class="profile">
         <img src="assets/founder.jpg" alt="Headshot of Sharon Gutierrez" />
         <div>
-          <span class="eyebrow">Founder</span>
+          <span class="eyebrow">Meet the Founder</span>
           <h1 class="tagline">Hi, I’m Sharon.</h1>
           <p class="hero-sub">After years working in hospitals, nonprofits, and emergency federal response, I saw that resilience depends on more than strategy alone. It thrives when clarity and compassion move together.</p>
           <p class="hero-sub">Lace & Lime™ grew out of that truth. It’s an approach to wellness and empowerment where structure meets intuition, and where personal growth feels both grounded and sustainable. At its core, it’s about creating rhythms and tools that support alignment, clarity, and a life that feels attainable.</p>
-          <p class="hero-sub">I help teams go from stuck to shipping in about two weeks by using small wins that compound. As a public health educator and operations strategist, I design tools that make progress feel measurable and doable.</p>
+          <p class="hero-sub">I’ve never seen my career as a straight ladder or a fixed role. Instead, it’s been about acquiring the tools that bring the most impact where they’re needed most. My focus has always been on methods and systems that make change sustainable. I consider myself an expert in my field now, and one day I may pursue a Doctor of Public Health not for the title, but to deepen the expertise and impact I already bring. Along the way, I’ve developed an auditor’s eye for systems, using comparative tools to cut waste, streamline platforms, and save organizations real money.</p>
+          <p class="hero-sub">That expertise comes from years in compliance and accreditation, including work as a public health advisor in federal response at the nation’s busiest port of entry, as an accreditation manager for post-graduate medical education, and as a nonprofit program manager. It is also grounded in my capstone on systems and reimbursements, a comparative case study that analyzed policy gaps and offered real-world recommendations. Together, these experiences taught me how to design systems that meet standards and save money while creating the space for time, clarity, and education; the conditions that support real wellness and empowerment.</p>
           <div class="chips">
             <span class="chip">MPH · Adelphi University</span>
             <span class="chip">BS · Math for Technology, Biology, Psychology · SUNY</span>
@@ -224,16 +164,27 @@
           </ul>
         </div>
       </details>
+      <details class="accordion">
+        <summary><span>Compliance & Accreditation</span><span class="arrow">▸</span></summary>
+        <div class="body">
+          <ul>
+            <li>Public Health Advisor</li>
+            <li>Medical Education Accreditation Manager</li>
+            <li>Compliance & Regulation Training</li>
+            <li>Program Manager, Nonprofit Organization</li>
+          </ul>
+        </div>
+      </details>
     </section>
 
     <!-- Impact -->
     <section class="card">
       <h2>Impact by the Numbers</h2>
       <div class="kpis">
-        <div class="kpi"><div class="num">2 weeks</div><div class="label">to close a compliance gap</div></div>
-        <div class="kpi"><div class="num">25+</div><div class="label">training sessions facilitated</div></div>
-        <div class="kpi"><div class="num">On time</div><div class="label">vendor payments restored</div></div>
-        <div class="kpi"><div class="num">Fewer delays</div><div class="label">with smart automations</div></div>
+        <div class="kpi"><div class="num">2 weeks</div><div class="label">to restore compliance and peace of mind</div></div>
+        <div class="kpi"><div class="num">25+</div><div class="label">training sessions that built clarity and confidence</div></div>
+        <div class="kpi"><div class="num">On time</div><div class="label">vendor payments restored, trust rebuilt</div></div>
+        <div class="kpi"><div class="num">Fewer delays</div><div class="label">with smart automations that free up focus and energy</div></div>
       </div>
     </section>
 
@@ -249,14 +200,14 @@
     <section class="card">
       <h2>What Our Tools Have Delivered</h2>
       <div class="tool-chips">
-        <button class="tool-chip active" data-text="Forms that are easy to fill out and finish. Booking and payments built in — with no monthly subscription fees stacking up for the business owner. A smoother start for your customers, without extra costs that add up." data-color="green">Forms & Onboarding</button>
-        <button class="tool-chip" data-text="Forms and booking that don’t hide extra costs or barriers. Accessibility built in — coding practices that support screen readers and inclusive design. Flexible foundations that can expand into translation or AI-powered access as needs grow." data-color="teal">Access & Equity</button>
-        <button class="tool-chip" data-text="Dashboards that show what’s complete, what’s pending, and what needs attention. Overviews written in plain language, so different audiences don’t get lost in the data. Automatic updates that keep compliance and reporting on track without extra work." data-color="blue">Dashboards & Clarity</button>
-        <button class="tool-chip" data-text="Automations that handle repetitive tasks in the background. Triggers and reminders that prevent deadlines or details from slipping through the cracks. Reliable processes that run the same way every time, so no detail gets missed." data-color="orange">Smart Automations</button>
-        <button class="tool-chip" data-text="Clear channels for talking, sharing, and meeting. Easy file access, so people spend less time digging. Communication that supports progress instead of slowing it down. Keeps people connected without the clutter." data-color="lavender">Collaboration</button>
+        <button class="tool-chip active" data-text="Forms designed to feel simple, clear, and approachable. Booking and payments built in with no monthly subscription fees stacking up for the business owner. A smoother start that builds trust with your customers from the very first step." data-color="green">Forms & Onboarding</button>
+        <button class="tool-chip" data-text="Forms and booking that don’t hide extra costs or barriers. Accessibility built in with coding practices that support screen readers and inclusive design. Flexible foundations that can expand into translation or AI-powered access so no one is left behind." data-color="teal">Access & Equity</button>
+        <button class="tool-chip" data-text="Dashboards that show what’s complete, what’s pending, and what needs attention. Overviews written in plain language, so everyone feels included in the process. Automatic updates that reduce stress and keep compliance and reporting on track." data-color="blue">Dashboards & Clarity</button>
+        <button class="tool-chip" data-text="Automations that take repetitive tasks off your plate. Triggers and reminders that protect against missed deadlines. Reliable processes that give people back time and peace of mind." data-color="orange">Smart Automations</button>
+        <button class="tool-chip" data-text="Clear channels for talking, sharing, and meeting. Easy file access, so people spend less time digging. Communication that keeps people connected without the clutter." data-color="lavender">Collaboration</button>
       </div>
       <div class="highlight fade show" id="tool-detail" style="background:var(--green);">
-        Forms that are easy to fill out and finish. Booking and payments built in — with no monthly subscription fees stacking up for the business owner. A smoother start for your customers, without extra costs that add up.
+        Forms designed to feel simple, clear, and approachable. Booking and payments built in with no monthly subscription fees stacking up for the business owner. A smoother start that builds trust with your customers from the very first step.
       </div>
       <p style="margin-top:1rem; font-size:.95rem; color:var(--muted);">
         These are the building blocks. The full Lace & Lime™ method brings them together into systems that move teams forward.
@@ -285,12 +236,6 @@
   </div>
 
   <script>
-    const fill=document.getElementById('progress-fill');
-    window.addEventListener('scroll',()=>{
-      const sc=window.scrollY;const max=document.body.scrollHeight-innerHeight;
-      fill.style.width=(sc/max*100).toFixed(2)+'%';
-    });
-
     // Tool chips
     const toolChips=document.querySelectorAll(".tool-chip");
     const toolDetail=document.getElementById("tool-detail");
@@ -300,13 +245,11 @@
         toolChips.forEach(c=>c.classList.remove("active"));
         chip.classList.add("active");
 
-        // fade animation
         toolDetail.classList.remove("show");
-        void toolDetail.offsetWidth; // reset animation
+        void toolDetail.offsetWidth;
 
         toolDetail.textContent=chip.getAttribute("data-text");
 
-        // change background color based on chip
         const color=chip.getAttribute("data-color");
         toolDetail.style.background=`var(--${color})`;
 
@@ -314,7 +257,7 @@
       });
     });
 
-    // Modal only opens on click
+    // Modal
     document.getElementById("systems-btn").addEventListener("click",()=>{
       document.getElementById("systems-modal").style.display="flex";
     });
