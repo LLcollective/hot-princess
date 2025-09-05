@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Founder | Credentials, Impact by the Numbers, Case Snapshots, Systems That Work | Lace & Lime</title>
-  <meta name="description" content="Explore Sharon Gutierrez’s founder page: credentials in public health and CHES®, impact by the numbers, case snapshots of proven results, and the Lace & Lime method for sustainable systems." />
+  <title>Founder | Credentials, Impact by the Numbers, Proof Highlights, Systems That Work | Lace & Lime</title>
+  <meta name="description" content="Explore Sharon Gutierrez’s founder page: credentials in public health and CHES®, impact by the numbers, proof highlights of results, and the Lace & Lime method for sustainable systems." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --surface:#E6F4FF; --text:#1A2238; --muted:#4B3E65; --line:rgba(26,34,56,.15);
       --brand:#4f46e5; --brand-pill:#F3F4FF;
-      --collab:#F7F4FB; --collab-hover:#EFE8F6;
+      --green:#e5f6e5; --teal:#e5f9f7; --blue:#e5f0ff; --orange:#fff2e5; --lavender:#f7f2ff;
     }
     body{font-family:"Work Sans",sans-serif;margin:0;color:var(--text);line-height:1.55;}
     body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#E6F4FF 0%,#DCEBFF 45%,#C7DBFF 75%,#BFD0FF 100%);}
@@ -25,18 +25,82 @@
       margin-bottom:.6rem;
     }
     .hero{padding:2rem 0;border-bottom:1px solid var(--line)}
-    .eyebrow{font-size:.8rem;letter-spacing:.12em;color:var(--brand);font-weight:700;text-transform:uppercase;display:block;margin-bottom:.4rem}
+    .eyebrow {
+      font-size:.8rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:700;
+      color:var(--brand);
+      display:block;
+      margin-bottom:.4rem;
+    }
     .tagline{font-size:clamp(1.8rem,2.3vw+1rem,2.6rem);margin:.4rem 0}
     .hero-sub{color:var(--muted);margin-bottom:1rem;max-width:100%}
     .profile{display:grid;grid-template-columns:180px 1fr;gap:1rem;align-items:start;margin-top:1rem}
     .profile img{width:100%;border-radius:.9rem;border:1px solid var(--line)}
-    .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
-    .chip{padding:.35rem .55rem;border-radius:.7rem;font-weight:600;font-size:.9rem;white-space:nowrap;background:var(--brand-pill);color:var(--brand)}
-    .card{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1rem;margin:1rem 0}
     
+    /* Credential chips */
+    .chips {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.4rem;
+      margin:.6rem 0;
+    }
+    .chip{padding:.35rem .55rem;border-radius:.7rem;font-weight:600;font-size:.9rem;background:var(--brand-pill);color:var(--brand)}
+    
+    /* Tool chips */
+    .tool-chips {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin:.8rem 0;
+    }
+    .tool-chip {
+      font-family:"Work Sans",sans-serif;
+      font-size:1rem;
+      font-weight:500;
+      padding:.5rem .9rem;
+      border-radius:1rem;
+      background:var(--brand-pill);
+      border:1px solid var(--line);
+      cursor:pointer;
+      transition:background .3s ease, transform .2s ease;
+    }
+    .tool-chip:hover {transform:translateY(-2px);}
+    .tool-chip.active[data-color="green"] {background:var(--green);}
+    .tool-chip.active[data-color="teal"] {background:var(--teal);}
+    .tool-chip.active[data-color="blue"] {background:var(--blue);}
+    .tool-chip.active[data-color="orange"] {background:var(--orange);}
+    .tool-chip.active[data-color="lavender"] {background:var(--lavender);}
+
+    .card{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1rem;margin:1rem 0}
+
+    /* KPI highlights */
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+    .kpi{border:1px solid var(--line);border-radius:.8rem;padding:.75rem;text-align:center}
+    .kpi:nth-child(1){background:var(--green);}
+    .kpi:nth-child(2){background:var(--blue);}
+    .kpi:nth-child(3){background:var(--orange);}
+    .kpi:nth-child(4){background:var(--lavender);}
+    .kpi .num{font-family:'Tenor Sans',serif;font-size:1.3rem;color:var(--brand)}
+    .kpi .label{color:var(--muted);font-size:.9rem}
+
+    /* Proof highlights (lavender background) */
+    .highlight {
+      background:var(--lavender);
+      border:1px solid var(--line);
+      border-radius:.6rem;
+      padding:.6rem .8rem;
+      margin:.5rem 0;
+      font-weight:500;
+    }
+
+    .fade {opacity:0;transition:opacity .4s ease;}
+    .fade.show {opacity:1;}
+
     /* Accordion */
     details.accordion {
-      background:var(--collab);
+      background:var(--lavender);
       color:var(--text);
       border:1px solid var(--line);
       border-radius:.6rem;
@@ -49,43 +113,30 @@
       align-items:center;
       justify-content:space-between;
       padding:.45rem .7rem;
-      border-left:4px solid var(--brand);
     }
-    details.accordion summary:hover {background:var(--collab-hover);}
     details.accordion summary .arrow {transition:transform .25s ease;display:inline-block;}
     details.accordion[open] summary .arrow {transform:rotate(90deg);}
     details.accordion .body {
       padding:.6rem .9rem;
       border-top:1px solid var(--line);
       background:#fff;
-      color:var(--text);
     }
     .body ul{columns:2;margin:0;padding-left:1.2rem}
 
-    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
-    .kpi{background:#fff;border:1px solid var(--line);border-radius:.8rem;padding:.75rem;text-align:center}
-    .kpi .num{font-family:'Tenor Sans',serif;font-size:1.3rem;color:var(--brand)}
-    .kpi .label{color:var(--muted);font-size:.9rem}
-
     footer{border-top:1px solid var(--line);margin-top:2rem;padding:1rem;text-align:left}
-    /* Nav */
     .ll-nav{position:sticky;top:0;z-index:1000;background:var(--surface);border-bottom:1px solid var(--line)}
     .ll-nav .wrap{display:flex;align-items:center;gap:16px;padding:.8rem 1rem}
     .brand{font-family:'Tenor Sans',serif;letter-spacing:.08em;color:var(--brand);font-size:20px;font-weight:600;white-space:nowrap}
     .brand .tm{font-size:.7em;vertical-align:super}
-    a.brand, nav.menu a {text-decoration:none;}
     nav.menu{margin-left:auto;display:flex;gap:18px}
-    nav.menu a{font-weight:600;color:var(--text);padding:.35rem .6rem;border-radius:.6rem;position:relative}
+    nav.menu a{font-weight:600;color:var(--text);padding:.35rem .6rem;border-radius:.6rem;position:relative;text-decoration:none}
     nav.menu a.active{background:var(--brand-pill);color:var(--brand)}
     nav.menu a.active::after{content:"";position:absolute;left:10%;right:10%;bottom:-8px;height:4px;background:currentColor;border-radius:999px}
-    .burger{display:none;margin-left:auto;width:40px;height:40px;border:1px solid var(--line);border-radius:.6rem;background:#fff;cursor:pointer;align-items:center;justify-content:center}
-    @media(max-width:860px){nav.menu{display:none}.burger{display:inline-flex}}
-    /* Progress */
+
     .progress{height:3px;background:rgba(122,102,255,.15);position:fixed;left:0;right:0;top:64px;z-index:999}
     .progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#7B6CF6,#9BE080);transition:width .08s linear}
 
-    /* Branded button */
-    a.button {
+    a.button, button.button {
       display:inline-block;
       margin-top:.8rem;
       padding:.6rem 1.2rem;
@@ -94,20 +145,12 @@
       font-weight:600;
       border-radius:.6rem;
       text-decoration:none;
+      border:none;
+      cursor:pointer;
       transition:background .25s ease;
     }
-    a.button:hover {
+    a.button:hover, button.button:hover {
       background:#372f9e;
-    }
-
-    /* Responsive tweaks */
-    @media(max-width:860px){
-      .profile{grid-template-columns:1fr;gap:1.5rem}
-      .chips{flex-wrap:wrap;gap:.6rem}
-    }
-    @media(max-width:480px){
-      .kpis{grid-template-columns:1fr}
-      .hero-sub{font-size:1rem;line-height:1.6}
     }
   </style>
 </head>
@@ -124,7 +167,6 @@
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button class="burger"><span class="icon">≡</span></button>
     </div>
   </header>
 
@@ -148,7 +190,7 @@
             <span class="chip">Certified Health Education Specialist (CHES®)</span>
             <span class="chip">IRB Certified for Research</span>
             <span class="chip">Workflow Optimization Specialist</span>
-                    <span class="chip">Data Analyst Certified</span>
+            <span class="chip">Data Analyst Certified</span>
           </div>
         </div>
       </div>
@@ -191,32 +233,41 @@
         <div class="kpi"><div class="num">2 weeks</div><div class="label">to close a compliance gap</div></div>
         <div class="kpi"><div class="num">25+</div><div class="label">training sessions facilitated</div></div>
         <div class="kpi"><div class="num">On time</div><div class="label">vendor payments restored</div></div>
-        <div class="kpi"><div class="num">Fewer delays</div><div class="label">with light automations</div></div>
+        <div class="kpi"><div class="num">Fewer delays</div><div class="label">with smart automations</div></div>
       </div>
     </section>
 
-    <!-- Case Snapshots -->
+    <!-- Proof Highlights -->
     <section class="card">
-      <h2>Case Snapshots</h2>
-      <details class="accordion">
-        <summary><span>Corrective Action Plan · Visa Documentation</span><span class="arrow">▸</span></summary>
-        <div class="body"><p>Restored 100% compliance in 2 weeks with new processes, alerts, and audits.</p></div>
-      </details>
-      <details class="accordion">
-        <summary><span>Curriculum Enhancement · Resident Training</span><span class="arrow">▸</span></summary>
-        <div class="body"><p>Redesigned curriculum to strengthen consistency and compliance with accreditation standards.</p></div>
-      </details>
-      <details class="accordion">
-        <summary><span>Community Health Program</span><span class="arrow">▸</span></summary>
-        <div class="body"><p>Needs assessment, logic model, and grant proposal secured funding and increased healthcare access.</p></div>
-      </details>
+      <h2>Proof Highlights</h2>
+      <div class="highlight">Restored 100% compliance in 2 weeks with new processes, alerts, and audits.</div>
+      <div class="highlight">Redesigned curriculum to strengthen consistency and compliance with accreditation standards.</div>
+      <div class="highlight">Needs assessment, logic model, and grant proposal secured funding and increased healthcare access.</div>
+    </section>
+
+    <!-- What Our Tools Have Delivered -->
+    <section class="card">
+      <h2>What Our Tools Have Delivered</h2>
+      <div class="tool-chips">
+        <button class="tool-chip active" data-text="Forms that are easy to fill out and finish. Booking and payments built in — with no monthly subscription fees stacking up for the business owner. A smoother start for your customers, without extra costs that add up." data-color="green">Forms & Onboarding</button>
+        <button class="tool-chip" data-text="Forms and booking that don’t hide extra costs or barriers. Accessibility built in — coding practices that support screen readers and inclusive design. Flexible foundations that can expand into translation or AI-powered access as needs grow." data-color="teal">Access & Equity</button>
+        <button class="tool-chip" data-text="Dashboards that show what’s complete, what’s pending, and what needs attention. Overviews written in plain language, so different audiences don’t get lost in the data. Automatic updates that keep compliance and reporting on track without extra work." data-color="blue">Dashboards & Clarity</button>
+        <button class="tool-chip" data-text="Automations that handle repetitive tasks in the background. Triggers and reminders that prevent deadlines or details from slipping through the cracks. Reliable processes that run the same way every time, so no detail gets missed." data-color="orange">Smart Automations</button>
+        <button class="tool-chip" data-text="Clear channels for talking, sharing, and meeting. Easy file access, so people spend less time digging. Communication that supports progress instead of slowing it down. Keeps people connected without the clutter." data-color="lavender">Collaboration</button>
+      </div>
+      <div class="highlight fade show" id="tool-detail" style="background:var(--green);">
+        Forms that are easy to fill out and finish. Booking and payments built in — with no monthly subscription fees stacking up for the business owner. A smoother start for your customers, without extra costs that add up.
+      </div>
+      <p style="margin-top:1rem; font-size:.95rem; color:var(--muted);">
+        These are the building blocks. The full Lace & Lime™ method brings them together into systems that move teams forward.
+      </p>
     </section>
 
     <!-- Systems -->
     <section class="card">
       <h2>Systems That Work</h2>
       <p>What moves teams forward isn’t just a tool. It’s a clear method, strong leadership, and tools that fit the work.</p>
-      <a href="systems.html" class="button">See how the systems come together →</a>
+      <button class="button" id="systems-btn">See how the systems come together →</button>
     </section>
   </main>
 
@@ -224,17 +275,48 @@
     <p class="small muted">© 2025 Lace & Lime LLC. All rights reserved. · <a href="privacy-terms.html">Privacy and Terms</a></p>
   </footer>
 
+  <!-- Modal -->
+  <div id="systems-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.6); align-items:center; justify-content:center; z-index:2000;">
+    <div style="background:#fff; padding:2rem; border-radius:1rem; max-width:400px; text-align:center;">
+      <h3 style="color:var(--brand); margin-top:0;">Coming Soon</h3>
+      <p>The full Lace & Lime™ Systems page is on the way. Soon you’ll be able to explore how reflection and action come together.</p>
+      <button onclick="document.getElementById('systems-modal').style.display='none'" class="button" style="margin-top:1rem;">Close</button>
+    </div>
+  </div>
+
   <script>
     const fill=document.getElementById('progress-fill');
     window.addEventListener('scroll',()=>{
       const sc=window.scrollY;const max=document.body.scrollHeight-innerHeight;
       fill.style.width=(sc/max*100).toFixed(2)+'%';
     });
-    document.querySelectorAll('details.accordion summary').forEach(sum=>{
-      sum.addEventListener('click',()=>{
-        const arrow=sum.querySelector('.arrow');
-        setTimeout(()=>{arrow.textContent=sum.parentElement.open?'▾':'▸'},50);
+
+    // Tool chips
+    const toolChips=document.querySelectorAll(".tool-chip");
+    const toolDetail=document.getElementById("tool-detail");
+
+    toolChips.forEach(chip=>{
+      chip.addEventListener("click",()=>{
+        toolChips.forEach(c=>c.classList.remove("active"));
+        chip.classList.add("active");
+
+        // fade animation
+        toolDetail.classList.remove("show");
+        void toolDetail.offsetWidth; // reset animation
+
+        toolDetail.textContent=chip.getAttribute("data-text");
+
+        // change background color based on chip
+        const color=chip.getAttribute("data-color");
+        toolDetail.style.background=`var(--${color})`;
+
+        toolDetail.classList.add("show");
       });
+    });
+
+    // Modal only opens on click
+    document.getElementById("systems-btn").addEventListener("click",()=>{
+      document.getElementById("systems-modal").style.display="flex";
     });
   </script>
 </body>
