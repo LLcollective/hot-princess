@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Founder | Credentials, Impact by the Numbers, Proof Highlights, Systems That Work | Lace & Lime</title>
-  <meta name="description" content="Explore Sharon Gutierrez’s founder page: credentials in public health and CHES®, impact by the numbers, proof highlights of results, and the Lace & Lime method for sustainable systems." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -16,14 +15,33 @@
     body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#E6F4FF 0%,#DCEBFF 45%,#C7DBFF 75%,#BFD0FF 100%);}
     .wrap{width:min(1120px,92vw);margin-inline:auto;padding:1rem}
     h1,h2{font-family:'Tenor Sans',serif}
-    h2 {
-      font-size:.9rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-weight:700;
-      color:var(--brand);
-      margin-bottom:.6rem;
+
+    /* Nav */
+    .ll-nav{position:sticky;top:0;z-index:1000;background:var(--surface);border-bottom:1px solid var(--line)}
+    .ll-nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem}
+    .brand{font-family:'Tenor Sans',serif;letter-spacing:.08em;color:var(--brand);font-size:20px;font-weight:600;white-space:nowrap;text-decoration:none;}
+    .brand .tm{font-size:.7em;vertical-align:super}
+    nav.menu{display:flex;gap:18px;transition:.3s ease;}
+    nav.menu a{font-weight:600;color:var(--text);padding:.35rem .6rem;border-radius:.6rem;text-decoration:none;position:relative}
+    nav.menu a.active{background:var(--brand-pill);color:var(--brand)}
+    nav.menu a.active::after{content:"";position:absolute;left:10%;right:10%;bottom:-8px;height:4px;background:currentColor;border-radius:999px}
+
+    /* Burger */
+    .burger{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:.6rem;cursor:pointer;transition:background .3s ease;}
+    .burger span{width:22px;height:3px;background:var(--text);border-radius:2px;transition:.3s ease;}
+    .burger span+span{margin-top:5px;}
+    .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+    .burger.open span:nth-child(2){opacity:0;}
+    .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+
+    /* Floating mobile menu */
+    @media(max-width:768px){
+      nav.menu{display:none;flex-direction:column;gap:14px;position:absolute;top:60px;right:1rem;background:#fff;padding:1rem 1.2rem;border:1px solid var(--line);border-radius:.8rem;box-shadow:0 4px 12px rgba(0,0,0,.08);opacity:0;transform:translateY(-10px);transition:.3s ease;}
+      nav.menu.show{display:flex;opacity:1;transform:translateY(0);}
+      .burger{display:flex;}
     }
+
+    /* Hero, chips, cards, etc. */
     .hero{padding:2rem 0;border-bottom:1px solid var(--line)}
     .eyebrow {font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--brand);display:block;margin-bottom:.4rem;}
     .tagline{font-size:clamp(1.8rem,2.3vw+1rem,2.6rem);margin:.4rem 0}
@@ -34,18 +52,29 @@
       .profile { grid-template-columns: 1fr; }
       .profile img { max-width: 200px; margin: 0 auto 1rem; }
     }
-
-    /* Credential chips */
     .chips {display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0;}
     .chip{padding:.35rem .55rem;border-radius:.7rem;font-weight:600;font-size:.9rem;background:var(--brand-pill);color:var(--brand)}
 
-    /* Tool chips */
+    .card{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1rem;margin:1rem 0}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem}
+    .kpi{border:1px solid var(--line);border-radius:.8rem;padding:.75rem;text-align:center;transition:.3s ease;}
+    .kpi:hover{transform:translateY(-3px);}
+    .kpi:nth-child(1){background:var(--green);}
+    .kpi:nth-child(2){background:var(--blue);}
+    .kpi:nth-child(3){background:var(--orange);}
+    .kpi:nth-child(4){background:var(--lavender);}
+    .kpi .num{font-family:'Tenor Sans',serif;font-size:1.3rem;color:var(--brand)}
+    .kpi .label{color:var(--muted);font-size:.9rem}
+
+    .highlight {background:var(--lavender);border:1px solid var(--line);border-radius:.6rem;padding:.6rem .8rem;margin:.5rem 0;font-weight:500;opacity:0;transform:translateY(6px);transition:.3s ease;}
+    .highlight.show{opacity:1;transform:translateY(0);}
+
     .tool-chips {display:flex;flex-wrap:wrap;gap:.6rem;margin:.8rem 0;}
     .tool-chip {
       font-family:"Work Sans",sans-serif;font-size:1rem;font-weight:500;
       padding:.5rem .9rem;border-radius:1rem;
       background:var(--brand-pill);border:1px solid var(--line);
-      cursor:pointer;transition:background .3s ease, transform .2s ease;
+      cursor:pointer;transition:.3s ease;
     }
     .tool-chip:hover {transform:translateY(-2px);}
     .tool-chip.active[data-color="green"] {background:var(--green);}
@@ -54,37 +83,6 @@
     .tool-chip.active[data-color="orange"] {background:var(--orange);}
     .tool-chip.active[data-color="lavender"] {background:var(--lavender);}
 
-    .card{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1rem;margin:1rem 0}
-
-    /* KPI highlights */
-    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem}
-    .kpi{border:1px solid var(--line);border-radius:.8rem;padding:.75rem;text-align:center}
-    .kpi:nth-child(1){background:var(--green);}
-    .kpi:nth-child(2){background:var(--blue);}
-    .kpi:nth-child(3){background:var(--orange);}
-    .kpi:nth-child(4){background:var(--lavender);}
-    .kpi .num{font-family:'Tenor Sans',serif;font-size:1.3rem;color:var(--brand)}
-    .kpi .label{color:var(--muted);font-size:.9rem}
-    @media (max-width: 768px) {
-      .kpi { padding:.5rem; }
-      .kpi .num { font-size:1rem; }
-      .kpi .label { font-size:.75rem; }
-    }
-
-    /* Proof highlights */
-    .highlight {background:var(--lavender);border:1px solid var(--line);border-radius:.6rem;padding:.6rem .8rem;margin:.5rem 0;font-weight:500;}
-    .fade {opacity:0;transition:opacity .4s ease;}
-    .fade.show {opacity:1;}
-
-    /* Accordion */
-    details.accordion {background:var(--lavender);color:var(--text);border:1px solid var(--line);border-radius:.6rem;margin:.6rem 0;}
-    details.accordion summary {cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:space-between;padding:.45rem .7rem;}
-    details.accordion summary .arrow {transition:transform .25s ease;display:inline-block;}
-    details.accordion[open] summary .arrow {transform:rotate(90deg);}
-    details.accordion .body {padding:.6rem .9rem;border-top:1px solid var(--line);background:#fff;}
-    .body ul{columns:2;margin:0;padding-left:1.2rem}
-
-    /* Systems CTA button */
     .button {
       background:var(--brand);
       color:#fff;
@@ -93,38 +91,18 @@
       border-radius:.6rem;
       font-weight:600;
       cursor:pointer;
-      transition:background .3s ease;
+      transition:.3s ease;
     }
-    .button:hover {background:#3a34b5;}
+    .button:hover {background:#3a34b5;transform:translateY(-2px);}
 
     footer{border-top:1px solid var(--line);margin-top:2rem;padding:1rem;text-align:left}
-    .ll-nav{position:sticky;top:0;z-index:1000;background:var(--surface);border-bottom:1px solid var(--line)}
-    .ll-nav .wrap{display:flex;align-items:center;gap:16px;padding:.8rem 1rem}
-    .brand{font-family:'Tenor Sans',serif;letter-spacing:.08em;color:var(--brand);font-size:20px;font-weight:600;white-space:nowrap;text-decoration:none;}
-    .brand .tm{font-size:.7em;vertical-align:super}
-
-    nav.menu{margin-left:auto;display:flex;gap:18px}
-    nav.menu a{font-weight:600;color:var(--text);padding:.35rem .6rem;border-radius:.6rem;position:relative;text-decoration:none}
-    nav.menu a.active{background:var(--brand-pill);color:var(--brand)}
-    nav.menu a.active::after{content:"";position:absolute;left:10%;right:10%;bottom:-8px;height:4px;background:currentColor;border-radius:999px}
-
-    /* Mobile nav */
-    .burger {display:none;flex-direction:column;gap:4px;cursor:pointer;}
-    .burger span{width:24px;height:3px;background:var(--text);border-radius:2px;}
-    @media (max-width:768px){
-      nav.menu{display:none;flex-direction:column;gap:10px;position:absolute;top:60px;right:1rem;background:#fff;padding:1rem;border:1px solid var(--line);border-radius:.6rem;}
-      nav.menu.show{display:flex;}
-      .burger{display:flex;}
-    }
   </style>
 </head>
 <body>
   <header class="ll-nav">
     <div class="wrap">
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-      <div class="burger" id="burger">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
       <nav class="menu" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -162,48 +140,7 @@
       </div>
     </section>
 
-    <!-- Credentials -->
-    <section class="card">
-      <h2>Credentials</h2>
-      <details class="accordion" open>
-        <summary><span>Master of Public Health</span><span class="arrow">▸</span></summary>
-        <div class="body">
-          <ul>
-            <li>Epidemiology</li><li>Biostatistics</li><li>Quantitative Analysis</li><li>Health Care Finance</li>
-            <li>Program Planning & Evaluation</li><li>Social & Behavioral Health</li><li>Policy & Global Health</li>
-            <li>Capstone: Systems & Reimbursement</li>
-          </ul>
-        </div>
-      </details>
-      <details class="accordion">
-        <summary><span>Certified Health Education Specialist (CHES®)</span><span class="arrow">▸</span></summary>
-        <div class="body">
-          <ul>
-            <li>Assessment of Needs and Capacity</li>
-            <li>Planning</li>
-            <li>Implementation</li>
-            <li>Evaluation and Research</li>
-            <li>Advocacy</li>
-            <li>Communication</li>
-            <li>Leadership and Management</li>
-            <li>Ethics and Professionalism</li>
-          </ul>
-        </div>
-      </details>
-      <details class="accordion">
-        <summary><span>Compliance & Accreditation</span><span class="arrow">▸</span></summary>
-        <div class="body">
-          <ul>
-            <li>Public Health Advisor</li>
-            <li>Medical Education Accreditation Manager</li>
-            <li>Compliance & Regulation Training</li>
-            <li>Program Manager, Nonprofit Organization</li>
-          </ul>
-        </div>
-      </details>
-    </section>
-
-    <!-- Impact -->
+    <!-- Impact by the Numbers -->
     <section class="card">
       <h2>Impact by the Numbers</h2>
       <div class="kpis">
@@ -222,7 +159,7 @@
       <div class="highlight">Needs assessment, logic model, and grant proposal secured funding and increased healthcare access.</div>
     </section>
 
-    <!-- What Our Tools Have Delivered -->
+    <!-- Tools -->
     <section class="card">
       <h2>What Our Tools Have Delivered</h2>
       <div class="tool-chips">
@@ -270,15 +207,11 @@
       chip.addEventListener("click",()=>{
         toolChips.forEach(c=>c.classList.remove("active"));
         chip.classList.add("active");
-
         toolDetail.classList.remove("show");
         void toolDetail.offsetWidth;
-
         toolDetail.textContent=chip.getAttribute("data-text");
-
         const color=chip.getAttribute("data-color");
         toolDetail.style.background=`var(--${color})`;
-
         toolDetail.classList.add("show");
       });
     });
@@ -289,9 +222,21 @@
     });
 
     // Burger nav toggle
-    document.getElementById("burger").addEventListener("click",()=>{
-      document.getElementById("nav-menu").classList.toggle("show");
+    const burger=document.getElementById("burger");
+    const navMenu=document.getElementById("nav-menu");
+    burger.addEventListener("click",()=>{
+      burger.classList.toggle("open");
+      navMenu.classList.toggle("show");
     });
+
+    // Animate highlights on scroll
+    const highlights=document.querySelectorAll(".highlight");
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add("show");}
+      });
+    },{threshold:.2});
+    highlights.forEach(h=>observer.observe(h));
   </script>
 </body>
 </html>
