@@ -28,11 +28,11 @@
 
     /* Burger */
     .burger{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:.6rem;cursor:pointer;transition:background .3s ease;}
-    .burger span{width:22px;height:3px;background:var(--text);border-radius:2px;transition:.3s ease;}
+    .burger span{width:22px;height:2px;background:var(--brand);border-radius:2px;transition:.3s ease;}
     .burger span+span{margin-top:5px;}
-    .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
     .burger.open span:nth-child(2){opacity:0;}
-    .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
     /* Floating mobile menu */
     @media(max-width:768px){
@@ -41,7 +41,7 @@
       .burger{display:flex;}
     }
 
-    /* Hero, chips, cards, etc. */
+    /* Hero, chips, cards */
     .hero{padding:2rem 0;border-bottom:1px solid var(--line)}
     .eyebrow {font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--brand);display:block;margin-bottom:.4rem;}
     .tagline{font-size:clamp(1.8rem,2.3vw+1rem,2.6rem);margin:.4rem 0}
@@ -56,9 +56,17 @@
     .chip{padding:.35rem .55rem;border-radius:.7rem;font-weight:600;font-size:.9rem;background:var(--brand-pill);color:var(--brand)}
 
     .card{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1rem;margin:1rem 0}
+
+    /* Accordions */
+    details.accordion {background:var(--lavender);color:var(--text);border:1px solid var(--line);border-radius:.6rem;margin:.6rem 0;}
+    details.accordion summary {cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:space-between;padding:.45rem .7rem;}
+    details.accordion summary .arrow {transition:transform .25s ease;display:inline-block;}
+    details.accordion[open] summary .arrow {transform:rotate(90deg);}
+    details.accordion .body {padding:.6rem .9rem;border-top:1px solid var(--line);background:#fff;}
+    .body ul{columns:2;margin:0;padding-left:1.2rem}
+
     .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem}
-    .kpi{border:1px solid var(--line);border-radius:.8rem;padding:.75rem;text-align:center;transition:.3s ease;}
-    .kpi:hover{transform:translateY(-3px);}
+    .kpi{border:1px solid var(--line);border-radius:.8rem;padding:.75rem;text-align:center}
     .kpi:nth-child(1){background:var(--green);}
     .kpi:nth-child(2){background:var(--blue);}
     .kpi:nth-child(3){background:var(--orange);}
@@ -66,33 +74,17 @@
     .kpi .num{font-family:'Tenor Sans',serif;font-size:1.3rem;color:var(--brand)}
     .kpi .label{color:var(--muted);font-size:.9rem}
 
-    .highlight {background:var(--lavender);border:1px solid var(--line);border-radius:.6rem;padding:.6rem .8rem;margin:.5rem 0;font-weight:500;opacity:0;transform:translateY(6px);transition:.3s ease;}
-    .highlight.show{opacity:1;transform:translateY(0);}
+    .highlight {background:var(--lavender);border:1px solid var(--line);border-radius:.6rem;padding:.6rem .8rem;margin:.5rem 0;font-weight:500;}
 
     .tool-chips {display:flex;flex-wrap:wrap;gap:.6rem;margin:.8rem 0;}
-    .tool-chip {
-      font-family:"Work Sans",sans-serif;font-size:1rem;font-weight:500;
-      padding:.5rem .9rem;border-radius:1rem;
-      background:var(--brand-pill);border:1px solid var(--line);
-      cursor:pointer;transition:.3s ease;
-    }
-    .tool-chip:hover {transform:translateY(-2px);}
+    .tool-chip {font-family:"Work Sans",sans-serif;font-size:1rem;font-weight:500;padding:.5rem .9rem;border-radius:1rem;background:var(--brand-pill);border:1px solid var(--line);cursor:pointer;transition:.3s ease;}
     .tool-chip.active[data-color="green"] {background:var(--green);}
     .tool-chip.active[data-color="teal"] {background:var(--teal);}
     .tool-chip.active[data-color="blue"] {background:var(--blue);}
     .tool-chip.active[data-color="orange"] {background:var(--orange);}
     .tool-chip.active[data-color="lavender"] {background:var(--lavender);}
 
-    .button {
-      background:var(--brand);
-      color:#fff;
-      border:none;
-      padding:.6rem 1.2rem;
-      border-radius:.6rem;
-      font-weight:600;
-      cursor:pointer;
-      transition:.3s ease;
-    }
+    .button {background:var(--brand);color:#fff;border:none;padding:.6rem 1.2rem;border-radius:.6rem;font-weight:600;cursor:pointer;transition:.3s ease;}
     .button:hover {background:#3a34b5;transform:translateY(-2px);}
 
     footer{border-top:1px solid var(--line);margin-top:2rem;padding:1rem;text-align:left}
@@ -128,16 +120,57 @@
           <p class="hero-sub">I’ve never measured my career by titles. For me, the focus has always been on acquiring the tools and methods that bring the most impact where they’re needed most. Along the way, I’ve developed an auditor’s eye for systems, cutting waste, streamlining platforms, and saving organizations real money.</p>
           <p class="hero-sub">That expertise comes from compliance and accreditation roles, including as a public health advisor in federal response, an accreditation manager for post-graduate medical education, and a nonprofit program manager. It’s also grounded in my capstone on systems and reimbursements, where I analyzed policy gaps and proposed real-world recommendations. These experiences taught me how to design systems that meet standards and save money while creating the space for time, clarity, and education, the conditions that support real wellness and empowerment.</p>
           <div class="chips">
-            <span class="chip">MPH · Adelphi University</span>
-            <span class="chip">BS · Math for Technology, Biology, Psychology · SUNY</span>
+            <span class="chip">Master of Public Health · Adelphi University</span>
+            <span class="chip">Bachelor of Science · Math for Technology, Biology, Psychology · SUNY</span>
             <span class="chip">Project Management Certified</span>
-            <span class="chip">Certified Health Education Specialist (CHES®)</span>
-            <span class="chip">IRB Certified for Research</span>
+            <span class="chip">Certified Health Education Specialist</span>
+            <span class="chip">Institutional Review Board Certified for Research</span>
             <span class="chip">Workflow Optimization Specialist</span>
             <span class="chip">Data Analyst Certified</span>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Credentials Accordions -->
+    <section class="card">
+      <h2>Credentials</h2>
+      <details class="accordion" open>
+        <summary><span>Master of Public Health</span><span class="arrow">▸</span></summary>
+        <div class="body">
+          <ul>
+            <li>Epidemiology</li><li>Biostatistics</li><li>Quantitative Analysis</li><li>Health Care Finance</li>
+            <li>Program Planning and Evaluation</li><li>Social and Behavioral Health</li><li>Policy and Global Health</li>
+            <li>Capstone: Systems and Reimbursement</li>
+          </ul>
+        </div>
+      </details>
+      <details class="accordion">
+        <summary><span>Certified Health Education Specialist</span><span class="arrow">▸</span></summary>
+        <div class="body">
+          <ul>
+            <li>Assessment of Needs and Capacity</li>
+            <li>Planning</li>
+            <li>Implementation</li>
+            <li>Evaluation and Research</li>
+            <li>Advocacy</li>
+            <li>Communication</li>
+            <li>Leadership and Management</li>
+            <li>Ethics and Professionalism</li>
+          </ul>
+        </div>
+      </details>
+      <details class="accordion">
+        <summary><span>Compliance and Accreditation</span><span class="arrow">▸</span></summary>
+        <div class="body">
+          <ul>
+            <li>Public Health Advisor</li>
+            <li>Medical Education Accreditation Manager</li>
+            <li>Compliance and Regulation Training</li>
+            <li>Program Manager, Nonprofit Organization</li>
+          </ul>
+        </div>
+      </details>
     </section>
 
     <!-- Impact by the Numbers -->
@@ -163,9 +196,9 @@
     <section class="card">
       <h2>What Our Tools Have Delivered</h2>
       <div class="tool-chips">
-        <button class="tool-chip active" data-text="Forms designed to feel simple, clear, and approachable. Booking and payments built in with no monthly subscription fees stacking up for the business owner. A smoother start that builds trust with your customers from the very first step." data-color="green">Forms & Onboarding</button>
-        <button class="tool-chip" data-text="Forms and booking that don’t hide extra costs or barriers. Accessibility built in with coding practices that support screen readers and inclusive design. Flexible foundations that can expand into translation or AI-powered access so no one is left behind." data-color="teal">Access & Equity</button>
-        <button class="tool-chip" data-text="Dashboards that show what’s complete, what’s pending, and what needs attention. Overviews written in plain language, so everyone feels included in the process. Automatic updates that reduce stress and keep compliance and reporting on track." data-color="blue">Dashboards & Clarity</button>
+        <button class="tool-chip active" data-text="Forms designed to feel simple, clear, and approachable. Booking and payments built in with no monthly subscription fees stacking up for the business owner. A smoother start that builds trust with your customers from the very first step." data-color="green">Forms and Onboarding</button>
+        <button class="tool-chip" data-text="Forms and booking that don’t hide extra costs or barriers. Accessibility built in with coding practices that support screen readers and inclusive design. Flexible foundations that can expand into translation or AI-powered access so no one is left behind." data-color="teal">Access and Equity</button>
+        <button class="tool-chip" data-text="Dashboards that show what’s complete, what’s pending, and what needs attention. Overviews written in plain language, so everyone feels included in the process. Automatic updates that reduce stress and keep compliance and reporting on track." data-color="blue">Dashboards and Clarity</button>
         <button class="tool-chip" data-text="Automations that take repetitive tasks off your plate. Triggers and reminders that protect against missed deadlines. Reliable processes that give people back time and peace of mind." data-color="orange">Smart Automations</button>
         <button class="tool-chip" data-text="Clear channels for talking, sharing, and meeting. Easy file access, so people spend less time digging. Communication that keeps people connected without the clutter." data-color="lavender">Collaboration</button>
       </div>
@@ -192,7 +225,7 @@
   <!-- Modal -->
   <div id="systems-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.6); align-items:center; justify-content:center; z-index:2000;">
     <div style="background:#fff; padding:2rem; border-radius:1rem; max-width:400px; text-align:center;">
-      <h3 style="color:var(--brand); margin-top:0;">Coming Soon</h3>
+        <h3 style="color:var(--brand); margin-top:0;">Coming Soon</h3>
       <p>The full Lace & Lime™ Systems page is on the way. Soon you’ll be able to explore how reflection and action come together.</p>
       <button onclick="document.getElementById('systems-modal').style.display='none'" class="button" style="margin-top:1rem;">Close</button>
     </div>
@@ -207,12 +240,9 @@
       chip.addEventListener("click",()=>{
         toolChips.forEach(c=>c.classList.remove("active"));
         chip.classList.add("active");
-        toolDetail.classList.remove("show");
-        void toolDetail.offsetWidth;
         toolDetail.textContent=chip.getAttribute("data-text");
         const color=chip.getAttribute("data-color");
         toolDetail.style.background=`var(--${color})`;
-        toolDetail.classList.add("show");
       });
     });
 
@@ -228,15 +258,7 @@
       burger.classList.toggle("open");
       navMenu.classList.toggle("show");
     });
-
-    // Animate highlights on scroll
-    const highlights=document.querySelectorAll(".highlight");
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){entry.target.classList.add("show");}
-      });
-    },{threshold:.2});
-    highlights.forEach(h=>observer.observe(h));
   </script>
 </body>
 </html>
+
