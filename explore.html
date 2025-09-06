@@ -14,7 +14,8 @@
     <div class="wrap">
       <!-- Theme Switch -->
 <!-- Brand -->
-      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+<a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+
 
       <!-- Desktop Nav -->
       <nav class="menu" aria-label="Primary">
@@ -84,9 +85,7 @@
       <article class="card explore-card workshops-card">
         <h3 class="workshops-title">Workshops</h3>
         <p class="workshops-text">
-          <p>Six-step arc from clarity to confident action; map next steps, strengthen your story and materials, and build momentum. Each session is a focused hour with tools, templates, and one concrete move to make.</p>
-
-        </p>
+          Six-step arc from clarity to confident action; map next steps, strengthen your story and materials, and build momentum. Each session is a focused hour with tools, templates, and one concrete move to make.</p>
         <div class="button-row">
           <a href="workshops.html" class="btn-citrus">Explore Workshops</a>
         </div>
@@ -95,8 +94,12 @@
       <!-- Resume / Strengthen Story Card -->
       <article class="card explore-card resume-card">
         <h3>Career Story</h3>
-<p><p>Free resume upload. Optional add-ons from $29 for targeted line edits, interview prep, and job-search guidance.</p>
+<p>Free resume upload. Optional add-ons from $29 for targeted line edits, interview prep, and job-search guidance.</p>
 <small class="home-cta-note">Secure checkout via Square.</small>
+<div class="button-row">
+  <a href="https://square.link/u/SQUARE_LINK_LINECHECK_49" class="btn-citrus">Square Checkout</a>
+  <a href="resume-upload.html" class="btn-secondary">Upload Resume</a>
+</div>
       </article>
 
       <!-- Career (Strengthen Story) Modal -->
@@ -271,7 +274,13 @@ body[data-theme]{ background:transparent !important }
 
 /* ==== Brand normalization ==== */
 .brand{ font-weight: 600; letter-spacing:.08em; } /* consistent across pages */
-.brand .tm{ font-size:.7em; vertical-align: super; }
+.ll-nav .brand .tm {
+  font-size: .7em;
+  vertical-align: super;
+  position: relative;
+  top: 0.15em;   /* nudges it down to match About */
+  margin-left: 1px;
+}
 
 /* ==== Mobile burger + floating menu ==== */
 .burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem;
@@ -325,6 +334,65 @@ body[data-theme]{ background:transparent !important }
 }
 .btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
 .btn-secondary{ background:#fff }
+
+
+
+
+
+/* TM alignment like Founder */
+.brand .tm {
+  font-size: .7em;
+  vertical-align: super;
+}
+
+.brand .tm {
+  font-size: .7em;
+  vertical-align: super;
+  margin-left: 1px; /* adds a little breathing room */
+}
+
+
+/* Active nav: bubble only, no underline */
+nav.menu a.active::after {
+  display: none;
+}
+
+/* Mobile dropdown: lighter padding */
+@media(max-width:768px){
+  nav.menu {
+    padding: .6rem .8rem;
+  }
+  nav.menu a {
+    padding: .4rem .6rem;
+  }
+}
+
+/* Citrus Circle card form fix */
+.citrus-card form.circle-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+.citrus-card input {
+  padding: .5rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+}
+.citrus-card button {
+  align-self: flex-start;
+}
+
+/* === OVERRIDE FOR BRAND ™ === */
+.brand .tm {
+  font-size: .65em !important;
+  vertical-align: super !important;
+  line-height: 1 !important;
+  position: relative !important;
+  top: -0.2em !important;
+  margin-left: 1px !important;
+}
+
 </style>
       </dialog>
 

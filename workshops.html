@@ -48,8 +48,13 @@
     }
     /* Logo (left) */
     .brand{display:flex; align-items:center; flex:0 1 auto; min-width:0; white-space:nowrap; font-family:"Tenor Sans",serif; letter-spacing:.08em; color:var(--brand); font-size:20px; }
-    .brand img, .brand svg{height:32px; width:auto; display:block;}
-    .tm{font-size:.7em; vertical-align:super}
+.ll-nav .brand .tm {
+  font-size: .7em;
+  vertical-align: super;
+  position: relative;
+  top: 0.15em;   /* nudges it down to match About */
+  margin-left: 1px;
+}
     @media (max-width:380px){ .brand img, .brand svg{height:28px;} }
     /* Nav (right) */
     nav.menu{
@@ -180,6 +185,20 @@
 }
 .btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
 .btn-secondary{ background:#fff }
+
+
+/* === OVERRIDE FOR BRAND ™ === */
+.brand .tm {
+  font-size: .65em !important;
+  vertical-align: super !important;
+  line-height: 1 !important;
+  position: relative !important;
+  top: -0.2em !important;
+  margin-left: 1px !important;
+}
+
+
+
 </style>
 </head>
 <body>

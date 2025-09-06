@@ -128,7 +128,13 @@
   
 /* ==== Brand normalization ==== */
 .brand{ font-weight: 600; letter-spacing:.08em; }
-.brand .tm{ font-size:.7em; vertical-align: super; }
+.ll-nav .brand .tm {
+  font-size: .7em;
+  vertical-align: super;
+  position: relative;
+  top: -.17em;   /* nudges it down to match About */
+  margin-left: 1px;
+}
 
 /* ==== Mobile burger + floating menu ==== */
 .burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem;
@@ -182,6 +188,10 @@
 }
 .btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
 .btn-secondary{ background:#fff }
+
+
+
+
 </style>
 </head>
 <body>

@@ -20,7 +20,13 @@
     .ll-nav{position:sticky;top:0;z-index:1000;background:var(--surface);border-bottom:1px solid var(--line)}
     .ll-nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem}
     .brand{font-family:'Tenor Sans',serif;letter-spacing:.08em;color:var(--brand);font-size:20px;font-weight:600;white-space:nowrap;text-decoration:none;}
-    .brand .tm{font-size:.7em;vertical-align:super}
+   .ll-nav .brand .tm {
+  font-size: .7em;
+  vertical-align: super;
+  position: relative;
+  top: 0.15em;   /* nudges it down to match About */
+  margin-left: 1px;
+}
     nav.menu{display:flex;gap:18px;transition:.3s ease;}
     nav.menu a{font-weight:600;color:var(--text);padding:.35rem .6rem;border-radius:.6rem;text-decoration:none;position:relative}
     nav.menu a.active{background:var(--brand-pill);color:var(--brand)}
@@ -88,6 +94,86 @@
     .button:hover {background:#3a34b5;transform:translateY(-2px);}
 
     footer{border-top:1px solid var(--line);margin-top:2rem;padding:1rem;text-align:left}
+
+
+
+/* === OVERRIDES FOR NAV STYLE === */
+
+/* Remove underline, keep bubble highlight */
+nav.menu a.active::after {
+  display: none !important;
+}
+
+/* Shorter mobile menu padding */
+@media(max-width:768px){
+  nav.menu {
+    gap: 10px !important;
+    padding: .6rem .8rem !important;
+  }
+  nav.menu a {
+    padding: .4rem .6rem !important;
+  }
+}
+
+
+/* Journey Flow */
+.journey {
+  position: relative;
+  padding-left: 2.5rem;
+  margin: 0;
+}
+.journey::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1rem;
+  width: 4px;
+  background: linear-gradient(180deg,#7B6CF6,#3DBE6C); /* purple → green line */
+  border-radius: 2px;
+}
+.journey-step {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.journey-step::before {
+  content: "";
+  position: absolute;
+  left: -1.4rem;
+  top: 0.3rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--brand);
+}
+.step-icon {
+  font-size: 1.2rem;
+  margin-right: .4rem;
+}
+.step-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.completion {
+  text-align: center;
+  margin-top: 2rem;
+}
+.completion-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--brand);
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  font-family: 'Tenor Sans', serif;
+  font-size: 1rem;
+  color: var(--brand);
+  padding: 1rem;
+  line-height: 1.3;
+}
+
+
   </style>
 </head>
 <body>
@@ -192,23 +278,32 @@
       <div class="highlight">Needs assessment, logic model, and grant proposal secured funding and increased healthcare access.</div>
     </section>
 
-    <!-- Tools -->
+    <!-- What Working With Me Feels Like -->
     <section class="card">
-      <h2>What Our Tools Have Delivered</h2>
-      <div class="tool-chips">
-        <button class="tool-chip active" data-text="Forms designed to feel simple, clear, and approachable. Booking and payments built in with no monthly subscription fees stacking up for the business owner. A smoother start that builds trust with your customers from the very first step." data-color="green">Forms and Onboarding</button>
-        <button class="tool-chip" data-text="Forms and booking that don’t hide extra costs or barriers. Accessibility built in with coding practices that support screen readers and inclusive design. Flexible foundations that can expand into translation or AI-powered access so no one is left behind." data-color="teal">Access and Equity</button>
-        <button class="tool-chip" data-text="Dashboards that show what’s complete, what’s pending, and what needs attention. Overviews written in plain language, so everyone feels included in the process. Automatic updates that reduce stress and keep compliance and reporting on track." data-color="blue">Dashboards and Clarity</button>
-        <button class="tool-chip" data-text="Automations that take repetitive tasks off your plate. Triggers and reminders that protect against missed deadlines. Reliable processes that give people back time and peace of mind." data-color="orange">Smart Automations</button>
-        <button class="tool-chip" data-text="Clear channels for talking, sharing, and meeting. Easy file access, so people spend less time digging. Communication that keeps people connected without the clutter." data-color="lavender">Collaboration</button>
+      <h2>What Working With Me Feels Like</h2>
+      <div class="journey">
+        <div class="journey-step">
+          <div class="step-title"><span class="step-icon">🌱</span>Getting Grounded</div>
+          <p>You begin with clarity and confidence. The first step feels welcoming and well-guided.</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-title"><span class="step-icon">💫</span>Finding Flow</div>
+          <p>Scheduling, payment, and check-ins feel calm, secure, and straightforward, without hidden barriers.</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-title"><span class="step-icon">🤝</span>Building Together</div>
+          <p>Progress is visible and understandable. Communication and shared resources feel natural, clear, and inclusive.</p>
+        </div>
+        <div class="journey-step">
+          <div class="step-title"><span class="step-icon">🌟</span>Trust That Lasts</div>
+          <p>Your growth is supported in ways that remain inclusive, ethical, and adaptable. Every step fosters confidence and trust.</p>
+        </div>
       </div>
-      <div class="highlight fade show" id="tool-detail" style="background:var(--green);">
-        Forms designed to feel simple, clear, and approachable. Booking and payments built in with no monthly subscription fees stacking up for the business owner. A smoother start that builds trust with your customers from the very first step.
+      <div class="completion">
+        <div class="completion-circle">🌱 Clarity<br>💫 Confidence<br>🌟 Ease</div>
       </div>
-      <p style="margin-top:1rem; font-size:.95rem; color:var(--muted);">
-        These are the building blocks. The full Lace & Lime™ method brings them together into systems that move teams forward.
-      </p>
     </section>
+ 
 
     <!-- Systems -->
     <section class="card">

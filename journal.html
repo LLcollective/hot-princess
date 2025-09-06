@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Journal | Lace & Lime™</title>
-  <meta name="description" content="Lace & Lime™ Journal — 4×4 reflection and action cycles designed for clarity, steadiness, and sustainable growth." />
+  <meta name="description" content="Lace & Lime™ Journal — 4x4 reflection and action cycles designed for clarity, steadiness, and sustainable growth." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== Tokens ===== */
     :root{
-      --surface:#E6F4FF; /* header bg + gradient start */
+      --surface:#E6F4FF;
       --text:#1A2238;
       --muted:#405970;
       --line: rgba(26,34,56,.15);
@@ -20,92 +19,76 @@
       --brand-pill:#F3F4FF;
     }
 
-    /* ===== Base + ombré background (overlay so it always shows) ===== */
-    html,body{margin:0; padding:0}
-    body{
-      background:transparent !important;
-      color:var(--text);
-      font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.5;
-    }
-    body::before{
-      content:""; position:fixed; inset:0;
-      background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
-      z-index:-1; pointer-events:none;
-    }
-    a{color:var(--brand); text-decoration:none}
-    .wrap{ width:min(1120px,92vw); margin-inline:auto }
+    body{font-family:"Work Sans",sans-serif;margin:0;color:var(--text);line-height:1.55;}
+    body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#E6F4FF 0%,#DCEBFF 45%,#C7DBFF 75%,#BFD0FF 100%);}
+    .wrap{width:min(1120px,92vw);margin-inline:auto;padding:1rem}
+    h1,h2{font-family:'Tenor Sans',serif}
 
-    /* ===== One-line header: logo left, nav right (no wrap) ===== */
-    .ll-nav{
-      position:sticky; top:0; z-index:1000;
-      background:var(--surface);
-      border-bottom:1px solid var(--line);
-    }
-    .ll-nav .wrap{
-      padding:12px 16px;
-      display:flex; align-items:center; gap:16px; flex-wrap:nowrap;
-    }
-    .brand{display:flex; align-items:center; flex:0 1 auto; min-width:0; white-space:nowrap; font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px; font-weight:600;}
-    .brand .tm{ font-size:.7em; vertical-align: super; }
-    /* Nav (right) */
-    nav.menu{
-      margin-left:auto;
-      display:flex; align-items:center; gap:18px;
-      flex-wrap:nowrap; white-space:nowrap; flex:0 0 auto;
-      overflow-x:auto; -webkit-overflow-scrolling:touch;
-    }
-    nav.menu::-webkit-scrollbar{display:none}
-    nav.menu a{
-      flex:0 0 auto;
-      font-weight:600; color:var(--text);
-      padding:.35rem .6rem; border-radius:.6rem; position:relative;
-      transition:color .2s ease, background-color .2s ease;
-    }
-    nav.menu a.active{ background:var(--brand-pill); color:var(--brand) }
-    nav.menu a.active::after{
-      content:""; position:absolute; left:10%; right:10%; bottom:-8px; height:4px;
-      background: currentColor; border-radius:999px;
-    }
-    /* Kill any theme/heart controls in header */
-    .ll-nav [class*="theme"], .ll-nav [id*="theme"],
-    .ll-nav [class*="switch"], .ll-nav [class*="mode"],
-    .ll-nav .heart, .ll-nav [data-theme]{ display:none !important; }
+    /* Nav */
+    .ll-nav{position:sticky;top:0;z-index:1000;background:var(--surface);border-bottom:1px solid var(--line)}
+    .ll-nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem}
+    .brand{font-family:'Tenor Sans',serif;letter-spacing:.08em;color:var(--brand);font-size:20px;font-weight:600;white-space:nowrap;text-decoration:none;}
+   .ll-nav .brand .tm {
+  font-size: .7em;
+  vertical-align: super;
+  position: relative;
+  top: 0.15em;   /* nudges it down to match About */
+  margin-left: 1px;
+}
+    nav.menu{display:flex;gap:18px;transition:.3s ease;}
+    nav.menu a{font-weight:600;color:var(--text);padding:.35rem .6rem;border-radius:.6rem;text-decoration:none;position:relative}
+    nav.menu a.active{background:var(--brand-pill);color:var(--brand)}
+    nav.menu a.active::after{display:none;} /* bubble only, no underline */
 
-    /* ===== Progress band (fixed below header) ===== */
-    .progress{height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top, 64px); z-index:999}
-    .progress span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear}
+    /* Burger */
+    .burger{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;border:1px solid var(--line);border-radius:.6rem;cursor:pointer;transition:background .3s ease;}
+    .burger span{width:22px;height:2px;background:var(--brand);border-radius:2px;transition:.3s ease;}
+    .burger span+span{margin-top:5px;}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .burger.open span:nth-child(2){opacity:0;}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-    /* ===== Hero ===== */
-    .hero{border-bottom:1px solid var(--line); background:transparent !important;}
-    .hero .wrap{padding:2rem 1rem 1.25rem}
-    .eyebrow{display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700}
-    .tagline{font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .6rem}
-    .hero-sub{color:var(--muted); max-width:60ch}
+    /* Mobile menu */
+    @media(max-width:768px){
+      nav.menu{display:none;flex-direction:column;gap:10px;position:absolute;top:60px;right:1rem;background:#fff;padding:.6rem .8rem;border:1px solid var(--line);border-radius:.8rem;box-shadow:0 4px 12px rgba(0,0,0,.08);opacity:0;transform:translateY(-10px);transition:.3s ease;}
+      nav.menu.show{display:flex;opacity:1;transform:translateY(0);}
+      nav.menu a{padding:.4rem .6rem;}
+      .burger{display:flex;}
+    }
 
-    /* ===== Carousel (MATCHES ABOUT) ===== */
+    /* Hero (match Explore) */
+    .hero{padding:2rem 0;border-bottom:1px solid var(--line)}
+    .eyebrow{
+      font-size:1rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:700;
+      color:var(--brand);
+      display:block;
+      margin-bottom:.6rem;
+    }
+    .tagline{
+      font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem);
+      line-height:1.15;
+      margin:.4rem 0 .6rem;
+    }
+    .hero-sub{
+      color:var(--muted);
+      margin-bottom:1rem;
+      max-width:60ch;
+    }
+
+    /* Carousel */
     .carousel{padding:1.25rem 1rem 2rem}
-    .carousel-viewport{position:relative; overflow:hidden; border-radius:1rem}
-    .carousel-track{
-      display:flex; gap:1rem; padding:.25rem;
-      overflow-x:auto; -webkit-overflow-scrolling:touch;
-      scroll-snap-type:x mandatory; scroll-behavior:smooth; touch-action: pan-x pinch-zoom;
-    }
+    .carousel-viewport{position:relative;overflow:hidden;border-radius:1rem}
+    .carousel-track{display:flex;gap:1rem;padding:.25rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scroll-behavior:smooth;touch-action:pan-x pinch-zoom;}
     .carousel-track::-webkit-scrollbar{display:none}
-    .c-card{
-      flex:0 0 360px; max-width:360px;
-      background:var(--card); border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem;
-      scroll-snap-align:start;
-    }
-    .c-card h3{margin:.25rem 0 .25rem; font-size:1.1rem; color:var(--brand)}
-    .c-card p{margin:.3rem 0 .25rem; color:var(--text)}
+    .c-card{flex:0 0 360px;max-width:360px;background:#fff;border:1px solid var(--line);border-radius:1rem;box-shadow:var(--shadow);padding:1rem;scroll-snap-align:start;}
+    .c-card h3{margin:.25rem 0 .25rem;font-size:1.1rem;color:var(--brand)}
+    .c-card p{margin:.3rem 0 .25rem;color:var(--text)}
 
-    .carousel-controls{display:flex; gap:.75rem; justify-content:center; align-items:center; margin-top:.75rem}
-    .c-btn{
-      appearance:none; border:1px solid var(--line); background:#fff; color:var(--brand);
-      padding:.55rem .9rem; border-radius:.8rem; font-weight:700; cursor:pointer; min-width:2.5rem;
-      transition: transform .15s ease; touch-action:manipulation;
-    }
+    .carousel-controls{display:flex;gap:.75rem;justify-content:center;align-items:center;margin-top:.75rem}
+    .c-btn{appearance:none;border:1px solid var(--line);background:#fff;color:var(--brand);padding:.55rem .9rem;border-radius:.8rem;font-weight:700;cursor:pointer;min-width:2.5rem;transition: transform .15s ease;touch-action:manipulation;}
     .c-btn:hover{ transform:translateY(-1px) }
     .dots{ display:flex; gap:.4rem; align-items:center }
     .dot{ width:8px; height:8px; border-radius:50%; background:rgba(79,70,229,.35); border:none; }
@@ -115,189 +98,85 @@
       .c-card{ flex-basis: 80vw; max-width: 80vw; }
     }
 
-    /* Footer */
-    .site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
-    .site-footer .wrap{padding:1rem}
+    footer{border-top:1px solid var(--line);margin-top:2rem;padding:1rem;text-align:left}
     .muted{color:var(--muted)}
-
-    /* ==== Mobile burger + floating menu ==== */
-    .burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem;
-      background:#fff; cursor:pointer; align-items:center; justify-content:center; }
-    .burger .icon{ position:relative; width:18px; height:18px; }
-    .burger .icon::before, .burger .icon::after, .burger .icon span{
-      content:""; position:absolute; left:0; right:0; height:0; border-top:2px solid currentColor; border-bottom:2px solid transparent;
-      border-radius:2px;
-    }
-    .burger .icon span{ top:8px; }
-    .burger .icon::before{ top:2px; }
-    .burger .icon::after{ bottom:2px; }
-
-    /* open state -> chevron */
-    .burger[aria-expanded="true"] .icon::before,
-    .burger[aria-expanded="true"] .icon::after{
-      top:auto; bottom:auto; border-bottom:0;
-    }
-    .burger[aria-expanded="true"] .icon::before{
-      transform:translateX(4px) rotate(40deg); transform-origin:left center;
-      width:12px; left:3px; top:4px;
-    }
-    .burger[aria-expanded="true"] .icon::after{
-      transform:translateX(4px) rotate(-40deg); transform-origin:left center;
-      width:12px; left:3px; top:12px;
-    }
-    .burger[aria-expanded="true"] .icon span{ opacity:0; }
-
-    /* floating menu panel (auto-sized, not full width) */
-    .mobile-menu{ position:absolute; top:100%; right:12px; z-index:1200; display:none;
-      background:#fff; border:1px solid var(--line); border-radius:.9rem; box-shadow:0 10px 28px rgba(26,34,56,.14);
-      padding:.4rem; min-width:180px; width:max-content; max-width:92vw; }
-    .mobile-menu a{ display:block; padding:.55rem .8rem; border-radius:.6rem; color:var(--text); font-weight:600; white-space:nowrap; }
-    .mobile-menu a:hover{ background:rgba(0,0,0,.04) }
-    .mobile-menu .active{ background:var(--brand-pill); color:var(--brand) }
-
-    @media (max-width: 860px){
-      nav.menu{ display:none; }          /* hide desktop row */
-      .burger{ display:inline-flex; }    /* show burger */
-      header.ll-nav{ position:sticky; }  /* keep stickiness */
-      .ll-nav .wrap{ position:relative; }/* anchor for absolute menu */
-    }
-
-    /* ==== Bottom CTA (centered) ==== */
-    .bottom-cta{ padding:1.25rem 1rem 1.6rem }
-    .bottom-cta .cta-box{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap }
-    .btn, .btn-primary, .btn-secondary{
-      display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
-      padding:.6rem .9rem; border-radius:.7rem; font-weight:700; border:1px solid var(--line);
-      cursor:pointer; text-decoration:none;
-    }
-    .btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
-    .btn-secondary{ background:#fff }
   </style>
 </head>
 <body>
-  <!-- Header (one line: brand left, nav right) -->
-  <header class="ll-nav" role="banner">
+  <header class="ll-nav">
     <div class="wrap">
-      <a class="brand" href="index.html" aria-label="Lace and Lime">LACE AND LIME<span class="tm">™</span></a>
-
-      <nav class="menu" aria-label="Primary">
+      <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+      <nav class="menu" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="founder.html">Founder</a>
         <a href="workshops.html">Workshops</a>
-        <a href="journal.html" class="active" aria-current="page">Journal</a>
+        <a href="journal.html" class="active">Journal</a>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Progress band -->
-  <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
-
-  <main id="main">
-    <!-- Hero -->
+  <main class="wrap">
     <section class="hero">
-      <div class="wrap">
-        <span class="eyebrow">JOURNAL</span>
-        <h1 class="tagline">4×4 cycles, steady momentum.</h1>
-        <p class="hero-sub">A simple cadence: reflect, map, act, and check‑in — then repeat. Built for weeks, not whims.</p>
-      </div>
+      <span class="eyebrow">JOURNAL</span>
+      <h1 class="tagline">4x4 cycles, steady momentum.</h1>
+      <p class="hero-sub">A simple cadence: reflect, map, act, and check in, then repeat. Built for weeks, not whims.</p>
     </section>
 
-    <!-- Carousel (matches About) -->
     <section class="carousel" aria-label="Journal highlights">
-      <div class="wrap">
-        <div class="carousel-viewport">
-          <div class="carousel-track" id="track" role="list" tabindex="0" aria-roledescription="carousel">
-            <!-- 6 cards to match About's format -->
-            <article class="c-card" role="listitem">
-              <h3>Set A — Clear & Steady</h3>
-              <p><em>Self‑awareness, presence, and self‑soothing.</em></p>
-              <p>Start from steadiness: name what’s here, regulate, and make room for clarity.</p>
-            </article>
-            <article class="c-card" role="listitem">
-              <h3>Set B — What’s No Longer Mine</h3>
-              <p><em>Reflect, release, and create new space.</em></p>
-              <p>Let go of what you’ve outgrown to free up attention and energy for the right work.</p>
-            </article>
-            <article class="c-card" role="listitem">
-              <h3>Set C — Speak the Unsaid</h3>
-              <p><em>Self‑trust and expression.</em></p>
-              <p>Practice saying the true thing with care so decisions feel aligned and doable.</p>
-            </article>
-            <article class="c-card" role="listitem">
-              <h3>Set D — The Edge of Enough</h3>
-              <p><em>Balance between protection and honoring limits.</em></p>
-              <p>Build boundaries that protect your energy without shutting down opportunity.</p>
-            </article>
-            <article class="c-card" role="listitem">
-              <h3>Set E — Claim the Yes</h3>
-              <p><em>Invite joy, ownership, and authenticity into decisions.</em></p>
-              <p>Decide on purpose and match follow‑through to what matters most.</p>
-            </article>
-            <article class="c-card" role="listitem">
-              <h3>Set F — Next Is Now</h3>
-              <p><em>Carry clarity into action; embody growth.</em></p>
-              <p>Turn signals into steps and steps into a rhythm you can keep.</p>
-            </article>
-          </div>
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="track" role="list" tabindex="0" aria-roledescription="carousel">
+          <article class="c-card" role="listitem">
+            <h3>Set A — Clear & Steady</h3>
+            <p><em>Return to steady ground and reclaim clarity.</em></p>
+          </article>
+          <article class="c-card" role="listitem">
+            <h3>Set B — What’s No Longer Mine</h3>
+            <p><em>Release the weight and recover your space.</em></p>
+          </article>
+          <article class="c-card" role="listitem">
+            <h3>Set C — Speak the Unsaid</h3>
+            <p><em>Voice your truth and claim your power.</em></p>
+          </article>
+          <article class="c-card" role="listitem">
+            <h3>Set D — The Edge of Enough</h3>
+            <p><em>Honor your limits and hold your ground.</em></p>
+          </article>
+          <article class="c-card" role="listitem">
+            <h3>Set E — Claim the Yes</h3>
+            <p><em>Choose joy and own your yes.</em></p>
+          </article>
+          <article class="c-card" role="listitem">
+            <h3>Set F — Next Is Now</h3>
+            <p><em>Here is the proof: clarity in action and growth secured.</em></p>
+          </article>
         </div>
+      </div>
 
-        <div class="carousel-controls" aria-label="Carousel controls">
-          <button class="c-btn" id="prev" aria-label="Previous">‹</button>
-          <div class="dots" role="tablist" aria-label="Slides">
-            <button class="dot" role="tab" aria-controls="slide-1" aria-current="true"></button>
-            <button class="dot" role="tab" aria-controls="slide-2"></button>
-            <button class="dot" role="tab" aria-controls="slide-3"></button>
-            <button class="dot" role="tab" aria-controls="slide-4"></button>
-            <button class="dot" role="tab" aria-controls="slide-5"></button>
-            <button class="dot" role="tab" aria-controls="slide-6"></button>
-          </div>
-          <button class="c-btn" id="next" aria-label="Next">›</button>
+      <div class="carousel-controls" aria-label="Carousel controls">
+        <button class="c-btn" id="prev" aria-label="Previous">‹</button>
+        <div class="dots" role="tablist" aria-label="Slides">
+          <button class="dot" role="tab" aria-controls="slide-1" aria-current="true"></button>
+          <button class="dot" role="tab" aria-controls="slide-2"></button>
+          <button class="dot" role="tab" aria-controls="slide-3"></button>
+          <button class="dot" role="tab" aria-controls="slide-4"></button>
+          <button class="dot" role="tab" aria-controls="slide-5"></button>
+          <button class="dot" role="tab" aria-controls="slide-6"></button>
         </div>
+        <button class="c-btn" id="next" aria-label="Next">›</button>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p class="muted">© 2025 Lace & Lime™ LLC. All rights reserved. <br><a href="privacy-terms.html">Privacy & Terms</a></p>
-    </div>
+  <footer>
+    <p class="muted">© 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy-terms.html">Privacy and Terms</a></p>
   </footer>
 
   <script>
-    // Mark Journal active (defensive if header reused)
-    (() => {
-      document.querySelectorAll('.menu a').forEach(a => {
-        const href = (a.getAttribute('href') || '').toLowerCase();
-        const isHere = href.includes('journal');
-        a.classList.toggle('active', isHere);
-        if (isHere) a.setAttribute('aria-current','page');
-      });
-    })();
-
-    // Progress band placement + scroll percentage (same as About)
-    (() => {
-      const fill = document.getElementById('progress-fill');
-      const header = document.querySelector('.ll-nav');
-      function place(){
-        const h = header?.getBoundingClientRect().height || 56;
-        document.documentElement.style.setProperty('--progress-top', h + 'px');
-      }
-      function pct(){
-        const doc = document.documentElement;
-        const sc = Math.max(doc.scrollTop, document.body.scrollTop);
-        const max = (doc.scrollHeight || document.body.scrollHeight) - window.innerHeight;
-        const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
-        if(fill) fill.style.width = (r*100).toFixed(2) + '%';
-      }
-      place(); pct();
-      window.addEventListener('resize', place, {passive:true});
-      window.addEventListener('scroll', pct, {passive:true});
-    })();
-
-    // Carousel logic (copied from About pattern)
+    // Carousel
     (function(){
       const track = document.getElementById('track');
       const prev = document.getElementById('prev');
@@ -314,9 +193,7 @@
       }
 
       let positions = [];
-      function computePositions(){
-        positions = cards.map(el => el.offsetLeft);
-      }
+      function computePositions(){ positions = cards.map(el => el.offsetLeft); }
       function nearestIndex(){
         const x = track.scrollLeft;
         let best = 0, bestDist = Infinity;
@@ -339,13 +216,6 @@
       prev.addEventListener('click', ()=> scrollToIndex(nearestIndex()-1));
       dots.forEach((d,i)=> d.addEventListener('click', ()=> scrollToIndex(i)));
 
-      // Keyboard support
-      track.addEventListener('keydown', (e)=>{
-        if(e.key === 'ArrowRight') next.click();
-        if(e.key === 'ArrowLeft') prev.click();
-      });
-
-      // Recompute positions on load/resize/font ready
       window.addEventListener('load', ()=>{ computePositions(); updateDots(0); });
       window.addEventListener('resize', ()=>{ computePositions(); updateDots(); });
       if (document.fonts && document.fonts.ready) {
@@ -353,61 +223,14 @@
       }
       setTimeout(()=>{ computePositions(); updateDots(); }, 300);
     })();
+
+    // Burger nav toggle
+    const burger=document.getElementById("burger");
+    const navMenu=document.getElementById("nav-menu");
+    burger.addEventListener("click",()=>{
+      burger.classList.toggle("open");
+      navMenu.classList.toggle("show");
+    });
   </script>
-<script>
-// === Mobile menu: clone links and toggle (same pattern) ===
-(() => {
-  const header = document.querySelector('.ll-nav .wrap');
-  if(!header) return;
-
-  // ensure burger button exists
-  let burger = header.querySelector('#burger');
-  if(!burger){
-    burger = document.createElement('button');
-    burger.id = 'burger';
-    burger.className = 'burger';
-    burger.type = 'button';
-    burger.setAttribute('aria-label','Open menu');
-    burger.setAttribute('aria-expanded','false');
-    burger.innerHTML = '<span class="icon"><span></span></span>';
-    header.appendChild(burger);
-  }
-
-  // build floating panel if missing
-  let panel = header.querySelector('#mobileMenu');
-  if(!panel){
-    panel = document.createElement('nav');
-    panel.id = 'mobileMenu';
-    panel.className = 'mobile-menu';
-    panel.setAttribute('aria-label','Mobile');
-    header.appendChild(panel);
-  }
-
-  // copy links from desktop nav.menu
-  const desktop = header.querySelector('nav.menu');
-  if(desktop && panel && !panel.dataset.bound){
-    panel.innerHTML = desktop.innerHTML;
-    panel.dataset.bound = '1';
-  }
-
-  // close on outside click / escape
-  function close(){
-    burger.setAttribute('aria-expanded','false');
-    panel.style.display = 'none';
-  }
-  document.addEventListener('click', (e) => {
-    if(!panel.contains(e.target) && !burger.contains(e.target)) close();
-  }, {passive:true});
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') close();
-  });
-
-  burger.addEventListener('click', () => {
-    const open = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!open));
-    panel.style.display = open ? 'none' : 'block';
-  });
-})();
-</script>
 </body>
 </html>
