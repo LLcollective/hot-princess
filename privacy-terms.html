@@ -67,6 +67,36 @@
     h3{ margin:.6rem 0 .25rem; font-size:1.05rem }
     ul{ margin:.2rem 0 .6rem; padding-left:1.25rem }
 
+    /* Toggles */
+    summary.toggle {
+      background:#f8f9fb;
+      padding:.6rem .75rem;
+      border-radius:.5rem;
+      cursor:pointer;
+      font-weight:600;
+      color:var(--text);
+      border:1px solid var(--line);
+      list-style:none;
+      transition:background .2s, color .2s, border .2s;
+    }
+    summary.toggle::-webkit-details-marker { display:none; }
+    summary.toggle::after {
+      content:"+";
+      float:right;
+      font-weight:700;
+      transition:transform .2s;
+    }
+    details[open] summary.toggle::after { content:"–"; }
+    details[open] summary.toggle {
+      background:var(--brand-pill);
+      color:var(--brand);
+      border-color:var(--brand);
+    }
+    details summary.toggle + * {
+      padding:.5rem .75rem .75rem;
+      color:var(--muted);
+    }
+
     /* Footer */
     .site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
     .site-footer .wrap{padding:1rem}
@@ -95,6 +125,7 @@
   <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
 
   <main id="main">
+    <!-- Hero -->
     <section class="hero">
       <div class="wrap">
         <span class="eyebrow">LEGAL</span>
@@ -129,43 +160,67 @@
     <section id="privacy" class="card">
       <h2>Privacy Policy</h2>
       <p><strong>Who we are.</strong> Lace & Lime™ LLC (“we,” “us,” “our”). Contact: <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
-      <p><strong>What we collect.</strong> Information you provide (e.g., name, email, forms, payments) and limited technical data (IP, browser/device metadata) for security and reliability.</p>
-      <p><strong>Why we collect.</strong> To provide services (workshops, journals, resources), process payments, respond to inquiries, prevent abuse, and improve offerings.</p>
-      <p><strong>Lawful bases (GDPR).</strong> Contract (to deliver services), consent (opt-ins), legitimate interests (security, proportionate analytics).</p>
-      <p><strong>Retention.</strong> We keep personal data only as long as needed or legally required.</p>
-      <p><strong>International transfers.</strong> If data moves outside your country, we apply appropriate safeguards (e.g., SCCs).</p>
+      <p><strong>What we collect.</strong> Information you provide (e.g., name, email, forms, payments) and limited payment details from processors. We may also receive basic technical data (e.g., device or connection info) for reliability and security.</p>
+      <p><strong>How we use it.</strong> To deliver services (workshops, journals, resources), process payments, respond to inquiries, prevent abuse, and improve offerings.</p>
+      <p><strong>Lawful basis (GDPR).</strong> Contract (to provide services), consent (opt-ins), and legitimate interests (security, proportionate analytics).</p>
+      <p><strong>Retention.</strong> We keep data only as long as needed or legally required.</p>
+      <p><strong>International transfers.</strong> If data moves outside your country, we apply safeguards (e.g., Standard Contractual Clauses).</p>
     </section>
 
     <!-- Cookies -->
     <section id="cookies" class="card">
       <h2>Cookies & Analytics</h2>
-      <p>We use necessary cookies for core site functionality and may use optional analytics (non-sensitive, aggregated) to improve services. You can manage cookies in your browser. Where required by law, we present consent banners for non-essential cookies.</p>
+      <p>We use essential cookies for core site functionality. Optional analytics (aggregated, non-sensitive) may be used to improve services. You can manage cookies in your browser. Where required, we display consent banners for non-essential cookies.</p>
     </section>
 
     <!-- Rights -->
     <section id="rights" class="card">
-      <h2>Your Rights (GDPR/CCPA/CPRA)</h2>
-      <ul>
-        <li><strong>Access/Portability:</strong> request a copy of your data.</li>
-        <li><strong>Correction/Deletion:</strong> request corrections or deletion (subject to legal obligations).</li>
-        <li><strong>Opt-out:</strong> unsubscribe from non-essential emails; California residents may opt out of data "sale/sharing" (we do not sell personal data).</li>
-        <li><strong>Restriction/Objection:</strong> restrict certain processing or object where based on legitimate interests.</li>
-        <li><strong>Appeal/Complain:</strong> contact us; you may also complain to your local data authority.</li>
-      </ul>
-      <p>Email <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> to exercise rights. Verification may be required.</p>
+      <h2>Your Privacy Rights</h2>
+      <p>Depending on where you live, you may have specific privacy rights. Expand below for details:</p>
+      <details>
+        <summary class="toggle">EU/UK Residents (GDPR)</summary>
+        <ul>
+          <li><strong>Access/Portability:</strong> request a copy of your data.</li>
+          <li><strong>Correction/Deletion:</strong> request corrections or deletion.</li>
+          <li><strong>Restriction/Objection:</strong> restrict certain processing or object.</li>
+          <li><strong>Complain:</strong> contact us or lodge a complaint with your local data authority.</li>
+        </ul>
+      </details>
+      <details>
+        <summary class="toggle">California Residents (CCPA/CPRA)</summary>
+        <ul>
+          <li><strong>Access/Portability:</strong> request a copy of your data.</li>
+          <li><strong>Correction/Deletion:</strong> request corrections or deletion.</li>
+          <li><strong>Opt-out:</strong> opt out of data "sale/sharing" (we do not sell personal data).</li>
+          <li><strong>Appeal/Complain:</strong> contact us if you believe a request was not handled properly.</li>
+        </ul>
+      </details>
+      <details>
+        <summary class="toggle">All Users</summary>
+        <ul>
+          <li><strong>Unsubscribe:</strong> opt out of non-essential emails at any time.</li>
+          <li><strong>Contact:</strong> email <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> to exercise rights. Verification may be required.</li>
+        </ul>
+      </details>
     </section>
 
     <!-- Processors -->
     <section id="processors" class="card">
       <h2>Third-Party Processors</h2>
-      <p>We rely on vendors such as Stripe, Square, PayPal, Gmail, ConvertKit, analytics, and hosting providers. Each is contractually obligated to safeguard data and act only on our instructions.</p>
+      <details open>
+        <summary class="toggle">Vendors We Use</summary>
+        <p>We rely on vendors such as Stripe, Square, PayPal, Gmail, ConvertKit, analytics tools, and hosting providers. Each is contractually obligated to safeguard data and act only on our instructions.</p>
+      </details>
     </section>
 
     <!-- Security -->
     <section id="security" class="card">
       <h2>Security</h2>
-      <p>We apply reasonable measures (HTTPS, access controls) to protect personal data. No system is 100% secure. Use unique passwords and caution with email.</p>
-      <p><strong>Breach notification:</strong> If a data breach poses risk, we will notify affected users and regulators as required.</p>
+      <p>We apply reasonable measures (HTTPS, access controls) to protect data. No system is 100% secure. Use unique passwords and caution with email.</p>
+      <details>
+        <summary class="toggle">Breach Notification</summary>
+        <p>If a data breach poses risk, we will notify affected users and regulators as required.</p>
+      </details>
     </section>
 
     <!-- Children -->
@@ -174,39 +229,51 @@
       <p>Services are not directed to children under 13. We do not knowingly collect data from children. If you believe a child has provided data, contact us to request deletion.</p>
     </section>
 
-    <!-- Terms of Use -->
+    <!-- Terms -->
     <section id="terms" class="card">
       <h2>Terms of Use</h2>
-      <h3>License & Intellectual Property</h3>
-      <p>All content (including prompts, workshops, journals, graphics, layouts, and explanatory text) is owned by Lace & Lime™ LLC and protected by intellectual property law. Users receive a personal, non-transferable license for personal, non-commercial use unless agreed otherwise in writing. Copying, redistribution, or derivative works are prohibited.</p>
-      <p><strong>Trademarks & Proprietary Works.</strong> The marks <strong>Lace & Lime™</strong>, <strong>Energy Aligned, Action Defined™</strong>, and the <strong>Balance-Forward™ Series</strong> (including Respect-Forward™ and Career-Forward™) are proprietary. Unauthorized commercial use, teaching, or distribution is prohibited.</p>
-      <p><strong>Teaching & Quality Assurance.</strong> Energy Aligned, Action Defined™ may only be taught with written authorization and official training. Certified facilitators may use EAAD™ materials in accordance with guidelines.</p>
-      <p><strong>Copyright Notice.</strong> EAAD™ and related descriptions, prompts, diagrams, manuals, and teaching materials are original works under U.S. copyright law. Unauthorized use is prohibited.</p>
-      <p><strong>Enforcement.</strong> We actively monitor and enforce all intellectual property rights. Unauthorized use will result in enforcement action, including legal remedies such as damages and injunctive relief.</p>
-
-      <h3>Acceptable Use</h3>
-      <ul>
-        <li>No unlawful, harassing, abusive, or infringing behavior.</li>
-        <li>No scraping, automated collection, or probing.</li>
-        <li>No bypassing of access controls or paywalls.</li>
-      </ul>
-
-      <h3>User Content & Feedback</h3>
-      <p>By submitting content (e.g., testimonials), you grant us a non-exclusive, royalty-free license to use it for operations and promotion. Feedback may be used without restriction.</p>
-
-      <h3>Termination of Use</h3>
-      <p>We may suspend or terminate access without prior notice if we reasonably believe you violated these Terms or applicable law.</p>
+      <details open>
+        <summary class="toggle">License & Intellectual Property</summary>
+        <p>All content (including prompts, workshops, journals, graphics, layouts, and explanatory text) is owned by Lace & Lime™ LLC and protected by intellectual property law. Users receive a personal, non-transferable license for personal, non-commercial use unless agreed otherwise in writing.</p>
+        <p><strong>Trademarks & Proprietary Works.</strong> The marks Lace & Lime™, Energy Aligned, Action Defined™, and the Balance-Forward™ Series (including Respect-Forward™ and Career-Forward™) are proprietary. Unauthorized commercial use, teaching, or distribution is prohibited.</p>
+        <p><strong>Teaching & Quality Assurance.</strong> Energy Aligned, Action Defined™ may only be taught with written authorization and official training. Certified facilitators may use EAAD™ materials in accordance with guidelines.</p>
+        <p><strong>Copyright Notice.</strong> EAAD™ and related descriptions, prompts, diagrams, manuals, and teaching materials are original works under U.S. copyright law. Unauthorized use is prohibited.</p>
+        <p><strong>Enforcement.</strong> We actively monitor and enforce all intellectual property rights. Unauthorized use will result in enforcement action, including legal remedies such as damages and injunctive relief.</p>
+      </details>
+      <details>
+        <summary class="toggle">Acceptable Use</summary>
+        <ul>
+          <li>No unlawful, harassing, abusive, or infringing behavior.</li>
+          <li>No scraping, automated collection, or probing.</li>
+          <li>No bypassing of access controls or paywalls.</li>
+        </ul>
+      </details>
+      <details>
+        <summary class="toggle">User Content & Feedback</summary>
+        <p>By submitting content (e.g., testimonials), you grant us a non-exclusive, royalty-free license to use it for operations and promotion. Feedback may be used without restriction.</p>
+      </details>
+      <details>
+        <summary class="toggle">Termination of Use</summary>
+        <p>We may suspend or terminate access without prior notice if we reasonably believe you violated these Terms or applicable law.</p>
+      </details>
     </section>
 
     <!-- Purchases -->
     <section id="purchases" class="card">
       <h2>Purchases & Refunds</h2>
-      <p>Payments are processed through third-party vendors. By purchasing, you confirm authorization and accept applicable fees/taxes.</p>
-      <ul>
-        <li><strong>Final sales:</strong> All sales of digital goods and workshops are final once delivered, except where otherwise required by law.</li>
-        <li><strong>Scheduling:</strong> We may adjust or reschedule workshops; if Lace & Lime™ LLC cancels, you will be offered a refund or credit.</li>
-        <li><strong>Chargebacks:</strong> Contact us first to resolve disputes. Unauthorized chargebacks may be contested.</li>
-      </ul>
+      <p>Payments are processed through third-party vendors. By purchasing, you confirm authorization and accept applicable fees/taxes. Expand for details:</p>
+      <details>
+        <summary class="toggle">Final Sales</summary>
+        <p>All sales of digital goods and workshops are final once delivered, except where otherwise required by law.</p>
+      </details>
+      <details>
+        <summary class="toggle">Scheduling</summary>
+        <p>We may adjust or reschedule workshops. If Lace & Lime™ LLC cancels, you will be offered a refund or credit.</p>
+      </details>
+      <details>
+        <summary class="toggle">Chargebacks</summary>
+        <p>Please contact us first to resolve disputes. Unauthorized chargebacks may be contested.</p>
+      </details>
     </section>
 
     <!-- Advice Disclaimer -->
@@ -215,20 +282,38 @@
       <p>Content provided by Lace & Lime™ is for educational and informational purposes only. Sharon Gutierrez, MPH, CHES® is a health educator, not a licensed physician, therapist, attorney, or financial advisor. Consult qualified professionals for individual advice.</p>
     </section>
 
-    <!-- Disclaimers & Liability -->
+    <!-- Liability -->
     <section id="liability" class="card">
       <h2>Disclaimers & Limitation of Liability</h2>
-      <p><strong>AS IS.</strong> Services are provided "as is" without warranties of any kind, express or implied.</p>
-      <p><strong>LIMITATION.</strong> To the fullest extent permitted by law, Lace & Lime™ LLC disclaims liability for indirect, incidental, special, consequential, or exemplary damages. Total liability for any claim is limited to the lower of (a) USD $100, or (b) the amount paid in the 6 months preceding the claim.</p>
-      <p><strong>Indemnity.</strong> You agree to indemnify and hold harmless Lace & Lime™ LLC from claims arising out of misuse or violation of these Terms.</p>
+      <details open>
+        <summary class="toggle">AS IS</summary>
+        <p>Services are provided "as is" without warranties of any kind, express or implied.</p>
+      </details>
+      <details>
+        <summary class="toggle">Limitation</summary>
+        <p>To the fullest extent permitted by law, Lace & Lime™ LLC disclaims liability for indirect, incidental, special, consequential, or exemplary damages. Total liability for any claim is limited to the lower of (a) USD $100, or (b) the amount paid in the 6 months preceding the claim.</p>
+      </details>
+      <details>
+        <summary class="toggle">Indemnity</summary>
+        <p>You agree to indemnify and hold harmless Lace & Lime™ LLC from claims arising out of misuse or violation of these Terms.</p>
+      </details>
     </section>
 
     <!-- Arbitration -->
     <section id="arbitration" class="card">
       <h2>Dispute Resolution; Arbitration; Governing Law</h2>
-      <p><strong>Informal resolution:</strong> Contact us first; most issues can be resolved quickly.</p>
-      <p><strong>Arbitration & venue:</strong> Any dispute not resolved informally will be settled by binding arbitration on an individual basis under AAA rules. No class actions. Governing law and venue: New York State, USA.</p>
-      <p class="small" style="color:var(--warn)"><strong>Opt-out:</strong> You may opt out of arbitration within 30 days of first use by emailing <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> with subject “Arbitration Opt-Out.”</p>
+      <details open>
+        <summary class="toggle">Informal Resolution</summary>
+        <p>Contact us first; most issues can be resolved quickly.</p>
+      </details>
+      <details>
+        <summary class="toggle">Arbitration & Venue</summary>
+        <p>Any dispute not resolved informally will be settled by binding arbitration on an individual basis under AAA rules. No class actions. Governing law and venue: New York State, USA.</p>
+      </details>
+      <details>
+        <summary class="toggle">Opt-out</summary>
+        <p>You may opt out of arbitration within 30 days of first use by emailing <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> with subject “Arbitration Opt-Out.”</p>
+      </details>
     </section>
 
     <!-- Updates -->
@@ -244,6 +329,7 @@
       <p>Business: Lace & Lime™ LLC · Jurisdiction: New York, USA</p>
     </section>
   </main>
+
 
   <footer class="site-footer">
     <div class="wrap">
