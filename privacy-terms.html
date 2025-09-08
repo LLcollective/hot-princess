@@ -101,6 +101,49 @@
     .site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
     .site-footer .wrap{padding:1rem}
     .brand .tm{ font-size:.7em; vertical-align: super; }
+
+
+/* ===== Burger Fix ===== */
+
+/* Hide burger and mobile menu by default (desktop view) */
+#burger,
+.mobile-menu {
+  display: none;
+}
+
+/* Show burger and mobile menu only on screens below 900px */
+@media (max-width: 900px) {
+  nav.menu { display: none; } /* hide desktop nav */
+  
+  #burger { 
+    display:inline-flex; 
+    align-items:center; 
+    justify-content:center;
+    width:40px; 
+    height:40px; 
+    background:transparent; 
+    border:0; 
+    cursor:pointer;
+  }
+
+  .mobile-menu {
+    display:none;
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0; right:0;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:.75rem;
+    box-shadow:var(--shadow);
+    padding:.5rem .75rem;
+    z-index:1001;
+  }
+
+  #burger[aria-expanded="true"] + #mobileMenu {
+    display:block;
+  }
+}
+
   </style>
 </head>
 <body>
