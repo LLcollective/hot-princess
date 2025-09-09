@@ -71,7 +71,6 @@
 
     /* Dropdowns */
     .dropdown { position:relative }
-    /* invisible hover buffer */
     .dropdown::after {
       content:"";
       position:absolute;
@@ -103,7 +102,6 @@
     }
     .dropdown-menu a:hover { background:var(--brand-pill); color:var(--lime) }
 
-    /* Desktop hover/focus keeps menu open */
     @media(min-width:769px){
       .dropdown:hover .dropdown-menu,
       .dropdown:focus-within .dropdown-menu {
@@ -113,51 +111,45 @@
       }
     }
 
-    /* --- Chevron Burger --- */
+    /* Premium Chevron Burger */
     .burger {
       display:none;
-      position:relative;
-      width:44px; height:44px;
-      border:1px solid var(--line);
-      border-radius:.6rem;
-      background:#fff;
-      box-shadow:inset 0 3px 6px rgba(0,0,0,0.18),
-                 inset 0 -3px 6px rgba(0,0,0,0.18),
-                 inset 3px 0 6px rgba(0,0,0,0.15),
-                 inset -3px 0 6px rgba(0,0,0,0.15),
-                 inset 0 0 2px rgba(255,255,255,0.75);
+      width:40px;
+      height:40px;
+      border:none;
+      background:transparent;
       cursor:pointer;
+      position:relative;
       justify-content:center;
       align-items:center;
     }
     .burger span {
-      position:absolute; left:11px;
-      width:22px; height:2px;
-      background:var(--brand);
+      position:absolute;
+      left:9px;
+      width:22px;
+      height:3px;
       border-radius:2px;
-      transform-origin:right center;
-      transition:background .3s ease;
+      background:linear-gradient(90deg,#7B6CF6,#9BE080);
+      transition:.4s ease;
     }
-    .burger span:nth-child(1){ top:12px; }
-    .burger span:nth-child(2){ top:20px; }
-    .burger span:nth-child(3){ top:28px; }
-    .burger.open span{ background:#fff; }
+    .burger span:nth-child(1) { top:11px; }
+    .burger span:nth-child(2) { top:18px; }
+    .burger span:nth-child(3) { top:25px; }
 
-    @keyframes spinTopIn { 0%{transform:rotate(-60deg); top:12px;} 100%{transform:rotate(-28deg); top:20px;} }
-    @keyframes spinBotIn { 0%{transform:rotate(60deg); top:28px;} 100%{transform:rotate(28deg); top:20px;} }
-    @keyframes spinTopOut { 0%{transform:rotate(-28deg); top:20px;} 100%{transform:rotate(0); top:12px;} }
-    @keyframes spinBotOut { 0%{transform:rotate(28deg); top:20px;} 100%{transform:rotate(0); top:28px;} }
-    @keyframes middleExit { from{opacity:1;transform:translateX(0);} to{opacity:0;transform:translateX(-20px);} }
-    @keyframes middleReturn { from{opacity:0;transform:translateX(-20px);} to{opacity:1;transform:translateX(0);} }
+    /* Chevron transform */
+    .burger.open span:nth-child(1){
+      transform:rotate(-28deg);
+      top:18px;
+    }
+    .burger.open span:nth-child(2){
+      opacity:0;
+      transform:translateX(-8px);
+    }
+    .burger.open span:nth-child(3){
+      transform:rotate(28deg);
+      top:18px;
+    }
 
-    .burger.opening span:nth-child(1){ animation:spinTopIn .5s ease forwards; }
-    .burger.opening span:nth-child(2){ animation:middleExit .25s ease forwards; }
-    .burger.opening span:nth-child(3){ animation:spinBotIn .5s ease forwards; }
-    .burger.closing span:nth-child(1){ animation:spinTopOut .5s ease forwards; }
-    .burger.closing span:nth-child(2){ animation:middleReturn .25s ease forwards .25s; }
-    .burger.closing span:nth-child(3){ animation:spinBotOut .5s ease forwards; }
-
-    /* Mobile nav */
     @media(max-width:768px){
       nav.menu {
         display:none;
@@ -182,7 +174,6 @@
       .burger { display:flex; }
       .dropdown-menu { position:static; border:none; box-shadow:none; padding-left:1rem; display:none; }
       .dropdown.open .dropdown-menu { display:flex; flex-direction:column; }
-      /* disable hover on mobile */
       .dropdown:hover .dropdown-menu { display:none; }
     }
 
@@ -190,17 +181,82 @@
     .progress{ height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top,64px); z-index:999 }
     .progress span{ display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear }
 
-    /* Hero + Cards + Footer */
-    .hero{ border-bottom:1px solid var(--line) }
+    /* Hero */
+    .hero { border-bottom:none; }
     .hero .wrap{ padding:2.25rem 1rem 1.25rem }
     .eyebrow{ display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700 }
     .tagline{ font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .4rem }
     .hero-sub{ color:var(--muted) }
     .small{ font-size:.92rem; color:var(--muted) }
 
-    section.card{ background:#fff; border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem; margin:1rem auto 0; width:min(100%,1080px) }
+    /* TOC chips */
+    .toc { background:transparent; border:none; box-shadow:none; }
+    .toc .wrap { padding:1rem 0; }
+    .toc .grid {
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      justify-content:flex-start;
+    }
+    .toc a {
+      display:inline-block;
+      padding:.45rem 1rem;
+      border-radius:999px;
+      background:#f9f9ff;
+      border:1px solid var(--line);
+      font-size:.9rem;
+      font-weight:500;
+      color:var(--brand);
+      transition:.2s ease;
+    }
+    .toc a:hover {
+      background:var(--brand-pill);
+      color:var(--lime);
+      border-color:var(--brand);
+    }
+
+    /* Cards */
+    section.card {
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:1rem;
+      box-shadow:var(--shadow);
+      margin:1rem auto;
+      width:100%;
+    }
+    section.card .wrap { padding:1rem; }
     section.card h2{ margin:.2rem 0 .5rem; color:var(--brand) }
 
+    /* Accordions */
+    details { border:none; margin:.5rem 0; }
+    summary.toggle {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      font-weight:600;
+      color:var(--brand);
+      padding:.75rem 1rem;
+      border:1px solid var(--line);
+      border-radius:.6rem;
+      background:#fff;
+      transition:.2s ease;
+    }
+    summary.toggle:hover { background:var(--brand-pill); }
+    summary.toggle::after {
+      content:"+";
+      font-weight:700;
+      font-size:1.2rem;
+      color:var(--brand);
+    }
+    details[open] summary.toggle::after { content:"–"; }
+    details > *:not(summary) {
+      padding:0 1rem 1rem 1rem;
+      font-size:.95rem;
+      color:var(--text);
+    }
+
+    /* Footer */
     .site-footer{ border-top:1px solid var(--line); margin-top:1.25rem }
     .site-footer .wrap{ padding:1rem; font-size:.9rem; text-align:left }
     .site-footer a{ color:var(--brand); text-decoration:none }
@@ -238,8 +294,8 @@
   <!-- Progress -->
   <div class="progress"><span id="progress-fill"></span></div>
 
+  <!-- Hero -->
   <main id="main">
-    <!-- Hero -->
     <section class="hero">
       <div class="wrap">
         <span class="eyebrow">LEGAL</span>
@@ -249,9 +305,41 @@
       </div>
     </section>
 
-    <!-- Full Privacy & Terms sections go here (kept intact from your original file) -->
+    <!-- TOC -->
+    <section class="toc">
+      <div class="wrap">
+        <div class="grid">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#cookies">Cookies & Analytics</a>
+          <a href="#rights">Your Rights</a>
+          <a href="#processors">Third-Party Processors</a>
+          <a href="#security">Security</a>
+          <a href="#children">Children’s Privacy</a>
+          <a href="#terms">Terms of Use</a>
+          <a href="#purchases">Purchases & Refunds</a>
+          <a href="#medical">No Medical/Legal Advice</a>
+          <a href="#liability">Disclaimers & Liability</a>
+          <a href="#arbitration">Arbitration & Disputes</a>
+          <a href="#updates">Changes</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Example card -->
+    <section id="privacy" class="card">
+      <div class="wrap">
+        <h2>Privacy Policy</h2>
+        <p><strong>Who we are.</strong> Lace & Lime™ LLC (“we,” “us,” “our”).</p>
+        <details>
+          <summary class="toggle">What we collect</summary>
+          <p>Information you provide (e.g., name, email, forms, payments)…</p>
+        </details>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="wrap">
       <p>© 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy-terms.html" aria-current="page">Privacy & Terms</a></p>
@@ -279,25 +367,12 @@
       addEventListener('scroll', pct, {passive:true});
     })();
 
-    // Chevron burger nav toggle
+    // Chevron burger toggle
     const burger = document.getElementById("burger");
     const navMenu = document.getElementById("nav-menu");
     burger.addEventListener("click", () => {
-      if(!burger.classList.contains("open")){
-        burger.classList.add("opening");
-        setTimeout(()=>{
-          burger.classList.remove("opening");
-          burger.classList.add("open");
-          navMenu.classList.toggle("show");
-        },500);
-      }else{
-        burger.classList.add("closing");
-        setTimeout(()=>{
-          burger.classList.remove("closing");
-          burger.classList.remove("open");
-          navMenu.classList.toggle("show");
-        },500);
-      }
+      burger.classList.toggle("open");
+      navMenu.classList.toggle("show");
     });
 
     // Mobile dropdown toggle
@@ -306,7 +381,6 @@
         e.preventDefault();
         const parent = btn.parentElement;
         const menu = parent.querySelector('.dropdown-menu');
-        // close others
         document.querySelectorAll('#nav-menu .dropdown').forEach(d=>{
           if(d !== parent) d.classList.remove('open');
         });
