@@ -300,11 +300,32 @@
               <span class="chip">Titles + overviews</span>
               <span class="chip">Balance forward</span>
             </div>
-            <p><a href="journal.html#sets" class="btn btn-secondary">Browse the sets →</a></p>
-          </div>
+            <p><a href="#" class="btn btn-primary" id="journal-btn">Journal →</a></p>
+
+     </div>
         </div>
       </div>
     </section>
+
+
+
+
+
+<!-- Journal Maintenance Modal -->
+<div id="journal-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; 
+  background:rgba(0,0,0,.6); align-items:center; justify-content:center; z-index:2000;">
+  <div style="background:#fff; padding:2rem; border-radius:1rem; max-width:420px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.15);">
+    <h3 style="color:var(--brand); margin-top:0;">Brief Maintenance</h3>
+    <p>The Journal section is getting a quick refresh.  
+    It will be back online within 24 hours - thank you for your patience!</p>
+    <button onclick="document.getElementById('journal-modal').style.display='none'" 
+      class="button" 
+      style="margin-top:1rem; background:var(--brand); color:#fff; border:none; padding:.6rem 1.2rem; border-radius:.6rem; font-weight:600; cursor:pointer;">
+      Close
+    </button>
+  </div>
+</div>
+
   </main>
 
   <footer class="site-footer">
@@ -355,6 +376,13 @@ document.querySelectorAll('#nav-menu .dropdown > button').forEach(btn=>{
     parent.classList.toggle('open');
   });
 });
+
+// Journal Maintenance modal
+document.getElementById("journal-btn").addEventListener("click",(e)=>{
+  e.preventDefault();
+  document.getElementById("journal-modal").style.display="flex";
+});
+
 </script>
 </body>
 </html>
