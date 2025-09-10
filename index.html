@@ -10,10 +10,10 @@
   <style>
     :root{
       --surface:#E6F4FF; --text:#1A2238; --muted:#405970; --line:rgba(26,34,56,.15);
-      --brand:#4f46e5; --brand-pill:#F3F4FF; --shadow:0 6px 20px rgba(26,34,56,.08);
-      --card:#FFFFFF;
+      --brand:#7B6CF6; --brand-pill:#F3F4FF; --shadow:0 6px 20px rgba(26,34,56,.08);
+      --lime:#9BE080;
     }
-    html,body{margin:0;padding:0; overflow-x:hidden}
+    html,body{margin:0;padding:0}
     body{
       background:transparent !important;
       color:var(--text);
@@ -27,39 +27,158 @@
     a{color:var(--brand); text-decoration:none}
     .wrap{ width:min(1120px,92vw); margin-inline:auto }
 
-    /* Header */
+    /* ===== Header ===== */
     .ll-nav{ position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line) }
-    .ll-nav .wrap{ padding:12px 16px; display:flex; align-items:center; gap:16px; flex-wrap:nowrap }
-    .brand{ font-family:'Tenor Sans',serif; font-weight:600; letter-spacing:.08em; color:var(--brand); font-size:20px; white-space:nowrap }
+    .ll-nav .wrap{ padding:12px 16px; display:flex; align-items:center; justify-content:space-between }
+    .brand{ font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px; font-weight:600; }
+    .brand .tm{ font-size:.7em; vertical-align:super; margin-left:1px }
 
-    nav.menu{ margin-left:auto; display:flex; align-items:center; gap:18px; white-space:nowrap; overflow-x:auto }
-    nav.menu::-webkit-scrollbar{display:none}
-    nav.menu a{ font-weight:600; color:var(--text); padding:.35rem .6rem; border-radius:.6rem; position:relative }
-    nav.menu a.active{ background:var(--brand-pill); color:var(--brand) }
-    nav.menu a.active::after{ content:""; position:absolute; left:10%; right:10%; bottom:-8px; height:4px; background:currentColor; border-radius:999px }
-
-    /* Burger → mobile */
-    .burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem; background:#fff; cursor:pointer; align-items:center; justify-content:center }
-    .burger .icon{ position:relative; width:18px; height:18px }
-    .burger .icon::before, .burger .icon::after, .burger .icon span{
-      content:""; position:absolute; left:0; right:0; height:0; border-top:2px solid currentColor; border-radius:2px;
+    nav.menu {
+      display:flex;
+      align-items:center;
+      gap:18px;
+      white-space:nowrap;
     }
-    .burger .icon span{ top:8px } .burger .icon::before{ top:2px } .burger .icon::after{ bottom:2px }
-    .burger[aria-expanded="true"] .icon::before{ transform:translateX(4px) rotate(40deg); width:12px; left:3px; top:4px }
-    .burger[aria-expanded="true"] .icon::after{ transform:translateX(4px) rotate(-40deg); width:12px; left:3px; top:12px }
-    .burger[aria-expanded="true"] .icon span{ opacity:0 }
-    .mobile-menu{ position:absolute; top:100%; right:12px; z-index:1200; display:none; background:#fff; border:1px solid var(--line); border-radius:.9rem; box-shadow:0 10px 28px rgba(26,34,56,.14); padding:.4rem; min-width:180px; width:max-content; max-width:92vw }
-    .mobile-menu a{ display:block; padding:.55rem .8rem; border-radius:.6rem; color:var(--text); font-weight:600; white-space:nowrap }
-    .mobile-menu .active{ background:var(--brand-pill); color:var(--brand) }
-    @media (max-width:860px){ nav.menu{display:none} .burger{display:inline-flex} .ll-nav .wrap{position:relative} }
+    nav.menu > a,
+    nav.menu > .dropdown > button {
+      font-family:'Tenor Sans',serif;
+      font-weight:600;
+      font-size:1rem;
+      line-height:1.4;
+      color:var(--brand); /* purple text */
+      padding:.35rem .6rem;
+      border-radius:.6rem;
+      transition:all .2s ease;
+      background:none;
+      border:none;
+      cursor:pointer;
+    }
+    nav.menu > a:hover,
+    nav.menu > .dropdown > button:hover {
+      color:var(--lime);
+      background:var(--brand-pill);
+    }
+    nav.menu a.active {
+      background:var(--brand-pill);
+      color:var(--brand);
+    }
 
-    /* Progress band */
-    .progress{ height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top,64px); z-index:999 }
-    .progress span{ display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear }
+    /* Dropdown Styles */
+    .dropdown { position: relative; }
+    .dropdown::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: transparent;
+    }
+    .dropdown-menu {
+      display: none;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity .2s ease, transform .2s ease;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: .6rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      padding: .5rem 0;
+      min-width: 160px;
+      z-index: 1000;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding:.5rem .75rem;
+      font-size:.95rem;
+      color: var(--brand);
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover {
+      background: var(--brand-pill); 
+      color: var(--lime);
+    }
+    .dropdown.open .dropdown-menu {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile tweaks */
+    @media(max-width:768px){
+      nav.menu {
+        display:none;
+        flex-direction:column;
+        gap:14px;
+        position:absolute;
+        top:60px; right:1rem;
+        background:#fff;
+        padding:1rem 1.2rem;
+        border:1px solid var(--line);
+        border-radius:.8rem;
+        box-shadow:0 4px 12px rgba(26,34,56,.08);
+        opacity:0;
+        transform:translateY(-10px);
+        transition:.3s ease;
+      }
+      nav.menu.show {
+        display:flex;
+        opacity:1;
+        transform:translateY(0);
+      }
+      .dropdown.open .dropdown-menu {
+        display:flex;
+        flex-direction:column;
+        position:static;
+        opacity:1;
+        transform:none;
+        box-shadow:none;
+        border:none;
+        padding-left:1rem;
+      }
+    }
+
+    /* Burger */
+    .burger {
+      display:none;
+      width:50px;
+      height:50px;
+      background:transparent;
+      cursor:pointer;
+      position:relative;
+      justify-content:center;
+      align-items:center;
+    }
+    .burger span {
+      position:absolute;
+      left:13px;
+      width:24px;
+      height:3px;
+      border-radius:2px;
+      background:linear-gradient(90deg,#7B6CF6,#9BE080);
+      transition: transform .35s cubic-bezier(.68,-0.55,.27,1.55),
+                  opacity .25s ease,
+                  background .3s ease;
+      transform-origin: right center;
+    }
+    .burger span:nth-child(1) { top:14px; }
+    .burger span:nth-child(2) { top:23px; }
+    .burger span:nth-child(3) { top:32px; }
+    .burger.open span:nth-child(1) { top:23px; transform:rotate(-30deg); }
+    .burger.open span:nth-child(2) { opacity:0; transform:translateX(-20px); }
+    .burger.open span:nth-child(3) { top:23px; transform:rotate(30deg); }
+    @media(max-width:768px){ .burger { display:flex; } }
+
+    /* Progress bar */
+    .progress{height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top, 64px); z-index:999}
+    .progress span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear}
 
     /* Hero */
     .hero{ border-bottom:1px solid var(--line) }
-    .hero .wrap{ padding:2.25rem 1rem 1.25rem }
+    .hero .wrap{ padding:2.25rem 1rem 1.25rem; text-align:left }
     .eyebrow{ display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700 }
     .tagline{ font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .2rem;
       background-image: linear-gradient(120deg,#2E4D2E 0%, #4CA94C 20%, #E83F7D 50%, #FFB6AC 65%, #4CA94C 80%, #2E4D2E 100%);
@@ -67,59 +186,79 @@
       -webkit-text-fill-color:transparent; color:transparent; }
     .tagline.glitter{ animation: shimmer-text 8s ease-in-out infinite; }
     @keyframes shimmer-text{ 0%{background-position:0% 0} 50%{background-position:100% 0} 100%{background-position:0% 0} }
-    .hero-sub{ color:var(--muted); max-width:60ch }
+    .hero-sub{ color:var(--muted); max-width:60ch; margin:0; text-align:left }
+    @media (max-width:768px) {
+      .hero .wrap, .hero-sub { text-align:center; margin:0 auto; }
+    }
 
-    /* Feature cards */
-    .section{ padding:1.25rem 1rem 0 }
-    .grid{ display:grid; gap:.9rem }
-    .grid.cols-3{ grid-template-columns:repeat(3,minmax(0,1fr)) }
-    @media (max-width:920px){ .grid.cols-3{ grid-template-columns:1fr 1fr } }
-    @media (max-width:600px){ .grid.cols-3{ grid-template-columns:1fr } }
-    .card{ background:var(--card); border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem }
-    .card h3{ margin:.25rem 0 .4rem; font-family:'Tenor Sans',serif; color:var(--brand) }
-    .muted{ color:var(--muted) }
-    .chips{ display:flex; gap:.45rem; flex-wrap:wrap; margin-top:.4rem }
-    .chip{ background:var(--brand-pill); color:var(--brand); font-weight:700; border:1px solid var(--line); padding:.35rem .55rem; border-radius:.7rem }
-
-    /* Citrus circle */
-    .citrus{ padding:1.25rem 1rem 0 }
-    .citrus .card{ max-width:720px; margin:0 auto }
-    .circle-form{ display:grid; grid-template-columns:1fr 1fr auto; gap:.5rem; margin:.6rem 0 .35rem }
-    .circle-form input{ border:1px solid var(--line); border-radius:.6rem; padding:.6rem .7rem; font:inherit }
-    @media (max-width:640px){ .circle-form{ grid-template-columns:1fr; } }
-
-    /* Bottom CTA */
-    .bottom-cta{ padding:1.25rem 1rem 1.6rem }
-    .bottom-cta .cta-box{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap }
-    .btn, .btn-primary, .btn-secondary{ display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
-      padding:.6rem .9rem; border-radius:.7rem; font-weight:700; border:1px solid var(--line); text-decoration:none; cursor:pointer; }
-    .btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
-    .btn-secondary{ background:#fff }
+    /* Pathways Section */
+    .pathways { padding:2.5rem 1rem; border-top:1px solid var(--line); }
+    .pathways .eyebrow {
+      display:inline-block;
+      margin-bottom:1.5rem;
+      font-size:.85rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      color:var(--brand);
+    }
+    .path-grid {
+      display:grid;
+      gap:2rem;
+      grid-template-columns:1fr 1fr;
+    }
+    @media (max-width:860px){
+      .path-grid { grid-template-columns:1fr; }
+    }
+    .path-block {
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:1rem;
+      box-shadow:var(--shadow);
+      padding:1.5rem;
+      transition:all .25s ease;
+    }
+    .path-block:hover {
+      transform:translateY(-4px);
+      border-color:var(--lime);
+      box-shadow:0 8px 24px rgba(26,34,56,.12);
+    }
+    .path-block h3 {
+      font-family:'Tenor Sans',serif;
+      font-size:1.4rem;
+      margin:.25rem 0 .6rem;
+      color:var(--brand);
+    }
+    .path-block p { margin:.4rem 0; }
 
     /* Footer */
     .site-footer{ border-top:1px solid var(--line); margin-top:1.25rem }
     .site-footer .wrap{ padding:1rem }
-
-    /* ✅ Normalize brand so ™ matches About & Explore */
-    .ll-nav .brand { display:inline-block; line-height:1; }
-    .ll-nav .brand .tm { font-size:.7em; vertical-align:super; position:relative; top:.15em; margin-left:1px; }
   </style>
 </head>
 <body>
   <header class="ll-nav">
     <div class="wrap">
       <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-      <nav class="menu">
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+      <nav class="menu" id="nav-menu">
         <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html">Founder</a>
-        <a href="workshops.html">Workshops</a>
-        <a href="journal.html">Journal</a>
+        <div class="dropdown">
+          <button type="button">About ▾</button>
+          <div class="dropdown-menu">
+            <a href="about.html">Lace & Lime™</a>
+            <a href="founder.html">Founder</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button type="button">Workshops ▾</button>
+          <div class="dropdown-menu">
+            <a href="workshops.html">Overview</a>
+            <a href="booking.html">Booking</a>
+          </div>
+        </div>
         <a href="explore.html">Explore</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <button id="burger" class="burger"><span class="icon"><span></span></span></button>
-      <nav id="mobileMenu" class="mobile-menu"></nav>
     </div>
   </header>
 
@@ -136,65 +275,33 @@
       </div>
     </section>
 
-    <!-- Feature cards -->
-    <section class="section">
-      <div class="wrap grid cols-3">
-        <article class="card">
-          <h3>Workshops: results in two weeks</h3>
-          <p class="muted">Single sessions or bundles. Options add up live so you always know the total.</p>
-          <div class="chips">
-            <span class="chip">14-day action plan</span>
-            <span class="chip">Live total as you add options</span>
-            <span class="chip">Scripts & checklists</span>
-          </div>
-          <p><a class="btn btn-secondary" href="workshops.html">Explore workshops</a></p>
-        </article>
-        <article class="card">
-          <h3>Journal: 4×4 cycles for steadiness</h3>
-          <p class="muted">Reflect, map, act, and check-in — then repeat. Built for steady weekly progress.</p>
-          <div class="chips">
-            <span class="chip">4×4 framework</span>
-            <span class="chip">Weekly check-in</span>
-            <span class="chip">Printable &amp; mobile-friendly</span>
-          </div>
-          <p><a class="btn btn-secondary" href="journal.html">See the journal</a></p>
-          <small class="muted"><a href="journal.html#sets">See all 6 sets →</a></small>
-        </article>
-        <article class="card">
-          <h3>Founder: results in weeks</h3>
-          <p class="muted">MPH, CHES, IRB certified. Outcomes, case snapshots, and a clear approach.</p>
-          <div class="chips">
-            <span class="chip">results in two weeks</span>
-            <span class="chip">Audit-ready</span>
-            <span class="chip">Light automations</span>
-          </div>
-          <p><a class="btn btn-secondary" href="founder.html">Meet Sharon</a></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Citrus Circle -->
-    <section class="citrus">
+    <!-- Pathways Section -->
+    <section class="pathways">
       <div class="wrap">
-        <article class="card">
-          <h3 style="font-family:'Tenor Sans',serif;color:var(--brand)">Join the Citrus Circle 🍋</h3>
-          <p>Be first to hear about launches and resources, all in one fresh squeeze, not a flood.</p>
-          <form class="circle-form" onsubmit="event.preventDefault(); alert('Thanks! You’re on the list.');">
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <button type="submit" class="btn btn-primary">Join</button>
-          </form>
-          <small class="muted">Fresh updates, never spam. Opt out anytime.</small>
-        </article>
-      </div>
-    </section>
-
-    <!-- Bottom CTAs -->
-    <section class="bottom-cta">
-      <div class="wrap">
-        <div class="cta-box">
-          <a class="btn btn-primary" href="workshops.html">Book a workshop</a>
-          <a class="btn btn-secondary" href="contact.html">Contact</a>
+        <span class="eyebrow">CHOOSE YOUR PATH</span>
+        <div class="path-grid">
+          <!-- Workshops -->
+          <div class="path-block">
+            <h3>Guided Workshops</h3>
+            <p class="muted">Live, practical sessions designed to move you from reflection into aligned action in just two weeks.</p>
+            <div class="chips">
+              <span class="chip">2 week action plans</span>
+              <span class="chip">Interactive & live</span>
+              <span class="chip">Scripts & guides</span>
+            </div>
+            <p><a href="workshops.html" class="btn btn-primary">Explore workshops →</a></p>
+          </div>
+          <!-- Sets -->
+          <div class="path-block">
+            <h3>Lace & Lime™ Sets</h3>
+            <p class="muted">Six themed sets with titles and short reflections to guide your next step.</p>
+            <div class="chips">
+              <span class="chip">6 sets live now</span>
+              <span class="chip">Titles + overviews</span>
+              <span class="chip">Balance forward</span>
+            </div>
+            <p><a href="journal.html#sets" class="btn btn-secondary">Browse the sets →</a></p>
+          </div>
         </div>
       </div>
     </section>
@@ -202,38 +309,52 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>© 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy-terms.html">Privacy & Terms</a></p>
+      <p>© 2025 Lace & Lime™ LLC. All rights reserved.<br>
+        <a href="privacy-terms.html">Privacy & Terms</a>
+      </p>
     </div>
   </footer>
 
-  <script>
-    // progress bar
-    (() => {
-      const fill=document.getElementById('progress-fill');
-      const header=document.querySelector('.ll-nav');
-      function place(){ const h=header?.getBoundingClientRect().height||56;
-        document.documentElement.style.setProperty('--progress-top',h+'px');}
-      function pct(){ const doc=document.documentElement; const sc=Math.max(doc.scrollTop,document.body.scrollTop);
-        const max=(doc.scrollHeight||document.body.scrollHeight)-innerHeight;
-        const r=max>0?Math.min(1,Math.max(0,sc/max)):0;
-        if(fill) fill.style.width=(r*100).toFixed(2)+'%';}
-      place(); pct(); addEventListener('resize',place,{passive:true}); addEventListener('scroll',pct,{passive:true});
-    })();
+<script>
+// Progress bar
+(() => {
+  const fill = document.getElementById('progress-fill');
+  const header = document.querySelector('.ll-nav');
+  function place(){
+    const h = header?.getBoundingClientRect().height || 56;
+    document.documentElement.style.setProperty('--progress-top', h + 'px');
+  }
+  function pct(){
+    const doc = document.documentElement;
+    const sc = Math.max(doc.scrollTop, document.body.scrollTop);
+    const max = (doc.scrollHeight || document.body.scrollHeight) - innerHeight;
+    const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
+    if(fill) fill.style.width = (r*100).toFixed(2) + '%';
+  }
+  place(); pct();
+  addEventListener('resize', place, {passive:true});
+  addEventListener('scroll', pct, {passive:true});
+})();
 
-    // burger
-    (() => {
-      const header=document.querySelector('.ll-nav .wrap');
-      const burger=document.getElementById('burger');
-      const panel=document.getElementById('mobileMenu');
-      const desktop=header.querySelector('nav.menu');
-      if(desktop&&panel) panel.innerHTML=desktop.innerHTML;
-      function close(){ burger.setAttribute('aria-expanded','false'); panel.style.display='none'; }
-      document.addEventListener('click',e=>{ if(!panel.contains(e.target)&&!burger.contains(e.target)) close(); },{passive:true});
-      document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
-      burger.addEventListener('click',()=>{ const open=burger.getAttribute('aria-expanded')==='true';
-        burger.setAttribute('aria-expanded',String(!open));
-        panel.style.display=open?'none':'block';});
-    })();
-  </script>
+// Burger toggle
+const burger = document.getElementById("burger");
+const navMenu = document.getElementById("nav-menu");
+burger.addEventListener("click", () => {
+  burger.classList.toggle("open");
+  navMenu.classList.toggle("show");
+});
+
+// Mobile dropdown toggle
+document.querySelectorAll('#nav-menu .dropdown > button').forEach(btn=>{
+  btn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const parent = btn.parentElement;
+    document.querySelectorAll('#nav-menu .dropdown').forEach(d=>{
+      if(d !== parent) d.classList.remove('open');
+    });
+    parent.classList.toggle('open');
+  });
+});
+</script>
 </body>
 </html>

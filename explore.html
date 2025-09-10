@@ -6,518 +6,377 @@
   <title>Explore | Lace & Lime™</title>
   <meta name="description" content="Explore Lace & Lime: playlists, prompts, and the Citrus Circle newsletter — balance-forward tools for reflection and action." />
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
 
-<body data-theme="lacelime">
-  <!-- ===== Header ===== -->
-  <header class="ll-nav">
-    <div class="wrap">
-      <!-- Theme Switch -->
-<!-- Brand -->
-<a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-
-
-      <!-- Desktop Nav -->
-      <nav class="menu" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="founder.html">Founder</a>
-        <a href="workshops.html">Workshops</a>
-        <a href="journal.html">Journal</a>
-        <a href="explore.html" class="active">Explore</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-
-      <!-- Mobile -->
-</div>
-  </header>
-
-  <!-- Progress bar -->
-  <div class="progress" aria-hidden="true"><span></span></div>
-
-  <!-- ===== Main ===== -->
-  <main id="main">
-    <section class="hero hero--stack">
-      <div class="wrap">
-        <span class="eyebrow">EXPLORE</span>
-        <h1 class="tagline">Playlists, prompts, and momentum.</h1>
-        <p class="hero-sub">A balance-forward mix of reflection, action, and clarity tools.</p>
-      </div>
-    </section>
-
-    <!-- Explore Grid -->
-    <section class="explore-grid-pair">
-  
-    <!-- Spotify Card -->
-<article class="card explore-card spotify-card">
-  <div class="card-header"> <h3>Lace & Lime Vibes</h3>
-   <span class="badge" 
-      style="color:#7A66FF;background:#EFEDFF;border:1px solid rgba(122,102,255,.25);
-             font-weight:700;line-height:1;box-shadow:0 1px 2px rgba(0,0,0,.06);margin:0 0 .5rem 0;">
-  Now playing
-</span>
-
-   
-  </div>
-
-  <p class="spotify-desc">
-    A curated playlist to set the tone: reflection, action, and balance-forward energy.
-  </p>
-
-
-        <div class="button-row">
-          <a href="https://open.spotify.com/playlist/7fzL3lCumo5OhjjddCyyfg" target="_blank" rel="noopener" class="btn-citrus">Play on Spotify</a>
-        </div>
-        <div id="spotify-player" style="display:none; margin-top:1rem;">
-          <iframe style="border-radius:12px"
-            src="https://open.spotify.com/embed/playlist/7fzL3lCumo5OhjjddCyyfg?utm_source=generator"
-            width="100%" height="100" frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"></iframe>
-        </div>
-      </article>
-
-
-
-
-
-      <!-- Workshops Card -->
-      <article class="card explore-card workshops-card">
-        <h3 class="workshops-title">Workshops</h3>
-        <p class="workshops-text">
-          Six-step arc from clarity to confident action; map next steps, strengthen your story and materials, and build momentum. Each session is a focused hour with tools, templates, and one concrete move to make.</p>
-        <div class="button-row">
-          <a href="workshops.html" class="btn-citrus">Explore Workshops</a>
-        </div>
-      </article>
-
-      <!-- Resume / Strengthen Story Card -->
-      <article class="card explore-card resume-card">
-        <h3>Career Story</h3>
-<p>Free resume upload. Optional add-ons from $29 for targeted line edits, interview prep, and job-search guidance.</p>
-<small class="home-cta-note">Secure checkout via Square.</small>
-<div class="button-row">
-  <a href="https://square.link/u/SQUARE_LINK_LINECHECK_49" class="btn-citrus">Square Checkout</a>
-  <a href="resume-upload.html" class="btn-secondary">Upload Resume</a>
-</div>
-      </article>
-
-      <!-- Career (Strengthen Story) Modal -->
-      <dialog id="career-plans-cw" class="plan-dialog">
-        <form method="dialog" class="plan-form">
-          <h4 style="margin:.25rem 0 .5rem;font-family:'Tenor Sans',serif;">Select an option</h4>
-
-          <label class="plan-row">
-            <input type="radio" name="plan" value="starter"
-                   data-href="https://square.link/u/SQUARE_LINK_STARTER_29">
-            <span class="plan-name">Career Story Starter (DIY)</span>
-            <span class="plan-price">$29</span>
-          </label>
-
-          <label class="plan-row">
-            <input type="radio" name="plan" value="linecheck" checked
-                   data-href="https://square.link/u/SQUARE_LINK_LINECHECK_49">
-            <span class="plan-name">
-              Targeted Resume Line Check · 200 words · 48-hr
-              <span class="badge-popular"
-                    style="margin-left:.5rem;padding:.15rem .45rem;border-radius:999px;background:#EFEDFF;color:#7A66FF;font-size:.75rem;font-weight:700;white-space:nowrap;">
-                Most popular
-              </span>
-            </span>
-            <span class="plan-price">$49</span>
-          </label>
-
-          <label class="plan-row">
-            <input type="radio" name="plan" value="sprint"
-                   data-href="https://square.link/u/SQUARE_LINK_SPRINT_59">
-            <span class="plan-name">Interview Sprint · 10-min Loom + cheat sheet</span>
-            <span class="plan-price">$59</span>
-          </label>
-
-          <div class="plan-actions" style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--line,#eee);">
-            <button type="button" class="btn-cancel" value="cancel"
-                    style="background:transparent;border:1px solid var(--line,#eee);border-radius:.5rem;padding:.6rem .9rem;font-weight:600;cursor:pointer;">
-              Cancel
-            </button>
-            <button type="submit" class="btn-continue"
-                    style="background:var(--accent,#7A66FF);color:#fff;border:0;border-radius:.5rem;padding:.6rem 1rem;font-weight:700;cursor:pointer;">
-              Continue
-            </button>
-          </div>
-        </form>
-
-
-
-
-        <!-- scoped alignment so radios | names | prices line up -->
-        <style>
-          #career-plans-cw{ width:min(92vw,560px); max-width:560px; border:0; border-radius:1rem; padding:0;
-            box-shadow:0 20px 48px rgba(0,0,0,.18); }
-          #career-plans-cw::backdrop{ background:rgba(0,0,0,.35); }
-          #career-plans-cw .plan-form{ padding:1rem 1rem .75rem; }
-          #career-plans-cw label.plan-row{
-            all:unset; display:grid !important;
-            grid-template-columns:1.25rem 1fr auto !important;
-            align-items:start !important; column-gap:.75rem !important;
-            padding:.6rem .25rem !important; border-radius:.6rem !important; cursor:pointer;
-            box-sizing:border-box; min-height:44px;
-          }
-          #career-plans-cw label.plan-row:hover{ background:rgba(0,0,0,.04) !important; }
-          #career-plans-cw label.plan-row > input[type="radio"]{ grid-column:1; width:1rem; height:1rem; margin:0 !important; align-self:center; }
-          #career-plans-cw label.plan-row > .plan-name{ grid-column:2; font-weight:600; line-height:1.25; }
-          #career-plans-cw label.plan-row > .plan-price{ grid-column:3; justify-self:end; white-space:nowrap; color:var(--muted,#555); font-weight:700; font-variant-numeric:tabular-nums; }
-        
-
-/* ===== Tokens & Base ===== */
-:root{
+<style>
+:root {
   --surface:#E6F4FF;
   --text:#1A2238;
   --muted:#405970;
   --line: rgba(26,34,56,.15);
-  --brand:#4f46e5;
+  --brand:#7B6CF6;
   --brand-pill:#F3F4FF;
-  --shadow: 0 6px 20px rgba(26,34,56,.08);
+  --shadow:0 6px 20px rgba(26,34,56,.08);
+  --lime:#9BE080;
 }
 html,body{margin:0; padding:0}
 body{
   background:transparent !important;
   color:var(--text);
   font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height:1.5;
+  line-height:1.55;
 }
-/* Ombré overlay */
 body::before{
   content:""; position:fixed; inset:0;
   background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
   z-index:-1; pointer-events:none;
 }
 a{color:var(--brand); text-decoration:none}
-.wrap{ width:min(1120px,92vw); margin-inline:auto }
+.wrap{ width:min(1080px,92vw); margin-inline:auto }
 
-/* ===== One-line header: logo left, nav right ===== */
-.ll-nav{
-  position:sticky; top:0; z-index:1000;
-  background:var(--surface);
-  border-bottom:1px solid var(--line);
+/* ===== Header ===== */
+.ll-nav{ position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line) }
+.ll-nav .wrap{ padding:12px 16px; display:flex; align-items:center; justify-content:space-between }
+.brand{ font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px; font-weight:600; }
+.brand .tm{ font-size:.7em; vertical-align:super; margin-left:1px }
+
+nav.menu {
+  display:flex;
+  align-items:center;
+  gap:18px;
+  white-space:nowrap;
 }
-.ll-nav .wrap{
-  padding:12px 16px;
-  display:flex; align-items:center; gap:16px; flex-wrap:nowrap;
+nav.menu > a,
+nav.menu > .dropdown > button {
+  font-family:'Tenor Sans',serif;
+  font-weight:600;
+  font-size:1rem;
+  line-height:1.4;
+  color:var(--brand);
+  padding:.35rem .6rem;
+  border-radius:.6rem;
+  transition:all .2s ease;
+  background:none;
+  border:none;
+  cursor:pointer;
 }
-.brand{display:flex; align-items:center; flex:0 1 auto; min-width:0; white-space:nowrap; font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px;}
-.brand img, .brand svg{height:32px; width:auto; display:block;}
-@media (max-width:380px){ .brand img, .brand svg{height:28px;} }
-nav.menu{
-  margin-left:auto;
-  display:flex; align-items:center; gap:18px;
-  flex-wrap:nowrap; white-space:nowrap; flex:0 0 auto;
-  overflow-x:auto; -webkit-overflow-scrolling:touch;
+nav.menu > a:hover,
+nav.menu > .dropdown > button:hover {
+  color:var(--lime);
+  background:var(--brand-pill);
 }
-nav.menu::-webkit-scrollbar{display:none}
-nav.menu a{
-  flex:0 0 auto;
-  font-weight:600; color:var(--text);
-  padding:.35rem .6rem; border-radius:.6rem; position:relative;
-  transition:color .2s ease, background-color .2s ease;
-}
-nav.menu a.active{ background:var(--brand-pill); color:var(--brand) }
-nav.menu a.active::after{
-  content:""; position:absolute; left:10%; right:10%; bottom:-8px; height:4px;
-  background: currentColor; border-radius:999px;
+nav.menu a.active {
+  background:var(--brand-pill);
+  color:var(--brand);
 }
 
-/* ===== Progress bar ===== */
+/* Dropdown Styles */
+.dropdown { position: relative; }
+.dropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
+}
+.dropdown-menu {
+  display: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .2s ease, transform .2s ease;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: .6rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  padding: .5rem 0;
+  min-width: 160px;
+  z-index: 1000;
+}
+.dropdown-menu a {
+  display: block;
+  padding:.5rem .75rem;
+  font-size:.95rem;
+  color: #4f46e5;
+  text-decoration: none;
+}
+.dropdown-menu a:hover {
+  background: var(--brand-pill); 
+  color: var(--lime);
+}
+.dropdown.open .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile tweaks */
+@media(max-width:768px){
+  nav.menu {
+    display:none;
+    flex-direction:column;
+    gap:14px;
+    position:absolute;
+    top:60px; right:1rem;
+    background:#fff;
+    padding:1rem 1.2rem;
+    border:1px solid var(--line);
+    border-radius:.8rem;
+    box-shadow:0 4px 12px rgba(26,34,56,.08);
+    opacity:0;
+    transform:translateY(-10px);
+    transition:.3s ease;
+  }
+  nav.menu.show {
+    display:flex;
+    opacity:1;
+    transform:translateY(0);
+  }
+  .dropdown.open .dropdown-menu {
+    display:flex;
+    flex-direction:column;
+    position:static;
+    opacity:1;
+    transform:none;
+    box-shadow:none;
+    border:none;
+    padding-left:1rem;
+  }
+}
+
+/* Burger */
+.burger {
+  display:none;
+  width:50px;
+  height:50px;
+  background:transparent;
+  cursor:pointer;
+  position:relative;
+  justify-content:center;
+  align-items:center;
+}
+.burger span {
+  position:absolute;
+  left:13px;
+  width:24px;
+  height:3px;
+  border-radius:2px;
+  background:linear-gradient(90deg,#7B6CF6,#9BE080);
+  transition: transform .35s cubic-bezier(.68,-0.55,.27,1.55),
+              opacity .25s ease,
+              background .3s ease;
+  transform-origin: right center;
+}
+.burger span:nth-child(1) { top:14px; }
+.burger span:nth-child(2) { top:23px; }
+.burger span:nth-child(3) { top:32px; }
+.burger.open span:nth-child(1) { top:23px; transform:rotate(-30deg); }
+.burger.open span:nth-child(2) { opacity:0; transform:translateX(-20px); }
+.burger.open span:nth-child(3) { top:23px; transform:rotate(30deg); }
+@media(max-width:768px){ .burger { display:flex; } }
+
+/* Progress bar */
 .progress{height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top, 64px); z-index:999}
 .progress span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear}
 
-/* ===== Hero ===== */
-.hero{border-bottom:1px solid var(--line); background:transparent !important;}
+/* Hero */
+.hero{border-bottom:1px solid var(--line);}
 .hero .wrap{padding:2rem 1rem 1.25rem}
 .eyebrow{display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700}
 .tagline{font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .6rem}
 .hero-sub{color:var(--muted); max-width:60ch}
 
-/* ===== Explore grid cards ===== */
-.explore-grid-pair{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); padding:1.25rem 1rem 2rem }
-.card{ background:#fff; border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem; display:flex; flex-direction:column; gap:.5rem }
-.card h3{ margin:.2rem 0 .1rem; font-size:1.05rem; color:var(--brand) }
-.muted{ color:var(--muted) }
-.badge{ display:inline-block; padding:.28rem .5rem; border-radius:.5rem; font-size:.75rem }
+/* Explore grid */
+.explore-grid-pair {
+  padding:1.25rem 0 2rem;
+}
+.explore-grid-pair .wrap {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Force 4 across on large screens */
+@media (min-width: 1024px) {
+  .explore-grid-pair .wrap {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Cards */
+.card {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:1rem;
+  box-shadow:var(--shadow);
+  padding:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(26,34,56,.12);
+}
+.card:active {
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(26,34,56,.1);
+}
+
+/* clickable Spotify card fix */
+.card[href] {
+  color: inherit;
+  text-decoration: none;
+  cursor:pointer;
+}
+
+.card[href]:active {
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(26,34,56,.1);
+}
+
+/* Badges */
+.badge {
+  display:inline-block;
+  padding:.28rem .6rem;
+  border-radius:.5rem;
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.03em;
+  background:var(--brand-pill);
+  color:var(--brand);
+  margin-bottom:.3rem;
+  text-decoration:none;
+  transition:all .2s ease;
+}
+.badge:hover {
+  background:var(--brand);
+  color:#fff;
+  cursor:pointer;
+}
+
 
 /* Buttons */
-.button-row, .home-cta-row{ display:flex; gap:.5rem; flex-wrap:wrap; align-items:center }
-.btn-citrus, .btn-primary, .btn-secondary{
+.button-row{ display:flex; gap:.5rem; flex-wrap:wrap; align-items:center }
+.btn-citrus{ background:var(--brand); color:#fff; border:1px solid var(--brand);
   display:inline-flex; align-items:center; justify-content:center; gap:.4rem;
-  padding:.6rem .9rem; border-radius:.7rem; font-weight:700; border:1px solid var(--line);
-  cursor:pointer; text-decoration:none;
-}
-.btn-citrus{ background:var(--brand); color:#fff; border-color:var(--brand) }
-.btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
-.btn-secondary{ background:#fff }
-
-/* Dialog (career plans) small tidy */
-.plan-dialog{ width:min(92vw,560px); max-width:560px; border:0; border-radius:1rem; padding:0; box-shadow:0 20px 48px rgba(0,0,0,.18) }
-.plan-dialog::backdrop{ background:rgba(0,0,0,.35) }
-.plan-form{ padding:1rem 1rem .75rem }
-label.plan-row{ display:grid; grid-template-columns:1.25rem 1fr auto; align-items:start; column-gap:.75rem; padding:.6rem .25rem; border-radius:.6rem; cursor:pointer }
-label.plan-row:hover{ background:rgba(0,0,0,.04) }
-label.plan-row > input[type="radio"]{ width:1rem; height:1rem; margin:0; align-self:center }
-label.plan-row > .plan-name{ font-weight:600; line-height:1.25 }
-label.plan-row > .plan-price{ justify-self:end; white-space:nowrap; color:var(--muted); font-weight:700; font-variant-numeric:tabular-nums }
+  padding:.6rem .9rem; border-radius:.7rem; font-weight:700; cursor:pointer; text-decoration:none; }
+.btn-secondary{ background:#fff; border:1px solid var(--line);
+  display:inline-flex; align-items:center; justify-content:center; gap:.4rem;
+  padding:.6rem .9rem; border-radius:.7rem; font-weight:700; text-decoration:none; }
 
 /* Footer */
 .site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
 .site-footer .wrap{padding:1rem}
 
-/* Remove any leftover theme attributes */
-body[data-theme]{ background:transparent !important }
 
-/* ==== Brand normalization ==== */
-.brand{ font-weight: 600; letter-spacing:.08em; } /* consistent across pages */
-.ll-nav .brand .tm {
-  font-size: .7em;
-  vertical-align: super;
-  position: relative;
-  top: 0.15em;   /* nudges it down to match About */
-  margin-left: 1px;
+/* Make card headers purple and body text black */
+.card h3 {
+  color: var(--brand);   /* purple heading */
+  font-family: 'Tenor Sans', serif;
 }
-
-/* ==== Mobile burger + floating menu ==== */
-.burger{ display:none; margin-left:auto; width:40px; height:40px; border:1px solid var(--line); border-radius:.6rem;
-  background:#fff; cursor:pointer; align-items:center; justify-content:center; }
-.burger .icon{ position:relative; width:18px; height:18px; }
-.burger .icon::before, .burger .icon::after, .burger .icon span{
-  content:""; position:absolute; left:0; right:0; height:0; border-top:2px solid currentColor; border-bottom:2px solid transparent;
-  border-radius:2px;
-}
-.burger .icon span{ top:8px; }
-.burger .icon::before{ top:2px; }
-.burger .icon::after{ bottom:2px; }
-
-/* open state -> chevron */
-.burger[aria-expanded="true"] .icon::before,
-.burger[aria-expanded="true"] .icon::after{
-  top:auto; bottom:auto; border-bottom:0;
-}
-.burger[aria-expanded="true"] .icon::before{
-  transform:translateX(4px) rotate(40deg); transform-origin:left center;
-  width:12px; left:3px; top:4px;
-}
-.burger[aria-expanded="true"] .icon::after{
-  transform:translateX(4px) rotate(-40deg); transform-origin:left center;
-  width:12px; left:3px; top:12px;
-}
-.burger[aria-expanded="true"] .icon span{ opacity:0; }
-
-/* floating menu panel (auto-sized, not full width) */
-.mobile-menu{ position:absolute; top:100%; right:12px; z-index:1200; display:none;
-  background:#fff; border:1px solid var(--line); border-radius:.9rem; box-shadow:0 10px 28px rgba(26,34,56,.14);
-  padding:.4rem; min-width:180px; width:max-content; max-width:92vw; }
-.mobile-menu a{ display:block; padding:.55rem .8rem; border-radius:.6rem; color:var(--text); font-weight:600; white-space:nowrap; }
-.mobile-menu a:hover{ background:rgba(0,0,0,.04) }
-.mobile-menu .active{ background:var(--brand-pill); color:var(--brand) }
-
-@media (max-width: 860px){
-  nav.menu{ display:none; }          /* hide desktop row */
-  .burger{ display:inline-flex; }    /* show burger */
-  header.ll-nav{ position:sticky; }  /* keep stickiness */
-  .ll-nav .wrap{ position:relative; }/* anchor for absolute menu */
-}
-
-/* ==== Bottom CTA (centered) ==== */
-.bottom-cta{ padding:1.25rem 1rem 1.6rem }
-.bottom-cta .cta-box{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap }
-.btn, .btn-primary, .btn-secondary{
-  display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
-  padding:.6rem .9rem; border-radius:.7rem; font-weight:700; border:1px solid var(--line);
-  cursor:pointer; text-decoration:none;
-}
-.btn-primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
-.btn-secondary{ background:#fff }
-
-
-
-
-
-/* TM alignment like Founder */
-.brand .tm {
-  font-size: .7em;
-  vertical-align: super;
-}
-
-.brand .tm {
-  font-size: .7em;
-  vertical-align: super;
-  margin-left: 1px; /* adds a little breathing room */
+.card p {
+  color: var(--text);    /* black body text */
 }
 
 
-/* Active nav: bubble only, no underline */
-nav.menu a.active::after {
-  display: none;
-}
-
-/* Mobile dropdown: lighter padding */
-@media(max-width:768px){
-  nav.menu {
-    padding: .6rem .8rem;
-  }
-  nav.menu a {
-    padding: .4rem .6rem;
-  }
-}
-
-/* Citrus Circle card form fix */
-.citrus-card form.circle-form {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  margin-top: .5rem;
-}
-.citrus-card input {
-  padding: .5rem;
-  border: 1px solid var(--line);
-  border-radius: .5rem;
-}
-.citrus-card button {
-  align-self: flex-start;
-}
-
-/* === OVERRIDE FOR BRAND ™ === */
-.brand .tm {
-  font-size: .65em !important;
-  vertical-align: super !important;
-  line-height: 1 !important;
-  position: relative !important;
-  top: -0.2em !important;
-  margin-left: 1px !important;
-}
 
 </style>
-      </dialog>
+</head>
 
+<body>
+<header class="ll-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    <nav class="menu" id="nav-menu">
+      <a href="index.html">Home</a>
+      <div class="dropdown">
+        <button type="button">About ▾</button>
+        <div class="dropdown-menu">
+          <a href="about.html">Lace & Lime™</a>
+          <a href="founder.html">Founder</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button type="button">Workshops ▾</button>
+        <div class="dropdown-menu">
+          <a href="workshops.html">Overview</a>
+          <a href="booking.html">Booking</a>
+        </div>
+      </div>
+      <a href="explore.html" class="active" aria-current="page">Explore</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
+<div class="progress"><span id="progress-fill"></span></div>
 
-
-
-
-      <!-- Citrus Circle Card -->
-      <article class="card citrus-card">
-        <h3 class="citrus-title">Join the Citrus Circle</h3>
-        <p class="citrus-text">
-          Be first to hear about launches and resources, all in one fresh squeeze, not a flood. Delivered with Lace & Lime.
-        </p>
-        <form class="circle-form">
-          <input type="text" placeholder="Name">
-          <input type="email" placeholder="Email">
-          <button type="submit" class="btn-citrus">Join the Circle</button>
-        </form>
-        <small class="citrus-note">Fresh updates, never spam. Opt out anytime.</small>
-      </article>
-    </section>
-  </main>
-
-
-
-
-
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
+<main id="main">
+  <section class="hero hero--stack">
     <div class="wrap">
-      <p>
-        © 2025 Lace & Lime™ LLC. All rights reserved.<br>
-        <a href="privacy-terms.html">Privacy &amp; Terms</a>
-      </p>
+      <span class="eyebrow">EXPLORE</span>
+      <h1 class="tagline">Playlists, prompts, and momentum.</h1>
+      <p class="hero-sub">A balance-forward mix of reflection, action, and clarity tools.</p>
     </div>
-  </footer>
+  </section>
 
 
 
+<section class="explore-grid-pair">
+  <div class="wrap">
+    <!-- Spotify: full card clickable + badge CTA -->
+   <a href="https://open.spotify.com" class="card">
+  <span class="badge">Listen</span>
+  <h3>Spotify Playlists</h3>
+  <p>A curated playlist to fuel insight and forward energy.</p>
+</a>
 
 
-  <!-- One script to power all modals (placed at bottom) -->
-  <script>
-  (() => {
-    const REMEMBER_SELECTION = true;
-    const inited = new Set();
+    <!-- Workshops: badge is CTA -->
+    <div class="card">
+      <a href="workshops.html" class="badge">Learn</a>
+      <h3>Move the needle</h3>
+      <p>From Jumpstart to the full Experience, each workshop blends reflection, action, and accountability. Lock in pilot pricing and leave with immediate tools.</p>
+    </div>
 
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('[data-open-plans],[data-open-funding-plans]');
-      if (!btn) return;
+    <!-- Resume Lab: badge is CTA -->
+    <div class="card">
+      <a href="googlelink.com" class="badge">Build</a>
+      <h3>Resume Lab</h3>
+      <p>Start free to get started. Upgrade into the Lab or Career Session to spot gaps, sharpen your story, and leave with a version that gets noticed.</p>
+    </div>
 
-      const id = btn.getAttribute('aria-controls');
-      const dialog = document.getElementById(id);
-      if (!dialog) return;
+    <!-- Citrus Circle: badge is CTA -->
+    <div class="card">
+      <a href="#" class="badge">Join</a>
+      <h3>Citrus Circle</h3>
+  <p>Be the first to hear about launches and resources, all in one fresh squeeze, not a flood.</p>
+  <form action="https://YOUR_SIGNUP_ENDPOINT" method="post" style="margin-top:.5rem; display:flex; gap:.5rem;">
+    <input type="email" name="email" placeholder="Your email" required
+           style="flex:1; padding:.5rem; border:1px solid var(--line); border-radius:.5rem; font-family:inherit;">
+    <button type="submit" class="btn-citrus">→</button>
+  </form>
+</div>
+  </div>
+</section>
+</main>
 
-      if (!inited.has(dialog)) { initDialog(dialog); inited.add(dialog); }
-
-      const form = dialog.querySelector('form');
-      const submit = dialog.querySelector('.btn-continue');
-      if (REMEMBER_SELECTION) {
-        const key = 'workshops:last-plan:' + id;
-        const last = localStorage.getItem(key);
-        if (last) {
-          const r = form.querySelector(`input[name="plan"][value="${CSS.escape(last)}"]`);
-          if (r) r.checked = true;
-        }
-      }
-      if (submit) submit.disabled = !form.querySelector('input[name="plan"]:checked');
-
-      btn.setAttribute('aria-expanded','true');
-      if (dialog.showModal) dialog.showModal(); else dialog.setAttribute('open','');
-    });
-
-    function initDialog(dialog){
-      const form = dialog.querySelector('form');
-      const submit = dialog.querySelector('.btn-continue');
-      const cancel = dialog.querySelector('.btn-cancel');
-      const key = 'workshops:last-plan:' + dialog.id;
-
-      form.addEventListener('change', (e) => {
-        if (e.target.matches('input[name="plan"]')) {
-          if (submit) submit.disabled = false;
-          localStorage.setItem(key, e.target.value);
-        }
-      });
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const choice = form.querySelector('input[name="plan"]:checked');
-        if (choice) window.location.href = choice.dataset.href;
-      });
-
-      if (cancel) cancel.addEventListener('click', () => {
-        if (dialog.close) dialog.close(); else dialog.removeAttribute('open');
-      });
-
-      dialog.addEventListener('click', (e) => {
-        const r = dialog.getBoundingClientRect();
-        const inside = e.clientX >= r.left && e.clientX <= r.right &&
-                       e.clientY >= r.top  && e.clientY <= r.bottom;
-        if (!inside) { if (dialog.close) dialog.close(); else dialog.removeAttribute('open'); }
-      });
-
-      dialog.addEventListener('close', () => {
-        const opener = document.querySelector(`[aria-controls="${CSS.escape(dialog.id)}"]`);
-        if (opener) opener.setAttribute('aria-expanded','false');
-      });
-    }
-  })();
-  </script>
-
-  <!-- your general site script (if needed) -->
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2025 Lace & Lime™ LLC. All rights reserved.<br>
+      <a href="privacy-terms.html">Privacy &amp; Terms</a>
+    </p>
+  </div>
+</footer>
 
 <script>
-// Mark Explore active (defensive)
-(() => {
-  document.querySelectorAll('.menu a').forEach(a => {
-    const href = (a.getAttribute('href') || '').toLowerCase();
-    const isHere = href.includes('explore');
-    a.classList.toggle('active', isHere);
-    if (isHere) a.setAttribute('aria-current','page');
-  });
-})();
-// Progress band placement + scroll percentage
+// Progress bar
 (() => {
   const fill = document.getElementById('progress-fill');
   const header = document.querySelector('.ll-nav');
@@ -528,85 +387,34 @@ nav.menu a.active::after {
   function pct(){
     const doc = document.documentElement;
     const sc = Math.max(doc.scrollTop, document.body.scrollTop);
-    const max = (doc.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+    const max = (doc.scrollHeight || document.body.scrollHeight) - innerHeight;
     const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
     if(fill) fill.style.width = (r*100).toFixed(2) + '%';
   }
   place(); pct();
-  window.addEventListener('resize', place, {passive:true});
-  window.addEventListener('scroll', pct, {passive:true});
+  addEventListener('resize', place, {passive:true});
+  addEventListener('scroll', pct, {passive:true});
 })();
-// Optional: inline Spotify toggle: click button to reveal embed in-page
-(() => {
-  const btn = document.querySelector('.spotify-card .btn-citrus');
-  const wrap = document.getElementById('spotify-player');
-  if(btn && wrap){
-    btn.addEventListener('click', (e) => {
-      // if target is external link, let it open; if same-origin '#' you can toggle
-      const isExternal = btn.hasAttribute('target');
-      if (!isExternal) {
-        e.preventDefault();
-        wrap.style.display = (wrap.style.display === 'none' || !wrap.style.display) ? 'block' : 'none';
-      }
+
+// Burger toggle
+const burger = document.getElementById("burger");
+const navMenu = document.getElementById("nav-menu");
+burger.addEventListener("click", () => {
+  burger.classList.toggle("open");
+  navMenu.classList.toggle("show");
+});
+
+// Mobile dropdown toggle
+document.querySelectorAll('#nav-menu .dropdown > button').forEach(btn=>{
+  btn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const parent = btn.parentElement;
+    document.querySelectorAll('#nav-menu .dropdown').forEach(d=>{
+      if(d !== parent) d.classList.remove('open');
     });
-  }
-})();
-</script>
-
-<script>
-// === Mobile menu: clone links and toggle ===
-(() => {
-  const header = document.querySelector('.ll-nav .wrap');
-  if(!header) return;
-
-  // ensure burger button exists
-  let burger = header.querySelector('#burger');
-  if(!burger){
-    burger = document.createElement('button');
-    burger.id = 'burger';
-    burger.className = 'burger';
-    burger.type = 'button';
-    burger.setAttribute('aria-label','Open menu');
-    burger.setAttribute('aria-expanded','false');
-    burger.innerHTML = '<span class="icon"><span></span></span>';
-    header.appendChild(burger);
-  }
-
-  // build floating panel if missing
-  let panel = header.querySelector('#mobileMenu');
-  if(!panel){
-    panel = document.createElement('nav');
-    panel.id = 'mobileMenu';
-    panel.className = 'mobile-menu';
-    panel.setAttribute('aria-label','Mobile');
-    header.appendChild(panel);
-  }
-
-  // copy links from desktop nav.menu
-  const desktop = header.querySelector('nav.menu');
-  if(desktop && panel && !panel.dataset.bound){
-    panel.innerHTML = desktop.innerHTML;
-    panel.dataset.bound = '1';
-  }
-
-  // close on outside click / escape
-  function close(){
-    burger.setAttribute('aria-expanded','false');
-    panel.style.display = 'none';
-  }
-  document.addEventListener('click', (e) => {
-    if(!panel.contains(e.target) && !burger.contains(e.target)) close();
-  }, {passive:true});
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') close();
+    parent.classList.toggle('open');
   });
-
-  burger.addEventListener('click', () => {
-    const open = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!open));
-    panel.style.display = open ? 'none' : 'block';
-  });
-})();
+});
 </script>
 </body>
 </html>
