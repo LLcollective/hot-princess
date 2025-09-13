@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Lace & Lime™</title>
+  <meta name="description" content="Lace & Lime blends reflection with aligned steps, turning awareness into momentum." />
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --surface:#E6F4FF;
+      --text:#1A2238;
+      --muted:#405970;
+      --line: rgba(26,34,56,.15);
+      --card:#FFFFFF;
+      --shadow: 0 6px 20px rgba(26,34,56,.08);
+      --brand:#7b6cf6;
+      --brand-pill:#F3F4FF;
+      --lime:#9BE080;
+    }
+    html,body{margin:0; padding:0}
+    body{
+      background:transparent !important;
+      color:var(--text);
+      font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.5;
+    }
+
+body::before{
+  content:""; position:fixed; inset:0;
+  background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
+  z-index:-1; pointer-events:none;
+}
+
+
+   /* ===== Header ===== */
+.ll-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);     /* soft tint */
+  backdrop-filter: blur(6px);             /* frosted glass effect */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06); /* subtle depth */
+}
+
+.ll-nav .wrap {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: 'Tenor Sans', serif;
+  letter-spacing: .05em;
+  color: var(--brand);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.brand .tm {
+  font-size: .6em;
+  vertical-align: super;
+  margin-left: 2px;
+  opacity: .7; /* softer, less loud */
+}
+
+nav.menu {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  white-space: nowrap;
+}
+
+nav.menu > a,
+nav.menu > .dropdown > button {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;           /* lighter weight */
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--brand);
+  padding: .4rem .8rem;        /* more balanced spacing */
+  border-radius: .5rem;        /* smoother corners */
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color .2s ease,
+              background .25s ease,
+              transform .15s ease; /* smoother hovers */
+}
+
+nav.menu > a:hover,
+nav.menu > .dropdown > button:hover {
+  color: var(--lime);
+  background: var(--brand-pill);
+  transform: translateY(-1px); /* tiny lift effect */
+}
+
+nav.menu a.active {
+  background: var(--brand-pill);
+  color: var(--brand);
+}
+
+    /* Dropdown Styles */
+    .dropdown { position: relative; }
+    .dropdown-menu {
+      display: none;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity .2s ease, transform .2s ease;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: .6rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      padding: .5rem 0;
+      min-width: 160px;
+      z-index: 1000;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding:.5rem .75rem;
+      font-size:.95rem;
+      color: var(--brand);
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover {
+      background: var(--brand-pill); 
+      color: var(--lime);
+    }
+    .dropdown.open .dropdown-menu {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (min-width: 769px) {
+      .dropdown:hover .dropdown-menu,
+      .dropdown:focus-within .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Burger */
+    .burger {
+      display:none;
+      width:40px;
+      height:40px;
+      border:1px solid var(--line);
+      border-radius:.6rem;
+      background:#fff;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+    }
+    .burger .icon{ position:relative; width:18px; height:18px; }
+    .burger .icon::before, .burger .icon::after, .burger .icon span{
+      content:""; position:absolute; left:0; right:0; height:0; border-top:2px solid currentColor; border-radius:2px;
+    }
+    .burger .icon span{ top:8px }
+    .burger .icon::before{ top:2px }
+    .burger .icon::after{ bottom:2px }
+    .burger[aria-expanded="true"] .icon::before{
+      transform:translateX(4px) rotate(40deg); width:12px; left:3px; top:4px;
+    }
+    .burger[aria-expanded="true"] .icon::after{
+      transform:translateX(4px) rotate(-40deg); width:12px; left:3px; top:12px;
+    }
+    .burger[aria-expanded="true"] .icon span{ opacity:0 }
+    @media(max-width:860px){ nav.menu{display:none} .burger{display:inline-flex} .ll-nav .wrap{position:relative} }
+
+    .mobile-menu{ position:absolute; top:100%; right:12px; z-index:1200; display:none;
+      background:#fff; border:1px solid var(--line); border-radius:.9rem; box-shadow:0 10px 28px rgba(26,34,56,.14);
+      padding:.4rem; min-width:180px; width:max-content; max-width:92vw; }
+    .mobile-menu a{ display:block; padding:.55rem .8rem; border-radius:.6rem; color:var(--text); font-weight:600; white-space:nowrap; }
+    .mobile-menu .active{ background:var(--brand-pill); color:var(--brand) }
+
+    /* Progress band */
+    .progress{height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top, 64px); z-index:999}
+    .progress span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear}
+
+    /* Hero */
+    .hero{border-bottom:1px solid var(--line);}
+    .hero .wrap{padding:2.25rem 1rem 1.25rem}
+    .eyebrow{display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700}
+    .tagline{font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .6rem}
+    .hero-sub{color:var(--muted); max-width:60ch}
+
+    /* Carousel */
+    .carousel{padding:1.25rem 1rem 2rem}
+    .carousel-viewport{position:relative; overflow:hidden; border-radius:1rem}
+    .carousel-track{display:flex; gap:1rem; padding:.25rem; overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; scroll-behavior:smooth;}
+    .carousel-track::-webkit-scrollbar{display:none}
+    .c-card{flex:0 0 360px; max-width:360px; background:var(--card); border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem; scroll-snap-align:start;}
+    .c-card h3{margin:.25rem 0 .25rem; font-size:1.1rem; color:var(--brand)}
+    .c-card p{margin:.3rem 0 .25rem; color:var(--text)}
+    .carousel-controls{display:flex; gap:.75rem; justify-content:center; align-items:center; margin-top:.75rem}
+    .c-btn{appearance:none; border:1px solid var(--line); background:#fff; color:var(--brand); padding:.55rem .9rem; border-radius:.8rem; font-weight:700; cursor:pointer;}
+    .dots{display:flex; gap:.4rem; align-items:center}
+    .dot{width:8px; height:8px; border-radius:50%; background:rgba(79,70,229,.35); border:none;}
+    .dot[aria-current="true"]{background:var(--brand)}
+
+    /* Footer */
+    .site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
+    .site-footer .wrap{padding:1rem}
+  </style>
+</head>
+<body>
+
+<header class="ll-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
+    <button id="burger" class="burger" aria-expanded="false">
+      <span class="icon"><span></span></span>
+    </button>
+    <nav class="menu" id="nav-menu">
+      <a href="index.html">Home</a>
+      <div class="dropdown">
+        <button type="button">About ▾</button>
+        <div class="dropdown-menu">
+          <a href="about.html" class="active" aria-current="page">Lace & Lime™</a>
+          <a href="founder.html">Founder</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button type="button">Workshops ▾</button>
+        <div class="dropdown-menu">
+          <a href="workshops.html">Overview</a>
+          <a href="booking.html">Booking</a>
+        </div>
+      </div>
+      <a href="explore.html">Explore</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <nav id="mobileMenu" class="mobile-menu"></nav>
+  </div>
+</header>
+
+<!-- Progress bar -->
+<div class="progress"><span id="progress-fill"></span></div>
+
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">ABOUT</span>
+        <h1 class="tagline">Our Story</h1>
+        <p class="hero-sub">Balance-forward tools where clarity meets action — that’s Lace & Lime.</p>
+      </div>
+    </section>
+
+    <!-- Carousel -->
+    <section class="carousel" aria-label="About highlights">
+      <div class="wrap">
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="track" role="list">
+            <!-- cards here (unchanged) -->
+            <article class="c-card"><h3>Why Lace & Lime</h3><p><em>Accessible, clear, actionable.</em></p><p>We design tools that make reflection and aligned steps feel doable and real-life friendly.</p></article>
+            <article class="c-card"><h3>How We Work</h3><p><em>LACE (reflect) + LIME (move).</em></p><p>Guided prompts + steady actions help you pause, reset, and create momentum you can keep.</p></article>
+            <article class="c-card"><h3>What We Offer</h3><p><em>Workshops, journals, clarity tools.</em></p><p>Designed for grounded growth in classrooms, clinics, and community rooms.</p></article>
+            <article class="c-card"><h3>Who We Serve</h3><p><em>Individuals, teams, communities.</em></p><p>We meet people where they are with plain, kind, practical language.</p></article>
+            <article class="c-card"><h3>Values</h3><p><em>Clarity, dignity, follow-through.</em></p><p>We honor pace and context, building confidence without urgency theater.</p></article>
+            <article class="c-card"><h3>Impact</h3><p><em>Small steps, steady change.</em></p><p>From one conversation to a team session, we focus on moves that stick.</p></article>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="c-btn" id="prev">‹</button>
+          <div class="dots">
+            <button class="dot" aria-current="true"></button>
+            <button class="dot"></button>
+            <button class="dot"></button>
+            <button class="dot"></button>
+            <button class="dot"></button>
+            <button class="dot"></button>
+          </div>
+          <button class="c-btn" id="next">›</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2025 Lace & Lime™ LLC. All rights reserved.<br><a href="privacy-terms.html">Privacy & Terms</a></p>
+    </div>
+  </footer>
+
+<script>
+// Progress bar
+(() => {
+  const fill=document.getElementById('progress-fill');
+  const header=document.querySelector('.ll-nav');
+  function place(){ const h=header?.getBoundingClientRect().height||56;
+    document.documentElement.style.setProperty('--progress-top',h+'px');}
+  function pct(){ const doc=document.documentElement; const sc=Math.max(doc.scrollTop,document.body.scrollTop);
+    const max=(doc.scrollHeight||document.body.scrollHeight)-innerHeight;
+    const r=max>0?Math.min(1,Math.max(0,sc/max)):0;
+    if(fill) fill.style.width=(r*100).toFixed(2)+'%';}
+  place(); pct(); addEventListener('resize',place,{passive:true}); addEventListener('scroll',pct,{passive:true});
+})();
+
+// Burger toggle
+const burger=document.getElementById("burger");
+const navMenu=document.getElementById("nav-menu");
+burger.addEventListener("click",()=>{ burger.classList.toggle("open"); navMenu.classList.toggle("show"); });
+
+// Mobile dropdown toggle
+document.querySelectorAll('#nav-menu .dropdown > button').forEach(btn=>{
+  btn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const parent=btn.parentElement;
+    document.querySelectorAll('#nav-menu .dropdown').forEach(d=>{
+      if(d!==parent) d.classList.remove('open');
+    });
+    parent.classList.toggle('open');
+  });
+});
+
+// Carousel logic unchanged
+(function(){
+  const track=document.getElementById('track');
+  const prev=document.getElementById('prev');
+  const next=document.getElementById('next');
+  const dots=Array.from(document.querySelectorAll('.dots .dot'));
+  if(!track||!prev||!next) return;
+  const cards=Array.from(track.querySelectorAll('.c-card'));
+  let positions=[];
+  function computePositions(){ positions=cards.map(el=>el.offsetLeft); }
+  function nearestIndex(){ const x=track.scrollLeft; let best=0,bestDist=Infinity; positions.forEach((p,i)=>{const dist=Math.abs(p-x); if(dist<bestDist){bestDist=dist;best=i;}}); return best; }
+  function scrollToIndex(i){ const clamped=Math.max(0,Math.min(i,positions.length-1)); track.scrollTo({left:positions[clamped],behavior:'smooth'}); updateDots(clamped); }
+  function updateDots(i=nearestIndex()){ dots.forEach((d,idx)=> d.setAttribute('aria-current',idx===i?'true':'false')); }
+  next.addEventListener('click',()=>scrollToIndex(nearestIndex()+1));
+  prev.addEventListener('click',()=>scrollToIndex(nearestIndex()-1));
+  dots.forEach((d,i)=> d.addEventListener('click',()=>scrollToIndex(i)));
+  window.addEventListener('load',()=>{computePositions();updateDots(0);});
+  window.addEventListener('resize',()=>{computePositions();updateDots();});
+})();
+</script>
+</body>
+</html>

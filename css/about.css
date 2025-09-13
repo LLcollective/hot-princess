@@ -1,0 +1,105 @@
+/* === 1. ABOUT PAGE LAYOUT === */
+.about {
+  width: min(1120px, 92vw);
+  margin-inline: auto;
+  padding: 2rem 0 4rem;
+}
+.about h2 {
+  text-align: center;
+  font-family: 'Tenor Sans', serif;
+  font-size: clamp(1.5rem, 1.5vw + 1rem, 2rem);
+  margin-bottom: 1rem;
+}
+.about p.subtext {
+  text-align: center;
+  color: var(--ink-600);
+  max-width: 60ch;
+  margin: 0 auto 2.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+
+/* === CAROUSEL CONTAINER === */
+.carousel { 
+  padding: 2rem 0; 
+  position: relative; 
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.carousel-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.carousel-viewport::-webkit-scrollbar { display: none; }
+
+/* Track scrolls horizontally */
+.carousel-track {
+  display: flex;
+  gap: 1rem; /* consistent spacing */
+  flex-wrap: nowrap;
+  will-change: scroll-position;
+}
+
+/* Cards */
+.c-card {
+  flex: 0 0 320px;
+  max-width: 320px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+.c-card h3 { margin: .25rem 0; font-size: 1.1rem; color: var(--brand); }
+.c-card p { color: var(--ink-700); font-size: .95rem; }
+
+/* Controls */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid var(--lime);
+  color: var(--lime);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.25s ease;
+}
+.carousel-btn:hover { background: var(--lime); color: #fff; }
+.carousel-btn.prev { left: -40px; }
+.carousel-btn.next { right: -40px; }
+
+/* Dots */
+.carousel-dots {
+  display: flex; gap: .5rem; justify-content: center;
+  margin-top: 1rem;
+}
+.carousel-dots button {
+  width: 10px; height: 10px;
+  border-radius: 50%; border: none;
+  background: var(--line);
+  cursor: pointer;
+  transition: background .25s ease;
+}
+.carousel-dots button[aria-current="true"] { background: var(--brand); }
+
+/* Responsive */
+@media (max-width: 820px) {
+  .c-card { flex-basis: 80vw; max-width: 80vw; }
+  .carousel-btn.prev { left: -40px; }
+  .carousel-btn.next { right: -40px; }
+}
+
+
