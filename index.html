@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css.css?v=1.4">
   <link rel="stylesheet" href="css/index.css?v=1.4">
 </head>
-<body>
+<body class="home"><!-- ⬅️ added 'home' class -->
  <!-- ===== HEADER ===== -->
 <header class="ll-nav">
   <div class="wrap">
@@ -30,6 +30,8 @@
 <!-- SCRIM -->
 <div id="nav-scrim" class="scrim"></div>
 
+
+
 <!-- ===== SIDEBAR NAVIGATION ===== -->
 <nav id="nav-menu" class="sidebar">
   <a href="index.html" class="nav-home">
@@ -37,32 +39,35 @@
     <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
   </a>
 
+  <!-- About Dropdown -->
   <div class="dropdown">
     <button class="nav-about" aria-expanded="false">
       <span class="label-wrap">
         About <span class="caret">▾</span>
       </span>
-      <img src="assets/brush-link-lavender.svg" alt="" class="nav-brush">
     </button>
     <div class="dropdown-menu">
       <a href="about.html">Our Story</a>
       <a href="founder.html">Founder</a>
     </div>
+    <img src="assets/brush-link-lavender.svg" alt="" class="nav-brush">
   </div>
 
+  <!-- Workshops Dropdown -->
   <div class="dropdown">
     <button class="nav-workshops" aria-expanded="false">
       <span class="label-wrap">
         Workshops <span class="caret">▾</span>
       </span>
-      <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
     </button>
     <div class="dropdown-menu">
       <a href="workshops.html">Overview</a>
       <a href="booking.html">Booking</a>
     </div>
+    <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
   </div>
 
+  <!-- Static links -->
   <a href="explore.html" class="nav-explore">
     Explore
     <img src="assets/brush-link-lavender.svg" alt="" class="nav-brush">
@@ -74,13 +79,22 @@
   </a>
 </nav>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- ===== HERO SECTION ===== -->
 <section class="hero">
   <div class="wrap" style="text-align:center;">
-    <p class="eyebrow" style="text-align:left; margin-left:0;">
-      MODERN RESOURCES, WITH A TWIST
-    </p>
-
+    
     <h1 class="tagline">
       Reflection that moves. Action that sticks.
     </h1>
@@ -100,30 +114,20 @@
       <!-- Left Path -->
       <div class="path workshops left">
         <h3>Guided Workshops</h3>
-        <p>Live, practical sessions designed to move you from reflection into aligned action in just two weeks.</p>
-        <ul>
-          <li><a href="#">2 week action plans</a></li>
-          <li><a href="#">Interactive & live</a></li>
-          <li><a href="#">Scripts & guides</a></li>
+        <p>Join live, practical sessions that move you from reflection into aligned action.</p>
+          <a href="#">* 2 week action plans</a><br>
+          <a href="#">* Interactive & live</a><br>
+          <a href="#">* Scripts & guides</a><br>
         </ul>
       </div>
 
-      <!-- Divider -->
-      <div class="path-divider">
-        <img src="assets/verticle-middle-green.png" alt="divider" aria-hidden="true">
-      </div>
-
-      <!-- Right Path -->
+          <!-- Right Path -->
       <div class="path journals right">
         <h3>Lace & Lime™ Sets</h3>
         <p>Six themed sets with titles and short reflections to guide your next step.</p>
-        <ul>
-          <li><a href="#">Include sets</a></li>
-          <li><a href="#">Scripts & guides</a></li>
- <li><a href="#">More details - coming this fall</a></li>
-                 
-
-</ul>
+          <a href="#">* Include sets</a><br>
+          <a href="#">* Scripts & guides</a><br>
+          <a href="#">* Details coming soon</a><br>
       </div>
     </div>
   </div>

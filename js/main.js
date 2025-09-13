@@ -20,21 +20,29 @@ if (burger && sidebar && scrim) {
 }
 
 // ===== DROPDOWN TOGGLE =====
+function closeAllDropdowns() {
+  document.querySelectorAll('.sidebar .dropdown > button')
+    .forEach(b => b.setAttribute('aria-expanded', 'false'));
+}
+
 document.querySelectorAll('.sidebar .dropdown > button').forEach(button => {
   button.addEventListener('click', e => {
     e.stopPropagation();
+
     const expanded = button.getAttribute('aria-expanded') === 'true';
-    document.querySelectorAll('.sidebar .dropdown > button')
-      .forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+    // Close all first
+    closeAllDropdowns();
+
+    // Toggle this one
     button.setAttribute('aria-expanded', String(!expanded));
   });
 });
 
-// Close dropdowns on outside click
+// Close on outside click
 document.addEventListener('click', e => {
   if (!e.target.closest('.sidebar .dropdown')) {
-    document.querySelectorAll('.sidebar .dropdown > button')
-      .forEach(b => b.setAttribute('aria-expanded', 'false'));
+    closeAllDropdowns();
   }
 });
 
@@ -42,81 +50,69 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeSidebar();
-    document.querySelectorAll('.sidebar .dropdown > button')
-      .forEach(b => b.setAttribute('aria-expanded', 'false'));
+    closeAllDropdowns();
   }
 });
 
-// ===== TOUCH-SCROLL CAROUSEL (offset-based like original) =====
+
+
+/* === CAROUSEL LOGIC (Universal) ============================ */
 document.querySelectorAll('.carousel').forEach(carousel => {
   const viewport = carousel.querySelector('.carousel-viewport');
   const track = carousel.querySelector('.carousel-track');
-  const cards = carousel.querySelectorAll('.c-card');
-  const nextBtn = carousel.querySelector('.carousel-btn.next');
+  const cards = Array.from(track.children);
   const prevBtn = carousel.querySelector('.carousel-btn.prev');
-  const dots = carousel.querySelectorAll('.carousel-dots button');
+  const nextBtn = carousel.querySelector('.carousel-btn.next');
+  const dots = Array.from(carousel.querySelectorAll('.carousel-dots button'));
 
+  let cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(track).gap) || 0;
   let index = 0;
-  let positions = [];
 
-  // Compute left offsets of each card relative to the track
-  function computePositions() {
-    positions = Array.from(cards).map(el => el.offsetLeft);
-  }
+  // Update card width if window resizes
+  const computePositions = () => {
+    cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(track).gap) || 0;
+  };
 
-  function scrollToIndex(i) {
-    if (i < 0) index = cards.length - 1;
-    else if (i >= cards.length) index = 0;
-    else index = i;
+  // Scroll to given index
+  const scrollToIndex = (i) => {
+    if (i < 0) i = 0;
+    if (i >= cards.length) i = cards.length - 1;
+    index = i;
+    viewport.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
 
-    viewport.scrollTo({
-      left: positions[index],
-      behavior: 'smooth'
+    dots.forEach((dot, di) => {
+      dot.setAttribute("aria-current", di === i ? "true" : "false");
     });
+  };
 
-    dots.forEach((dot, dIdx) =>
-      dot.toggleAttribute('aria-current', dIdx === index)
-    );
+  // Nearest index based on scroll position
+  const nearestIndex = () => {
+    return Math.round(viewport.scrollLeft / cardWidth);
+  };
+
+  // Button events
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => scrollToIndex(index - 1));
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => scrollToIndex(index + 1));
   }
 
-  function nearestIndex() {
-    const x = viewport.scrollLeft;
-    let best = 0, bestDist = Infinity;
-    positions.forEach((p, i) => {
-      const dist = Math.abs(p - x);
-      if (dist < bestDist) {
-        bestDist = dist;
-        best = i;
-      }
-    });
-    return best;
-  }
+  // Dot events
+  dots.forEach((dot, di) => {
+    dot.addEventListener('click', () => scrollToIndex(di));
+  });
 
-  // Button clicks
-  nextBtn?.addEventListener('click', () => scrollToIndex(index + 1));
-  prevBtn?.addEventListener('click', () => scrollToIndex(index - 1));
-
-  // Dot clicks
-  dots.forEach((dot, dIdx) =>
-    dot.addEventListener('click', () => scrollToIndex(dIdx))
-  );
-
-  // Sync dots on manual scroll
+  // Snap on scroll end
+  let isScrolling;
   viewport.addEventListener('scroll', () => {
-    const i = nearestIndex();
-    if (i !== index) {
-      index = i;
-      dots.forEach((dot, dIdx) =>
-        dot.toggleAttribute('aria-current', dIdx === index)
-      );
-    }
+    clearTimeout(isScrolling);
+    isScrolling = setTimeout(() => {
+      scrollToIndex(nearestIndex());
+    }, 120);
   });
 
-  // Init
-  window.addEventListener('load', () => {
-    computePositions();
-    scrollToIndex(0);
-  });
+  // Adjust on resize
   window.addEventListener('resize', () => {
     computePositions();
     scrollToIndex(nearestIndex());
