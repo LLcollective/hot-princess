@@ -19,7 +19,7 @@
 .wrap {
   width: min(1120px,92vw);
   margin-inline: auto;
-  padding: 1rem;
+  padding:1rem;
 }
 
 /* Typography */
@@ -257,7 +257,6 @@ details.accordion .body ul { columns:2; margin:0; padding-left:1.2rem; }
     display: flex;              /* overrides desktop "block" */
     flex-direction: column;
     align-items: center;
-    text-align: center;         /* overrides desktop "left" */
   }
 
   .profile img {
@@ -275,7 +274,7 @@ details.accordion .body ul { columns:2; margin:0; padding-left:1.2rem; }
 
   /* add consistent small gap between paragraphs */
   .hero-sub-mobile + .hero-sub-mobile {
-    margin-top: 0.4rem !important;
+    margin-top: 0.2rem !important;
   }
 
   /* originally: hero-sub-desktop visible on desktop, hidden here */

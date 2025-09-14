@@ -641,3 +641,80 @@ body::before {
 .sidebar .dropdown > button[aria-expanded="true"] + .dropdown-menu {
   display: flex;
 }
+
+
+
+
+
+
+
+
+/* ===== BOOKING SECTION ===== */
+
+/* Full-bleed section */
+.booking-section {
+  width: 100%;
+  padding: 2rem 0;
+  background: var(--ink-100); /* optional: matches your site background */
+}
+
+/* Intro (keeps text readable in center) */
+.booking-intro {
+  max-width: 950px;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+}
+
+.booking-intro h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--brand);
+  margin-bottom: 0.5rem;
+}
+
+.booking-intro p {
+  color: var(--ink-700);
+  line-height: 1.6;
+}
+
+/* Booking iframe wrapper */
+.booking-frame {
+  position: relative;
+  width: 100%;
+  height: 1200px;   /* default desktop height */
+  margin: 0 auto;
+}
+
+.booking-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Overlay to hide Google footer */
+.iframe-cover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8%;  /* covers bottom strip */
+  background: linear-gradient(to bottom, transparent, var(--ink-100));
+  pointer-events: none;
+}
+
+/* === Responsive adjustments === */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .booking-frame { height: 1900px; }
+}
+
+/* Large phones */
+@media (max-width: 768px) {
+  .booking-frame { height: 1900px; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .booking-frame { height: 1900px; }
+}

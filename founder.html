@@ -254,6 +254,26 @@
     document.getElementById("systems-btn").addEventListener("click",()=>{
       document.getElementById("systems-modal").style.display="flex";
     });
-  </script>
+  
+  // Close modal when clicking the "Close" button
+  document.querySelector("#systems-modal .modal-close")?.addEventListener("click", () => {
+    document.getElementById("systems-modal").style.display = "none";
+  });
+
+  // Optional: close when clicking the backdrop
+  document.getElementById("systems-modal")?.addEventListener("click", (e) => {
+    if (e.target.id === "systems-modal") {
+      e.target.style.display = "none";
+    }
+  });
+
+  // Optional: close with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      document.getElementById("systems-modal").style.display = "none";
+    }
+  });
+</script>
+
 </body>
 </html>
