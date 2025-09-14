@@ -8,107 +8,75 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css.css">
+
   <style>
-    /* ===== ROOT TOKENS ===== */
-    :root {
-      --ink-900: #24324a;
-      --ink-800: #2a3a52;
-      --ink-700: #465770;
-      --ink-100: #f7f9fb;
-
-      --brand: #7B6CF6;
-      --brand-dark: #5A4EBC;
-    }
-
-    /* ===== BASE ===== */
-    body {
-      margin: 0;
-      font-family: 'Work Sans', sans-serif;
-      line-height: 1.6;
-      color: var(--ink-800);
-    }
-
-    /* Ombre background */
-    body::before {
-      content: "";
+    /* ===== Progress Bar ===== */
+    #progress-bar {
       position: fixed;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        #DBE9FA 0%,
-        #D6E5FC 50%,
-        #D0E2FE 100%
-      );
-      z-index: -1;
-    }
-
-    /* ===== HEADER ===== */
-    header.ll-nav {
-      position: sticky;
       top: 0;
-      z-index: 1001;
-      background: transparent;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--brand), var(--lime));
+      z-index: 2000;
+      transition: width 0.25s ease-out;
     }
 
-    .ll-nav .wrap {
+    /* ===== Booking Section ===== */
+    .booking-section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1.5rem 2rem;
+      padding: 2rem 5rem 0;
+      text-align: left;
+    }
+
+    .cta-options {
       display: flex;
-      justify-content: flex-start; /* keep brand left aligned */
-      align-items: center;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
     }
 
-    .brand {
-      font-family: 'Tenor Sans', serif;
-      font-size: 1.6rem;
+    .cta-btn {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
       font-weight: 600;
-      color: var(--brand);
-      letter-spacing: 0.05em;
-      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 240px;
+      transition: background 0.3s ease;
+    }
+    .cta-btn:hover { background: var(--brand-dark); }
+
+    .cta-note {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 0.25rem;
     }
 
-    .brand .tm {
-      font-size: 0.6em;
-      vertical-align: super;
-      margin-left: 2px;
+    @media (min-width: 600px) {
+      .cta-options { flex-direction: row; }
     }
 
-    .brand:hover {
-      color: var(--brand-dark);
-    }
-
-    /* ===== BOOKING SECTION ===== */
-    .booking-section {
-      padding: 3rem 2rem 5rem;
-      text-align: center; /* center heading/intro text */
-    }
-
-    .booking-section h2 {
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 600;
-      color: var(--ink-900);
-      margin-bottom: 0.5rem;
-    }
-
-    .booking-section p {
-      color: var(--ink-700);
-      margin-bottom: 2rem;
+    /* ===== Booking Frame Section ===== */
+    .booking-frame-section {
+      padding: 0;
+      margin: 0;
+      max-width: 100%;
     }
 
     .booking-frame {
       position: relative;
-      width: 75%;
-      max-width: 900px;
-      margin: 0 auto; /* centers calendar only */
-      height: 780px;
-      border-radius: 12px;
+      width: 100%;
+      height: 100vh;   /* Full viewport height */
+      border-radius: 0;
       overflow: hidden;
-
-      /* Milky blur white */
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
     }
 
     .booking-frame iframe {
@@ -117,117 +85,205 @@
       border: none;
     }
 
-    /* Solid block cover (straight line, hides Google footer) */
     .iframe-cover {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 160px;
-      background: #D0E2FE;
+      background: linear-gradient(
+        180deg,
+        #E6F4FF 0%,
+        #DCEBFF 45%,
+        #C7DBFF 75%,
+        #BFD0FF 100%
+      );
       pointer-events: none;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      border-top: 1px solid var(--ink-100);
-      margin-top: 3rem;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: var(--ink-700);
-      text-align: left; /* keep footer text aligned left */
-    }
-
-    footer .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    footer a {
-      color: var(--brand);
-      text-decoration: none;
-      margin-left: 0.25rem;
-    }
-
-    footer a:hover {
-      color: var(--brand-dark);
+      z-index: 5;
     }
 
 
 
-.cta-options {
+
+    /* ===== Scrim overlay (clickable background) ===== */
+    .scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1200;
+    }
+    .scrim.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+
+/* ===== Sidebar toggle ===== */
+nav.sidebar {
+  position: fixed;
+  top: 3vh;
+  right: 0;
+  width: 180px;
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  gap: .75rem;
+  padding: .5rem .75rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(16px) saturate(150%);
+  border-radius: 12px;
+  transform: translateX(100%); /* hidden by default */
+  transition: transform .35s ease;
+  z-index: 800;
 }
 
-.cta-btn {
-  display: inline-block;
-  background: var(--brand);
-  color: #fff;
-  font-weight: 600;
-  padding: 0.9rem 1.8rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease;
+nav.sidebar.show {
+  transform: translateX(0); /* slides into view */
 }
 
-.cta-btn:hover {
-  background: var(--brand-dark);
+
+
+/* ===== Mobile CTA spacing ===== */
+@media (max-width: 600px) {
+  .booking-section {
+    padding: 1rem 1.25rem 0 !important; /* tighter side + top padding */
+  }
+
+  .cta-options {
+    gap: 0.4rem !important;   /* reduce spacing between items */
+    margin-top: 0.5rem !important; /* bring block closer to text */
+  }
+
+  .cta-note {
+    margin-top: 0.15rem !important; /* snug under the button */
+    font-size: 0.75rem !important;  /* slightly smaller text */
+  }
 }
 
-.cta-btn.alt {
-  background: var(--ink-700);
-}
-
-.cta-btn.alt:hover {
-  background: var(--ink-900);
+.burger {
+  z-index: 1300; /* always tappable */
 }
 
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="ll-nav">
-    <div class="wrap">
-      <a href="index.html" class="brand">
-        LACE & LIME<span class="tm">™</span>
-      </a>
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar" id="sidebar">
+  <a href="index.html" class="nav-home">Home</a>
+  <div class="dropdown nav-about">
+    <button aria-expanded="false">About <span class="caret">▼</span></button>
+    <div class="dropdown-menu">
+      <a href="about.html">Lace & Lime™</a>
+      <a href="founder.html">Founder</a>
     </div>
-  </header>
-
-  <!-- BOOKING SECTION -->
-  <section class="booking-section">
-<div class="cta-options">
-  <a href="https://square.link/u/bkAhWXIJ" class="cta-btn">Secure Your Spot</a>
-  <a href="https://forms.gle/iaX84x6BuoHVBn8q8" class="cta-btn alt">Resume Upload</a>
-</div>
-
-
-
-
-
-    <div class="booking-frame">
-      <iframe 
-        src="https://calendar.google.com/calendar/appointments/s/AcZssZ2HlJsBTIk-_S095MgCjVHNYphjcWApsp0GA9lOpiPtlcQjoQqNhrOnFVW1BZ4-bVqipolexakb"
-        loading="lazy">
-      </iframe>
-      <div class="iframe-cover"></div>
+  </div>
+  <div class="dropdown nav-workshops">
+    <button aria-expanded="false">Workshops <span class="caret">▼</span></button>
+    <div class="dropdown-menu">
+      <a href="workshops.html">Overview</a>
+      <a href="booking.html">Booking</a>
     </div>
-  </section>
+  </div>
+  <a href="explore.html" class="nav-explore">Explore</a>
+  <a href="contact.html" class="nav-contact">Contact</a>
+</nav>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="wrap">
-      © 2025 Lace & Lime™ LLC. All rights reserved. · 
-      <a href="privacy.html">Privacy</a> and 
-      <a href="terms.html">Terms</a>
+<!-- ===== SCRIM ===== -->
+<div class="scrim" id="scrim"></div>
+
+<!-- HEADER -->
+<header class="ll-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      LACE & LIME<span class="tm">™</span>
+    </a>
+    <button class="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO (matches About page) -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">LET'S CONNECT</p>
+    <h1>Book Your Intro Chat</h1>
+    <p class="hero-sub">
+     Connect, share what’s on your mind, and explore how Lace & Lime™ can support your goals. Pick a time that works for you.
+    </p>
+
+
+  <div class="cta-options">
+    <div>
+      <a href="https://square.link/u/bkAhWXIJ" class="cta-btn">Book Chat ☕</a>
+      <p class="cta-note">🔒 Secure via Square</p>
     </div>
-  </footer>
+  </div>
+  </div>
+</section>
+
+
+<!-- BOOKING FRAME (iframe) -->
+<section class="booking-frame-section">
+  <div class="booking-frame">
+    <iframe src="https://calendar.google.com/calendar/appointments/s/AcZssZ2HlJsBTIk-_S095MgCjVHNYphjcWApsp0GA9lOpiPtlcQjoQqNhrOnFVW1BZ4-bVqipolexakb" loading="lazy"></iframe>
+    <div class="iframe-cover"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    © 2025 Lace & Lime™ LLC. All rights reserved. · 
+    <a href="privacy.html">Privacy</a> and 
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+  const burger = document.querySelector('.burger');
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('scrim');
+  const dropdownButtons = document.querySelectorAll('.dropdown > button');
+
+  // Toggle sidebar on burger click
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    sidebar.classList.toggle('show');   // ✅ sidebar slides
+    scrim.classList.toggle('open');     // ✅ scrim fades in/out
+  });
+
+  // Close sidebar when scrim clicked
+  scrim.addEventListener('click', () => {
+    burger.classList.remove('open');
+    sidebar.classList.remove('show');
+    scrim.classList.remove('open');
+  });
+
+  // Dropdown toggle
+  dropdownButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+    });
+  });
+
+  // Progress bar on scroll
+  const progressBar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrolled = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrolled + "%";
+  });
+</script>
 
 </body>
 </html>
