@@ -315,6 +315,15 @@ nav.sidebar .dropdown-menu a:hover {
 
 
 
+/* Sidebar slim on desktop */
+@media (min-width: 769px) {
+  nav.sidebar {
+    transform: none;
+    max-width: 140px; 
+    padding: .5rem .5rem;
+    overflow: visible;
+  }
+}
 
 
 
@@ -329,26 +338,33 @@ body::after {
   pointer-events:none;
 }
 
+
+
+
+
+
 /* ===== FOOTER ===== */
 footer {
-  border-top:1px solid var(--line);
-  margin-top:2rem;
-  padding:1rem 0;
-  font-size:.9rem;
-  color:var(--muted);
-  text-align:left;
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: left;
 }
-footer .wrap { width:min(1120px,92vw); margin-inline:auto; }
 
-/* Sidebar slim on desktop */
-@media (min-width: 769px) {
-  nav.sidebar {
-    transform: none;
-    max-width: 140px; 
-    padding: .5rem .5rem;
-    overflow: visible;
-  }
+footer .wrap {
+  width: min(1120px, 92vw);
+  margin-inline: auto;
 }
+
+/* special tweaks only when .wrapped is used */
+footer .wrapped {
+  margin-top: 0rem;       /* creates space ABOVE the footer block */
+  padding-left: 40px;     /* indents footer content */
+}
+
+
 
 
 
