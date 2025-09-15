@@ -10,36 +10,6 @@
       "source": "/:path*/",
       "destination": "/:path*",
       "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "http://" }],
-      "destination": "https://yourdomain.com/:1",
-      "permanent": true
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*).html",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
-        { "key": "X-Robots-Tag", "value": "all" }
-      ]
-    },
-    {
-      "source": "/(.*).(css|js|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
-      ]
     }
   ]
 }
