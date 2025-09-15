@@ -174,7 +174,7 @@ header.ll-nav { position:sticky; top:0; z-index:1001; background:transparent; }
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s ease;
-  z-index: 1200;
+  z-index: 800;
 }
 .scrim.active {
   opacity: 1;
@@ -194,7 +194,7 @@ nav.sidebar {
   padding: .5rem .75rem;
   margin: 0;
   text-align: center;
-z-index: 800;
+z-index: 1200;
 
   background: rgba(255, 255, 255, 0.22);
   backdrop-filter: blur(16px) saturate(150%);
@@ -648,33 +648,3 @@ align-items:stretch;
     flex-basis: 90vw;
     max-width: 90vw;
   }
-
-/* === Dropdown Menus (Unified Desktop + Mobile) === */
-.sidebar .dropdown-menu {
-  display: none;                /* hidden by default */
-  flex-direction: column;
-  gap: 0.25rem;
-  margin: 0.5rem auto;          /* center horizontally */
-  padding: 0.5rem 1rem;
-  text-align: center;
-
-  position: relative;           /* in flow, pushes content down */
-  width: max-content;           /* shrink to fit content */
-  min-width: 140px;             /* avoid being too narrow */
-  border-radius: 8px;
-
-  background: inherit;
-  backdrop-filter: inherit;
-  -webkit-backdrop-filter: inherit;
-  box-shadow: none;
-  z-index: 10;
-}
-
-/* Toggle open */
-.sidebar .dropdown > button[aria-expanded="true"] + .dropdown-menu {
-  display: flex;
-}
-
-
-
-

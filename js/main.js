@@ -28,20 +28,18 @@ function closeAllDropdowns() {
 document.querySelectorAll('.sidebar .dropdown > button').forEach(button => {
   button.addEventListener('click', e => {
     e.stopPropagation();
-
     const expanded = button.getAttribute('aria-expanded') === 'true';
-
-    // Close all first
     closeAllDropdowns();
-
-    // Toggle this one
     button.setAttribute('aria-expanded', String(!expanded));
   });
 });
 
-// Close on outside click
+// Close on outside click (ignore clicks on buttons or menus)
 document.addEventListener('click', e => {
-  if (!e.target.closest('.sidebar .dropdown')) {
+  if (
+    !e.target.closest('.sidebar .dropdown-menu') &&
+    !e.target.closest('.sidebar .dropdown > button')
+  ) {
     closeAllDropdowns();
   }
 });
@@ -53,7 +51,6 @@ document.addEventListener('keydown', e => {
     closeAllDropdowns();
   }
 });
-
 
 
 /* === CAROUSEL LOGIC (Universal) ============================ */
