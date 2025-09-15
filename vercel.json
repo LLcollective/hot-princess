@@ -1,5 +1,5 @@
 {
-  "rewrites": [
+  "cleanurl": [
     { "source": "/about", "destination": "/about.html" },
     { "source": "/founder", "destination": "/founder.html" },
     { "source": "/workshops", "destination": "/workshops.html" },
