@@ -1,10 +1,3 @@
 {
-  "cleanurl": [
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/founder", "destination": "/founder.html" },
-    { "source": "/workshops", "destination": "/workshops.html" },
-    { "source": "/booking", "destination": "/booking.html" },
-    { "source": "/explore", "destination": "/explore.html" },
-    { "source": "/contact", "destination": "/contact.html" }
-  ]
+  "cleanUrls": true
 }
