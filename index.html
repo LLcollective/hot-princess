@@ -36,55 +36,64 @@
 <nav id="nav-menu" class="sidebar">
   <a href="index.html" class="nav-home">
     Home
-    <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
   </a>
 
   <!-- About Dropdown -->
   <div class="dropdown">
     <button class="nav-about" aria-expanded="false">
       <span class="label-wrap">
-        About <span class="caret">▾</span>
+        About
+        <span class="caret" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
       </span>
     </button>
     <div class="dropdown-menu">
       <a href="about.html">Our Story</a>
       <a href="founder.html">Founder</a>
     </div>
-    <img src="assets/brush-link-lavender.svg" alt="" class="nav-brush">
   </div>
 
   <!-- Workshops Dropdown -->
   <div class="dropdown">
     <button class="nav-workshops" aria-expanded="false">
       <span class="label-wrap">
-        Workshops <span class="caret">▾</span>
+        Workshops
+        <span class="caret" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
       </span>
     </button>
     <div class="dropdown-menu">
       <a href="workshops.html">Overview</a>
       <a href="booking.html">Booking</a>
     </div>
-    <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
   </div>
 
-  <!-- Static links -->
+  <!-- Static Links -->
   <a href="explore.html" class="nav-explore">
     Explore
-    <img src="assets/brush-link-lavender.svg" alt="" class="nav-brush">
   </a>
 
   <a href="contact.html" class="nav-contact">
     Contact
-    <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
   </a>
+
+
+<button class="sidebar-toggle" aria-label="Collapse sidebar">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6"></polyline>
+  </svg>
+</button>
+
 </nav>
-
-
-
-
-
-
-
 
 
 
@@ -114,20 +123,20 @@
       <!-- Left Path -->
       <div class="path workshops left">
         <h3>Guided Workshops</h3>
-        <p>Join live, practical sessions that move you from reflection into aligned action.</p>
-          <a href="#">* 2 week action plans</a><br>
-          <a href="#">* Interactive & live</a><br>
+        <p>Join sessions that move you from reflection into action.</p>
+          <a href="#">* Live - action plans</a><br>
+          <a href="#">* Introspective</a><br>
           <a href="#">* Scripts & guides</a><br>
         </ul>
       </div>
 
           <!-- Right Path -->
       <div class="path journals right">
-        <h3>Lace & Lime™ Sets</h3>
-        <p>Six themed sets with titles and short reflections to guide your next step.</p>
-          <a href="#">* Include sets</a><br>
+        <h3>Themed Sets</h3>
+        <p>Six sets with titles and short reflections to guide your next step.</p>
+          <a href="#">* Journal Sets</a><br>
           <a href="#">* Scripts & guides</a><br>
-          <a href="#">* Details coming soon</a><br>
+          <a href="#">* More to come</a><br>
       </div>
     </div>
   </div>

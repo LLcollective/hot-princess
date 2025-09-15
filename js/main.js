@@ -2,6 +2,7 @@
 const burger = document.querySelector('.burger');
 const sidebar = document.querySelector('.sidebar');
 const scrim = document.querySelector('.scrim');
+const sidebarLinks = document.querySelectorAll('nav.sidebar a, nav.sidebar .dropdown > button');
 
 function closeSidebar() {
   burger?.classList.remove('open');
@@ -14,10 +15,35 @@ if (burger && sidebar && scrim) {
     burger.classList.toggle('open');
     sidebar.classList.toggle('show');
     scrim.classList.toggle('active');
+
+    // Animate links when opening
+    if (sidebar.classList.contains('show')) {
+      sidebarLinks.forEach((link, i) => {
+        link.style.opacity = "0";
+        link.style.transform = "translateX(20px)";
+        link.style.transition = `opacity 0.35s ease ${i * 0.05}s, transform 0.35s ease ${i * 0.05}s`;
+        setTimeout(() => {
+          link.style.opacity = "1";
+          link.style.transform = "translateX(0)";
+        }, 10);
+      });
+    }
   });
 
   scrim.addEventListener('click', closeSidebar);
 }
+
+// ===== DESKTOP SIDEBAR TOGGLE =====
+const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+if (sidebarToggle) {
+  sidebarToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+  });
+}
+
+
+
 
 // ===== DROPDOWN TOGGLE =====
 function closeAllDropdowns() {
@@ -31,6 +57,20 @@ document.querySelectorAll('.sidebar .dropdown > button').forEach(button => {
     const expanded = button.getAttribute('aria-expanded') === 'true';
     closeAllDropdowns();
     button.setAttribute('aria-expanded', String(!expanded));
+
+    // Animate dropdown children if opening
+    const menu = button.nextElementSibling;
+    if (!expanded && menu) {
+      const links = menu.querySelectorAll('a');
+      links.forEach((link, i) => {
+        link.classList.remove('show'); // reset
+        setTimeout(() => {
+          link.classList.add('show');
+        }, i * 70); // stagger each child
+      });
+    } else if (menu) {
+      menu.querySelectorAll('a').forEach(link => link.classList.remove('show'));
+    }
   });
 });
 
@@ -52,7 +92,6 @@ document.addEventListener('keydown', e => {
   }
 });
 
-
 /* === CAROUSEL LOGIC (Universal) ============================ */
 document.querySelectorAll('.carousel').forEach(carousel => {
   const viewport = carousel.querySelector('.carousel-viewport');
@@ -65,12 +104,10 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   let cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(track).gap) || 0;
   let index = 0;
 
-  // Update card width if window resizes
   const computePositions = () => {
     cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(track).gap) || 0;
   };
 
-  // Scroll to given index
   const scrollToIndex = (i) => {
     if (i < 0) i = 0;
     if (i >= cards.length) i = cards.length - 1;
@@ -82,25 +119,12 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     });
   };
 
-  // Nearest index based on scroll position
-  const nearestIndex = () => {
-    return Math.round(viewport.scrollLeft / cardWidth);
-  };
+  const nearestIndex = () => Math.round(viewport.scrollLeft / cardWidth);
 
-  // Button events
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => scrollToIndex(index - 1));
-  }
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => scrollToIndex(index + 1));
-  }
+  if (prevBtn) prevBtn.addEventListener('click', () => scrollToIndex(index - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => scrollToIndex(index + 1));
+  dots.forEach((dot, di) => dot.addEventListener('click', () => scrollToIndex(di)));
 
-  // Dot events
-  dots.forEach((dot, di) => {
-    dot.addEventListener('click', () => scrollToIndex(di));
-  });
-
-  // Snap on scroll end
   let isScrolling;
   viewport.addEventListener('scroll', () => {
     clearTimeout(isScrolling);
@@ -109,9 +133,29 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     }, 120);
   });
 
-  // Adjust on resize
   window.addEventListener('resize', () => {
     computePositions();
     scrollToIndex(nearestIndex());
   });
 });
+
+/* === POLISH: Magnetic Hover Effect with CSS Vars ================== */
+function addMagneticHover(elements, strength = 6) {
+  elements.forEach(el => {
+    el.addEventListener("mousemove", e => {
+      const rect = el.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * strength;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * strength;
+      el.style.setProperty("--hover-x", `${x}px`);
+      el.style.setProperty("--hover-y", `${y}px`);
+    });
+    el.addEventListener("mouseleave", () => {
+      el.style.setProperty("--hover-x", "0px");
+      el.style.setProperty("--hover-y", "0px");
+    });
+  });
+}
+
+addMagneticHover(document.querySelectorAll(
+  "nav.sidebar a, nav.sidebar .dropdown > button, nav.sidebar .dropdown-menu a"
+));
