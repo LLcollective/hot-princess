@@ -4,417 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Explore | Lace & Lime™</title>
-  <meta name="description" content="Explore Lace & Lime: playlists, prompts, and the Citrus Circle newsletter — balance-forward tools for reflection and action." />
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Explore Lace & Lime: playlists, prompts, and the Citrus Circle newsletter — balance-forward tools for reflection and action.">
 
-<style>
-:root {
-  --surface:#E6F4FF;
-  --text:#1A2238;
-  --muted:#405970;
-  --line: rgba(26,34,56,.15);
-  --brand:#7B6CF6;
-  --brand-pill:#F3F4FF;
-  --shadow:0 6px 20px rgba(26,34,56,.08);
-  --lime:#9BE080;
-}
-html,body{margin:0; padding:0}
-body{
-  background:transparent !important;
-  color:var(--text);
-  font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height:1.55;
-}
-body::before{
-  content:""; position:fixed; inset:0;
-  background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
-  z-index:-1; pointer-events:none;
-}
-a{color:var(--brand); text-decoration:none}
-.wrap{ width:min(1080px,92vw); margin-inline:auto }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&family=Raleway:wght@200;500;700&display=swap" rel="stylesheet">
 
-/* ===== Header ===== */
-.ll-nav{ position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line) }
-.ll-nav .wrap{ padding:12px 16px; display:flex; align-items:center; justify-content:space-between }
-.brand{ font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px; font-weight:600; }
-.brand .tm{ font-size:.7em; vertical-align:super; margin-left:1px }
-
-nav.menu {
-  display:flex;
-  align-items:center;
-  gap:18px;
-  white-space:nowrap;
-}
-nav.menu > a,
-nav.menu > .dropdown > button {
-  font-family:'Tenor Sans',serif;
-  font-weight:600;
-  font-size:1rem;
-  line-height:1.4;
-  color:var(--brand);
-  padding:.35rem .6rem;
-  border-radius:.6rem;
-  transition:all .2s ease;
-  background:none;
-  border:none;
-  cursor:pointer;
-}
-nav.menu > a:hover,
-nav.menu > .dropdown > button:hover {
-  color:var(--lime);
-  background:var(--brand-pill);
-}
-nav.menu a.active {
-  background:var(--brand-pill);
-  color:var(--brand);
-}
-
-/* Dropdown Styles */
-.dropdown { position: relative; }
-.dropdown::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  height: 12px;
-  background: transparent;
-}
-.dropdown-menu {
-  display: none;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity .2s ease, transform .2s ease;
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: .6rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  padding: .5rem 0;
-  min-width: 160px;
-  z-index: 1000;
-}
-.dropdown-menu a {
-  display: block;
-  padding:.5rem .75rem;
-  font-size:.95rem;
-  color: #4f46e5;
-  text-decoration: none;
-}
-.dropdown-menu a:hover {
-  background: var(--brand-pill); 
-  color: var(--lime);
-}
-.dropdown.open .dropdown-menu {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Mobile tweaks */
-@media(max-width:768px){
-  nav.menu {
-    display:none;
-    flex-direction:column;
-    gap:14px;
-    position:absolute;
-    top:60px; right:1rem;
-    background:#fff;
-    padding:1rem 1.2rem;
-    border:1px solid var(--line);
-    border-radius:.8rem;
-    box-shadow:0 4px 12px rgba(26,34,56,.08);
-    opacity:0;
-    transform:translateY(-10px);
-    transition:.3s ease;
-  }
-  nav.menu.show {
-    display:flex;
-    opacity:1;
-    transform:translateY(0);
-  }
-  .dropdown.open .dropdown-menu {
-    display:flex;
-    flex-direction:column;
-    position:static;
-    opacity:1;
-    transform:none;
-    box-shadow:none;
-    border:none;
-    padding-left:1rem;
-  }
-}
-
-/* Burger */
-.burger {
-  display:none;
-  width:50px;
-  height:50px;
-  background:transparent;
-  cursor:pointer;
-  position:relative;
-  justify-content:center;
-  align-items:center;
-}
-.burger span {
-  position:absolute;
-  left:13px;
-  width:24px;
-  height:3px;
-  border-radius:2px;
-  background:linear-gradient(90deg,#7B6CF6,#9BE080);
-  transition: transform .35s cubic-bezier(.68,-0.55,.27,1.55),
-              opacity .25s ease,
-              background .3s ease;
-  transform-origin: right center;
-}
-.burger span:nth-child(1) { top:14px; }
-.burger span:nth-child(2) { top:23px; }
-.burger span:nth-child(3) { top:32px; }
-.burger.open span:nth-child(1) { top:23px; transform:rotate(-30deg); }
-.burger.open span:nth-child(2) { opacity:0; transform:translateX(-20px); }
-.burger.open span:nth-child(3) { top:23px; transform:rotate(30deg); }
-@media(max-width:768px){ .burger { display:flex; } }
-
-/* Progress bar */
-.progress{height:3px; background:rgba(122,102,255,.15); position:fixed; left:0; right:0; top:var(--progress-top, 64px); z-index:999}
-.progress span{display:block; height:100%; width:0%; background:linear-gradient(90deg,#7B6CF6,#9BE080); transition:width .08s linear}
-
-/* Hero */
-.hero{border-bottom:1px solid var(--line);}
-.hero .wrap{padding:2rem 1rem 1.25rem}
-.eyebrow{display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700}
-.tagline{font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .6rem}
-.hero-sub{color:var(--muted); max-width:60ch}
-
-/* Explore grid */
-.explore-grid-pair {
-  padding:1.25rem 0 2rem;
-}
-.explore-grid-pair .wrap {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-/* Force 4 across on large screens */
-@media (min-width: 1024px) {
-  .explore-grid-pair .wrap {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Cards */
-.card {
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:1rem;
-  box-shadow:var(--shadow);
-  padding:1rem;
-  display:flex;
-  flex-direction:column;
-  gap:.5rem;
-  transition:transform .2s ease, box-shadow .2s ease;
-}
-.card:hover {
-  transform:translateY(-4px);
-  box-shadow:0 8px 24px rgba(26,34,56,.12);
-}
-.card:active {
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(26,34,56,.1);
-}
-
-/* clickable Spotify card fix */
-.card[href] {
-  color: inherit;
-  text-decoration: none;
-  cursor:pointer;
-}
-
-.card[href]:active {
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(26,34,56,.1);
-}
-
-/* Badges */
-.badge {
-  display:inline-block;
-  padding:.28rem .6rem;
-  border-radius:.5rem;
-  font-size:.75rem;
-  font-weight:600;
-  letter-spacing:.03em;
-  background:var(--brand-pill);
-  color:var(--brand);
-  margin-bottom:.3rem;
-  text-decoration:none;
-  transition:all .2s ease;
-}
-.badge:hover {
-  background:var(--brand);
-  color:#fff;
-  cursor:pointer;
-}
-
-
-/* Buttons */
-.button-row{ display:flex; gap:.5rem; flex-wrap:wrap; align-items:center }
-.btn-citrus{ background:var(--brand); color:#fff; border:1px solid var(--brand);
-  display:inline-flex; align-items:center; justify-content:center; gap:.4rem;
-  padding:.6rem .9rem; border-radius:.7rem; font-weight:700; cursor:pointer; text-decoration:none; }
-.btn-secondary{ background:#fff; border:1px solid var(--line);
-  display:inline-flex; align-items:center; justify-content:center; gap:.4rem;
-  padding:.6rem .9rem; border-radius:.7rem; font-weight:700; text-decoration:none; }
-
-/* Footer */
-.site-footer{border-top:1px solid var(--line); margin-top:1.25rem}
-.site-footer .wrap{padding:1rem}
-
-
-/* Make card headers purple and body text black */
-.card h3 {
-  color: var(--brand);   /* purple heading */
-  font-family: 'Tenor Sans', serif;
-}
-.card p {
-  color: var(--text);    /* black body text */
-}
-
-
-
-</style>
+  <!-- Global + Page Styles -->
+  <link rel="stylesheet" href="css.css?v=1.0">
+  <link rel="stylesheet" href="css/explore.css?v=1.0">
 </head>
 
 <body>
-<header class="ll-nav">
-  <div class="wrap">
-    <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-    <div class="burger" id="burger"><span></span><span></span><span></span></div>
-    <nav class="menu" id="nav-menu">
-      <a href="index.html">Home</a>
-      <div class="dropdown">
-        <button type="button">About ▾</button>
-        <div class="dropdown-menu">
-          <a href="about.html">Lace & Lime™</a>
-          <a href="founder.html">Founder</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button type="button">Workshops ▾</button>
-        <div class="dropdown-menu">
-          <a href="workshops.html">Overview</a>
-          <a href="booking.html">Booking</a>
-        </div>
-      </div>
-      <a href="explore.html" class="active" aria-current="page">Explore</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<div class="progress"><span id="progress-fill"></span></div>
-
-<main id="main">
-  <section class="hero hero--stack">
+  <!-- ===== HEADER ===== -->
+  <header class="ll-nav">
     <div class="wrap">
-      <span class="eyebrow">EXPLORE</span>
-      <h1 class="tagline">Playlists, prompts, and momentum.</h1>
-      <p class="hero-sub">A balance-forward mix of reflection, action, and clarity tools.</p>
+      <a class="brand" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span>
+          <span class="amp">&amp;</span>
+          <span class="lime">LIME</span>
+        </h1>
+      </a>
+      <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </section>
+  </header>
 
+  <!-- SCRIM -->
+  <div id="nav-scrim" class="scrim" hidden></div>
 
+  <!-- ===== SIDEBAR NAVIGATION ===== -->
+  <nav class="sidebar" id="nav-menu">
+    <a href="index.html" class="nav-home">Home</a>
 
-<section class="explore-grid-pair">
-  <div class="wrap">
-    <!-- Spotify: full card clickable + badge CTA -->
-   <a href="https://open.spotify.com" class="card">
-  <span class="badge">Listen</span>
-  <h3>Spotify Playlists</h3>
-  <p>A curated playlist to fuel insight and forward energy.</p>
-</a>
-
-
-    <!-- Workshops: badge is CTA -->
-    <div class="card">
-      <a href="workshops.html" class="badge">Learn</a>
-      <h3>Move the needle</h3>
-      <p>From Jumpstart to the full Experience, each workshop blends reflection, action, and accountability. Lock in pilot pricing and leave with immediate tools.</p>
-    </div>
-
-    <!-- Resume Lab: badge is CTA -->
-    <div class="card">
-      <a href="googlelink.com" class="badge">Build</a>
-      <h3>Resume Lab</h3>
-      <p>Start free to get started. Upgrade into the Lab or Career Session to spot gaps, sharpen your story, and leave with a version that gets noticed.</p>
+    <div class="dropdown">
+      <button type="button" class="nav-about" aria-expanded="false">
+        <span class="label-wrap">About <span class="caret">▾</span></span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="about.html">Our Story</a>
+        <a href="founder.html">Founder</a>
+      </div>
     </div>
 
-    <!-- Citrus Circle: badge is CTA -->
-    <div class="card">
-      <a href="#" class="badge">Join</a>
-      <h3>Citrus Circle</h3>
-  <p>Be the first to hear about launches and resources, all in one fresh squeeze, not a flood.</p>
-  <form action="https://YOUR_SIGNUP_ENDPOINT" method="post" style="margin-top:.5rem; display:flex; gap:.5rem;">
-    <input type="email" name="email" placeholder="Your email" required
-           style="flex:1; padding:.5rem; border:1px solid var(--line); border-radius:.5rem; font-family:inherit;">
-    <button type="submit" class="btn-citrus">→</button>
-  </form>
-</div>
-  </div>
-</section>
-</main>
+    <div class="dropdown">
+      <button type="button" class="nav-workshops" aria-expanded="false">
+        <span class="label-wrap">Workshops <span class="caret">▾</span></span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="overview.html">Overview</a>
+        <a href="booking.html">Booking</a>
+      </div>
+    </div>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <p>© 2025 Lace & Lime™ LLC. All rights reserved.<br>
-      <a href="privacy-terms.html">Privacy &amp; Terms</a>
-    </p>
-  </div>
-</footer>
+    <a href="explore.html" class="nav-explore active">Explore</a>
+    <a href="contact.html" class="nav-contact">Contact</a>
+  </nav>
 
-<script>
-// Progress bar
-(() => {
-  const fill = document.getElementById('progress-fill');
-  const header = document.querySelector('.ll-nav');
-  function place(){
-    const h = header?.getBoundingClientRect().height || 56;
-    document.documentElement.style.setProperty('--progress-top', h + 'px');
-  }
-  function pct(){
-    const doc = document.documentElement;
-    const sc = Math.max(doc.scrollTop, document.body.scrollTop);
-    const max = (doc.scrollHeight || document.body.scrollHeight) - innerHeight;
-    const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
-    if(fill) fill.style.width = (r*100).toFixed(2) + '%';
-  }
-  place(); pct();
-  addEventListener('resize', place, {passive:true});
-  addEventListener('scroll', pct, {passive:true});
-})();
+  <!-- PROGRESS BAR -->
+  <div class="progress"><span id="progress-fill"></span></div>
 
-// Burger toggle
-const burger = document.getElementById("burger");
-const navMenu = document.getElementById("nav-menu");
-burger.addEventListener("click", () => {
-  burger.classList.toggle("open");
-  navMenu.classList.toggle("show");
-});
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main">
+    <section class="hero hero--stack">
+      <div class="wrap">
+        <span class="eyebrow">EXPLORE</span>
+        <h1 class="tagline">Playlists, prompts, and momentum.</h1>
+        <p class="hero-sub">A balance-forward mix of reflection, action, and clarity tools.</p>
+      </div>
+    </section>
 
-// Mobile dropdown toggle
-document.querySelectorAll('#nav-menu .dropdown > button').forEach(btn=>{
-  btn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    const parent = btn.parentElement;
-    document.querySelectorAll('#nav-menu .dropdown').forEach(d=>{
-      if(d !== parent) d.classList.remove('open');
-    });
-    parent.classList.toggle('open');
-  });
-});
-</script>
+    <section class="explore-grid-pair">
+      <div class="wrap">
+        <!-- Spotify -->
+        <a href="https://open.spotify.com" class="card">
+          <span class="badge">Listen</span>
+          <h3>Spotify Playlists</h3>
+          <p>A curated playlist to fuel insight and forward energy.</p>
+        </a>
+
+        <!-- Workshops -->
+        <div class="card">
+          <a href="workshops.html" class="badge">Learn</a>
+          <h3>Move the needle</h3>
+          <p>From Jumpstart to the full Experience, each workshop blends reflection, action, and accountability. Lock in pilot pricing and leave with immediate tools.</p>
+        </div>
+
+        <!-- Resume Lab -->
+        <div class="card">
+          <a href="googlelink.com" class="badge">Build</a>
+          <h3>Resume Lab</h3>
+          <p>Start free to get started. Upgrade into the Lab or Career Session to spot gaps, sharpen your story, and leave with a version that gets noticed.</p>
+        </div>
+
+        <!-- Citrus Circle -->
+        <div class="card">
+          <a href="#" class="badge">Join</a>
+          <h3>Citrus Circle</h3>
+          <p>Be the first to hear about launches and resources, all in one fresh squeeze, not a flood.</p>
+          <form action="https://YOUR_SIGNUP_ENDPOINT" method="post" style="margin-top:.5rem; display:flex; gap:.5rem;">
+            <input type="email" name="email" placeholder="Your email" required
+                   style="flex:1; padding:.5rem; border:1px solid var(--line); border-radius:.5rem; font-family:inherit;">
+            <button type="submit" class="btn-citrus">→</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy-terms.html">Privacy &amp; Terms</a></p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/main.js?v=1.0"></script>
+  <script>
+    // Progress bar
+    (() => {
+      const fill = document.getElementById('progress-fill');
+      const header = document.querySelector('.ll-nav');
+      function place(){const h = header?.getBoundingClientRect().height || 56;document.documentElement.style.setProperty('--progress-top', h + 'px');}
+      function pct(){const doc=document.documentElement;const sc=Math.max(doc.scrollTop,document.body.scrollTop);const max=(doc.scrollHeight||document.body.scrollHeight)-innerHeight;const r=max>0?Math.min(1,Math.max(0,sc/max)):0;if(fill)fill.style.width=(r*100).toFixed(2)+'%';}
+      place(); pct(); addEventListener('resize',place,{passive:true}); addEventListener('scroll',pct,{passive:true});
+    })();
+  </script>
 </body>
 </html>
