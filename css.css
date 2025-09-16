@@ -1192,3 +1192,16 @@ body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg
 /* ===== MOBILE STACK ===== */
 @media (max-width:768px){.path-split{grid-template-columns:1fr;gap:2rem;padding-inline:1rem;}.path.left::before{left:0;right:auto;}.path.right::after{right:0;left:auto;}}
 
+/* UNIVERSAL UTILITIES*/
+
+#booking-modal {
+  display: none;       /* always hidden on load */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+
