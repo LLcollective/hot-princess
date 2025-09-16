@@ -9,23 +9,25 @@
 
   <!-- External site-wide CSS -->
   <link rel="stylesheet" href="css.css?v=1.4">
-  <link rel="stylesheet" href="css/index.css?v=1.4">
 </head>
+
 <body class="home"><!-- ⬅️ added 'home' class -->
- <!-- ===== HEADER ===== -->
-<header class="ll-nav">
-  <div class="wrap">
-    <a class="brand" href="index.html">LACE&LIME<span class="tm">™</span></a>
-    <button 
-      id="burger" 
-      class="burger" 
-      aria-expanded="false" 
-      aria-controls="nav-menu" 
-      aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+
+
+  <!-- ===== HEADER ===== -->
+  <header class="ll-nav">
+<div class="wrap">
+  <a class="brand" href="index.html">
+    <img src="assets/brand.png" alt="Lace & Lime" class="brand-logo">
+  </a>
+
+  <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+  </header>
+
 
 <!-- SCRIM -->
 <div id="nav-scrim" class="scrim"></div>
@@ -96,7 +98,8 @@
 </nav>
 
 
-
+  <!-- PROGRESS BAR -->
+  <div class="progress"><span id="progress-fill"></span></div>
 
 
 
@@ -107,8 +110,7 @@
     <h1 class="tagline">
       Reflection that moves. Action that sticks.
     </h1>
-
-    <h2 class="tagline-reflect">
+<h2 class="tagline-reflect">
       Growth you can feel.
     </h2>
   </div>
@@ -127,8 +129,7 @@
           <a href="#">* Live - action plans</a><br>
           <a href="#">* Introspective</a><br>
           <a href="#">* Scripts & guides</a><br>
-        </ul>
-      </div>
+              </div>
 
           <!-- Right Path -->
       <div class="path journals right">
@@ -152,5 +153,6 @@
 
 <!-- ✅ Load your JavaScript -->
 <script src="js/main.js" defer></script>
+
 </body>
 </html>

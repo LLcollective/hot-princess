@@ -17,56 +17,88 @@
 
   <!-- ===== HEADER ===== -->
   <header class="ll-nav">
-    <div class="wrap">
-      <a class="brand" href="index.html">LACE&LIME<span class="tm">™</span></a>
-      <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<div class="wrap">
+  <a class="brand" href="index.html">
+    <img src="assets/brand.png" alt="Lace & Lime" class="brand-logo">
+  </a>
+
+  <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
   </header>
 
   <!-- SCRIM -->
   <div id="nav-scrim" class="scrim"></div>
 
-  <!-- ===== SIDEBAR NAVIGATION ===== -->
-  <nav class="sidebar" id="nav-menu">
-    <a href="index.html" class="nav-home" data-reload="true">
-      Home
-      <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
-    </a>
 
-    <div class="dropdown">
-      <button type="button" class="nav-about">
-        <span class="label-wrap">About <span class="caret">▾</span></span>
-        <img src="assets/brush-link-lavender.svg" alt="" class="nav-brush">
-      </button>
-      <div class="dropdown-menu">
-        <a href="about.html" aria-current="page">Our Story</a>
-        <a href="founder.html">Founder</a>
-      </div>
+ <!-- ===== SIDEBAR NAVIGATION ===== -->
+<nav id="nav-menu" class="sidebar">
+  <a href="index.html" class="nav-home">
+    Home
+  </a>
+
+  <!-- About Dropdown -->
+  <div class="dropdown">
+    <button class="nav-about" aria-expanded="false">
+      <span class="label-wrap">
+        About
+        <span class="caret" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="about.html" aria-current="page">Our Story</a>
+      <a href="founder.html">Founder</a>
     </div>
+  </div>
 
-    <div class="dropdown">
-      <button type="button" class="nav-workshops">
-        <span class="label-wrap">Workshops <span class="caret">▾</span></span>
-        <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
-      </button>
-      <div class="dropdown-menu">
-        <a href="workshops.html">Overview</a>
-        <a href="booking.html">Booking</a>
-      </div>
+  <!-- Workshops Dropdown -->
+  <div class="dropdown">
+    <button class="nav-workshops" aria-expanded="false">
+      <span class="label-wrap">
+        Workshops
+        <span class="caret" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="workshops.html">Overview</a>
+      <a href="booking.html">Booking</a>
     </div>
+  </div>
 
-    <a href="explore.html" class="nav-explore">
-      Explore
-      <img src="assets/brush-link-lavender.svg" alt="" class="nav-brush">
-    </a>
+  <!-- Static Links -->
+  <a href="explore.html" class="nav-explore">
+    Explore
+  </a>
 
-    <a href="contact.html" class="nav-contact">
-      Contact
-      <img src="assets/brush-link-lime.svg" alt="" class="nav-brush">
-    </a>
-  </nav>
+  <a href="contact.html" class="nav-contact">
+    Contact
+  </a>
+
+  <!-- Collapse Button -->
+  <button class="sidebar-toggle" aria-label="Collapse sidebar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+</nav>
+
+
+
+  <!-- PROGRESS BAR -->
+  <div class="progress"><span id="progress-fill"></span></div>
 
   <!-- ===== HERO SECTION ===== -->
   <section class="hero">
