@@ -1226,5 +1226,113 @@ body::before {
 
 
 
+/* ===== UNIVERSAL RESPONSIVE RULES ===== */
 
+/* General mobile & tablet adjustments */
+@media (max-width: 1024px) {
+  .wrap {
+    padding: 0 1rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .hero, section, footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Tablets and small devices */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  h1 { font-size: clamp(1.6rem, 5vw, 2rem); }
+  h2 { font-size: clamp(1.3rem, 4.5vw, 1.6rem); }
+  h3 { font-size: clamp(1.1rem, 4vw, 1.3rem); }
+
+  header.ll-nav .wrap {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+  }
+
+  nav.sidebar {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Stack columns vertically by default */
+  .grid, .cards, .columns .path {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.2rem; }
+  h3 { font-size: 1rem; }
+
+  .wrap {
+    padding: 0 0.75rem;
+  }
+
+  footer .wrap {
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  button, .cta-btn, input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+
+
+/* ===== HERO RESPONSIVE FIX ===== */
+@media (max-width: 768px) {
+  .hero .tagline {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    line-height: 1.2;
+    background-size: 200% 100%; /* tighten gradient for smaller width */
+  }
+
+  .hero .tagline-reflect {
+    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+    line-height: 1.25;
+    background-size: 200% 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .tagline {
+    font-size: 1.2rem;
+    line-height: 1.15;
+    margin-top: 0.4rem;
+  }
+
+  .hero .tagline-reflect {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+}
 
