@@ -36,33 +36,52 @@
   <!-- SCRIM -->
   <div id="nav-scrim" class="scrim" hidden></div>
 
-  <!-- ===== SIDEBAR NAVIGATION ===== -->
-  <nav id="nav-menu" class="sidebar">
-    <a href="index.html" class="nav-home">Home</a>
+<!-- SIDEBAR -->
+<nav id="nav-menu" class="sidebar">
+  <!-- Logo in place of "Home" -->
+  <a href="index.html" class="logo">
+    lace<span style="color:#9BE080">&LIME</span>
+  </a>
 
-    <div class="dropdown">
-      <button type="button" class="nav-about" aria-expanded="false">
-        <span class="label-wrap">About <span class="caret">▾</span></span>
-      </button>
-      <div class="dropdown-menu">
-        <a href="about.html">Our Story</a>
-        <a href="founder.html">Founder</a>
-      </div>
+  <!-- Laced dropdown -->
+  <div class="dropdown">
+    <button class="nav-about" aria-expanded="false">
+      <span class="label-wrap">Laced<span class="caret">▾</span></span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="lacednotes.html">Notes</a>
+      <a href="#">Together</a>
+      <a href="founder.html">Founder</a>
     </div>
+  </div>
 
-    <div class="dropdown">
-      <button type="button" class="nav-workshops" aria-expanded="false">
-        <span class="label-wrap">Workshops <span class="caret">▾</span></span>
-      </button>
-      <div class="dropdown-menu">
-        <a href="overview.html">Overview</a>
-        <a href="booking.html">Booking</a>
-      </div>
+  <!-- Experiences dropdown -->
+  <div class="dropdown">
+    <button class="nav-workshops" aria-expanded="false">
+      <span class="label-wrap">Experiences<span class="caret">▾</span></span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="booknow.html">Book Now</a>
+      <a href="#">Approach</a>
     </div>
+  </div>
 
-    <a href="explore.html" class="nav-explore">Explore</a>
-    <a href="contact.html" class="nav-contact active" aria-current="page">Contact</a>
-  </nav>
+  <!-- Limeboard -->
+  <a href="limeboard.html">Limeboard</a>
+
+  <!-- Contact (active) -->
+  <a href="contact.html" class="active" aria-current="page">Contact</a>
+
+  <!-- Sidebar collapse -->
+  <button class="sidebar-toggle" aria-label="Collapse sidebar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+</nav>
+
+
 
   <!-- PROGRESS BAR -->
   <div class="progress"><span id="progress-fill"></span></div>

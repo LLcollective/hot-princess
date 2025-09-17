@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limeboard | Lace & Lime™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&family=Raleway:wght@200;500;700&display=swap" rel="stylesheet">
+
+  <!-- Global + Page Styles -->
+  <link rel="stylesheet" href="css.css?v=1.0">
+
+<link rel="stylesheet" href="css/limeboard.css?v=1.0">
+
+</head>
+
+
+
+</head>
+<body class="limeboard">
+
+  <!-- HEADER -->
+  <header class="ll-nav">
+    <div class="wrap">
+      <a class="logo-link" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span><span class="amp">&amp;</span><span class="lime">LIME</span>
+        </h1>
+      </a>
+      <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SCRIM -->
+  <div id="nav-scrim" class="scrim" hidden></div>
+
+
+
+<!-- SIDEBAR -->
+<nav id="nav-menu" class="sidebar">
+  <!-- Logo in place of "Home" -->
+  <a href="index.html" class="logo">
+    lace<span style="color:#9BE080">&LIME</span>
+  </a>
+
+  <!-- Laced dropdown -->
+  <div class="dropdown">
+    <button class="nav-about" aria-expanded="false">
+      <span class="label-wrap">Laced<span class="caret">▾</span></span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="lacednotes.html">Notes</a>
+      <a href="#">Together</a>
+      <a href="founder.html">Founder</a>
+    </div>
+  </div>
+
+  <!-- Experiences dropdown -->
+  <div class="dropdown">
+    <button class="nav-workshops" aria-expanded="false">
+      <span class="label-wrap">Experiences<span class="caret">▾</span></span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="booknow.html">Book Now</a>
+      <a href="#">Approach</a>
+    </div>
+  </div>
+
+  <!-- Limeboard (active) -->
+  <a href="limeboard.html" class="active" aria-current="page">Limeboard</a>
+
+  <!-- Contact -->
+  <a href="contact.html">Contact</a>
+
+  <!-- Sidebar collapse -->
+  <button class="sidebar-toggle" aria-label="Collapse sidebar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+</nav>
+
+
+  <!-- PROGRESS BAR -->
+  <div class="progress"><span id="progress-fill"></span></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">LIMEBOARD</p>
+    <h1 class="tagline">Ideas, energy, and sparks in motion</h1>
+    <p class="hero-sub">
+      The Limeboard is a rotating mix of reflections, prompts, and highlights.
+      A space to explore what’s stirring and what’s next.
+    </p>
+  </div>
+</section>
+
+
+<!-- FILTERS -->
+<div class="filters">
+  <div class="filter-pills">
+    <button class="active">All</button>
+    <button>Lace Moments</button>
+    <button>Lime Moves</button>
+  </div>
+  <div class="filter-dots">
+    <button><span class="dot lime"></span> Renewal</button>
+    <button><span class="dot lavender"></span> Clarity</button>
+    <button><span class="dot orange"></span> Creativity</button>
+    <button><span class="dot magenta"></span> Spotlight</button>
+  </div>
+</div>
+
+
+
+<!-- CARDS -->
+<section class="grid">
+  <!-- Personal Anchor -->
+  <div class="card clarity">
+    <span class="badge clarity">Notes</span>
+    <h3>Notes from Sharon</h3>
+    <p>Founder reflections, honest insights, and the lessons shaping Lace & Lime™ from the inside out.</p>
+  </div>
+
+  <!-- Community Thread -->
+  <div class="card spotlight">
+    <span class="badge spotlight">Together</span>
+    <h3>Laced Together</h3>
+    <p>A shared thread of quotes, resources, and sparks of thought. <a href="#subscribe-modal">Join the list</a> to follow along in the founders club.</p>
+  </div>
+
+  <!-- Spotlight Feature -->
+  <div class="card spotlight">
+    <span class="badge spotlight">Limelight</span>
+    <h3>Lime of the Month</h3>
+    <p>A monthly highlight celebrating a story, theme, or moment that deserves the spotlight.</p>
+  </div>
+
+  <!-- Practical Tools -->
+  <div class="card renewal">
+    <span class="badge renewal">Tools</span>
+    <h3>Momentum Tools</h3>
+    <p>Checklists, guides, and playlists built to clear your head and fuel your next step.</p>
+  </div>
+
+  <!-- Prompts -->
+  <div class="card clarity">
+    <span class="badge clarity">Prompts</span>
+    <h3>Prompt Library</h3>
+    <p>An always-growing bank of Lace & Lime™ prompts. Pick a reflection or an action spark whenever you need it.</p>
+  </div>
+
+  <!-- Grounding -->
+  <div class="card renewal">
+    <span class="badge renewal">Rituals</span>
+    <h3>Reset and Balance</h3>
+    <p>Simple grounding practices like seasonal resets, daily pauses, or breathwork to bring you back to center.</p>
+  </div>
+
+  <!-- Aesthetic / Vibes -->
+  <div class="card creativity">
+    <span class="badge creativity">Mood</span>
+    <h3>Moodboard</h3>
+    <p>Colors, visuals, and sounds that shape the Lace & Lime™ vibe — playful, grounded, and balance-forward.</p>
+  </div>
+
+  <!-- Engagement -->
+  <div class="card creativity">
+    <span class="badge creativity">Poll</span>
+    <h3>Lime Polls</h3>
+    <p>Quick interactive check-ins to share what you’re noticing and where your energy is going. Light, fast, and real-time.</p>
+  </div>
+</section>
+
+
+  <!-- MODAL -->
+  <div id="subscribe-modal">
+    <div class="modal-box">
+      <h3>Laced Together</h3>
+      <p>Subscribe to join the shared thread. Get notes, quotes, and resources straight to your inbox.</p>
+      <form>
+        <input type="email" placeholder="Your email">
+        <button type="submit">Join</button>
+      </form>
+      <button onclick="document.getElementById('subscribe-modal').style.display='none'" style="margin-top:1rem;">Close</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      © 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=1.0"></script>
+</body>
+</html>

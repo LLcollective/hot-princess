@@ -5,19 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lace & Lime™ — Home</title>
   <meta name="description" content="Reflection that moves. Action that sticks. Growth you can feel." />
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&family=Raleway:wght@200;500;700&display=swap" rel="stylesheet">
 
-  <!-- External site-wide CSS -->
-  <link rel="stylesheet" href="css.css?v=1.4">
+  <!-- Global + Page Styles -->
+  <link rel="stylesheet" href="css.css?v=1.0">
+  <link rel="stylesheet" href="css/explore.css?v=1.0">
 </head>
 
-<body class="home"><!-- ⬅️ added 'home' class -->
+
+<body class="home">
 
 
-  <!-- ===== HEADER ===== -->
+<!-- ===== HEADER ===== -->
 <header class="ll-nav">
   <div class="wrap">
-    <a class="brand" href="index.html">
+    <a class="logo-link" href="index.html">
       <h1 class="logo-small-centered">
         <span class="lace">lace</span>
         <span class="amp">&amp;</span>
@@ -31,73 +33,61 @@
   </div>
 </header>
 
+
 <!-- SCRIM -->
 <div id="nav-scrim" class="scrim"></div>
 
 
 
-<!-- ===== SIDEBAR NAVIGATION ===== -->
+
+<!-- SIDEBAR -->
 <nav id="nav-menu" class="sidebar">
-  <a href="index.html" class="nav-home">
-    Home
+  <!-- Logo in place of "Home" -->
+  <a href="index.html" class="logo">
+    lace<span style="color:#9BE080">&LIME</span>
   </a>
 
-  <!-- About Dropdown -->
+  <!-- Laced dropdown -->
   <div class="dropdown">
     <button class="nav-about" aria-expanded="false">
-      <span class="label-wrap">
-        About
-        <span class="caret" aria-hidden="true">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-      </span>
+      <span class="label-wrap">Laced<span class="caret">▾</span></span>
     </button>
     <div class="dropdown-menu">
-      <a href="about.html">Our Story</a>
+      <a href="lacednotes.html">Notes</a>
+      <a href="#">Together</a>
       <a href="founder.html">Founder</a>
     </div>
   </div>
 
-  <!-- Workshops Dropdown -->
+  <!-- Experiences dropdown -->
   <div class="dropdown">
     <button class="nav-workshops" aria-expanded="false">
-      <span class="label-wrap">
-        Workshops
-        <span class="caret" aria-hidden="true">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-      </span>
+      <span class="label-wrap">Experiences<span class="caret">▾</span></span>
     </button>
     <div class="dropdown-menu">
-      <a href="workshops.html">Overview</a>
-      <a href="booking.html">Booking</a>
+      <a href="booknow.html">Book Now</a>
+      <a href="#">Approach</a>
     </div>
   </div>
 
-  <!-- Static Links -->
-  <a href="explore.html" class="nav-explore">
-    Explore
-  </a>
+  <!-- Limeboard -->
+  <a href="limeboard.html">Limeboard</a>
 
-  <a href="contact.html" class="nav-contact">
-    Contact
-  </a>
+  <!-- Contact -->
+  <a href="contact.html">Contact</a>
 
-
-<button class="sidebar-toggle" aria-label="Collapse sidebar">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
-       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="15 18 9 12 15 6"></polyline>
-  </svg>
-</button>
-
+  <!-- Sidebar collapse -->
+  <button class="sidebar-toggle" aria-label="Collapse sidebar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
 </nav>
+
+
+
+
 
 
   <!-- PROGRESS BAR -->

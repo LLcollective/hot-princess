@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Now | Lace & Lime™</title>
+  <meta name="description" content="Book Lace & Lime™ experiences — immersive sessions that blend reflection and action for real progress. Choose your path and secure your spot. Lace & Lime™ workshops are also available by request.">
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&family=Raleway:wght@200;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css.css?v=1.0">
+</head>
+
+<body class="booking">
+
+  <!-- ===== HEADER ===== -->
+  <header class="ll-nav">
+    <div class="wrap">
+      <a class="logo-link" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span>
+          <span class="amp">&amp;</span>
+          <span class="lime">LIME</span>
+        </h1>
+      </a>
+      <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SCRIM -->
+  <div id="nav-scrim" class="scrim" hidden></div>
+
+<!-- SIDEBAR -->
+<nav id="nav-menu" class="sidebar">
+  <!-- Logo in place of "Home" -->
+  <a href="index.html" class="logo">
+    lace<span style="color:#9BE080">&LIME</span>
+  </a>
+
+  <!-- Laced dropdown -->
+  <div class="dropdown">
+    <button class="nav-about" aria-expanded="false">
+      <span class="label-wrap">Laced<span class="caret">▾</span></span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="lacednotes.html">Notes</a>
+      <a href="#">Together</a>
+      <a href="founder.html">Founder</a>
+    </div>
+  </div>
+
+  <!-- Experiences dropdown -->
+  <div class="dropdown open">
+    <button class="nav-workshops" aria-expanded="true">
+      <span class="label-wrap">Experiences<span class="caret">▾</span></span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="booknow.html" class="active" aria-current="page">Book Now</a>
+      <a href="#">Approach</a>
+    </div>
+  </div>
+
+  <!-- Limeboard -->
+  <a href="limeboard.html">Limeboard</a>
+
+  <!-- Contact -->
+  <a href="contact.html">Contact</a>
+
+  <!-- Sidebar collapse -->
+  <button class="sidebar-toggle" aria-label="Collapse sidebar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+</nav>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress"><span id="progress-fill"></span></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">BOOKING</p>
+      <h1 class="tagline">Pick your starting point</h1>
+      <p class="hero-sub">
+        After checkout, pick a time that works best for you in the 
+        <a href="https://calendar.google.com/" target="_blank" rel="noopener">calendar</a>. Add a note with the area you want to focus on. Career, Balance, Respect, and Funding cover most goals. If yours feels different, write it anyway. 
+        Need to work outside the schedule? Send me a 
+        <a href="mailto:laceandlime.llc@gmail.com">message</a>.  
+        You can also <a href="https://docs.google.com/forms/d/e/YOUR-FORM-ID/viewform" target="_blank" rel="noopener">upload your resume</a> and I'll give it a quick review.
+      </p>
+
+      <div class="chips">
+        <span class="chip career">Career</span>
+        <span class="chip balance">Balance</span>
+        <span class="chip respect">Respect</span>
+        <span class="chip funding">Funding</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCES PREVIEW ===== -->
+  <section class="workshops-preview">
+    <div class="wrap">
+      <div class="workshop-cards">
+
+        <!-- Tier 1: Energy Aligned -->
+        <div class="workshop-card">
+          <h3>Energy Aligned</h3>
+          <p>A short clarity session to ground your direction and identify next steps.</p>
+          <div class="cta-workshop">
+            <a href="https://square.link/u/YOUR-25-LINK" 
+               class="cta-btn primary" target="_blank" rel="noopener">✨ Book for $25</a>
+          </div>
+          <div class="cta-notes">
+            <p class="cta-note">Perfect if you’re curious and want to start small. 20 minutes, laser-focused on alignment.</p>
+          </div>
+        </div>
+
+        <!-- Tier 2: Action Defined -->
+        <div class="workshop-card highlight-card">
+          <h3>Action Defined</h3>
+          <p>A deeper experience to create momentum, accountability, and a concrete action plan.</p>
+          <div class="cta-workshop">
+            <a href="https://square.link/u/YOUR-75-LINK" 
+               class="cta-btn primary" target="_blank" rel="noopener">🚀 Book for $75</a>
+          </div>
+          <div class="cta-notes">
+            <p class="cta-note">Great if you’re ready to move forward with clarity. 45 minutes of focused strategy.</p>
+          </div>
+        </div>
+
+        <!-- Tier 3: Next Is Now -->
+        <div class="workshop-card">
+          <h3>Next Is Now</h3>
+          <p>A 60-minute premium session to go deep, address obstacles, and map your next chapter with confidence.</p>
+          <div class="cta-workshop">
+            <a href="https://square.link/u/YOUR-120-LINK" 
+               class="cta-btn primary" target="_blank" rel="noopener">🌟 Book for $120</a>
+          </div>
+          <div class="cta-notes">
+            <p class="cta-note">Best if you want the full Lace & Lime™ experience — reflection + action with room to explore.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      © 2025 Lace & Lime™ LLC. All rights reserved. · 
+      <a href="privacy.html">Privacy Policy</a> · 
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/main.js?v=1.0"></script>
+</body>
+</html>

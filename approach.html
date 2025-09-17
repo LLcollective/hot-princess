@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workshops — Lace & Lime™</title>
   <meta name="description" content="Workshops designed to bring reflection and aligned action into real-world contexts.">
+ <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&family=Raleway:wght@200;500;700&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Global Styles -->
+  <!-- Global + Page Styles -->
   <link rel="stylesheet" href="css.css?v=1.0">
+\
+</head>
+
 
   <style>
     /* ===== Modal (page-specific) ===== */
@@ -58,60 +60,52 @@
   <!-- SCRIM -->
   <div id="nav-scrim" class="scrim"></div>
 
-  <!-- ===== SIDEBAR NAVIGATION ===== -->
-  <nav id="nav-menu" class="sidebar">
-    <a href="index.html" class="nav-home">Home</a>
+<!-- SIDEBAR -->
+<nav id="nav-menu" class="sidebar">
+  <!-- Logo in place of "Home" -->
+  <a href="index.html" class="logo">
+    lace<span style="color:#9BE080">&LIME</span>
+  </a>
 
-    <!-- About Dropdown -->
-    <div class="dropdown">
-      <button class="nav-about" aria-expanded="false">
-        <span class="label-wrap">
-          About
-          <span class="caret" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </span>
-        </span>
-      </button>
-      <div class="dropdown-menu">
-        <a href="about.html">Our Story</a>
-        <a href="founder.html">Founder</a>
-      </div>
-    </div>
-
-    <!-- Workshops Dropdown -->
-    <div class="dropdown">
-      <button class="nav-workshops" aria-expanded="false">
-        <span class="label-wrap">
-          Workshops
-          <span class="caret" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </span>
-        </span>
-      </button>
-      <div class="dropdown-menu">
-        <a href="workshops.html" aria-current="page">Overview</a>
-        <a href="booking.html">Booking</a>
-      </div>
-    </div>
-
-    <!-- Static Links -->
-    <a href="explore.html" class="nav-explore">Explore</a>
-    <a href="contact.html" class="nav-contact">Contact</a>
-
-    <!-- Collapse Button -->
-    <button class="sidebar-toggle" aria-label="Collapse sidebar">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
-           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
+  <!-- Laced dropdown -->
+  <div class="dropdown">
+    <button class="nav-about" aria-expanded="false">
+      <span class="label-wrap">Laced<span class="caret">▾</span></span>
     </button>
-  </nav>
+    <div class="dropdown-menu">
+      <a href="lacednotes.html">Notes</a>
+      <a href="#">Together</a>
+      <a href="founder.html">Founder</a>
+    </div>
+  </div>
+
+  <!-- Experiences dropdown (Approach active) -->
+  <div class="dropdown open">
+    <button class="nav-workshops" aria-expanded="true">
+      <span class="label-wrap">Experiences<span class="caret">▾</span></span>
+    </button>
+    <div class="dropdown-menu">
+      <a href="booknow.html">Book Now</a>
+      <a href="#" class="active" aria-current="page">Approach</a>
+    </div>
+  </div>
+
+  <!-- Limeboard -->
+  <a href="limeboard.html">Limeboard</a>
+
+  <!-- Contact -->
+  <a href="contact.html">Contact</a>
+
+  <!-- Sidebar collapse -->
+  <button class="sidebar-toggle" aria-label="Collapse sidebar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+</nav>
+
+
 
   <!-- PROGRESS BAR -->
   <div class="progress"><span id="progress-fill"></span></div>
