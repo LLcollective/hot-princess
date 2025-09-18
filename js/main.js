@@ -95,8 +95,21 @@ document.addEventListener('keydown', e => {
 // ===== CLOSE SIDEBAR & DROPDOWNS ON LINK CLICK =====
 document.querySelectorAll('.sidebar a').forEach(link => {
   link.addEventListener('click', () => {
-    closeAllDropdowns();   // close any open dropdowns
-    closeSidebar();        // collapse the sidebar if open
+    // Close all dropdowns
+    closeAllDropdowns();
+
+    // Collapse the sidebar if open
+    closeSidebar();
+  });
+});
+
+// ===== NEW: CLOSE DROPDOWN WHEN A CHILD LINK IS CLICKED =====
+document.querySelectorAll('.sidebar .dropdown-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    const dropdownButton = link.closest('.dropdown').querySelector('button');
+    if (dropdownButton) {
+      dropdownButton.setAttribute('aria-expanded', 'false');
+    }
   });
 });
 
