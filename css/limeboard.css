@@ -217,3 +217,15 @@ body::before {
   border-radius: .5rem;
   cursor: pointer;
 }
+
+/* ===== LOGO LEFT ALIGN ===== */
+.ll-nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* push everything left */
+}
+
+.ll-nav .logo-link {
+  margin-right: auto; /* logo stays left, menu toggler goes right */
+}
+

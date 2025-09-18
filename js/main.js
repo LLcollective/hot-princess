@@ -92,6 +92,15 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// ===== CLOSE SIDEBAR & DROPDOWNS ON LINK CLICK =====
+document.querySelectorAll('.sidebar a').forEach(link => {
+  link.addEventListener('click', () => {
+    closeAllDropdowns();   // close any open dropdowns
+    closeSidebar();        // collapse the sidebar if open
+  });
+});
+
+
 /* === CAROUSEL LOGIC (Universal) ============================ */
 document.querySelectorAll('.carousel').forEach(carousel => {
   const viewport = carousel.querySelector('.carousel-viewport');
