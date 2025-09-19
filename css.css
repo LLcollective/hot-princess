@@ -1537,19 +1537,6 @@ body::before {
   }
 }
 
-/* ===========================
-   UNIVERSAL HERO H1
-   =========================== */
-/* Universal responsive tagline across all pages */
-.hero .tagline {
-  font-size: clamp(2rem, 8vw, 2.6rem);
-  line-height: 1.4;
-  font-weight: 400;
-  text-align: center;
-  color: var(--text, #444);
-  margin: 0.25rem 0 1rem;
-}
-
 @keyframes fadeSlideIn {
   from { opacity: 0; transform: translateY(25px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -1601,13 +1588,21 @@ body::before {
   }
 }
 
+/* === FINAL RESPONSIVE HERO TAGLINE === */
+.hero .tagline {
+  font-size: clamp(2rem, 8vw, 2.6rem); /* default for desktop/tablet */
+  line-height: 1.4;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text, #444);
+  margin: 0.25rem 0 1rem;
+  animation: fadeSlideIn 1.2s ease-out forwards;
+}
 
-/* Mobile-only tagline adjustments */
+/* Mobile-only tighter control */
 @media (max-width: 600px) {
   .hero .tagline {
-    font-size: clamp(1.4rem, 5vw, 1.9rem); /* smaller cap for mobile */
-    line-height: 1.3;
-    text-align: center;
-    animation: fadeSlideIn 1.2s ease-out forwards;
+    font-size: clamp(1.1rem, 4.2vw, 1.6rem); /* semi-big but not overwhelming */
+    line-height: 1.25;
   }
 }
