@@ -1359,18 +1359,6 @@ line-height:1;
 /* ===========================
    GLOBAL BACKDROP
    =========================== */
-/* Index-specific layers */
-body.index::before {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(155, 224, 128, 0.25), transparent 60%),
-    radial-gradient(circle at 80% 40%, rgba(139, 128, 224, 0.25), transparent 60%),
-    linear-gradient(to bottom, #E6F4FF, #C8D8FF 40%, #BFD0FF 100%);
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-
-/* Global backdrop */
 body::before {
   content: "";
   position: fixed;
@@ -1382,6 +1370,16 @@ body::before {
   background-blend-mode: overlay;
   z-index: -1;
   pointer-events: none;
+}
+
+/* Index-specific layers (override global) */
+body.index::before {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(155, 224, 128, 0.25), transparent 60%),
+    radial-gradient(circle at 80% 40%, rgba(139, 128, 224, 0.25), transparent 60%),
+    linear-gradient(to bottom, #E6F4FF, #C8D8FF 40%, #BFD0FF 100%);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /* ===========================
@@ -1399,10 +1397,8 @@ body::before {
   align-items: center;
   padding: 1.5rem;
 }
-
-/* Only show when explicitly triggered */
 .modal.show {
-  display: flex !important;
+  display: flex !important;   /* only when triggered */
 }
 
 .modal-box {
@@ -1416,26 +1412,14 @@ body::before {
   animation: fadeInUp 0.3s ease;
   z-index: 2100;
 }
+.modal-box h3 { margin-top: 0; font-size: 1.4rem; }
+.modal-box p { margin: 1rem 0; line-height: 1.6; }
 
-.modal-box h3 {
-  margin-top: 0;
-  font-size: 1.4rem;
-}
-
-.modal-box p {
-  margin: 1rem 0;
-  line-height: 1.6;
-}
-
-/* Simple modal fade animation */
+/* Animation */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
-
-
-
 
 /* Limeboard modal highlight */
 .hover-diamond {
@@ -1449,17 +1433,9 @@ body::before {
   box-shadow: inset 0 0 10px rgba(155,224,128,0.25);
 }
 
-/* Fade animation */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 /* ===========================
    RESPONSIVE OVERRIDES
    =========================== */
-
-/* Desktop ≥1024px */
 @media (min-width: 1024px) {
   .pathways .wrap {
     max-width: 1400px;
@@ -1467,40 +1443,22 @@ body::before {
   }
   .workshop-cards {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap; /* force single row */
+    justify-content: flex-start;
     gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
   }
-  .pathways .workshop-card {
-    flex: 1 1 420px;
-    max-width: 480px;
+  .workshop-card {
+    flex: 0 0 420px;
+    max-width: 420px;
+    scroll-snap-align: start;
     padding: 1.5rem;
   }
 }
 
-/* ===== FORCE SINGLE HORIZONTAL ROW ON DESKTOP ===== */
-
-
-@media (min-width: 1024px) {
-  .workshop-cards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;          /* prevent wrapping */
-    justify-content: flex-start;/* align left */
-    gap: 2rem;
-    overflow-x: auto;           /* allow side scroll if needed */
-    padding-bottom: 1rem;       /* room for scrollbar */
-    scroll-snap-type: x mandatory; /* optional: smooth snap */
-  }
-
-  .workshop-card {
-    flex: 0 0 420px;            /* fixed width cards */
-    max-width: 420px;
-    scroll-snap-align: start;   /* optional: snap alignment */
-  }
-}
-
-
-/* Mobile ≤600px */
 @media (max-width: 600px) {
   .pathways .wrap {
     padding-inline: 0.5rem;
@@ -1508,8 +1466,7 @@ body::before {
   .pathways .workshop-card {
     width: 100%;
     max-width: none;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
   }
   .modal-box {
     padding: 1.25rem;
@@ -1517,11 +1474,11 @@ body::before {
   }
 }
 
-
-
-/* ===== UNIVERSAL RESPONSIVE HERO H1 ===== */
+/* ===========================
+   UNIVERSAL HERO H1
+   =========================== */
 .hero h1 {
-  font-size: clamp(1.8rem, 6vw, 3.2rem); /* scales between mobile & desktop */
+  font-size: clamp(1.8rem, 6vw, 3.2rem);
   line-height: 1.2;
   font-weight: 700;
   text-align: center;
@@ -1529,21 +1486,12 @@ body::before {
   margin: 0 0 1rem;
   animation: fadeSlideIn 1.2s ease-out forwards;
 }
-
-/* Animation for entrance */
 @keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(25px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-
-
+/* Kill burger scrim */
 .scrim {
   background: transparent !important;
   backdrop-filter: none !important;
