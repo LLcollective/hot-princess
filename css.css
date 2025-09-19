@@ -1590,8 +1590,7 @@ body.index {
 /* ===== MOBILE UNIVERSAL HERO TAGLINE ===== */
 @media (max-width: 600px) {
   .hero .tagline {
-    font-size: 1.5rem !important;
+    font-size: clamp(1.75rem, 6vw, 2.1rem) !important;
     line-height: 1.25 !important;
-    margin-bottom: 0.3rem !important;
+    margin-bottom: 0.25rem !important;
   }
-}
