@@ -103,33 +103,51 @@
 <div class="filters">
   <div class="filter-pills">
     <button class="active">All</button>
-    <button>Lace</button>
-    <button>Lime</button>
+    <!-- Lace / Lime toggles removed for now -->
   </div>
   <div class="filter-dots">
-    <button><span class="dot lime"></span> Renewal</button>
-    <button><span class="dot lavender"></span> Clarity</button>
-    <button><span class="dot orange"></span> Creativity</button>
+    <button><span class="dot lavender"></span> Insights</button>
+    <button><span class="dot lime"></span> Energy</button>
+ <!-- <button><span class="dot orange"></span> Creativity</button> -->
     <button><span class="dot magenta"></span> Spotlight</button>
   </div>
 </div>
 
 
-
-<!-- CARDS -->
+<!-- GRID SECTION -->
 <section class="grid">
+
+  <!-- Prompt Library (Archived) -->
+  <div class="card insights archive">
+    <span class="badge archive">Archive</span>
+    <h3>Prompt Library</h3>
+    <p>An always-growing bank of Lace & Lime™ prompts. Pick a reflection or an action spark whenever you need it.</p>
+  </div>
+
+  <!-- Insight / Reflection -->
+  <div class="card insights fresh">
+    <span class="badge insights">Fresh Squeeze</span>
+    <h3>Test of Compassion</h3>
+    <p>Empathy is often selective, drawn to what’s familiar or easy to sympathize with. 
+       Compassion calls us deeper, to act even when it’s uncomfortable. 
+       <a href="#compassion-modal" class="read-more">Explore</a>
+    </p>
+  </div>
+
   <!-- Personal Anchor -->
-  <div class="card clarity">
-    <span class="badge clarity">Notes</span>
+  <div class="card insights">
+    <span class="badge insights">Notes</span>
     <h3>Notes from Sharon</h3>
-    <p>Founder reflections, honest insights, and the lessons shaping Lace & Lime™ from the inside out.</p>
+    <p>Welcome to the early launch of Lace & Lime. Browse Limeboard topics; this will be the most updated section moving forward.</p>
   </div>
 
   <!-- Community Thread -->
   <div class="card spotlight">
     <span class="badge spotlight">Together</span>
     <h3>Laced Together</h3>
-    <p>A shared thread of quotes, resources, and sparks of thought. <a href="#subscribe-modal">Join the list</a> to follow along in the founders club.</p>
+    <p>A shared thread of quotes, resources, and sparks of thought. 
+       <a href="#subscribe-modal">Join the list</a> to follow along in the founders club.
+    </p>
   </div>
 
   <!-- Spotlight Feature -->
@@ -140,61 +158,84 @@
   </div>
 
   <!-- Practical Tools -->
-  <div class="card renewal">
-    <span class="badge renewal">Tools</span>
+  <div class="card energy">
+    <span class="badge energy">Tools</span>
     <h3>Momentum Tools</h3>
     <p>Checklists, guides, and playlists built to clear your head and fuel your next step.</p>
   </div>
 
-  <!-- Prompts -->
-  <div class="card clarity">
-    <span class="badge clarity">Prompts</span>
-    <h3>Prompt Library</h3>
-    <p>An always-growing bank of Lace & Lime™ prompts. Pick a reflection or an action spark whenever you need it.</p>
-  </div>
-
-  <!-- Grounding -->
-  <div class="card renewal">
-    <span class="badge renewal">Rituals</span>
-    <h3>Reset and Balance</h3>
+  <!-- Grounding (Archived) -->
+  <div class="card energy archive">
+    <span class="badge archive">Archive</span>
+    <h3>Rituals</h3>
     <p>Simple grounding practices like seasonal resets, daily pauses, or breathwork to bring you back to center.</p>
   </div>
 
-  <!-- Aesthetic / Vibes -->
-  <div class="card creativity">
-    <span class="badge creativity">Mood</span>
+  <!-- Aesthetic / Vibes (Archived) -->
+  <div class="card creativity archive">
+    <span class="badge archive">Archive</span>
     <h3>Moodboard</h3>
     <p>Colors, visuals, and sounds that shape the Lace & Lime™ vibe — playful, grounded, and balance-forward.</p>
   </div>
 
-  <!-- Engagement -->
-  <div class="card creativity">
-    <span class="badge creativity">Poll</span>
+  <!-- Engagement (Archived) -->
+  <div class="card creativity archive">
+    <span class="badge archive">Archive</span>
     <h3>Lime Polls</h3>
-    <p>Quick interactive check-ins to share what you’re noticing and where your energy is going. Light, fast, and real-time.</p>
+    <p>Quick interactive check-ins to share what you’re noticing and where your energy is going. 
+       Light, fast, and real-time.
+    </p>
   </div>
-</section>
+
+</section> <!-- closes the ONE grid -->
+
+
+<style> .card.archive {
+  display: none !important;
+}
+
+</style>
 
 
   <!-- MODAL -->
-  <div id="subscribe-modal">
-    <div class="modal-box">
-      <h3>Laced Together</h3>
-      <p>Subscribe to join the shared thread. Get notes, quotes, and resources straight to your inbox.</p>
-      <form>
-        <input type="email" placeholder="Your email">
-        <button type="submit">Join</button>
-      </form>
-      <button onclick="document.getElementById('subscribe-modal').style.display='none'" style="margin-top:1rem;">Close</button>
-    </div>
-  </div>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="wrap">
-      © 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
-    </div>
-  </footer>
+<!-- MODAL -->
+<div id="compassion-modal" class="modal">
+  <div class="modal-box">
+    <h3>The Test of Compassion</h3>
+    <p>
+      Empathy is often selective, drawn to what’s familiar or easy to sympathize with. 
+      But compassion calls us deeper, to act even when it’s uncomfortable. 
+      That’s the real test of compassion: whether we extend it even when violence breaks the pattern 
+      people would rather project onto someone else, and the silence grows heavier, tilting toward avoidance. 
+      The imbalance becomes harder to ignore. How do we choose who deserves our empathy, 
+      and what does compassion look like when no one is left out?
+    </p>
+    <p>- with Lace & Lime™</p>
+    <button class="close-modal" style="margin-top:1rem;">Close</button>
+  </div>
+</div>
+
+
+<div id="subscribe-modal" class="modal">
+  <div class="modal-box">
+    <h3>Laced Together</h3>
+    <p>Subscribe to join the shared thread. Get notes, quotes, and resources straight to your inbox.</p>
+    <form>
+      <input type="email" placeholder="Your email">
+      <button type="submit">Join</button>
+    </form>
+    <button class="close-modal" style="margin-top:1rem;">Close</button>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    © 2025 Lace & Lime™ LLC. All rights reserved. · 
+    <a href="privacy-terms.html">Privacy and Terms</a>
+  </div>
+</footer>
 
   <script src="js/main.js?v=1.0"></script>
 </body>

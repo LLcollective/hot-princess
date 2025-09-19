@@ -102,3 +102,104 @@ document.querySelectorAll('.sidebar a').forEach(link => {
   });
 });
 
+// ===== MODAL HANDLING =====
+
+// Open modal when clicking a read-more link or open-modal button
+document.querySelectorAll('a.read-more, .open-modal').forEach(trigger => {
+  trigger.addEventListener('click', e => {
+    e.preventDefault();
+    const targetId = trigger.getAttribute('href')?.replace('#', '') || trigger.dataset.target;
+    const modal = document.getElementById(targetId);
+    if (modal) {
+      modal.style.display = 'flex';
+    }
+  });
+});
+
+// Close modal via .close-modal button
+document.querySelectorAll('.close-modal').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.modal').style.display = 'none';
+  });
+});
+
+// Close modal if clicking outside modal-box
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
+
+
+// ===== INITIAL REORDER ON LOAD =====
+window.addEventListener('DOMContentLoaded', () => {
+  const grid = document.querySelector('.grid');
+  if (grid) {
+    reorderCards(grid);
+    toggleEmptyMessage();
+  }
+});
+
+// ===== CATEGORY FILTERING =====
+document.querySelectorAll('.filter-dots button, .filter-pills button').forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.textContent.trim().toLowerCase();
+
+    // Update active state
+    document.querySelectorAll('.filter-dots button, .filter-pills button')
+      .forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+
+    const grid = document.querySelector('.grid');
+
+    // Step 1: Filter cards
+    document.querySelectorAll('.card').forEach(card => {
+      if (filter === 'all') {
+        card.style.display = 'flex';
+      } else {
+        const matchesCategory = card.classList.contains(filter);
+        const isArchived = card.classList.contains('archive');
+        card.style.display = matchesCategory && !isArchived ? 'flex' : 'none';
+      }
+    });
+
+    // Step 2: Reorder cards
+    if (grid) {
+      reorderCards(grid);
+    }
+
+    // Step 3: Check if empty
+    toggleEmptyMessage();
+  });
+});
+
+// ===== HELPER FUNCTION: REORDER =====
+function reorderCards(grid) {
+  // Fresh Squeeze first
+  const freshCard = grid.querySelector('.card.fresh');
+  if (freshCard && freshCard.style.display !== 'none') {
+    grid.prepend(freshCard);
+  }
+
+  // Archives last
+  const archiveCards = Array.from(grid.querySelectorAll('.card.archive'))
+    .filter(card => card.style.display !== 'none');
+
+  archiveCards.forEach(card => {
+    grid.removeChild(card);
+    grid.appendChild(card);
+  });
+}
+
+// ===== HELPER FUNCTION: EMPTY MESSAGE =====
+function toggleEmptyMessage() {
+  const visibleCards = Array.from(document.querySelectorAll('.card'))
+    .filter(card => card.style.display !== 'none');
+
+  const emptyMessage = document.getElementById('empty-message');
+  if (emptyMessage) {
+    emptyMessage.style.display = visibleCards.length === 0 ? 'block' : 'none';
+  }
+}

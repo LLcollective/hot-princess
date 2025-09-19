@@ -45,6 +45,7 @@ body::before {
 .hero-sub {
   max-width: 65ch;
   color: var(--ink-600);
+  line-height: 1.6;
 }
 
 /* ===== FILTERS ===== */
@@ -65,16 +66,22 @@ body::before {
   padding: .4rem .9rem;
   font-weight: 600;
   cursor: pointer;
+  transition: background .2s, color .2s, transform .2s;
+}
+.filter-pills button:hover {
+  transform: translateY(-1px);
 }
 .filter-pills button.active {
   background: var(--brand);
   color: #fff;
 }
 
+/* ===== FILTER DOTS ===== */
 .filter-dots {
   display: flex;
   justify-content: center;
   gap: 1.2rem;
+  flex-wrap: wrap;
 }
 .filter-dots button {
   display: flex;
@@ -85,33 +92,38 @@ body::before {
   background: none;
   font-weight: 500;
   color: var(--ink-700);
+  transition: color .2s ease;
+}
+.filter-dots button:hover {
+  color: var(--brand-dark);
 }
 
-/* Restrict dot styles to filters only */
+/* Only affect dots in filter row */
 .filters .dot {
   width: 14px;
   height: 14px;
   border-radius: 50%;
   display: inline-block;
 }
+.filters .dot.lavender { background: var(--brand); }   /* Insights */
+.filters .dot.lime     { background: var(--lime); }    /* Energy */
+.filters .dot.orange   { background: #ff9900; }        /* Creativity */
+.filters .dot.magenta  { background: #D946EF; }        /* Spotlight */
 
-.filters .dot.lime { background: var(--lime); }
-.filters .dot.lavender { background: var(--brand); }
-.filters .dot.orange { background: #ff9900; }
-.filters .dot.magenta { background: #D946EF; }
-
-/* Sidebar links should never show dots */
+/* Sidebar links and other lists never get dots */
 .sidebar a::before,
-.sidebar a::marker {
+.sidebar a::marker,
+.card .dot {
   content: none !important;
+  display: none !important;
 }
 
 /* ===== GRID ===== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
-  margin: 2rem auto;
+  margin: 2rem auto 1rem; /* top = 2rem, bottom = 1rem */
   max-width: 1100px;
   padding: 0 2rem;
 }
@@ -125,7 +137,7 @@ body::before {
   padding: 2rem 1.4rem 2.2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: transform .2s ease, box-shadow .2s ease;
-  min-height: 200px;
+  min-height: 220px;
   display: flex;
   align-items: flex-start;
   text-align: left;
@@ -139,25 +151,26 @@ body::before {
 }
 
 /* Category accents */
-.card.renewal   { box-shadow: inset 12px 0 0 -4px var(--lime); }
-.card.clarity   { box-shadow: inset 12px 0 0 -4px var(--brand); }
-.card.creativity{ box-shadow: inset 12px 0 0 -4px #ff9900; }
-.card.spotlight { box-shadow: inset 12px 0 0 -4px #D946EF; }
+.card.insights   { box-shadow: inset 12px 0 0 -4px var(--brand); }
+.card.energy     { box-shadow: inset 12px 0 0 -4px var(--lime); }
+.card.creativity { box-shadow: inset 12px 0 0 -4px #ff9900; }
+.card.spotlight  { box-shadow: inset 12px 0 0 -4px #D946EF; }
 
 /* Titles + text */
 .card h3 {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--brand);
   letter-spacing: -0.25px;
   margin-top: 0.25rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
 }
 .card p {
   color: var(--ink-600);
   margin-top: 0;
   line-height: 1.5;
+  font-size: 0.92rem;
 }
 
 /* ===== BADGES ===== */
@@ -168,17 +181,26 @@ body::before {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 600;
-  padding: 0.25rem 0.55rem;
+  padding: 0.05rem 0.30rem;
   border-radius: 0.4rem;
   text-transform: uppercase;
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  letter-spacing: .5px;
 }
-.badge.renewal   { background: rgba(155,224,128,0.25); color: var(--lime-dark); }
-.badge.clarity   { background: rgba(123,108,246,0.25); color: var(--brand-dark); }
-.badge.creativity{ background: rgba(255,153,0,0.25);   color: #b45309; }
-.badge.spotlight { background: rgba(217,70,239,0.25);  color: #9d174d; }
+.badge.insights   { background: rgba(123,108,246,0.2); color: var(--brand-dark); }
+.badge.energy     { background: rgba(155,224,128,0.2); color: var(--lime-dark); }
+.badge.creativity { background: rgba(255,153,0,0.2);   color: #b45309; }
+.badge.spotlight  { background: rgba(217,70,239,0.2);  color: #9d174d; }
+
+/* Fresh Squeeze special badge */
+.card.fresh .badge {
+  background: linear-gradient(90deg, #F9D976, #F39F86);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
 
 /* ===== MODAL ===== */
 #subscribe-modal {
@@ -216,16 +238,135 @@ body::before {
   padding: .5rem 1rem;
   border-radius: .5rem;
   cursor: pointer;
+  transition: background .2s ease;
+}
+#subscribe-modal button:hover {
+  background: var(--brand-dark);
 }
 
 /* ===== LOGO LEFT ALIGN ===== */
 .ll-nav .wrap {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* push everything left */
+  justify-content: flex-start;
+}
+.ll-nav .logo-link { margin-right: auto; }
+
+.card {
+  padding: 2rem 1.25rem 1rem; /* top | left/right | bottom */
 }
 
-.ll-nav .logo-link {
-  margin-right: auto; /* logo stays left, menu toggler goes right */
+
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
+.modal-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: left;
+}
+
+
+
+<!-- ========================================
+     ARCHIVE CARD EXAMPLE (commented out)
+     ========================================
+  To archive a post:
+  1. Add class="card [category] archive"
+     → e.g., class="card insights archive"
+  2. Add the 🗂️ Archive badge if you want it marked.
+  3. The card will:
+     - Show under "All"
+     - Stay hidden when filtering by category
+     - Stack naturally in the grid
+-->
+
+.badge.archive {
+  background: linear-gradient(45deg, #888, #aaa);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+<!--
+<div class="card insights archive">
+  <span class="badge archive">🗂️ Archive</span>
+  <h3>Older Post Example</h3>
+  <p>This is a placeholder for a past Limeboard entry that you’ve moved into the archive.</p>
+</div>
+-->
+
+
+
+.empty-message {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  font-style: italic;
+  margin: 2rem 0;
+  grid-column: 1 / -1; /* span full width */
+}
+
+
+/* Force badges to stay in the top-right corner of cards */
+.card .badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;       /* move to right corner */
+  left: auto;           /* disable left placement */
+  display: inline-block;
+  width: auto;          /* don’t stretch full width */
+  max-width: fit-content;
+  white-space: nowrap;  /* keep text on one line */
+}
+
+
+/* ===== FILTERS INLINE ROW ===== */
+@media (max-width: 768px) {
+  .filters {
+    display: flex;
+    flex-direction: column; /* keep pills + dots stacked */
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* force pills + dots into a single row */
+  .filter-pills,
+  .filter-dots {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap; /* don’t stack */
+    gap: 1rem;
+    width: auto;
+  }
+
+  /* buttons stay compact */
+  .filter-pills button,
+  .filter-dots button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+}
+/* Make All the same size as the other filters */
+.filter-pills button {
+  font-size: 0.85rem;   /* match text size */
+  padding: 0.25rem 0.5rem;  /* tighter padding like the labels */
+  border-radius: 8px;   /* smaller radius to match */
+}
