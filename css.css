@@ -1578,25 +1578,20 @@ body.index {
   background-size: cover;
 }
 
-/* Main hero line */
-.index .hero .tagline {
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
-  line-height: 1.3;
-  font-weight: 600;
-  color: #6F60D6;
-  margin-bottom: 0.5rem;
+/* ===== UNIVERSAL HERO TAGLINE ===== */
+.hero .tagline {
+  font-size: clamp(1.8rem, 5vw, 2.6rem) !important;
+  line-height: 1.3 !important;
+  font-weight: 600 !important;
+  color: #6F60D6 !important;
+  margin-bottom: 0.5rem !important;
 }
 
-/* Mobile tweaks */
+/* ===== MOBILE UNIVERSAL HERO TAGLINE ===== */
 @media (max-width: 600px) {
-  .index .hero .tagline {
-    font-size: 1.5rem;
-    line-height: 1.25;
-    margin-bottom: 0.3rem;
-  }
-  .index .hero .tagline-reflect {
-    font-size: 1.15rem;
-    line-height: 1.3;
+  .hero .tagline {
+    font-size: 1.5rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.3rem !important;
   }
 }
-
