@@ -286,35 +286,22 @@ header.ll-nav {
 @media(max-width:768px){ .burger{display:block;} }
 
 
-/* ===== SCRIM ===== */
+/* ===== SCRIM (Final, no dim) ===== */
 .scrim {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.4);
+  background: transparent;        /* no dark dim */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none;           /* off by default */
   transition: opacity .3s ease;
   z-index: 800;
 }
-.scrim.active {
-  opacity: 1;
-  pointer-events: auto;
-}
 
-/* ===== SCRIM (Upgraded) ===== */
-.scrim {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.35);
-  backdrop-filter: blur(2px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .4s ease;
-  z-index: 800;
-}
 .scrim.active {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: auto;           /* still clickable to close sidebar */
 }
 
 /* ===== SIDEBAR (Tenfold Glow Frosted) ===== */
@@ -1449,14 +1436,11 @@ body::before {
   }
 }
 
-
-/* Universal removal of sidebar dim */
-.sidebar-overlay,
-.menu-overlay,
-.nav-scrim,
-.overlay {
-  background: transparent !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
+@media (max-width: 600px) {
+  h1.tagline {
+    line-height: 1.3;
+    max-width: 95vw;
+    /* keep LAST here too if you override: */
+    font-size: clamp(1.6rem, 5vw + 0.4rem, 2rem);
+  }
 }
-
