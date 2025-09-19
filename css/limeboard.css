@@ -202,48 +202,6 @@ body::before {
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* ===== MODAL ===== */
-#subscribe-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.6);
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-}
-#subscribe-modal .modal-box {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 420px;
-  text-align: center;
-}
-#subscribe-modal h3 { color: #D946EF; margin-top: 0; }
-#subscribe-modal form {
-  margin-top: 1rem;
-  display: flex;
-  gap: .5rem;
-}
-#subscribe-modal input {
-  flex: 1;
-  padding: .5rem;
-  border: 1px solid var(--line);
-  border-radius: .5rem;
-}
-#subscribe-modal button {
-  background: var(--brand);
-  color: #fff;
-  border: none;
-  padding: .5rem 1rem;
-  border-radius: .5rem;
-  cursor: pointer;
-  transition: background .2s ease;
-}
-#subscribe-modal button:hover {
-  background: var(--brand-dark);
-}
-
 /* ===== LOGO LEFT ALIGN ===== */
 .ll-nav .wrap {
   display: flex;
@@ -256,42 +214,7 @@ body::before {
   padding: 2rem 1.25rem 1rem; /* top | left/right | bottom */
 }
 
-
-
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-box {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 500px;
-  width: 90%;
-  text-align: left;
-}
-
-
-
-<!-- ========================================
-     ARCHIVE CARD EXAMPLE (commented out)
-     ========================================
-  To archive a post:
-  1. Add class="card [category] archive"
-     → e.g., class="card insights archive"
-  2. Add the 🗂️ Archive badge if you want it marked.
-  3. The card will:
-     - Show under "All"
-     - Stay hidden when filtering by category
-     - Stack naturally in the grid
--->
-
+/* ===== ARCHIVE CARD EXAMPLE ===== */
 .badge.archive {
   background: linear-gradient(45deg, #888, #aaa);
   color: white;
@@ -301,16 +224,6 @@ body::before {
   font-weight: 600;
 }
 
-<!--
-<div class="card insights archive">
-  <span class="badge archive">🗂️ Archive</span>
-  <h3>Older Post Example</h3>
-  <p>This is a placeholder for a past Limeboard entry that you’ve moved into the archive.</p>
-</div>
--->
-
-
-
 .empty-message {
   text-align: center;
   font-size: 1rem;
@@ -319,7 +232,6 @@ body::before {
   margin: 2rem 0;
   grid-column: 1 / -1; /* span full width */
 }
-
 
 /* Force badges to stay in the top-right corner of cards */
 .card .badge {
@@ -332,7 +244,6 @@ body::before {
   max-width: fit-content;
   white-space: nowrap;  /* keep text on one line */
 }
-
 
 /* ===== FILTER CONTROLS ===== */
 .filters {
