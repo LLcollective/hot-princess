@@ -1154,269 +1154,186 @@ line-height:1;
 
 
 
-
-/* ===== CONTACT FORM STYLING ===== */
-/* ===== CONTACT FORM CARD ===== */
-.contact-form {
-  padding: 2rem 0;
-}
+/* ===== CONTACT FORM WRAPPER ===== */
 .contact-form .wrap {
-  max-width: 560px;           /* capped, centered card */
-  margin: 0 auto;
-  background: linear-gradient(135deg, #E6F4FF, #C7DBFF);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  max-width: 500px;        /* slimmer on desktop */
+  margin: 1rem 0 1rem 8rem; /* aligned left */
+  padding: 1rem;           /* reduced padding */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
-/* Rows & groups */
+/* ===== FORM ROWS ===== */
 .contact-form .form-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-.contact-form .form-group {
-  flex: 1;
-  display: flex;
   flex-direction: column;
-}
-.contact-form .form-group.full {
-  flex: 100%;
-}
-
-/* Labels */
-.contact-form label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.3rem;
+  gap: 0rem; /* tighter spacing between fields */
+  margin-bottom: 0.75rem;
 }
 
-/* Inputs & textarea */
+/* ===== INPUTS & TEXTAREA ===== */
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #ccc;
+  padding: 0.45rem 0.8rem; /* slim padding inside fields */
+  border: 1px solid #ddd;
   border-radius: 10px;
   font-size: 0.95rem;
-  font-family: inherit;
+  line-height: 1.4;
   background: #fff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #7B6CF6;
-  box-shadow: 0 0 0 3px rgba(123,108,246,0.15);
-  outline: none;
-}
-.contact-form textarea {
-  resize: vertical;
-  min-height: 100px;
+  box-sizing: border-box;
 }
 
-/* Controls (button + status) */
-.contact-form .controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #777;
+  font-size: 0.75rem;
 }
+
+/* ===== TEXTAREA ===== */
+.contact-form textarea {
+  min-height: 90px; /* smaller than before */
+  resize: vertical;
+}
+
+/* ===== BUTTON ===== */
 .contact-form .btn {
-  background: linear-gradient(90deg, #7B6CF6, #32D45A);
+  width: 100%;
+  padding: 0.55rem 1rem; /* slimmer button */
+  border-radius: 10px;
+  background: linear-gradient(90deg, #9BE080, #7B6CF6);
   color: #fff;
-  padding: 0.9rem 2.2rem;
   font-size: 1rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 40px;
+  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
 .contact-form .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Small text */
-.contact-form .small {
-  font-size: 0.85rem;
-  margin-top: 1rem;
-  color: #444;
-}
-.contact-form .small a {
-  color: #7B6CF6;
-  font-weight: 600;
-  text-decoration: none;
-}
-.contact-form .small a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive adjustments */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .contact-form .wrap {
     max-width: 100%;
-    padding: 1.5rem;
-  }
-  .contact-form .form-row {
-    flex-direction: column;
-  }
-  .contact-form .btn {
-    width: 100%;
-    border-radius: 12px;
-    align-self: center;
+    margin: 1.25rem auto;
+    padding: 0.85rem;
   }
 }
 
 
+
+
+
+/* ===========================
+   BASE WRAP + UTILITIES
+   =========================== */
 .wrap {
-  width:min(1080px,100%);
-  margin-inline:auto;
-  padding-inline:24px;
-  box-sizing:border-box
-}
-.carousel-slide{display:none}
-.carousel-slide.active{display:block}
-.c-card{flex-basis:90vw;max-width:90vw;margin:0 auto}
-@media(max-width:480px){.wrap{padding-inline:16px}}
-
-
-/* ===== UNIVERSAL RESPONSIVE CLEAN ===== */
-/* ===== UNIVERSAL RESPONSIVE & HARD LOCK ===== */
-html,body,section,header,footer,nav,.wrap,.grid,.cards,.columns,.path,.card,.cta-btn,.chips,.hero,.hero .wrap,.hero-sub,.tagline {
-  max-width:100%!important;
-  overflow-x:hidden!important;
-  box-sizing:border-box;
-}
-@media(max-width:1024px){
-  .wrap{padding-inline:1rem;}
-  img{max-width:100%;height:auto;}
-  .hero,section,footer{padding-inline:1rem;}
-}
-@media(max-width:768px){
-  body{font-size:.95rem;line-height:1.6;}
-  h1{font-size:clamp(1.6rem,5vw,2.4rem);}
-  h2{font-size:clamp(1.3rem,4.5vw,1.8rem);}
-  h3{font-size:clamp(1.1rem,4vw,1.4rem);}
-  header.ll-nav .wrap{flex-direction:row;justify-content:space-between;padding:.8rem 1rem;}
-  #nav-menu.sidebar{
-    position:fixed;top:1rem;right:1rem;left:auto!important;bottom:auto;
-    width:160px!important;max-width:160px!important;
-    border-radius:16px;
-    transform:translateX(120%)!important;
-    transition:transform .45s cubic-bezier(.68,-0.55,.27,1.55);
-    z-index:1200;
-  }
-  #nav-menu.sidebar.show{transform:translateX(0)!important;}
-  .sidebar-toggle{display:none!important;}
-  
-  /* Stack grids/cards (removed .workshop-cards here) */
-  .grid,.cards,.columns .path,.path-grid {
-    display:flex;
-    flex-direction:column;
-    gap:1.5rem;
-  }
-
-  .workshop-card,.path{width:100%;max-width:100%;}
-  .cta-btn{width:100%;text-align:center;}
-  .hero .tagline{font-size:clamp(1.6rem,6vw,2.4rem);line-height:1.3;white-space:normal;}
-  .hero .hero-sub{font-size:1rem;margin-top:1rem;}
-}
-@media(max-width:480px){
-  body{font-size:.9rem;line-height:1.5;}
-  h1{font-size:1.3rem;}
-  h2{font-size:1.2rem;}
-  h3{font-size:1rem;}
-  .wrap{padding-inline:16px;}
-  footer .wrap{text-align:center;font-size:.85rem;}
-  button,.cta-btn,input,textarea{width:100%;box-sizing:border-box;}
-  .hero .tagline{font-size:1.2rem;line-height:1.25;margin-top:.4rem;}
-  .hero .hero-sub{font-size:.95rem;line-height:1.35;}
-} 
-
-/* ===== UNIVERSAL RESET & RESPONSIVE ===== */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-html,body { margin:0; padding:0; max-width:100%!important; overflow-x:hidden!important; }
-img { max-width:100%; height:auto; display:block; }
-
-/* Hard lock: prevent sideways scroll on all wrappers */
-section,header,footer,nav,.wrap,.grid,.cards,.columns,.path,.card,.cta-btn,.chips,.hero,.hero .wrap,.hero-sub,.tagline {
-  max-width:100%!important; overflow-x:hidden!important;
+  width: min(1080px, 100%);
+  margin-inline: auto;
+  padding-inline: 24px;
+  box-sizing: border-box;
 }
 
-/* Tablet: 1024px */
-@media(max-width:1024px){
-  .wrap{padding-inline:1rem;}
-  .hero,section,footer{padding-inline:1rem;}
+.carousel-slide { display: none; }
+.carousel-slide.active { display: block; }
+.c-card { flex-basis: 90vw; max-width: 90vw; margin: 0 auto; }
+
+@media (max-width: 480px) {
+  .wrap { padding-inline: 16px; }
 }
 
-/* Mobile: 768px (already above, kept consistent) */
-
-/* Small phones: 480px (already above, kept consistent) */
-
-.scrim {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-#nav-menu.sidebar .sidebar-toggle{
-  display:none!important;
-  width:0!important;
-  height:0!important;
-  padding:0!important;
-  margin:0!important;
-  border:0!important;
-  pointer-events:none!important;
+/* ===========================
+   PATHWAYS CARDS (Index)
+   =========================== */
+.pathways .workshop-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: inset 6px 0 rgba(155, 224, 128, 0.7),
+              inset -6px 0 rgba(123, 108, 246, 0.7);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 
-/* ===== DESKTOP OVERRIDE: side-by-side cards ===== */
-@media(min-width:900px){
-  .workshop-cards {
-    display:flex!important;
-    flex-direction:row!important;
-    justify-content:center;
-    align-items:stretch;
-    gap:2rem;
-    max-width:900px;
-    margin:0 auto;
-  }
-  .workshop-card {
-    flex:1 1 300px;
-    max-width:360px;
-  }
+/* Hover effect */
+.pathways .workshop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 8px 0 rgba(155, 224, 128, 0.9),
+              inset -8px 0 rgba(123, 108, 246, 0.9),
+              0 6px 18px rgba(0,0,0,0.15);
 }
 
-
-/* ===== FIX: Remove active dot on Contact ===== */
-
-/* Disable dot bullets for contact link specifically */
-nav.sidebar a[href*="contact"].active::before {
-  content: none !important;
+/* Diamond constellation bullets */
+.pathways .workshop-card a {
+  position: relative;
+  display: inline-block;
+  margin-left: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--brand);
+}
+.pathways .workshop-card a::before {
+  content: "✦";
+  position: absolute;
+  left: -1.25rem;
+  font-size: 0.75rem;
+  color: var(--brand);
+  opacity: 0.9;
+  line-height: 1;
 }
 
-/* Optional: still keep active color highlight */
-nav.sidebar a[href*="contact"].active {
-  color: var(--lime);
+/* ===========================
+   BADGES
+   =========================== */
+.badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  left: auto;
+  display: inline-block;
+  width: auto;
+  max-width: fit-content;
+  white-space: nowrap;
+  font-size: 0.7rem;
   font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999rem;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 2;
 }
 
-/* ===== UNIVERSAL BACKGROUND (OMBRE and WRAP PADDING) ===== */
+.badge.insights { background: linear-gradient(90deg, #F9D976, #F39F86); font-weight: 700; }
+.badge.fresh-press { background: linear-gradient(45deg, #FF9966, #FF5E62); }
+.badge.fresh-squeeze { background: linear-gradient(45deg, #36D1DC, #5B86E5); }
 
-body::before {
-  content:"";
-  position:fixed;
-  inset:0;
-  background:linear-gradient(180deg,#E6F4FF 0%,#DCEBFF 40%,#C7DBFF 70%,#BFD0FF 110%);
-  z-index:-1;
-  pointer-events:none
+/* ===========================
+   GLOBAL BACKDROP
+   =========================== */
+/* Index-specific layers */
+body.index::before {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(155, 224, 128, 0.25), transparent 60%),
+    radial-gradient(circle at 80% 40%, rgba(139, 128, 224, 0.25), transparent 60%),
+    linear-gradient(to bottom, #E6F4FF, #C8D8FF 40%, #BFD0FF 100%);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 
-/* ===== FIX: Combine gradient + glow background ===== */
+/* Global backdrop */
 body::before {
   content: "";
   position: fixed;
@@ -1430,181 +1347,23 @@ body::before {
   pointer-events: none;
 }
 
-/* ===== FIX: Remove phantom vertical scroll ===== */
-html, body {
-  height: auto !important;         /* don’t lock to 100vh */
-  min-height: 100%;                /* ensure full-page height */
-  overflow-y: overlay !important;  /* only scroll when needed */
-}
 
-
-.workshop-card a {
-  display: block;
-  margin: 0.4rem 0;
-  padding-left: 1.2rem;
-  position: relative;
-  color: var(--lavender);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.25s ease;
-}
-
-.workshop-card a::before {
-  content: "◆"; /* diamond shape */
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%) scale(0.9);
-  font-size: 0.7rem;
-  color: var(--lavender);
-  opacity: 0.8;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* Hover: animate diamond and text */
-.workshop-card a:hover {
-  color: var(--lime);
-}
-.workshop-card a:hover::before {
-  color: var(--lime);
-  transform: translateY(-50%) scale(1.1) rotate(20deg);
-}
-
-
-/* General badge reset */
-.badge {
-  position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;    /* always top-right */
-  left: auto;        /* cancel left alignment */
-  display: inline-block;
-  width: auto;
-  max-width: fit-content;
-  white-space: nowrap;
-  
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0.3rem 0.3rem;
-  border-radius: 999rem;
-  text-transform: uppercase;
-  color: #fff;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-/* Unified gradient style for Fresh Squeeze + Fresh Press */
-.badge.insights {
-  background: linear-gradient(90deg, #F9D976, #F39F86);
-  font-weight: 700;
-}
-
-/* Card containers just ensure room for badges */
-.workshop-card,
-.card {
-  position: relative;
-  padding-top: 2.5rem; /* space so badge doesn't collide with heading */
-  background: rgba(255, 255, 255, 0.22); /* instead of 0.12 */
-}
-
-}
-
-
-
-/* ===== PATHWAYS CARDS (Index) ===== */
-.pathways .workshop-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 18px;
-  padding: 1rem;
-  box-shadow: inset 6x 0 rgba(155, 224, 128, 0.7),   /* lime left */
-              inset -6px 0 rgba(123, 108, 246, 0.7);  /* purple right */
-  transition: transform 0.25s ease, box-shadow 0.3s ease;
-}
-
-/* Hover effect */
-.pathways .workshop-card:hover {
-  transform: translateY(-4px);
-  box-shadow: inset 8px 0 rgba(155, 224, 128, 0.9),
-              inset -8px 0 rgba(123, 108, 246, 0.9),
-              0 6px 18px rgba(0,0,0,0.15);
-}
-
-/* Diamond constellation bullets for links */
-.pathways .workshop-card a {
-  position: relative;
-  display: inline-block;
-  margin-left: 1.25rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--brand);
-}
-
-.pathways .workshop-card a::before {
-  content: "✦";  /* curved star instead of diamond */
-  position: absolute;
-  left: -1.25rem;
-  font-size: 0.75rem;
-  color: var(--brand);
-  opacity: 0.9;
-  line-height: 1;
-}
-
-
-
-body.index {
-  background: radial-gradient(
-      circle at 25% 30%,
-      rgba(155, 224, 128, 0.35) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 75% 70%,
-      rgba(123, 108, 246, 0.35) 0%,
-      transparent 50%
-    ),
-    linear-gradient(180deg, #e6f4ff 0%, #bfd0ff 50%, #bfc0ff 100%);
-  background-attachment: fixed !important;
-}
-
-
-/* ===== HERO STYLING (Index Page) ===== */
-body.index {
-  background: radial-gradient(circle at 20% 20%, rgba(155, 224, 128, 0.25), transparent 60%),
-              radial-gradient(circle at 80% 40%, rgba(139, 128, 224, 0.25), transparent 60%),
-              linear-gradient(to bottom, #E6F4FF, #C8D8FF 40%, #BFD0FF 100%);
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-/* ===== UNIVERSAL HERO TAGLINE ===== */
-.hero .tagline {
-  font-size: clamp(1.8rem, 5vw, 2.6rem) !important;
-  line-height: 1.3 !important;
-  font-weight: 600 !important;
-  color: #6F60D6 !important;
-  margin-bottom: 0.5rem !important;
-}
-
-
-/* ===== UNIVERSAL MODAL STYLES (shared across all pages) ===== */
+/* ===========================
+   MODALS (GLOBAL)
+   =========================== */
 .modal {
   display: none;              /* hidden by default */
   position: fixed;
-  inset: 0;                   /* full-screen overlay */
+  inset: 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  z-index: 2000;              /* above everything */
+  z-index: 2000;
   justify-content: center;
   align-items: center;
   padding: 1.5rem;
 }
-
-.modal.show {
-  display: flex !important;   /* force overlay mode */
-}
+.modal.show { display: flex !important; }
 
 .modal-box {
   background: #fff;
@@ -1615,19 +1374,12 @@ body.index {
   box-shadow: 0 6px 24px rgba(0,0,0,0.2);
   text-align: left;
   animation: fadeInUp 0.3s ease;
+  z-index: 2100;
 }
+.modal-box h3 { margin-top: 0; font-size: 1.4rem; }
+.modal-box p { margin: 1rem 0; line-height: 1.6; }
 
-.modal-box h3 {
-  margin-top: 0;
-  font-size: 1.4rem;
-}
-
-.modal-box p {
-  margin: 1rem 0;
-  line-height: 1.6;
-}
-
-/* Hover diamond highlight (optional, for Limeboard modal) */
+/* Limeboard modal highlight */
 .hover-diamond {
   margin: 1.25rem 0;
   padding: 1rem;
@@ -1639,17 +1391,70 @@ body.index {
   box-shadow: inset 0 0 10px rgba(155,224,128,0.25);
 }
 
-/* Simple modal fade animation */
+/* Fade animation */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ===========================
+   RESPONSIVE OVERRIDES
+   =========================== */
 
-/* ===== MOBILE UNIVERSAL HERO TAGLINE ===== */
-@media (max-width: 600px) {
-  .hero .tagline {
-    font-size: clamp(1.75rem, 6vw, 2.1rem) !important;
-    line-height: 1.25 !important;
-    margin-bottom: 0.25rem !important;
+/* Desktop ≥1024px */
+@media (min-width: 1024px) {
+  .pathways .wrap {
+    max-width: 1400px;
+    padding-inline: 2rem;
   }
+  .workshop-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .pathways .workshop-card {
+    flex: 1 1 420px;
+    max-width: 480px;
+    padding: 1.5rem;
+  }
+}
+
+/* ===== FORCE SINGLE HORIZONTAL ROW ON DESKTOP ===== */
+
+
+@media (min-width: 1024px) {
+  .workshop-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;          /* prevent wrapping */
+    justify-content: flex-start;/* align left */
+    gap: 2rem;
+    overflow-x: auto;           /* allow side scroll if needed */
+    padding-bottom: 1rem;       /* room for scrollbar */
+    scroll-snap-type: x mandatory; /* optional: smooth snap */
+  }
+
+  .workshop-card {
+    flex: 0 0 420px;            /* fixed width cards */
+    max-width: 420px;
+    scroll-snap-align: start;   /* optional: snap alignment */
+  }
+}
+
+
+/* Mobile ≤600px */
+@media (max-width: 600px) {
+  .pathways .wrap {
+    padding-inline: 0.5rem;
+  }
+  .pathways .workshop-card {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .modal-box {
+    padding: 1.25rem;
+    max-width: 95%;
+  }
+}

@@ -255,8 +255,16 @@ body::before {
   flex-wrap: wrap;
 }
 
-/* Shared styling for dots + pill */
-.filters .filter,
+/* ===== FILTER CONTROLS ===== */
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;   /* even spacing between dots + pill */
+  margin: 1rem 0 1.5rem;
+}
+
 .filters button {
   display: inline-flex;
   align-items: center;
@@ -264,9 +272,20 @@ body::before {
   gap: 0.4rem;
   font-size: 0.85rem;
   white-space: nowrap;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, color .2s, transform .2s;
 }
 
-/* Dots */
+.filters button.active {
+  background: var(--brand);
+  color: #fff;
+}
+
 .filters .dot {
   width: 10px;
   height: 10px;
@@ -278,19 +297,23 @@ body::before {
 .dot.energy   { background: #66C266; }
 .dot.spotlight{ background: #E45AD4; }
 
-/* All pill styled to match row */
-.filters .all-pill {
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.75rem;
-  background: #7B6CF6;
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.85rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
 
-.filters .all-pill:hover {
-  background: #6750d8;
+
+
+@media (max-width: 600px) {
+  .filters {
+    display: flex;
+    flex-wrap: wrap;          /* allow wrapping if needed */
+    justify-content: center;  /* center items in the row */
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .filters button {
+    width: auto !important;   /* stop buttons from stretching full width */
+    flex: 0 0 auto;           /* don’t let flex grow or shrink */
+    white-space: nowrap;      /* keep text + dot on one line */
+    padding: 0.35rem 0.8rem;
+    font-size: 0.9rem;
+  }
 }
