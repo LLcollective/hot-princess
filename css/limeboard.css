@@ -57,7 +57,7 @@ body::before {
   display: flex;
   justify-content: center;
   gap: .6rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 .filter-pills button {
   background: #fff;
@@ -334,39 +334,52 @@ body::before {
 }
 
 
-/* ===== FILTERS INLINE ROW ===== */
-@media (max-width: 768px) {
-  .filters {
-    display: flex;
-    flex-direction: column; /* keep pills + dots stacked */
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  /* force pills + dots into a single row */
-  .filter-pills,
-  .filter-dots {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap; /* don’t stack */
-    gap: 1rem;
-    width: auto;
-  }
-
-  /* buttons stay compact */
-  .filter-pills button,
-  .filter-dots button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-  }
+/* ===== FILTER CONTROLS ===== */
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;   /* spacing between items */
+  margin: 1rem 0 1.5rem;
+  flex-wrap: wrap;
 }
-/* Make All the same size as the other filters */
-.filter-pills button {
-  font-size: 0.85rem;   /* match text size */
-  padding: 0.25rem 0.5rem;  /* tighter padding like the labels */
-  border-radius: 8px;   /* smaller radius to match */
+
+/* Shared styling for dots + pill */
+.filters .filter,
+.filters button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Dots */
+.filters .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.insights { background: #7B6CF6; }
+.dot.energy   { background: #66C266; }
+.dot.spotlight{ background: #E45AD4; }
+
+/* All pill styled to match row */
+.filters .all-pill {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.75rem;
+  background: #7B6CF6;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.filters .all-pill:hover {
+  background: #6750d8;
 }
