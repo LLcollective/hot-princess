@@ -16,12 +16,15 @@
 
 
 </head>
+
+
+
 <body class="limeboard">
 
   <!-- HEADER -->
   <header class="ll-nav">
     <div class="wrap">
-      <a class="logo-link" href="index.html">
+      <a class="brand" href="index.html">
         <h1 class="logo-small-centered">
           <span class="lace">lace</span><span class="amp">&amp;</span><span class="lime">LIME</span>
         </h1>
@@ -94,14 +97,10 @@
 
 <!-- FILTERS -->
 <div class="filters">
-  <div class="filter-dots">
-    <button><span class="dot lavender"></span> Insights</button>
-    <button><span class="dot lime"></span> Energy</button>
-    <button><span class="dot magenta"></span> Spotlight</button>
-  </div>
-  <div class="filter-pills">
-    <button class="active">All</button>
-  </div>
+  <button data-filter="all" class="active">All</button>
+  <button data-filter="insights">Insights</button>
+  <button data-filter="energy">Energy</button>
+  <button data-filter="spotlight">Spotlight</button>
 </div>
 
 
@@ -227,6 +226,35 @@
     <a href="privacy-terms.html">Privacy and Terms</a>
   </div>
 </footer>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".filters button");
+  const cards = document.querySelectorAll(".card");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
+
+      // Highlight active button
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // Show/hide cards
+      cards.forEach(card => {
+        if (filter === "all" || card.classList.contains(filter)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+});
+</script>
+
+
 
   <script src="js/main.js?v=1.0"></script>
 </body>

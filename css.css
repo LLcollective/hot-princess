@@ -1152,6 +1152,58 @@ line-height:1;
 }
 
 
+/* ===== CARDS ===== */
+.card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 2rem 1.4rem 2.2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+
+
+/* Category accents (both left + right sides) */
+.card.insights {
+  box-shadow: 
+    inset 12px 0 0 -4px var(--brand),   /* left side */
+    inset -12px 0 0 -4px var(--brand);  /* right side */
+}
+
+.card.energy {
+  box-shadow: 
+    inset 12px 0 0 -4px var(--lime), 
+    inset -12px 0 0 -4px var(--lime);
+}
+
+.card.creativity {
+  box-shadow: 
+    inset 12px 0 0 -4px #ff9900, 
+    inset -12px 0 0 -4px #ff9900;
+}
+
+.card.spotlight {
+  box-shadow: 
+    inset 12px 0 0 -4px #D946EF, 
+    inset -12px 0 0 -4px #D946EF;
+}
+
+
+
+
 
 
 /* ===== CONTACT FORM WRAPPER ===== */
@@ -1372,14 +1424,27 @@ body::before {
   pointer-events: none;
 }
 
-/* Index-specific layers (override global) */
-body.index::before {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(155, 224, 128, 0.25), transparent 60%),
-    radial-gradient(circle at 80% 40%, rgba(139, 128, 224, 0.25), transparent 60%),
-    linear-gradient(to bottom, #E6F4FF, #C8D8FF 40%, #BFD0FF 100%);
+
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #EAF6FF 0%,    /* airy top */
+    #CFE8FF 25%,   /* stronger aqua */
+    #B9D1FF 50%,   /* vivid mid-blue */
+    #C1C6FF 75%,   /* lavender */
+    #B3BAFF 100%   /* deeper periwinkle */
+  ),
+  radial-gradient(circle at 20% 30%, rgba(123, 108, 246, 0.4), transparent 55%),
+  radial-gradient(circle at 80% 70%, rgba(155, 224, 128, 0.35), transparent 55%);
+  background-blend-mode: soft-light;  /* gives richer depth */
   background-attachment: fixed;
   background-size: cover;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* ===========================
@@ -1445,18 +1510,16 @@ body.index::before {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap; /* force single row */
-    justify-content: flex-start;
+    justify-content: center;
     gap: 2rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
+    overflow-x: visible;
+    padding-bottom: 0rem;
     scroll-snap-type: x mandatory;
   }
   .workshop-card {
-    flex: 0 0 420px;
+    flex: 1 1420px;
     max-width: 420px;
-    scroll-snap-align: start;
-    padding: 1.5rem;
-  }
+    
 }
 
 @media (max-width: 600px) {
@@ -1478,9 +1541,8 @@ body.index::before {
    UNIVERSAL HERO H1
    =========================== */
 /* Universal responsive tagline across all pages */
-.hero p,
 .hero .tagline {
-  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  font-size: clamp(2rem, 8vw, 2.6rem);
   line-height: 1.4;
   font-weight: 400;
   text-align: center;
@@ -1515,5 +1577,26 @@ body.index::before {
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+  }
+}
+@media (max-width: 768px) {
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      #EAF6FF 0%,    /* light airy top */
+      #CFE8FF 35%,   /* aqua stronger */
+      #B9D1FF 65%,   /* mid blue pop */
+      #B3BAFF 100%   /* deeper periwinkle */
+    ),
+    radial-gradient(circle at 30% 25%, rgba(123, 108, 246, 0.45), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(155, 224, 128, 0.4), transparent 55%);
+    background-blend-mode: soft-light;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -1;
+    pointer-events: none;
   }
 }

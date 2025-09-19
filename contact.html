@@ -79,18 +79,19 @@
   <!-- PROGRESS BAR -->
   <div class="progress"><span id="progress-fill"></span></div>
 
-  <!-- ===== MAIN ===== -->
-  <main id="main">
-    <section class="hero">
-      <div class="wrap">
-        <span class="eyebrow">CONTACT</span>
-        <h1 class="tagline">Say hello</h1>
-      </div>
-    </section>
 
-    <!-- Contact Form -->
-    <section class="contact-form">
-      <div class="wrap">
+
+<!-- Contact Form -->
+<section class="contact-form">
+  <div class="wrap"><center>
+
+    <!-- Move hero heading inside form section -->
+    <div class="form-header">
+      <span class="eyebrow">CONTACT</span><br>
+      <h1 class="tagline">Say hello</h1><br><br>
+    </div>
+</center>
+
         <form id="contactForm" action="/api/send" method="POST" novalidate>
           <!-- Honeypot -->
           <input type="text" name="hp_company" tabindex="-1" autocomplete="organization" aria-hidden="true" style="position:absolute;left:-5000px;opacity:.01;height:0;width:0" />
@@ -133,8 +134,8 @@
             <span id="formStatus" class="status" role="status" aria-live="polite"></span>
           </div>
 
-          <p class="small">Prefer email? Write us at <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
-        </form>
+        <small>  <p class="small">Prefer email? Write us at <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
+        </form></small>
       </div>
     </section>
 
