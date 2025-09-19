@@ -1157,7 +1157,7 @@ line-height:1;
 /* ===== CONTACT FORM WRAPPER ===== */
 .contact-form .wrap {
   max-width: 500px;        /* slimmer on desktop */
-  margin: 1rem 0 1rem 8rem; /* aligned left */
+  margin: 1rem 0 1rem 8rem; /* aligned left with hero */
   padding: 1rem;           /* reduced padding */
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
@@ -1169,16 +1169,48 @@ line-height:1;
 /* ===== FORM ROWS ===== */
 .contact-form .form-row {
   display: flex;
-  flex-direction: column;
-  gap: 0rem; /* tighter spacing between fields */
-  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.15rem;
+}
+
+/* First + Last name row → side by side on desktop */
+.contact-form .form-row:first-of-type .form-group {
+  flex: 1 1 calc(50% - 0.5rem); /* half width with spacing */
+  min-width: 200px;
+}
+
+/* Ensure full-width fields (email, subject, message) stay wide */
+.contact-form .form-group.full {
+  flex: 1 1 100%;
+}
+
+/* ===== RESPONSIVE STACK ===== */
+@media (max-width: 768px) {
+  .contact-form .form-row:first-of-type {
+    flex-direction: column;
+    gap: 0.5rem; /* smaller gap when stacked */
+  }
+
+  .contact-form .form-row:first-of-type .form-group {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+}
+
+/* ===== LABELS ===== */
+.contact-form label {
+  font-size: 0.85rem;
+  margin-bottom: 0.15rem;
+  color: #444;
+  font-weight: 500;
 }
 
 /* ===== INPUTS & TEXTAREA ===== */
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 0.45rem 0.8rem; /* slim padding inside fields */
+  padding: 0.45rem 0.8rem; /* slim padding */
   border: 1px solid #ddd;
   border-radius: 10px;
   font-size: 0.95rem;
@@ -1195,14 +1227,14 @@ line-height:1;
 
 /* ===== TEXTAREA ===== */
 .contact-form textarea {
-  min-height: 90px; /* smaller than before */
+  min-height: 90px;
   resize: vertical;
 }
 
 /* ===== BUTTON ===== */
 .contact-form .btn {
   width: 100%;
-  padding: 0.55rem 1rem; /* slimmer button */
+  padding: 0.25rem .60rem;
   border-radius: 10px;
   background: linear-gradient(90deg, #9BE080, #7B6CF6);
   color: #fff;
@@ -1226,8 +1258,13 @@ line-height:1;
     margin: 1.25rem auto;
     padding: 0.85rem;
   }
-}
 
+  /* Stack first + last vertically on smaller screens */
+  .contact-form .form-row:first-of-type {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
 
 
 
@@ -1347,7 +1384,6 @@ body::before {
   pointer-events: none;
 }
 
-
 /* ===========================
    MODALS (GLOBAL)
    =========================== */
@@ -1363,7 +1399,11 @@ body::before {
   align-items: center;
   padding: 1.5rem;
 }
-.modal.show { display: flex !important; }
+
+/* Only show when explicitly triggered */
+.modal.show {
+  display: flex !important;
+}
 
 .modal-box {
   background: #fff;
@@ -1376,8 +1416,26 @@ body::before {
   animation: fadeInUp 0.3s ease;
   z-index: 2100;
 }
-.modal-box h3 { margin-top: 0; font-size: 1.4rem; }
-.modal-box p { margin: 1rem 0; line-height: 1.6; }
+
+.modal-box h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.modal-box p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+/* Simple modal fade animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
 
 /* Limeboard modal highlight */
 .hover-diamond {
@@ -1457,4 +1515,25 @@ body::before {
     padding: 1.25rem;
     max-width: 95%;
   }
+}
+
+
+
+/* ===== HERO H1 (Mobile Responsive Fix) ===== */
+@media (max-width: 600px) {
+  .hero h1,
+  .tagline {
+    font-size: clamp(1.6rem, 6vw + 0.5rem, 2.2rem); /* scales smoother on small screens */
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;       /* allow wrapping instead of overflow */
+    padding-inline: 0.5rem;    /* breathing room against edges */
+  }
+}
+
+
+.scrim {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
