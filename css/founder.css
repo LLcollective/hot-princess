@@ -718,3 +718,65 @@ details.accordion {
     border-radius: 8px;           /* optional: soften corners */
   }
 }
+/* ================================
+   Founder Hero — Scoped Overrides
+   ================================ */
+
+/* Founder hero only affects main content */
+.founder-page main .founder-hero {
+  padding: 3rem 0 2rem;   /* adjusted top spacing (no clash with header) */
+  text-align: left;
+}
+
+/* Eyebrow inside founder hero */
+.founder-page main .founder-hero .eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--brand);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+/* Tagline inside founder hero */
+.founder-page main .founder-hero .tagline {
+  font-family: 'Tenor Sans', serif;
+  font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
+  background: linear-gradient(90deg, var(--lime), var(--brand));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.75rem;
+}
+
+/* Hero subtext stays aligned consistently */
+.founder-page main .founder-hero .hero-sub {
+  max-width: 960px;
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  color: var(--ink-600);
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Wrap in founder page (content only, not header) */
+.founder-page main .wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+
+/* === Force founder hero/header to follow global === */
+.hero.founder-hero,
+.founder-page .hero {
+  all: unset;
+  display: block;
+}
+
+.hero.founder-hero {
+  width: auto !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+  box-sizing: border-box !important;
+}

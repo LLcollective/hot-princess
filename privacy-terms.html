@@ -5,708 +5,331 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy & Terms | Lace & Lime™</title>
   <meta name="description" content="Privacy Policy and Terms of Use for Lace & Lime™ — clarity and respect for your data, your choices, and our shared work." />
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-  :root {
-    --surface:#E6F4FF;
-    --text:#1A2238;
-    --muted:#405970;
-    --line: rgba(26,34,56,.15);
-    --brand:#7B6CF6;
-    --brand-pill:#F3F4FF;
-    --shadow:0 6px 20px rgba(26,34,56,.08);
-    --lime:#9BE080;
-  }
-  html,body{margin:0; padding:0}
-  body{
-    background:transparent !important;
-    color:var(--text);
-    font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    line-height:1.55;
-  }
-  body::before{
-    content:""; position:fixed; inset:0;
-    background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
-    z-index:-1; pointer-events:none;
-  }
-  a{color:var(--brand); text-decoration:none}
-  .wrap{ width:min(1080px,92vw); margin-inline:auto }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&family=Raleway:wght@200;500;700&display=swap" rel="stylesheet">
 
-  /* Header */
-  .ll-nav{ position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line) }
-  .ll-nav .wrap{ padding:12px 16px; display:flex; align-items:center; justify-content:space-between }
-  .brand{ font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px; font-weight:600; }
-  .brand .tm{ font-size:.7em; vertical-align:super; margin-left:1px }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="css.css?v=1.1" />
 
-  nav.menu {
-    display:flex;
-    align-items:center;
-    gap:18px;
-    white-space:nowrap;
-  }
-  nav.menu > a,
-  nav.menu > .dropdown > button {
-    font-family:'Tenor Sans',serif;
-    font-weight:600;
-    font-size:1rem;
-    line-height:1.4;
-    color:var(--brand);
-    padding:.35rem .6rem;
-    border-radius:.6rem;
-    transition:all .2s ease;
-    background:none;
-    border:none;
-    cursor:pointer;
-  }
-  nav.menu > a:hover,
-  nav.menu > .dropdown > button:hover {
-    color:var(--lime);
-    background:var(--brand-pill);
-  }
-  nav.menu a.active {
-    background:var(--brand-pill);
-    color:var(--brand);
-  }
+  <!-- Page-specific overrides -->
+ </head>
 
-/* Dropdown Styles */
-.dropdown { position: relative; }
-.dropdown::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  height: 12px;
-  background: transparent;
-}
-
-.dropdown-menu {
-  display: none;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity .2s ease, transform .2s ease;
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: .6rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  padding: .5rem 0;
-  min-width: 160px;
-  z-index: 1000;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: .5rem .75rem;
-  font-size: .95rem;
-  color: #4f46e5;
-  text-decoration: none;
-}
-.dropdown-menu a:hover {
-  background: var(--brand-pill); 
-  color: var(--lime);
-}
-
-/* Show when parent is open */
-.dropdown.open .dropdown-menu {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Mobile tweaks */
-@media(max-width:768px){
-  .dropdown.open .dropdown-menu {
-    display:flex;
-    flex-direction:column;
-    position:static;
-    opacity:1;
-    transform:none;
-    box-shadow:none;
-    border:none;
-    padding-left:1rem;
-    min-width:auto;
-    width:100%;
-  }
-}
-
-
-  /* Burger base styles */
-  .burger {
-    display:none;             /* hidden by default */
-    width:50px;
-    height:50px;
-    background:transparent;
-    cursor:pointer;
-    position:relative;
-    justify-content:center;
-    align-items:center;
-  }
-  .burger span {
-    position:absolute;
-    left:13px;
-    width:24px;
-    height:3px;
-    border-radius:2px;
-    background:linear-gradient(90deg,#7B6CF6,#9BE080);
-    transition: transform .35s cubic-bezier(.68,-0.55,.27,1.55),
-                opacity .25s ease,
-                background .3s ease;
-    transform-origin: right center;
-  }
-  .burger span:nth-child(1) { top:14px; }
-  .burger span:nth-child(2) { top:23px; }
-  .burger span:nth-child(3) { top:32px; }
-  .burger.open span:nth-child(1) { top:23px; transform:rotate(-30deg); }
-  .burger.open span:nth-child(2) { opacity:0; transform:translateX(-20px); }
-  .burger.open span:nth-child(3) { top:23px; transform:rotate(30deg); }
-
-  /* Mobile overrides */
-  @media(max-width:768px){
-    nav.menu {
-      display:none;
-      flex-direction:column;
-      gap:14px;
-      position:absolute;
-      top:60px; right:1rem;
-      background:#fff;
-      padding:1rem 1.2rem;
-      border:1px solid var(--line);
-      border-radius:.8rem;
-      box-shadow:0 4px 12px rgba(0,0,0,.08);
-      opacity:0;
-      transform:translateY(-10px);
-      transition:.3s ease;
-    }
-    nav.menu.show {
-      display:flex;
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    .burger { display:flex; }   /* ✅ visible on mobile */
-
-    .dropdown.open .dropdown-menu {
-      display:flex;
-      flex-direction:column;
-      position:static;
-      opacity:1;
-      transform:none;
-      box-shadow:none;
-      border:none;
-      padding-left:1rem;
-    }
-  }
-
-/* TOC chips as rounded rectangles */
-.toc .grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.toc .grid li a {
-  display: inline-block;
-  padding: .4rem 1.2rem;
-  background: var(--brand-pill);
-  color: var(--brand);
-  border-radius: .5rem; /* subtle rounded rectangle */
-  font-weight: 500;
-  font-size: .90rem;
-  text-decoration: none;
-  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
-  box-shadow: 0 2px 6px rgba(26,34,56,.08);
-}
-
-.toc .grid li a:hover {
-  background: var(--lime);
-  color: #fff;
-  box-shadow: 0 3px 10px rgba(26,34,56,.12);
-}
-
-@media(max-width: 600px) {
-  .toc .grid {
-    justify-content: center;      /* keeps things balanced */
-    gap: .6rem .5rem;              /* tighter row spacing, comfy column spacing */
-    padding: 0 .25rem;             /* small horizontal breathing room */
-  }
-
-  .toc .grid li {
-    flex: 1 1 auto;                /* lets chips grow/shrink naturally */
-    min-width: 45%;                /* ensures 2 per row before wrapping */
-  }
-
-  .toc .grid li a {
-    display: block;                /* makes whole rectangle tappable */
-    text-align: center;            /* centers text inside */
-    font-size: .9rem;
-    padding: .7rem .9rem;          /* a bit more vertical padding for thumbs */
-    border-radius: .5rem;          /* soft corners */
-    box-shadow: 0 2px 4px rgba(26,34,56,.06); /* subtle depth for tap targets */
-  }
-}
-
-.card {
-  background: #fff;
-  border-radius: .6rem;
-  padding: 1.5rem 1.8rem;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 10px rgba(26,34,56,.08);
-  max-width: 100%;
-}
-
-/* On mobile, lighter cards with side breathing room */
-@media(max-width: 600px) {
-  .card {
-    margin: 1rem auto;
-    padding: 1rem 1.2rem;
-    border-radius: .5rem;
-    box-shadow: 0 2px 6px rgba(26,34,56,.05);
-  }
-}
-
-
-/* ===== Hero ===== */
-.hero{border-bottom:1px solid var(--line); background:transparent !important;}
-.hero .wrap{padding:2rem 1rem 1.25rem}
-.eyebrow{display:inline-block; font-size:.85rem; letter-spacing:.12em; color:var(--brand); font-weight:700}
-.tagline{font-family:"Tenor Sans",serif; font-size:clamp(1.8rem, 2.3vw + 1rem, 2.6rem); line-height:1.15; margin:.4rem 0 .6rem}
-.hero-sub{color:var(--muted); max-width:60ch}
-
-
-/* === TOC Improvements === */
-.toc .grid li a {
-  display: inline-block;
-  padding: .5rem 1.1rem;
-  background: var(--brand-pill);
-  color: var(--brand);
-  border-radius: .5rem;
-  font-weight: 500;
-  font-size: .95rem;
-  text-decoration: none;
-  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
-  box-shadow: 0 1px 3px rgba(26,34,56,.06);
-}
-.toc .grid li a:hover {
-  background: var(--lime);
-  color: #fff;
-}
-.toc .grid li a:target {
-  background: var(--lime);
-  color: #fff;
-  font-weight: 600;
-}
-
-/* === Card Layout Polish === */
-.card {
-  background: #fff;
-  border-radius: .5rem;
-  padding: 1.25rem 1.5rem;
-  margin: 1.25rem 0;
-  box-shadow: 0 1px 3px rgba(26,34,56,.06);
-  border: 1px solid var(--line);
-}
-@media(max-width: 600px) {
-  .card {
-    margin: 1rem auto;
-    padding: 1rem 1.2rem;
-    border-radius: .4rem;
-    box-shadow: none;
-    border: 1px solid var(--line);
-  }
-}
-
-/* === Typography Hierarchy === */
-h2 {
-  font-family: 'Tenor Sans', serif;
-  font-size: 1.35rem;
-  margin-top: 0;
-  margin-bottom: .8rem;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: .3rem;
-}
-p {
-  line-height: 1.65;
-  margin: .6rem 0 1rem;
-  color: var(--text);
-}
-summary.toggle {
-  font-weight: 600;
-  cursor: pointer;
-  padding: .5rem 0;
-  list-style: none;
-}
-summary.toggle::marker {
-  display: none; /* hide default triangle */
-}
-summary.toggle::after {
-  content: "▸";
-  float: right;
-  transition: transform .2s ease;
-}
-details[open] > summary.toggle::after {
-  transform: rotate(90deg);
-}
-
-/* === Mobile Refinements === */
-@media(max-width: 600px) {
-  .toc .grid {
-    justify-content: center;
-    gap: .6rem .5rem;
-    padding: 0 .25rem;
-  }
-  .toc .grid li {
-    flex: 1 1 auto;
-    min-width: 45%;
-  }
-  .toc .grid li a {
-    display: block;
-    text-align: center;
-    padding: .7rem .9rem;
-    font-size: .9rem;
-  }
-  footer.site-footer p {
-    font-size: .85rem;
-    text-align: center;
-    line-height: 1.4;
-  }
-}
-
-/* === Visual Consistency === */
-.hero {
-  border-bottom: 1px solid var(--line);
-  background: transparent !important;
-}
-.hero-sub {
-  color: var(--muted);
-  max-width: 60ch;
-  line-height: 1.55;
-}
-
-</style>
-
-
-
-</head>
-<body>
-  <!-- Header -->
+<body class="legal-page">
+  <!-- ===== HEADER ===== -->
   <header class="ll-nav">
     <div class="wrap">
-          <a class="brand" href="index.html">LACE AND LIME<span class="tm">™</span></a>
-      <div class="burger" id="burger"><span></span><span></span><span></span></div>
-      <nav class="menu" id="nav-menu">
-        <a href="index.html">Home</a>
-        <div class="dropdown">
-          <button>About ▾</button>
-          <div class="dropdown-menu">
-            <a href="about.html">Lace & Lime™</a>
-            <a href="founder.html">Founder</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <button>Workshops ▾</button>
-          <div class="dropdown-menu">
-            <a href="workshops.html">Overview</a>
-            <a href="workshops.html#booking">Booking</a>
-          </div>
-        </div>
-        <a href="explore.html">Explore</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+      <a class="logo-link" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span>
+          <span class="amp">&amp;</span>
+          <span class="lime">LIME</span>
+        </h1>
+      </a>
+      <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Progress -->
+  <!-- SCRIM -->
+  <div id="nav-scrim" class="scrim" hidden></div>
+
+  <!-- SIDEBAR -->
+  <nav id="nav-menu" class="sidebar">
+    <a href="index.html" class="logo">lace<span style="color:#9BE080">&LIME</span></a>
+    <div class="dropdown">
+      <button class="nav-about"><span class="label-wrap">Laced<span class="caret">▾</span></span></button>
+      <div class="dropdown-menu">
+        <a href="lacednotes.html">Notes</a>
+        <a href="#">Together</a>
+        <a href="founder.html">Founder</a>
+      </div>
+    </div>
+    <div class="dropdown open">
+      <button class="nav-workshops"><span class="label-wrap">Experiences<span class="caret">▾</span></span></button>
+      <div class="dropdown-menu">
+        <a href="booknow.html">Book Now</a>
+        <a href="#">Approach</a>
+      </div>
+    </div>
+    <a href="limeboard.html">Limeboard</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- PROGRESS BAR -->
   <div class="progress"><span id="progress-fill"></span></div>
 
-  <!-- Hero -->
-
+  <!-- MAIN -->
   <main id="main">
+    <!-- HERO -->
     <section class="hero hero--stack">
       <div class="wrap">
-        <span class="eyebrow">LEGAL</span>
-        <h1 class="tagline">Privacy & Terms</h1>
-        <p class="hero-sub">Clarity and respect for your data, your choices, and our shared work.<br>Effective: January 15, 2025 · Last updated: September 8, 2025</p>
+        <span class="eyebrow">LEGAL</span><br>
+        <h1 class="tagline">Privacy & Terms</h1></br>
+        <p class="hero-sub">
+          Clarity and respect for your data, your choices, and our shared work.<br />
+          Effective: January 15, 2025 · Last updated: September 8, 2025
+        </p>
       </div>
     </section>
 
-<!-- TOC -->
-<section class="toc">
-  <div class="wrap">
-    <ul class="grid">
-      <li><a href="#privacy">Privacy Policy</a></li>
-      <li><a href="#cookies">Cookies & Analytics</a></li>
-      <li><a href="#rights">Your Rights</a></li>
-      <li><a href="#processors">Third-Party Processors</a></li>
-      <li><a href="#security">Security</a></li>
-      <li><a href="#children">Children’s Privacy</a></li>
-      <li><a href="#terms">Terms of Use</a></li>
-      <li><a href="#purchases">Purchases & Refunds</a></li>
-      <li><a href="#medical">No Medical/Legal Advice</a></li>
-      <li><a href="#liability">Disclaimers & Liability</a></li>
-      <li><a href="#arbitration">Arbitration & Disputes</a></li>
-      <li><a href="#updates">Changes</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</section>
+    <!-- TOC -->
+    <section class="toc">
+      <div class="wrap">
+        <div class="chip-grid">
+         <a href="#privacy" class="chip">Privacy</a>
+<a href="#cookies" class="chip">Cookies</a>
+<a href="#rights" class="chip">Rights</a>
+<a href="#processors" class="chip">Processors</a>
+<a href="#security" class="chip">Security</a>
+<a href="#children" class="chip">Children</a>
+<a href="#terms" class="chip">Terms</a>
+<a href="#purchases" class="chip">Refunds</a>
+<a href="#medical" class="chip">No Advice</a>
+<a href="#liability" class="chip">Liability</a>
+<a href="#arbitration" class="chip">Disputes</a>
+<a href="#updates" class="chip">Changes</a>
+<a href="#contact" class="chip">Get in Touch</a>
 
+        </div>
+      </div>
+    </section>
 
     <!-- Privacy -->
-      <section id="privacy">
- <div class="wrap"> 
-    <div class="card">
-     <h2>Privacy Policy</h2>
-      <p><strong>Who we are.</strong> Lace & Lime™ LLC (“we,” “us,” “our”). Contact: <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
-      <p><strong>What we collect.</strong> Information you provide (e.g., name, email, forms, payments) and limited payment details from processors. We may also receive basic technical data (e.g., device or connection info) for reliability and security.</p>
-      <p><strong>How we use it.</strong> To deliver services (workshops, journals, resources), process payments, respond to inquiries, prevent abuse, and improve offerings.</p>
-      <p><strong>Lawful basis (GDPR).</strong> Contract (to provide services), consent (opt-ins), and legitimate interests (security, proportionate analytics).</p>
-      <p><strong>Retention.</strong> We keep data only as long as needed or legally required.</p>
-      <p><strong>International transfers.</strong> If data moves outside your country, we apply safeguards (e.g., Standard Contractual Clauses).</p>
-    </div></div></section>
+    <section id="privacy">
+      <div class="wrap">
+        <div class="card">
+          <h2>Privacy Policy</h2>
+          <p><strong>Who we are.</strong> Lace & Lime™ LLC (“we,” “us,” “our”). Contact: <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
+          <p><strong>What we collect.</strong> Information you provide (e.g., name, email, forms, payments) and limited payment details from processors. We may also receive basic technical data (e.g., device or connection info) for reliability and security.</p>
+          <p><strong>How we use it.</strong> To deliver services (workshops, journals, resources), process payments, respond to inquiries, prevent abuse, and improve offerings.</p>
+          <p><strong>Lawful basis (GDPR).</strong> Contract (to provide services), consent (opt-ins), and legitimate interests (security, proportionate analytics).</p>
+          <p><strong>Retention.</strong> We keep data only as long as needed or legally required.</p>
+          <p><strong>International transfers.</strong> If data moves outside your country, we apply safeguards (e.g., Standard Contractual Clauses).</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Cookies -->
     <section id="cookies">
- <div class="wrap">
-    <div class="card">
-       <h2>Cookies & Analytics</h2>
-      <p>We use essential cookies for core site functionality. Optional analytics (aggregated, non-sensitive) may be used to improve services. You can manage cookies in your browser. Where required, we display consent banners for non-essential cookies.</p>
-    </div></div></section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Cookies & Analytics</h2>
+          <p>We use essential cookies for core site functionality. Optional analytics (aggregated, non-sensitive) may be used to improve services. You can manage cookies in your browser. Where required, we display consent banners for non-essential cookies.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Rights -->
     <section id="rights">
- <div class="wrap">
-    <div class="card">
-       <h2>Your Privacy Rights</h2>
-      <p>Depending on where you live, you may have specific privacy rights. Expand below for details:</p>
-      <details>
-        <summary class="toggle">EU/UK Residents (GDPR)</summary>
-        <ul>
-          <li><strong>Access/Portability:</strong> request a copy of your data.</li>
-          <li><strong>Correction/Deletion:</strong> request corrections or deletion.</li>
-          <li><strong>Restriction/Objection:</strong> restrict certain processing or object.</li>
-          <li><strong>Complain:</strong> contact us or lodge a complaint with your local data authority.</li>
-        </ul>
-      </details>
-      <details>
-        <summary class="toggle">California Residents (CCPA/CPRA)</summary>
-        <ul>
-          <li><strong>Access/Portability:</strong> request a copy of your data.</li>
-          <li><strong>Correction/Deletion:</strong> request corrections or deletion.</li>
-          <li><strong>Opt-out:</strong> opt out of data "sale/sharing" (we do not sell personal data).</li>
-          <li><strong>Appeal/Complain:</strong> contact us if you believe a request was not handled properly.</li>
-        </ul>
-      </details>
-      <details>
-        <summary class="toggle">All Users</summary>
-        <ul>
-          <li><strong>Unsubscribe:</strong> opt out of non-essential emails at any time.</li>
-          <li><strong>Contact:</strong> email <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> to exercise rights. Verification may be required.</li>
-        </ul>
-      </details>
-   </div></div> </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Your Privacy Rights</h2>
+          <p>Depending on where you live, you may have specific privacy rights. Expand below for details:</p>
+          <details>
+            <summary>EU/UK Residents (GDPR)</summary>
+            <ul>
+              <li><strong>Access/Portability:</strong> request a copy of your data.</li>
+              <li><strong>Correction/Deletion:</strong> request corrections or deletion.</li>
+              <li><strong>Restriction/Objection:</strong> restrict certain processing or object.</li>
+              <li><strong>Complain:</strong> contact us or lodge a complaint with your local data authority.</li>
+            </ul>
+          </details>
+          <details>
+            <summary>California Residents (CCPA/CPRA)</summary>
+            <ul>
+              <li><strong>Access/Portability:</strong> request a copy of your data.</li>
+              <li><strong>Correction/Deletion:</strong> request corrections or deletion.</li>
+              <li><strong>Opt-out:</strong> opt out of data "sale/sharing" (we do not sell personal data).</li>
+              <li><strong>Appeal/Complain:</strong> contact us if you believe a request was not handled properly.</li>
+            </ul>
+          </details>
+          <details>
+            <summary>All Users</summary>
+            <ul>
+              <li><strong>Unsubscribe:</strong> opt out of non-essential emails at any time.</li>
+              <li><strong>Contact:</strong> email <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> to exercise rights. Verification may be required.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </section>
 
     <!-- Processors -->
     <section id="processors">
- <div class="wrap">
-    <div class="card">
-       <h2>Third-Party Processors</h2>
-      <details open>
-        <summary class="toggle">Vendors We Use</summary>
-        <p>We rely on vendors such as Stripe, Square, PayPal, Gmail, ConvertKit, analytics tools, and hosting providers. Each is contractually obligated to safeguard data and act only on our instructions.</p>
-      </details>
- </div></div>   </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Third-Party Processors</h2>
+          <details open>
+            <summary>Vendors We Use</summary>
+            <p>We rely on vendors such as Stripe, Square, PayPal, Gmail, ConvertKit, analytics tools, and hosting providers. Each is contractually obligated to safeguard data and act only on our instructions.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
     <!-- Security -->
     <section id="security">
- <div class="wrap">
-    <div class="card">
-       <h2>Security</h2>
-      <p>We apply reasonable measures (HTTPS, access controls) to protect data. No system is 100% secure. Use unique passwords and caution with email.</p>
-      <details>
-        <summary class="toggle">Breach Notification</summary>
-        <p>If a data breach poses risk, we will notify affected users and regulators as required.</p>
-      </details>
-   </div></div> </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Security</h2>
+          <p>We apply reasonable measures (HTTPS, access controls) to protect data. No system is 100% secure. Use unique passwords and caution with email.</p>
+          <details>
+            <summary>Breach Notification</summary>
+            <p>If a data breach poses risk, we will notify affected users and regulators as required.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
     <!-- Children -->
     <section id="children">
- <div class="wrap">
-    <div class="card">
-       <h2>Children’s Privacy</h2>
-      <p>Services are not directed to children under 13. We do not knowingly collect data from children. If you believe a child has provided data, contact us to request deletion.</p>
-   </div></div> </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Children’s Privacy</h2>
+          <p>Services are not directed to children under 13. We do not knowingly collect data from children. If you believe a child has provided data, contact us to request deletion.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Terms -->
     <section id="terms">
-       <div class="wrap">
-    <div class="card">
- <h2>Terms of Use</h2>
-      <details open>
-        <summary class="toggle">License & Intellectual Property</summary>
-        <p>All content (including prompts, workshops, journals, graphics, layouts, and explanatory text) is owned by Lace & Lime™ LLC and protected by intellectual property law. Users receive a personal, non-transferable license for personal, non-commercial use unless agreed otherwise in writing.</p>
-        <p><strong>Trademarks & Proprietary Works.</strong> The marks Lace & Lime™, Energy Aligned, Action Defined™, and the Balance-Forward™ Series (including Respect-Forward™ and Career-Forward™) are proprietary. Unauthorized commercial use, teaching, or distribution is prohibited.</p>
-        <p><strong>Teaching & Quality Assurance.</strong> Energy Aligned, Action Defined™ may only be taught with written authorization and official training. Certified facilitators may use EAAD™ materials in accordance with guidelines.</p>
-        <p><strong>Copyright Notice.</strong> EAAD™ and related descriptions, prompts, diagrams, manuals, and teaching materials are original works under U.S. copyright law. Unauthorized use is prohibited.</p>
-        <p><strong>Enforcement.</strong> We actively monitor and enforce all intellectual property rights. Unauthorized use will result in enforcement action, including legal remedies such as damages and injunctive relief.</p>
-      </details>
-      <details>
-        <summary class="toggle">Acceptable Use</summary>
-        <ul>
-          <li>No unlawful, harassing, abusive, or infringing behavior.</li>
-          <li>No scraping, automated collection, or probing.</li>
-          <li>No bypassing of access controls or paywalls.</li>
-        </ul>
-      </details>
-      <details>
-        <summary class="toggle">User Content & Feedback</summary>
-        <p>By submitting content (e.g., testimonials), you grant us a non-exclusive, royalty-free license to use it for operations and promotion. Feedback may be used without restriction.</p>
-      </details>
-      <details>
-        <summary class="toggle">Termination of Use</summary>
-        <p>We may suspend or terminate access without prior notice if we reasonably believe you violated these Terms or applicable law.</p>
-      </details>
-  </div></div>  </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Terms of Use</h2>
+          <details open>
+            <summary>License & Intellectual Property</summary>
+            <p>All content (including prompts, workshops, journals, graphics, layouts, and explanatory text) is owned by Lace & Lime™ LLC and protected by intellectual property law. Users receive a personal, non-transferable license for personal, non-commercial use unless agreed otherwise in writing.</p>
+            <p><strong>Trademarks & Proprietary Works.</strong> The marks Lace & Lime™, Energy Aligned, Action Defined™, and the Balance-Forward™ Series (including Respect-Forward™ and Career-Forward™) are proprietary. Unauthorized commercial use, teaching, or distribution is prohibited.</p>
+            <p><strong>Teaching & Quality Assurance.</strong> Energy Aligned, Action Defined™ may only be taught with written authorization and official training. Certified facilitators may use EAAD™ materials in accordance with guidelines.</p>
+            <p><strong>Copyright Notice.</strong> EAAD™ and related descriptions, prompts, diagrams, manuals, and teaching materials are original works under U.S. copyright law. Unauthorized use is prohibited.</p>
+            <p><strong>Enforcement.</strong> We actively monitor and enforce all intellectual property rights. Unauthorized use will result in enforcement action, including legal remedies such as damages and injunctive relief.</p>
+          </details>
+          <details>
+            <summary>Acceptable Use</summary>
+            <ul>
+              <li>No unlawful, harassing, abusive, or infringing behavior.</li>
+              <li>No scraping, automated collection, or probing.</li>
+              <li>No bypassing of access controls or paywalls.</li>
+            </ul>
+          </details>
+          <details>
+            <summary>User Content & Feedback</summary>
+            <p>By submitting content (e.g., testimonials), you grant us a non-exclusive, royalty-free license to use it for operations and promotion. Feedback may be used without restriction.</p>
+          </details>
+          <details>
+            <summary>Termination of Use</summary>
+            <p>We may suspend or terminate access without prior notice if we reasonably believe you violated these Terms or applicable law.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
     <!-- Purchases -->
     <section id="purchases">
- <div class="wrap">
-    <div class="card">
-       <h2>Purchases & Refunds</h2>
-      <p>Payments are processed through third-party vendors. By purchasing, you confirm authorization and accept applicable fees/taxes. Expand for details:</p>
-      <details>
-        <summary class="toggle">Final Sales</summary>
-        <p>All sales of digital goods and workshops are final once delivered, except where otherwise required by law.</p>
-      </details>
-      <details>
-        <summary class="toggle">Scheduling</summary>
-        <p>We may adjust or reschedule workshops. If Lace & Lime™ LLC cancels, you will be offered a refund or credit.</p>
-      </details>
-      <details>
-        <summary class="toggle">Chargebacks</summary>
-        <p>Please contact us first to resolve disputes. Unauthorized chargebacks may be contested.</p>
-      </details>
-    </div></div></section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Purchases & Refunds</h2>
+          <p>Payments are processed through third-party vendors. By purchasing, you confirm authorization and accept applicable fees/taxes. Expand for details:</p>
+          <details>
+            <summary>Final Sales</summary>
+            <p>All sales of digital goods and workshops are final once delivered, except where otherwise required by law.</p>
+          </details>
+          <details>
+            <summary>Scheduling</summary>
+            <p>We may adjust or reschedule workshops. If Lace & Lime™ LLC cancels, you will be offered a refund or credit.</p>
+          </details>
+          <details>
+            <summary>Chargebacks</summary>
+            <p>Please contact us first to resolve disputes. Unauthorized chargebacks may be contested.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
     <!-- Advice Disclaimer -->
     <section id="medical">
- <div class="wrap">
-    <div class="card">
-       <h2>No Medical, Legal, or Financial Advice</h2>
-      <p>Content provided by Lace & Lime™ is for educational and informational purposes only. Sharon Gutierrez, MPH, CHES® is a health educator, not a licensed physician, therapist, attorney, or financial advisor. Consult qualified professionals for individual advice.</p>
-  </div></div>  </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>No Medical, Legal, or Financial Advice</h2>
+          <p>Content provided by Lace & Lime™ is for educational and informational purposes only. Sharon Gutierrez, MPH, CHES® is a health educator, not a licensed physician, therapist, attorney, or financial advisor. Consult qualified professionals for individual advice.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Liability -->
     <section id="liability">
- <div class="wrap">
-    <div class="card">
-       <h2>Disclaimers & Limitation of Liability</h2>
-      <details open>
-        <summary class="toggle">AS IS</summary>
-        <p>Services are provided "as is" without warranties of any kind, express or implied.</p>
-      </details>
-      <details>
-        <summary class="toggle">Limitation</summary>
-        <p>To the fullest extent permitted by law, Lace & Lime™ LLC disclaims liability for indirect, incidental, special, consequential, or exemplary damages. Total liability for any claim is limited to the lower of (a) USD $100, or (b) the amount paid in the 6 months preceding the claim.</p>
-      </details>
-      <details>
-        <summary class="toggle">Indemnity</summary>
-        <p>You agree to indemnify and hold harmless Lace & Lime™ LLC from claims arising out of misuse or violation of these Terms.</p>
-      </details>
-  </div></div>  </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Disclaimers & Limitation of Liability</h2>
+          <details open>
+            <summary>AS IS</summary>
+            <p>Services are provided "as is" without warranties of any kind, express or implied.</p>
+          </details>
+          <details>
+            <summary>Limitation</summary>
+            <p>To the fullest extent permitted by law, Lace & Lime™ LLC disclaims liability for indirect, incidental, special, consequential, or exemplary damages. Total liability for any claim is limited to the lower of (a) USD $100, or (b) the amount paid in the 6 months preceding the claim.</p>
+          </details>
+          <details>
+            <summary>Indemnity</summary>
+            <p>You agree to indemnify and hold harmless Lace & Lime™ LLC from claims arising out of misuse or violation of these Terms.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
     <!-- Arbitration -->
     <section id="arbitration">
- <div class="wrap">
-    <div class="card">
-       <h2>Dispute Resolution; Arbitration; Governing Law</h2>
-      <details open>
-        <summary class="toggle">Informal Resolution</summary>
-        <p>Contact us first; most issues can be resolved quickly.</p>
-      </details>
-      <details>
-        <summary class="toggle">Arbitration & Venue</summary>
-        <p>Any dispute not resolved informally will be settled by binding arbitration on an individual basis under AAA rules. No class actions. Governing law and venue: New York State, USA.</p>
-      </details>
-      <details>
-        <summary class="toggle">Opt-out</summary>
-        <p>You may opt out of arbitration within 30 days of first use by emailing <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> with subject “Arbitration Opt-Out.”</p>
-      </details>
-  </div></div>  </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Dispute Resolution; Arbitration; Governing Law</h2>
+          <details open>
+            <summary>Informal Resolution</summary>
+            <p>Contact us first; most issues can be resolved quickly.</p>
+          </details>
+          <details>
+            <summary>Arbitration & Venue</summary>
+            <p>Any dispute not resolved informally will be settled by binding arbitration on an individual basis under AAA rules. No class actions. Governing law and venue: New York State, USA.</p>
+          </details>
+          <details>
+            <summary>Opt-out</summary>
+            <p>You may opt out of arbitration within 30 days of first use by emailing <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> with subject “Arbitration Opt-Out.”</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
     <!-- Updates -->
     <section id="updates">
- <div class="wrap">
-    <div class="card">
-       <h2>Changes to These Terms</h2>
-      <p>We may update this page to reflect changes in services or legal requirements. The "last updated" date will be revised. Continued use indicates acceptance of updated terms.</p>
-   </div></div> </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Changes to These Terms</h2>
+          <p>We may update this page to reflect changes in services or legal requirements. The "last updated" date will be revised. Continued use indicates acceptance of updated terms.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Contact -->
     <section id="contact">
- <div class="wrap">
-    <div class="card">
-       <h2>Contact</h2>
-      <p>Email <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> for questions or rights requests.</p>
-      <p>Business: Lace & Lime™ LLC · Jurisdiction: New York, USA</p>
-  </div></div>  </section>
+      <div class="wrap">
+        <div class="card">
+          <h2>Contact</h2>
+          <p>Email <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a> for questions or rights requests.</p>
+          <p>Business: Lace & Lime™ LLC · Jurisdiction: New York, USA</p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
+  <!-- FOOTER -->
+  <footer>
     <div class="wrap">
-      <p>© 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy-terms.html" aria-current="page">Privacy & Terms</a></p>
+      © 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy-terms.html" aria-current="page">Privacy & Terms</a>
     </div>
-</div>
   </footer>
 
-  <script>
-    // Progress bar
-    (() => {
-      const fill = document.getElementById('progress-fill');
-      const header = document.querySelector('.ll-nav');
-      function place(){
-        const h = header?.getBoundingClientRect().height || 56;
-        document.documentElement.style.setProperty('--progress-top', h + 'px');
-      }
-      function pct(){
-        const doc = document.documentElement;
-        const sc = Math.max(doc.scrollTop, document.body.scrollTop);
-        const max = (doc.scrollHeight || document.body.scrollHeight) - innerHeight;
-        const r = max > 0 ? Math.min(1, Math.max(0, sc / max)) : 0;
-        if(fill) fill.style.width = (r*100).toFixed(2) + '%';
-      }
-      place(); pct();
-      addEventListener('resize', place, {passive:true});
-      addEventListener('scroll', pct, {passive:true});
-    })();
-
-    // Chevron burger toggle
-    const burger = document.getElementById("burger");
-    const navMenu = document.getElementById("nav-menu");
-    burger.addEventListener("click", () => {
-      burger.classList.toggle("open");
-      navMenu.classList.toggle("show");
-    });
-
-    // Mobile dropdown toggle (simplified)
-document.querySelectorAll('#nav-menu .dropdown > button').forEach(btn=>{
-  btn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    const parent = btn.parentElement;
-    document.querySelectorAll('#nav-menu .dropdown').forEach(d=>{
-      if(d !== parent) d.classList.remove('open');
-    });
-    parent.classList.toggle('open');
-  });
-});
-
-  </script>
+  <!-- Load main.js -->
+  <script src="js/main.js"></script>
 </body>
 </html>
