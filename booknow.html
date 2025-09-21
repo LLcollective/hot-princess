@@ -4,11 +4,139 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Now | Lace & Lime™</title>
-  <meta name="description" content="Book Lace & Lime™ experiences — immersive sessions that blend reflection and action for real progress. Choose your path and secure your spot. Lace & Lime™ workshops are also available by request.">
+  <meta name="description" content="Book Lace & Lime™ experiences — immersive sessions that blend reflection and action for real progress. Choose your path and secure your spot.">
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&family=Raleway:wght@200;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css.css?v=1.0">
-</head>
 
+  <style>
+    /* ======================
+       BOOK NOW PAGE CARDS
+       ====================== */
+    .booknow-cards {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      gap: 2rem;
+      margin: 2rem auto 4rem;
+      padding: 0 2rem;
+      max-width: 1400px; /* wide like Limeboard */
+      box-sizing: border-box;
+    }
+
+    .booknow-card {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 1rem;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform .2s ease, box-shadow .2s ease;
+      flex: 1 1 300px;
+      max-width: 360px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .booknow-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .booknow-card.highlight {
+      border: 2px solid var(--brand);
+      box-shadow: 0 8px 28px rgba(123,108,246,0.25);
+      transform: scale(1.05);
+      z-index: 1;
+    }
+
+    /* Highlight ribbon updated */
+    .booknow-card.highlight::before {
+      content: "Core Experience — New";
+      position: absolute;
+      top: -0.75rem;
+      right: 1rem;
+      background: var(--brand);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .booknow-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--brand), var(--lime));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    .booknow-card p {
+      font-size: 1rem;
+      color: var(--ink-700);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .booknow-card .btn {
+      margin-top: auto;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--lime), var(--brand));
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .booknow-card .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Soft launch note style */
+    .softlaunch-note {
+      font-size: 0.9rem;
+      color: var(--ink-400);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .booknow-cards {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 1rem;
+        max-width: 100%;
+      }
+      .booknow-card {
+        max-width: 100%;
+        min-height: auto;
+      }
+    }
+/* Book Now page — left-align hero headline */
+body.booking .hero .tagline {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
+  display: block; /* instead of inline-block so it flows naturally */
+}
+
+  </style>
+</head>
 <body class="booking">
 
   <!-- ===== HEADER ===== -->
@@ -30,42 +158,27 @@
   <!-- SCRIM -->
   <div id="nav-scrim" class="scrim" hidden></div>
 
-<!-- SIDEBAR -->
-<nav id="nav-menu" class="sidebar">
-  <!-- Logo in place of "Home" -->
-  <a href="index.html" class="logo">
-    lace<span style="color:#9BE080">&LIME</span>
-  </a>
-
-  <!-- Laced dropdown -->
-  <div class="dropdown">
-    <button class="nav-about" aria-expanded="false">
-      <span class="label-wrap">Laced<span class="caret">▾</span></span>
-    </button>
-    <div class="dropdown-menu">
-      <a href="lacednotes.html">Notes</a>
-      <a href="#">Together</a>
-      <a href="founder.html">Founder</a>
+  <!-- SIDEBAR -->
+  <nav id="nav-menu" class="sidebar">
+    <a href="index.html" class="logo">lace<span style="color:#9BE080">&LIME</span></a>
+    <div class="dropdown">
+      <button class="nav-about"><span class="label-wrap">Laced<span class="caret">▾</span></span></button>
+      <div class="dropdown-menu">
+        <a href="#">Notes</a>
+        <a href="#">Together</a>
+        <a href="founder.html">Founder</a>
+      </div>
     </div>
-  </div>
-
-  <!-- Experiences dropdown -->
-  <div class="dropdown open">
-    <button class="nav-workshops" aria-expanded="true">
-      <span class="label-wrap">Experiences<span class="caret">▾</span></span>
-    </button>
-    <div class="dropdown-menu">
-      <a href="booknow.html" class="active" aria-current="page">Book Now</a>
-      <a href="#">Approach</a>
+    <div class="dropdown open">
+      <button class="nav-workshops"><span class="label-wrap">Experiences<span class="caret">▾</span></span></button>
+      <div class="dropdown-menu">
+        <a href="booknow.html" class="active">Book Now</a>
+        <a href="#">Approach</a>
+      </div>
     </div>
-  </div>
-
-  <!-- Limeboard -->
-  <a href="limeboard.html">Limeboard</a>
-
-  <!-- Contact -->
-  <a href="contact.html">Contact</a>
-</nav>
+    <a href="limeboard.html">Limeboard</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
   <!-- PROGRESS BAR -->
   <div class="progress"><span id="progress-fill"></span></div>
@@ -74,15 +187,18 @@
   <section class="hero">
     <div class="wrap">
       <p class="eyebrow">BOOKING</p>
-      <h1 class="tagline">Pick your starting point</h1>
+      <h1 class="tagline">The first chapter of Lace & Lime experiences starts here</h1>
+      <!-- Added soft launch hero line -->
+      <p class="hero-sub">
+        Designed to meet you where you are and move you forward.
+      </p>
       <p class="hero-sub">
         After checkout, pick a time that works best for you in the 
-        <a href="https://calendar.google.com/" target="_blank" rel="noopener">calendar</a>. Add a note with the area you want to focus on. Career, Balance, Respect, and Funding cover most goals. If yours feels different, write it anyway. 
+        <a href="https://calendar.google.com/" target="_blank">calendar</a>. Add a note with the area you want to focus on. Career, Balance, Respect, and Funding cover most goals. If yours feels different, write it anyway. 
         Need to work outside the schedule? Send me a 
         <a href="mailto:laceandlime.llc@gmail.com">message</a>.  
-        You can also <a href="https://docs.google.com/forms/d/e/YOUR-FORM-ID/viewform" target="_blank" rel="noopener">upload your resume</a> and I'll give it a quick review.
+        You can also <a href="https://docs.google.com/forms/d/e/YOUR-FORM-ID/viewform" target="_blank">upload your resume</a> and I'll give it a quick review.
       </p>
-
       <div class="chips">
         <span class="chip career">Career</span>
         <span class="chip balance">Balance</span>
@@ -92,50 +208,23 @@
     </div>
   </section>
 
-  <!-- ===== EXPERIENCES PREVIEW ===== -->
-  <section class="workshops-preview">
-    <div class="wrap">
-      <div class="workshop-cards">
-
-        <!-- Tier 1: Energy Aligned -->
-        <div class="workshop-card">
-          <h3>Energy Aligned</h3>
-          <p>A short clarity session to ground your direction and identify next steps.</p>
-          <div class="cta-workshop">
-            <a href="https://square.link/u/YOUR-25-LINK" 
-               class="cta-btn primary" target="_blank" rel="noopener">✨ Book for $25</a>
-          </div>
-          <div class="cta-notes">
-            <p class="cta-note">Perfect if you’re curious and want to start small. 20 minutes, laser-focused on alignment.</p>
-          </div>
-        </div>
-
-        <!-- Tier 2: Action Defined -->
-        <div class="workshop-card highlight-card">
-          <h3>Action Defined</h3>
-          <p>A deeper experience to create momentum, accountability, and a concrete action plan.</p>
-          <div class="cta-workshop">
-            <a href="https://square.link/u/YOUR-75-LINK" 
-               class="cta-btn primary" target="_blank" rel="noopener">🚀 Book for $75</a>
-          </div>
-          <div class="cta-notes">
-            <p class="cta-note">Great if you’re ready to move forward with clarity. 45 minutes of focused strategy.</p>
-          </div>
-        </div>
-
-        <!-- Tier 3: Next Is Now -->
-        <div class="workshop-card">
-          <h3>Next Is Now</h3>
-          <p>A 60-minute premium session to go deep, address obstacles, and map your next chapter with confidence.</p>
-          <div class="cta-workshop">
-            <a href="https://square.link/u/YOUR-120-LINK" 
-               class="cta-btn primary" target="_blank" rel="noopener">🌟 Book for $120</a>
-          </div>
-          <div class="cta-notes">
-            <p class="cta-note">Best if you want the full Lace & Lime™ experience — reflection + action with room to explore.</p>
-          </div>
-        </div>
-
+  <!-- ===== BOOK NOW SECTION ===== -->
+  <section class="booknow-page">
+    <div class="booknow-cards">
+      <div class="booknow-card">
+        <h3>Energy Aligned</h3>
+        <p>Find clarity and align your energy with guided reflection to reset your focus.</p>
+        <a href="#" class="btn">Book Now</a>
+      </div>
+      <div class="booknow-card highlight">
+        <h3>Action Defined</h3>
+        <p>The core Lace & Lime experience. Build momentum and clarity with structured action steps.</p>
+        <a href="#" class="btn">Book Now</a>
+      </div>
+      <div class="booknow-card">
+        <h3>Next Is Now</h3>
+        <p>Step into growth with bold moves and sustained accountability toward your next chapter.</p>
+        <a href="#" class="btn">Book Now</a>
       </div>
     </div>
   </section>
@@ -143,6 +232,10 @@
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="wrap">
+      <!-- Soft launch note -->
+      <p class="softlaunch-note">
+        This is the first chapter of Lace & Lime™ sessions. Early bookings help shape the journey — thank you for being part of the start.
+      </p>
       © 2025 Lace & Lime™ LLC. All rights reserved. · 
       <a href="privacy.html">Privacy Policy</a> · 
       <a href="terms.html">Terms of Service</a>
