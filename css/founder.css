@@ -202,7 +202,7 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
 }
 /* Systems card refined */
 .systems-card {
-  background: rgba(255, 255, 255, 0.28);   /* lighter glass look */
+  background: rgba(255, 255, 255, 0.22);   /* lighter glass look */
   backdrop-filter: blur(5px);
   border-radius: 14px;
   padding: 1.2rem 1.5rem;
