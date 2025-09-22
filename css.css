@@ -11,28 +11,18 @@ h1 { font-family:var(--font-heading); color:var(--ink-900); font-size:clamp(1.9r
 h2 { font-family:var(--font-heading); color:var(--ink-900); font-weight:600; font-size:clamp(1.5rem,1.6vw+0.7rem,2rem); }
 h3 { font-family:var(--font-body); color:var(--brand); font-size:clamp(1.2rem,1.2vw+0.4rem,1.4rem); }
 
+/* ===== CONSTELLATION BULLETS STYLING UNIVERSAL ===== */
+ul{list-style:none;padding-left:1.25rem}ul li{position:relative;padding-left:1.25rem}ul li::before{content:"✦";position:absolute;left:0;color:var(--brand,#7B6CF6)}
+
+
 /* === HERO + EYEBROW === */ .hero h1,.hero h2,.hero h3,.hero .eyebrow { margin-top:var(--space-xs); margin-bottom:var(--space-xs); }
 .eyebrow { font-family:var(--font-body); color:var(--brand); font-weight:500; font-size:.9rem; letter-spacing:.05em; text-transform:uppercase; }
 .hero-headings { display:flex; flex-direction:column; gap:var(--space-xs); align-items:center; }
 .hero-sub { color:var(--ink-600); margin:var(--space-sm) 0 0; max-width:640px; text-align:left; }
 
-/* === WRAP P TEXT === */ .wrap p { max-width:70ch; line-height:1.7; } 
-.wrap p a { border-bottom:1px solid color-mix(in srgb,var(--brand) 40%,transparent); } 
-.wrap p a:hover { border-bottom-color:var(--brand); }
+/* ======================================= BASE HEADER STYLES ============== */
+.header-wrap{width:100%;max-width:1300px;margin:0;padding:0 20px;display:flex;justify-content:space-between;align-items:center;box-sizing:border-box}.logo-small-centered{margin:0;line-height:1;display:flex;align-items:baseline;gap:.25rem;font-size:clamp(1.4rem,2vw,1.8rem);font-weight:600;text-align:center}.burger{cursor:pointer;border:none;background:none;display:flex;flex-direction:column;justify-content:center;gap:4px}.burger span{display:block;width:22px;height:2px;background:var(--ink-900,#333);border-radius:1px}.progress{height:3px;background:linear-gradient(90deg,var(--brand),var(--lime));position:sticky;z-index:999}
 
-
-
-
-
-
-
-/* === HERO TAGLINE (H1) — Unified with Shimmer === */ .hero .tagline { display:inline-block; position:relative; font-family:"Tenor Sans",serif; font-weight:400; text-align:center; line-height:1.25; margin:0.5rem auto 1.5rem; max-width:720px; word-break:break-word; white-space:normal; z-index:1; background-image:linear-gradient(120deg,#5a4ebc 0%,#8a88b6 25%,#ffffff 50%,#7d82c4 75%,#4a437d 100%); background-size:300% 100%; background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:h1Shimmer 6s ease-in-out 2, pulseGlow 6s ease-in-out 2; animation-fill-mode:forwards; font-size:clamp(1.8rem,2.4vw+1rem,2.5rem); }
-
-/* === Hover Animation === */ .tagline:hover { animation:h1Shimmer 6s ease-in-out 1, pulseGlow 6s ease-in-out 1; animation-fill-mode:forwards; }
-
-/* === Sweep Effect === */ .tagline::after { content:""; position:absolute; top:0; left:-80%; width:60%; height:100%; background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,0.8) 50%,transparent 100%); transform:skewX(-20deg); animation:h1Sweep 6s ease-in-out 2; animation-fill-mode:forwards; } .tagline:hover::after { animation:h1Sweep 4s ease-in-out 1; animation-fill-mode:forwards; }
-
-/* === Keyframes === */ @keyframes h1Shimmer { 0%{background-position:0% 0;} 50%{background-position:150% 0;} 100%{background-position:0% 0;} } @keyframes pulseGlow { 0%,100%{text-shadow:0 0 8px rgba(255,255,255,0.2);} 50%{text-shadow:0 0 14px rgba(255,255,255,0.45);} } @keyframes h1Sweep { 0%,100%{left:-80%;} 50%{left:120%;} }
 
 
 /* ===== BURGER ===== */ .burger{display:none;width:40px;height:40px;cursor:pointer;position:relative;z-index:1300;background:none;border:none;} .burger span{position:absolute;left:8px;width:24px;height:3px;border-radius:2px;background:linear-gradient(90deg,#7B6CF6,#9BE080);transition:transform .35s ease,opacity .25s ease;transform-origin:right center;} .burger span:nth-child(1){top:10px;} .burger span:nth-child(2){top:18px;} .burger span:nth-child(3){top:26px;} .burger.open span:nth-child(1){top:18px;transform:rotate(-30deg);} .burger.open span:nth-child(2){opacity:0;transform:translateX(-20px);} .burger.open span:nth-child(3){top:18px;transform:rotate(30deg);} @media(max-width:768px){.burger{display:block;}}
@@ -68,10 +58,42 @@ h3 { font-family:var(--font-body); color:var(--brand); font-size:clamp(1.2rem,1.
 /* ===== UNIVERSAL WRAP & UTILITIES ===== */ .wrap{width:min(1080px,100%);max-width:1300px;margin:0 auto;margin-inline:auto;padding:0 1.2rem;padding-inline:24px;box-sizing:border-box;} .carousel-slide{display:none;} .carousel-slide.active{display:block;} .c-card{flex-basis:90vw;max-width:90vw;margin:0 auto;} @media(max-width:480px){.wrap{padding-inline:16px;}}  
 
 /* ===== DIAMOND CONSTELLATION BULLETS ===== */ .pathways .workshop-card a{position:relative;display:inline-block;margin-left:1.25rem;font-weight:500;text-decoration:none;color:var(--brand);} .pathways .workshop-card a::before{content:"✦";position:absolute;left:-1.25rem;font-size:0.75rem;color:var(--brand);opacity:0.9;line-height:1;}  
+/* ===== DIAMOND CONSTELLATION BULLETS ===== */
+.section-box.credentials .accordion-item .body ul {
+  list-style: none;   /* remove default bullets */
+  padding-left: 1.25rem; /* room for custom bullets */
+  margin: 0;
+}
+
+.section-box.credentials .accordion-item .body ul li {
+  position: relative;
+  margin: 0.35rem 0; /* vertical gap */
+  padding-left: 1.25rem;
+  font-weight: 500;   /* bold text */
+  color: #333;
+}
+
+.section-box.credentials .accordion-item .body ul li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;         /* centers symbol with text */
+  font-size: 0.75rem;
+  color: var(--brand, #7B6CF6);
+  opacity: 0.9;
+  line-height: 1;
+}
 
 
 
 
+
+
+
+
+
+
+/* ===== FOUNDER PAGE ACCORDIAN ===== */.section-box.credentials .accordion-item{margin-bottom:.5rem;padding:.5rem;border-radius:10px;background:rgba(255,255,255,.55);box-shadow:0 1px 3px rgba(0,0,0,.08);transition:background .3s ease,box-shadow .3s ease}.section-box.credentials .accordion-item:last-of-type{margin-bottom:0}.section-box.credentials .accordion-item:hover{background:rgba(255,255,255,.75);box-shadow:0 2px 6px rgba(0,0,0,.12)}.section-box.credentials .accordion-item summary{display:flex;align-items:center;font-weight:500;font-size:1rem;line-height:1.3;color:#2a2a2a;margin:0;padding:0;cursor:pointer;user-select:none;list-style:none}.section-box.credentials .accordion-item summary::-webkit-details-marker{display:none}.section-box.credentials .accordion-item summary::marker{content:""}.section-box.credentials .accordion-item summary .arrow{margin-right:.75rem;transition:transform .25s ease;font-size:1.1rem;color:#555}.section-box.credentials .accordion-item[open] summary .arrow{transform:rotate(90deg);color:var(--brand,#7B6CF6)}.section-box.credentials .accordion-item .body{border-top:1px solid rgba(0,0,0,.08);color:#333;font-size:.95rem}
 
 
 
@@ -124,7 +146,9 @@ h3 { font-family:var(--font-body); color:var(--brand); font-size:clamp(1.2rem,1.
 
 /* =========================== PART 1: GLOBAL BACKDROP ============= */ body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,#EAF6FF 0%,#CFE8FF 25%,#B9D1FF 50%,#C1C6FF 75%,#B3BAFF 100%),radial-gradient(circle at 20% 30%,rgba(123,108,246,0.4),transparent 55%),radial-gradient(circle at 80% 70%,rgba(155,224,128,0.35),transparent 55%);background-blend-mode:soft-light;background-attachment:fixed;z-index:-1;pointer-events:none;} @media(max-width:768px){body::before{background:linear-gradient(180deg,#EAF6FF 0%,#CFE8FF 35%,#B9D1FF 65%,#B3BAFF 100%),radial-gradient(circle at 30% 25%,rgba(123,108,246,0.45),transparent 55%),radial-gradient(circle at 70% 80%,rgba(155,224,128,0.4),transparent 55%);background-blend-mode:soft-light;background-attachment:fixed;background-size:cover;}}
 
-/* ============ PART 2: HERO TAGLINE (H1) =========================== */ .hero .tagline{display:inline-block;position:relative;font-family:"Tenor Sans",serif;font-weight:400;text-align:center;line-height:1.25;margin:0.5rem auto 1.5rem;max-width:720px;word-break:break-word;white-space:normal;z-index:1;background-image:linear-gradient(120deg,#5a4ebc 0%,#8a88b6 25%,#ffffff 50%,#7d82c4 75%,#4a437d 100%);background-size:300% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:h1Shimmer 6s ease-in-out 2,pulseGlow 6s ease-in-out 2;animation-fill-mode:forwards;font-size:clamp(1.8rem,2.4vw + 1rem,2.5rem);} .tagline:hover{animation:h1Shimmer 6s ease-in-out 1,pulseGlow 6s ease-in-out 1;animation-fill-mode:forwards;} .tagline::after{content:"";position:absolute;top:0;left:-80%;width:60%;height:100%;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,0.8) 50%,transparent 100%);transform:skewX(-20deg);animation:h1Sweep 6s ease-in-out 2;animation-fill-mode:forwards;} .tagline:hover::after{animation:h1Sweep 4s ease-in-out 1;animation-fill-mode:forwards;} @keyframes h1Shimmer{0%{background-position:0% 0;}50%{background-position:150% 0;}100%{background-position:0% 0;}} @keyframes pulseGlow{0%,100%{text-shadow:0 0 8px rgba(255,255,255,0.2);}50%{text-shadow:0 0 14px rgba(255,255,255,0.45);}} @keyframes h1Sweep{0%,100%{left:-80%;}50%{left:120%;}}
+/* ============ PART 2: HERO TAGLINE (H1) =========================== */ .hero .tagline{display:block;font-weight:400;text-align:left;margin:0.5rem 0 1.5rem;max-width:100%;word-break:normal;white-space:normal;overflow-wrap:normal;z-index:1;background-image:linear-gradient(120deg,#5a4ebc 0%,#8a88b6 25%,#fff 50%,#7d82c4 75%,#4a437d 100%);background-size:300% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:h1Shimmer 6s ease-in-out 2,pulseGlow 6s ease-in-out 2;animation-fill-mode:forwards;font-size:clamp(1.8rem,2.4vw + 1rem,2.5rem);} .tagline:hover{animation:h1Shimmer 6s ease-in-out 1,pulseGlow 6s ease-in-out 1;animation-fill-mode:forwards;} .tagline::after{content:"";position:absolute;top:0;left:-80%;width:60%;height:100%;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,0.8) 50%,transparent 100%);transform:skewX(-20deg);animation:h1Sweep 6s ease-in-out 2;animation-fill-mode:forwards;} .tagline:hover::after{animation:h1Sweep 4s ease-in-out 1;animation-fill-mode:forwards;} @keyframes h1Shimmer{0%{background-position:0% 0;}50%{background-position:150% 0;}100%{background-position:0% 0;}} @keyframes pulseGlow{0%,100%{text-shadow:0 0 8px rgba(255,255,255,0.2);}50%{text-shadow:0 0 14px rgba(255,255,255,0.45);}} @keyframes h1Sweep{0%,100%{left:-80%;}50%{left:120%;}} 
+
+
 
 /* ===== ANIMATIONS ===== */ 
 @keyframes fadeInUp {from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}} 
@@ -137,7 +161,7 @@ h3 { font-family:var(--font-body); color:var(--brand); font-size:clamp(1.2rem,1.
 .scrim {background:transparent !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;}  
 
 /* ===== RESPONSIVE OVERRIDES ===== */ 
-@media(min-width:1024px){.pathways .wrap{max-width:1400px;padding-inline:2rem;}.workshop-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;}.card{flex:1 1 300px;max-width:420px;}} 
+@media(min-width:1024px){.pathways .wrap{max-width:1300px;padding-inline:2rem;}.workshop-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;}.card{flex:1 1 300px;max-width:420px;}} 
 @media(max-width:600px){.pathways .wrap{padding-inline:0.5rem;}.pathways .card{width:100%;max-width:none;margin:0;}.modal-box{padding:1.25rem;max-width:95%;}} 
 
 /* ===== FIXED MODAL OVERLAY ===== */ 
@@ -255,43 +279,110 @@ h3 { font-family:var(--font-body); color:var(--brand); font-size:clamp(1.2rem,1.
   }
 }
 
-/* Always center and align logo text the same */
-.logo-small-centered {
-  display: flex;
-  align-items: center;   /* keep text baseline aligned */
-  justify-content: center;  /* keep whole logo centered */
-  gap: 0.25rem;          /* space between “lace” & “LIME” */
-  margin: 0;
-  line-height: 1;        /* tighter vertical alignment */
-  text-align: center;    /* lock it to center across pages */
+
+/* ================================
+   ESSENTIAL HEADER OVERRIDES
+   ================================ */
+
+/* Responsive variables */
+:root {
+  --header-gap: clamp(8px, 2vw, 24px);
+  --header-height: 64px;
 }
 
-.logo-small-centered .lace { color: var(--ink-900); font-weight: 200; }
-.logo-small-centered .amp { margin: 0 2px; }
-.logo-small-centered .lime { color: var(--lime); font-weight: 700; }
-
-/* Force header alignment across all pages */
-header.ll-nav .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 1rem; /* lock consistent header padding */
-  margin: 0 auto;       /* keep centered in viewport */
-  max-width: 1300px;    /* optional: match global width cap */
+/* Use a real spacer element instead of overriding body::before */
+.header-spacer {
+  height: var(--header-gap);
 }
 
-/* Keep logo aligned */
-header.ll-nav .logo-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+/* Header sits under the spacer */
+header.ll-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--frosted-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-header.ll-nav .logo-small-centered {
-  margin: 0;
-  line-height: 1;
-  display: flex;
-  align-items: baseline;
-  gap: 0.25rem;
-  font-size: clamp(1.4rem, 2vw, 1.8rem); /* scales down nicely */
+/* Progress bar just under header */
+.progress {
+  top: var(--header-height);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 56px;
+  }
+  .header-wrap {
+    padding: 0 12px;
+  }
+}
+
+
+
+
+/* ================================
+   UNIVERSAL HERO TAGLINE
+   ================================ */
+.hero .tagline {
+  display: block;
+  font-weight: 400;
+  text-align: left;        /* consistent base */
+  margin: 1rem 0 2rem;     /* more breathing room above/below */
+  max-width: 100%;
+  word-break: normal;
+  white-space: normal;
+  overflow-wrap: normal;
+  z-index: 1;
+  background-image: linear-gradient(120deg,#5a4ebc 0%,#8a88b6 25%,#fff 50%,#7d82c4 75%,#4a437d 100%);
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: h1Shimmer 8s ease-in-out infinite, pulseGlow 8s ease-in-out infinite; /* slower loop */
+  font-size: clamp(1.6rem, 2.2vw + 1rem, 2.4rem); /* slightly smaller for balance */
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.15); /* improves contrast globally */
+}
+
+
+
+
+/* ================================
+   LIGHT WRAP (wider, looser gutters)
+   ================================ */
+.wrap-light {
+  width: min(var(--content-max), calc(100vw - 2*var(--gutter-mobile)));
+  margin-inline: auto;
+  padding-inline: clamp(12px, 3vw, 28px); /* softer side gutters */
+  max-width: 1300px; /* slightly wider than .wrap */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .wrap-light {
+    width: calc(100vw - 2*var(--gutter-mobile));
+    padding-inline: var(--gutter-mobile);
+  }
+}
+
+
+
+/* ================================
+   HEAVY WRAP (for footer/legal)
+   ================================ */
+.wrap-heavy {
+  max-width: 960px; /* hard cap so lines don’t stretch too wide */
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 40px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .wrap-heavy {
+    max-width: 100%; /* let it fill mobile width */
+    padding-inline: var(--gutter-mobile);
+  }
 }

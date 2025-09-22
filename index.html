@@ -9,22 +9,27 @@
 
   <!-- Global + Page Styles -->
   <link rel="stylesheet" href="css.css?v=1.1">
-  <link rel="stylesheet" href="css/explore.css?v=1.0">
 </head>
 
 
 <body class="index">
 
 
+    <!-- PROGRESS AND SPACER THAT SITS ABOVE THE HEADER!-->
+<div class="progress"><span id="progress-fill"></span></div>
+<div class="header-spacer"></div>
+
+
+
  <!-- ===== HEADER ===== -->
-  <header class="ll-nav">
-    <div class="wrap">
-      <a class="logo-link" href="index.html">
-        <h1 class="logo-small-centered">
-          <span class="lace">lace</span>
-          <span class="amp">&amp;</span>
-          <span class="lime">LIME</span>
-        </h1>
+<header class="ll-nav">
+  <div class="header-wrap">
+    <a class="logo-link" href="index.html">
+      <h1 class="logo-small-centered">
+        <span class="lace">lace</span>
+        <span class="amp">&amp;</span>
+        <span class="lime">LIME</span>
+      </h1>
       </a>
 
     <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
@@ -80,29 +85,17 @@
 </nav>
 
 
-
-
-
-
-  <!-- PROGRESS BAR -->
-  <div class="progress"><span id="progress-fill"></span></div>
-
-
-
-<!-- ===== HERO SECTION ===== -->
-<section class="hero">
-  <div class="wrap" style="text-align:center;">
-    
-    <h1 class="tagline">
-      Reflection that moves.<br>Action that sticks.<BR>Growth you can feel.
-    </h1>
+<!-- ===== INDEX SPECIFIC HERO SECTION ===== -->
+<section class="hero hero-section hero--index">
+  <div class="wrap-light">
+    <h1 class="tagline">Reflection that moves. Action that sticks.<br>Growth you can feel.</h1>
   </div>
 </section>
+
 
 <!-- ===== PATHWAYS SECTION ===== -->
 <section id="path" class="pathways">
   <div class="wrap">
-
     <div class="workshop-cards">
 
       <!-- Fresh Press → Journal Update -->
@@ -177,11 +170,18 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="wrap">
-    © 2025 Lace & Lime™ LLC. All rights reserved. · 
-    <a href="privacy-terms.html">Privacy and Terms</a>
+  <div class="wrap-heavy">
+    <p>
+      © 2025 Lace & Lime™ LLC. All rights reserved. · 
+      <a href="privacy-terms.html">Privacy and Terms</a>
+    </p>
+    <p>
+      LACE & LIME™, THE STILLNESS SPIRAL™, ENERGY ALIGNED, ACTION DEFINED™, and their associated logos are trademarks and/or registered trademarks of Lace & Lime LLC and their respective owners.
+    </p>
   </div>
 </footer>
+
+
 
 <!-- ✅ Load your JavaScript -->
 <script src="js/main.js" defer></script>
