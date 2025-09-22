@@ -200,6 +200,69 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
 #systems-modal .modal-content .button {
   margin-top: var(--space-sm);
 }
+/* Systems card refined */
+.systems-card {
+  background: rgba(255, 255, 255, 0.28);   /* lighter glass look */
+  backdrop-filter: blur(5px);
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  max-width: 500px;       /* slightly narrower */
+  margin: 8rem auto 1.5rem; /* more space above/below */
+  text-align: center;     /* balance text + button */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.systems-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.07);
+}
+
+.systems-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.6rem;      /* smaller headline */
+}
+
+.systems-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 auto 1.2rem auto;
+  max-width: 48ch;        /* keeps text to 2 lines */
+  color: var(--ink-700);
+}
+
+.systems-card .button {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.95rem;
+  border-radius: 999px;   /* pill-style button */
+  margin-top: .5rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .systems-card {
+    padding: 0.85rem 1rem;   /* tighter padding */
+    max-width: 92%;
+    margin: 6rem auto 1.5rem; /* extra margin-top for breathing space */
+  }
+  .systems-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
+  }
+  .systems-card p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    max-width: 34ch;  /* still compact text */
+    margin-bottom: 1rem;
+  }
+  .systems-card .button {
+    width: 100%;      /* full-width button on mobile */
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+}
 
 
 /* =========================== CREDENTIALS pastel accordion =========================== */
@@ -430,42 +493,6 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
     line-height: 1.3;
   }
 }
-
-/* Systems card adjustments for mobile */
-@media(max-width: 768px) {
-  .systems-card {
-    padding: 1rem;                /* less padding */
-    border-radius: 10px;
-    box-shadow: var(--shadow-sm); /* lighter shadow */
-    max-width: 100%;
-    margin: 1.5rem auto;          /* less vertical spacing */
-  }
-
-  .systems-card h2 {
-    font-size: 1.25rem;           /* smaller heading */
-    margin-bottom: .5rem;
-  }
-
-  .systems-card p {
-    font-size: .95rem;            /* smaller text */
-    line-height: 1.4;
-    margin-bottom: .75rem;        /* less space before button */
-  }
-
-  .systems-card .button {
-    width: 100%;                  /* full width but smaller */
-    font-size: .9rem;
-    padding: .6rem 1rem;
-    border-radius: 8px;
-  }
-}
-@media(max-width: 768px) {
-  .section-box.founder-card .eyebrow,
-  .section-box.founder-card h1,
-  .section-box.founder-card p {
-    text-align: center !important;   /* center eyebrow + heading + text */
-  }
-
   .section-box.founder-card .eyebrow {
     display: block;
     margin-bottom: .4rem;
@@ -483,6 +510,38 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
     margin-bottom: .9rem;
   }
 }
+
+/* Add breathing room above founder card */
+.section-box.founder-card {
+  margin-top: 3rem;   /* adjust value until it feels right */
+}
+
+
+@media (max-width: 768px) {
+  .section-box.founder-card {
+    margin-top: 2rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
