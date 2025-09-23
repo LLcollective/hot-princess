@@ -581,3 +581,33 @@ header.ll-nav {
 .chip.respect { color: #6B5AE0; }   /* deeper purple */
 .chip.funding { color: #28A36A; }   /* green tone */
 
+
+.hero .wrap {
+  max-width: 1000px;  /* widen reading area */
+  margin-inline: auto;
+  text-align: justify;
+  padding-inline: 1.5rem; /* keep side gutters so it’s not edge-to-edge */
+}
+
+.hero .hero-sub {
+  max-width: 800px; /* let subs flow wider too */
+ text-align-last: justify 
+ margin-bottom: 1.25rem;
+  line-height: 1.65;
+}
+
+
+.hero .hero-sub {
+  margin-bottom: 0.85rem; /* tighter spacing */
+  line-height: 1.5;       /* slightly reduced line height */
+}
+
+.hero .wrap {
+  max-width: 900px;       /* brings text block a little narrower = less floaty */
+  padding-inline: 1rem;   /* trims side gutters */
+}
+
+.hero .chips {
+  margin-top: 0.5rem;     /* chips closer to text */
+  gap: 0.5rem;            /* chips closer together */
+}
