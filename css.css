@@ -366,6 +366,21 @@ header.ll-nav {
 }
 
 
+ .h1-wrap {
+  display: inline-block;
+  padding: 0rem 3.5REM;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.4); /* faint glow */
+  background: transparent;
+}
+
+
+.h1-wrap h1 {
+  margin: 0;
+  font-size: 2.5rem;                  /* adjust to your brand scale */
+  color: #333;                        /* strong contrast */
+  font-weight: 600;                   /* clean bold */
+}
 
 
 /* ================================
@@ -610,4 +625,13 @@ header.ll-nav {
 .hero .chips {
   margin-top: 0.5rem;     /* chips closer to text */
   gap: 0.5rem;            /* chips closer together */
+}
+
+
+footer {
+  background: linear-gradient(90deg, #eae6f9, #e9f9f1); /* lavender → lime */
+  font-size: 0.8rem;
+  color: #444;
+  text-align: center;
+  padding: 1rem;
 }
