@@ -6,136 +6,10 @@
   <title>Book Now | Lace & Lime™</title>
   <meta name="description" content="Book Lace & Lime™ experiences — immersive sessions that blend reflection and action for real progress. Choose your path and secure your spot.">
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&family=Raleway:wght@200;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css.css?v=1.0">
+ 
+ <link rel="stylesheet" href="css.css?v=1.1">
 
-  <style>
-    /* ======================
-       BOOK NOW PAGE CARDS
-       ====================== */
-    .booknow-cards {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: stretch;
-      gap: 2rem;
-      margin: 2rem auto 4rem;
-      padding: 0 2rem;
-      max-width: 1400px; /* wide like Limeboard */
-      box-sizing: border-box;
-    }
 
-    .booknow-card {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 1rem;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform .2s ease, box-shadow .2s ease;
-      flex: 1 1 300px;
-      max-width: 360px;
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: left;
-      box-sizing: border-box;
-      position: relative;
-    }
-
-    .booknow-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-
-    .booknow-card.highlight {
-      border: 2px solid var(--brand);
-      box-shadow: 0 8px 28px rgba(123,108,246,0.25);
-      transform: scale(1.05);
-      z-index: 1;
-    }
-
-    /* Highlight ribbon updated */
-    .booknow-card.highlight::before {
-      content: "Core Experience — New";
-      position: absolute;
-      top: -0.75rem;
-      right: 1rem;
-      background: var(--brand);
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      letter-spacing: 0.02em;
-    }
-
-    .booknow-card h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--brand), var(--lime));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.75rem;
-    }
-
-    .booknow-card p {
-      font-size: 1rem;
-      color: var(--ink-700);
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-
-    .booknow-card .btn {
-      margin-top: auto;
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      background: linear-gradient(90deg, var(--lime), var(--brand));
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      text-align: center;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-sizing: border-box;
-    }
-
-    .booknow-card .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    /* Soft launch note style */
-    .softlaunch-note {
-      font-size: 0.9rem;
-      color: var(--ink-400);
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-
-    @media (max-width: 768px) {
-      .booknow-cards {
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 0 1rem;
-        max-width: 100%;
-      }
-      .booknow-card {
-        max-width: 100%;
-        min-height: auto;
-      }
-    }
-/* Book Now page — left-align hero headline */
-body.booking .hero .tagline {
-  text-align: left;
-  margin-left: 0;
-  margin-right: auto;
-  display: block; /* instead of inline-block so it flows naturally */
-}
-
-  </style>
 </head>
 <body class="booking">
 
@@ -199,40 +73,65 @@ body.booking .hero .tagline {
       </p>
       <p class="hero-sub">
         After checkout, pick a time that works best for you in the 
-        <a href="https://calendar.google.com/" target="_blank">calendar</a>. Add a note with the area you want to focus on. Career, Balance, Respect, and Funding cover most goals. If yours feels different, write it anyway. 
+        <a href="https://calendar.app.google/Y2CgBXe2TseTf2Br7" target="_blank">calendar</a>. Add a note with the area you want to focus on. Career, Balance, Respect, Confidence and Funding cover most goals. If yours feels different, write it anyway. 
         Need to work outside the schedule? Send me a 
         <a href="mailto:laceandlime.llc@gmail.com">message</a>.  
-        You can also <a href="https://docs.google.com/forms/d/e/YOUR-FORM-ID/viewform" target="_blank">upload your resume</a> and I'll give it a quick review.
+        You can also <a href="https://docs.google.com/forms/d/e/1FAIpQLScixvYG_okyEanW5XPHkW4PTqR7h6OblZGSv_5hkJ81-MPKEQ/viewform?usp=header" target="_blank">upload your resume</a> and I'll give it a quick review.
       </p>
       <div class="chips">
         <span class="chip career">Career</span>
         <span class="chip balance">Balance</span>
         <span class="chip respect">Respect</span>
         <span class="chip funding">Funding</span>
+        <span class="chip balance">Confidence</span>
       </div>
     </div>
   </section>
 
-  <!-- ===== BOOK NOW SECTION ===== -->
-  <section class="booknow-page">
-    <div class="booknow-cards">
-      <div class="booknow-card">
-        <h3>Energy Aligned</h3>
-        <p>Find clarity and align your energy with guided reflection to reset your focus.</p>
-        <a href="#" class="btn">Book Now</a>
-      </div>
-      <div class="booknow-card highlight">
-        <h3>Action Defined</h3>
-        <p>The core Lace & Lime experience. Build momentum and clarity with structured action steps.</p>
-        <a href="#" class="btn">Book Now</a>
-      </div>
-      <div class="booknow-card">
-        <h3>Next Is Now</h3>
-        <p>Step into growth with bold moves and sustained accountability toward your next chapter.</p>
-        <a href="#" class="btn">Book Now</a>
-      </div>
-    </div>
-  </section>
+<!-- ===== BOOK NOW SECTION ===== -->
+<section class="booknow-page">
+  <div class="booknow-cards">
+
+  <!-- Energy Aligned -->
+<div class="booknow-card">
+  <h3>Energy Aligned</h3>
+  <p>A quick reset to quiet the noise and bring you back to focus. Best for one subject where you want clarity right now.</p>
+  <ul>
+    <li><strong>EXPERIENCE:</strong> Identify what’s most important right now.</li>
+    <li><strong>Gain</strong> immediate clarity with guided reflection.</li>
+    <li><strong>Leave</strong> with renewed focus and a clear path forward.</li>
+    <li><strong>INCLUDES:</strong> recap note + 1 tailored prompt.</li>
+  </ul>
+  <a href="#" class="btn">Book Now</a>
+</div>
+
+<!-- Action Defined -->
+<div class="booknow-card highlight">
+  <h3>Action Defined</h3>
+  <p>Best for turning multiple priorities into a clear plan you can move on with confidence.</p>
+  <ul>
+    <li><strong>EXPERIENCE:</strong> Map your next moves with intention.</li>
+    <li><strong>Align</strong> actions with your values and goals.</li>
+    <li><strong>Leave</strong> with a practical plan you can follow with confidence.</li>
+    <li><strong>INCLUDES:</strong> action checklist, priority map + 1 tailored cycle</li>
+  </ul>
+  <a href="#" class="btn">Book Now</a>
+</div>
+
+<!-- Next Is Now -->
+<div class="booknow-card">
+  <h3>Next Is Now</h3>
+  <p>A path for lasting progress. Ideal for layered goals that need space and steady growth.</p>
+  <ul>
+    <li><strong>EXPERIENCE:</strong> Two in-depth sessions.</li>
+    <li><strong>Balance</strong> clarity with sustainable accountability.</li>
+    <li><strong>Leave</strong> with measurable progress and momentum you can trust from the start.</li>
+    <li><strong>INCLUDES:</strong> between-session check-in, guided resource + 2 tailored cycles.</li>
+  </ul>
+  <a href="#" class="btn">Book Now</a>
+</div>
+</section>
+
 
   <!-- ===== FOOTER ===== -->
   <footer>

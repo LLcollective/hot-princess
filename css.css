@@ -347,28 +347,6 @@ header.ll-nav {
 }
 
 
-
-
-/* ================================
-   LIGHT WRAP (wider, looser gutters)
-   ================================ */
-.wrap-light {
-  width: min(var(--content-max), calc(100vw - 2*var(--gutter-mobile)));
-  margin-inline: auto;
-  padding-inline: clamp(12px, 3vw, 28px); /* softer side gutters */
-  max-width: 1300px; /* slightly wider than .wrap */
-  box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .wrap-light {
-    width: calc(100vw - 2*var(--gutter-mobile));
-    padding-inline: var(--gutter-mobile);
-  }
-}
-
-
-
 /* ================================
    HEAVY WRAP (for footer/legal)
    ================================ */
@@ -386,3 +364,220 @@ header.ll-nav {
     padding-inline: var(--gutter-mobile);
   }
 }
+
+
+
+
+/* ================================
+   BOOK NOW PAGE (with light wrap)
+   ================================ */
+.booknow-page {
+  width: min(var(--content-max), calc(100vw - 2*var(--gutter-mobile)));
+  margin-inline: auto;
+  padding-inline: 0rem; /* tighter gutters */
+  max-width: 1300px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .booknow-page {
+    width: calc(100vw - 2*var(--gutter-mobile));
+    padding-inline: var(--gutter-mobile);
+  }
+}
+
+/* ======================
+   BOOK NOW PAGE STYLES
+   ====================== */
+.booknow-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  margin: 2rem auto 4rem;
+  padding: 0 2rem;
+  max-width: 1400px; /* wide like Limeboard */
+  box-sizing: border-box;
+}
+
+.booknow-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 1rem; /* tighter padding */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+  flex: 1 1 32%;       /* each card about 1/3 of row */
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid rgba(123, 108, 246, 0.2); /* subtle border */
+}
+
+.booknow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.booknow-card.highlight {
+  border: 2px solid var(--brand);
+  box-shadow: 0 8px 28px rgba(123,108,246,0.25);
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+/* Highlight ribbon */
+.booknow-card.highlight::before {
+  content: "Core Experience — New";
+  position: absolute;
+  top: -0.75rem;
+  right: 1rem;
+  background: var(--brand);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+.booknow-card h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--brand), var(--lime));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.6rem; /* tighter heading spacing */
+}
+
+.booknow-card p {
+  font-size: 0.95rem;   /* slightly smaller text */
+  color: var(--ink-700);
+  margin-bottom: 0.75rem;  /* tighter spacing */
+  line-height: 1.45;
+}
+
+/* Bullet list with curved diamond */
+.booknow-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 0.75rem 0; /* tighter bottom margin */
+}
+
+.booknow-card ul li {
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 0.4em; /* smaller gaps between bullets */
+  line-height: 1.4;
+  font-size: 0.93rem;
+}
+
+.booknow-card ul li::before {
+  content: "✦"; /* purple curved diamond */
+  color: var(--brand);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.85em;
+}
+
+.booknow-card ul li strong {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.booknow-card ul li strong:first-child {
+  display: inline-block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-right: 0.25rem;
+  color: var(--brand);
+}
+
+.booknow-card .btn {
+  margin-top: auto;
+  width: 100%;              /* full width across card */
+  padding: 0.75rem 1rem;    /* slightly taller button */
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--lime), var(--brand));
+  color: #fff;
+  font-size: 1rem;          /* a bit larger text */
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.booknow-card .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* Soft launch note */
+.softlaunch-note {
+  font-size: 0.85rem;
+  color: var(--ink-400);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booknow-cards {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+  .booknow-card {
+    max-width: 100%;
+  }
+}
+
+
+
+/* === CHIPS CONTAINER === */
+.chips {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* === CHIP BASE STYLE === */
+.chip {
+  background: rgba(123,108,246,0.08); /* subtle brand tint */
+  border: 1px solid rgba(123,108,246,0.25);
+  color: var(--brand);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px; /* pill */
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+/* === CHIP HOVER === */
+.chip:hover {
+  background: linear-gradient(90deg, var(--lime), var(--brand));
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(123,108,246,0.25);
+}
+
+/* === OPTIONAL COLOR VARIANTS === */
+.chip.career { color: var(--brand); }
+.chip.balance { color: #4A3FBF; }
+.chip.respect { color: #6B5AE0; }   /* deeper purple */
+.chip.funding { color: #28A36A; }   /* green tone */
+
