@@ -150,13 +150,12 @@
     <h3>Thank you!</h3>
     <p>Your message is on its way. We’ll reply shortly.</p>
     <div class="modal-actions">
-      <button id="closeModal" class="btn btn-primary">Close</button>
+    <button id="closeModal" class="btn btn-primary" onclick="document.getElementById('thankYou').close()">Close</button>
+
     </div>
   </div>
 </dialog>
 
-<!-- Scripts -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
    <!-- ===== FOOTER ===== -->
 <footer>
@@ -173,15 +172,37 @@
 
 <!-- SCRIPTS -->
 <script>
-  function onSubmit(token) {
-    // attach token into hidden input
-    document.getElementById("g-recaptcha-response").value = token;
-    document.getElementById("contactForm").submit();
+  async function onSubmit(token) {
+    const form = document.getElementById("contactForm");
+    const formData = new FormData(form);
+    formData.append("g-recaptcha-response", token);
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        // Open thank-you modal
+        document.getElementById("thankYou").showModal();
+        form.reset();
+      } else {
+        alert("Something went wrong: " + (data.error || "Unknown error"));
+      }
+    } catch (err) {
+      console.error("SEND_ERROR", err);
+      alert("Network error, please try again.");
+    } finally {
+      grecaptcha.reset(); // reset captcha for next submission
+    }
   }
 </script>
 
 <!-- Google reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
 <!-- Your site’s JS -->
 <script src="js/main.js?v=1.0"></script>
