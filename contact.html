@@ -83,88 +83,80 @@
 <section class="hero contact-form">
   <div class="wrap">
 
-    <!-- Hero-style heading -->
     <div class="hero-headings">
       <span class="eyebrow">CONTACT</span>
       <h1 class="tagline">Say hello</h1>
     </div>
 
+    <form id="contactForm" action="/api/send" method="POST" novalidate>
 
+      <!-- Honeypot -->
+      <input type="text" name="hp_company" tabindex="-1" autocomplete="organization" aria-hidden="true" style="position:absolute;left:-5000px;opacity:.01;height:0;width:0" />
+      <input type="hidden" name="startedAt" id="startedAt" />
 
-
-      <form id="contactForm" action="/api/send" method="POST" novalidate>
-
-
-
-          <!-- Honeypot -->
-          <input type="text" name="hp_company" tabindex="-1" autocomplete="organization" aria-hidden="true" style="position:absolute;left:-5000px;opacity:.01;height:0;width:0" />
-          <input type="hidden" name="startedAt" id="startedAt" />
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First*</label>
-              <input id="firstName" name="firstName" type="text" required />
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last</label>
-              <input id="lastName" name="lastName" type="text" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group full">
-              <label for="email">Email*</label>
-              <input id="email" name="email" type="email" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group full">
-              <label for="subject">Subject*</label>
-              <input id="subject" name="subject" type="text" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group full">
-              <label for="message">Message*</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
-          </div>
-
-
-<input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-
-          <div class="controls">
-<button id="submitBtn"
-        type="submit"
-        class="btn btn-primary g-recaptcha"
-        data-sitekey="6LdNBtQrAAAAAIN6MM4S_8MJt6TGVW-c0s8nl9wF"
-        data-callback="onSubmit"
-        data-size="invisible">
-  Send
-</button>
-
-<span id="formStatus" class="status" role="status" aria-live="polite"></span>
-
-
-        <small>  <p class="small">Prefer email? Write us at <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
-        </form></small>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First*</label>
+          <input id="firstName" name="firstName" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last</label>
+          <input id="lastName" name="lastName" type="text" required />
+        </div>
       </div>
-    </section>
 
-  </main>
-
-  <!-- Thank You Modal -->
-  <dialog id="thankYou" class="modal">
-    <div class="modal-card">
-      <h3>Thank you!</h3>
-      <p>Your message is on its way. We’ll reply shortly.</p>
-      <div class="modal-actions">
-        <button id="closeModal" class="btn btn-primary">Close</button>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="email">Email*</label>
+          <input id="email" name="email" type="email" required />
+        </div>
       </div>
+
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="subject">Subject*</label>
+          <input id="subject" name="subject" type="text" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="message">Message*</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+      </div>
+
+      <!-- reCAPTCHA v2 Checkbox -->
+      <div class="g-recaptcha"
+           data-sitekey="6LdNBtQrAAAAAIN6MM4S_8MJt6TGVW-c0s8nl9wF"></div>
+
+      <div class="controls">
+        <button id="submitBtn" type="submit" class="btn btn-primary">
+          Send
+        </button>
+        <span id="formStatus" class="status" role="status" aria-live="polite"></span>
+      </div>
+
+      <small>
+        <p class="small">Prefer email? Write us at <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.</p>
+      </small>
+    </form>
+  </div>
+</section>
+
+<!-- Thank You Modal -->
+<dialog id="thankYou" class="modal">
+  <div class="modal-card">
+    <h3>Thank you!</h3>
+    <p>Your message is on its way. We’ll reply shortly.</p>
+    <div class="modal-actions">
+      <button id="closeModal" class="btn btn-primary">Close</button>
     </div>
-  </dialog>
+  </div>
+</dialog>
+
+<!-- Scripts -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
    <!-- ===== FOOTER ===== -->
 <footer>
