@@ -88,7 +88,7 @@
       <h1 class="tagline">Say hello</h1>
     </div>
 
-    <form id="contactForm" action="/api/send" method="POST" novalidate>
+<form id="contactForm" onsubmit="handleFormSubmit(event)" novalidate>
 
       <!-- Honeypot -->
       <input type="text" name="hp_company" tabindex="-1" autocomplete="organization" aria-hidden="true" style="position:absolute;left:-5000px;opacity:.01;height:0;width:0" />
@@ -199,6 +199,35 @@
     }
   }
 </script>
+<script>
+  async function handleFormSubmit(e) {
+    e.preventDefault(); // prevent default form POST
+
+    const form = document.getElementById("contactForm");
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        document.getElementById("thankYou").showModal(); // show modal
+        form.reset();
+      } else {
+        alert("Something went wrong: " + (data.error || "Unknown error"));
+      }
+    } catch (err) {
+      console.error("SEND_ERROR", err);
+      alert("Network error, please try again.");
+    } finally {
+      grecaptcha.reset(); // reset captcha for next submission
+    }
+  }
+</script>
+
 
 <!-- Google reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
