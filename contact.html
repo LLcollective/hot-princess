@@ -101,6 +101,7 @@
       data-callback="onSubmit"
       data-size="invisible">
 
+
           <!-- Honeypot -->
           <input type="text" name="hp_company" tabindex="-1" autocomplete="organization" aria-hidden="true" style="position:absolute;left:-5000px;opacity:.01;height:0;width:0" />
           <input type="hidden" name="startedAt" id="startedAt" />
@@ -136,6 +137,9 @@
               <textarea id="message" name="message" required></textarea>
             </div>
           </div>
+
+
+<input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
           <div class="controls">
 <button id="submitBtn"
@@ -181,17 +185,20 @@
 </footer>
 
 
-  <!-- SCRIPTS -->
+<!-- SCRIPTS -->
 <script>
   function onSubmit(token) {
-    // Optional: disable button while submitting
-    document.getElementById("submitBtn").disabled = true;
+    // attach token into hidden input
+    document.getElementById("g-recaptcha-response").value = token;
     document.getElementById("contactForm").submit();
   }
 </script>
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script src="js/main.js?v=1.0"></script>
+<!-- Google reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Your site’s JS -->
+<script src="js/main.js?v=1.0"></script>
 
 </body>
 </html>
