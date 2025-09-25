@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Packages – Lace & Lime</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9fb;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #7bb8d6, #e68fbf, #f4a261);
+      color: #fff;
+    }
+
+    header h1 {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 2.6rem;
+      margin: 0 0 0.6rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h2 {
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 1.4rem;
+      margin: 0 0 0.5rem;
+      color: #fff;
+      padding: 0.8rem;
+      border-radius: 8px;
+    }
+
+    .card .price {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      color: #fff;
+      padding: 0 0.8rem 0.8rem;
+    }
+
+    /* Colors per card */
+    .seed h2, .seed .price { background: #7bb8d6; }
+    .bloom h2, .bloom .price { background: #e68fbf; }
+    .flourish h2, .flourish .price { background: #f4a261; }
+    .addons h2, .addons .price { background: #8b6df2; }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card ul li {
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .card ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    .ownership {
+      grid-column: 1 / -1;
+      background: #f7f2ff;
+      border: 1px solid #e1d6ff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-weight: 600;
+      color: #3a2a70;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      margin-top: 1.5rem;
+    }
+
+    .ownership ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem auto 0;
+      max-width: 650px;
+      text-align: left;
+    }
+
+    .ownership ul li {
+      margin-bottom: 0.6rem;
+      font-weight: 400;
+    }
+
+    /* Value Comparison */
+    .comparison {
+      margin: 3rem auto;
+      max-width: 1000px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .comparison h2 {
+      text-align: center;
+      font-family: 'Tenor Sans', sans-serif;
+      font-size: 1.8rem;
+      margin: 0;
+      padding: 1.5rem;
+      background: #7bb8d6;
+      color: #fff;
+    }
+
+    .comparison table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison th, .comparison td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .comparison th {
+      background: #f4f6fb;
+      font-weight: 700;
+    }
+
+    .comparison tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison .highlight {
+      background: #f7f2ff;
+      font-weight: 600;
+      color: #3a2a70;
+    }
+
+    /* Buttons */
+    .actions {
+      text-align: center;
+      margin: 2rem auto;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .actions button, .actions a {
+      background: linear-gradient(135deg, #7bb8d6, #e68fbf, #f4a261);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem 1.6rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .actions button:hover, .actions a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #eee;
+      margin-top: 2rem;
+    }
+  </style>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+
+
+
+</head>
+<body>
+
+  <header>
+    <h1>Lace & Lime Website Packages</h1>
+    <p>Choose the path that fits your business stage: Seed 🌱, Bloom 🌸, Flourish 🌟, or Add-ons ✨</p>
+  </header>
+
+  <div class="container">
+    <div class="packages">
+
+      <!-- Seed -->
+      <div class="card seed">
+        <h2>Seed</h2>
+        <div class="price">$750–$900</div>
+        <ul>
+          <li>New entrepreneurs ready to launch a clean online presence with a professional start.</li>
+          <li>1–2 page site or landing page with simple payment integration if needed.</li>
+          <li>Basic brand alignment: logo, colors, fonts, and starter docs.</li>
+          <li>Simple onboarding with handoff notes.</li>
+          <li>How-to notes for maintaining your website and content.</li>
+          <li>Timeline: 2–3 weeks</li>
+          <li>1 revision cycle</li>
+        </ul>
+      </div>
+
+      <!-- Bloom -->
+      <div class="card bloom">
+        <h2>Bloom</h2>
+        <div class="price">$1600–$2200</div>
+        <ul>
+          <li>Businesses in growth mode ready to build credibility and streamline client intake.</li>
+          <li>3–4 polished pages (Home, About, Services, Contact).</li>
+          <li>Custom graphics and visuals for consistent branding. Placement of testimonials.</li>
+          <li>Integrated forms/payments (Square, Stripe, Calendly). Branded intake form.</li>
+          <li>Walkthrough call plus extra support after launch. Social starter kit included.</li>
+          <li>Timeline: 4–6 weeks</li>
+          <li>2 revision cycles</li>
+        </ul>
+      </div>
+
+      <!-- Flourish -->
+      <div class="card flourish">
+        <h2>Flourish</h2>
+        <div class="price">$3000–$4500</div>
+        <ul>
+          <li>Established entrepreneurs ready to scale or diversify revenue.</li>
+          <li>5–7 custom pages (Home, About, Services, Testimonials, Contact, plus Blog/Portfolio).</li>
+          <li>Full brand experience with personalized layouts and advanced integrations.</li>
+          <li>Full intake system with progress tracking and growth-focused questions.</li>
+          <li>1–2 coaching calls, extended support, optional quarterly check-ins, and resource library.</li>
+          <li>Timeline: 6–8 weeks</li>
+          <li>3 revision cycles</li>
+        </ul>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="card addons">
+        <h2>Add-ons</h2>
+        <div class="price">Custom pricing</div>
+        <h3>Growth Add-ons</h3>
+        <ul>
+          <li>E-commerce setup: $800–$1,200</li>
+          <li>Membership system: $1,000–$1,500</li>
+          <li>Online course integration: $1,200–$2,000</li>
+          <li>Advanced SEO package: $750–$1,200</li>
+        </ul>
+        <h3>Technical Add-ons</h3>
+        <ul>
+          <li>Analytics dashboard setup: $600–$1,000</li>
+          <li>Extra branded template packs: $200–$400</li>
+          <li><strong>Developer systems integration: $1,200–$2,000</strong></li>
+        </ul>
+      </div>
+
+      <!-- Ownership -->
+      <div class="ownership">
+        You fully own your site, content, and code. Unlike template platforms that charge recurring fees ($400+/year), there are no hidden catches and no subscriptions.
+        <br><br>Included at no extra cost:
+        <ul>
+          <li>📬 Newsletter integration & branded mailbox setup</li>
+          <li>🤖 Automations (auto-replies, intake sorting, reminders) so you can focus on real business</li>
+          <li>🔒 Security basics: SSL certificate, spam filters, privacy settings</li>
+          <li>📱 Mobile responsiveness and cross-device testing</li>
+          <li>📊 Basic analytics setup (Google Analytics or equivalent)</li>
+          <li>⚡ SEO-friendly structure (titles, meta, fast loading)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="comparison">
+      <h2>Why This Beats Subscriptions</h2>
+      <table>
+        <tr>
+          <th>Feature</th>
+          <th>Hosted Platforms (Wix, Squarespace)</th>
+          <th>Lace & Lime Websites</th>
+        </tr>
+        <tr>
+          <td>Recurring costs</td>
+          <td>$200–$500+/year just to keep your site live</td>
+          <td><span class="highlight">No forced subscription. One-time build + your choice of low-cost hosting ~$10/year.</span></td>
+        </tr>
+        <tr>
+          <td>Ownership</td>
+          <td>You don’t fully own the code; locked into their system</td>
+          <td><span class="highlight">You own all code, content, and systems. Full control, no lock-in.</span></td>
+        </tr>
+        <tr>
+          <td>Features</td>
+          <td>Add-ons cost extra (email, automations, scheduling)</td>
+          <td><span class="highlight">Newsletter, mailbox, automations, security, SEO, analytics all included free</span></td>
+        </tr>
+        <tr>
+          <td>Scalability</td>
+          <td>Limited to platform’s tools and templates</td>
+          <td><span class="highlight">Custom integrations, developer systems, future-proof growth</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button onclick="window.print()">🖨️ Print</button>
+    <button id="download">⬇️ Download PDF</button>
+      <a href="mailto:laceandlime.llc@gmail.com">📩 Contact</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Lace & Lime™ LLC - Wellness, Awareness, Empowerment
+  </footer>
+
+
+
+
+<script>
+  document.getElementById("download").addEventListener("click", () => {
+    // Choose which part of the page you want in the PDF
+    const element = document.querySelector(".container"); // packages section only
+    // Or use document.body for the entire page
+    
+    const opt = {
+      margin:       0.5,
+      filename:     'LaceAndLime-Packages.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    
+    html2pdf().set(opt).from(element).save();
+  });
+</script>
+
+</body>
+</html>
