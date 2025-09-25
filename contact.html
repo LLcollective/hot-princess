@@ -172,10 +172,11 @@
 
 <!-- SCRIPTS -->
 <script>
-  async function onSubmit(token) {
+  async function handleFormSubmit(e) {
+    e.preventDefault(); // prevent default form POST
+
     const form = document.getElementById("contactForm");
     const formData = new FormData(form);
-    formData.append("g-recaptcha-response", token);
 
     try {
       const res = await fetch("/api/send", {
@@ -198,43 +199,20 @@
       grecaptcha.reset(); // reset captcha for next submission
     }
   }
-</script>
-<script>
-  async function handleFormSubmit(e) {
-    e.preventDefault(); // prevent default form POST
 
+  // attach handler once DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
-    const formData = new FormData(form);
-
-    try {
-      const res = await fetch("/api/send", {
-        method: "POST",
-        body: formData
-      });
-      const data = await res.json();
-
-      if (data.ok) {
-        document.getElementById("thankYou").showModal(); // show modal
-        form.reset();
-      } else {
-        alert("Something went wrong: " + (data.error || "Unknown error"));
-      }
-    } catch (err) {
-      console.error("SEND_ERROR", err);
-      alert("Network error, please try again.");
-    } finally {
-      grecaptcha.reset(); // reset captcha for next submission
+    if (form) {
+      form.addEventListener("submit", handleFormSubmit);
     }
-  }
+  });
 </script>
-
 
 <!-- Google reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-
 <!-- Your site’s JS -->
 <script src="js/main.js?v=1.0"></script>
-
 </body>
 </html>
