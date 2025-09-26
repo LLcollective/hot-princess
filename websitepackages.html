@@ -121,52 +121,6 @@
       font-weight: 400;
     }
 
-    /* Value Comparison */
-    .comparison {
-      margin: 3rem auto;
-      max-width: 1000px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      overflow: hidden;
-    }
-
-    .comparison h2 {
-      text-align: center;
-      font-family: 'Tenor Sans', sans-serif;
-      font-size: 1.8rem;
-      margin: 0;
-      padding: 1.5rem;
-      background: #7bb8d6;
-      color: #fff;
-    }
-
-    .comparison table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .comparison th, .comparison td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
-
-    .comparison th {
-      background: #f4f6fb;
-      font-weight: 700;
-    }
-
-    .comparison tr:last-child td {
-      border-bottom: none;
-    }
-
-    .comparison .highlight {
-      background: #f7f2ff;
-      font-weight: 600;
-      color: #3a2a70;
-    }
-
     /* Buttons */
     .actions {
       text-align: center;
@@ -203,15 +157,20 @@
       border-top: 1px solid #eee;
       margin-top: 2rem;
     }
+
+    .chip {
+      display: inline-block;
+      background: #e6e2ff;
+      color: #3a2a70;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-left: 0.4rem;
+    }
   </style>
 
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -246,8 +205,9 @@
           <li>Businesses in growth mode ready to build credibility and streamline client intake.</li>
           <li>3–4 polished pages (Home, About, Services, Contact).</li>
           <li>Custom graphics and visuals for consistent branding. Placement of testimonials.</li>
-          <li>Integrated forms/payments (Square, Stripe, Calendly). Branded intake form.</li>
+          <li>Integrated forms and payments (Square, Stripe, Calendly). Branded intake form.</li>
           <li>Walkthrough call plus extra support after launch. Social starter kit included.</li>
+          <li>Includes all Launch Essentials.</li>
           <li>Timeline: 4–6 weeks</li>
           <li>2 revision cycles</li>
         </ul>
@@ -262,6 +222,7 @@
           <li>5–7 custom pages (Home, About, Services, Testimonials, Contact, plus Blog/Portfolio).</li>
           <li>Full brand experience with personalized layouts and advanced integrations.</li>
           <li>Full intake system with progress tracking and growth-focused questions.</li>
+          <li>Advanced automations and custom analytics dashboards (building on Launch Essentials).</li>
           <li>1–2 coaching calls, extended support, optional quarterly check-ins, and resource library.</li>
           <li>Timeline: 6–8 weeks</li>
           <li>3 revision cycles</li>
@@ -274,70 +235,46 @@
         <div class="price">Custom pricing</div>
         <h3>Growth Add-ons</h3>
         <ul>
-          <li>E-commerce setup: $800–$1,200</li>
-          <li>Membership system: $1,000–$1,500</li>
-          <li>Online course integration: $1,200–$2,000</li>
-          <li>Advanced SEO package: $750–$1,200</li>
+          <li>E-commerce setup: $800–$1,200 <span class="chip">Premium</span></li>
+          <li>Membership system: $1,000–$1,500 <span class="chip">Premium</span></li>
+          <li>Online course integration: $1,200–$2,000 <span class="chip">Premium</span></li>
+          <li>Advanced SEO package: $750–$1,200 <span class="chip">Premium</span></li>
         </ul>
         <h3>Technical Add-ons</h3>
         <ul>
-          <li>Analytics dashboard setup: $600–$1,000</li>
-          <li>Extra branded template packs: $200–$400</li>
-          <li><strong>Developer systems integration: $1,200–$2,000</strong></li>
+          <li>Analytics dashboard setup: $600–$1,000 <span class="chip">Advanced</span></li>
+          <li>Extra branded template packs: $200–$400 <span class="chip">Design</span></li>
+          <li><strong>Developer systems integration: $1,200–$2,000 <span class="chip">Enterprise</span></strong></li>
         </ul>
       </div>
 
-      <!-- Ownership -->
+      <!-- Ownership / Launch Essentials -->
       <div class="ownership">
-        You fully own your site, content, and code. Unlike template platforms that charge recurring fees ($400+/year), there are no hidden catches and no subscriptions.
-        <br><br>Included at no extra cost:
+        <h3>🚀 Included Launch Essentials</h3>
+        <p>
+          Every Lace & Lime website comes with launch essentials valued at <strong>$1,200+</strong>, built in at no extra cost. No hidden subscriptions, no recurring platform fees.
+        </p>
         <ul>
-          <li>📬 Newsletter integration & branded mailbox setup</li>
-          <li>🤖 Automations (auto-replies, intake sorting, reminders) so you can focus on real business</li>
-          <li>🔒 Security basics: SSL certificate, spam filters, privacy settings</li>
-          <li>📱 Mobile responsiveness and cross-device testing</li>
-          <li>📊 Basic analytics setup (Google Analytics or equivalent)</li>
-          <li>⚡ SEO-friendly structure (titles, meta, fast loading)</li>
+          <li>📬 Newsletter integration and branded mailbox setup <span class="chip">$300 value</span></li>
+          <li>🤖 Simple automations: auto-replies, intake forms, calendar confirmations <span class="chip">$200 value</span></li>
+          <li>🔒 SSL security and privacy protections <span class="chip">$150 value</span></li>
+          <li>📱 Mobile responsiveness and cross-device testing <span class="chip">$400 value</span></li>
+          <li>📊 Basic analytics dashboard for traffic and performance <span class="chip">$500 value</span></li>
+          <li>⚡ SEO-friendly site structure for visibility and fast loading <span class="chip">$300 value</span></li>
         </ul>
+        <p style="margin-top:1rem; font-weight:600; color:#3a2a70;">
+          You fully own your site, content, and code — unlike template platforms that charge $400+/year just to keep your site live.
+        </p>
+        <p style="margin-top:0.5rem; font-weight:500; color:#555;">
+          💡 Platforms like Wix or Squarespace charge subscriptions just to stay online. With Lace & Lime, essentials are yours to own from day one.
+        </p>
       </div>
-    </div>
-
-    <!-- Comparison -->
-    <div class="comparison">
-      <h2>Why This Beats Subscriptions</h2>
-      <table>
-        <tr>
-          <th>Feature</th>
-          <th>Hosted Platforms (Wix, Squarespace)</th>
-          <th>Lace & Lime Websites</th>
-        </tr>
-        <tr>
-          <td>Recurring costs</td>
-          <td>$200–$500+/year just to keep your site live</td>
-          <td><span class="highlight">No forced subscription. One-time build + your choice of low-cost hosting ~$10/year.</span></td>
-        </tr>
-        <tr>
-          <td>Ownership</td>
-          <td>You don’t fully own the code; locked into their system</td>
-          <td><span class="highlight">You own all code, content, and systems. Full control, no lock-in.</span></td>
-        </tr>
-        <tr>
-          <td>Features</td>
-          <td>Add-ons cost extra (email, automations, scheduling)</td>
-          <td><span class="highlight">Newsletter, mailbox, automations, security, SEO, analytics all included free</span></td>
-        </tr>
-        <tr>
-          <td>Scalability</td>
-          <td>Limited to platform’s tools and templates</td>
-          <td><span class="highlight">Custom integrations, developer systems, future-proof growth</span></td>
-        </tr>
-      </table>
     </div>
 
     <!-- Actions -->
     <div class="actions">
       <button onclick="window.print()">🖨️ Print</button>
-    <button id="download">⬇️ Download PDF</button>
+      <button id="download">⬇️ Download PDF</button>
       <a href="mailto:laceandlime.llc@gmail.com">📩 Contact</a>
     </div>
   </div>
@@ -346,26 +283,18 @@
     © 2025 Lace & Lime™ LLC - Wellness, Awareness, Empowerment
   </footer>
 
-
-
-
-<script>
-  document.getElementById("download").addEventListener("click", () => {
-    // Choose which part of the page you want in the PDF
-    const element = document.querySelector(".container"); // packages section only
-    // Or use document.body for the entire page
-    
-    const opt = {
-      margin:       0.5,
-      filename:     'LaceAndLime-Packages.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-    
-    html2pdf().set(opt).from(element).save();
-  });
-</script>
-
+  <script>
+    document.getElementById("download").addEventListener("click", () => {
+      const element = document.body;
+      const opt = {
+        margin: 0.5,
+        filename: 'LaceAndLime-Packages.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    });
+  </script>
 </body>
 </html>
