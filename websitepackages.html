@@ -95,6 +95,22 @@
       margin-bottom: 0;
     }
 
+    /* Add-on badges */
+    .badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #fff;
+      border-radius: 999px;
+    }
+    .premium { background: #8b6df2; }
+    .advanced { background: #f4a261; }
+    .design { background: #e68fbf; }
+    .enterprise { background: #7bb8d6; }
+
+    /* Launch Essentials */
     .ownership {
       grid-column: 1 / -1;
       background: #f7f2ff;
@@ -103,7 +119,6 @@
       padding: 1.5rem;
       font-weight: 600;
       color: #3a2a70;
-      text-align: center;
       box-shadow: 0 3px 8px rgba(0,0,0,0.05);
       margin-top: 1.5rem;
     }
@@ -119,6 +134,17 @@
     .ownership ul li {
       margin-bottom: 0.6rem;
       font-weight: 400;
+    }
+
+    .value-chip {
+      display: inline-block;
+      background: #e6e0ff;
+      color: #3a2a70;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-left: 0.5rem;
     }
 
     /* Buttons */
@@ -157,19 +183,9 @@
       border-top: 1px solid #eee;
       margin-top: 2rem;
     }
-
-    .chip {
-      display: inline-block;
-      background: #e6e2ff;
-      color: #3a2a70;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      margin-left: 0.4rem;
-    }
   </style>
 
+  <!-- PDF Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </head>
 <body>
@@ -222,8 +238,8 @@
           <li>5–7 custom pages (Home, About, Services, Testimonials, Contact, plus Blog/Portfolio).</li>
           <li>Full brand experience with personalized layouts and advanced integrations.</li>
           <li>Full intake system with progress tracking and growth-focused questions.</li>
-          <li>Advanced automations and custom analytics dashboards (building on Launch Essentials).</li>
           <li>1–2 coaching calls, extended support, optional quarterly check-ins, and resource library.</li>
+          <li>Includes all Launch Essentials.</li>
           <li>Timeline: 6–8 weeks</li>
           <li>3 revision cycles</li>
         </ul>
@@ -235,16 +251,16 @@
         <div class="price">Custom pricing</div>
         <h3>Growth Add-ons</h3>
         <ul>
-          <li>E-commerce setup: $800–$1,200 <span class="chip">Premium</span></li>
-          <li>Membership system: $1,000–$1,500 <span class="chip">Premium</span></li>
-          <li>Online course integration: $1,200–$2,000 <span class="chip">Premium</span></li>
-          <li>Advanced SEO package: $750–$1,200 <span class="chip">Premium</span></li>
+          <li>E-commerce setup: $800–$1,200 <span class="badge premium">Premium</span></li>
+          <li>Membership system: $1,000–$1,500 <span class="badge premium">Premium</span></li>
+          <li>Online course integration: $1,200–$2,000 <span class="badge premium">Premium</span></li>
+          <li>Advanced SEO package: $750–$1,200 <span class="badge premium">Premium</span></li>
+          <li>Extra branded template packs: $200–$400 <span class="badge design">Design</span></li>
         </ul>
         <h3>Technical Add-ons</h3>
         <ul>
-          <li>Analytics dashboard setup: $600–$1,000 <span class="chip">Advanced</span></li>
-          <li>Extra branded template packs: $200–$400 <span class="chip">Design</span></li>
-          <li><strong>Developer systems integration: $1,200–$2,000 <span class="chip">Enterprise</span></strong></li>
+          <li>Analytics dashboard setup: $600–$1,000 <span class="badge advanced">Advanced</span></li>
+          <li><strong>Developer systems integration: $1,200–$2,000</strong> <span class="badge enterprise">Enterprise</span></li>
         </ul>
       </div>
 
@@ -252,21 +268,18 @@
       <div class="ownership">
         <h3>🚀 Included Launch Essentials</h3>
         <p>
-          Every Lace & Lime website comes with launch essentials valued at <strong>$1,200+</strong>, built in at no extra cost. No hidden subscriptions, no recurring platform fees.
+          Every Lace & Lime website comes with launch essentials valued at <strong>$1,200+</strong>, built in at no extra cost. No hidden subscriptions. No recurring platform fees.
         </p>
         <ul>
-          <li>📬 Newsletter integration and branded mailbox setup <span class="chip">$300 value</span></li>
-          <li>🤖 Simple automations: auto-replies, intake forms, calendar confirmations <span class="chip">$200 value</span></li>
-          <li>🔒 SSL security and privacy protections <span class="chip">$150 value</span></li>
-          <li>📱 Mobile responsiveness and cross-device testing <span class="chip">$400 value</span></li>
-          <li>📊 Basic analytics dashboard for traffic and performance <span class="chip">$500 value</span></li>
-          <li>⚡ SEO-friendly site structure for visibility and fast loading <span class="chip">$300 value</span></li>
+          <li>📬 Newsletter integration and branded mailbox setup <span class="value-chip">$300 value</span></li>
+          <li>🤖 Simple automations: auto-replies, intake forms, calendar confirmations <span class="value-chip">$200 value</span></li>
+          <li>🔒 SSL security and privacy protections <span class="value-chip">$150 value</span></li>
+          <li>📱 Mobile responsiveness and cross-device testing <span class="value-chip">$400 value</span></li>
+          <li>📊 Basic analytics dashboard for traffic and performance <span class="value-chip">$500 value</span></li>
+          <li>⚡ SEO-friendly site structure for visibility and fast loading <span class="value-chip">$300 value</span></li>
         </ul>
         <p style="margin-top:1rem; font-weight:600; color:#3a2a70;">
-          You fully own your site, content, and code — unlike template platforms that charge $400+/year just to keep your site live.
-        </p>
-        <p style="margin-top:0.5rem; font-weight:500; color:#555;">
-          💡 Platforms like Wix or Squarespace charge subscriptions just to stay online. With Lace & Lime, essentials are yours to own from day one.
+          You fully own your site, content, and code. Unlike template platforms that charge $400+/year just to keep your site live.
         </p>
       </div>
     </div>
@@ -283,9 +296,10 @@
     © 2025 Lace & Lime™ LLC - Wellness, Awareness, Empowerment
   </footer>
 
+  <!-- PDF Script -->
   <script>
     document.getElementById("download").addEventListener("click", () => {
-      const element = document.body;
+      const element = document.querySelector(".container");
       const opt = {
         margin: 0.5,
         filename: 'LaceAndLime-Packages.pdf',
