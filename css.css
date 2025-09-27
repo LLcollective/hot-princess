@@ -1,5 +1,77 @@
 /* =========================== ROOT TOKENS: Colors, Fonts, Utilities =========================== */ :root{--ink-900:#24324a;--ink-800:#2a3a52;--ink-700:#465770;--ink-600:#5f708a;--ink-500:#7b8aa2;--ink-400:#9aa8bd;--ink-300:#c0c9d6;--ink-200:#e0e6ee;--ink-100:#f7f9fb;--brand:#7B6CF6;--brand-dark:#5A4EBC;--brand-light:#AFA4F9;--lime:#9BE080;--lime-dark:#6bb853;--lime-light:#c7f3aa;--font-heading:'Tenor Sans',serif;--font-body:'Raleway',sans-serif;--space-xs:0.5rem;--space-sm:0.75rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px;--shadow-sm:0 2px 6px rgba(0,0,0,0.06);--shadow:0 4px 10px rgba(0,0,0,0.08);--frosted-bg:rgba(255,255,255,0.22);--overlay:rgba(0,0,0,.4);--card-bg-mixed:rgba(255,255,255,0.6);}
 
+/* ================================
+   GLOBAL ANIMATIONS — LACE & LIME™
+   ================================ */
+
+/* Timeline line draw */
+@keyframes drawLine {
+  to   { width: 100%; height: 100%; opacity: 1; }
+}
+
+/* Dot pop */
+@keyframes popDot {
+  0%   { transform: scale(0.3); opacity: 0; }
+  60%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Fade in upwards */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade in sliding upward */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+
+
+/* Glow pulse (optional for dots) */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(123,108,246,0.3); }
+  50%      { box-shadow: 0 0 16px rgba(155,224,128,0.5); }
+}
+
+/* Stagger helper for chips */
+.chips span {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.5s ease-out;
+}
+.chips.is-visible span {
+  opacity: 1;
+  transform: translateY(0);
+}
+.chips.is-visible span:nth-child(1) { transition-delay: 0.1s; }
+.chips.is-visible span:nth-child(2) { transition-delay: 0.2s; }
+.chips.is-visible span:nth-child(3) { transition-delay: 0.3s; }
+.chips.is-visible span:nth-child(4) { transition-delay: 0.4s; }
+/* …extend as needed */
+
+/* Scroll trigger classes */
+.animate-on-scroll { opacity: 0; }
+.animate-on-scroll.fade-up   { animation: fadeInUp 0.8s ease forwards; }
+.animate-on-scroll.fade-left { animation: fadeInLeft 0.8s ease forwards; }
+.animate-on-scroll.fade-right{ animation: fadeInRight 0.8s ease forwards; }
+
+
+
 
 
 
@@ -10,6 +82,28 @@ a { text-decoration:none; color:var(--brand); text-underline-offset:2px; text-de
 h1 { font-family:var(--font-heading); color:var(--ink-900); font-size:clamp(1.9rem,2.2vw+1rem,2.6rem); }
 h2 { font-family:var(--font-heading); color:var(--ink-900); font-weight:600; font-size:clamp(1.5rem,1.6vw+0.7rem,2rem); }
 h3 { font-family:var(--font-body); color:var(--brand); font-size:clamp(1.2rem,1.2vw+0.4rem,1.4rem); }
+
+
+/* Refined emphasis for <strong> */
+strong {
+  font-weight: 600;           /* medium-bold, softer than 700 */
+  color: var(--brand);        /* use your purple brand color */
+  letter-spacing: 0.2px;      /* tiny spacing for clarity */
+}
+
+/* optional hover effect if you want interactivity */
+strong:hover {
+  color: var(--lime);         /* shifts to lime on hover */
+  transition: color 0.2s ease;
+}
+
+/* Strong inside Proof of Impact highlights */
+#proof .highlight strong {
+  font-weight: 600;         /* semi-bold, softer */
+  color: var(--brand);      /* your purple brand */
+  letter-spacing: 0.2px;
+}
+
 
 /* ===== CONSTELLATION BULLETS STYLING UNIVERSAL ===== */
 ul{list-style:none;padding-left:1.25rem}ul li{position:relative;padding-left:1.25rem}ul li::before{content:"✦";position:absolute;left:0;color:var(--brand,#7B6CF6)}
@@ -160,16 +254,6 @@ nav.sidebar .dropdown > button[aria-expanded="true"] + .dropdown-menu {
   line-height: 1;
 }
 
-
-
-
-
-
-
-
-
-
-/* ===== FOUNDER PAGE ACCORDIAN ===== */.section-box.credentials .accordion-item{margin-bottom:.5rem;padding:.5rem;border-radius:10px;background:rgba(255,255,255,.55);box-shadow:0 1px 3px rgba(0,0,0,.08);transition:background .3s ease,box-shadow .3s ease}.section-box.credentials .accordion-item:last-of-type{margin-bottom:0}.section-box.credentials .accordion-item:hover{background:rgba(255,255,255,.75);box-shadow:0 2px 6px rgba(0,0,0,.12)}.section-box.credentials .accordion-item summary{display:flex;align-items:center;font-weight:500;font-size:1rem;line-height:1.3;color:#2a2a2a;margin:0;padding:0;cursor:pointer;user-select:none;list-style:none}.section-box.credentials .accordion-item summary::-webkit-details-marker{display:none}.section-box.credentials .accordion-item summary::marker{content:""}.section-box.credentials .accordion-item summary .arrow{margin-right:.75rem;transition:transform .25s ease;font-size:1.1rem;color:#555}.section-box.credentials .accordion-item[open] summary .arrow{transform:rotate(90deg);color:var(--brand,#7B6CF6)}.section-box.credentials .accordion-item .body{border-top:1px solid rgba(0,0,0,.08);color:#333;font-size:.95rem}
 
 
 
@@ -635,44 +719,6 @@ header.ll-nav {
 }
 
 
-
-/* === CHIPS CONTAINER === */
-.chips {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-/* === CHIP BASE STYLE === */
-.chip {
-  background: rgba(123,108,246,0.08); /* subtle brand tint */
-  border: 1px solid rgba(123,108,246,0.25);
-  color: var(--brand);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px; /* pill */
-  transition: all 0.2s ease;
-  cursor: default;
-}
-
-/* === CHIP HOVER === */
-.chip:hover {
-  background: linear-gradient(90deg, var(--lime), var(--brand));
-  color: #fff;
-  border-color: transparent;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(123,108,246,0.25);
-}
-
-/* === OPTIONAL COLOR VARIANTS === */
-.chip.career { color: var(--brand); }
-.chip.balance { color: #4A3FBF; }
-.chip.respect { color: #6B5AE0; }   /* deeper purple */
-.chip.funding { color: #28A36A; }   /* green tone */
-
-
 .hero .wrap {
   max-width: 1000px;  /* widen reading area */
   margin-inline: auto;
@@ -766,4 +812,430 @@ footer .wrap-heavy .legal a:hover {
     line-height: 1.4;                /* tighter spacing */
     max-width: 420px;                /* shorter lines for readability */
   }
+}
+
+
+/* === CHIPS CONTAINER (Founder Bio) === */
+.chips {
+  margin-top: 1.25rem;      
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;              /* compact spacing */
+  justify-content: center;  /* centered on desktop */
+  max-width: 900px;         /* keeps from stretching too wide */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === CHIP BASE STYLE === */
+.chips span {
+  background: rgba(123,108,246,0.08);  /* subtle brand tint */
+  border: 1px solid rgba(123,108,246,0.25);
+  color: var(--brand);
+  font-size: 0.8rem;        /* compact readable text */
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;  /* balanced compact pill */
+  border-radius: 999px;     /* pill shape */
+  transition: all 0.2s ease;
+  cursor: default;
+  white-space: nowrap;      /* keeps single line inside pill */
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* === CHIP HOVER === */
+.chips span:hover {
+  background: linear-gradient(90deg, var(--lime), var(--brand));
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(123,108,246,0.25);
+}
+
+/* === ANIMATE ON SCROLL (stagger) === */
+.chips.is-visible span {
+  opacity: 1;
+  transform: translateY(0);
+}
+.chips.is-visible span:nth-child(1) { transition-delay: 0.1s; }
+.chips.is-visible span:nth-child(2) { transition-delay: 0.2s; }
+.chips.is-visible span:nth-child(3) { transition-delay: 0.3s; }
+.chips.is-visible span:nth-child(4) { transition-delay: 0.4s; }
+.chips.is-visible span:nth-child(5) { transition-delay: 0.5s; }
+.chips.is-visible span:nth-child(6) { transition-delay: 0.6s; }
+.chips.is-visible span:nth-child(7) { transition-delay: 0.7s; }
+.chips.is-visible span:nth-child(8) { transition-delay: 0.8s; }
+
+/* 📱 Mobile: 2 per row, tighter chips */
+@media (max-width: 640px) {
+  .chips {
+    justify-content: center;
+  }
+  .chips span {
+    flex: 1 1 calc(50% - 0.5rem);
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+
+
+/*Vertical Line*/
+
+@media (max-width: 1023px) {
+  #timeline .timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  /* scoped vertical line */
+  #timeline .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background: linear-gradient(var(--brand), var(--lime));
+    z-index: 1;
+  }
+
+  #timeline .milestone {
+    position: relative;
+    margin: 1.25rem 0;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  #timeline .milestone .dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--lime), var(--brand));
+    box-shadow: 0 0 6px rgba(155, 224, 128, 0.6),
+                0 0 10px rgba(123, 108, 246, 0.4);
+    z-index: 2;
+  }
+
+  #timeline .milestone h4 {
+    margin-bottom: 0.35rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brand);
+  }
+
+  #timeline .milestone p {
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    color: var(--ink-700);
+  }
+
+  #timeline .milestone:nth-child(even) p {
+    text-align: left;
+    margin-left: 55%;
+  }
+  #timeline .milestone:nth-child(odd) p {
+    text-align: right;
+    margin-right: 55%;
+  }
+}
+
+
+/* ===== Base Styles ===== */
+.timeline {
+  position: relative;
+  margin: 4rem auto;
+  padding: 2rem 1rem;
+}
+
+.milestone .dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lime), var(--brand));
+  box-shadow: 0 0 10px rgba(155, 224, 128, 0.6),
+              0 0 16px rgba(123, 108, 246, 0.4);
+  z-index: 2;
+}
+
+.milestone h4 {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--brand);
+}
+
+.milestone p {
+  font-size: 0.95rem;
+  color: var(--ink-700);
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* ===== Mobile: Vertical Timeline with Animated Spine ===== */
+@media (max-width: 1023px) {
+  .timeline {
+    position: relative;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* vertical line (animated spine) */
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    background: linear-gradient(var(--brand), var(--lime));
+    z-index: 1;
+
+    /* animation */
+    height: 0;
+    animation: drawLine 1.5s ease forwards;
+    animation-fill-mode: forwards; /* hold the drawn state */
+  }
+
+  .milestone {
+    position: relative;
+    margin: 3rem 0;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  /* dots */
+  .milestone .dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--lime), var(--brand));
+    box-shadow: 0 0 10px rgba(155, 224, 128, 0.6),
+                0 0 16px rgba(123, 108, 246, 0.4);
+    z-index: 2;
+
+    opacity: 0;
+    animation: popDot 0.6s ease forwards;
+  }
+
+  /* stagger dot delays */
+  .milestone:nth-child(1) .dot { animation-delay: 0.5s; }
+  .milestone:nth-child(2) .dot { animation-delay: 1.0s; }
+  .milestone:nth-child(3) .dot { animation-delay: 1.5s; }
+  .milestone:nth-child(4) .dot { animation-delay: 2.0s; }
+
+  /* text */
+  .milestone h4,
+  .milestone p {
+    position: relative;
+    width: 45%;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  .milestone h4 { animation-delay: 0.7s; }
+  .milestone p  { animation-delay: 1.0s; }
+
+  /* alternate alignment */
+  .milestone:nth-child(odd) h4,
+  .milestone:nth-child(odd) p {
+    text-align: right;
+    margin-right: 55%;
+  }
+
+  .milestone:nth-child(even) h4,
+  .milestone:nth-child(even) p {
+    text-align: left;
+    margin-left: 55%;
+  }
+}
+
+/* Keyframes */
+@keyframes drawLine {
+  from { height: 0; }
+  to   { height: 100%; } /* ensures it grows full height */
+}
+
+
+
+
+
+/* ===== Desktop: Horizontal Timeline ===== */
+@media (min-width: 1024px) {
+  .timeline {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 1400px;
+    margin: 4rem auto;
+    position: relative;
+  }
+
+  /* horizontal line across all milestones */
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 50%;   /* baseline for dots */
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand), var(--lime));
+    z-index: 1;   /* behind the dots */
+    animation: drawLine 1.5s ease forwards;
+  }
+
+  .milestone {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  /* remove any extra per-milestone lines */
+  .milestone::before {
+    display: none;
+  }
+
+  /* dot directly on the line */
+  .milestone .dot {
+    position: absolute;
+    top: 50%;   /* aligned to line */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--lime), var(--brand));
+    box-shadow: 0 0 10px rgba(155, 224, 128, 0.6),
+                0 0 16px rgba(123, 108, 246, 0.4);
+    z-index: 2;  /* dot above line */
+    opacity: 0;  /* hidden until animated */
+    animation: popDot 0.6s ease forwards;
+  }
+
+  /* staggered dot delays */
+  .milestone:nth-child(1) .dot { animation-delay: 0.3s; opacity: 1; }
+  .milestone:nth-child(2) .dot { animation-delay: 0.6s; opacity: 1; }
+  .milestone:nth-child(3) .dot { animation-delay: 0.9s; opacity: 1; }
+  .milestone:nth-child(4) .dot { animation-delay: 1.2s; opacity: 1; }
+
+  /* number above dot */
+  .milestone h4 {
+    position: absolute;
+    bottom: calc(100% + 2.5rem); /* above dot */
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--brand);
+    white-space: nowrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  /* stagger heading delays */
+  .milestone:nth-child(1) h4 { animation-delay: 0.5s; }
+  .milestone:nth-child(2) h4 { animation-delay: 0.8s; }
+  .milestone:nth-child(3) h4 { animation-delay: 1.1s; }
+  .milestone:nth-child(4) h4 { animation-delay: 1.4s; }
+
+  /* description below dot */
+  .milestone p {
+    position: absolute;
+    top: calc(100% + 2.5rem); /* below dot */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    font-size: 0.95rem;
+    color: var(--ink-700);
+    line-height: 1.5;
+    text-align: center;
+    white-space: normal;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  /* stagger paragraph delays */
+  .milestone:nth-child(1) p { animation-delay: 0.7s; }
+  .milestone:nth-child(2) p { animation-delay: 1.0s; }
+  .milestone:nth-child(3) p { animation-delay: 1.3s; }
+  .milestone:nth-child(4) p { animation-delay: 1.6s; }
+}
+
+/* === Keyframes (make sure these exist somewhere in css.css) === */
+@keyframes drawLine {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes popDot {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  60%  { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  z-index: 9999;
+}
+
+#progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--brand), var(--lime));
+  transition: width 0.15s ease-out;
 }

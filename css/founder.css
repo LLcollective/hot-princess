@@ -1,6 +1,3 @@
-
-
-
 /* =========================== ROOT TOKENS =========================== */
 :root {
   /* Ink scale */
@@ -68,21 +65,6 @@ body {
   background:var(--brand-pill);color:var(--brand);transition:transform .2s,background .2s;}
 .chip:hover{transform:translateY(-1px);background:color-mix(in srgb,var(--brand) 12%, var(--brand-pill));}
 
-/* =========================== KPIs / HIGHLIGHTS =========================== */
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
-.kpi{display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:.75rem 1rem;border-radius:10px;box-sizing:border-box;min-height:100px;}
-.kpi .num{font-size:1.25rem;font-weight:600;margin-bottom:.25rem;color:var(--brand);}
-.kpi .label{font-size:.9rem;line-height:1.3;color:var(--ink-600);}
-.highlight{background:var(--lavender);border:1px solid var(--ink-200);border-radius:var(--radius-md);
-  padding:var(--space-sm) var(--space-md);margin:var(--space-xs) 0;font-weight:500;}
-@media(max-width:768px){
-  .kpis{grid-template-columns:repeat(2,1fr);gap:.75rem;}
-  .kpi{padding:.6rem .75rem;}
-  .kpi .num{font-size:1rem;}
-  .kpi .label{font-size:.75rem;line-height:1.2;}
-}
-
 /* =========================== BUTTONS =========================== */
 .button{background:var(--brand);color:#fff;border:none;padding:.8rem 1.4rem;
   border-radius:var(--radius-md);font-weight:600;cursor:pointer;font-size:1rem;transition:.3s;}
@@ -112,17 +94,50 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   border-radius:50%;width:140px;height:140px;font-family:var(--font-heading);font-size:1rem;color:var(--brand);line-height:1.3;}
 
 /* =========================== CREDENTIALS =========================== */
-.section-box.credentials{margin-inline:auto;max-width:var(--unified-cap);}
-.section-box.credentials .accordion-list{display:grid;gap:.6rem;margin-top:.6rem;}
-.section-box.credentials details.accordion{background:var(--lavender);border:1px solid var(--ink-200);
-  border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);}
-.section-box.credentials details.accordion>summary{padding:.8rem 1rem;font-weight:600;color:var(--ink-900);
-  display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
-.section-box.credentials details.accordion .body{background:#fff;padding:.85rem 1rem 1rem;
-  font-size:.95rem;line-height:1.5;}
-.section-box.credentials details.accordion .body ul{margin:0;padding-left:1.1rem;columns:3;column-gap:1.5rem;}
-@media(max-width:1000px){.section-box.credentials details.accordion .body ul{columns:2;}}
-@media(max-width:640px){.section-box.credentials details.accordion .body ul{columns:1;}}
+.section-box.credentials {
+  margin-inline: auto;
+  max-width: var(--unified-cap);
+}
+.section-box.credentials .accordion-list {
+  display: grid;
+  gap: .6rem;
+  margin-top: .6rem;
+}
+.section-box.credentials details.accordion {
+  background: rgba(255, 255, 255, 0.15); /* semi-transparent */
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.section-box.credentials details.accordion > summary {
+  padding: .8rem 1rem;
+  font-weight: 600;
+  color: var(--ink-900);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2); /* softer lavender overlay */
+  backdrop-filter: blur(10px);
+}
+.section-box.credentials details.accordion .body {
+  background: rgba(255, 255, 255, 0.12); /* frosted */
+  backdrop-filter: blur(12px);
+  padding: .85rem 1rem 1rem;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.section-box.credentials details.accordion .body ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  columns: 3;
+  column-gap: 1.5rem;
+}
+@media (max-width:1000px){.section-box.credentials details.accordion .body ul{columns:2;}}
+@media (max-width:640px){.section-box.credentials details.accordion .body ul{columns:1;}}
 
 /* =========================== FOUNDER CARD =========================== */
 .section-box.founder-card{max-width:var(--unified-cap);margin-inline:auto;padding-inline:var(--gutter-desktop);}
@@ -158,11 +173,7 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   padding-inline: var(--content-gutter);
   box-sizing: border-box;
 }
-
-.section-box:first-of-type {
-  margin-top: 0;
-}
-
+.section-box:first-of-type{margin-top:0;}
 .section-box > h2 {
   font-family: var(--font-heading);
   font-weight: 600;
@@ -182,7 +193,6 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   justify-content: center;
   z-index: 2000;
 }
-
 #systems-modal .modal-content {
   background: #fff;
   padding: var(--space-lg);
@@ -191,15 +201,8 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   text-align: center;
   box-shadow: var(--shadow);
 }
-
-#systems-modal .modal-content h3 {
-  color: var(--brand);
-  margin-top: 0;
-}
-
-#systems-modal .modal-content .button {
-  margin-top: var(--space-sm);
-}
+#systems-modal .modal-content h3{color:var(--brand);margin-top:0;}
+#systems-modal .modal-content .button{margin-top:var(--space-sm);}
 
 /* Systems card refined */
 .systems-card {
@@ -213,18 +216,15 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 .systems-card:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.07);
 }
-
 .systems-card h2 {
   margin-top: 0;
   margin-bottom: 0.6rem;
   font-size: 1.6rem;
 }
-
 .systems-card p {
   font-size: 1rem;
   line-height: 1.5;
@@ -232,7 +232,6 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   max-width: 48ch;
   color: var(--ink-700);
 }
-
 .systems-card .button {
   display: inline-block;
   padding: 0.7rem 1.2rem;
@@ -240,7 +239,6 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   border-radius: 999px;
   margin-top: .5rem;
 }
-
 /* Mobile */
 @media (max-width: 768px) {
   .systems-card {
@@ -265,277 +263,81 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   }
 }
 
-/* =========================== CREDENTIALS pastel accordion =========================== */
-.section-box.credentials {
-  margin-inline: auto;
-  max-width: var(--unified-cap);
-}
 
-.section-box.credentials .accordion-list {
-  display: grid;
-  gap: .6rem;
-  margin-top: .6rem;
-}
 
-.section-box.credentials details.accordion {
-  background: var(--lavender);
+/* =========================== HIGHLIGHTS =========================== */
+.highlight {
+  background: rgba(255, 255, 255, 0.18); /* frosted glass look */
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
   border: 1px solid var(--ink-200);
   border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-.section-box.credentials details.accordion > summary {
-  padding: .8rem 1rem;
-  font-weight: 600;
-  color: var(--ink-900);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-
-.section-box.credentials details.accordion .body {
-  background: #fff;
-  padding: .85rem 1rem 1rem;
-  font-size: .95rem;
-  line-height: 1.5;
-}
-
-.section-box.credentials details.accordion .body ul {
-  margin: 0;
-  padding-left: 1.1rem;
-  columns: 3;
-  column-gap: 1.5rem;
-}
-
-@media(max-width:1000px) {
-  .section-box.credentials details.accordion .body ul { columns: 2; }
-}
-
-@media(max-width:640px) {
-  .section-box.credentials details.accordion .body ul { columns: 1; }
-}
-
-/* KPIs pastel backgrounds */
-.kpi:nth-child(1) { background: var(--green); }
-.kpi:nth-child(2) { background: var(--blue); }
-.kpi:nth-child(3) { background: var(--orange); }
-.kpi:nth-child(4) { background: var(--teal); }
-
-
-.kpi {
-  border: 1px solid var(--ink-200);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  padding: 1rem;
-  text-align: center;
-}
-
-.kpi .num {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--brand);
-  margin-bottom: .3rem;
-}
-
-.kpi .label {
-  font-size: .9rem;
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-xs) 0;
+  font-weight: 500;
   color: var(--ink-800);
-  line-height: 1.4;
 }
 
-/* Grid layout */
-.kpis {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-/* Mobile: 2 per row */
+/* Mobile compact highlights */
 @media (max-width: 768px) {
-  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .highlight {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0.6rem 0.8rem;
+    margin: 0.4rem 0;
+  }
 }
+
+
+
+/* =========================== SECTION HEADINGS SPACING =========================== */
+.section-box > h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2.5rem;      /* balanced breathing room above */
+  margin-bottom: 1.25rem;  /* equalized space below */
+  color: var(--ink-900);
+}
+
+/* Extra breathing space for Journey heading */
+#journey > .wrap-medium > h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* =========================== HIGHLIGHTS =========================== */
+.highlight {
+  background: rgba(255, 255, 255, 0.18); /* frosted glass look */
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-xs) 0;
+  font-weight: 500;
+  color: var(--ink-800);
+}
+
+/* Mobile compact highlights */
+@media (max-width: 768px) {
+  .highlight {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0.6rem 0.8rem;
+    margin: 0.4rem 0;
+  }
+}
+
 
 /* Add breathing space to Credentials */
 .section-box.credentials {
-  margin-top: 2.5rem;   /* space above, like Journey */
+  margin-top: 2rem;   /* space above, like Journey */
   margin-bottom: 2.5rem; /* space below */
 }
 .section-box.credentials > h2 {
   margin-bottom: 1.5rem; /* extra gap before cards */
 }
-
-
-
-/* Extra breathing space for Journey heading */
-#journey > .wrap-medium > h2 {
-  margin-top: 2.5rem;   /* add more space above */
-  margin-bottom: 1.5rem; /* balanced spacing below */
-}
-
-
-
-
-/* Tablet: 2 per row */
-@media (max-width: 900px) {
-  .kpis {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile: stack 1 per row */
-@media (max-width: 600px) {
-  .kpis {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Tablet: 2 per row */
-@media (max-width: 900px) {
-  .kpis {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile: 1 per row */
-@media (max-width: 600px) {
-  .kpis {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* KPIs: always 1 row, 4 across on desktop */
-.kpis {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 fixed columns */
-  gap: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  align-items: stretch;
-}
-
-.kpi {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1.25rem 2rem;
-  border-radius: 12px;
-  box-sizing: border-box;
-  min-height: 130px;
-}
-
-/* Tablet: 2 per row */
-@media (max-width: 900px) {
-  .kpis {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile: stack 1 per row */
-@media (max-width: 600px) {
-  .kpis {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-.kpi .num {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.kpi .label {
-  font-size: 0.9rem;        /* give it back some size */
-  line-height: 1.3;
-  max-width: 20ch;          /* fits into 2 lines on wider boxes */
-  margin: 0 auto;
-}
-@media (max-width: 768px) {
-  .kpis {
-    grid-template-columns: repeat(2, 1fr); /* keep 2x2 */
-    gap: 0.5rem; /* tighten spacing between cards */
-  }
-
-  .kpi {
-    padding: 0.5rem 0.6rem;   /* less padding so text has more space */
-    min-height: 90px;         /* slightly shorter */
-  }
-
-  .kpi .num {
-    font-size: 0.95rem;       /* smaller number text */
-    margin-bottom: 0.2rem;
-  }
-
-  .kpi .label {
-    font-size: 0.75rem;       /* compact label font */
-    line-height: 1.25;        /* tighter line spacing */
-  }
-}
-/* Highlights compact on mobile */
-@media (max-width: 768px) {
-  .highlight {
-    font-size: 0.9rem;        /* a bit smaller */
-    line-height: 1.4;         /* tighter */
-    padding: 0.6rem 0.8rem;   /* reduce space inside */
-    margin: 0.4rem 0;         /* keep breathing room */
-  }
-}/* Credentials compact on mobile */
-@media (max-width: 768px) {
-  .section-box.credentials details.accordion > summary {
-    padding: 0.55rem 0.75rem;  /* tighten vertical */
-    font-size: 0.95rem;        /* slightly smaller text */
-    line-height: 1.3;
-  }
-}
-  .section-box.founder-card .eyebrow {
-    display: block;
-    margin-bottom: .4rem;
-  }
-
-  .section-box.founder-card h1 {
-    font-size: 1.6rem;
-    line-height: 1.3;
-    margin-bottom: .75rem;
-  }
-
-  .section-box.founder-card p {
-    font-size: .95rem;
-    line-height: 1.5;
-    margin-bottom: .9rem;
-  }
-}
-
-/* Add breathing room above founder card */
-.section-box.founder-card {
-  margin-top: 3rem;   /* adjust value until it feels right */
-}
-
-
-@media (max-width: 768px) {
-  .section-box.founder-card {
-    margin-top: 2rem;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -80,6 +80,18 @@ document.querySelectorAll('.sidebar .dropdown-menu a').forEach(link => {
 
 
 
+/*PROGRESS BAR*/
+
+window.addEventListener("scroll", () => {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (scrollTop / scrollHeight) * 100;
+  document.getElementById("progress-fill").style.width = scrolled + "%";
+});
+
+
+
+
 /* ======================
    MODAL HANDLING (Index + Limeboard)
    ====================== */
@@ -132,3 +144,58 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+
+
+
+
+  // Modal controls founder/
+  const openBtn = document.getElementById('systems-btn');
+  const modal = document.getElementById('systems-modal');
+  const closeBtn = modal?.querySelector('.modal-close');
+
+  openBtn?.addEventListener('click', () => modal.style.display = 'flex');
+  closeBtn?.addEventListener('click', () => modal.style.display = 'none');
+  modal?.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.style.display = 'none'; });
+
+
+
+/*animate on scroll*/
+document.addEventListener("DOMContentLoaded", () => {
+  const observers = document.querySelectorAll(".animate-on-scroll");
+  const options = { threshold: 0.2 };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target); // animate once
+      }
+    });
+  }, options);
+
+  observers.forEach(el => observer.observe(el));
+});
+
+
+// Founder bio toggle
+  function toggleFounderBio() {
+    const mobile = document.querySelector('.founder-mobile');
+    const desktop = document.querySelector('.founder-desktop');
+    if (!mobile || !desktop) return;
+
+    if (window.innerWidth <= 768) {
+      mobile.style.display = 'block';
+      desktop.style.display = 'none';
+    } else {
+      mobile.style.display = 'none';
+      desktop.style.display = 'block';
+    }
+  }
+  // run on load + resize
+  toggleFounderBio();
+  window.addEventListener('resize', toggleFounderBio);
+
+ 
