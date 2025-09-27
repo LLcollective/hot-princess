@@ -1,3 +1,6 @@
+
+
+
 /* =========================== ROOT TOKENS =========================== */
 :root {
   /* Ink scale */
@@ -142,8 +145,6 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
 .systems-card{display:block;background:rgba(255,255,255,.45);backdrop-filter:blur(6px);
   border-radius:12px;padding:2rem;box-shadow:0 4px 10px rgba(0,0,0,.08);max-width:800px;margin:4rem auto;}
 
-
-
 /* =========================== SECTION ALIGNMENT + H2 =========================== */
 .section-box,
 .section-box.founder-card,
@@ -170,7 +171,6 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   margin-bottom: 1.25rem;
   color: var(--ink-900);
 }
-
 
 /* =========================== SYSTEMS MODAL =========================== */
 #systems-modal {
@@ -200,16 +200,17 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
 #systems-modal .modal-content .button {
   margin-top: var(--space-sm);
 }
+
 /* Systems card refined */
 .systems-card {
-  background: rgba(255, 255, 255, 0.22);   /* lighter glass look */
+  background: rgba(255, 255, 255, 0.22);
   backdrop-filter: blur(5px);
   border-radius: 14px;
   padding: 1.2rem 1.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  max-width: 500px;       /* slightly narrower */
-  margin: 8rem auto 1.5rem; /* more space above/below */
-  text-align: center;     /* balance text + button */
+  max-width: 500px;
+  margin: 8rem auto 1.5rem;
+  text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -221,14 +222,14 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
 .systems-card h2 {
   margin-top: 0;
   margin-bottom: 0.6rem;
-  font-size: 1.6rem;      /* smaller headline */
+  font-size: 1.6rem;
 }
 
 .systems-card p {
   font-size: 1rem;
   line-height: 1.5;
   margin: 0 auto 1.2rem auto;
-  max-width: 48ch;        /* keeps text to 2 lines */
+  max-width: 48ch;
   color: var(--ink-700);
 }
 
@@ -236,16 +237,16 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   display: inline-block;
   padding: 0.7rem 1.2rem;
   font-size: 0.95rem;
-  border-radius: 999px;   /* pill-style button */
+  border-radius: 999px;
   margin-top: .5rem;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .systems-card {
-    padding: 0.85rem 1rem;   /* tighter padding */
+    padding: 0.85rem 1rem;
     max-width: 92%;
-    margin: 6rem auto 1.5rem; /* extra margin-top for breathing space */
+    margin: 6rem auto 1.5rem;
   }
   .systems-card h2 {
     font-size: 1.25rem;
@@ -254,16 +255,15 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   .systems-card p {
     font-size: 0.9rem;
     line-height: 1.4;
-    max-width: 34ch;  /* still compact text */
+    max-width: 34ch;
     margin-bottom: 1rem;
   }
   .systems-card .button {
-    width: 100%;      /* full-width button on mobile */
+    width: 100%;
     font-size: 0.9rem;
     padding: 0.6rem 1rem;
   }
 }
-
 
 /* =========================== CREDENTIALS pastel accordion =========================== */
 .section-box.credentials {
@@ -317,14 +317,12 @@ details.accordion .body ul{columns:2;margin:0;padding-left:1.2rem;}
   .section-box.credentials details.accordion .body ul { columns: 1; }
 }
 
-
-
-
-
+/* KPIs pastel backgrounds */
 .kpi:nth-child(1) { background: var(--green); }
 .kpi:nth-child(2) { background: var(--blue); }
 .kpi:nth-child(3) { background: var(--orange); }
 .kpi:nth-child(4) { background: var(--teal); }
+
 
 .kpi {
   border: 1px solid var(--ink-200);
