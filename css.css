@@ -166,7 +166,7 @@ nav.sidebar .dropdown > button[aria-expanded="true"] + .dropdown-menu {
 .progress{height:3px;background:rgba(122,102,255,.15);position:fixed;left:0;right:0;top:var(--progress-top,64px);z-index:999;}.progress span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--brand),var(--lime));transition:width .08s linear;}
 
 
-/* ===== FOOTER (Override, Edge-to-Edge) ===== */ footer, .site-footer {width:100%;background:var(--ink-800);color:var(--ink-200);padding:2rem 0;text-align:center;font-size:.85rem;margin-top:2rem;} footer a, .site-footer a {color:var(--lime);text-decoration:none;font-weight:500;} footer a:hover, .site-footer a:hover {color:var(--brand);text-decoration:underline;} footer .wrap {max-width:100%;padding:0;}  
+
 
 /* ===== UNIVERSAL LOGO FOR LACE AND LIME ===== */ .logo-small-centered {display:flex;align-items:baseline;gap:.25rem;font-family:'Raleway',sans-serif;margin:0;line-height:1;} .logo-small-centered .lace {font-weight:200;text-transform:lowercase;font-size:2.2rem;background:linear-gradient(90deg,#7B6CF6,#6c4ccf);-webkit-background-clip:text;-webkit-text-fill-color:transparent;} .logo-small-centered .amp {font-weight:500;font-size:1.6rem;line-height:1;background:linear-gradient(90deg,#6c4ccf,#89c74a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 -0.1rem;position:relative;top:.3rem;} .logo-small-centered .lime {font-weight:700;text-transform:uppercase;font-size:1.7rem;line-height:1;background:linear-gradient(90deg,#a8e063,#56ab2f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}  
 
@@ -478,7 +478,7 @@ header.ll-nav {
 
 /* Highlight ribbon */
 .booknow-card.highlight::before {
-  content: "Core Experience — New";
+  content: "Core Experience";
   position: absolute;
   top: -0.75rem;
   right: 1rem;
@@ -658,19 +658,66 @@ header.ll-nav {
 }
 
 
+
+/* ===== FOOTER BASE (LIGHT) ===== */
 footer {
-  background: linear-gradient(90deg, #eae6f9, #e9f9f1); /* lavender → lime */
-  font-size: 0.8rem;
-  color: #444;
+  width: 100%;
+  background: linear-gradient(90deg, #eae6f9, #e9f9f1); /* soft lavender → lime */
+  color: #444;                       /* dark gray text */
   text-align: center;
-  padding: 1rem;
-}
-.h1-wrap {
-  display: inline-block;
-  padding: 0 3.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(255,255,255,0.4); /* faint glow */
-  background: transparent;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding: 1.5rem 0;                 /* roomy on desktop */
+  border-top: 1px solid rgba(0,0,0,0.08); /* subtle divider */
 }
 
+/* ===== WRAP-HEAVY IN FOOTER ===== */
+footer .wrap-heavy {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* let text wrap gracefully */
+}
 
+/* ===== LEGAL TEXT ===== */
+footer .wrap-heavy .legal {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+  color: #444;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+footer .wrap-heavy .legal a {
+  color: var(--brand);               /* purple links */
+  text-decoration: none;
+  transition: color .25s ease;
+}
+
+footer .wrap-heavy .legal a:hover {
+  color: var(--lime);                /* lime hover */
+}
+
+/* ===== MOBILE FOOTER ADJUSTMENTS ===== */
+@media (max-width: 600px) {
+  footer {
+    padding: 0.8rem 0;               /* more compact */
+    font-size: 0.75rem;              /* slightly smaller */
+  }
+
+  footer .wrap-heavy {
+    flex-direction: column;          /* stack text */
+    padding: 0 0.5rem;
+  }
+
+  footer .wrap-heavy .legal {
+    font-size: 0.7rem;               /* legal small-print vibe */
+    line-height: 1.4;                /* tighter spacing */
+    max-width: 420px;                /* shorter lines for readability */
+  }
+}
