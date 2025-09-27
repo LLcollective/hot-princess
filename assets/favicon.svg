@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-<circle cx="32" cy="32" r="30" fill="#A8D080"/>
-<text x="32" y="38" text-anchor="middle" font-family="Tenor Sans, serif" font-size="22" fill="#1e1e1e">L&L</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="ll-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A8B8F6"/>
+      <stop offset="100%" stop-color="#9BE080"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="256" fill="url(#ll-gradient)"/>
+  <text x="50%" y="55%" text-anchor="middle" font-family="Raleway, sans-serif" font-size="200" font-weight="700" fill="#FFFFFF">LL</text>
 </svg>
