@@ -155,31 +155,35 @@ document.addEventListener("DOMContentLoaded", () => {
   // === keep normalized pathLength logic ===
   base.setAttribute("pathLength", "1");
   overlay.setAttribute("pathLength", "1");
+
+
   base.style.strokeDasharray = 1;
   base.style.strokeDashoffset = 1;
   overlay.style.strokeDasharray = 1;
-  overlay.style.strokeDashoffset = 1;
+  overlay.style.strokeDashoffset = 0;
 
+
+  // Pink overlay spiral animation
+ let passes = 0;
+function animateOverlay(forward = true) {
+  overlay.animate(
+    forward
+      ? [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }]
+      : [{ strokeDashoffset: 0 }, { strokeDashoffset: 1 }],
+    { duration: 6000, easing: "ease-in-out", fill: "forwards" }
+  ).onfinish = () => {
+    passes++;
+    if (passes < 3) setTimeout(() => animateOverlay(!forward), 300);
+  };
+}
   // Olive base spiral animation
   base.animate(
     [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }],
     { duration: 6000, easing: "ease-in-out", fill: "forwards" }
   );
 
-  // Pink overlay spiral animation
-  let passes = 0;
-  function animateOverlay(forward = true) {
-    overlay.animate(
-      forward
-        ? [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }]
-        : [{ strokeDashoffset: 0 }, { strokeDashoffset: 1 }],
-      { duration: 6000, easing: "ease-in-out", fill: "forwards" }
-    ).onfinish = () => {
-      passes++;
-      if (passes < 3) setTimeout(() => animateOverlay(!forward), 300);
-    };
-  }
-  setTimeout(() => animateOverlay(true), 6000);
+// 👇 start overlay at the same time as base
+animateOverlay(true);
 
   // === place spiral links along the line ===
   const linkLabels = [
