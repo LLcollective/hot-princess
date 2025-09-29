@@ -3,209 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lace & Lime™ Spiral Experience</title>
 
-  <!-- Title (70 chars max) -->
-  <title>Lace & Lime™ | Wellness, Empowerment & Growth You Can Feel – Energy Aligned, Action Defined™</title>
+<style>
+/* ===============================
+   🌐 Global + Spiral CSS
+   =============================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+body, h1, h2, h3, h4, h5, h6, p { margin: 0; }
+html, body { min-height: 100%; overflow-x: hidden; }
 
-  <!-- Meta Description (under 160 chars, brand + SEO) -->
-  <meta name="description" content="Lace & Lime™ creates balance-forward tools for growth you can feel — guided journals, workshops, and website packages. Energy Aligned, Action Defined™." />
+body {
+  font-family: "Raleway", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background: #f9f8f6;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #f9f8f6,
+    #f9f8f6 26px,
+    #a8a5a3 27px
+  );
+  background-size: 100% 28px;
 
-  <!-- Keywords -->
-  <meta name="keywords" content="Lace & Lime, wellness and empowerment, guided journals, custom website packages, personal growth tools, workshops Long Island, Energy Aligned Action Defined" />
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #3F4A3C; /* Olive text */
+}
 
-  <!-- Open Graph for LinkedIn / Facebook / Slack previews -->
-  <meta property="og:title" content="Lace & Lime™ | Wellness, Empowerment & Growth You Can Feel" />
-  <meta property="og:description" content="Balance-forward tools for reflection, action, and growth you can feel. Explore journals, workshops, and website packages. Energy Aligned, Action Defined™." />
-  <meta property="og:image" content="assets/og-preview-home.png" /> <!-- replace with branded preview -->
-  <meta property="og:url" content="https://www.laceandlime.com/" />
-  <meta property="og:type" content="website" />
+.spiral-container {
+  position: relative;
+  width: 90vmin;
+  height: 90vmin;
+margin-top:2rem;
+margin-left:1rem;
+}
+svg { width: 100%; height: 100%; }
+.spiral-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 3;
+}
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-  <meta name="theme-color" content="#7B6CF6" />
+/* 🌸 Spiral nav chips – upgraded */
+.spiral-link {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #fdfcf7, #f3f1ee);
+  color: #3F4A3C;
+  border: 1px solid rgba(63, 74, 60, 0.15);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 6px 16px;
+  border-radius: 18px;
+  box-shadow: 0 4px 8px rgba(63, 74, 60, 0.15);
+  cursor: pointer;
+  white-space: nowrap;
+  opacity: 0;
+  animation: floatIn 1s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
+  z-index: 10;
+}
+.spiral-link:hover {
+  color: #F2C9CF;
+  background: linear-gradient(145deg, #fff5f7, #fdfdfc);
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 6px 14px rgba(242, 201, 207, 0.35);
+}
+.spiral-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  background: #F2C9CF;
+  transition: width 0.3s ease;
+}
+.spiral-link:hover::after { width: 100%; }
 
-  <!-- Fonts + CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css.css?v=1.1" />
+/* ✨ Float-in animation */
+@keyframes floatIn {
+  from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Add staggered delays for each chip */
+.spiral-link:nth-of-type(1) { animation-delay: 6s; }
+.spiral-link:nth-of-type(2) { animation-delay: 6.3s; }
+.spiral-link:nth-of-type(3) { animation-delay: 6.6s; }
+.spiral-link:nth-of-type(4) { animation-delay: 6.9s; }
+.spiral-link:nth-of-type(5) { animation-delay: 7.2s; }
+.spiral-link:nth-of-type(6) { animation-delay: 7.5s; }
+</style>
 </head>
 
+<body>
+  <div class="spiral-container">
+    <svg viewBox="0 0 500 500">
+      <path id="spiral-base" class="spiral-path" stroke="#3F4A3C" />
+      <path id="spiral-overlay" class="spiral-path" stroke="#F2C9CF" />
+    </svg>
 
-
-
-<body class="index">
-
-
-    <!-- PROGRESS AND SPACER THAT SITS ABOVE THE HEADER!-->
-<div class="progress"><span id="progress-fill"></span></div>
-<div class="header-spacer"></div>
-
-
-
- <!-- ===== HEADER ===== -->
-<header class="ll-nav">
-  <div class="header-wrap">
-    <a class="logo-link" href="index.html">
-      <h1 class="logo-small-centered">
-        <span class="lace">lace</span>
-        <span class="amp">&amp;</span>
-        <span class="lime">LIME</span>
-      </h1>
-      </a>
-
-    <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
+    <!-- Spiral Navigation Links -->
+    <div class="spiral-link" style="top:28%; left:80%;" onclick="location.href='lacednotes.html'">Laced Notes</div>
+    <div class="spiral-link" style="top:45%; left:78%;" onclick="location.href='booknow.html'">Laced Together</div>
+    <div class="spiral-link" style="top:62%; left:65%;" onclick="location.href='approach.html'">Approach</div>
+    <div class="spiral-link" style="top:78%; left:40%;" onclick="location.href='limeboard.html'">Limeboard</div>
+    <div class="spiral-link" style="top:55%; left:20%;" onclick="location.href='founder.html'">Founder</div>
+    <div class="spiral-link" style="top:30%; left:28%;" onclick="location.href='contact.html'">Contact</div>
   </div>
-</header>
-
-
-<!-- SCRIM -->
-<div id="nav-scrim" class="scrim"></div>
-
-
-
-
-<!-- SIDEBAR -->
-<nav id="nav-menu" class="sidebar">
-  <!-- Logo in place of "Home" -->
-  <a href="index.html" class="logo">
-    lace<span style="color:#9BE080">&LIME</span>
-  </a>
-
-  <!-- Laced dropdown -->
-  <div class="dropdown">
-    <button class="nav-about" aria-expanded="false">
-      <span class="label-wrap">Laced<span class="caret">▾</span></span>
-    </button>
-    <div class="dropdown-menu">
-      <a href="lacednotes.html">Notes</a>
-      <a href="#">Together</a>
-      <a href="founder.html">Founder</a>
-    </div>
-  </div>
-
-  <!-- Experiences dropdown -->
-  <div class="dropdown">
-    <button class="nav-workshops" aria-expanded="false">
-      <span class="label-wrap">Experiences<span class="caret">▾</span></span>
-    </button>
-    <div class="dropdown-menu">
-      <a href="booknow.html">Book Now</a>
-      <a href="#">Approach</a>
-    </div>
-  </div>
-
-  <!-- Limeboard -->
-  <a href="limeboard.html">Limeboard</a>
-
-  <!-- Contact -->
-  <a href="contact.html">Contact</a>
-
-
-</nav>
-
-<!-- ===== INDEX SPECIFIC HERO SECTION ===== -->
-<section class="hero hero-section hero--index">
-  <div class="h1-wrap">
-    <h1 class="tagline">Reflection that moves. Action that sticks.<br>Growth you can feel.</h1>
-  </div>
-</section>
-
-
-
-<!-- ===== PATHWAYS SECTION ===== -->
-<section id="path" class="pathways">
-  <div class="wrap">
-    <div class="workshop-cards">
-
-      <!-- Fresh Press → Journal Update -->
-      <div class="card energy fresh">
-        <span class="badge insights">Fresh Press</span>
-        <h3>Progress in Motion</h3>
-        <p>
-          Journal production is underway. I’ll be sharing more during the soft launch season 
-          while booking Experiences will open shortly.
-          <a href="booknow.html">Explore more</a>
-        </p>
-      </div>
-
-      <!-- Fresh Squeeze → Reflection -->
-      <div class="card insights">
-        <span class="badge insights">Reflection</span>
-        <h3>Test of Compassion</h3>
-        <p>
-          Empathy is often selective, drawn to what’s familiar or easy to sympathize with. 
-          Compassion calls us deeper, to act even when it’s uncomfortable. 
-          <a href="#" class="read-more" data-modal-target="#compassion-modal">Read More</a>
-          <span class="inline-cta">
-            and follow along in our new <a href="limeboard.html">Limeboard</a>.
-          </span>
-        </p>
-      </div>
-
-    </div> <!-- closes .workshop-cards -->
-
-  </div> <!-- closes .wrap -->
-</section> <!-- closes PATHWAYS SECTION -->
-
-
-<!-- Modal lives OUTSIDE the section -->
-<div id="compassion-modal" class="modal">
-  <div class="modal-box">
-    <h3>The Test of Compassion</h3>
-    <p>
-      Empathy often flows most easily toward what feels familiar or relatable. 
-      Compassion asks us to reach beyond that, to act with care even when it feels uncomfortable or unfamiliar. 
-      The real test of compassion is whether we extend it when silence feels easier than accountability, 
-      and when true inclusion asks us to look past what is convenient.
-    </p>
-    <div class="hover-diamond">
-      How do we decide who deserves our empathy, and what does compassion look like when no one is left out?
-    </div>
-    <p>- with Lace & Lime™</p>
-    <button class="close-modal">Close</button>
-  </div>
-</div>
-
-
-
-<!-- Modal lives OUTSIDE the section -->
-<div id="compassion-modal" class="modal">
-  <div class="modal-box">
-    <h3>The Test of Compassion</h3>
-    <p>
-      Empathy often flows most easily toward what feels familiar or relatable. 
-      Compassion asks us to reach beyond that, to act with care even when it feels uncomfortable or unfamiliar. 
-      The real test of compassion is whether we extend it when silence feels easier than accountability, 
-      and when true inclusion asks us to look past what is convenient.
-    </p>
-    <div class="hover-diamond">
-      How do we decide who deserves our empathy, and what does compassion look like when no one is left out?
-    </div>
-    <p>- with Lace & Lime™</p>
-    <button class="close-modal">Close</button>
-  </div>
-</div>
-
-
-  <!-- ===== FOOTER ===== -->
-<footer>
-  <div class="wrap-heavy">
-    <p class="legal">
-      Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span> is our guiding framework for growth you can feel.  
-      Logos and names are trademarks and/or multi-class registered trademarks of © 2025 Lace & Lime™ LLC. All rights reserved. · 
-      <a href="privacy-terms.html">Privacy and Terms</a>
-    </p>
-  </div>
-</footer>
-
-
-
-
-<!-- ✅ Load your JavaScript -->
-<script src="js/main.js" defer></script>
-
 </body>
 </html>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const base = document.getElementById("spiral-base");
+      const overlay = document.getElementById("spiral-overlay");
+
+      const cx = 250, cy = 250;
+      const a = 10, b = 15, turns = 2.75;
+      const points = [];
+
+      // Generate Archimedean spiral
+      for (let t = 0; t < Math.PI * 2 * turns; t += 0.05) {
+        const r = a + b * t;
+        const x = cx + r * Math.cos(t);
+        const y = cy + r * Math.sin(t);
+        points.push(`${x},${y}`);
+      }
+      points.reverse(); // outer → inner
+      const d = "M" + points.join(" L");
+      base.setAttribute("d", d);
+      overlay.setAttribute("d", d);
+
+      const length = base.getTotalLength();
+      base.style.strokeDasharray = length;
+      base.style.strokeDashoffset = length;
+      overlay.style.strokeDasharray = length;
+      overlay.style.strokeDashoffset = length;
+
+      // --- Olive base spiral ---
+      base.animate(
+        [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
+        { duration: 6000, easing: "ease-in-out", fill: "forwards" }
+      );
+
+      // --- Pink overlay spiral ---
+      let passes = 0;
+      function animateOverlay(forward = true) {
+        overlay.animate(
+          forward
+            ? [{ strokeDashoffset: length }, { strokeDashoffset: 0 }]
+            : [{ strokeDashoffset: 0 }, { strokeDashoffset: length }],
+          { duration: 6000, easing: "ease-in-out", fill: "forwards" }
+        ).onfinish = () => {
+          passes++;
+          if (passes < 3) { // 2 full back-and-forths
+            setTimeout(() => animateOverlay(!forward), 300);
+          }
+        };
+      }
+
+      // Start overlay after base finishes
+      setTimeout(() => animateOverlay(true), 6000);
+    });
+  </script>
