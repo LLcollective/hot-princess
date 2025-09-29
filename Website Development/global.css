@@ -1,0 +1,75 @@
+/* ========== Cross-Browser Reset & Mobile Consistency ========== */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Smooth fonts across devices */
+html {
+  -webkit-text-size-adjust: 100%; /* prevent Safari font scaling */
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px; /* base unit */
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Input/button consistency */
+input,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+  line-height: 1.2;
+  border-radius: 6px;
+  -webkit-appearance: none; /* remove iOS styles */
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Prevent tap highlights on mobile */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Accordion grid responsive */
+.packages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .packages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .packages {
+    grid-template-columns: 1fr; /* always single column on mobile */
+  }
+}
+
+/* Ensure accordion cards look same height/spacing */
+.accordion-card {
+  width: 100%;
+  border-radius: 8px;
+}
+.accordion-toggle {
+  padding: 1rem;
+}
+.accordion-content {
+  padding: 0 1rem;
+}
