@@ -11,7 +11,7 @@
   <meta property="og:title" content="Custom Website Packages & Development Plans | Lace & Lime™" />
   <meta property="og:description" content="Affordable, secure, and growth-ready websites designed with clarity and care. Explore Lace & Lime’s custom website packages today. Energy Aligned, Action Defined™." />
   <meta property="og:image" content="assets/og-preview-website-packages.png" />
-  <meta property="og:url" content="https://www.laceandlime.com/webplans" />
+  <meta property="og:url" content="https://www.laceandlime.com/websitepackages" />
   <meta property="og:type" content="website" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -20,9 +20,6 @@
   <meta name="theme-color" content="#7B6CF6" />
 
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="designplans.css" />
-
 
   <style>
 /* ========== Global Notebook Background ========== */
@@ -191,20 +188,22 @@ body {
 }
 
 /* Floating Cart Button */
+/* Cart button like a mobile nav icon */
 #cart-btn {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  padding: .6rem .9rem;
+  top: 1rem;        /* push down from top */
+  right: 1rem;      /* stick to the right */
+  font-size: 1.3rem;
+  padding: .5rem .7rem;
   border: none;
-  border-radius: 50%;
+  border-radius: 6px; /* square-ish like a menu icon */
   background: #7b6cf6;
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,.2);
-  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  z-index: 1000;
 }
+
 
 /* Cart Panel */
 #cart-panel {
@@ -267,10 +266,15 @@ body {
 footer {
   margin-top: 3rem;
   padding: 2rem 1rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.6); /* semi-paper effect */
   border-top: 2px solid #555;
   text-align: center;
+
+  width: 100vw;   /* stretch to viewport width */
+  margin-left: -2rem; /* cancel body padding */
+  margin-right: -2rem;
 }
+
 footer .legal {
   font-size: 0.85rem;
   line-height: 1.5;
@@ -295,46 +299,6 @@ footer a:hover { text-decoration: underline; }
   .plan-header {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-/* ========== Mobile Typography & Card Scale ========== */
-@media (max-width: 768px) {
-  body {
-    padding: 1rem; /* less side padding so cards get more width */
-  }
-
-  .accordion-card {
-    border-radius: 10px;
-    padding: 0.5rem;
-  }
-
-  .accordion-toggle {
-    font-size: 1.1rem;  /* bump title size */
-    padding: 1.2rem;
-  }
-
-  .title-wrap h2 {
-    font-size: 1.35rem; /* larger headers */
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .price {
-    font-size: 1.1rem; /* make price bigger */
-  }
-
-  .tier-list p,
-  .tier-list li {
-    font-size: 1rem; /* increase body font size */
-    line-height: 1.6;
-  }
-
-  .add-cart-btn {
-    font-size: 1rem;  /* bigger button text */
-    padding: 0.9rem;
-    border-radius: 8px;
   }
 }
 
@@ -503,7 +467,7 @@ footer a:hover { text-decoration: underline; }
   </div>
 </footer>
 
-</section>
+
 
 
   <script>

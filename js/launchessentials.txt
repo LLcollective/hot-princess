@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Included Launch Essentials</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #fafafa;
+      color: #333;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .section {
+      background: #fff;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      padding: 0.4rem 0;
+    }
+    .quote {
+      font-style: italic;
+      margin-top: 1rem;
+      color: #555;
+      text-align: center;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cta a {
+      display: inline-block;
+      background: #7B6CF6;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+    .cta a:hover {
+      background: #9BE080;
+      color: #222;
+    }
+    .before-after {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .before, .after {
+      flex: 1 1 45%;
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .before h3, .after h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <h1>Included with Every Package</h1>
+    <p style="text-align:center;">$2,000+ in Launch Essentials plus evidence-based Brand Growth tools — everything you need to launch strong and grow with confidence.</p>
+
+    <!-- Launch Essentials Section -->
+    <div class="section">
+      <h2>🔑 Launch Essentials</h2>
+      <p>With every Lace & Lime website, you don’t just get a site, you get <strong>true ownership</strong>. Unlike platforms that lock you in, your code and your data remain yours from day one.</p>
+      <p><strong>That means:</strong></p>
+      <ul>
+        <li>✅ Full access to your source code</li>
+        <li>✅ Exportable content and data portability</li>
+        <li>✅ No platform fees for ownership</li>
+      </ul>
+
+      <p><strong>Before:</strong> endless back-and-forth emails, a site that breaks on mobile, no clue if people even see it.</p>
+      <p><strong>After:</strong> a polished online home that saves you time, builds trust, and helps clients find you while you focus on the work you love.</p>
+
+      <p><strong>What’s included ($2,000+ value built in):</strong></p>
+      <ul>
+        <li>📬 <strong>Branded & styled newsletter capture</strong> → Visitors trust your site and join your list because it looks professional from day one.</li>
+        <li>🤖 <strong>Starter automations</strong> → Forms send the right links or confirmations instantly, so you save hours of 1:1 follow-up.</li>
+        <li>🔒 <strong>Security & privacy protections</strong> → SSL encryption and secure forms create immediate confidence in your business.</li>
+        <li>📱 <strong>Cross-device & cross-browser testing</strong> → Works everywhere — iPhone, Android, Safari, Chrome — because first impressions matter.</li>
+        <li>📊 <strong>Analytics setup</strong> → Simple dashboards show you what’s working, no overwhelm.</li>
+        <li>⚡ <strong>SEO Everywhere</strong> → Optimized for Google and beyond: social previews, directories, and apps, so your brand gets seen even when people aren’t searching.</li>
+      </ul>
+
+      <p class="quote">“The automations alone saved me hours every week.”</p>
+    </div>
+
+    <!-- Brand Growth Section -->
+    <div class="section">
+      <h2>🌿 Brand Growth Guidance</h2>
+      <p>Your launch is just the start. We build on your brand using the <strong>Energy Aligned, Action Defined™</strong> framework — an <strong>evidence-based process</strong> designed to give you measurable progress, not just a finished product.</p>
+
+      <p><strong>Before:</strong> guessing what to fix, wasting energy on systems that don’t support you.</p>
+      <p><strong>After:</strong> clear voice, consistent visuals, and systems that free up your time so you can grow with confidence.</p>
+
+      <p><strong>How we track your progress:</strong></p>
+      <ul>
+        <li>📋 <strong>Pre & Post Brand Assessment</strong> → A short baseline check at onboarding and a follow-up at 3 months, so you see your growth in clarity, systems, visibility, and alignment.</li>
+        <li>✅ <strong>Progress Monitoring Checklist</strong> → Celebrate milestones like story drafted, SEO check, and newsletter live. Paired with guided prompts like <em>“Where are you saving time now?”</em></li>
+        <li>🔄 <strong>Quarterly Energy Aligned, Action Defined™ Tracker</strong> → Evidence-informed prompts that help you align your brand voice and values with concrete actions in outreach and systems.</li>
+      </ul>
+
+      <p class="quote">“Seeing my pre and post assessment side by side was eye-opening.”</p>
+    </div>
+
+    <!-- Before / After Recap -->
+    <div class="section before-after">
+      <div class="before">
+        <h3>Before</h3>
+        <p>Endless follow-up, low visibility, no clarity.</p>
+      </div>
+      <div class="after">
+        <h3>After</h3>
+        <p>Automated systems, polished presence, measurable growth.</p>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta">
+      <a href="/packages">Every package includes these essentials — see which tier is right for you →</a>
+    </div>
+
+  </div>
+</body>
+</html>

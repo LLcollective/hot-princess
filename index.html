@@ -1,215 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lace & Lime™ Spiral Experience</title>
-
-<style>
-/* ===============================
-   🌐 Global + Spiral CSS
-   =============================== */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-body, h1, h2, h3, h4, h5, h6, p { margin: 0; }
-html, body { min-height: 100%; overflow-x: hidden; }
-
-body {
-  font-family: "Raleway", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  background: #f9f8f6;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    #f9f8f6,
-    #f9f8f6 26px,
-    #a8a5a3 27px
-  );
-  background-size: 100% 28px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: #3F4A3C; /* Olive text */
-}
-
-.spiral-container {
-  position: relative;
-  width: 95vmin;      /* give more width */
-  max-width: 700px;   /* expand max */
-  aspect-ratio: auto; /* allow non-square */
-}
-
-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.spiral-path {
-  fill: none;
-  stroke-linecap: round;
-  stroke-width:5;
-  vector-effect: non-scaling-stroke;
-  shape-rendering: geometricPrecision;
-}
-
-/* 🌸 Spiral nav chips */
-.spiral-link {
-  position: absolute;
-  transform: translate(-50%, -50%) scale(0.9);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(145deg, #fdfcf7, #f3f1ee);
-  color: #3F4A3C;
-  border: 1px solid rgba(63, 74, 60, 0.15);
-  font-weight: 600;
-  font-size: 15px;
-  padding: 6px 16px;
-  border-radius: 18px;
-  box-shadow: 0 4px 8px rgba(63, 74, 60, 0.15);
-  cursor: pointer;
-  white-space: nowrap;
-  opacity: 0;
-  animation: floatIn .9s ease forwards;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
-  z-index: 10;
-}
-
-
-.spiral-link:hover {
-  color: #F2C9CF;
-  background: linear-gradient(145deg, #fff5f7, #fdfdfc);
-  transform: translate(-50%, -50%) scale(1.08);
-  box-shadow: 0 6px 14px rgba(242, 201, 207, 0.35);
-}
-.spiral-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 4px;
-  width: 0;
-  height: 2px;
-  background: #F2C9CF;
-  transition: width 0.3s ease;
-}
-.spiral-link:hover::after { width: 100%; }
-
-@keyframes floatIn {
-  from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
-  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction</title>
+    <style>
+        body {
+            background-color: #faf6f1;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2rem;
+            max-width: 400px;
+        }
+        .construction-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="spiral-container">
-    <!-- expanded viewBox -->
-    <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
-      <path id="spiral-base" class="spiral-path" stroke="#3F4A3C" pathLength="1" />
-      <path id="spiral-overlay" class="spiral-path" stroke="#F2C9CF" pathLength="1" />
-    </svg>
-
-
-
-
- 
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const base = document.getElementById("spiral-base");
-  const overlay = document.getElementById("spiral-overlay");
-  const container = document.querySelector(".spiral-container");
-
-  const size = 800;
-  const cx = size / 2, cy = size / 2;
-  const a = 17;  // start radius
-  const b = 22;  // growth per radian
-
-  // spiral geometry
-  const maxRadius = size / 2;
-  const turns = ((maxRadius - a) / b / (2 * Math.PI)) * 1.05;
-
-  const points = [];
-  for (let t = 0; t < Math.PI * 2 * turns; t += 0.05) {
-    const r = a + b * t;
-    const x = cx + r * Math.cos(t);
-    const y = cy + r * Math.sin(t);
-    points.push({ x, y });
-  }
-
-  // draw path outward → inward
-  points.reverse();
-  const d = "M" + points.map(p => `${p.x},${p.y}`).join(" L");
-  base.setAttribute("d", d);
-  overlay.setAttribute("d", d);
-
-  // === keep normalized pathLength logic, Safari-safe ===
-  base.setAttribute("pathLength", "1");
-  overlay.setAttribute("pathLength", "1");
-
-  base.style.strokeDasharray = "1, 999999";   // full dash, no repeat
-  base.style.strokeDashoffset = 1;
-  overlay.style.strokeDasharray = "1, 999999";
-  overlay.style.strokeDashoffset = 1;
-
-  // Olive base spiral animation (draws immediately)
-  base.animate(
-    [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }],
-    { duration: 6000, easing: "ease-in-out", fill: "forwards" }
-  );
-
-  // Pink overlay spiral animation (draws immediately, then reverses)
-  let passes = 0;
-  function animateOverlay(forward = true) {
-    overlay.animate(
-      forward
-        ? [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }]
-        : [{ strokeDashoffset: 0 }, { strokeDashoffset: 1 }],
-      { duration: 6000, easing: "ease-in-out", fill: "forwards" }
-    ).onfinish = () => {
-      passes++;
-      if (passes < 3) setTimeout(() => animateOverlay(!forward), 300);
-    };
-  }
-  animateOverlay(true); // start pink right away
-
-  // === place spiral links along the line ===
-  const linkLabels = [
-    { text: "Laced Notes", href: "lacednotes.html" },
-    { text: "Laced Together", href: "booknow.html" },
-    { text: "Approach", href: "approach.html" },
-    { text: "Limeboard", href: "limeboard.html" },
-    { text: "Founder", href: "founder.html" },
-    { text: "Contact", href: "contact.html" }
-  ];
-
-  const step = Math.floor(points.length / (linkLabels.length + 1));
-
-  linkLabels.forEach((link, i) => {
-    const pt = points[i * step];
-    const el = document.createElement("div");
-    el.className = "spiral-link";
-    el.textContent = link.text;
-    el.onclick = () => location.href = link.href;
-
-    // position chip using spiral coordinates
-    el.style.left = (pt.x / size * 100) + "%";
-    el.style.top = (pt.y / size * 100) + "%";
-
-    // stagger animation so they float in sequentially
-    el.style.animationDelay = `${1 + i * 0.4}s`;
-
-    container.appendChild(el);
-  });
-});
-</script>
-
-
+    <div class="construction-icon">🚧</div>
+    <h1>We’re Working on Something New</h1>
+    <p>Our website is under construction. Please check back soon for updates!</p>
 </body>
 </html>

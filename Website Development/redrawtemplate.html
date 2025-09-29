@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spiral Animation – Live Color Swap</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f9f8f6;
+      font-family: sans-serif;
+    }
+    svg {
+      width: 90vmin;
+      height: 90vmin;
+    }
+    .spiral-path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-width: 3;
+    }
+    .controls {
+      margin-bottom: 1rem;
+    }
+    select {
+      padding: 6px 10px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dropdown -->
+  <div class="controls">
+    <label for="combo">Color combo: </label>
+    <select id="combo">
+      <option value="charcoal">Charcoal + Pink</option>
+      <option value="olive">Olive + Pink</option>
+      <option value="rose">Rose + Pink</option>
+    </select>
+  </div>
+
+  <!-- Spiral -->
+  <svg viewBox="0 0 500 500">
+    <path id="spiral-base" class="spiral-path" />
+    <path id="spiral-overlay" class="spiral-path" />
+  </svg>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const base = document.getElementById("spiral-base");
+      const overlay = document.getElementById("spiral-overlay");
+      const comboSelect = document.getElementById("combo");
+
+      const combos = {
+        charcoal: { base: "#2E2E2E", overlay: "#F2C9CF" },
+        olive:    { base: "#3F4A3C", overlay: "#F2C9CF" },
+        rose:     { base: "#B36B72", overlay: "#F2C9CF" }
+      };
+
+      const cx = 250, cy = 250;
+      const a = 10, b = 15, turns = 2.75;
+      const points = [];
+
+      for (let t = 0; t < Math.PI * 2 * turns; t += 0.05) {
+        const r = a + b * t;
+        const x = cx + r * Math.cos(t);
+        const y = cy + r * Math.sin(t);
+        points.push(`${x},${y}`);
+      }
+
+      points.reverse();
+      const d = "M" + points.join(" L");
+      base.setAttribute("d", d);
+      overlay.setAttribute("d", d);
+
+      const length = base.getTotalLength();
+      base.style.strokeDasharray = length;
+      overlay.style.strokeDasharray = length;
+      base.style.strokeDashoffset = length;
+      overlay.style.strokeDashoffset = length;
+
+      // --- Animations ---
+      function drawBase() {
+        base.animate(
+          [
+            { strokeDashoffset: length },
+            { strokeDashoffset: 0 }
+          ],
+          {
+            duration: 6000,
+            easing: "ease-in-out",
+            fill: "forwards"
+          }
+        );
+      }
+
+      function animateOverlay(forward = true) {
+        overlay.animate(
+          forward
+            ? [ { strokeDashoffset: length }, { strokeDashoffset: 0 } ]
+            : [ { strokeDashoffset: 0 }, { strokeDashoffset: length } ],
+          {
+            duration: 6000,
+            easing: "ease-in-out",
+            fill: "forwards"
+          }
+        ).onfinish = () => {
+          setTimeout(() => animateOverlay(!forward), 500);
+        };
+      }
+
+      // --- Update colors ---
+      function applyCombo(name) {
+        base.setAttribute("stroke", combos[name].base);
+        overlay.setAttribute("stroke", combos[name].overlay);
+      }
+
+      // Initial draw
+      applyCombo(comboSelect.value);
+      drawBase();
+      setTimeout(() => animateOverlay(true), 6000);
+
+      // Change colors live
+      comboSelect.addEventListener("change", e => {
+        applyCombo(e.target.value);
+      });
+    });
+  </script>
+</body>
+</html>

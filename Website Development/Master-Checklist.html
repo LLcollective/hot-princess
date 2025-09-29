@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Master Website Build Checklist</title>
+  <style>
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: repeating-linear-gradient(
+          to bottom,
+          #fdfdf8,
+          #fdfdf8 28px,
+          #cde4f7 29px
+        ),
+        linear-gradient(to right, #fdfdf8 60px, #f08080 61px, #fdfdf8 62px);
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      color: #3a2a70;
+      margin-bottom: 1.25rem;
+    }
+    /* General Notes + Board side by side */
+    .notes-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .general-notes, .bulletin-board {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.06);
+    }
+    .general-notes h2, .bulletin-board h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: #3a2a70;
+    }
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: .5rem;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      resize: vertical;
+      margin-bottom: .5rem;
+      box-sizing: border-box;
+    }
+    .bulletin-board ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .bulletin-board li {
+      margin-bottom: .5rem;
+      padding: .4rem .6rem;
+      border-radius: 6px;
+      background: #f6f6ff;
+      font-size: .9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .delete-btn {
+      background: #f44336;
+      border: none;
+      color: #fff;
+      padding: .25rem .5rem;
+      font-size: .75rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .accordion {
+      background: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+    .accordion-btn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      text-align: left;
+      padding: .9rem 1rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .accordion-icon {
+      font-weight: 700;
+      transition: transform .25s ease;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+      padding: 0 1rem;
+    }
+    .accordion.active .accordion-content {
+      padding-bottom: .8rem;
+    }
+    .accordion.active .accordion-icon {
+      transform: rotate(45deg);
+    }
+    .accordion-checklist h3 {
+      margin: 1rem 0 .35rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #444;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: .25rem;
+    }
+    .accordion-checklist ul {
+      margin: 0;
+      padding: 0 0 0 1rem;
+    }
+    .accordion-checklist li {
+      list-style: none;
+      margin: .4rem 0;
+    }
+    .accordion-notes h3 {
+      margin-top: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #444;
+    }
+    .accordion-notes textarea {
+      min-height: 120px;
+    }
+    .save-btn {
+      padding: .35rem .75rem;
+      background: #7b6cf6;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: .85rem;
+      cursor: pointer;
+    }
+    /* Only notes wrappers are 2-column */
+    .two-col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Master Website Build Checklist</h1>
+
+  <!-- Top Notes -->
+  <div class="notes-layout">
+    <div class="general-notes">
+      <h2>📝 General Notes</h2>
+      <textarea id="general-note" placeholder="Write general notes here..."></textarea>
+      <button class="save-btn" data-tier="General">Save General Note</button>
+    </div>
+    <div class="bulletin-board">
+      <h2>📌 Saved Notes</h2>
+      <button id="clear-all" class="save-btn" style="background:#f44336; margin-bottom:.75rem;">
+        Clear All
+      </button>
+      <ul id="notes-list"></ul>
+    </div>
+  </div>
+
+  <!-- Starter -->
+  <div class="accordion seed">
+    <button class="accordion-btn">
+      🌱 Energy Aligned (Starter) <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-content">
+      <div class="two-col">
+        <div class="accordion-checklist">
+          <h3>Site Basics</h3>
+          <ul>
+            <li><label><input type="checkbox"> 1–2 page site or landing page</label></li>
+            <li><label><input type="checkbox"> Payment option integrated (if needed)</label></li>
+            <li><label><input type="checkbox"> Mobile responsive + browser tested</label></li>
+            <li><label><input type="checkbox"> Do they need a simple contact form or just CTA buttons?</label></li>
+            <li><label><input type="checkbox"> Should the form include reCAPTCHA or honeypot for spam?</label></li>
+            <li><label><input type="checkbox"> Should a thank-you message or autoresponse email be added?</label></li>
+          </ul>
+          <h3>Branding</h3>
+          <ul>
+            <li><label><input type="checkbox"> Logo uploaded (high-resolution)</label></li>
+            <li><label><input type="checkbox"> Favicon added</label></li>
+            <li><label><input type="checkbox"> Colors & fonts consistent</label></li>
+            <li><label><input type="checkbox"> Do they need a quick redesign/resizing for the logo?</label></li>
+          </ul>
+          <h3>Launch Essentials</h3>
+          <ul>
+            <li><label><input type="checkbox"> Branded newsletter capture (styled + tested)</label></li>
+            <li><label><input type="checkbox"> SSL certificate tested</label></li>
+            <li><label><input type="checkbox"> Analytics baseline installed</label></li>
+            <li><label><input type="checkbox"> Should they also connect Google Search Console?</label></li>
+            <li><label><input type="checkbox"> Should Open Graph/social previews be customized?</label></li>
+          </ul>
+        </div>
+        <div class="accordion-notes">
+          <h3>Notes</h3>
+          <textarea id="starter-note" placeholder="Notes for Starter..."></textarea>
+          <button class="save-btn" data-tier="Starter">Save Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Growth -->
+  <div class="accordion bloom">
+    <button class="accordion-btn">
+      🌸 Action Defined (Growth) <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-content">
+      <div class="two-col">
+        <div class="accordion-checklist">
+          <h3>Pages & Visuals</h3>
+          <ul>
+            <li><label><input type="checkbox"> 3–4 polished pages (Home, About, Services, Contact)</label></li>
+            <li><label><input type="checkbox"> Lead capture form or CTA embedded</label></li>
+            <li><label><input type="checkbox"> Custom graphics/icons created</label></li>
+            <li><label><input type="checkbox"> Testimonials/social proof styled</label></li>
+          </ul>
+          <h3>Automations</h3>
+          <ul>
+            <li><label><input type="checkbox"> Multi-step intake forms tested</label></li>
+            <li><label><input type="checkbox"> Do they need file upload fields?</label></li>
+            <li><label><input type="checkbox"> Should conditional logic (if/then fields) be added?</label></li>
+            <li><label><input type="checkbox"> Add reCAPTCHA/honeypot for spam control?</label></li>
+            <li><label><input type="checkbox"> Automated follow-up emails</label></li>
+            <li><label><input type="checkbox"> Thank-you page or autoresponse</label></li>
+          </ul>
+          <h3>Payments & Scheduling</h3>
+          <ul>
+            <li><label><input type="checkbox"> Payment gateway integrated (Square/Stripe/PayPal)</label></li>
+            <li><label><input type="checkbox"> Do they need installments or invoicing?</label></li>
+            <li><label><input type="checkbox"> Scheduling system (Calendly, etc.)</label></li>
+            <li><label><input type="checkbox"> Do they need multiple calendars for staff?</label></li>
+          </ul>
+        </div>
+        <div class="accordion-notes">
+          <h3>Notes</h3>
+          <textarea id="growth-note" placeholder="Notes for Growth..."></textarea>
+          <button class="save-btn" data-tier="Growth">Save Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expansion -->
+  <div class="accordion flourish">
+    <button class="accordion-btn">
+      🌟 Next Is Now (Expansion) <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-content">
+      <div class="two-col">
+        <div class="accordion-checklist">
+          <h3>Pages</h3>
+          <ul>
+            <li><label><input type="checkbox"> 5–7 custom pages (services, blog, portfolio, resources)</label></li>
+            <li><label><input type="checkbox"> Blog/portfolio CMS configured</label></li>
+            <li><label><input type="checkbox"> Should blog have categories, tags, and search?</label></li>
+            <li><label><input type="checkbox"> Testimonials styled (static or carousel)</label></li>
+          </ul>
+          <h3>Systems</h3>
+          <ul>
+            <li><label><input type="checkbox"> Onboarding workflow automated</label></li>
+            <li><label><input type="checkbox"> Membership/course system set up</label></li>
+            <li><label><input type="checkbox"> Should courses drip over time or release all at once?</label></li>
+            <li><label><input type="checkbox"> CRM integrated (HubSpot, Zoho, Salesforce)</label></li>
+            <li><label><input type="checkbox"> Do they need a password reset system?</label></li>
+          </ul>
+          <h3>E-Commerce</h3>
+          <ul>
+            <li><label><input type="checkbox"> Catalog, carts, subscriptions</label></li>
+            <li><label><input type="checkbox"> Abandoned cart emails tested</label></li>
+            <li><label><input type="checkbox"> Discount codes/coupons enabled</label></li>
+            <li><label><input type="checkbox"> Shipping/inventory tracking configured</label></li>
+            <li><label><input type="checkbox"> Should they support multi-currency?</label></li>
+          </ul>
+          <h3>Analytics</h3>
+          <ul>
+            <li><label><input type="checkbox"> GA dashboard with KPIs configured</label></li>
+            <li><label><input type="checkbox"> Goals + conversions defined</label></li>
+            <li><label><input type="checkbox"> Sales funnel tracked (view → cart → purchase)</label></li>
+            <li><label><input type="checkbox"> Should bot traffic be filtered out?</label></li>
+            <li><label><input type="checkbox"> Monthly reporting configured</label></li>
+          </ul>
+        </div>
+        <div class="accordion-notes">
+          <h3>Notes</h3>
+          <textarea id="expansion-note" placeholder="Notes for Expansion..."></textarea>
+          <button class="save-btn" data-tier="Expansion">Save Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add-ons -->
+  <div class="accordion addons">
+    <button class="accordion-btn">
+      💜 Add-ons (Optional) <span class="accordion-icon">+</span>
+    </button>
+    <div class="accordion-content">
+      <div class="two-col">
+        <div class="accordion-checklist">
+          <h3>Extras</h3>
+          <ul>
+            <li><label><input type="checkbox"> Branded design packs (templates, campaigns)</label></li>
+            <li><label><input type="checkbox"> Should they be static graphics or editable templates?</label></li>
+            <li><label><input type="checkbox"> Brand guidelines doc (PDF or live style guide)</label></li>
+            <li><label><input type="checkbox"> Should tone of voice guidelines be included?</label></li>
+            <li><label><input type="checkbox"> Online shop setup (catalog, checkout, shipping)</label></li>
+            <li><label><input type="checkbox"> Do they need product variants (sizes/colors)?</label></li>
+            <li><label><input type="checkbox"> Do they need inventory tracking?</label></li>
+            <li><label><input type="checkbox"> Omni-search SEO (directories, Open Graph)</label></li>
+            <li><label><input type="checkbox"> Membership access portal built</label></li>
+            <li><label><input type="checkbox"> Analytics dashboard tailored (real-time events)</label></li>
+            <li><label><input type="checkbox"> Course delivery system (progress, certificates)</label></li>
+            <li><label><input type="checkbox"> Systems integration (APIs, Zapier, backups)</label></li>
+          </ul>
+        </div>
+        <div class="accordion-notes">
+          <h3>Notes</h3>
+          <textarea id="addons-note" placeholder="Notes for Add-ons..."></textarea>
+          <button class="save-btn" data-tier="Add-ons">Save Note</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Accordion toggle
+    document.querySelectorAll(".accordion-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".accordion");
+        const content = card.querySelector(".accordion-content");
+        const isOpen = card.classList.contains("active");
+        document.querySelectorAll(".accordion").forEach(acc => {
+          acc.classList.remove("active");
+          acc.querySelector(".accordion-content").style.maxHeight = 0;
+          acc.querySelector(".accordion-icon").textContent = "+";
+        });
+        if (!isOpen) {
+          card.classList.add("active");
+          content.style.maxHeight = content.scrollHeight + "px";
+          btn.querySelector(".accordion-icon").textContent = "–";
+        }
+      });
+    });
+
+    // Save Notes with delete
+    function addNote(tier, text) {
+      const list = document.getElementById("notes-list");
+      const li = document.createElement("li");
+      const span = document.createElement("span");
+      span.textContent = `[${tier}] ${text}`;
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "🗑";
+      delBtn.classList.add("delete-btn");
+      delBtn.addEventListener("click", () => li.remove());
+      li.appendChild(span);
+      li.appendChild(delBtn);
+      list.appendChild(li);
+    }
+    document.querySelectorAll(".save-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tier = btn.dataset.tier;
+        let text = "";
+        if (tier === "General") text = document.getElementById("general-note").value;
+        if (tier === "Starter") text = document.getElementById("starter-note").value;
+        if (tier === "Growth") text = document.getElementById("growth-note").value;
+        if (tier === "Expansion") text = document.getElementById("expansion-note").value;
+        if (tier === "Add-ons") text = document.getElementById("addons-note").value;
+        if (text.trim() !== "") {
+          addNote(tier, text);
+          if (tier === "General") document.getElementById("general-note").value = "";
+          if (tier === "Starter") document.getElementById("starter-note").value = "";
+          if (tier === "Growth") document.getElementById("growth-note").value = "";
+          if (tier === "Expansion") document.getElementById("expansion-note").value = "";
+          if (tier === "Add-ons") document.getElementById("addons-note").value = "";
+        }
+      });
+    });
+    document.getElementById("clear-all").addEventListener("click", () => {
+      document.getElementById("notes-list").innerHTML = "";
+    });
+  </script>
+</body>
+</html>
