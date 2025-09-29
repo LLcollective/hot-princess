@@ -17,11 +17,13 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-  <meta name="theme-color" content="#7B6CF6" />
+  <meta name="theme-color" content="#2E4032" />
 
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
+
+
+<style>
 /* ========== Global Notebook Background ========== */
 body {
   font-family: "Georgia", serif;
@@ -50,7 +52,6 @@ body {
   box-shadow: 0 2px 6px rgba(0,0,0,.12);
   overflow: hidden;
 }
-
 .accordion-card::before {
   content: "";
   position: absolute;
@@ -59,7 +60,6 @@ body {
   backdrop-filter: blur(2px);
   z-index: 0;
 }
-
 .accordion-toggle {
   border-bottom: 1px solid #555;
   color: #222;
@@ -77,14 +77,12 @@ body {
   position: relative;
   z-index: 1;
 }
-
 .accordion-icon {
   font-weight: 700;
   transition: transform .25s ease;
   margin-left: .5rem;
 }
 .accordion-card.open .accordion-icon { transform: rotate(45deg); }
-
 .accordion-content {
   position: relative;
   z-index: 1;
@@ -106,20 +104,13 @@ body {
   align-items: flex-start;
   width: 100%;
 }
-
-.title-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
+.title-wrap { display: flex; flex-direction: column; align-items: flex-start; }
 .title-wrap h2 {
   font-size: 1.25rem;
   font-weight: 700;
   margin: 0;
   color: #2c265f;
 }
-
 .chip {
   display: inline-block;
   margin-top: 0.25rem;
@@ -128,16 +119,14 @@ body {
   font-weight: 600;
   border-radius: 999px;
   background: #f0eefc;
-  color: #5a4ccf;
+  color: #8B5E65;
 }
-
 .subtitle {
   margin: 0.25rem 0 0;
   font-size: 0.85rem;
   color: #666;
   font-weight: 400;
 }
-
 .price {
   font-size: 1rem;
   font-weight: 700;
@@ -145,22 +134,21 @@ body {
   margin-top: 0.25rem;
   white-space: nowrap;
 }
-
 .tier-list { margin: 0; padding: 0; list-style: none; }
 .tier-list li { margin: .6rem 0; }
 .tier-list p { margin: .2rem 0 0; font-size: .9rem; color: #555; }
-.tier-list strong { color: #7b6cf6; }
+.tier-list strong { color: #8B5E65; }
 
 /* Add-ons */
 .addons-list li { margin-bottom: 1rem; }
 .addon-option { display: flex; align-items: center; gap: .5rem; }
-.price-badge { font-weight: 700; color: #7b6cf6; }
+.price-badge { font-weight: 700; color: #2E4032; }
 
 /* Buttons */
 .add-cart-btn {
   margin-top: 1rem;
   padding: .5rem 1rem;
-  background: #7b6cf6;
+  background: #B36B72;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -169,7 +157,7 @@ body {
   width: 100%;
   text-align: center;
 }
-.add-cart-btn:hover { background: #6a5bd4; }
+.add-cart-btn:hover { background: #D7A1A9; }
 
 /* ========== Grid ========== */
 .packages {
@@ -187,23 +175,27 @@ body {
   .price { font-size: clamp(0.95rem, 3vw, 1.1rem); }
 }
 
-/* Floating Cart Button */
-/* Cart button like a mobile nav icon */
+/* ========== Cart Button (Updated) ========== */
 #cart-btn {
   position: fixed;
-  top: 1rem;        /* push down from top */
-  right: 1rem;      /* stick to the right */
-  font-size: 1.3rem;
-  padding: .5rem .7rem;
+  top: 1rem;
+  right: 1rem;
   border: none;
-  border-radius: 6px; /* square-ish like a menu icon */
-  background: #7b6cf6;
-  color: #fff;
+  border-radius: 6px;
+  background: #000; /* black button */
+  padding: 0.5rem;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,0,0,.2);
   z-index: 1000;
 }
-
+#cart-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff; /* white cart icon */
+}
+#cart-btn:hover {
+  background: #222; /* slightly lighter black */
+}
 
 /* Cart Panel */
 #cart-panel {
@@ -259,22 +251,20 @@ body {
 }
 .cart-actions { display: flex; gap: .5rem; margin-top: 1rem; }
 #back-btn { flex: 1; background: #999; border: none; padding: .6rem; border-radius: 6px; cursor: pointer; font-weight: 600; color: #fff; }
-#inquiry-btn { flex: 3; background: #7b6cf6; border: none; padding: .6rem; border-radius: 6px; cursor: pointer; font-weight: 600; color: #fff; }
+#inquiry-btn { flex: 3; background: #2E4032; border: none; padding: .6rem; border-radius: 6px; cursor: pointer; font-weight: 600; color: #fff; }
 #inquiry-btn:hover { background: #6a5bd4; }
 
 /* Footer */
 footer {
   margin-top: 3rem;
   padding: 2rem 1rem;
-  background: rgba(255, 255, 255, 0.6); /* semi-paper effect */
+  background: rgba(255, 255, 255, 0.6);
   border-top: 2px solid #555;
   text-align: center;
-
-  width: 100vw;   /* stretch to viewport width */
-  margin-left: -2rem; /* cancel body padding */
+  width: 100vw;
+  margin-left: -2rem;
   margin-right: -2rem;
 }
-
 footer .legal {
   font-size: 0.85rem;
   line-height: 1.5;
@@ -282,10 +272,11 @@ footer .legal {
   max-width: 900px;
   margin: 0 auto;
 }
-footer .legal .anchor { font-weight: 600; color: #7b6cf6; }
+footer .legal .anchor { font-weight: 600; color: #2E4032; }
 footer a { color: #3a2a70; font-weight: 600; text-decoration: none; }
 footer a:hover { text-decoration: underline; }
-  @media (max-width: 768px) {
+
+@media (max-width: 768px) {
   .price {
     display: inline-block;
     margin-top: 0.4rem;
@@ -296,11 +287,53 @@ footer a:hover { text-decoration: underline; }
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
   }
-  .plan-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  .plan-header { flex-direction: column; align-items: flex-start; }
 }
+
+/* =====Deep Green: #2E4032 / Muted Mauve: #8B5E65 =====/
+
+/* Hide the actual checkbox */
+.info-toggle {
+  display: none;
+}
+
+/* Style the icon */
+.info-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 50%;
+  background-color: #f5f0e8; /* beige */
+  color: #111111;            /* black text */
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Optional hover effect for icon */
+.info-icon:hover {
+  background-color: #111111;
+  color: #f5f0e8;
+}
+
+/* The hidden text */
+.info-text {
+  display: none;
+  font-size: 13px;
+  color: #555;
+  margin-left: 6px;
+}
+
+/* Reveal text when checkbox is checked */
+.info-toggle:checked + .info-icon + .info-text {
+  display: inline;
+}
+
+
 
 </style>
 </head>
@@ -386,7 +419,7 @@ footer a:hover { text-decoration: underline; }
       <div class="accordion-content">
         <ul class="tier-list">
           <li><strong>For established entrepreneurs</strong><p>Best if you’re scaling impact or diversifying revenue streams and don’t want to rebuild later.</p></li>
-          <li><strong>5–7 custom pages</strong><p>Scale with 5–7 custom pages — services, testimonials, resources, blog, or portfolio.</p></li>
+          <li><strong>5–7 custom pages</strong><p>Scale with 5–7 custom pages - services, testimonials, resources, blog, or portfolio.</p></li>
           <li><strong>Full brand experience</strong><p>Present a cohesive brand experience across your entire site.</p></li>
           <li><strong>Automations & client systems</strong><p>Streamline growth with onboarding, workflows, memberships, or course delivery.</p></li>
           <li><strong>Payments & e-commerce</strong><p>Expand sales with catalogs, carts, subscriptions, and secure payment options.</p></li>
@@ -401,33 +434,101 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- Add-ons -->
-    <div class="accordion-card">
-      <div class="accordion-toggle">
-        <div class="plan-header">
-          <div class="title-wrap">
-            <h2>Add-ons</h2>
-            <span class="chip">Optional</span>
-          </div>
-          <div class="price">Enhancements</div>
-        </div>
-        <span class="accordion-icon">+</span>
+<!-- Add-ons -->
+<div class="accordion-card">
+  <div class="accordion-toggle">
+    <div class="plan-header">
+      <div class="title-wrap">
+        <h2>Add-ons</h2>
+        <span class="chip">Optional</span>
       </div>
-      <div class="accordion-content">
-        <ul class="tier-list addons-list">
-          <li><label class="addon-option"><input type="checkbox" data-item="Branded Design Packs - $250"><span><strong>Create Branded Design Packs <span class="price-badge">$250</span></strong></span></label><p>Graphics and templates designed for launches, campaigns, or seasonal events.</p></li>
-          <li><label class="addon-option"><input type="checkbox" data-item="Brand Guidelines - $500"><span><strong>Protect Your Brand with Guidelines <span class="price-badge">$500</span></strong></span></label><p>A clear style guide covering logos, fonts, and colors to keep every platform consistent.</p></li>
-          <li><label class="addon-option"><input type="checkbox" data-item="Online Shop Setup - $1000"><span><strong>Sell Online with Shop Setup <span class="price-badge">$1,000</span></strong></span></label><p>Secure checkout and smooth product flow built directly into your site.</p></li>
-          <li><label class="addon-option"><input type="checkbox" data-item="Omni-Search - $1200"><span><strong>Boost visibility across search, social, and directories <span class="price-badge">$1,200</span></strong></span></label><p>SEO written for each page to stand out everywhere your audience looks.</p></li>
-          <li><label class="addon-option"><input type="checkbox" data-item="Membership Access - $1400"><span><strong>Build Membership Access <span class="price-badge">$1,400</span></strong></span></label><p>Private spaces and portals that deepen client connection and long-term engagement.</p></li>
-          <li><label class="addon-option"><input type="checkbox" data-item="Analytics Dashboard - $800"><span><strong>Track Smarter with Analytics <span class="price-badge">$800</span></strong></span></label><p>A tailored dashboard powered by Google Analytics to see what truly drives results.</p></li>
-          <li><label class="addon-option"><input type="checkbox" data-item="Course Delivery - $1600"><span><strong>Deliver Courses with Ease <span class="price-badge">$1,600</span></strong></span></label><p>Workshops and trainings hosted with structured access and built-in payment options.</p></li>
-          <li><label class="addon-option"><input type="checkbox" data-item="Systems Integration - $2000"><span><strong>Save hours by unifying tools with seamless systems integration <span class="price-badge">$2,000</span></strong></span></label><p>Connect CRMs, databases, and platforms for time-saving workflows.</p></li>
-        </ul>
-        <button class="add-cart-btn" data-item="Add-ons">Add Selected Add-ons</button>
-      </div>
+      <div class="price">Enhancements</div>
     </div>
+    <span class="accordion-icon">+</span>
   </div>
+
+  <div class="accordion-content">
+    <!-- ℹ Info toggle -->
+    <label class="baseline-note">
+      <input type="checkbox" class="info-toggle">
+      <span class="info-icon">ℹ</span>
+      <span class="info-text">Practical with boundaries in pricing around depth and extent.</span>
+    </label>
+
+    <ul class="tier-list addons-list">
+        <li>
+      <label class="addon-option">
+        <input type="checkbox" data-item="Branded Design Packs - from 350">
+        <span><strong>Create Branded Design Packs <span class="price-badge">from $350</span></strong></span>
+      </label>
+      <p>Never scramble for graphics again. Branded packs give you ready-to-use templates for launches and campaigns. Consistent, professional, and stress free.</p>
+    </li>
+
+    <li>
+      <label class="addon-option">
+        <input type="checkbox" data-item="Brand Guidelines - from 750">
+        <span><strong>Protect Your Brand with Guidelines <span class="price-badge">from $750</span></strong></span>
+      </label>
+      <p>Your logo deserves more than guesses. A clear style guide locks in your colors, fonts, and imagery so every platform looks aligned no matter who is posting.</p>
+    </li>
+
+    <li>
+      <label class="addon-option">
+        <input type="checkbox" data-item="Online Shop Setup - from 1500">
+        <span><strong>Sell Online with Shop Setup <span class="price-badge">from $1500</span></strong></span>
+      </label>
+      <p>Do not lose sales to a broken checkout. Your shop is built for smooth and secure payments and a product flow that grows with your business.</p>
+    </li>
+
+    <li>
+      <label class="addon-option">
+        <input type="checkbox" data-item="Omni-Search - from 1500">
+        <span><strong>Boost Visibility with Omni-Search <span class="price-badge">from $1500</span></strong></span>
+      </label>
+      <p>Your audience is searching on Google, socials, and directories. We optimize each page so they find you first and not your competitor.</p>
+    </li>
+
+    <li>
+      <label class="addon-option">
+        <input type="checkbox" data-item="Membership Access - from 2000">
+        <span><strong>Build Membership Access <span class="price-badge">from $2000</span></strong></span>
+      </label>
+      <p>Keep your community close with a private members only space. Build stronger connections and give clients more reasons to return.</p>
+    </li>
+
+    <li>
+      <label class="addon-option">
+        <input type="checkbox" data-item="Analytics Dashboard - from 1000">
+        <span><strong>Track Smarter with Analytics <span class="price-badge">from $1000</span></strong></span>
+      </label>
+      <p>Skip the overwhelm of random numbers. A tailored dashboard shows exactly what drives results so you focus on what matters.</p>
+    </li>
+
+    <li>
+      <label class="addon-option">
+        <input type="checkbox" data-item="Course Delivery - from 2000">
+        <span><strong>Deliver Courses with Ease <span class="price-badge">from $2000</span></strong></span>
+      </label>
+      <p>Stop juggling links and emails. Courses and workshops are delivered in one structured space with secure access and built in payments.</p>
+    </li>
+
+    <li>
+      <label class="addon-option">
+        <input type="checkbox" data-item="Systems Integration - from 2500">
+        <span><strong>Save Hours with Systems Integration <span class="price-badge">from $2500</span></strong></span>
+      </label>
+      <p>Save hours every week. We connect your CRMs, databases, and tools so your systems finally talk to each other. Seamless, not scattered.</p>
+    </li>
+  </ul>
+
+    <button class="add-cart-btn" data-item="Add-ons">Add Selected Add-ons</button>
+  </div>
+</div>
+</div>
+
+
+
+
 
   <!-- Floating Cart Button -->
   <button id="cart-btn">🛒</button>
