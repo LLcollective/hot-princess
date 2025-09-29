@@ -297,6 +297,46 @@ footer a:hover { text-decoration: underline; }
     align-items: flex-start;
   }
 }
+/* ========== Mobile Typography & Card Scale ========== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem; /* less side padding so cards get more width */
+  }
+
+  .accordion-card {
+    border-radius: 10px;
+    padding: 0.5rem;
+  }
+
+  .accordion-toggle {
+    font-size: 1.1rem;  /* bump title size */
+    padding: 1.2rem;
+  }
+
+  .title-wrap h2 {
+    font-size: 1.35rem; /* larger headers */
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 1.1rem; /* make price bigger */
+  }
+
+  .tier-list p,
+  .tier-list li {
+    font-size: 1rem; /* increase body font size */
+    line-height: 1.6;
+  }
+
+  .add-cart-btn {
+    font-size: 1rem;  /* bigger button text */
+    padding: 0.9rem;
+    border-radius: 8px;
+  }
+}
 
 </style>
 </head>
