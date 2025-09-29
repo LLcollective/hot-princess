@@ -39,18 +39,23 @@ body {
 .spiral-container {
   position: relative;
   width: 90vmin;
-  height: 90vmin;
-margin-top:2rem;
-margin-left:1rem;
+  max-width: 500px;
+  aspect-ratio: 1/1; /* keeps square */
 }
-svg { width: 100%; height: 100%; }
+
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .spiral-path {
   fill: none;
   stroke-linecap: round;
   stroke-width: 3;
 }
 
-/* 🌸 Spiral nav chips – upgraded */
+/* 🌸 Spiral nav chips */
 .spiral-link {
   position: absolute;
   transform: translate(-50%, -50%) scale(0.9);
@@ -90,25 +95,16 @@ svg { width: 100%; height: 100%; }
 }
 .spiral-link:hover::after { width: 100%; }
 
-/* ✨ Float-in animation */
 @keyframes floatIn {
   from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
   to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
-
-/* Add staggered delays for each chip */
-.spiral-link:nth-of-type(1) { animation-delay: 6s; }
-.spiral-link:nth-of-type(2) { animation-delay: 6.3s; }
-.spiral-link:nth-of-type(3) { animation-delay: 6.6s; }
-.spiral-link:nth-of-type(4) { animation-delay: 6.9s; }
-.spiral-link:nth-of-type(5) { animation-delay: 7.2s; }
-.spiral-link:nth-of-type(6) { animation-delay: 7.5s; }
 </style>
 </head>
 
 <body>
   <div class="spiral-container">
-    <svg viewBox="0 0 500 500">
+    <svg viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet">
       <path id="spiral-base" class="spiral-path" stroke="#3F4A3C" />
       <path id="spiral-overlay" class="spiral-path" stroke="#F2C9CF" />
     </svg>
@@ -121,59 +117,58 @@ svg { width: 100%; height: 100%; }
     <div class="spiral-link" style="top:55%; left:20%;" onclick="location.href='founder.html'">Founder</div>
     <div class="spiral-link" style="top:30%; left:28%;" onclick="location.href='contact.html'">Contact</div>
   </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const base = document.getElementById("spiral-base");
+  const overlay = document.getElementById("spiral-overlay");
+
+  const size = 500; // matches viewBox
+  const cx = size / 2, cy = size / 2;
+  const a = 10, b = 15, turns = 2.75;
+  const points = [];
+
+  for (let t = 0; t < Math.PI * 2 * turns; t += 0.05) {
+    const r = a + b * t;
+    const x = cx + r * Math.cos(t);
+    const y = cy + r * Math.sin(t);
+    points.push(`${x},${y}`);
+  }
+  points.reverse(); // outer → inner
+  const d = "M" + points.join(" L");
+  base.setAttribute("d", d);
+  overlay.setAttribute("d", d);
+
+  const length = base.getTotalLength();
+  base.style.strokeDasharray = length;
+  base.style.strokeDashoffset = length;
+  overlay.style.strokeDasharray = length;
+  overlay.style.strokeDashoffset = length;
+
+  // Olive base spiral
+  base.animate(
+    [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
+    { duration: 6000, easing: "ease-in-out", fill: "forwards" }
+  );
+
+  // Pink overlay spiral
+  let passes = 0;
+  function animateOverlay(forward = true) {
+    overlay.animate(
+      forward
+        ? [{ strokeDashoffset: length }, { strokeDashoffset: 0 }]
+        : [{ strokeDashoffset: 0 }, { strokeDashoffset: length }],
+      { duration: 6000, easing: "ease-in-out", fill: "forwards" }
+    ).onfinish = () => {
+      passes++;
+      if (passes < 3) {
+        setTimeout(() => animateOverlay(!forward), 300);
+      }
+    };
+  }
+
+  setTimeout(() => animateOverlay(true), 6000);
+});
+</script>
 </body>
 </html>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const base = document.getElementById("spiral-base");
-      const overlay = document.getElementById("spiral-overlay");
-
-      const cx = 250, cy = 250;
-      const a = 10, b = 15, turns = 2.75;
-      const points = [];
-
-      // Generate Archimedean spiral
-      for (let t = 0; t < Math.PI * 2 * turns; t += 0.05) {
-        const r = a + b * t;
-        const x = cx + r * Math.cos(t);
-        const y = cy + r * Math.sin(t);
-        points.push(`${x},${y}`);
-      }
-      points.reverse(); // outer → inner
-      const d = "M" + points.join(" L");
-      base.setAttribute("d", d);
-      overlay.setAttribute("d", d);
-
-      const length = base.getTotalLength();
-      base.style.strokeDasharray = length;
-      base.style.strokeDashoffset = length;
-      overlay.style.strokeDasharray = length;
-      overlay.style.strokeDashoffset = length;
-
-      // --- Olive base spiral ---
-      base.animate(
-        [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
-        { duration: 6000, easing: "ease-in-out", fill: "forwards" }
-      );
-
-      // --- Pink overlay spiral ---
-      let passes = 0;
-      function animateOverlay(forward = true) {
-        overlay.animate(
-          forward
-            ? [{ strokeDashoffset: length }, { strokeDashoffset: 0 }]
-            : [{ strokeDashoffset: 0 }, { strokeDashoffset: length }],
-          { duration: 6000, easing: "ease-in-out", fill: "forwards" }
-        ).onfinish = () => {
-          passes++;
-          if (passes < 3) { // 2 full back-and-forths
-            setTimeout(() => animateOverlay(!forward), 300);
-          }
-        };
-      }
-
-      // Start overlay after base finishes
-      setTimeout(() => animateOverlay(true), 6000);
-    });
-  </script>
