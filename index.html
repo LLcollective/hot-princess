@@ -52,7 +52,7 @@ svg {
 .spiral-path {
   fill: none;
   stroke-linecap: round;
-  stroke-width: 3;
+  stroke-width:5;
   vector-effect: non-scaling-stroke;
   shape-rendering: geometricPrecision;
 }
@@ -75,10 +75,12 @@ svg {
   cursor: pointer;
   white-space: nowrap;
   opacity: 0;
-  animation: floatIn 1s ease forwards;
+  animation: floatIn .9s ease forwards;
   transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
   z-index: 10;
 }
+
+
 .spiral-link:hover {
   color: #F2C9CF;
   background: linear-gradient(145deg, #fff5f7, #fdfdfc);
@@ -112,55 +114,59 @@ svg {
       <path id="spiral-overlay" class="spiral-path" stroke="#F2C9CF" pathLength="1" />
     </svg>
 
-    <!-- Spiral Navigation Links -->
-    <div class="spiral-link" style="top:28%; left:80%;" onclick="location.href='lacednotes.html'">Laced Notes</div>
-    <div class="spiral-link" style="top:45%; left:78%;" onclick="location.href='booknow.html'">Laced Together</div>
-    <div class="spiral-link" style="top:62%; left:65%;" onclick="location.href='approach.html'">Approach</div>
-    <div class="spiral-link" style="top:78%; left:40%;" onclick="location.href='limeboard.html'">Limeboard</div>
-    <div class="spiral-link" style="top:55%; left:20%;" onclick="location.href='founder.html'">Founder</div>
-    <div class="spiral-link" style="top:30%; left:28%;" onclick="location.href='contact.html'">Contact</div>
-  </div>
+
+
+
+ 
+
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const base = document.getElementById("spiral-base");
   const overlay = document.getElementById("spiral-overlay");
+  const container = document.querySelector(".spiral-container");
 
-  const size = 800 
+  const size = 800;
   const cx = size / 2, cy = size / 2;
-  const a = 17;       // start radius
-  const b = 22;       // growth per radian
+  const a = 17;  // start radius
+  const b = 22;  // growth per radian
 
-  // 🔑 auto-calc turns so spiral fills viewport nicely
-  const maxRadius = size / 2 - 0; // leave 20px padding
- const turns = ((maxRadius - a) / b / (2 * Math.PI)) * 1.2; // 20% longer
-
+  // spiral geometry
+  const maxRadius = size / 2;
+  const turns = ((maxRadius - a) / b / (2 * Math.PI)) * 1.05;
 
   const points = [];
   for (let t = 0; t < Math.PI * 2 * turns; t += 0.05) {
     const r = a + b * t;
     const x = cx + r * Math.cos(t);
     const y = cy + r * Math.sin(t);
-    points.push(`${x},${y}`);
+    points.push({ x, y });
   }
 
+  // draw path outward → inward
   points.reverse();
-  const d = "M" + points.join(" L");
+  const d = "M" + points.map(p => `${p.x},${p.y}`).join(" L");
   base.setAttribute("d", d);
   overlay.setAttribute("d", d);
 
-  // use normalized pathLength to avoid broken lines on mobile
+  // === keep normalized pathLength logic ===
+  base.setAttribute("pathLength", "1");
+  overlay.setAttribute("pathLength", "1");
   base.style.strokeDasharray = 1;
   base.style.strokeDashoffset = 1;
   overlay.style.strokeDasharray = 1;
   overlay.style.strokeDashoffset = 1;
 
-  // Olive base spiral
+  // Olive base spiral animation
   base.animate(
     [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }],
     { duration: 6000, easing: "ease-in-out", fill: "forwards" }
   );
 
-  // Pink overlay spiral
+  // Pink overlay spiral animation
   let passes = 0;
   function animateOverlay(forward = true) {
     overlay.animate(
@@ -170,14 +176,42 @@ document.addEventListener("DOMContentLoaded", () => {
       { duration: 6000, easing: "ease-in-out", fill: "forwards" }
     ).onfinish = () => {
       passes++;
-      if (passes < 3) {
-        setTimeout(() => animateOverlay(!forward), 300);
-      }
+      if (passes < 3) setTimeout(() => animateOverlay(!forward), 300);
     };
   }
-
   setTimeout(() => animateOverlay(true), 6000);
+
+  // === place spiral links along the line ===
+  const linkLabels = [
+    { text: "Laced Notes", href: "lacednotes.html" },
+    { text: "Laced Together", href: "booknow.html" },
+    { text: "Approach", href: "approach.html" },
+    { text: "Limeboard", href: "limeboard.html" },
+    { text: "Founder", href: "founder.html" },
+    { text: "Contact", href: "contact.html" }
+  ];
+
+  const step = Math.floor(points.length / (linkLabels.length + 1));
+
+  linkLabels.forEach((link, i) => {
+    const pt = points[i * step];
+    const el = document.createElement("div");
+    el.className = "spiral-link";
+    el.textContent = link.text;
+    el.onclick = () => location.href = link.href;
+
+    // position chip using spiral coordinates
+    el.style.left = (pt.x / size * 100) + "%";
+    el.style.top = (pt.y / size * 100) + "%";
+
+    // stagger animation so they float in sequentially
+    el.style.animationDelay = `${1 + i * 0.4}s`;
+
+    container.appendChild(el);
+  });
 });
 </script>
+
+
 </body>
 </html>
