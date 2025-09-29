@@ -188,20 +188,22 @@ body {
 }
 
 /* Floating Cart Button */
+/* Cart button like a mobile nav icon */
 #cart-btn {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  padding: .6rem .9rem;
+  top: 1rem;        /* push down from top */
+  right: 1rem;      /* stick to the right */
+  font-size: 1.3rem;
+  padding: .5rem .7rem;
   border: none;
-  border-radius: 50%;
+  border-radius: 6px; /* square-ish like a menu icon */
   background: #7b6cf6;
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,.2);
-  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  z-index: 1000;
 }
+
 
 /* Cart Panel */
 #cart-panel {
@@ -264,10 +266,15 @@ body {
 footer {
   margin-top: 3rem;
   padding: 2rem 1rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.6); /* semi-paper effect */
   border-top: 2px solid #555;
   text-align: center;
+
+  width: 100vw;   /* stretch to viewport width */
+  margin-left: -2rem; /* cancel body padding */
+  margin-right: -2rem;
 }
+
 footer .legal {
   font-size: 0.85rem;
   line-height: 1.5;
