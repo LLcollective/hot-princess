@@ -120,9 +120,6 @@ svg {
  
 
 
-
-
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const base = document.getElementById("spiral-base");
@@ -152,38 +149,35 @@ document.addEventListener("DOMContentLoaded", () => {
   base.setAttribute("d", d);
   overlay.setAttribute("d", d);
 
-  // === keep normalized pathLength logic ===
+  // === keep normalized pathLength logic, Safari-safe ===
   base.setAttribute("pathLength", "1");
   overlay.setAttribute("pathLength", "1");
 
-
-  base.style.strokeDasharray = 1;
+  base.style.strokeDasharray = "1, 999999";   // full dash, no repeat
   base.style.strokeDashoffset = 1;
-  overlay.style.strokeDasharray = 1;
-  overlay.style.strokeDashoffset = 0;
+  overlay.style.strokeDasharray = "1, 999999";
+  overlay.style.strokeDashoffset = 1;
 
-
-  // Pink overlay spiral animation
- let passes = 0;
-function animateOverlay(forward = true) {
-  overlay.animate(
-    forward
-      ? [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }]
-      : [{ strokeDashoffset: 0 }, { strokeDashoffset: 1 }],
-    { duration: 6000, easing: "ease-in-out", fill: "forwards" }
-  ).onfinish = () => {
-    passes++;
-    if (passes < 3) setTimeout(() => animateOverlay(!forward), 300);
-  };
-}
-  // Olive base spiral animation
+  // Olive base spiral animation (draws immediately)
   base.animate(
     [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }],
     { duration: 6000, easing: "ease-in-out", fill: "forwards" }
   );
 
-// 👇 start overlay at the same time as base
-animateOverlay(true);
+  // Pink overlay spiral animation (draws immediately, then reverses)
+  let passes = 0;
+  function animateOverlay(forward = true) {
+    overlay.animate(
+      forward
+        ? [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }]
+        : [{ strokeDashoffset: 0 }, { strokeDashoffset: 1 }],
+      { duration: 6000, easing: "ease-in-out", fill: "forwards" }
+    ).onfinish = () => {
+      passes++;
+      if (passes < 3) setTimeout(() => animateOverlay(!forward), 300);
+    };
+  }
+  animateOverlay(true); // start pink right away
 
   // === place spiral links along the line ===
   const linkLabels = [
