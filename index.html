@@ -38,9 +38,9 @@ body {
 
 .spiral-container {
   position: relative;
-  width: 90vmin;
-  max-width: 500px;
-  aspect-ratio: 1/1; /* keeps square */
+  width: 95vmin;      /* give more width */
+  max-width: 700px;   /* expand max */
+  aspect-ratio: auto; /* allow non-square */
 }
 
 svg {
@@ -53,6 +53,8 @@ svg {
   fill: none;
   stroke-linecap: round;
   stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
 }
 
 /* 🌸 Spiral nav chips */
@@ -104,9 +106,10 @@ svg {
 
 <body>
   <div class="spiral-container">
-    <svg viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet">
-      <path id="spiral-base" class="spiral-path" stroke="#3F4A3C" />
-      <path id="spiral-overlay" class="spiral-path" stroke="#F2C9CF" />
+    <!-- expanded viewBox -->
+    <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
+      <path id="spiral-base" class="spiral-path" stroke="#3F4A3C" pathLength="1" />
+      <path id="spiral-overlay" class="spiral-path" stroke="#F2C9CF" pathLength="1" />
     </svg>
 
     <!-- Spiral Navigation Links -->
@@ -117,37 +120,43 @@ svg {
     <div class="spiral-link" style="top:55%; left:20%;" onclick="location.href='founder.html'">Founder</div>
     <div class="spiral-link" style="top:30%; left:28%;" onclick="location.href='contact.html'">Contact</div>
   </div>
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const base = document.getElementById("spiral-base");
   const overlay = document.getElementById("spiral-overlay");
 
-  const size = 500; // matches viewBox
+  const size = 800 
   const cx = size / 2, cy = size / 2;
-  const a = 10, b = 15, turns = 2.75;
-  const points = [];
+  const a = 17;       // start radius
+  const b = 22;       // growth per radian
 
+  // 🔑 auto-calc turns so spiral fills viewport nicely
+  const maxRadius = size / 2 - 0; // leave 20px padding
+ const turns = ((maxRadius - a) / b / (2 * Math.PI)) * 1.2; // 20% longer
+
+
+  const points = [];
   for (let t = 0; t < Math.PI * 2 * turns; t += 0.05) {
     const r = a + b * t;
     const x = cx + r * Math.cos(t);
     const y = cy + r * Math.sin(t);
     points.push(`${x},${y}`);
   }
-  points.reverse(); // outer → inner
+
+  points.reverse();
   const d = "M" + points.join(" L");
   base.setAttribute("d", d);
   overlay.setAttribute("d", d);
 
-  const length = base.getTotalLength();
-  base.style.strokeDasharray = length;
-  base.style.strokeDashoffset = length;
-  overlay.style.strokeDasharray = length;
-  overlay.style.strokeDashoffset = length;
+  // use normalized pathLength to avoid broken lines on mobile
+  base.style.strokeDasharray = 1;
+  base.style.strokeDashoffset = 1;
+  overlay.style.strokeDasharray = 1;
+  overlay.style.strokeDashoffset = 1;
 
   // Olive base spiral
   base.animate(
-    [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
+    [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }],
     { duration: 6000, easing: "ease-in-out", fill: "forwards" }
   );
 
@@ -156,8 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function animateOverlay(forward = true) {
     overlay.animate(
       forward
-        ? [{ strokeDashoffset: length }, { strokeDashoffset: 0 }]
-        : [{ strokeDashoffset: 0 }, { strokeDashoffset: length }],
+        ? [{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }]
+        : [{ strokeDashoffset: 0 }, { strokeDashoffset: 1 }],
       { duration: 6000, easing: "ease-in-out", fill: "forwards" }
     ).onfinish = () => {
       passes++;
