@@ -28,8 +28,8 @@
 
   <!-- Fonts + CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="global.css?v=1.1" />
-  <link rel="stylesheet" href="css.css?v=1.1" />
+<link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="css.css" />
 
 </head>
 
@@ -100,15 +100,17 @@
 </nav>
 
 
-<!-- Contact Form -->
-<!-- Contact Form -->
-<section class="hero contact-form">
+
+
+<!-- ===== CONTACT FORM ===== -->
+<section class="contact-form">
   <div class="wrap">
 
     <!-- Hero-style heading -->
     <div class="hero-headings">
-      <span class="eyebrow">CONTACT</span>
+      <span class="eyebrow">Contact</span>
       <h1 class="tagline">Say hello</h1>
+      <p class="hero-sub">We’d love to hear from you. Fill out the form or reach out directly by email.</p>
     </div>
 
     <form id="contactForm" 
@@ -119,8 +121,6 @@
       <!-- Honeypot -->
       <input type="text" name="hp_company" tabindex="-1" autocomplete="organization" aria-hidden="true" style="position:absolute;left:-5000px;opacity:.01;height:0;width:0" />
       <input type="hidden" name="startedAt" id="startedAt" />
-      <!-- reCAPTCHA hidden token -->
-      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
       <div class="form-row">
         <div class="form-group">
@@ -129,7 +129,7 @@
         </div>
         <div class="form-group">
           <label for="lastName">Last</label>
-          <input id="lastName" name="lastName" type="text" required />
+          <input id="lastName" name="lastName" type="text" />
         </div>
       </div>
 
@@ -155,39 +155,24 @@
       </div>
 
       <div class="controls">
-        <!-- reCAPTCHA widget -->
+        <!-- reCAPTCHA v2 checkbox widget -->
         <div class="g-recaptcha" data-sitekey="6LdNBtQrAAAAAIN6MM4S_8MJt6TGVW-c0s8nl9wF"></div>
 
-        <button id="submitBtn" type="submit" class="btn btn-primary">
+        <button id="submitBtn" type="submit" class="btn">
           Send
         </button>
         <span id="formStatus" class="status" role="status" aria-live="polite"></span>
       </div>
 
-      <small>
-        <p class="small">
-          Prefer email? Write us at 
-          <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.
-        </p>
-      </small>
+      <p class="small">
+        Prefer email? Write us at 
+        <a href="mailto:laceandlime.llc@gmail.com">laceandlime.llc@gmail.com</a>.
+      </p>
     </form>
   </div>
 </section>
 
-<!-- Thank You Modal -->
-<dialog id="thankYou" class="modal">
-  <div class="modal-card">
-    <h3>Thank you!</h3>
-    <p>Your message is on its way. We’ll reply shortly.</p>
-    <div class="modal-actions">
-      <button id="closeModal" class="btn btn-primary">Close</button>
-    </div>
-  </div>
-</dialog>
-
-
-
- <!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="wrap-heavy">
     <p class="legal">
@@ -197,6 +182,8 @@
     </p>
   </div>
 </footer>
+
+
 
 
 

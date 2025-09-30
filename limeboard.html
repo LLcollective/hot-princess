@@ -1,296 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limeboard</title>
+<link rel="stylesheet" href="global.css">
 
-  <!-- Title -->
-  <title>Limeboard | Action Dashboard & Clarity Tool | Lace & Lime™ – Energy Aligned, Action Defined™</title>
 
-  <!-- Meta Description -->
-  <meta name="description" content="Limeboard by Lace & Lime™ is your action dashboard for clarity and alignment. A balance-forward tool to organize goals, track progress, and create growth you can feel. Energy Aligned, Action Defined™." />
+<style>
+/* ===== FILTER PILLS ===== */
+.filter-pills {
+  display: flex;
+  justify-content: center;
+  gap: .6rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+.filter-pills button {
+  background: #fff;
+  border: 1px solid rgba(63,74,60,0.25);
+  border-radius: 20px;
+  padding: .4rem .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s ease;
+  font-size: 0.9rem;
+  color: #3F4A3C;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.filter-pills button.active {
+  background: linear-gradient(90deg, #F2C9CF, #F7E3E6);
+  color: #3F4A3C;
+  box-shadow: 0 4px 12px rgba(242,201,207,0.35);
+}
 
-  <!-- Keywords -->
-  <meta name="keywords" content="Limeboard, Lace & Lime dashboard, action board, clarity tool, goal setting tool, empowerment dashboard, alignment tracker, Energy Aligned Action Defined" />
-
-  <!-- Open Graph (LinkedIn / Facebook / Slack) -->
-  <meta property="og:title" content="Limeboard | Action Dashboard & Clarity Tool | Lace & Lime™" />
-  <meta property="og:description" content="Discover Limeboard — a balance-forward action dashboard by Lace & Lime™ to organize goals, track progress, and align action with clarity. Growth you can feel. Energy Aligned, Action Defined™." />
-  <meta property="og:image" content="assets/og-preview-limeboard.png" /> <!-- replace with branded preview -->
-  <meta property="og:url" content="https://www.laceandlime.com/limeboard" />
-  <meta property="og:type" content="website" />
-
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-  <meta name="theme-color" content="#7B6CF6" />
-
-  <!-- Fonts + CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="global.css?v=1.1" />
-  <link rel="stylesheet" href="css.css?v=1.1" />
-
+/* ===== CARDS GRID (layout only) ===== */
+.cards {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media(min-width:768px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
 
 </head>
-
-
-
-
-
-<body class="limeboard">
-
-
-    <!-- PROGRESS AND SPACER THAT SITS ABOVE THE HEADER!-->
-<div class="progress"><span id="progress-fill"></span></div>
-<div class="header-spacer"></div>
-
-
-  <!-- HEADER -->
-<header class="ll-nav">
-  <div class="header-wrap">
-    <a class="logo-link" href="index.html">
-      <h1 class="logo-small-centered">
-        <span class="lace">lace</span>
-        <span class="amp">&amp;</span>
-        <span class="lime">LIME</span>
-      </h1>
-      </a>
-      <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- SCRIM -->
-  <div id="nav-scrim" class="scrim" hidden></div>
-
-
-
-<!-- SIDEBAR -->
-<nav id="nav-menu" class="sidebar">
-  <!-- Logo in place of "Home" -->
-  <a href="index.html" class="logo">
-    lace<span style="color:#9BE080">&LIME</span>
-  </a>
-
-  <!-- Laced dropdown -->
-  <div class="dropdown">
-    <button class="nav-about" aria-expanded="false">
-      <span class="label-wrap">Laced<span class="caret">▾</span></span>
-    </button>
-    <div class="dropdown-menu">
-      <a href="lacednotes.html">Notes</a>
-      <a href="#">Together</a>
-      <a href="founder.html">Founder</a>
-    </div>
-  </div>
-
-  <!-- Experiences dropdown -->
-  <div class="dropdown">
-    <button class="nav-workshops" aria-expanded="false">
-      <span class="label-wrap">Experiences<span class="caret">▾</span></span>
-    </button>
-    <div class="dropdown-menu">
-      <a href="booknow.html">Book Now</a>
-      <a href="#">Approach</a>
-    </div>
-  </div>
-
-  <!-- Limeboard (active) -->
-  <a href="limeboard.html" class="active" aria-current="page">Limeboard</a>
-
-  <!-- Contact -->
-  <a href="contact.html">Contact</a>
-
-</nav>
-
-
-
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <p class="eyebrow">LIMEBOARD</p>
-    <h1 class="tagline">Ideas, energy, and sparks in motion</h1>
-    <p class="hero-sub">
-      The Limeboard is a rotating mix of reflections, prompts, and highlights.
-      A space to explore what’s stirring and what’s next.
-    </p>
-  </div>
+<body>
+<!-- ===== HERO HEADINGS ===== -->
+<section class="hero-headings">
+  <span class="eyebrow">Explore</span>
+  <h1 class="tagline">Limeboard</h1>
+  <p class="hero-sub">
+    A collection of reflections, actions, and spotlights.
+  </p>
 </section>
 
-
-<!-- FILTERS -->
-<div class="filters">
-  <button data-filter="all" class="active">All</button>
+<!-- Filter Pills -->
+<div class="filter-pills">
+  <button class="active" data-filter="all">All</button>
   <button data-filter="insights">Insights</button>
   <button data-filter="energy">Energy</button>
   <button data-filter="spotlight">Spotlight</button>
 </div>
 
+<!-- ===== CARDS ===== -->
+<div class="cards">
 
-<!-- GRID SECTION -->
-<section class="grid">
-
-  <!-- Prompt Library (Archived) -->
-  <div class="card insights archive">
-    <span class="badge archive">Archive</span>
-    <h3>Prompt Library</h3>
-    <p>An always-growing bank of Lace & Lime™ prompts. Pick a reflection or an action spark whenever you need it.</p>
+  <!-- Compassion & Empathy -->
+  <div class="card insights">
+    <span class="badge insights">Reflection</span>
+    <h3>The Test of Compassion</h3>
+    <p>Empathy often flows most easily toward what feels familiar or relatable. Compassion asks us to reach beyond that, to act with care even when it feels uncomfortable. 
+      <a href="#compassion-modal" class="read-more">Explore</a>
+    </p>
   </div>
 
-<!-- Insight / Reflection -->
-<div class="card insights">
-  <span class="badge insights">Reflection</span>
-  <h3>Test of Compassion</h3>
-  <p>
-    Empathy is often selective, drawn to what’s familiar or easy to sympathize with. 
-    Compassion calls us deeper, to act even when it’s uncomfortable. 
-    <a href="#compassion-modal" class="read-more">Explore</a>
-  </p>
-</div>
+  <!-- Notes -->
+  <div class="card insights">
+    <span class="badge insights">Notes</span>
+    <h3>Notes from Sharon</h3>
+    <p>Welcome to the early launch of Lace & Lime. Browse Limeboard topics; this will be the most updated section moving forward.</p>
+  </div>
 
-<!-- Personal Anchor -->
-<div class="card insights">
-  <span class="badge insights">Notes</span>
-  <h3>Notes from Sharon</h3>
-  <p>
-    Welcome to the early launch of Lace & Lime. Browse Limeboard topics; this will be the most updated section moving forward.
-  </p>
-</div>
-
-  <!-- Community Thread -->
+  <!-- Laced Together -->
   <div class="card spotlight">
     <span class="badge spotlight">Together</span>
     <h3>Laced Together</h3>
     <p>A shared thread of quotes, resources, and sparks of thought. 
-       <a href="#subscribe-modal">Join the list</a> to follow along in the founders club.
+      <a href="#subscribe-modal" class="read-more">Join the list</a> to follow along in the founders club.
     </p>
   </div>
 
-  <!-- Spotlight Feature -->
+  <!-- Limelight -->
   <div class="card spotlight">
     <span class="badge spotlight">Limelight</span>
     <h3>Lime of the Month</h3>
     <p>A monthly highlight celebrating a story, theme, or moment that deserves the spotlight.</p>
   </div>
 
-  <!-- Practical Tools -->
+  <!-- Tools -->
   <div class="card energy">
     <span class="badge energy">Tools</span>
     <h3>Momentum Tools</h3>
     <p>Checklists, guides, and playlists built to clear your head and fuel your next step.</p>
   </div>
 
-  <!-- Grounding (Archived) -->
-  <div class="card energy archive">
-    <span class="badge archive">Archive</span>
-    <h3>Rituals</h3>
-    <p>Simple grounding practices like seasonal resets, daily pauses, or breathwork to bring you back to center.</p>
+  <!-- Starter demo cards -->
+  <div class="card insights">
+    <span class="badge insights">Insights</span>
+    <h3>Clarity Spark</h3>
+    <p>A quick thought that shifts perspective and brings a new angle to your day.</p>
   </div>
 
-  <!-- Aesthetic / Vibes (Archived) -->
-  <div class="card creativity archive">
-    <span class="badge archive">Archive</span>
-    <h3>Moodboard</h3>
-    <p>Colors, visuals, and sounds that shape the Lace & Lime™ vibe — playful, grounded, and balance-forward.</p>
+  <div class="card energy">
+    <span class="badge energy">Energy</span>
+    <h3>Momentum Check</h3>
+    <p>A grounding reminder to balance action with sustainable pacing.</p>
   </div>
 
-  <!-- Engagement (Archived) -->
-  <div class="card creativity archive">
-    <span class="badge archive">Archive</span>
-    <h3>Lime Polls</h3>
-    <p>Quick interactive check-ins to share what you’re noticing and where your energy is going. 
-       Light, fast, and real-time.
-    </p>
+  <div class="card spotlight">
+    <span class="badge spotlight">Spotlight</span>
+    <h3>Community Highlight</h3>
+    <p>Showcasing stories, people, and ideas worth lifting up.</p>
   </div>
 
-</section> <!-- closes the ONE grid -->
+</div><!-- /.cards -->
 
-
-<style> .card.archive {
-  display: none !important;
-}
-
-</style>
-
-
-  <!-- MODAL -->
-
-<!-- MODAL -->
-<div id="compassion-modal" class="modal">
+<!-- ===== MODALS ===== -->
+<div id="compassion-modal" class="modal" hidden>
   <div class="modal-box">
     <h3>The Test of Compassion</h3>
-<p>
- Empathy often flows most easily toward what feels familiar or relatable. Compassion asks us to reach beyond that, to act with care even when it feels uncomfortable or unfamiliar. The real test of compassion is whether we extend it when silence feels easier than accountability, and when true inclusion asks us to look past what is convenient.
-</p>
-
-<div class="hover-diamond">
-  How do we decide who deserves our empathy, and what does compassion look like when no one is left out?
-</div>
-
-<p>- with Lace & Lime</p>
-    <button class="close-modal" style="margin-top:1rem;">Close</button>
+    <p>
+      Empathy often flows most easily toward what feels familiar or relatable. Compassion asks us to reach beyond that, to act with care even when it feels uncomfortable or unfamiliar. 
+      The real test of compassion is whether we extend it when silence feels easier than accountability, and when true inclusion asks us to look past what is convenient.
+    </p>
+    <button class="close-modal">Close</button>
   </div>
 </div>
 
-<div id="subscribe-modal" class="modal">
+<div id="subscribe-modal" class="modal" hidden>
   <div class="modal-box">
     <h3>Laced Together</h3>
     <p>Subscribe to join the shared thread. Get notes, quotes, and resources straight to your inbox.</p>
-
-    <!-- ConvertKit Minimal Embed -->
-    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-    <form action="https://app.kit.com/forms/8470356/subscriptions" 
-          method="post" data-sv-form="8470356" data-uid="cada407188">
-      
-      <input type="email" 
-             name="email_address" 
-             placeholder="Your email" 
-             required
-             style="padding:0.75rem; width:100%; max-width:400px; border:1px solid #ccc; border-radius:6px; margin-bottom:0.5rem;">
-      
-      <button type="submit"
-              style="background:#7B6CF6; color:white; border:none; padding:0.75rem 1.5rem; border-radius:6px; cursor:pointer;">
-        Join
-      </button>
-    </form>
-    <!-- End ConvertKit Minimal Embed -->
-
-    <button class="close-modal" style="margin-top:1rem;">Close</button>
+    <button class="close-modal">Close</button>
   </div>
 </div>
-
-  <!-- ===== FOOTER ===== -->
-<footer>
-  <div class="wrap-heavy">
-    <p class="legal">
-      Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span> is our guiding framework for growth you can feel.  
-      Logos and names are trademarks and/or multi-class registered trademarks of © 2025 Lace & Lime™ LLC. All rights reserved. · 
-      <a href="privacy-terms.html">Privacy and Terms</a>
-    </p>
-  </div>
-</footer>
-
-
 
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".filters button");
+  const buttons = document.querySelectorAll(".filter-pills button");
   const cards = document.querySelectorAll(".card");
+  const modals = document.querySelectorAll(".modal");
+  const closeButtons = document.querySelectorAll(".close-modal");
 
+  // ===== FILTER BUTTON LOGIC =====
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
       const filter = btn.getAttribute("data-filter");
 
-      // Highlight active button
+      // Reset active state
       buttons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
 
       // Show/hide cards
       cards.forEach(card => {
-        if (filter === "all" || card.classList.contains(filter)) {
+        if (filter === "all") {
+          card.style.display = "block";   // show everything
+        } else if (card.classList.contains(filter)) {
           card.style.display = "block";
         } else {
           card.style.display = "none";
@@ -298,11 +177,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  // ===== MODAL OPEN LOGIC =====
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", e => {
+      const targetId = link.getAttribute("href").substring(1);
+      const modal = document.getElementById(targetId);
+      if (modal) {
+        e.preventDefault();
+        modal.removeAttribute("hidden");
+      }
+    });
+  });
+
+  // ===== MODAL CLOSE LOGIC =====
+  closeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.closest(".modal").setAttribute("hidden", true);
+    });
+  });
+
+  // Close modal on outside click
+  modals.forEach(modal => {
+    modal.addEventListener("click", e => {
+      if (e.target === modal) {
+        modal.setAttribute("hidden", true);
+      }
+    });
+  });
 });
 </script>
 
 
 
-  <script src="js/main.js?v=1.0"></script>
 </body>
 </html>

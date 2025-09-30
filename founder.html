@@ -36,16 +36,310 @@
   <meta name="theme-color" content="#7B6CF6"/>
 
  <!-- <!-- ===== FONTS + CSS ===== -->
-<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Global baseline first -->
-<link rel="stylesheet" href="global.css?v=1.1"/>
 
-<!-- Page-specific + overrides -->
-<link rel="stylesheet" href="css/founder.css?v=1.1"/>
+<link rel="stylesheet" href="global.css?v=1.1"/>
 <link rel="stylesheet" href="css.css?v=1.1"/>
 
 </head>
+
+<style>
+/* ============================ 
+   FOUNDER PAGE ONLY STYLES
+   ============================ */
+
+/* ===== Timeline Component ===== */
+.timeline {
+  position: relative;
+  margin: 4rem auto;
+  padding: 2rem 1rem;
+}
+.milestone .dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #B3BAFF, #F2C9CF);
+  box-shadow: 0 0 10px rgba(179, 186, 255, 0.45),
+              0 0 16px rgba(242, 201, 207, 0.45);
+  z-index: 2;
+}
+.milestone h4 {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #3F4A3C;
+}
+.milestone p {
+  font-size: 0.95rem;
+  color: #5a5a5a;
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+/* --- Mobile Timeline --- */
+@media (max-width: 1023px) {
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    background: linear-gradient(#B3BAFF, #F2C9CF);
+    z-index: 1;
+    height: 0;
+    animation: drawLineY 1.5s ease forwards;
+  }
+  .milestone {
+    margin: 3rem 0;
+    width: 100%;
+    max-width: 500px;
+  }
+  .milestone .dot {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: popDot 0.6s ease forwards;
+  }
+  .milestone:nth-child(1) .dot { animation-delay: 0.5s; }
+  .milestone:nth-child(2) .dot { animation-delay: 1s; }
+  .milestone:nth-child(3) .dot { animation-delay: 1.5s; }
+  .milestone:nth-child(4) .dot { animation-delay: 2s; }
+  .milestone h4, .milestone p {
+    width: 45%;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+  }
+  .milestone:nth-child(odd) h4,
+  .milestone:nth-child(odd) p {
+    text-align: right;
+    margin-right: 55%;
+  }
+  .milestone:nth-child(even) h4,
+  .milestone:nth-child(even) p {
+    text-align: left;
+    margin-left: 55%;
+  }
+  .milestone h4 { margin-bottom: 0.35rem; }
+}
+
+/* --- Desktop Timeline --- */
+@media (min-width: 1024px) {
+  .timeline {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 1400px;
+    position: relative;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #B3BAFF, #F2C9CF);
+    width: 0;
+    animation: drawLineX 1.5s ease forwards;
+  }
+  .milestone {
+    flex: 1;
+    min-width: 200px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+  }
+  .milestone .dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: popDot 0.6s ease forwards;
+  }
+  .milestone h4 {
+    position: absolute;
+    bottom: calc(100% + 2.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .milestone p {
+    position: absolute;
+    top: calc(100% + 2.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 600px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+  }
+}
+
+/* --- Timeline Animations --- */
+@keyframes drawLineX { from { width: 0; opacity: 0; } to { width: 100%; opacity: 1; } }
+@keyframes drawLineY { from { height: 0; opacity: 0; } to { height: 100%; opacity: 1; } }
+@keyframes popDot { 0% { transform: scale(0.5); opacity: 0; } 80% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeUp { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+/* ===== Journey Component ===== */
+.journey::before { display: none !important; }
+.journey-step {
+  position: relative;
+  padding-left: 2.5rem;
+}
+.journey-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: -0.25rem;
+  top: 1.2rem;
+  bottom: -1.2rem;
+  width: 3px;
+  background: linear-gradient(to bottom, #B3BAFF, #F2C9CF);
+  opacity: 0.9;
+}
+.journey-step::before {
+  content: "";
+  position: absolute;
+  left: -0.65rem;
+  top: 0.35rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #F2C9CF;
+  box-shadow: 0 0 6px rgba(242, 201, 207, 0.4),
+              0 0 10px rgba(179, 186, 255, 0.35);
+}
+.completion {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+.completion-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #3F4A3C;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  font-size: 1rem;
+  color: #3F4A3C;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: scaleIn 0.8s ease forwards;
+  animation-delay: 3s;
+}
+
+/* ===== Founder — Credentials Accordion ===== */
+.section-box.credentials {
+  margin-inline: auto;
+  max-width: var(--content-max);
+  padding-inline: var(--gutter-desktop);
+}
+.section-box.credentials .accordion-list {
+  display: grid;
+  gap: .6rem;
+  margin-top: .6rem;
+}
+.section-box.credentials details.accordion {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid var(--ink-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.section-box.credentials details.accordion > summary {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: var(--ink-900);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.section-box.credentials details.accordion .body {
+  background: rgba(255,255,255,0.2);
+  padding: 1rem 1.25rem;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+/* ===== Founder — Card ===== */
+.section-box.founder-card {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter-desktop);
+}
+.section-box.founder-card .founder-card__figure {
+  float: left;
+  width: 240px;
+  margin: 0 28px 20px 0;
+}
+.section-box.founder-card .founder-card__figure img {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--ink-200);
+}
+.section-box.founder-card .hero-headings h1 {
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 600;
+  color: var(--ink-900);
+}
+.section-box.founder-card p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-700);
+}
+
+/* ===== Modal ===== */
+#systems-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+#systems-modal.active { display: flex; }
+#systems-modal .modal-content {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px) saturate(160%);
+  border-radius: 14px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  border: 1px solid rgba(216, 122, 148, 0.3);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+#systems-modal .modal-content h3 {
+  color: #3F4A3C;
+  margin-bottom: 1rem;
+}
+#systems-modal .modal-content .button {
+  background: linear-gradient(90deg, #D87A94, #B3BAFF);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+</style>
+
+
+
+
 <body class="founder">
 
 
@@ -57,73 +351,104 @@
 
 <!-- ===== SIDEBAR ===== --> <nav id="nav-menu" class="sidebar"><a href="index.html" class="logo">lace<span style="color:#9BE080">&LIME</span></a><div class="dropdown"><button class="nav-about" aria-expanded="false"><span class="label-wrap">Laced<span class="caret">▾</span></span></button><div class="dropdown-menu"><a href="lacednotes.html">Notes</a><a href="#">Together</a><a href="founder.html" class="active" aria-current="page">Founder</a></div></div><div class="dropdown"><button class="nav-workshops" aria-expanded="false"><span class="label-wrap">Experiences<span class="caret">▾</span></span></button><div class="dropdown-menu"><a href="booknow.html">Book Now</a><a href="#">Approach</a></div></div><a href="limeboard.html">Limeboard</a><a href="contact.html">Contact</a></nav>
 
-<!-- ===== MAIN CONTENT ===== -->
-<section class="section-box founder-card" style="margin-top:3rem;">
-  <div class="wrap-medium">
-    <div style="background:rgba(255,255,255,0.45);backdrop-filter:blur(6px);border-radius:12px;padding:1.5rem;box-shadow:0 4px 10px rgba(0,0,0,0.08);overflow:hidden;">
+<!-- ===== MAIN CONTENT: FOUNDER CARD ===== -->
+<section class="section-box founder-card animate-on-scroll fade-up" style="margin-top:3rem;">
+  <div class="founder-card__inner" style="background:rgba(255,255,255,0.45);backdrop-filter:blur(6px);border-radius:12px;padding:1.5rem;box-shadow:0 4px 10px rgba(0,0,0,0.08);overflow:hidden;">
 
-     <!-- Founder Image -->
-<figure class="animate-on-scroll fade-in" style="float:left;width:200px;max-width:200px;margin:0 1.5rem 1rem 0;position:relative;top:1rem;">
-  <picture>
-    <source srcset="assets/founder.avif" type="image/avif">
-    <source srcset="assets/founder.webp" type="image/webp">
-    <img src="assets/founder.jpg" 
-         alt="Headshot of Sharon Gutierrez, founder of Lace & Lime™" 
-         width="200" height="200"
-         loading="eager" 
-         decoding="async" 
-         style="width:100%;height:auto;border-radius:12px;border:1px solid #e0e6ee;">
-  </picture>
-</figure>
+    <!-- Founder Image -->
+    <figure class="founder-card__figure animate-on-scroll fade-in">
+      <picture>
+        <source srcset="assets/founder.avif" type="image/avif">
+        <source srcset="assets/founder.webp" type="image/webp">
+        <img src="assets/founder.jpg" 
+             alt="Headshot of Sharon Gutierrez, founder of Lace & Lime™" 
+             width="220" height="220"
+             loading="eager" 
+             decoding="async" />
+      </picture>
+    </figure>
 
+    <!-- Headings -->
+    <div class="hero-headings" style="color:#24324a;line-height:1.65;">
+      <span class="animate-on-scroll fade-up eyebrow">MEET THE FOUNDER</span>
+      <h1 class="shimmer-text animate-on-scroll fade-up">
+        Hi, I’m Sharon.
+      </h1>
+    </div>
 
-      <!-- Founder Text -->
-      <div style="color:#24324a;line-height:1.65;">
-        <span class="animate-on-scroll fade-up" style="font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500;color:#7B6CF6;display:block;margin-top:1rem;margin-bottom:.5rem;text-align:left;">
-          MEET THE FOUNDER
-        </span>
-        <h1 class="shimmer-text" style="font-family:'Tenor Sans',serif;font-size:2rem;font-weight:400;margin:0 0 1rem 0;display:block;width:100%;text-align:left;">
-          Hi, I’m Sharon.
-        </h1>
-      </div>
+    <!-- Desktop copy -->
+    <div class="founder-desktop animate-on-scroll fade-in" style="font-size:1rem;line-height:1.65;">
+      <p>After years working across hospitals, nonprofits, and federal emergency response, I learned that resilience is not just about strategy. It requires systems that bring clarity together with compassion. Lace & Lime™ was born from that truth: a space where structure meets intuition and growth stays grounded.</p>
+      <p>I’ve never measured my career by titles. My focus has always been on building and applying tools that create measurable impact where they are needed most. That perspective has guided my work across diverse roles and continues to shape the way I approach community wellness and empowerment today.</p>
+      <p>That expertise comes from compliance and accreditation work, including serving as a public health advisor in emergency response, an accreditation manager for post-graduate medical education, and a nonprofit program manager. Each role strengthened my ability to combine structure with humanity, a balance that now anchors the Lace & Lime™ approach.</p>
+    </div>
 
-      <!-- Mobile copy -->
-      <div class="founder-mobile animate-on-scroll fade-in" style="display:none;font-size:1rem;line-height:1.65;">
-        <p>After years in hospitals, nonprofits, and federal emergency response, I learned that resilience requires more than strategy. It takes systems that bring clarity with compassion. Lace & Lime™ was born from that truth: a space where structure meets intuition and growth stays grounded.</p>
-        <p>My focus has always been building and applying tools that create measurable impact. That expertise comes from roles in emergency response, medical education, and nonprofit leadership. Each taught me how to balance structure with humanity, the balance that anchors the Lace & Lime™ approach.</p>
-      </div>
-
-      <!-- Desktop copy -->
-      <div class="founder-desktop animate-on-scroll fade-in" style="font-size:1rem;line-height:1.65;">
-        <p>After years working across hospitals, nonprofits, and federal emergency response, I learned that resilience is not just about strategy. It requires systems that bring clarity together with compassion. Lace & Lime™ was born from that truth: a space where structure meets intuition and growth stays grounded.</p>
-        <p>I’ve never measured my career by titles. My focus has always been on building and applying tools that create measurable impact where they are needed most. That perspective has guided my work across diverse roles and continues to shape the way I approach community wellness and empowerment today.</p>
-        <p>That expertise comes from compliance and accreditation work, including serving as a public health advisor in emergency response, an accreditation manager for post-graduate medical education, and a nonprofit program manager. Each role strengthened my ability to combine structure with humanity, a balance that now anchors the Lace & Lime™ approach.</p>
-      </div>
+    <!-- Mobile copy -->
+    <div class="founder-mobile animate-on-scroll fade-in" style="font-size:1rem;line-height:1.65;">
+      <p>After years in hospitals, nonprofits, and federal emergency response, I learned resilience isn’t only about strategy. It requires systems that bring clarity together with compassion. Lace & Lime™ was born from that truth: a space where structure meets intuition and growth stays grounded.</p>
+      <p>I don’t measure my career by titles. My focus has been on building and applying tools that create measurable impact where they’re needed most. That continues to guide how I approach community wellness and empowerment.</p>
+      <p>My expertise comes from compliance and accreditation work, including serving as a public health advisor, an accreditation manager for graduate medical education, and a nonprofit program manager. Each role strengthened my ability to combine structure with humanity — the balance that anchors Lace & Lime™ today.</p>
+    </div>
 
     <!-- Chips -->
-<div class="chips animate-on-scroll fade-in">
-  <!-- Degrees -->
-  <span>Master of Public Health · Adelphi University</span>
-  <span>B.S. · Math for Tech, Biology, Psychology · SUNY</span>
-  
-  <!-- Certifications -->
-  <span>Certified Health Education Specialist (CHES®)</span>
-  <span>Research Ethics Certified (CITI Program)</span>
-  
-  <!-- Roles -->
-  <span>Public Health Advisor · Emergency Response</span>
-  <span>Accreditation & Compliance Leadership</span>
-  
-  <!-- Skills -->
-  <span>Applied Data & Impact Analysis</span>
-  <span>Systems & Workflow Optimization</span>
-</div>
+    <div class="chips animate-on-scroll fade-in">
+      <span>Master of Public Health · Adelphi University</span>
+      <span>B.S. · Math for Tech, Biology, Psychology · SUNY</span>
+      <span>Certified Health Education Specialist (CHES®)</span>
+      <span>Research Ethics Certified (CITI Program)</span>
+      <span>Public Health Advisor · Emergency Response</span>
+      <span>Accreditation & Compliance Leadership</span>
+      <span>Applied Data & Impact Analysis</span>
+      <span>Systems & Workflow Optimization</span>
+    </div>
+  </div>
 </section>
 
+<!-- ===== CREDENTIALS ===== -->
+<section class="section-box credentials animate-on-scroll fade-up" style="margin-bottom:1.5rem;">
+  <h2 class="animate-on-scroll fade-up">Credentials</h2>
+  <div class="accordion-list animate-on-scroll stagger-fade">
 
-<!-- ===== SHIMMER KEYFRAMES ===== --> <style>@keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}@media (max-width:768px){.founder-card figure{float:none!important;margin:0 auto 1rem auto!important;display:block!important;}.founder-eyebrow{ALIGN-TEXT:center!important;}}</style>
+    <details class="accordion animate-on-scroll scale-in">
+      <summary>Public Health Systems (MPH) <span class="arrow">›</span></summary>
+      <div class="body">
+        <ul>
+          <li>Applied epidemiology to track population health trends</li>
+          <li>Biostatistics & data analysis for decision-making</li>
+          <li>Health care finance & reimbursement systems</li>
+          <li>Program planning & evaluation for measurable outcomes</li>
+          <li>Social, behavioral & global health policy</li>
+        </ul>
+      </div>
+    </details>
 
-<!-- ===== CREDENTIALS ===== --> <section class="section-box credentials animate-on-scroll fade-up" style="margin-bottom:1.5rem;"><div class="wrap-medium"><h2 class="animate-on-scroll fade-up">Credentials</h2><div class="accordion-list animate-on-scroll stagger-fade"><details class="accordion animate-on-scroll scale-in"><summary>Public Health Systems (MPH) <span class="arrow">›</span></summary><div class="body"><ul><li>Applied epidemiology to track population health trends</li><li>Biostatistics & data analysis for decision-making</li><li>Health care finance & reimbursement systems</li><li>Program planning & evaluation for measurable outcomes</li><li>Social, behavioral & global health policy</li></ul></div></details><details class="accordion animate-on-scroll scale-in"><summary>Health Education (CHES®) <span class="arrow">›</span></summary><div class="body"><ul><li>Needs assessment & community capacity building</li><li>Planning & implementing health education programs</li><li>Evaluation & research for program impact</li><li>Advocacy & communication for public health change</li><li>Leadership, management & professional ethics</li></ul></div></details><details class="accordion animate-on-scroll scale-in"><summary>Compliance & Accreditation <span class="arrow">›</span></summary><div class="body"><ul><li>Public Health Advisor in emergency response</li><li>Medical education accreditation management</li><li>Oversight of compliance & regulatory training</li><li>Nonprofit program management & systems alignment</li></ul></div></details></div></div></section>
+    <details class="accordion animate-on-scroll scale-in">
+      <summary>Health Education (CHES®) <span class="arrow">›</span></summary>
+      <div class="body">
+        <ul>
+          <li>Needs assessment & community capacity building</li>
+          <li>Planning & implementing health education programs</li>
+          <li>Evaluation & research for program impact</li>
+          <li>Advocacy & communication for public health change</li>
+          <li>Leadership, management & professional ethics</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="accordion animate-on-scroll scale-in">
+      <summary>Compliance & Accreditation <span class="arrow">›</span></summary>
+      <div class="body">
+        <ul>
+          <li>Public Health Advisor in emergency response</li>
+          <li>Medical education accreditation management</li>
+          <li>Oversight of compliance & regulatory training</li>
+          <li>Nonprofit program management & systems alignment</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</section>
 
 <!-- ===== TIMELINE ===== -->
 <section class="section-box" id="timeline">
@@ -234,6 +559,14 @@
 
 <!-- ===== SYSTEMS ===== --> <section id="systems" class="section-box animate-on-scroll fade-up"><div class="wrap-medium"><div class="systems-card animate-on-scroll scale-in"><h2>Systems That Work</h2><p>What moves people forward isn’t just a tool. It’s a clear method, strong leadership, <i>and tools</i> that fit the work.</p><button class="button" id="systems-btn">See how the systems come together →</button></div></div></section><div id="systems-modal" class="animate-on-scroll fade-up"><div class="modal-content animate-on-scroll scale-in"><h3>Energy Aligned, Action Defined & the Lace & Lime approach</h3><p>The Approach page will open up this fall. Clarity and action, side by side.</p><button class="button modal-close" type="button">Close</button></div></div>
 
-<!-- ===== FOOTER ===== --> <footer class="animate-on-scroll fade-up"><div class="wrap-heavy"><p class="legal">Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span> is our guiding framework for growth you can feel. Logos and names are trademarks and/or multi-class registered trademarks of © 2025 Lace & Lime™ LLC. All rights reserved. · <a href="privacy-terms.html">Privacy and Terms</a></p></div></footer>
+<!-- ===== FOOTER ===== --> <footer>
+    <div class="wrap-heavy">
+      <p class="legal">
+        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span> is our guiding framework for growth you can feel.  
+        Logos and names are trademarks and/or multi-class registered trademarks of © 2025 Lace & Lime™ LLC. All rights reserved. · 
+        <a href="privacy-terms.html">Privacy and Terms</a>
+      </p>
+    </div>
+  </footer>
 
 <!-- ===== SCRIPTS ===== --> <script src="js/main.js" defer></script><script src="js/SEO.js" defer></script></body></html>
