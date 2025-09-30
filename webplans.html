@@ -395,7 +395,58 @@ body {
   display: block;
   margin-bottom: 0.2rem;
 }
+/* ===== Hero Logo Lockup in Heading ===== */
+.hero-headings .tagline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  margin-bottom: 0.75rem;
+}
 
+/* Lace & Lime wordmark inside hero */
+.hero-headings .lace {
+  font-family: "Raleway", sans-serif;
+  font-weight: 200;
+  text-transform: lowercase;
+  font-size: 2.2rem;
+  color: #3F4A3C;
+  letter-spacing: -0.02em;
+}
+
+.hero-headings .amp {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #3F4A3C;
+  margin: 0 -0.1rem;
+  position: relative;
+  top: .1rem;
+}
+
+.hero-headings .lime {
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 2rem;
+  color: var(--brand); /* pink */
+  letter-spacing: 0.02em;
+}
+
+/* Website Plans descriptor — break out of H1 scaling */
+.hero-headings .plans-sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;              /* independent of h1 */
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 0.4rem;
+  color: rgba(95,112,138,0.8);
+  letter-spacing: 0.06em;
+  line-height: 1;                 /* keeps it tight */
+  align-self: center;             /* sits neatly on baseline */
+}
 
 </style>
 </head>
@@ -403,15 +454,20 @@ body {
 <link rel="stylesheet" href="global.css">
 
 
+<body>
 
-<body>  <!-- ===== HERO HEADINGS ===== -->
-  <section class="hero-headings">
-    <span class="eyebrow">Plans</span>
-    <h1 class="tagline">Lace and Lime Website Plans</h1>
-    <p class="hero-sub">
-      Submit an inquiry in the cart below to get started.
-    </p>
-  </section>
+<section class="hero-headings">
+  <span class="eyebrow">Plans</span>
+  <h1 class="tagline">
+    <span class="lace">lace</span>
+    <span class="amp">&amp;</span>
+    <span class="lime">LIME</span>
+    <span class="plans-sub">Website Plans</span>
+  </h1>
+  <p class="hero-sub">
+    Submit an inquiry in the cart below to get started.
+  </p>
+</section>
 
 <!-- ===== PACKAGES / ACCORDIONS ===== -->
 <div class="packages">
@@ -558,10 +614,9 @@ body {
       <div class="plan-header">
         <div class="title-wrap">
           <h2>Add-ons</h2>
-          <span class="chip">Optional</span>
-          <p class="subtitle">For advanced needs</p>
+          <span class="chip">Submit Inquiry</span>
         </div>
-        <div class="price">Inquiry Required</div>
+        <div class="price">Advanced</div>
       </div>
       <span class="accordion-icon">+</span>
     </div>

@@ -34,20 +34,94 @@
   box-shadow: 0 4px 12px rgba(242,201,207,0.35);
 }
 
-/* ===== CARDS GRID (layout only) ===== */
-.cards {
+/* Notepad-style cards */
+.notepad-cards {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* auto adjusts */
   gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: var(--unified-cap);
+  margin: 2rem auto;
+  padding: 0 var(--gutter-mobile);
 }
-@media(min-width:768px) {
-  .cards { grid-template-columns: repeat(2, 1fr); }
+
+.notepad-cards .card {
+  background: rgba(255,255,255,0.75); /* semi-transparent */
+  backdrop-filter: blur(6px) saturate(140%);
+  border: 1px solid rgba(216,122,148,0.25); /* mauve border hint */
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
+
+.notepad-cards .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.notepad-cards h3 {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--ink-dark);
+}
+
+/* ===== PIN STYLE ===== */
+.pin {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--brand); /* default fallback */
+  box-shadow:
+    inset -2px -2px 4px rgba(0,0,0,0.2),  /* inner shading */
+    inset 2px 2px 3px rgba(255,255,255,0.3), /* highlight */
+    1px 2px 3px rgba(0,0,0,0.25); /* outer drop shadow */
+  transform: rotate(-10deg); /* tilt for realism */
+}
+
+.pin::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 2px;
+  height: 8px;
+  background: rgba(0,0,0,0.4); /* pin stem */
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+/* Category colors */
+.pin.insights { background: #B3BAFF; }   /* violet */
+.pin.spotlight { background: #F2C9CF; }  /* mauve-pink */
+.pin.energy { background: #9BE080; }     /* lime */
+
+
+
+.eyebrow.category {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+/* Color tie-ins */
+.card.insights .eyebrow.category { color: #B3BAFF; }   /* purple-blue */
+.card.energy   .eyebrow.category { color: #9BE080; }   /* lime */
+.card.spotlight .eyebrow.category { color: #D87A94; }  /* mauve-pink */
+
+
+
+
 </style>
 
 </head>
 <body>
+
 <!-- ===== HERO HEADINGS ===== -->
 <section class="hero-headings">
   <span class="eyebrow">Explore</span>
@@ -57,7 +131,7 @@
   </p>
 </section>
 
-<!-- Filter Pills -->
+<!-- ===== FILTER PILLS ===== -->
 <div class="filter-pills">
   <button class="active" data-filter="all">All</button>
   <button data-filter="insights">Insights</button>
@@ -65,148 +139,167 @@
   <button data-filter="spotlight">Spotlight</button>
 </div>
 
-<!-- ===== CARDS ===== -->
-<div class="cards">
 
-  <!-- Compassion & Empathy -->
-  <div class="card insights">
-    <span class="badge insights">Reflection</span>
+
+
+<!-- ===== NOTEPAD-STYLE CARDS ===== -->
+<div class="cards notepad-cards">
+
+
+
+
+<!-- ===== NOTEPAD-STYLE CARDS with Pins ===== -->
+
+
+  <!-- Compassion Card + Modal -->
+  <div class="card insights modal-wrap">
+    <span class="pin insights"></span>
+    <span class="eyebrow category"></span>
     <h3>The Test of Compassion</h3>
-    <p>Empathy often flows most easily toward what feels familiar or relatable. Compassion asks us to reach beyond that, to act with care even when it feels uncomfortable. 
-      <a href="#compassion-modal" class="read-more">Explore</a>
+    <p>
+     Empathy often flows most easily toward what feels familiar. Compassion calls us to extend care even when it feels inconvenient or uncomfortable. 
+      <button class="btn-eyebrow open-modal">Explore</button>
     </p>
+    <!-- Modal -->
+    <div class="modal">
+      <div class="modal-box">
+        <h3>The Test of Compassion</h3>
+        <p>
+          When it feels inconvenient, when silence would be easier, or when true inclusion asks for more than comfort.
+        </p>
+        <button class="btn-eyebrow close-modal">Close</button>
+      </div>
+    </div>
   </div>
 
-  <!-- Notes -->
+  <!-- Notes Card -->
   <div class="card insights">
-    <span class="badge insights">Notes</span>
+    <span class="pin insights"></span>
+    <span class="eyebrow category"></span>
     <h3>Notes from Sharon</h3>
     <p>Welcome to the early launch of Lace & Lime. Browse Limeboard topics; this will be the most updated section moving forward.</p>
   </div>
 
-  <!-- Laced Together -->
-  <div class="card spotlight">
-    <span class="badge spotlight">Together</span>
+  <!-- Laced Together Card + Modal -->
+  <div class="card spotlight modal-wrap">
+    <span class="pin spotlight"></span>
+    <span class="eyebrow category"></span>
     <h3>Laced Together</h3>
-    <p>A shared thread of quotes, resources, and sparks of thought. 
-      <a href="#subscribe-modal" class="read-more">Join the list</a> to follow along in the founders club.
+    <p>
+      A shared thread of quotes, resources, and sparks of thought. 
+      <button class="btn-eyebrow open-modal">Join the Thread</button>
     </p>
+    <!-- Modal -->
+    <div class="modal">
+      <div class="modal-box">
+        <h3>Laced Together</h3>
+        <p>
+          Subscribe to join the shared thread. Get notes, quotes, and resources straight to your inbox.
+        </p>
+        <button class="btn-eyebrow close-modal">Close</button>
+      </div>
+    </div>
   </div>
 
   <!-- Limelight -->
   <div class="card spotlight">
-    <span class="badge spotlight">Limelight</span>
+    <span class="pin spotlight"></span>
+    <span class="eyebrow category"></span>
     <h3>Lime of the Month</h3>
     <p>A monthly highlight celebrating a story, theme, or moment that deserves the spotlight.</p>
   </div>
 
-  <!-- Tools -->
+  <!-- Momentum Tools -->
   <div class="card energy">
-    <span class="badge energy">Tools</span>
+    <span class="pin energy"></span>
+    <span class="eyebrow category"></span>
     <h3>Momentum Tools</h3>
     <p>Checklists, guides, and playlists built to clear your head and fuel your next step.</p>
   </div>
 
-  <!-- Starter demo cards -->
+  <!-- Clarity Spark -->
   <div class="card insights">
-    <span class="badge insights">Insights</span>
+    <span class="pin insights"></span>
+    <span class="eyebrow category"></span>
     <h3>Clarity Spark</h3>
     <p>A quick thought that shifts perspective and brings a new angle to your day.</p>
   </div>
 
+  <!-- Momentum Check -->
   <div class="card energy">
-    <span class="badge energy">Energy</span>
+    <span class="pin energy"></span>
+    <span class="eyebrow category"></span>
     <h3>Momentum Check</h3>
     <p>A grounding reminder to balance action with sustainable pacing.</p>
   </div>
 
+  <!-- Community Highlight -->
   <div class="card spotlight">
-    <span class="badge spotlight">Spotlight</span>
+    <span class="pin spotlight"></span>
+    <span class="eyebrow category"></span>
     <h3>Community Highlight</h3>
     <p>Showcasing stories, people, and ideas worth lifting up.</p>
   </div>
 
-</div><!-- /.cards -->
-
-<!-- ===== MODALS ===== -->
-<div id="compassion-modal" class="modal" hidden>
-  <div class="modal-box">
-    <h3>The Test of Compassion</h3>
-    <p>
-      Empathy often flows most easily toward what feels familiar or relatable. Compassion asks us to reach beyond that, to act with care even when it feels uncomfortable or unfamiliar. 
-      The real test of compassion is whether we extend it when silence feels easier than accountability, and when true inclusion asks us to look past what is convenient.
-    </p>
-    <button class="close-modal">Close</button>
-  </div>
 </div>
 
-<div id="subscribe-modal" class="modal" hidden>
-  <div class="modal-box">
-    <h3>Laced Together</h3>
-    <p>Subscribe to join the shared thread. Get notes, quotes, and resources straight to your inbox.</p>
-    <button class="close-modal">Close</button>
-  </div>
-</div>
+
+
+
 
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // Filter pills (unchanged)
   const buttons = document.querySelectorAll(".filter-pills button");
   const cards = document.querySelectorAll(".card");
-  const modals = document.querySelectorAll(".modal");
-  const closeButtons = document.querySelectorAll(".close-modal");
-
-  // ===== FILTER BUTTON LOGIC =====
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const filter = btn.getAttribute("data-filter");
-
-      // Reset active state
+      const filter = btn.dataset.filter;
       buttons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-
-      // Show/hide cards
       cards.forEach(card => {
-        if (filter === "all") {
-          card.style.display = "block";   // show everything
-        } else if (card.classList.contains(filter)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
+        card.style.display = (filter === "all" || card.classList.contains(filter)) ? "block" : "none";
       });
     });
   });
 
-  // ===== MODAL OPEN LOGIC =====
-  document.querySelectorAll("a[href^='#']").forEach(link => {
-    link.addEventListener("click", e => {
-      const targetId = link.getAttribute("href").substring(1);
-      const modal = document.getElementById(targetId);
-      if (modal) {
-        e.preventDefault();
-        modal.removeAttribute("hidden");
+  // ✅ Eyebrow labels
+  document.querySelectorAll(".card").forEach(card => {
+    const eyebrow = card.querySelector(".eyebrow.category");
+    if (eyebrow) {
+      if (card.classList.contains("insights")) {
+        eyebrow.textContent = "Insights";
+      } else if (card.classList.contains("energy")) {
+        eyebrow.textContent = "Energy";
+      } else if (card.classList.contains("spotlight")) {
+        eyebrow.textContent = "Spotlight";
       }
-    });
+    }
   });
 
-  // ===== MODAL CLOSE LOGIC =====
-  closeButtons.forEach(btn => {
+  // General modal logic
+  document.querySelectorAll(".open-modal").forEach(btn => {
     btn.addEventListener("click", () => {
-      btn.closest(".modal").setAttribute("hidden", true);
+      const modal = btn.closest(".modal-wrap")?.querySelector(".modal");
+      if (modal) modal.classList.add("active");
     });
   });
 
-  // Close modal on outside click
-  modals.forEach(modal => {
+  document.querySelectorAll(".close-modal").forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.closest(".modal")?.classList.remove("active");
+    });
+  });
+
+  document.querySelectorAll(".modal").forEach(modal => {
     modal.addEventListener("click", e => {
-      if (e.target === modal) {
-        modal.setAttribute("hidden", true);
-      }
+      if (e.target === modal) modal.classList.remove("active");
     });
   });
 });
 </script>
+
 
 
 

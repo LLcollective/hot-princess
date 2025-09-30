@@ -299,7 +299,8 @@
   color: var(--ink-700);
 }
 
-/* ===== Modal ===== */
+
+/* Systems Modal */
 #systems-modal {
   position: fixed;
   inset: 0;
@@ -308,32 +309,23 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  padding: 1rem; /* <-- NEW: keeps content away from edges */
 }
+
 #systems-modal.active { display: flex; }
+
 #systems-modal .modal-content {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(14px) saturate(160%);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px) saturate(160%);
   border-radius: 14px;
   padding: 2rem;
   max-width: 600px;
-  width: 90%;
+  width: 100%;
   text-align: center;
   border: 1px solid rgba(216, 122, 148, 0.3);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
-#systems-modal .modal-content h3 {
-  color: #3F4A3C;
-  margin-bottom: 1rem;
-}
-#systems-modal .modal-content .button {
-  background: linear-gradient(90deg, #D87A94, #B3BAFF);
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
-  cursor: pointer;
-  margin-top: 1.5rem;
-}
+
 
 </style>
 
@@ -556,8 +548,33 @@
   </div>
 </section>
 
+<!-- ===== SYSTEMS ===== -->
+<section id="systems" class="section-box animate-on-scroll fade-up">
+  <div class="wrap-medium">
+    <div class="systems-card animate-on-scroll scale-in">
+      <h2>Systems That Work</h2>
+      <p>
+        What moves people forward isn’t just a tool.  
+        It’s a clear method, strong leadership, <i>and tools</i> that fit the work.
+      </p>
+      <button class="btn" id="systems-btn">
+        See how the systems come together →
+      </button>
+    </div>
+  </div>
+</section>
 
-<!-- ===== SYSTEMS ===== --> <section id="systems" class="section-box animate-on-scroll fade-up"><div class="wrap-medium"><div class="systems-card animate-on-scroll scale-in"><h2>Systems That Work</h2><p>What moves people forward isn’t just a tool. It’s a clear method, strong leadership, <i>and tools</i> that fit the work.</p><button class="button" id="systems-btn">See how the systems come together →</button></div></div></section><div id="systems-modal" class="animate-on-scroll fade-up"><div class="modal-content animate-on-scroll scale-in"><h3>Energy Aligned, Action Defined & the Lace & Lime approach</h3><p>The Approach page will open up this fall. Clarity and action, side by side.</p><button class="button modal-close" type="button">Close</button></div></div>
+<!-- Systems Modal -->
+<div id="systems-modal" class="animate-on-scroll fade-up">
+  <div class="modal-content animate-on-scroll scale-in">
+    <h3>Energy Aligned, Action Defined &amp; the Lace &amp; Lime approach</h3>
+    <p>
+      The <strong>Approach</strong> page will open up this fall.  
+      Clarity and action, side by side.
+    </p>
+    <button class="btn modal-close" type="button">Close</button>
+  </div>
+</div>
 
 <!-- ===== FOOTER ===== --> <footer>
     <div class="wrap-heavy">

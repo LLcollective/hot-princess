@@ -4,6 +4,49 @@
 
 
 
+.notes-card {
+  background: rgba(255, 255, 255, 0.7); /* frosted note look */
+  border: 1px solid rgba(216,122,148,0.25); /* faint mauve edge */
+  border-left: 6px solid #D87A94; /* pink margin like notebook */
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  backdrop-filter: blur(6px);
+}
+
+.notes-card h3 {
+  margin: 0 0 .35rem;
+  color: var(--ink-dark);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.notes-card p {
+  margin: 0;
+  font-size: .95rem;
+  color: var(--ink-med);
+  line-height: 1.4;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* single column */
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .notes-grid.two-col {
+    grid-template-columns: repeat(2, 1fr); /* optional toggle for 2-col */
+  }
+}
+
+
+
+
+
 
 /* ===========================
    DO NOT TOUCH — FINAL OVERRIDES
