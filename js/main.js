@@ -202,93 +202,112 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+/* ===== Draw Spiral (Cross-Browser Safe) ===== */
+function drawSpiral() {
+  const base = document.getElementById("spiral");
+  const overlay = document.getElementById("spiral-overlay");
+  const svg = document.getElementById("spiral-svg");
+  const container = document.querySelector(".spiral-container");
 
-/* Script for Swirl*/
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const cx = width / 2, cy = height / 2;
 
+  // Spiral params
+  const a = 10, b = 20;
+  const turns = 8;
 
+  // Update viewBox to full viewport
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
 
-  function drawSpiral() {
-    const base = document.getElementById("spiral");
-    const overlay = document.getElementById("spiral-overlay");
-    const svg = document.getElementById("spiral-svg");
-    const container = document.querySelector(".spiral-container");
-
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    const cx = width / 2, cy = height / 2;
-
-    // Spiral params
-    const a = 10, b = 20;
-    const turns = 8;
-
-    // Update viewBox to full viewport
-    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-
-    // Generate spiral points
-    const points = [];
-    for (let t = 0; t < Math.PI*2*turns; t += 0.1) {
-      const r = a + b * t;
-      const x = cx + r * Math.cos(t);
-      const y = cy + r * Math.sin(t);
-      points.push([x,y]);
-    }
-
-    const d = "M" + points.map(p => p.join(",")).join(" L");
-    base.setAttribute("d", d);
-    overlay.setAttribute("d", d);
-
-    const length = base.getTotalLength();
-    [base, overlay].forEach(path => {
-      path.style.strokeDasharray = length;
-      path.style.strokeDashoffset = length;
-    });
-
-    // Black spiral draws first
-    base.animate(
-      [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
-      { duration: 6000, easing: "ease-in-out", fill: "forwards" }
-    ).onfinish = () => {
-      function animateOverlay(forward=true) {
-        overlay.animate(
-          forward
-            ? [{ strokeDashoffset: length }, { strokeDashoffset: 0 }]
-            : [{ strokeDashoffset: 0 }, { strokeDashoffset: length }],
-          { duration: 6000, easing: "ease-in-out", fill: "forwards" }
-        ).onfinish = () => setTimeout(() => animateOverlay(!forward), 400);
-      }
-      animateOverlay(true);
-    };
-
-    // Clear old links
-    document.querySelectorAll(".spiral-link").forEach(el => el.remove());
-
-    // Spiral nav links with manual multipliers
-    const linkLabels = [
-      { text: "Founder", href: "founder.html", factor: 0.05 },
-      { text: "Laced Notes", href: "lacednotes.html", factor: 0.10 },
-      { text: "Laced Together", href: "booknow.html", factor: 0.16 },
-      { text: "Limeboard", href: "limeboard.html", factor: 0.23 },
-      { text: "Approach", href: "approach.html", factor: 0.21 },
-      { text: "Contact", href: "contact.html", factor: 0.29 } 
-     
- ];
-
-    // Each factor = % along spiral path (0 = center, 1 = edge)
-    linkLabels.forEach((link,i) => {
-      const idx = Math.floor(points.length * link.factor);
-      const [x,y] = points[idx];
-      const el = document.createElement("div");
-      el.className = "spiral-link";
-      el.textContent = link.text;
-      el.style.left = (x/width*100) + "%";
-      el.style.top  = (y/height*100) + "%";
-      el.style.animationDelay = `${1+i*0.4}s`;
-      el.onclick = () => location.href = link.href;
-      container.appendChild(el);
-    });
+  // Generate spiral points
+  const points = [];
+  for (let t = 0; t < Math.PI * 2 * turns; t += 0.1) {
+    const r = a + b * t;
+    const x = cx + r * Math.cos(t);
+    const y = cy + r * Math.sin(t);
+    points.push([x, y]);
   }
 
-  // Initial draw
-  drawSpiral();
-  // Redraw on resize/rotation
-  window.addEventListener("resize", drawSpiral);
+  const d = "M" + points.map(p => p.join(",")).join(" L");
+  base.setAttribute("d", d);
+  overlay.setAttribute("d", d);
+
+  const length = base.getTotalLength();
+  [base, overlay].forEach(path => {
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+  });
+
+  /* ===== Cross-browser animation helper ===== */
+  function animatePath(path, length, duration, forward = true, callback) {
+    if (path.animate) {
+      const anim = path.animate(
+        forward
+          ? [{ strokeDashoffset: length }, { strokeDashoffset: 0 }]
+          : [{ strokeDashoffset: 0 }, { strokeDashoffset: length }],
+        { duration, easing: "ease-in-out", fill: "forwards" }
+      );
+      if (callback) anim.onfinish = callback;
+      return;
+    }
+
+    // ---- Fallback for browsers without Web Animations API ----
+    const start = performance.now();
+    function frame(time) {
+      const progress = Math.min((time - start) / duration, 1);
+      const offset = forward
+        ? length * (1 - progress)
+        : length * progress;
+      path.setAttribute("stroke-dashoffset", offset);
+      if (progress < 1) {
+        requestAnimationFrame(frame);
+      } else if (callback) {
+        callback();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Black spiral draws first
+  animatePath(base, length, 6000, true, () => {
+    function animateOverlayLoop(forward = true) {
+      animatePath(overlay, length, 6000, forward, () => {
+        setTimeout(() => animateOverlayLoop(!forward), 400);
+      });
+    }
+    animateOverlayLoop(true);
+  });
+
+  // Clear old links
+  document.querySelectorAll(".spiral-link").forEach(el => el.remove());
+
+  // Spiral nav links with manual multipliers
+  const linkLabels = [
+    { text: "Founder", href: "founder.html", factor: 0.05 },
+    { text: "Laced Notes", href: "lacednotes.html", factor: 0.10 },
+    { text: "Laced Together", href: "booknow.html", factor: 0.16 },
+    { text: "Limeboard", href: "limeboard.html", factor: 0.23 },
+    { text: "Approach", href: "approach.html", factor: 0.21 },
+    { text: "Contact", href: "contact.html", factor: 0.29 }
+  ];
+
+  // Each factor = % along spiral path (0 = center, 1 = edge)
+  linkLabels.forEach((link, i) => {
+    const idx = Math.floor(points.length * link.factor);
+    const [x, y] = points[idx];
+    const el = document.createElement("div");
+    el.className = "spiral-link";
+    el.textContent = link.text;
+    el.style.left = (x / width * 100) + "%";
+    el.style.top = (y / height * 100) + "%";
+    el.style.animationDelay = `${1 + i * 0.4}s`;
+    el.onclick = () => location.href = link.href;
+    container.appendChild(el);
+  });
+}
+
+// Initial draw
+drawSpiral();
+// Redraw on resize/rotation
+window.addEventListener("resize", drawSpiral);
