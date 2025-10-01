@@ -473,21 +473,45 @@ textarea {
 /* =======================================
    Tier List (Fixed alignment for icons)
    ======================================= */
+
+
+
+/* Tier list styling */
 .tier-list {
-  margin: 0;
-  padding: 0;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .tier-list li {
-  display: flex;           /* ensure SVG + text inline */
-  align-items: flex-start; /* top align */
-  gap: 0.6rem;
-  margin-bottom: 0.6rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
-.tier-list .icon {
-  width: 1rem;
-  height: 1rem;
+
+.tier-list li:last-child {
+  border-bottom: none;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1rem;
+  color: #24324a;
+}
+
+.icon-text .icon {
   flex-shrink: 0;
-  margin-top: 0.25rem;     /* small nudge for balance */
-  color: var(--brand);
+  color: #7B6CF6; /* accent color for icons */
+}
+
+.tier-list strong {
+  font-weight: 600;
+}
+
+.tier-list p {
+  margin: .4rem 0 0 1.9rem; /* indents under text, aligned to strong */
+  font-size: .9rem;
+  color: #465770;
+  line-height: 1.5;
 }

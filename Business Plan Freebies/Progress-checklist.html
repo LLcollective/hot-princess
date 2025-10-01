@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lace & Lime • Progress Monitoring</title>
+  <link rel="stylesheet" href="global.css">
+
+  <style>
+  /* ===== PAGE-SPECIFIC: PROGRESS TOOL ===== */
+  body {
+    background: #f9f8f6;
+  }
+
+  .wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+    color: #3F4A3C;
+  }
+  header p {
+    font-size: 1rem;
+    color: #5f708a;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #e0e6ee;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 1.5rem 0 2rem;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #9BE080, #7B6CF6);
+    transition: width .4s ease;
+  }
+
+  ul.checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.checklist li {
+    background: #fff;
+    border: 1px solid rgba(63,74,60,0.15);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  ul.checklist li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  ul.checklist input[type="checkbox"] {
+    margin-top: .4rem;
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  ul.checklist label {
+    flex: 1;
+    cursor: pointer;
+  }
+  ul.checklist strong {
+    display: block;
+    margin-bottom: .25rem;
+    color: #24324a;
+  }
+  ul.checklist p {
+    margin: 0;
+    font-size: .9rem;
+    color: #465770;
+  }
+
+  .footer-note {
+    margin-top: 2rem;
+    font-size: .85rem;
+    text-align: center;
+    color: #7b8aa2;
+  }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Progress Monitoring Checklist</h1>
+      <p>Track your milestones and see how far your brand has come. Your progress is saved in your browser.</p>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- Checklist -->
+    <ul class="checklist" id="checklist">
+      <li>
+        <input type="checkbox" id="item1">
+        <label for="item1">
+          <strong>Define Brand Story</strong>
+          <p>Write your origin, mission, and values in clear language.</p>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item2">
+        <label for="item2">
+          <strong>SEO & Visibility Setup</strong>
+          <p>Ensure your site is discoverable (basic SEO + Google Analytics).</p>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item3">
+        <label for="item3">
+          <strong>Newsletter Launch</strong>
+          <p>Start a consistent rhythm of communication with your audience.</p>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item4">
+        <label for="item4">
+          <strong>Portfolio / Case Studies</strong>
+          <p>Show your “receipts” — proof of work and transformation.</p>
+        </label>
+      </li>
+      <li>
+        <input type="checkbox" id="item5">
+        <label for="item5">
+          <strong>Quarterly Reset</strong>
+          <p>Reflect on what’s working, adjust outreach + systems.</p>
+        </label>
+      </li>
+    </ul>
+
+    <div class="footer-note">
+      Your checklist is private and saved in your browser. Reset anytime by clearing cache.
+    </div>
+  </div>
+
+  <script>
+  // ===== Checklist with Persistent State =====
+  const checklist = document.querySelectorAll('#checklist input[type="checkbox"]');
+  const progressFill = document.getElementById('progress-fill');
+
+  // Load saved state
+  checklist.forEach((box, i) => {
+    const saved = localStorage.getItem('checklist-item-' + i);
+    if (saved === 'true') {
+      box.checked = true;
+    }
+    updateProgress();
+    // Save state on change
+    box.addEventListener('change', () => {
+      localStorage.setItem('checklist-item-' + i, box.checked);
+      updateProgress();
+    });
+  });
+
+  function updateProgress() {
+    const total = checklist.length;
+    const checked = Array.from(checklist).filter(box => box.checked).length;
+    const percent = Math.round((checked / total) * 100);
+    progressFill.style.width = percent + '%';
+  }
+  </script>
+</body>
+</html>

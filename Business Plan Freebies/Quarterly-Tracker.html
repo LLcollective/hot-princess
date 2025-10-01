@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lace & Lime • Quarterly Tracker</title>
+  <link rel="stylesheet" href="global.css">
+
+  <style>
+  body {
+    background: #f9f8f6;
+  }
+  .wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+    color: #3F4A3C;
+  }
+  header p {
+    font-size: 1rem;
+    color: #5f708a;
+  }
+  .quarter {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(0,0,0,.08);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+  }
+  .quarter h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #24324a;
+  }
+  textarea {
+    width: 100%;
+    min-height: 100px;
+    margin: .5rem 0 1rem;
+    padding: .75rem;
+    border: 1px solid rgba(63,74,60,0.25);
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+  }
+  button.export {
+    background: #7B6CF6;
+    color: #fff;
+    border: none;
+    padding: .6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button.export:hover {
+    background: #6450d6;
+  }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Quarterly Tracker</h1>
+      <p>Reflect and plan each quarter with Energy Aligned, Action Defined™ prompts. Your notes save automatically.</p>
+    </header>
+
+    <div id="quarters"></div>
+
+    <button class="export" id="export-btn">Export My Tracker</button>
+  </div>
+
+  <script>
+  const quarters = [
+    { id: "q1", label: "Q1 (Jan–Mar)" },
+    { id: "q2", label: "Q2 (Apr–Jun)" },
+    { id: "q3", label: "Q3 (Jul–Sep)" },
+    { id: "q4", label: "Q4 (Oct–Dec)" }
+  ];
+
+  const container = document.getElementById("quarters");
+
+  quarters.forEach(q => {
+    const div = document.createElement("div");
+    div.className = "quarter";
+    div.innerHTML = `
+      <h2>${q.label}</h2>
+      <label><strong>LACE (Reflection)</strong></label>
+      <textarea id="${q.id}-lace" placeholder="What worked? What felt aligned?"></textarea>
+      <label><strong>LIME (Action)</strong></label>
+      <textarea id="${q.id}-lime" placeholder="What’s next? Where will you put energy?"></textarea>
+    `;
+    container.appendChild(div);
+  });
+
+  // Load saved notes
+  quarters.forEach(q => {
+    ["lace","lime"].forEach(type => {
+      const el = document.getElementById(`${q.id}-${type}`);
+      const saved = localStorage.getItem(`${q.id}-${type}`);
+      if (saved) el.value = saved;
+      el.addEventListener("input", () => {
+        localStorage.setItem(`${q.id}-${type}`, el.value);
+      });
+    });
+  });
+
+  // Export to text file
+  document.getElementById("export-btn").addEventListener("click", () => {
+    let content = "Quarterly Tracker\n\n";
+    quarters.forEach(q => {
+      const lace = localStorage.getItem(`${q.id}-lace`) || "";
+      const lime = localStorage.getItem(`${q.id}-lime`) || "";
+      content += `${q.label}\nLACE: ${lace}\nLIME: ${lime}\n\n`;
+    });
+    const blob = new Blob([content], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Quarterly_Tracker.txt";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+  </script>
+</body>
+</html>
