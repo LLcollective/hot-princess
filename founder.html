@@ -1,589 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ===== SEO & META ===== -->
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Sharon Gutierrez | Founder of Lace & Lime™ – Wellness & Empowerment</title>
   <meta name="description" content="Meet Sharon Gutierrez, founder of Lace & Lime™ and Certified Health Education Specialist (CHES®). She creates wellness and empowerment tools designed for balance, clarity, and lasting impact."/>
-  
-  <!-- Optional: keep or remove -->
-  <meta name="keywords" content="Sharon Gutierrez, Lace & Lime founder, Latina entrepreneur, Woman Owned Business, Hispanic Owned Business, Certified Health Education Specialist, CHES, wellness empowerment, balance-forward brand, Energy Aligned Action Defined"/>
-  
-  <meta name="author" content="Sharon Gutierrez"/>
-  
-  <!-- ===== OPEN GRAPH (Facebook, LinkedIn) ===== -->
-  <meta property="og:title" content="Sharon Gutierrez | Founder of Lace & Lime™"/>
-  <meta property="og:description" content="Discover Sharon’s journey building Lace & Lime™, a balance-forward brand bringing accessible wellness and empowerment tools to life."/>
-  <meta property="og:image" content="https://www.laceandlime.com/assets/og-preview-founder.png"/>
-  <meta property="og:url" content="https://www.laceandlime.com/founder"/>
-  <meta property="og:type" content="profile"/>
-  <meta property="profile:first_name" content="Sharon"/>
-  <meta property="profile:last_name" content="Gutierrez"/>
-  <meta property="profile:username" content="laceandlime"/>
-  
-  <!-- ===== TWITTER ===== -->
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Sharon Gutierrez | Founder of Lace & Lime™"/>
-  <meta name="twitter:description" content="Founder of Lace & Lime™ and Certified Health Education Specialist (CHES®), Sharon builds balance-forward tools for clarity and empowerment."/>
-  <meta name="twitter:image" content="https://www.laceandlime.com/assets/og-preview-founder.png"/>
 
-  <!-- ===== FAVICONS ===== -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"/>
-  <meta name="theme-color" content="#7B6CF6"/>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="global.css" />
 
- <!-- <!-- ===== FONTS + CSS ===== -->
-<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
-
-<!-- Global baseline first -->
-
-<link rel="stylesheet" href="global.css?v=1.1"/>
-<link rel="stylesheet" href="css.css?v=1.1"/>
-
-</head>
-
-<style>
-/* ============================ 
-   FOUNDER PAGE ONLY STYLES
-   ============================ */
-
-/* ===== Timeline Component ===== */
-.timeline {
-  position: relative;
-  margin: 4rem auto;
-  padding: 2rem 1rem;
+  <style>
+/* ===== Section Wrapper ===== */
+section.section-box {
+  margin: 3rem auto;
+  padding: 2rem 1.25rem;
+  max-width: 1200px;
 }
-.milestone .dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+
+/* ===== Founder Card ===== */
+.founder-card {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform .3s ease;
+}
+.founder-card:hover { transform: translateY(-4px); }
+
+.founder-card__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.founder-card__figure { flex: 0 0 220px; }
+.founder-card__figure img { width: 100%; border-radius: 12px; border: 2px solid #eee; }
+.hero-headings { flex: 1; min-width: 260px; }
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-cta {
+  padding: .6rem 1.2rem;
+  border-radius: 999px;
   background: linear-gradient(135deg, #B3BAFF, #F2C9CF);
-  box-shadow: 0 0 10px rgba(179, 186, 255, 0.45),
-              0 0 16px rgba(242, 201, 207, 0.45);
-  z-index: 2;
+  color: #24324a;
+  font-weight: 600;
+  font-size: .95rem;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: all .25s ease;
 }
-.milestone h4 {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #3F4A3C;
-}
-.milestone p {
-  font-size: 0.95rem;
-  color: #5a5a5a;
-  line-height: 1.5;
-  max-width: 280px;
+.btn-cta.secondary { background: #fff; border: 1px solid #B3BAFF; }
+.btn-cta:hover { transform: translateY(-3px); }
+
+.founder {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #333;
+  text-align: justify;
+  text-align-last: left;
 }
 
-/* --- Mobile Timeline --- */
-@media (max-width: 1023px) {
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .timeline::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 3px;
-    background: linear-gradient(#B3BAFF, #F2C9CF);
-    z-index: 1;
-    height: 0;
-    animation: drawLineY 1.5s ease forwards;
-  }
-  .milestone {
-    margin: 3rem 0;
-    width: 100%;
-    max-width: 500px;
-  }
-  .milestone .dot {
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    animation: popDot 0.6s ease forwards;
-  }
-  .milestone:nth-child(1) .dot { animation-delay: 0.5s; }
-  .milestone:nth-child(2) .dot { animation-delay: 1s; }
-  .milestone:nth-child(3) .dot { animation-delay: 1.5s; }
-  .milestone:nth-child(4) .dot { animation-delay: 2s; }
-  .milestone h4, .milestone p {
-    width: 45%;
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards;
-  }
-  .milestone:nth-child(odd) h4,
-  .milestone:nth-child(odd) p {
-    text-align: right;
-    margin-right: 55%;
-  }
-  .milestone:nth-child(even) h4,
-  .milestone:nth-child(even) p {
-    text-align: left;
-    margin-left: 55%;
-  }
-  .milestone h4 { margin-bottom: 0.35rem; }
+/* ===== Chips ===== */
+.chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-top: 1.5rem;
 }
-
-/* --- Desktop Timeline --- */
-@media (min-width: 1024px) {
-  .timeline {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    max-width: 1400px;
-    position: relative;
-  }
-  .timeline::before {
-    content: "";
-    position: absolute;
-    top: 50%; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #B3BAFF, #F2C9CF);
-    width: 0;
-    animation: drawLineX 1.5s ease forwards;
-  }
-  .milestone {
-    flex: 1;
-    min-width: 200px;
-    max-width: 500px;
-    text-align: center;
-    position: relative;
-  }
-  .milestone .dot {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    animation: popDot 0.6s ease forwards;
-  }
-  .milestone h4 {
-    position: absolute;
-    bottom: calc(100% + 2.5rem);
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards;
-  }
-  .milestone p {
-    position: absolute;
-    top: calc(100% + 2.5rem);
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 600px;
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards;
-  }
-}
-
-/* --- Timeline Animations --- */
-@keyframes drawLineX { from { width: 0; opacity: 0; } to { width: 100%; opacity: 1; } }
-@keyframes drawLineY { from { height: 0; opacity: 0; } to { height: 100%; opacity: 1; } }
-@keyframes popDot { 0% { transform: scale(0.5); opacity: 0; } 80% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeUp { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
-
-/* ===== Journey Component ===== */
-.journey::before { display: none !important; }
-.journey-step {
-  position: relative;
-  padding-left: 2.5rem;
-}
-.journey-step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: -0.25rem;
-  top: 1.2rem;
-  bottom: -1.2rem;
-  width: 3px;
-  background: linear-gradient(to bottom, #B3BAFF, #F2C9CF);
-  opacity: 0.9;
-}
-.journey-step::before {
-  content: "";
-  position: absolute;
-  left: -0.65rem;
-  top: 0.35rem;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #F2C9CF;
-  box-shadow: 0 0 6px rgba(242, 201, 207, 0.4),
-              0 0 10px rgba(179, 186, 255, 0.35);
-}
-.completion {
+.chips span {
   display: flex;
   justify-content: center;
-  margin-top: 2.5rem;
-}
-.completion-circle {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  border: 2px solid #3F4A3C;
-  border-radius: 50%;
-  width: 140px;
-  height: 140px;
-  font-size: 1rem;
-  color: #3F4A3C;
-  opacity: 0;
-  transform: scale(0.7);
-  animation: scaleIn 0.8s ease forwards;
-  animation-delay: 3s;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, #E6E9FF, #FCE4EC);
+  border: 1px solid rgba(179,186,255,0.35);
+  border-radius: 999px;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
-/* ===== Founder — Credentials Accordion ===== */
-.section-box.credentials {
-  margin-inline: auto;
-  max-width: var(--content-max);
-  padding-inline: var(--gutter-desktop);
+/* ===== Mobile Layout Fix for Chips ===== */
+@media(max-width:768px) {
+  .chips {
+    grid-template-columns: 1fr; /* stack full width */
+    gap: 0.75rem;
+  }
+  .chips span {
+    width: 100%;
+    font-size: 0.9rem;
+  }
 }
-.section-box.credentials .accordion-list {
-  display: grid;
-  gap: .6rem;
-  margin-top: .6rem;
+
+/* ===== Timeline ===== */
+.timeline { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
+.milestone {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.2rem;
 }
-.section-box.credentials details.accordion {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid var(--ink-200);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+.milestone h4 { margin: 0 0 .6rem; font-weight: 600; color: #3F4A3C; }
+
+/* ===== Proof Highlights ===== */
+#proof .highlight {
+  margin-bottom: 1rem;
+  padding: 1rem 1.2rem;
+  border-left: 4px solid #B3BAFF;
+  background: rgba(179,186,255,0.15);
+  border-radius: 6px;
 }
-.section-box.credentials details.accordion > summary {
-  padding: 1rem 1.25rem;
+
+/* ===== Journey ===== */
+.journey-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.journey-step .journey-icon { width: 28px; height: 28px; flex-shrink: 0; margin-top: 0.25rem; color: #6b7cff; }
+.step-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.3rem; }
+
+.completion-circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #B3BAFF, #F2C9CF);
+  margin: 2.5rem auto;
+  text-align: center;
   font-weight: 600;
-  color: var(--ink-900);
+  color: #24324a;
+}
+
+/* ===== Systems Card ===== */
+.systems-card {
+  background: rgba(255,255,255,0.55);
+  padding: 2.2rem;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===== Credentials Accordion ===== */
+.credentials details {
+  background: rgba(255,255,255,0.35);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.credentials summary { padding: 1rem 1.2rem; font-weight: 600; cursor: pointer; }
+.credentials .body { padding: 1rem 1.5rem; font-size: .95rem; line-height: 1.6; }
+
+/* ===== Footer ===== */
+footer {
+  background: #f9f9f9;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  font-size: .9rem;
+  color: #444;
+  border-top: 1px solid #eee;
+}
+
+/* ===== Proof of Impact Timeline ===== */
+.proof-timeline {
+  position: relative;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 70px;             /* aligns under dots */
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: #d6d6f9;
+  overflow: hidden;
+}
+.timeline-line::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #6b7cff;
+}
+.proof-timeline.reveal .timeline-line::after {
+  animation: lineGrow 2s ease forwards;
+}
+@keyframes lineGrow {
+  to { width: 100%; }
+}
+
+.timeline-items {
   display: flex;
   justify-content: space-between;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-items .milestone {
+  flex: 1;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  background: rgba(255,255,255,0.6);   /* more transparent */
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.timeline-items .milestone.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+
+.timeline-items .dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6b7cff;
+  position: absolute;
+  top: -28px; /* pulls dots down near line */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ===== Mobile Layout (switch vertical) ===== */
+@media(max-width:768px) {
+  .timeline-line {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 3px;
+    height: 100%;
+    animation: lineGrowVertical 2s ease forwards;
+  }
+  .timeline-line::after {
+    height: 0;
+    width: 100%;
+    animation: lineGrowVertical 2s ease forwards;
+  }
+  @keyframes lineGrowVertical {
+    to { height: 100%; }
+  }
+
+  .timeline-items {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 60px; /* space for line + dots */
+  }
+
+  .timeline-items .milestone {
+    width: 100%;
+    margin: 1rem 0;
+    text-align: left;
+  }
+
+  .timeline-items .dot {
+    left: -30px;
+    top: 20px;
+    transform: none;
+  }
+}
+
+
+/* ===== Generic Animation States ===== */
+.animate {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.animate.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+
+/* ===== Timeline Reveal Override ===== */
+.milestone.animate {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.milestone.animate.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+/* === Founder Card Visual Fixes (drop at bottom) === */
+.founder-card__inner {
   align-items: center;
-  cursor: pointer;
 }
-.section-box.credentials details.accordion .body {
-  background: rgba(255,255,255,0.2);
-  padding: 1rem 1.25rem;
-  font-size: .95rem;
-  line-height: 1.5;
+.founder-card__figure {
+  max-width: 220px;
 }
-
-/* ===== Founder — Card ===== */
-.section-box.founder-card {
-  max-width: var(--content-max);
-  margin-inline: auto;
-  padding-inline: var(--gutter-desktop);
+.founder-card__figure img {
+  object-fit: cover;
 }
-.section-box.founder-card .founder-card__figure {
-  float: left;
-  width: 240px;
-  margin: 0 28px 20px 0;
+.hero-headings .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
 }
-.section-box.founder-card .founder-card__figure img {
-  display: block;
-  width: 100%;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--ink-200);
+.hero-ctas {
+  margin-top: 0.5rem;
 }
-.section-box.founder-card .hero-headings h1 {
-  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-  font-weight: 600;
-  color: var(--ink-900);
-}
-.section-box.founder-card p {
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--ink-700);
+@media(max-width:768px) {
+  .founder-card__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-ctas {
+    justify-content: center;
+  }
 }
 
+  </style>
+</head>
+<body>
 
-/* Systems Modal */
-#systems-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  padding: 1rem; /* <-- NEW: keeps content away from edges */
-}
-
-#systems-modal.active { display: flex; }
-
-#systems-modal .modal-content {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px) saturate(160%);
-  border-radius: 14px;
-  padding: 2rem;
-  max-width: 600px;
-  width: 100%;
-  text-align: center;
-  border: 1px solid rgba(216, 122, 148, 0.3);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-
-</style>
-
-
-
-
-<body class="founder">
-
-
-<!-- ===== PROGRESS BAR ===== --> <div class="progress"><span id="progress-fill"></span></div><div class="header-spacer"></div>
-
-<!-- ===== HEADER ===== --> <header class="ll-nav"><div class="header-wrap"><a class="logo-link" href="index.html"><h1 class="logo-small-centered"><span class="lace">lace</span><span class="amp">&amp;</span><span class="lime">LIME</span></h1></a><button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation"><span></span><span></span><span></span></button></div></header>
-
-<!-- ===== SCRIM ===== --> <div id="nav-scrim" class="scrim" hidden></div>
-
-<!-- ===== SIDEBAR ===== --> <nav id="nav-menu" class="sidebar"><a href="index.html" class="logo">lace<span style="color:#9BE080">&LIME</span></a><div class="dropdown"><button class="nav-about" aria-expanded="false"><span class="label-wrap">Laced<span class="caret">▾</span></span></button><div class="dropdown-menu"><a href="lacednotes.html">Notes</a><a href="#">Together</a><a href="founder.html" class="active" aria-current="page">Founder</a></div></div><div class="dropdown"><button class="nav-workshops" aria-expanded="false"><span class="label-wrap">Experiences<span class="caret">▾</span></span></button><div class="dropdown-menu"><a href="booknow.html">Book Now</a><a href="#">Approach</a></div></div><a href="limeboard.html">Limeboard</a><a href="contact.html">Contact</a></nav>
-
-<!-- ===== MAIN CONTENT: FOUNDER CARD ===== -->
-<section class="section-box founder-card animate-on-scroll fade-up" style="margin-top:3rem;">
-  <div class="founder-card__inner" style="background:rgba(255,255,255,0.45);backdrop-filter:blur(6px);border-radius:12px;padding:1.5rem;box-shadow:0 4px 10px rgba(0,0,0,0.08);overflow:hidden;">
-
-    <!-- Founder Image -->
-    <figure class="founder-card__figure animate-on-scroll fade-in">
-      <picture>
-        <source srcset="assets/founder.avif" type="image/avif">
-        <source srcset="assets/founder.webp" type="image/webp">
-        <img src="assets/founder.jpg" 
-             alt="Headshot of Sharon Gutierrez, founder of Lace & Lime™" 
-             width="220" height="220"
-             loading="eager" 
-             decoding="async" />
-      </picture>
+<!-- ===== FOUNDER CARD ===== -->
+<section class="section-box founder-card">
+  <div class="founder-card__inner">
+    <figure class="founder-card__figure">
+      <img src="assets/founder.jpg" alt="Headshot of Sharon Gutierrez, founder of Lace & Lime™" width="220" height="220"/>
     </figure>
-
-    <!-- Headings -->
-    <div class="hero-headings" style="color:#24324a;line-height:1.65;">
-      <span class="animate-on-scroll fade-up eyebrow">MEET THE FOUNDER</span>
-      <h1 class="shimmer-text animate-on-scroll fade-up">
-        Hi, I’m Sharon.
-      </h1>
+    <div class="hero-headings">
+      <span class="eyebrow">MEET THE FOUNDER</span>
+      <h1>Hi, I’m Sharon.</h1>
+      <div class="hero-ctas">
+        <a href="businesses.html" class="btn-cta">Businesses</a>
+        <a href="booknow.html" class="btn-cta secondary">Individuals</a>
+      </div>
     </div>
+  </div>
+  <div class="founder">
+    <p>After years working across hospitals, nonprofits, and federal emergency response, I learned that resilience is not just about strategy. 
+    It requires systems that bring clarity together with compassion. Lace & Lime™ was born from that truth: a space where structure meets 
+    intuition and growth stays grounded. I’ve never measured my career by titles. My focus has always been on building and applying tools 
+    that create measurable impact where they are needed most. That perspective has guided my work across diverse roles and continues to 
+    shape the way I approach community wellness and empowerment today. That expertise comes from compliance and accreditation work, 
+    including serving as a public health advisor in emergency response, an accreditation manager for post-graduate medical education, 
+    and a nonprofit program manager. Each role strengthened my ability to combine structure with humanity, a balance that now anchors the 
+    Lace & Lime™ approach designed after the Energy Aligned, Action Defined™ framework was created.</p>
+  </div>
+    <div class="chips">
+    <span class="animate">Master of Public Health · NY</span>
+    <span class="animate">B.S. · Math for Tech, Bio, Psych.</span>
+    <span class="animate">Health Education Specialist CHES®</span>
+    <span class="animate">IRB Research Ethics Certified</span>
+    <span class="animate">Public Health Advisor · Emergency Response</span>
+    <span class="animate">Accreditation & Compliance Leadership</span>
+    <span class="animate">Applied Data & Impact Analysis</span>
+    <span class="animate">Systems & Workflow Optimization</span>
+  </div>
+</section>
 
-    <!-- Desktop copy -->
-    <div class="founder-desktop animate-on-scroll fade-in" style="font-size:1rem;line-height:1.65;">
-      <p>After years working across hospitals, nonprofits, and federal emergency response, I learned that resilience is not just about strategy. It requires systems that bring clarity together with compassion. Lace & Lime™ was born from that truth: a space where structure meets intuition and growth stays grounded.</p>
-      <p>I’ve never measured my career by titles. My focus has always been on building and applying tools that create measurable impact where they are needed most. That perspective has guided my work across diverse roles and continues to shape the way I approach community wellness and empowerment today.</p>
-      <p>That expertise comes from compliance and accreditation work, including serving as a public health advisor in emergency response, an accreditation manager for post-graduate medical education, and a nonprofit program manager. Each role strengthened my ability to combine structure with humanity, a balance that now anchors the Lace & Lime™ approach.</p>
+
+<!-- ===== PROOF OF IMPACT ===== -->
+<section class="section-box proof-timeline animate">
+  <h2>Proof of Impact</h2>
+  <div class="timeline-line"></div>
+  <div class="timeline-items">
+    <div class="milestone animate">
+      <div class="dot"></div>
+      <h4>Under 30 days</h4>
+      <p>Brand and framework launched and trademarked.</p>
     </div>
-
-    <!-- Mobile copy -->
-    <div class="founder-mobile animate-on-scroll fade-in" style="font-size:1rem;line-height:1.65;">
-      <p>After years in hospitals, nonprofits, and federal emergency response, I learned resilience isn’t only about strategy. It requires systems that bring clarity together with compassion. Lace & Lime™ was born from that truth: a space where structure meets intuition and growth stays grounded.</p>
-      <p>I don’t measure my career by titles. My focus has been on building and applying tools that create measurable impact where they’re needed most. That continues to guide how I approach community wellness and empowerment.</p>
-      <p>My expertise comes from compliance and accreditation work, including serving as a public health advisor, an accreditation manager for graduate medical education, and a nonprofit program manager. Each role strengthened my ability to combine structure with humanity — the balance that anchors Lace & Lime™ today.</p>
+    <div class="milestone animate">
+      <div class="dot"></div>
+      <h4>Under 60 days</h4>
+      <p>3 workshops and website program launched, site live.</p>
     </div>
-
-    <!-- Chips -->
-    <div class="chips animate-on-scroll fade-in">
-      <span>Master of Public Health · Adelphi University</span>
-      <span>B.S. · Math for Tech, Biology, Psychology · SUNY</span>
-      <span>Certified Health Education Specialist (CHES®)</span>
-      <span>Research Ethics Certified (CITI Program)</span>
-      <span>Public Health Advisor · Emergency Response</span>
-      <span>Accreditation & Compliance Leadership</span>
-      <span>Applied Data & Impact Analysis</span>
-      <span>Systems & Workflow Optimization</span>
+    <div class="milestone animate">
+      <div class="dot"></div>
+      <h4>Under 90 days</h4>
+      <p>Journal in production with full launch prep underway.</p>
+    </div>
+    <div class="milestone animate">
+      <div class="dot"></div>
+      <h4>5,000+ hours</h4>
+      <p>Invested in programs, mentoring, and wellness tools.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== CREDENTIALS ===== -->
-<section class="section-box credentials animate-on-scroll fade-up" style="margin-bottom:1.5rem;">
-  <h2 class="animate-on-scroll fade-up">Credentials</h2>
-  <div class="accordion-list animate-on-scroll stagger-fade">
-
-    <details class="accordion animate-on-scroll scale-in">
-      <summary>Public Health Systems (MPH) <span class="arrow">›</span></summary>
-      <div class="body">
-        <ul>
-          <li>Applied epidemiology to track population health trends</li>
-          <li>Biostatistics & data analysis for decision-making</li>
-          <li>Health care finance & reimbursement systems</li>
-          <li>Program planning & evaluation for measurable outcomes</li>
-          <li>Social, behavioral & global health policy</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="accordion animate-on-scroll scale-in">
-      <summary>Health Education (CHES®) <span class="arrow">›</span></summary>
-      <div class="body">
-        <ul>
-          <li>Needs assessment & community capacity building</li>
-          <li>Planning & implementing health education programs</li>
-          <li>Evaluation & research for program impact</li>
-          <li>Advocacy & communication for public health change</li>
-          <li>Leadership, management & professional ethics</li>
-        </ul>
-      </div>
-    </details>
-
-    <details class="accordion animate-on-scroll scale-in">
-      <summary>Compliance & Accreditation <span class="arrow">›</span></summary>
-      <div class="body">
-        <ul>
-          <li>Public Health Advisor in emergency response</li>
-          <li>Medical education accreditation management</li>
-          <li>Oversight of compliance & regulatory training</li>
-          <li>Nonprofit program management & systems alignment</li>
-        </ul>
-      </div>
-    </details>
-
-  </div>
-</section>
-
-<!-- ===== TIMELINE ===== -->
-<section class="section-box" id="timeline">
-  <div class="wrap-medium">
-    <h2 class="animate-on-scroll fade-up">Proof of Impact</h2><br>
-
-    <div class="timeline animate-on-scroll">  
-      <div class="milestone">
-        <h4>Under 30 days</h4>
-        <div class="dot"></div>
-        <p>Brand and framework launched and trademarked.</p>
-      </div>
-
-      <div class="milestone">
-        <h4>Under 60 days</h4>
-        <div class="dot"></div>
-        <p>3 workshops and website program launched, site live.</p>
-      </div>
-
-      <div class="milestone">
-        <h4>Under 90 days</h4>
-        <div class="dot"></div>
-        <p>Journal in production with full launch prep underway.</p>
-      </div>
-
-      <div class="milestone">
-        <h4>5,000+ hours</h4>
-        <div class="dot"></div>
-        <p>Invested in programs, mentoring, and wellness tools.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-<br><br>
-
-<!-- ===== PROOF OF IMPACT ===== --> <section class="section-box animate-on-scroll fade-up" id="proof"><div class="wrap-medium"><div class="highlight animate-on-scroll reveal-left"><strong>Achieved 100% compliance in 2 weeks</strong>, restoring organizational trust and ensuring oversight readiness.</div><div class="highlight animate-on-scroll reveal-left"><strong>Redesigned curriculum adopted by 200+ learners</strong>, strengthening consistency and accreditation outcomes.</div><div class="highlight animate-on-scroll reveal-left"><strong>Secured grant funding that expanded healthcare access for underserved communities by 30%</strong>, through needs assessment and logic model design.</div><div class="highlight animate-on-scroll reveal-left"><strong>Streamlined workflows reduced reporting time by 40%</strong>, freeing staff capacity for direct service.</div></div></section>
 
 <!-- ===== JOURNEY ===== -->
-<section class="section-box journey animate-on-scroll fade-up" id="journey">
-  <div class="wrap-medium">
-    <h2 class="animate-on-scroll fade-up">Working&nbsp;Together&nbsp;Feels&nbsp;Like</h2>
+<section class="section-box journey journey-container">
+  <h2>Working Together Feels Like</h2>
 
-    <div class="journey animate-on-scroll stagger-fade">
-      
-      <!-- Step 1 -->
-      <div class="journey-step animate-on-scroll reveal-left">
-        <div class="step-content">
-          <div class="step-title">Getting Grounded
-            <span class="step-icon">🌱</span>
-          </div>
-          <p>You begin with clarity and steady support. The first step feels welcoming, aligned, and well-guided.</p>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="journey-step animate-on-scroll reveal-left">
-        <div class="step-content">
-          <div class="step-title"> Finding Flow
-            <span class="step-icon">💫</span>
-          </div>
-          <p>Scheduling, payment, and check-ins move smoothly. Systems give you momentum without hidden barriers.</p>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="journey-step animate-on-scroll reveal-left">
-        <div class="step-content">
-          <div class="step-title">Building Together
-            <span class="step-icon">🤝</span>
-          </div>
-          <p>Progress is visible and collaborative. Communication feels clear, natural, and easy to sustain.</p>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="journey-step animate-on-scroll reveal-left">
-        <div class="step-content">
-          <div class="step-title">Trust That Lasts
-            <span class="step-icon">🌟</span>
-          </div>
-          <p>Your growth remains adaptable and supported. Each step strengthens long-term trust and confidence.</p>
-        </div>
-      </div>
-
-      <!-- Step 5 -->
-      <div class="journey-step animate-on-scroll reveal-left">
-        <div class="step-content">
-          <div class="step-title">Growing Forward
-            <span class="step-icon">🌿</span>
-          </div>
-          <p>The process leaves you ready to expand with clarity. You step forward with alignment and momentum that lasts.</p>
-        </div>
-      </div>
-
-      <!-- Completion Circle -->
-      <div class="completion animate-on-scroll scale-in">
-        <div class="completion-circle">
-          🌱 Alignment<br/>
-          💫 Momentum<br/>
-          🌟 Trust
-        </div>
-      </div>
+  <div class="journey-step animate">
+    <svg class="journey-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><circle cx="12" cy="5" r="3"/>
+    </svg>
+    <div>
+      <div class="step-title">Starting Steady</div>
+      <p>You begin with clarity and steady support. The first step feels welcoming, aligned, and well-guided.</p>
     </div>
   </div>
+
+  <div class="journey-step animate">
+    <svg class="journey-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+      <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+      <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
+    </svg>
+    <div>
+      <div class="step-title">Systems That Click</div>
+      <p>Scheduling, payment, and check-ins move smoothly. Systems give you momentum without hidden barriers.</p>
+    </div>
+  </div>
+
+  <div class="journey-step animate">
+    <svg class="journey-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M13 17V9"/><path d="M18 17V5"/><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M8 17v-3"/>
+    </svg>
+    <div>
+      <div class="step-title">Progress You Can See</div>
+      <p>Progress is visible and collaborative. Communication feels clear, natural, and easy to sustain.</p>
+    </div>
+  </div>
+
+  <div class="journey-step animate">
+    <svg class="journey-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/>
+      <path d="m14.45 13.39 5.05-4.694C20.196 8 21 6.85 21 5.75a2.75 2.75 0 0 0-4.797-1.837.276.276 0 0 1-.406 0A2.75 2.75 0 0 0 11 5.75c0 1.2.802 2.248 1.5 2.946L16 11.95"/>
+      <path d="m2 15 6 6"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a1 1 0 0 0-2.75-2.91"/>
+    </svg>
+    <div>
+      <div class="step-title">Support You Can Rely On</div>
+      <p>Your growth remains adaptable and supported. Each step strengthens long-term trust and confidence.</p>
+    </div>
+  </div>
+
+  <div class="journey-step animate">
+    <svg class="journey-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/>
+      <path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/>
+      <path d="M5 21h14"/>
+    </svg>
+    <div>
+      <div class="step-title">Momentum That Stays With You</div>
+      <p>The process leaves you ready to expand with clarity. You step forward with alignment and momentum that lasts.</p>
+    </div>
+  </div>
+
+  <div class="completion-circle animate">Alignment<br/>Momentum<br/>Trust</div>
 </section>
 
-<!-- ===== SYSTEMS ===== -->
-<section id="systems" class="section-box animate-on-scroll fade-up">
-  <div class="wrap-medium">
-    <div class="systems-card animate-on-scroll scale-in">
-      <h2>Systems That Work</h2>
-      <p>
-        What moves people forward isn’t just a tool.  
-        It’s a clear method, strong leadership, <i>and tools</i> that fit the work.
-      </p>
-      <button class="btn" id="systems-btn">
-        See how the systems come together →
-      </button>
-    </div>
-  </div>
+
+<!-- ===== CREDENTIALS ===== -->
+<section class="section-box credentials">
+  <h2>Credentials</h2>
+  <details><summary>Public Health Systems (MPH)</summary>
+    <div class="body"><ul><li>Applied epidemiology to track population health trends</li><li>Biostatistics & data analysis for decision-making</li><li>Health care finance & reimbursement systems</li><li>Program planning & evaluation for measurable outcomes</li><li>Social, behavioral & global health policy</li></ul></div>
+  </details>
+  <details><summary>Health Education (CHES®)</summary>
+    <div class="body"><ul><li>Needs assessment & community capacity building</li><li>Planning & implementing health education programs</li><li>Evaluation & research for program impact</li><li>Advocacy & communication for public health change</li><li>Leadership, management & professional ethics</li></ul></div>
+  </details>
+  <details><summary>Compliance & Accreditation</summary>
+    <div class="body"><ul><li>Public Health Advisor in emergency response</li><li>Medical education accreditation management</li><li>Oversight of compliance & regulatory training</li><li>Nonprofit program management & systems alignment</li></ul></div>
+  </details>
 </section>
 
-<!-- Systems Modal -->
-<div id="systems-modal" class="animate-on-scroll fade-up">
-  <div class="modal-content animate-on-scroll scale-in">
-    <h3>Energy Aligned, Action Defined &amp; the Lace &amp; Lime approach</h3>
-    <p>
-      The <strong>Approach</strong> page will open up this fall.  
-      Clarity and action, side by side.
-    </p>
-    <button class="btn modal-close" type="button">Close</button>
-  </div>
-</div>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span> is our guiding framework for growth you can feel.  
+  Logos and names are trademarks and/or multi-class registered trademarks of © 2025 Lace & Lime™ LLC. All rights reserved. · 
+  <a href="privacy-terms.html">Privacy and Terms</a></p>
+</footer>
 
-<!-- ===== FOOTER ===== --> <footer>
-    <div class="wrap-heavy">
-      <p class="legal">
-        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span> is our guiding framework for growth you can feel.  
-        Logos and names are trademarks and/or multi-class registered trademarks of © 2025 Lace & Lime™ LLC. All rights reserved. · 
-        <a href="privacy-terms.html">Privacy and Terms</a>
-      </p>
-    </div>
-  </footer>
 
-<!-- ===== SCRIPTS ===== --> <script src="js/main.js" defer></script><script src="js/SEO.js" defer></script></body></html>
+
+<script>
+document.documentElement.classList.add("no-js"); // fallback until JS runs
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.documentElement.classList.remove("no-js");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+
+        // Animate chips in sequence
+        if (entry.target.classList.contains("chips")) {
+          const chips = entry.target.querySelectorAll("span.animate");
+          chips.forEach((chip, i) => {
+            setTimeout(() => chip.classList.add("reveal"), i * 150);
+          });
+          obs.unobserve(entry.target);
+        }
+
+        // Animate proof timeline milestones (left → right)
+        else if (entry.target.classList.contains("proof-timeline")) {
+          entry.target.classList.add("reveal"); // trigger line
+          const milestones = entry.target.querySelectorAll(".milestone");
+          milestones.forEach((ms, i) => {
+            setTimeout(() => ms.classList.add("reveal"), i * 400);
+          });
+          obs.unobserve(entry.target);
+        }
+
+        // Animate journey steps in sequence
+        else if (entry.target.classList.contains("journey-container")) {
+          const steps = entry.target.querySelectorAll(".journey-step.animate");
+          steps.forEach((step, i) => {
+            setTimeout(() => step.classList.add("reveal"), i * 250);
+          });
+          const circle = entry.target.querySelector(".completion-circle.animate");
+          if (circle) {
+            setTimeout(() => circle.classList.add("reveal"), steps.length * 250);
+          }
+          obs.unobserve(entry.target);
+        }
+
+        // Normal reveal
+        else {
+          entry.target.classList.add("reveal");
+          obs.unobserve(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Observe containers only (not each milestone)
+  document.querySelectorAll(
+    ".chips, .journey-container, .proof-timeline"
+  ).forEach(el => observer.observe(el));
+});
+</script>
+
+
+
+
+</body>
+</html>

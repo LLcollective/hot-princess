@@ -183,4 +183,77 @@ textarea {
   font-weight: 600;
 }
 
+.section-box.credentials .accordion-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+
+
+/* ===== Global Milestone Stagger ===== */
+.milestone.reveal:nth-child(1) .dot,
+.milestone.reveal:nth-child(1) h4,
+.milestone.reveal:nth-child(1) p {
+  animation-delay: 0.3s;
+}
+
+.milestone.reveal:nth-child(2) .dot,
+.milestone.reveal:nth-child(2) h4,
+.milestone.reveal:nth-child(2) p {
+  animation-delay: 0.9s;
+}
+
+.milestone.reveal:nth-child(3) .dot,
+.milestone.reveal:nth-child(3) h4,
+.milestone.reveal:nth-child(3) p {
+  animation-delay: 1.5s;
+}
+
+.milestone.reveal:nth-child(4) .dot,
+.milestone.reveal:nth-child(4) h4,
+.milestone.reveal:nth-child(4) p {
+  animation-delay: 2.1s;
+}
+
+/* ===== Journey Step Animation ===== */
+.journey-step {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.journey-step.reveal {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Stagger effect */
+.journey-step.reveal:nth-child(1) {
+  transition-delay: 0.3s;
+}
+.journey-step.reveal:nth-child(2) {
+  transition-delay: 0.9s;
+}
+.journey-step.reveal:nth-child(3) {
+  transition-delay: 1.5s;
+}
+.journey-step.reveal:nth-child(4) {
+  transition-delay: 2.1s;
+}
+.journey-step.reveal:nth-child(5) {
+  transition-delay: 2.7s;
+}
+
+/* Completion Circle stagger */
+.completion {
+  opacity: 0;
+  transform: scale(0.7);
+}
+.completion.reveal {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: 3.3s;
+}
 
