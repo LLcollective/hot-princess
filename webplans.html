@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +29,6 @@
 
 /* ========== Global Notebook Background (page-unique) ========== */
 body {
-  /* keep the notebook background since it's page-specific */
   font-family: "Georgia", serif;
   margin: 0;
   padding: 2rem;
@@ -92,7 +92,7 @@ body {
 .accordion-content {
   position: relative;
   z-index: 1;
-  color: var(--ink-dark);           /* was #222 */
+  color: var(--ink-dark); /* was #222 */
   max-height: 0;
   overflow: hidden;
   transition: max-height .3s ease, padding .3s ease;
@@ -122,7 +122,7 @@ body {
   font-size: 1.25rem;
   font-weight: 700;
   margin: 0;
-  color: var(--ink-dark); /* was #2c265f */
+  color: var(--ink-dark);
 }
 
 .chip {
@@ -148,31 +148,75 @@ body {
   margin-top: 0.25rem;
   white-space: nowrap;
 }
-.tier-list { margin: 0; padding: 0; list-style: none; }
-.tier-list li { margin: .6rem 0; }
-.tier-list p { margin: .2rem 0 0; font-size: .9rem; color: #555; }
-.tier-list strong { color: #8B5E65; }
+
+/* Reset tier list to normal stacked flow */
+.tier-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tier-list li {
+  display: flex;           /* put icon + text side by side */
+  align-items: flex-start; /* align icon with top of text */
+  gap: 0.6rem;             /* spacing between icon and text */
+  margin: 0.6rem 0;
+}
+
+.tier-list .icon {
+  flex-shrink: 0;          /* prevent squishing */
+  margin-top: 0.25rem;     /* optical alignment with text */
+}
+
+.tier-list strong {
+  display: block;          /* label on its own line inside text block */
+  color: #8B5E65;
+  font-weight: 600;
+  margin-bottom: 0.2rem;   /* space before description */
+}
+
+.tier-list p {
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: #444;
+  text-align: left;
+  text-justify: auto;
+}
+
+
 
 /* Addons */
 .addons-list li { margin-bottom: 1rem; }
 .addon-option { display: flex; align-items: center; gap: .5rem; }
 .price-badge { font-weight: 700; color: #2E4032; }
 
-/* ========== Grid ========== */
+/* ========== Grid Layout ========== */
 .packages {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 across desktop */
   gap: 1.5rem;
   align-items: start;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
+  justify-items: stretch;
 }
-@media (max-width: 1024px) { .packages { grid-template-columns: repeat(2, 1fr); } }
+
+@media (max-width: 1024px) {
+  .packages { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 768px) {
   .packages { grid-template-columns: 1fr; }
   .accordion-toggle { padding: 1.25rem; font-size: 1.05rem; }
   .price { font-size: clamp(0.95rem, 3vw, 1.1rem); }
 }
+
+/* Included sections should match grid, not full width */
+.accordion-card.included {
+  max-width: 100%;    /* respect grid cell */
+  margin: 0;          /* remove centering override */
+}
+
 
 /* ========== Cart Button ========== */
 #cart-btn {
@@ -181,7 +225,7 @@ body {
   right: 1rem;
   border: none;
   border-radius: 6px;
-  background: #000; /* black background */
+  background: #000;
   padding: 0.5rem;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,0,0,.2);
@@ -190,17 +234,15 @@ body {
 #cart-btn svg {
   width: 22px;
   height: 22px;
-  stroke: #fff;   /* white cart icon */
+  stroke: #fff;
   fill: none;
 }
-#cart-btn:hover {
-  background: #222; /* slightly lighter black */
-}
+#cart-btn:hover { background: #222; }
 
 /* ========== Cart Panel ========== */
 #cart-panel {
   position: fixed;
-  right: -400px; /* hidden offscreen */
+  right: -400px;
   top: 0;
   width: 350px;
   height: 100%;
@@ -226,16 +268,12 @@ body {
   font-size: 1.2rem;
 }
 
-#cart-items { 
-  flex: 1; 
-  overflow-y: auto; 
-  padding: 1rem; 
-}
-#cart-items div { 
-  display: flex; 
-  justify-content: space-between; 
-  margin-bottom: .8rem; 
-  font-size: .95rem; 
+#cart-items { flex: 1; overflow-y: auto; padding: 1rem; }
+#cart-items div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .8rem;
+  font-size: .95rem;
 }
 #cart-items button {
   border: none;
@@ -250,13 +288,8 @@ body {
   padding: 1rem;
   background: rgba(255,255,255,0.6);
 }
-#cart-total { 
-  font-weight: 700; 
-  margin-bottom: .8rem; 
-  font-size: 1rem; 
-}
-#cart-form input, 
-#cart-form textarea {
+#cart-total { font-weight: 700; margin-bottom: .8rem; font-size: 1rem; }
+#cart-form input, #cart-form textarea {
   width: 90%;
   margin-bottom: .6rem;
   padding: .5rem .7rem;
@@ -267,41 +300,23 @@ body {
   background: #fffdf7;
 }
 
-/* ========== Cart Actions (Buttons inside panel) ========== */
-.cart-actions { 
-  display: flex; 
-  gap: .5rem; 
-  margin-top: 1rem; 
+/* ========== Cart Actions ========== */
+.cart-actions { display: flex; gap: .5rem; margin-top: 1rem; }
+#back-btn {
+  flex: 1;
+  background: #999;
+  border: none;
+  padding: .6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
 }
-
-/* Back button (kept gray for contrast) */
-#back-btn { 
-  flex: 1; 
-  background: #999; 
-  border: none; 
-  padding: .6rem; 
-  border-radius: 6px; 
-  cursor: pointer; 
-  font-weight: 600; 
-  color: #fff; 
-}
-
-/* Add to Cart + Submit Inquiry inherit global .btn styles */
-.add-cart-btn,
-#inquiry-btn {
-  @extend .btn;     /* inherit global site pink button styling */
-  flex: 3;          /* give more space compared to Back */
-  width: 100%; 
+.add-cart-btn, #inquiry-btn {
+  flex: 3;
+  width: 100%;
   text-align: center;
 }
-
-/* 📝 If you ever want mauve-pink instead, override with: 
-.add-cart-btn,
-#inquiry-btn { background: #B36B72; }
-.add-cart-btn:hover,
-#inquiry-btn:hover { background: #D7A1A9; }
-*/
-
 
 /* Icon */
 .info-icon {
@@ -310,8 +325,8 @@ body {
   height: 18px;
   line-height: 18px;
   border-radius: 50%;
-  background-color: #f5f0e8; /* beige */
-  color: #111;              /* black text */
+  background-color: #f5f0e8;
+  color: #111;
   font-size: 12px;
   font-weight: bold;
   text-align: center;
@@ -319,28 +334,11 @@ body {
   margin-right: 6px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-.info-icon:hover {
-  background-color: #111;
-  color: #f5f0e8;
-}
+.info-icon:hover { background-color: #111; color: #f5f0e8; }
+.info-text { display: none; font-size: 13px; color: #555; margin-left: 6px; }
+.info-text.show { display: inline; }
 
-/* Info text hidden by default */
-.info-text {
-  display: none;
-  font-size: 13px;
-  color: #555;
-  margin-left: 6px;
-}
-
-/* Show when toggled */
-.info-text.show {
-  display: inline;
-}
-
-
-
-/* ========== Minor accessibility / cleanup ========== */
-/* ensure focus ring for keyboard users */
+/* Minor accessibility */
 .accordion-toggle:focus,
 #cart-btn:focus,
 .add-cart-btn:focus,
@@ -348,54 +346,30 @@ body {
   outline: 3px solid rgba(100, 85, 180, 0.18);
   outline-offset: 2px;
 }
-/* Remove bullets and spacing for main addons list */
-.addons-list.no-bullets {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
 
-.addons-list.no-bullets li {
-  margin-bottom: 1rem;
-}
-
-/* Mauve title for the inquiry option */
-.addon-title {
-  color: #B36B72; /* mauve pink */
-}
-
-/* Nested category list */
+/* Addons styling */
+.addons-list.no-bullets { list-style: none; padding-left: 0; margin: 0; }
+.addons-list.no-bullets li { margin-bottom: 1rem; }
+.addon-title { color: #B36B72; }
 .addon-categories {
   list-style: none;
-  padding-left: 1.5rem; /* indent under main checkbox */
+  padding-left: 1.5rem;
   margin: 0.5rem 0 0;
-  color: var(--ink-700, #555); /* softer text */
+  color: var(--ink-700, #555);
   font-size: 0.9rem;
 }
+.addon-categories li { margin: 0.25rem 0; }
 
-.addon-categories li {
-  margin: 0.25rem 0;
-}
-
-/* Compact + justified text ONLY for add-on descriptions */
-.tier-list p {
-  margin: 0.35rem 0 0;       /* tighter top margin */
-  font-size: 0.88rem;        /* slightly smaller than base */
-  line-height: 1.4;          /* more compact */
-  text-align: justify;       /* flush on both sides */
-  text-justify: inter-word;  /* smoother spacing */
-  color: #444;               /* keep descriptions softer */
-}
-
-/* Make Add-ons titles match package headers */
+/* Compact descriptions */
 .addons-list strong {
-  color: #8B5E65;          /* keep mauve pink */
-  font-size: .95rem;      /* closer to h2 size */
-  font-weight: 600;        /* match header boldness */
+  color: #8B5E65;
+  font-size: .95rem;
+  font-weight: 600;
   display: block;
   margin-bottom: 0.2rem;
 }
-/* ===== Hero Logo Lockup in Heading ===== */
+
+/* Hero */
 .hero-headings .tagline {
   display: flex;
   flex-wrap: wrap;
@@ -404,8 +378,6 @@ body {
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   margin-bottom: 0.75rem;
 }
-
-/* Lace & Lime wordmark inside hero */
 .hero-headings .lace {
   font-family: "Raleway", sans-serif;
   font-weight: 200;
@@ -414,7 +386,6 @@ body {
   color: #3F4A3C;
   letter-spacing: -0.02em;
 }
-
 .hero-headings .amp {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
@@ -425,27 +396,51 @@ body {
   position: relative;
   top: .1rem;
 }
-
 .hero-headings .lime {
   font-family: "Raleway", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   font-size: 2rem;
-  color: var(--brand); /* pink */
+  color: var(--brand);
   letter-spacing: 0.02em;
 }
-
-/* Website Plans descriptor — break out of H1 scaling */
 .hero-headings .plans-sub {
   font-family: var(--font-body);
-  font-size: 0.9rem;              /* independent of h1 */
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   margin-left: 0.4rem;
   color: rgba(95,112,138,0.8);
   letter-spacing: 0.06em;
-  line-height: 1;                 /* keeps it tight */
-  align-self: center;             /* sits neatly on baseline */
+  line-height: 1;
+  align-self: center;
+}
+/* Force tier-list THIS CANNOT BE DELETED */
+.accordion-content .tier-list {
+  display: block !important;
+}
+
+.accordion-content .tier-list li {
+  display: block !important;
+}
+
+.accordion-content .tier-list strong,
+.accordion-content .tier-list p {
+  display: block;
+  margin: 0.25rem 0 0;
+  text-align: left;
+}
+/* Icon styling */
+.icon {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  stroke-width: 2;
+  stroke: #3F4A3C; /* brand dark green */
+}
+.tier-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
 }
 
 </style>
@@ -469,70 +464,162 @@ body {
   </p>
 </section>
 
+
+
+
+
 <!-- ===== PACKAGES / ACCORDIONS ===== -->
 <div class="packages">
 
-  <!-- Starter -->
-  <div class="accordion-card">
-    <div class="accordion-toggle">
-      <div class="plan-header">
-        <div class="title-wrap">
-          <h2>Energy&nbsp;Aligned</h2>
-          <span class="chip">Starter</span>
-          <p class="subtitle">For&nbsp;new&nbsp;entrepreneurs</p>
-        </div>
-        <div class="price">from $750</div>
-      </div>
-      <span class="accordion-icon">+</span>
-    </div>
-    <div class="accordion-content">
-      <ul class="tier-list">
-        <li><strong>For new entrepreneurs</strong><p>Best if this is your first site and you want credibility from day one.</p></li>
-        <li><strong>1–2 pages</strong><p>Launch a clean, modern site with optional payment or booking integration.</p></li>
-        <li><strong>Starter brand styling</strong><p>Logo, colors, and fonts shaped into a simple, cohesive identity.</p></li>
-        <li><strong>Confident handoff</strong><p>Step-by-step notes so you can update text or images anytime.</p></li>
-        <li><strong>Launch Essentials included</strong><p>All core setup services built in.</p></li>
-        <li><strong>Timeline:</strong> ~2 weeks</li>
-        <li><strong>Revisions:</strong> 1 feedback round</li>
-      </ul>
-      <button class="btn add-cart-btn" data-item="Energy Aligned Starter - from $750">
-        Add to Cart
-      </button>
-    </div>
-  </div>
 
-  <!-- Growth -->
-  <div class="accordion-card">
-    <div class="accordion-toggle">
-      <div class="plan-header">
-        <div class="title-wrap">
-          <h2>Action&nbsp;Defined</h2>
-          <span class="chip">Growth</span>
-          <p class="subtitle">For growing businesses</p>
-        </div>
-        <div class="price">from $1,800</div>
+ <!-- Starter -->
+<div class="accordion-card">
+  <div class="accordion-toggle">
+    <div class="plan-header">
+      <div class="title-wrap">
+        <h2>Energy&nbsp;Aligned</h2>
+        <span class="chip">Starter</span>
+        <p class="subtitle">For&nbsp;new&nbsp;entrepreneurs</p>
       </div>
-      <span class="accordion-icon">+</span>
+      <div class="price">from $750</div>
     </div>
-    <div class="accordion-content">
-      <ul class="tier-list">
-        <li><strong>For growing businesses</strong><p>Best if you’ve outgrown a starter site and need a site that converts.</p></li>
-        <li><strong>3–4 polished pages</strong><p>Home, About, Services, Contact-  designed to build trust and capture leads.</p></li>
-        <li><strong>Visual credibility</strong><p>Consistent graphics, testimonials, and social proof to elevate your brand.</p></li>
-        <li><strong>Lead capture flows</strong><p>Multi-step forms and smart intake automations.</p></li>
-        <li><strong>Payments & scheduling</strong><p>Integrated Square, Stripe, or Calendly for quick booking and payment.</p></li>
-        <li><strong>Engagement insights</strong><p>Track what’s working with reporting tools that guide next steps.</p></li>
-        <li><strong>Guided support</strong><p>Growth coaching intro and post-launch walkthrough included.</p></li>
-        <li><strong>Launch Essentials included</strong><p>All core setup services built in.</p></li>
-        <li><strong>Timeline:</strong> ~4 weeks</li>
-        <li><strong>Revisions:</strong> 2 feedback rounds</li>
-      </ul>
-      <button class="btn add-cart-btn" data-item="Action Defined Growth - from $1800">
-        Add to Cart
-      </button>
-    </div>
+    <span class="accordion-icon">+</span>
   </div>
+  <div class="accordion-content">
+    <ul class="tier-list">
+      <li><strong>For new entrepreneurs</strong><p>Best if this is your first site and you want credibility from day one.</p></li>
+      <li><strong>1–2 pages</strong><p>Launch a clean, modern site with optional payment or booking integration.</p></li>
+      <li><strong>Starter brand styling</strong><p>Logo, colors, and fonts shaped into a simple, cohesive identity.</p></li>
+      <li><strong>Confident handoff</strong><p>Step-by-step notes so you can update text or images anytime.</p></li>
+      <!-- Retained "ownership" items -->
+      <li><svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><path d="M5 13l4 4L19 7"/></svg> Full access to your source code</li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><path d="M5 13l4 4L19 7"/></svg> Exportable content and data portability</li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><path d="M5 13l4 4L19 7"/></svg> No platform fees for ownership</li>
+      <!-- Visibility -->
+      <li><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24" width="18" height="18"
+     stroke="currentColor" fill="none" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round">
+  <!-- Lens -->
+  <circle cx="11" cy="11" r="7"/>
+  <!-- Handle -->
+  <line x1="16" y1="16" x2="20" y2="20"/>
+</svg>
+Boost Visibility: Omni-Search</li>
+<!-- Baseline essentials at bottom -->
+<li>
+  <svg class="icon" viewBox="0 0 24 24" width="18" height="18"
+       stroke="currentColor" fill="none" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2"/>
+    <path d="M7 11V7a5 5 0 0110 0v4"/>
+  </svg>
+  Security & Privacy Protections
+</li>
+<li>
+  <svg class="icon" viewBox="0 0 24 24" width="18" height="18"
+       stroke="currentColor" fill="none" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="15" height="12" rx="2"/>
+    <path d="M9 17h6v4H9z"/>
+    <rect x="17" y="7" width="5" height="10" rx="1"/>
+  </svg>
+  Cross-Device & Browser Testing
+</li>
+<li>
+  <svg class="icon" viewBox="0 0 24 24" width="18" height="18"
+       stroke="currentColor" fill="none" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 20v-6M6 20V10M18 20V4"/>
+  </svg>
+  Analytics Setup
+</li>
 
+      <li><strong>Timeline:</strong> ~2 weeks</li>
+      <li><strong>Revisions:</strong> 1 feedback round</li>
+    </ul>
+    <button class="btn add-cart-btn" data-item="Energy Aligned Starter - from $750">
+      Add to Cart
+    </button>
+  </div>
+</div>
+
+
+ <!-- Growth -->
+<div class="accordion-card">
+  <div class="accordion-toggle">
+    <div class="plan-header">
+      <div class="title-wrap">
+        <h2>Action&nbsp;Defined</h2>
+        <span class="chip">Growth</span>
+        <p class="subtitle">For growing businesses</p>
+      </div>
+      <div class="price">from $1800</div>
+    </div>
+    <span class="accordion-icon">+</span>
+  </div>
+  <div class="accordion-content">
+    <ul class="tier-list">
+      <li><strong>For growing businesses</strong><p>Best if you’ve outgrown a starter site and need a site that converts.</p></li>
+      <li><strong>3–4 polished pages</strong><p>Home, About, Services, Contact — designed to build trust and capture leads.</p></li>
+      <li><strong>Visual credibility</strong><p>Consistent graphics, testimonials, and social proof to elevate your brand.</p></li>
+      <li><strong>Lead capture flows</strong><p>Multi-step forms and smart intake automations.</p></li>
+      <li><strong>Payments & scheduling</strong><p>Integrated Square, Stripe, or Calendly for quick booking and payment.</p></li>
+      <li><strong>Engagement insights</strong><p>Track what’s working with reporting tools that guide next steps.</p></li>
+      <li><strong>Guided support</strong><p>Growth coaching intro and post-launch walkthrough included.</p></li>
+      <!-- Retained "ownership" items -->
+      <li><svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><path d="M5 13l4 4L19 7"/></svg> Full access to your source code</li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><path d="M5 13l4 4L19 7"/></svg> Exportable content and data portability</li>
+      <li><svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none"><path d="M5 13l4 4L19 7"/></svg> No platform fees for ownership</li>
+      <!-- Visibility -->
+      <li><svg class="icon" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24" width="18" height="18"
+     stroke="currentColor" fill="none" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round">
+  <!-- Lens -->
+  <circle cx="11" cy="11" r="7"/>
+  <!-- Handle -->
+  <line x1="16" y1="16" x2="20" y2="20"/>
+</svg>
+Boost Visibility: Omni-Search</li>
+
+<!-- Baseline essentials at bottom -->
+<li>
+  <svg class="icon" viewBox="0 0 24 24" width="18" height="18"
+       stroke="currentColor" fill="none" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2"/>
+    <path d="M7 11V7a5 5 0 0110 0v4"/>
+  </svg>
+  Security & Privacy Protections
+</li>
+<li>
+  <svg class="icon" viewBox="0 0 24 24" width="18" height="18"
+       stroke="currentColor" fill="none" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="15" height="12" rx="2"/>
+    <path d="M9 17h6v4H9z"/>
+    <rect x="17" y="7" width="5" height="10" rx="1"/>
+  </svg>
+  Cross-Device & Browser Testing
+</li>
+<li>
+  <svg class="icon" viewBox="0 0 24 24" width="18" height="18"
+       stroke="currentColor" fill="none" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 20v-6M6 20V10M18 20V4"/>
+  </svg>
+  Analytics Setup
+</li>
+
+      <li><strong>Timeline:</strong> ~4 weeks</li>
+      <li><strong>Revisions:</strong> 2 feedback rounds</li>
+    </ul>
+    <button class="btn add-cart-btn" data-item="Action Defined Growth - from $1800">
+      Add to Cart
+    </button>
+  </div>
+</div>
 
 
 
@@ -544,56 +631,120 @@ body {
         <h2>Add-ons</h2>
         <span class="chip">Optional</span>
       </div>
-      <div class="price">Enhancements</div>
+      <div class="price">Expansions</div>
     </div>
     <span class="accordion-icon">+</span>
   </div>
 
   <div class="accordion-content">
-    <!-- ℹ Info toggle -->
-    <div class="baseline-note">
-      <span class="info-icon" onclick="this.nextElementSibling.classList.toggle('show')">ℹ</span>
-      <span class="info-text">Pricing reflects scope — lighter lifts are listed, larger builds require inquiry.</span>
-    </div>
+    <div class="baseline-note"></div>
 
     <ul class="tier-list addons-list">
+
+      <!-- Branding -->
+      <li>
+        <label class="addon-option">
+          <input type="checkbox" data-item="Branded Newsletter Capture - $250">
+          <span>
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none">
+              <rect x="2" y="6" width="20" height="12" rx="2"/>
+              <path d="M22 6l-10 7L2 6"/>
+            </svg>
+            Branded Newsletter Capture
+            <span class="price-badge">$250</span>
+          </span>
+        </label>
+        <p>Custom-styled signup forms that match your brand and build subscriber trust.</p>
+      </li>
+
       <li>
         <label class="addon-option">
           <input type="checkbox" data-item="Branded Design Packs - $350">
-          <span><strong>Branded Design Packs 
-            <span class="price-badge">$350</span></strong></span>
+          <span>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" 
+                 viewBox="0 0 24 24" width="18" height="18" 
+                 stroke="currentColor" fill="none" stroke-width="2" 
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3c-4.97 0-9 4.03-9 9a9 9 0 0 0 9 9h1.5a2.5 2.5 0 0 0 2.5-2.5c0-.6-.22-1.15-.59-1.59-.38-.44-.59-1-.59-1.59 0-.83.67-1.5 1.5-1.5h1a4 4 0 0 0 4-4c0-4.97-4.03-9-9-9z"/>
+              <circle cx="7.5" cy="10.5" r="1"/>
+              <circle cx="12" cy="7.5" r="1"/>
+              <circle cx="16.5" cy="10.5" r="1"/>
+            </svg>
+            Branded Design Packs 
+            <span class="price-badge">$350</span>
+          </span>
         </label>
-        <p>Ready-to-use templates for launches and campaigns. Always consistent, always professional.</p>
+        <p>Ready-to-use templates for launches and campaigns. Always consistent and professional.</p>
       </li>
 
       <li>
         <label class="addon-option">
           <input type="checkbox" data-item="Brand Guidelines - from $750">
-          <span><strong>Brand Guidelines 
-            <span class="price-badge">from $750</span></strong></span>
+          <span>
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+            Brand Guidelines 
+            <span class="price-badge">from $750</span>
+          </span>
         </label>
         <p>Lock in your colors, fonts, imagery, and voice so every platform looks and sounds aligned.</p>
       </li>
 
+      <!-- Systems -->
       <li>
         <label class="addon-option">
-          <input type="checkbox" data-item="Omni-Search - $750">
-          <span><strong>Boost Visibility: Omni-Search 
-            <span class="price-badge">$750</span></strong></span>
+          <input type="checkbox" data-item="Advanced Security Options - $300">
+          <span>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24" width="18" height="18"
+                 stroke="currentColor" fill="none" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l8 4v5c0 5-3.5 9-8 9s-8-4-8-9V7l8-4z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            Advanced Security Options
+            <span class="price-badge">$300</span>
+          </span>
         </label>
-        <p>Show up first across Google, socials, and directories- not buried under competitors.</p>
+        <p>Extra layers of protection beyond baseline SSL including bot filters, spam prevention, and optional reCAPTCHA. Helpful for sensitive client data, higher traffic, or reducing spam messages.</p>
       </li>
 
       <li>
         <label class="addon-option">
-          <input type="checkbox" data-item="Analytics Dashboard - $1000">
-          <span><strong>Track Smarter: Analytics 
-            <span class="price-badge">$1000</span></strong></span>
+          <input type="checkbox" data-item="Advanced Automations - from $400">
+          <span>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" 
+                 viewBox="0 0 24 24" width="18" height="18" 
+                 stroke="currentColor" fill="none" stroke-width="2">
+              <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.89 3.31.877 2.42 2.42a1.724 1.724 0 001.065 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.89 1.543-.877 3.31-2.42 2.42a1.724 1.724 0 00-2.573 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.89-3.31-.877-2.42-2.42a1.724 1.724 0 00-1.065-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.89-1.543.877-3.31 2.42-2.42.966.557 2.147.084 2.573-1.065z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            Advanced Automations
+            <span class="price-badge">from $400</span>
+          </span>
         </label>
-        <p>Custom dashboard surfaces what drives results so you act on data, not noise.</p>
+        <p>Automated follow-ups, smart form routing, and time-saving workflows beyond the basics.</p>
       </li>
+
+      <li>
+        <label class="addon-option">
+          <input type="checkbox" data-item="Advanced Analytics Dashboard - $400">
+          <span>
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none">
+              <path d="M12 20v-6M6 20V10M18 20V4"/>
+            </svg>
+            Advanced Analytics Dashboard
+            <span class="price-badge">$400</span>
+          </span>
+        </label>
+        <p>Custom dashboards built in Google Analytics to show who’s visiting and what’s working.</p>
+      </li>
+
     </ul>
-    <!-- Add-ons action -->
+
     <button class="btn add-cart-btn" data-item="Addons">
       Add Selected Add-ons
     </button>
@@ -601,39 +752,6 @@ body {
 </div>
 
 
-
-
-
-
-
-
-
-  <!-- Add-ons -->
-  <div class="accordion-card">
-    <div class="accordion-toggle">
-      <div class="plan-header">
-        <div class="title-wrap">
-          <h2>Add-ons</h2>
-          <span class="chip">Submit Inquiry</span>
-        </div>
-        <div class="price">Advanced</div>
-      </div>
-      <span class="accordion-icon">+</span>
-    </div>
-    <div class="accordion-content">
-      <ul class="tier-list">
-        <li><strong>Membership Access</strong><p>Create a private members-only space to deepen connection.</p></li>
-        <li><strong>Course Delivery</strong><p>Secure, structured delivery with built-in payments.</p></li>
-        <li><strong>Systems Integration</strong><p>Save hours with CRM, database, and tool connections.</p></li>
-        <li><strong>Full Online Shop</strong><p>Cart, subscriptions, and scalable e-commerce.</p></li>
-        <li><strong>Analytics Dashboard</strong><p>Track key metrics with a clear, custom dashboard.</p></li>
-      </ul>
-      <button class="btn add-cart-btn" data-item="Add-ons Inquiry">
-        Submit Inquiry
-      </button>
-    </div>
-  </div>
-</div>
 
 
 
@@ -671,6 +789,12 @@ body {
   </div>
 </div>
 
+
+</DIV>
+
+</SECTION>
+
+
 <footer>
   <div class="wrap-heavy">
     <p class="legal">
@@ -682,6 +806,10 @@ body {
      </p>
   </div>
 </footer>
+</body>
+</html>
+
+
 
 
 
@@ -756,5 +884,3 @@ body {
       document.getElementById("back-btn").addEventListener("click", () => cartPanel.classList.remove("open"));
     });
   </script>
-</body>
-</html>

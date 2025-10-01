@@ -196,8 +196,8 @@ strong {
   line-height: 1.6;
   color: var(--ink-med);
   max-width: 720px;
-  margin: 0;              /* remove auto centering */
-  text-align: left;       /* force left alignment */
+  margin: 0;
+  text-align: left;
 }
 
 /* =======================================
@@ -317,7 +317,6 @@ footer a:hover { color: #B3BAFF; }
   footer a { font-size: 0.7rem; }
 }
 
-
 /* Form */
 form {
   max-width: 640px;
@@ -360,6 +359,7 @@ textarea {
   gap: 1rem;
   margin-top: 1rem;
 }
+
 /* ================================
    Buttons — Global
    ================================ */
@@ -386,7 +386,6 @@ textarea {
   background: #b85f76;        /* darker pressed pink */
 }
 
-
 /* ===== Highlight Blocks ===== */
 .highlight {
   background: #fff;
@@ -412,14 +411,9 @@ textarea {
   }
 }
 
-
-
-
-
 /* ================================
    Global Modal Safety
    ================================ */
-/* Global modal safety */
 .modal {
   display: none;
   visibility: hidden;
@@ -432,14 +426,12 @@ textarea {
   justify-content: center;
   z-index: 9999;
 }
-
 .modal.active {
   display: flex;
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
-
 .modal-box {
   background: #fff;
   border-radius: var(--radius-md);
@@ -448,7 +440,6 @@ textarea {
   width: 90%;
   box-shadow: var(--shadow);
 }
-
 
 /* ===== Eyebrow Style Buttons ===== */
 .btn-eyebrow {
@@ -467,16 +458,36 @@ textarea {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 .btn-eyebrow::after {
-  content: "→";   /* arrow */
+  content: "→";
   font-size: 0.9rem;
   line-height: 1;
 }
-
 .btn-eyebrow:hover {
   background: var(--brand-light);
   color: var(--ink-dark);
   transform: translateY(-1px);
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* =======================================
+   Tier List (Fixed alignment for icons)
+   ======================================= */
+.tier-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tier-list li {
+  display: flex;           /* ensure SVG + text inline */
+  align-items: flex-start; /* top align */
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.tier-list .icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;     /* small nudge for balance */
+  color: var(--brand);
 }
