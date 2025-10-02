@@ -592,29 +592,42 @@ Movement&nbsp;you&nbsp;can&nbsp;trust&nbsp;and&nbsp;follow&nbsp;through.</p>
 (() => {
   const DESKTOP_QUERY = '(min-width: 769px)';
 
-  function animateSpiral(svg) {
+  function animateSpiral(svg, repeat = 3) {
     if (!svg) return;
     const path = svg.querySelector('.spiral-wire');
     if (!path) return;
 
     const len = path.getTotalLength();
+    let count = 0;
+    let reverse = false;
 
-    // Reset
-    path.style.transition = 'none';
-    path.style.strokeDasharray = len;
-    path.style.strokeDashoffset = len;
+    function draw() {
+      // Reset
+      path.style.transition = 'none';
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = reverse ? 0 : len;
 
-    // Animate next frame
-    requestAnimationFrame(() => {
-      path.style.transition = 'stroke-dashoffset 3s ease-out';
-      path.style.strokeDashoffset = 0;
-    });
+      requestAnimationFrame(() => {
+        path.style.transition = 'stroke-dashoffset 2.5s ease-in-out';
+        path.style.strokeDashoffset = reverse ? len : 0;
+
+        setTimeout(() => {
+          count++;
+          reverse = !reverse; // flip direction
+          if (count < repeat) {
+            draw();
+          }
+        }, 3000);
+      });
+    }
+
+    draw();
   }
 
   function run() {
     const isDesktop = window.matchMedia(DESKTOP_QUERY).matches;
     const svg = document.querySelector(isDesktop ? '.spiral-desktop' : '.spiral-mobile');
-    animateSpiral(svg);
+    animateSpiral(svg, 3); // down, up, down
   }
 
   document.addEventListener('DOMContentLoaded', run);
