@@ -284,8 +284,8 @@ function drawSpiral() {
 
   // Spiral nav links with manual multipliers
   const linkLabels = [
-    { text: "Work With Me", href: "founder.html", factor: 0.05 },
-    { text: "Laced Notes", href: "lacednotes.html", factor: 0.10 },
+    { text: "Laced Together", href: "founder.html", factor: 0.05 },
+    { text: "", href: "lacednotes.html", factor: 0.10 },
     { text: "Experiences", href: "booknow.html", factor: 0.16 },
     { text: "Limeboard", href: "limeboard.html", factor: 0.23 },
     { text: "Approach", href: "approach.html", factor: 0.21 },
@@ -313,7 +313,13 @@ drawSpiral();
 window.addEventListener("resize", drawSpiral);
 
 
-/* FOUNDER AND APPROACH PAGE*/
+
+
+
+
+
+
+/* FOUNDER PAGE*/
 document.documentElement.classList.add("no-js"); // fallback until JS runs
 
 document.addEventListener("DOMContentLoaded", () => {
