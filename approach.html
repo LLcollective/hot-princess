@@ -271,6 +271,14 @@ body {
 
   .why-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
   .approach-cta a { display: inline-block; width: auto; margin: .5rem; }
+
+  /* Why-section alignment fix */
+  .why-section {
+    max-width: 950px;   /* match timeline */
+    margin: 0 auto;     /* center horizontally */
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .framework-note,
@@ -280,7 +288,60 @@ body {
   margin-right: 10px;
   max-width: calc(100% - 50px); /* SAME rule so they align */
 }
+
+/* ===== MOBILE TINT VARIATIONS ===== */
+.framework-note {
+  background: #fffafa;           /* soft blush */
+  border-color: #f4e4e7;
+}
+
+.milestone.lace {
+  background: #fdfcff;           /* faint lavender */
+  border-color: #e8e2f2;
+}
+
+.milestone.lime {
+  background: #f9fefa;           /* faint mint */
+  border-color: #d9efe0;
+}
+
+.founder-note {
+  background: #fdf9f9;           /* pale blush-pink */
+  border-color: #f2e5e5;
+  font-style: italic;
+}
+/* ===== MOBILE H2 TWEAKS ===== */
+.why-timeline h2 {
+  font-size: 1.25rem;        /* slightly smaller for mobile */
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.why-section h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.approach-cta h2 {
+  font-size: 1.35rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+.spiral-mobile {
+  top: 2.75rem; /* start a bit lower so it’s not hugging top */
+  left: 28px;  /* pulled in to avoid viewport cutoff */
+}
 /* ===== Mobile-first adjustments ===== */
+
+/* Founder note: mobile first (italic) */
+.founder-note {
+  background: #fdf7f7;
+  border-color: #F0E8EA;
+  font-style: italic;
+}
+
+
 
 
 /* Milestones widen like framework/founder notes */
@@ -309,17 +370,60 @@ body {
 }
 
 .spiral-desktop {
-  top: 1rem;  /* sits neatly under heading */
-  left: 4rem; /* pulled in slightly */
+  top: 3.5rem;  /* sits neatly under heading */
+  left: 2rem; /* pulled in slightly */
 }
 
-.spiral-mobile {
-  top: 3.25rem; /* start a bit lower so it’s not hugging top */
-  left: 28px;  /* pulled in to avoid viewport cutoff */
+
+@media (min-width: 769px) {
+  /* Desktop H2 Tweaks */
+  .why-timeline h2,
+  .why-section h2 {
+    font-size: 2rem;          /* bigger, more presence */
+    margin: 3rem 0 2.5rem;    /* extra breathing room top + bottom */
+    line-height: 1.3;
+    letter-spacing: 0.5px;    /* subtle spacing for polish */
+    color: #2c265f;           /* keep your brand purple */
+    text-align: center;
+  }
+  /* Framework note */
+  .framework-note {
+    background: #fff9fa;           /* light rose */
+    border-color: #F0E8EA;
+  }
+
+  /* Lace card */
+  .milestone.lace {
+    background: #fefcff;           /* subtle lavender tint */
+    border-color: #e4ddf5;
+  }
+
+  /* Lime card */
+  .milestone.lime {
+    background: #f9fff9;           /* soft mint tint */
+    border-color: #d5ebd5;
+  }  
+}
+@media (min-width: 769px) {
+  /* Align why-section with timeline */
+  .why-section {
+    max-width: 950px;   /* same as timeline */
+    margin: 0 auto;     /* center horizontally */
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Founder-note override for desktop */
+  .founder-note {
+    font-style: normal;  /* reset italics */
+    line-height: 1.6;    /* improve readability */
+    padding: 1.75rem 2rem; /* match desktop spacing */
+  }
 }
 
 
 </style>
+
 
 
 
@@ -357,7 +461,7 @@ body {
   <span class="eyebrow">APPROACH</span>
   <h1 class="tagline">Clarity and action, held in balance</h1>
   <p class="subline"><b>Lace for reflection. Lime for action.</b></p>
-  <p>A framework designed to connect pause with progress.</p>
+  <p>A&nbsp;framework&nbsp;designed&nbsp;to&nbsp;connect&nbsp;pause&nbsp;with&nbsp;progress.</p>
 </section>
 
 
@@ -424,11 +528,11 @@ body {
 
 
   <div class="timeline-items">
-    <div class="milestone animate">
+    <div class="milestone lace animate">
       <h3>Lace (Energy Aligned)</h3>
       <p>Reflection that helps you pause and see clearly. A reset for when life feels scattered.</p>
     </div>
-    <div class="milestone animate">
+    <div class="milestone lime animate">
       <h3>Lime (Action Defined)</h3>
       <p>Practical&nbsp;steps&nbsp;that&nbsp;align&nbsp;with&nbsp;what&nbsp;you&nbsp;value. 
 
