@@ -105,32 +105,6 @@
 
 
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // 1) disable any anchor targeting approach.html
-  document.querySelectorAll('a[href$="approach.html"]').forEach(a => {
-    a.dataset.disabled = "true";
-    a.classList.add('disabled');
-    a.setAttribute('aria-disabled', 'true');
-    a.setAttribute('title', 'Coming soon');
-    a.setAttribute('tabindex', '-1');
-
-    // prevent default if clicked accidentally
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  });
-
-  // 2) Optional: intercept programmatic navigation attempts
-  // (prevents some cases where scripts set location.href)
-  const blocked = /approach\.html$/i;
-  const _assign = window.location.assign;
-  window.location.assign = function(url) {
-    if (blocked.test(String(url))) return;
-    return _assign.apply(this, arguments);
-  };
-});
-</script>
 
 </body>
 </html>
