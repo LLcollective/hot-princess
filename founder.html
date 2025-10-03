@@ -11,7 +11,9 @@
   <!-- Global Styles -->
   <link rel="stylesheet" href="global.css" />
 
-  <style>
+
+<style> 
+
 /* ===== Section Wrapper ===== */
 section.section-box {
   margin: 3rem auto;
@@ -20,153 +22,81 @@ section.section-box {
 }
 
 /* ===== Founder Card ===== */
-.founder-card {
-  background: rgba(255,255,255,0.45);
-  backdrop-filter: blur(6px);
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform .3s ease;
+.founder-card .founder {
+  background: rgba(255,255,255,0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  max-width: 780px;
+  margin: 1rem auto;
 }
+
 .founder-card:hover { transform: translateY(-4px); }
 
 .founder-card__inner {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-.founder-card__figure { flex: 0 0 220px; }
-.founder-card__figure img { width: 100%; border-radius: 12px; border: 2px solid #eee; }
-.hero-headings { flex: 1; min-width: 260px; }
-.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-.btn-cta {
-  padding: .6rem 1.2rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #B3BAFF, #F2C9CF);
-  color: #24324a;
-  font-weight: 600;
-  font-size: .95rem;
-  text-decoration: none;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-  transition: all .25s ease;
+.founder-card__figure {
+  max-width: 220px;
+  margin: 0 auto;
 }
-.btn-cta.secondary { background: #fff; border: 1px solid #B3BAFF; }
-.btn-cta:hover { transform: translateY(-3px); }
+.founder-card__figure img {
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--ink-light);
+}
 
+.hero-headings {
+  max-width: 780px;
+  margin: 1rem auto 0;
+}
+
+.hero-ctas {
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+/* ===== Founder Bio Text ===== */
 .founder {
   margin-top: 1rem;
   font-size: 1.05rem;
   line-height: 1.75;
-  color: #333;
-  text-align: justify;
-  text-align-last: left;
+  color: var(--ink-med);
+  text-align: center;
+  text-align-last: center;
+}
+.founder-card .founder {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 780px;
 }
 
 /* ===== Chips ===== */
 .chips {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.6rem;
+  grid-template-columns: repeat(4, auto);
+  justify-content: center;
+  gap: 0.6rem 1rem;
   margin-top: 1.5rem;
 }
 .chips span {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0.35rem 0.6rem;
+  padding: 0.35rem 0.9rem;
   font-size: 0.8rem;
   font-weight: 500;
-  background: linear-gradient(135deg, #E6E9FF, #FCE4EC);
-  border: 1px solid rgba(179,186,255,0.35);
+  background: linear-gradient(135deg, var(--brand-pill), var(--brand-light));
+  border: 1px solid var(--brand-light);
   border-radius: 999px;
-  text-align: center;
+  white-space: nowrap;
   transition: all 0.3s ease;
-}
-
-/* ===== Mobile Layout Fix for Chips ===== */
-@media(max-width:768px) {
-  .chips {
-    grid-template-columns: 1fr; /* stack full width */
-    gap: 0.75rem;
-  }
-  .chips span {
-    width: 100%;
-    font-size: 0.9rem;
-  }
-}
-
-/* ===== Timeline ===== */
-.timeline { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
-.milestone {
-  background: rgba(255,255,255,0.5);
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 1.2rem;
-}
-.milestone h4 { margin: 0 0 .6rem; font-weight: 600; color: #3F4A3C; }
-
-/* ===== Proof Highlights ===== */
-#proof .highlight {
-  margin-bottom: 1rem;
-  padding: 1rem 1.2rem;
-  border-left: 4px solid #B3BAFF;
-  background: rgba(179,186,255,0.15);
-  border-radius: 6px;
-}
-
-/* ===== Journey ===== */
-.journey-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.journey-step .journey-icon { width: 28px; height: 28px; flex-shrink: 0; margin-top: 0.25rem; color: #6b7cff; }
-.step-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.3rem; }
-
-.completion-circle {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #B3BAFF, #F2C9CF);
-  margin: 2.5rem auto;
-  text-align: center;
-  font-weight: 600;
-  color: #24324a;
-}
-
-/* ===== Systems Card ===== */
-.systems-card {
-  background: rgba(255,255,255,0.55);
-  padding: 2.2rem;
-  border-radius: 14px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-/* ===== Credentials Accordion ===== */
-.credentials details {
-  background: rgba(255,255,255,0.35);
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-.credentials summary { padding: 1rem 1.2rem; font-weight: 600; cursor: pointer; }
-.credentials .body { padding: 1rem 1.5rem; font-size: .95rem; line-height: 1.6; }
-
-/* ===== Footer ===== */
-footer {
-  background: #f9f9f9;
-  padding: 2rem 1.25rem;
-  text-align: center;
-  font-size: .9rem;
-  color: #444;
-  border-top: 1px solid #eee;
 }
 
 /* ===== Proof of Impact Timeline ===== */
@@ -175,14 +105,13 @@ footer {
   text-align: center;
   margin-top: 3rem;
 }
-
 .timeline-line {
   position: absolute;
-  top: 70px;             /* aligns under dots */
+  top: 70px;
   left: 10%;
   width: 80%;
   height: 3px;
-  background: #d6d6f9;
+  background: var(--ink-light);
   overflow: hidden;
 }
 .timeline-line::after {
@@ -190,7 +119,7 @@ footer {
   display: block;
   height: 100%;
   width: 0;
-  background: #6b7cff;
+  background: var(--brand);
 }
 .proof-timeline.reveal .timeline-line::after {
   animation: lineGrow 2s ease forwards;
@@ -198,7 +127,6 @@ footer {
 @keyframes lineGrow {
   to { width: 100%; }
 }
-
 .timeline-items {
   display: flex;
   justify-content: space-between;
@@ -206,14 +134,14 @@ footer {
   position: relative;
   z-index: 2;
 }
-
 .timeline-items .milestone {
   flex: 1;
   padding: 1rem;
   margin: 0 0.5rem;
-  background: rgba(255,255,255,0.6);   /* more transparent */
-  border-radius: 10px;
+  background: var(--frosted-bg);
+  border-radius: var(--radius-md);
   backdrop-filter: blur(4px);
+  border: 1px solid var(--ink-light);
   opacity: 0;
   transform: translateY(20px);
 }
@@ -222,109 +150,331 @@ footer {
   transform: translateY(0);
   transition: all 0.6s ease;
 }
-
+.timeline-items .milestone h4 {
+  margin: 0 0 .6rem;
+  font-weight: 600;
+  color: var(--brand-dark);
+}
+.timeline-items .milestone p {
+  color: var(--ink-med);
+}
 .timeline-items .dot {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #6b7cff;
+  background: var(--brand);
   position: absolute;
-  top: -28px; /* pulls dots down near line */
+  top: -28px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* ===== Mobile Layout (switch vertical) ===== */
-@media(max-width:768px) {
+/* ===== Journey ===== */
+.journey-container {
+  background: var(--card-bg-mixed);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.journey-container h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  color: var(--ink-dark);
+}
+.journey-step {
+  display: flex;
+  justify-content: center;  /* center align steps */
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.journey-step .journey-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+  color: var(--lime-dark);
+}
+.journey-step .step-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+  color: var(--ink-dark);
+}
+.journey-step p {
+  color: var(--ink-med);
+  line-height: 1.6;
+}
+.completion-circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--brand), var(--brand-light));
+  margin: 2.5rem auto;
+  text-align: center;
+  font-weight: 600;
+  color: var(--ink-dark);
+}
+
+/* ===== Credentials ===== */
+.credentials {
+  background: var(--card-bg-mixed);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+.credentials h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--ink-dark);
+}
+.credentials details {
+  background: var(--surface-alt, rgba(255,255,255,0.25));
+  border: 1px solid var(--ink-light);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.credentials summary {
+  padding: 1rem 1.2rem;
+  font-weight: 600;
+  color: var(--ink-dark);
+  cursor: pointer;
+}
+.credentials .body {
+  padding: 1rem 1.5rem;
+  font-size: .95rem;
+  line-height: 1.6;
+  color: var(--ink-med);
+}
+.credentials ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.credentials li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 1024px) {
+  .chips {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .founder-card .founder {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 100%;
+  }
+  .chips {
+    grid-template-columns: 1fr;
+  }
+  /* Mobile vertical timeline */
   .timeline-line {
-    position: absolute;
     top: 0;
     left: 30px;
     width: 3px;
     height: 100%;
-    animation: lineGrowVertical 2s ease forwards;
   }
   .timeline-line::after {
-    height: 0;
     width: 100%;
+    height: 0;
     animation: lineGrowVertical 2s ease forwards;
   }
   @keyframes lineGrowVertical {
     to { height: 100%; }
   }
-
   .timeline-items {
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 60px; /* space for line + dots */
+    margin-left: 60px;
   }
-
   .timeline-items .milestone {
     width: 100%;
     margin: 1rem 0;
     text-align: left;
   }
-
   .timeline-items .dot {
     left: -30px;
     top: 20px;
     transform: none;
   }
-}
-
-
-/* ===== Generic Animation States ===== */
+}/* ===== Animate States (Global) ===== */
 .animate {
   opacity: 0;
   transform: translateY(20px);
+  transition: all 0.6s ease;
 }
-
 .animate.reveal {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===== Chips Reveal ===== */
+.chips span.animate {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.chips span.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Journey Reveal ===== */
+.journey-step.animate {
+  opacity: 0;
+  transform: translateY(25px);
+}
+.journey-step.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+.completion-circle.animate {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.completion-circle.reveal {
+  opacity: 1;
+  transform: scale(1);
   transition: all 0.6s ease;
 }
 
-/* ===== Timeline Reveal Override ===== */
+/* ===== Milestones Reveal ===== */
 .milestone.animate {
   opacity: 0;
   transform: translateY(30px);
 }
-.milestone.animate.reveal {
+.milestone.reveal {
   opacity: 1;
   transform: translateY(0);
-  transition: all 0.6s ease;
 }
-/* === Founder Card Visual Fixes (drop at bottom) === */
-.founder-card__inner {
-  align-items: center;
+/* ===== Proof of Impact Timeline Spacing ===== */
+.proof-timeline {
+  position: relative;
+  text-align: center;
+  margin: 4rem auto;         /* more breathing room around the section */
+  padding: 2rem 0;           /* extra vertical space inside */
 }
-.founder-card__figure {
-  max-width: 220px;
+
+.proof-timeline h2 {
+  margin-bottom: 2.5rem;     /* space below the heading */
 }
-.founder-card__figure img {
-  object-fit: cover;
+
+.timeline-line {
+  margin-top: 1.5rem;        /* space between heading and line */
 }
-.hero-headings .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+
+.timeline-items {
+  margin-top: 4rem;          /* push milestones further down */
+  gap: 2rem;                 /* add horizontal breathing space between milestones */
+}
+
+.timeline-items .milestone {
+  padding: 1.5rem 1.2rem;    /* more interior padding inside each card */
+}
+
+/* details body */
+.credentials .body {
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-body, var(--ink-med));
+}
+
+.credentials ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.credentials li {
   margin-bottom: 0.5rem;
 }
-.hero-ctas {
-  margin-top: 0.5rem;
+
+/* ===== Credentials ===== */
+.credentials {
+  background: var(--card-bg-mixed);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
 }
-@media(max-width:768px) {
-  .founder-card__inner {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+
+.credentials h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--ink-dark);
+}
+
+.credential-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* always 3 equal columns */
+  gap: .10rem;
+}
+
+.credential-cards details {
+  background: var(--surface-alt, rgba(255,255,255,0.25));
+  border: 1px solid var(--ink-light);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.credential-cards details[open] {
+  background: var(--frosted-bg, rgba(255,255,255,0.45));
+  box-shadow: var(--shadow);
+}
+
+/* summary */
+.credential-cards summary {
+  padding: 1rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink-dark);
+  cursor: pointer;
+  text-align: center;
+  white-space: normal;
+}
+
+/* body */
+.credential-cards .body {
+  padding: 1rem 1.25rem;
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--ink-med);
+  text-align: left;
+}
+
+/* responsive fallback */
+@media (max-width: 1024px) {
+  .credential-cards {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .hero-ctas {
-    justify-content: center;
+}
+@media (max-width: 768px) {
+  .credential-cards {
+    grid-template-columns: 1fr;
   }
 }
 
-  </style>
+</style>
+
+
+
 </head>
 <body class="founder">
 
@@ -346,9 +496,7 @@ footer {
       </h1>
     </a>
 
-    <button id="burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
+
   </div>
 </header>
 
@@ -365,11 +513,7 @@ footer {
     <div class="hero-headings">
       <span class="eyebrow">MEET THE FOUNDER</span>
       <h1>Hi, I’m Sharon.</h1>
-      <div class="hero-ctas">
-        <a href="webplans.html" class="btn-cta">Businesses</a>
-        <a href="booknow.html" class="btn-cta secondary">Individuals</a>
-      </div>
-    </div>
+         </div>
   </div>
   <div class="founder">
     <p>Resilience isn’t just about strategy. It’s about systems that bring clarity together with compassion. Lace & Lime™ was born from that truth, a space where structure meets intuition, and growth stays grounded.
@@ -384,6 +528,8 @@ At the heart of my work is this: building tools that help people create clarity 
     <span class="animate">B.S. · Math for Tech, Bio, Psych.</span>
     <span class="animate">Health Education Specialist CHES®</span>
     <span class="animate">IRB Research Ethics Certified</span>
+
+
     <span class="animate">Public Health Advisor · Emergency Response</span>
     <span class="animate">Accreditation & Compliance Leadership</span>
     <span class="animate">Applied Data & Impact Analysis</span>
@@ -431,7 +577,7 @@ At the heart of my work is this: building tools that help people create clarity 
     </svg>
     <div>
       <div class="step-title">Starting Steady</div>
-      <p>You begin with clarity and steady support. The first step feels welcoming, aligned, and well-guided.</p>
+      <p>You begin with clarity and steady support. <br>The first step feels welcoming, aligned, and well-guided.</p>
     </div>
   </div>
 
@@ -443,7 +589,7 @@ At the heart of my work is this: building tools that help people create clarity 
     </svg>
     <div>
       <div class="step-title">Systems That Click</div>
-      <p>Scheduling, payment, and check-ins move smoothly. Systems give you momentum without hidden barriers.</p>
+      <p>Scheduling, payment, and check-ins move smoothly. <br>Systems give you momentum without hidden barriers.</p>
     </div>
   </div>
 
@@ -453,7 +599,7 @@ At the heart of my work is this: building tools that help people create clarity 
     </svg>
     <div>
       <div class="step-title">Progress You Can See</div>
-      <p>Progress is visible and collaborative. Communication feels clear, natural, and easy to sustain.</p>
+      <p>Progress is visible and collaborative. <Br>Communication feels clear, natural, and easy to sustain.</p>
     </div>
   </div>
 
@@ -465,7 +611,7 @@ At the heart of my work is this: building tools that help people create clarity 
     </svg>
     <div>
       <div class="step-title">Support You Can Rely On</div>
-      <p>Your growth remains adaptable and supported. Each step strengthens long-term trust and confidence.</p>
+      <p>Your growth remains adaptable and supported. <br>Each step strengthens long-term trust and confidence.</p>
     </div>
   </div>
 
@@ -477,7 +623,7 @@ At the heart of my work is this: building tools that help people create clarity 
     </svg>
     <div>
       <div class="step-title">Momentum That Stays With You</div>
-      <p>The process leaves you ready to expand with clarity. You step forward with alignment and momentum that lasts.</p>
+      <p>The process leaves you ready to expand with clarity. <br>You step forward with alignment and momentum that lasts.</p>
     </div>
   </div>
 
@@ -488,26 +634,118 @@ At the heart of my work is this: building tools that help people create clarity 
 <!-- ===== CREDENTIALS ===== -->
 <section class="section-box credentials">
   <h2>Credentials</h2>
-  <details><summary>Public Health Systems (MPH)</summary>
-    <div class="body"><ul><li>Applied epidemiology to track population health trends</li><li>Biostatistics & data analysis for decision-making</li><li>Health care finance & reimbursement systems</li><li>Program planning & evaluation for measurable outcomes</li><li>Social, behavioral & global health policy</li></ul></div>
-  </details>
-  <details><summary>Health Education (CHES®)</summary>
-    <div class="body"><ul><li>Needs assessment & community capacity building</li><li>Planning & implementing health education programs</li><li>Evaluation & research for program impact</li><li>Advocacy & communication for public health change</li><li>Leadership, management & professional ethics</li></ul></div>
-  </details>
-  <details><summary>Compliance & Accreditation</summary>
-    <div class="body"><ul><li>Public Health Advisor in emergency response</li><li>Medical education accreditation management</li><li>Oversight of compliance & regulatory training</li><li>Nonprofit program management & systems alignment</li></ul></div>
-  </details>
+  <div class="credential-cards">
+    <details>
+      <summary>Public Health Systems (MPH)</summary>
+      <div class="body">
+        <ul>
+          <li>Tracking population health via epidemiology</li>
+          <li>Biostatistics & data analysis for decision-making</li>
+          <li>Health care finance & reimbursement systems</li>
+          <li>Program design & outcome evaluation</li>
+          <li>Social, behavioral & global health policy</li>
+        </ul>
+      </div>
+    </details>
+    <details>
+    
+<summary>Certified Health Education (CHES®)</summary>
+<div class="body">
+  <ul>
+    <li>Assessing needs & building community capacity</li>
+    <li>Planning & delivering education programs</li>
+    <li>Evaluating & researching program impact</li>
+    <li>Advocacy & communication for societal change</li>
+    <li>Leading, managing & upholding professional ethics</li>
+  </ul>
+</div>
+    </details>
+    <details>
+  <summary>Compliance & Accreditation</summary>
+<div class="body">
+  <ul>
+    <li>Advising on public health emergency response</li>
+    <li>Managing medical education accreditation</li>
+    <li>Overseeing compliance & regulatory training</li>
+    <li>Aligning nonprofit programs & systems</li>
+  </ul>
+</div>
 </section>
 
 <!-- ===== FOOTER ===== -->
+
 <footer>
-  <p>Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span> is our guiding framework for growth you can feel.  
-  Logos and names are trademarks and/or multi-class registered trademarks of © 2025 Lace & Lime™ LLC. All rights reserved. · 
-  <a href="privacy-terms.html">Privacy and Terms</a></p>
+  <div class="wrap-heavy">
+    <p class="legal">
+      Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span> is our guiding framework for growth you can feel.  
+      Logos and names are trademarks and/or multi-class registered trademarks of © 2025 Lace & Lime™ LLC. All rights reserved. · 
+      <a href="privacy-terms.html">Privacy and Terms</a>
+    </p>
+  </div>
 </footer>
 
 
 
+<script>
+
+/* FOUNDER PAGE*/
+document.documentElement.classList.add("no-js"); // fallback until JS runs
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.documentElement.classList.remove("no-js");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+
+        // Animate chips in sequence
+        if (entry.target.classList.contains("chips")) {
+          const chips = entry.target.querySelectorAll("span.animate");
+          chips.forEach((chip, i) => {
+            setTimeout(() => chip.classList.add("reveal"), i * 150);
+          });
+          obs.unobserve(entry.target);
+        }
+
+        // Animate proof timeline milestones (left → right)
+        else if (entry.target.classList.contains("proof-timeline")) {
+          entry.target.classList.add("reveal"); // trigger line
+          const milestones = entry.target.querySelectorAll(".milestone");
+          milestones.forEach((ms, i) => {
+            setTimeout(() => ms.classList.add("reveal"), i * 400);
+          });
+          obs.unobserve(entry.target);
+        }
+
+        // Animate journey steps in sequence
+        else if (entry.target.classList.contains("journey-container")) {
+          const steps = entry.target.querySelectorAll(".journey-step.animate");
+          steps.forEach((step, i) => {
+            setTimeout(() => step.classList.add("reveal"), i * 250);
+          });
+          const circle = entry.target.querySelector(".completion-circle.animate");
+          if (circle) {
+            setTimeout(() => circle.classList.add("reveal"), steps.length * 250);
+          }
+          obs.unobserve(entry.target);
+        }
+
+        // Normal reveal
+        else {
+          entry.target.classList.add("reveal");
+          obs.unobserve(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Observe containers only (not each milestone)
+  document.querySelectorAll(
+    ".chips, .journey-container, .proof-timeline"
+  ).forEach(el => observer.observe(el));
+});
+
+</script>
 
 
 

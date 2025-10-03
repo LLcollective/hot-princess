@@ -4,11 +4,13 @@
   --ink-med: #5f708a;
   --ink-light: #e0e6ee;
 
-  /* Mauve-Pink Brand Accent */
-  --brand: #D87A94;         /* main pink */
-  --brand-light: #F2C9CF;   /* hover / lighter */
-  --brand-dark: #b85f76;    /* pressed / darker */
-  --brand-pill: #FBEFF1;    /* soft chip/pill background */
+
+  /* Pink Brand Accent (refreshed) */
+  --brand: #F2C9CF;        /* main accent (light pink, now primary) */
+  --brand-light: #FBEFF1;  /* even softer for hovers/pills */
+  --brand-dark: #D87A94;   /* your logo pink, now the bold/darker tone */
+  --brand-pill: #FCE4EC;   /* soft background chip/pill */
+
 
   /* Lime Accent (secondary) */
   --lime: #9BE080;
@@ -168,7 +170,7 @@ strong {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #D87A94;
+  color: var(--brand-dark);
 }
 
 /* =======================================
@@ -540,3 +542,4 @@ textarea {
     padding-right: 1rem;
   }
 }
+

@@ -1,3 +1,6 @@
+
+
+
 // ===== BURGER + SIDEBAR =====
 const burger  = document.querySelector('.burger');
 const sidebar = document.querySelector('nav.sidebar');
@@ -284,12 +287,12 @@ function drawSpiral() {
 
   // Spiral nav links with manual multipliers
   const linkLabels = [
-    { text: "Laced Together", href: "founder.html", factor: 0.05 },
-    { text: "", href: "lacednotes.html", factor: 0.10 },
-    { text: "Experiences", href: "booknow.html", factor: 0.16 },
+    { text: "Work With Me", href: "founder.html", factor: 0.21 },
+    { text: "Contact", href: "contact.html", factor: 0.10 },
+    { text: "Spiral", href: "#", factor: 0.16 },
     { text: "Limeboard", href: "limeboard.html", factor: 0.23 },
-    { text: "Approach", href: "approach.html", factor: 0.21 },
-    { text: "Contact", href: "contact.html", factor: 0.29 }
+    { text: "Approach", href: "approach.html", factor: 0.05 },
+    { text: "Laced Together", href: "#", factor: 0.29 }
   ];
 
   // Each factor = % along spiral path (0 = center, 1 = edge)
@@ -314,64 +317,3 @@ window.addEventListener("resize", drawSpiral);
 
 
 
-
-
-
-
-
-/* FOUNDER PAGE*/
-document.documentElement.classList.add("no-js"); // fallback until JS runs
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.documentElement.classList.remove("no-js");
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-
-        // Animate chips in sequence
-        if (entry.target.classList.contains("chips")) {
-          const chips = entry.target.querySelectorAll("span.animate");
-          chips.forEach((chip, i) => {
-            setTimeout(() => chip.classList.add("reveal"), i * 150);
-          });
-          obs.unobserve(entry.target);
-        }
-
-        // Animate proof timeline milestones (left → right)
-        else if (entry.target.classList.contains("proof-timeline")) {
-          entry.target.classList.add("reveal"); // trigger line
-          const milestones = entry.target.querySelectorAll(".milestone");
-          milestones.forEach((ms, i) => {
-            setTimeout(() => ms.classList.add("reveal"), i * 400);
-          });
-          obs.unobserve(entry.target);
-        }
-
-        // Animate journey steps in sequence
-        else if (entry.target.classList.contains("journey-container")) {
-          const steps = entry.target.querySelectorAll(".journey-step.animate");
-          steps.forEach((step, i) => {
-            setTimeout(() => step.classList.add("reveal"), i * 250);
-          });
-          const circle = entry.target.querySelector(".completion-circle.animate");
-          if (circle) {
-            setTimeout(() => circle.classList.add("reveal"), steps.length * 250);
-          }
-          obs.unobserve(entry.target);
-        }
-
-        // Normal reveal
-        else {
-          entry.target.classList.add("reveal");
-          obs.unobserve(entry.target);
-        }
-      }
-    });
-  }, { threshold: 0.2 });
-
-  // Observe containers only (not each milestone)
-  document.querySelectorAll(
-    ".chips, .journey-container, .proof-timeline"
-  ).forEach(el => observer.observe(el));
-});
