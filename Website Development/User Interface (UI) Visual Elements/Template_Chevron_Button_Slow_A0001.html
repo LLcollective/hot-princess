@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lace & Lime™ Chevron Burger (12/10)</title>
+  <style>
+    body {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:#E6F4FF;
+      font-family: sans-serif;
+    }
+
+    /* Burger container */
+    .burger {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      border: 2px solid #4f46e5;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow:
+        0 6px 12px rgba(0,0,0,0.18),   /* outer depth */
+        inset 0 2px 4px rgba(255,255,255,0.8), /* top bevel highlight */
+        inset 0 -2px 4px rgba(0,0,0,0.08);     /* bottom bevel shadow */
+      cursor: pointer;
+      transition: background .4s ease, box-shadow .35s ease, transform .25s ease;
+    }
+
+    /* Hover → stronger lift + lime glow */
+    .burger:hover {
+      box-shadow:
+        0 10px 18px rgba(79,70,229,0.35), /* deeper shadow */
+        0 0 10px rgba(155,224,128,0.45),  /* lime glow */
+        inset 0 2px 4px rgba(255,255,255,0.8),
+        inset 0 -2px 4px rgba(0,0,0,0.08);
+      transform: scale(1.05);
+    }
+
+    .burger span {
+      position: absolute;
+      left: 16px;
+      width: 24px;
+      height: 3px;
+      background: #4f46e5;
+      border-radius: 2px;
+      transition: transform .4s cubic-bezier(.68,-0.55,.27,1.55),
+                  opacity .3s ease,
+                  background .3s ease;
+      transform-origin: right center;
+    }
+
+    /* Initial positions (classic burger stack) */
+    .burger span:nth-child(1) { top: 16px; }
+    .burger span:nth-child(2) { top: 26px; }
+    .burger span:nth-child(3) { top: 36px; }
+
+    /* Open state → chevron > */
+    .burger.open {
+      background: linear-gradient(90deg,#4f46e5,#9BE080);
+      border: 2px solid #4f46e5;
+      box-shadow:
+        0 12px 22px rgba(79,70,229,0.45), /* bold shadow */
+        0 0 14px rgba(155,224,128,0.55),  /* lime aura */
+        inset 0 2px 4px rgba(255,255,255,0.65),
+        inset 0 -2px 6px rgba(0,0,0,0.12);
+      animation: bounce .4s ease;
+    }
+    .burger.open span {
+      background: #fff; /* chevron lines contrast */
+    }
+    .burger.open span:nth-child(1) {
+      top: 26px;
+      transform: rotate(-28deg); /* top arm */
+    }
+    .burger.open span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-24px); /* slide out */
+    }
+    .burger.open span:nth-child(3) {
+      top: 26px;
+      transform: rotate(28deg); /* bottom arm */
+    }
+
+    /* Bounce keyframes */
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="burger" id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <script>
+    const burger = document.getElementById("burger");
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("open");
+    });
+  </script>
+</body>
+</html>

@@ -1,15 +1,17 @@
 :root {
-  /* Core Ink Tones */
-  --ink-dark: #24324a;
-  --ink-med: #5f708a;
-  --ink-light: #e0e6ee;
+/* Core Ink Tones */
+--ink-dark: #1d2740;    /* deeper navy slate — anchors headlines cleanly */
+--ink-med:  #42536d;    /* richer blue-gray — readable for body text */
+--ink-light: #c5ced9;   /* softened mist tone — visible but not chalky */
+
 
 
   /* Pink Brand Accent (refreshed) */
   --brand: #F2C9CF;        /* main accent (light pink, now primary) */
-  --brand-light: #FBEFF1;  /* even softer for hovers/pills */
-  --brand-dark: #D87A94;   /* your logo pink, now the bold/darker tone */
-  --brand-pill: #FCE4EC;   /* soft background chip/pill */
+ --brand-pill: #f8c6d0;
+--brand-light: #fde4e8;
+--brand-dark: #c2516a;
+
 
 
   /* Lime Accent (secondary) */
@@ -205,23 +207,38 @@ strong {
 /* =======================================
    Logo & Nav
    ======================================= */
+/* --- HEADER --- */
+.ll-nav {
+  position: relative;
+  width: 100%;
+  padding: 1rem var(--gutter-desktop);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  z-index: 1000;
+}
+
 .logo-small-centered {
   margin: 0;
   line-height: 1;
   display: flex;
   align-items: baseline;
-  gap: .25rem;
+  gap: 0.25rem;
   font-size: clamp(1.8rem, 2vw, 2.4rem);
   text-align: center;
 }
+
+/* Brand Mark Styles */
 .logo-small-centered .lace {
   font-family: "Raleway", sans-serif;
   font-weight: 200;
   text-transform: lowercase;
   font-size: 2.2rem;
-  color: #3F4A3C;
+  color: #3F4A3C; /* matches your neutral ink-lace tone */
   letter-spacing: -0.02em;
 }
+
 .logo-small-centered .amp {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
@@ -230,19 +247,18 @@ strong {
   color: #3F4A3C;
   margin: 0 -0.1rem;
   position: relative;
-  top: .2rem;
+  top: 0.2rem;
 }
+
 .logo-small-centered .lime {
   font-family: "Raleway", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   font-size: 2rem;
-  color: #D87A94;
+  color: #D87A94; /* your brand rose accent */
   letter-spacing: 0.02em;
 }
 
-nav.sidebar {
-  display: none !important;
 }
 
 /* =======================================

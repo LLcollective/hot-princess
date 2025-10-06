@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chevron Rotation Demo – Lace & Lime™</title>
+  <style>
+    body {
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap:40px;
+      justify-items:center;
+      align-items:start;
+      padding:40px;
+      background:#E6F4FF;
+      font-family:sans-serif;
+    }
+    .burger-wrapper {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+    .label {
+      font-size:14px;
+      font-weight:600;
+      color:#4f46e5;
+      text-align:center;
+    }
+
+    .burger {
+      position:relative;
+      width:56px;
+      height:56px;
+      border:2px solid #4f46e5;
+      border-radius:14px;
+      background:#fff;
+      box-shadow:0 6px 12px rgba(0,0,0,0.18);
+      cursor:pointer;
+      transition:background .4s ease, box-shadow .35s ease;
+    }
+    .burger span {
+      position:absolute;
+      left:16px;
+      width:24px;
+      height:3px;
+      background:#4f46e5;
+      border-radius:2px;
+      transition:opacity .25s ease, background .3s ease;
+      transform-origin:right center;
+    }
+    .burger span:nth-child(1){top:16px;}
+    .burger span:nth-child(2){top:26px;}
+    .burger span:nth-child(3){top:36px;}
+
+    .burger.open {
+      background:linear-gradient(90deg,#4f46e5,#9BE080);
+    }
+    .burger.open span {background:#fff;}
+    .burger.open span:nth-child(2){opacity:0;}
+
+    /* Base chevron morph (all share) */
+    .burger.open span:nth-child(1){top:26px;}
+    .burger.open span:nth-child(3){top:26px;}
+
+    /* Variant 1: Tilt (rock forward/back) */
+    .tilt.open span:nth-child(1){animation: tiltTop .6s ease-in-out forwards;}
+    .tilt.open span:nth-child(3){animation: tiltBot .6s ease-in-out forwards;}
+    @keyframes tiltTop {
+      0%{transform:rotate(-28deg);}
+      50%{transform:rotate(-20deg);}
+      100%{transform:rotate(-28deg);}
+    }
+    @keyframes tiltBot {
+      0%{transform:rotate(28deg);}
+      50%{transform:rotate(20deg);}
+      100%{transform:rotate(28deg);}
+    }
+
+    /* Variant 2: Spin-In (arms spiral into >) */
+    .spin.open span:nth-child(1){animation: spinTop .6s ease forwards;}
+    .spin.open span:nth-child(3){animation: spinBot .6s ease forwards;}
+    @keyframes spinTop {
+      0%{transform:rotate(-60deg);}
+      100%{transform:rotate(-28deg);}
+    }
+    @keyframes spinBot {
+      0%{transform:rotate(60deg);}
+      100%{transform:rotate(28deg);}
+    }
+
+    /* Variant 3: Bounce Rotate (overshoot then settle) */
+    .bounce.open span:nth-child(1){animation: bounceTop .6s cubic-bezier(.68,-0.55,.27,1.55) forwards;}
+    .bounce.open span:nth-child(3){animation: bounceBot .6s cubic-bezier(.68,-0.55,.27,1.55) forwards;}
+    @keyframes bounceTop {
+      0%{transform:rotate(0);}
+      70%{transform:rotate(-35deg);}
+      100%{transform:rotate(-28deg);}
+    }
+    @keyframes bounceBot {
+      0%{transform:rotate(0);}
+      70%{transform:rotate(35deg);}
+      100%{transform:rotate(28deg);}
+    }
+
+    /* Variant 4: Wiggle (gentle side-to-side) */
+    .wiggle.open span:nth-child(1){animation: wiggleTop 1s ease-in-out infinite;}
+    .wiggle.open span:nth-child(3){animation: wiggleBot 1s ease-in-out infinite;}
+    @keyframes wiggleTop {
+      0%{transform:rotate(-28deg);}
+      25%{transform:rotate(-24deg);}
+      50%{transform:rotate(-28deg);}
+      75%{transform:rotate(-32deg);}
+      100%{transform:rotate(-28deg);}
+    }
+    @keyframes wiggleBot {
+      0%{transform:rotate(28deg);}
+      25%{transform:rotate(24deg);}
+      50%{transform:rotate(28deg);}
+      75%{transform:rotate(32deg);}
+      100%{transform:rotate(28deg);}
+    }
+  </style>
+</head>
+<body>
+  <div class="burger-wrapper">
+    <div class="burger tilt"><span></span><span></span><span></span></div>
+    <div class="label">Tilt</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger spin"><span></span><span></span><span></span></div>
+    <div class="label">Spin-In</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger bounce"><span></span><span></span><span></span></div>
+    <div class="label">Bounce</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger wiggle"><span></span><span></span><span></span></div>
+    <div class="label">Wiggle</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.burger').forEach(b=>{
+      b.addEventListener('click',()=>b.classList.toggle('open'));
+    });
+  </script>
+</body>
+</html>

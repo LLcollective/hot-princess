@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun Chevron Burgers – Lace & Lime™</title>
+  <style>
+    body {
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      height:100vh;
+      background:#E6F4FF;
+      font-family: sans-serif;
+    }
+    .burger {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      border: 2px solid #4f46e5;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.18),
+                  inset 0 2px 4px rgba(255,255,255,0.8),
+                  inset 0 -2px 4px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: background .4s ease, box-shadow .35s ease, transform .25s ease;
+      margin: 0 10px;
+    }
+    .burger span {
+      position: absolute;
+      left: 16px;
+      width: 24px;
+      height: 3px;
+      background: #4f46e5;
+      border-radius: 2px;
+      transition: transform .4s ease, opacity .3s ease, background .3s ease;
+      transform-origin: right center;
+    }
+    .burger span:nth-child(1) { top: 16px; }
+    .burger span:nth-child(2) { top: 26px; }
+    .burger span:nth-child(3) { top: 36px; }
+
+    .burger.open {
+      background: linear-gradient(90deg,#4f46e5,#9BE080);
+      border: 2px solid #4f46e5;
+      box-shadow: 0 12px 22px rgba(79,70,229,0.45),
+                  0 0 14px rgba(155,224,128,0.55),
+                  inset 0 2px 4px rgba(255,255,255,0.65),
+                  inset 0 -2px 6px rgba(0,0,0,0.12);
+    }
+    .burger.open span { background:#fff; }
+
+    /* Base chevron morph */
+    .burger.open span:nth-child(1) { top:26px; }
+    .burger.open span:nth-child(2) { opacity:0; transform:translateX(-24px); }
+    .burger.open span:nth-child(3) { top:26px; }
+
+    /* VARIATIONS */
+    /* 1. Draw effect */
+    .draw.open span:nth-child(1),
+    .draw.open span:nth-child(3) {
+      width: 0;
+      animation: growLine .3s forwards;
+    }
+    .draw.open span:nth-child(1) { animation-delay:.05s; transform:rotate(-28deg);}
+    .draw.open span:nth-child(3) { animation-delay:.1s; transform:rotate(28deg);}
+    @keyframes growLine { to { width:24px; } }
+
+    /* 2. Overshoot */
+    .overshoot.open span:nth-child(1) { animation: overshootTop .4s forwards; }
+    .overshoot.open span:nth-child(3) { animation: overshootBot .4s forwards; }
+    @keyframes overshootTop {
+      0%{transform:rotate(0deg);}
+      70%{transform:rotate(-28deg);}
+      85%{transform:rotate(-35deg);}
+      100%{transform:rotate(-28deg);}
+    }
+    @keyframes overshootBot {
+      0%{transform:rotate(0deg);}
+      70%{transform:rotate(28deg);}
+      85%{transform:rotate(35deg);}
+      100%{transform:rotate(28deg);}
+    }
+
+    /* 3. Pulse */
+    .pulse.open span:nth-child(1){transform:rotate(-28deg);}
+    .pulse.open span:nth-child(3){transform:rotate(28deg);}
+    .pulse.open span:nth-child(1),
+    .pulse.open span:nth-child(3){
+      box-shadow:0 0 0 rgba(155,224,128,0);
+      animation:pulse 1s ease;
+    }
+    @keyframes pulse {
+      0%,100%{box-shadow:0 0 0 rgba(155,224,128,0);}
+      50%{box-shadow:0 0 12px rgba(155,224,128,0.7);}
+    }
+
+    /* 4. Fly-out */
+    .fly.open span:nth-child(1){transform:translateX(6px) rotate(-28deg);}
+    .fly.open span:nth-child(3){transform:translateX(6px) rotate(28deg);}
+  </style>
+</head>
+<body>
+  <div class="burger draw" id="draw"><span></span><span></span><span></span></div>
+  <div class="burger overshoot" id="overshoot"><span></span><span></span><span></span></div>
+  <div class="burger pulse" id="pulse"><span></span><span></span><span></span></div>
+  <div class="burger fly" id="fly"><span></span><span></span><span></span></div>
+
+  <script>
+    document.querySelectorAll('.burger').forEach(burger=>{
+      burger.addEventListener('click',()=>burger.classList.toggle('open'));
+    });
+  </script>
+</body>
+</html>

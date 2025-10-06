@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Workshops | Lace & Lime™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --surface:#E6F4FF; --text:#1A2238; --muted:#405970; --line: rgba(26,34,56,.15);
+      --brand:#4f46e5; --brand-pill:#F3F4FF; --shadow:0 6px 20px rgba(26,34,56,.08);
+      --magenta:#d63384;
+    }
+    html,body{margin:0; padding:0}
+    body{
+      background:transparent !important;
+      color:var(--text);
+      font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.5;
+    }
+    body::before{
+      content:""; position:fixed; inset:0;
+      background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
+      z-index:-1; pointer-events:none;
+    }
+    .wrap{width:min(1120px,92vw);margin-inline:auto}
+
+    /* Header */
+    .ll-nav{position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line)}
+    .ll-nav .wrap{padding:12px 16px; display:flex; align-items:center; gap:16px;}
+    .brand{font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px; font-weight:600;}
+    .ll-nav .brand .tm {font-size:.7em; vertical-align:super; position:relative; top:0.25em; margin-left:1px;}
+    nav.menu{margin-left:auto; display:flex; gap:18px;}
+    nav.menu a{font-weight:600; color:var(--text); padding:.35rem .6rem; border-radius:.6rem; text-decoration:none;}
+    nav.menu a.active{background:var(--brand-pill); color:var(--brand)}
+
+    /* Hero */
+    .hero{border-bottom:1px solid var(--line);}
+    .hero .wrap{padding:3rem 1rem 2rem}
+    .eyebrow{font-size:.9rem; letter-spacing:.12em; color:#7A66FF; font-weight:700;}
+    .tagline{font-family:"Tenor Sans",serif; font-size:clamp(1.6rem, 2.3vw + 1rem, 2.4rem); font-weight:600; line-height:1.15; margin:.4rem 0 .6rem;}
+    .hero-sub{color:var(--muted); max-width:70ch; font-size:1rem; margin:0;}
+
+    /* Section Cards */
+    .card{background:#fff; border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1.5rem; margin:1.25rem 0;}
+    .card h2{font-family:"Tenor Sans",serif; margin-top:0; color:var(--brand);}
+    .card p{color:var(--muted); font-size:1rem; line-height:1.55;}
+
+    /* Philosophy Highlight */
+    .highlight{background:#f7f2ff; border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1.5rem; margin:2rem 0;}
+    .highlight h2{font-family:"Tenor Sans",serif; margin-top:0; color:var(--brand);}
+    .highlight em{font-style:italic;}
+    .lace-sub{color:var(--magenta); font-weight:700;}
+
+    /* CTA */
+    .cta{margin:2.5rem 0; text-align:center;}
+    .cta a{background:#4f46e5; color:#fff; font-weight:600; padding:.9rem 1.6rem; border-radius:.6rem; text-decoration:none; display:inline-block;}
+    .cta a:hover{background:#4338ca;}
+
+    /* Footer */
+    .site-footer{border-top:1px solid var(--line); margin-top:2rem}
+    .site-footer .wrap{padding:1rem}
+  </style>
+</head>
+<body>
+  <header class="ll-nav">
+    <div class="wrap">
+      <div class="brand">LACE AND LIME<span class="tm">™</span></div>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About Workshops</a>
+        <a href="workshops.html">Book Workshops</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-terms.html">Privacy & Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">ABOUT</span>
+        <h1 class="tagline">Workshops that bridge reflection and action.</h1>
+        <p class="hero-sub">Our sessions bring together clarity and movement. Explore the three paths below and find the one that resonates most with where you are now.</p>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <div class="wrap">
+      <div class="highlight">
+        <h2><em>Energy Aligned, Action Defined™</em></h2>
+        <p>Every Lace & Lime™ workshop is rooted in this guiding principle — aligning your energy with what matters and turning clarity into decisive action. It’s the thread connecting Career-Forward, Respect-Forward, and our Signature Experience.</p>
+      </div>
+
+      <!-- Career-Forward -->
+      <div class="card">
+        <h2>💼 Career-Forward</h2>
+        <p>Workshops focused on clarity, confidence, and practical tools for professional growth. From shaping your story to amplifying your voice, Career-Forward helps you move with intention.</p>
+      </div>
+
+      <!-- Respect-Forward -->
+      <div class="card">
+        <h2>🤝 Respect-Forward</h2>
+        <p>People-skills for real life. Respect-Forward workshops help you set healthy boundaries, strengthen collaboration, and build trust in the spaces that matter most.</p>
+      </div>
+
+      <!-- Signature Experience -->
+      <div class="card">
+        <h2>🌟 Signature Experience</h2>
+        <p>The Lace & Lime™ Experience is a guided journey through our framework. You’ll move from reflection to action with clarity and confidence, supported by tools you can use beyond the session itself.</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta">
+        <a href="workshops.html">See Sessions & Pricing →</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2025 Lace & Lime™ LLC. All rights reserved. · 
+         <a href="privacy-terms.html">Privacy & Terms</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+  <script>
+    (() => {
+      const totalEl = document.getElementById('total');
+      const finalTotalEl = document.getElementById('finalTotal');
+      const chips = document.querySelectorAll('.chip');
+      const groups = {};
+
+      chips.forEach(chip => {
+        const color = [...chip.classList].find(c => ['green','pink','lavender','gold'].includes(c));
+        if (!groups[color]) groups[color] = [];
+        groups[color].push(chip);
+
+        chip.addEventListener('click', () => {
+          if (chip.classList.contains('selected')) {
+            chip.classList.remove('selected');
+          } else {
+            groups[color].forEach(c => c.classList.remove('selected'));
+            chip.classList.add('selected');
+          }
+          updateTotal();
+        });
+      });
+
+      function updateTotal(){
+        let sum = 0;
+        const selectedList = document.getElementById('selectedList');
+        selectedList.innerHTML = '';
+        document.querySelectorAll('.chip.selected').forEach(chip => {
+          sum += parseFloat(chip.dataset.price || '0');
+          const li = document.createElement('li');
+          li.textContent = chip.querySelector('.chip-title').textContent;
+          selectedList.appendChild(li);
+        });
+        totalEl.textContent = sum;
+        finalTotalEl.textContent = sum;
+      }
+    })();
+
+    const continueBtn = document.getElementById('continueBtn');
+    const nextSteps = document.getElementById('nextSteps');
+    const closeSteps = document.getElementById('closeSteps');
+    const overlay = document.getElementById('overlay');
+
+    continueBtn.addEventListener('click', () => {
+      nextSteps.classList.add('open');
+      overlay.classList.add('show');
+      nextSteps.scrollTop = 0;
+    });
+
+    function closeDrawer(){
+      nextSteps.classList.remove('open');
+      overlay.classList.remove('show');
+    }
+
+    closeSteps.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    const discoveryBtn = document.getElementById('discoveryBtn');
+    discoveryBtn.addEventListener('click', () => {
+      alert("Discovery Call scheduling is coming soon. Your $15 applies directly toward your workshop or 1:1 session.");
+    });
+
+    document.querySelectorAll('.faq-question').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

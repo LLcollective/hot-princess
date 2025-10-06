@@ -287,12 +287,12 @@ function drawSpiral() {
 
   // Spiral nav links with manual multipliers
   const linkLabels = [
-    { text: "Work With Me", href: "founder.html", factor: 0.21 },
+    { text: "Founder", href: "founder.html", factor: 0.21 },
     { text: "Contact", href: "contact.html", factor: 0.10 },
-    { text: "Spiral", href: "#", factor: 0.16 },
-    { text: "Limeboard", href: "limeboard.html", factor: 0.23 },
-    { text: "Approach", href: "approach.html", factor: 0.05 },
-    { text: "Laced Together", href: "#", factor: 0.29 }
+    { text: "Let's Spiral", href: "Spiral.html", factor: 0.16 },
+    { text: "Laced Together", href: "laced-together.html", factor: 0.05 },
+    { text: "Approach", href: "approach.html", factor: 0.23 },
+
   ];
 
   // Each factor = % along spiral path (0 = center, 1 = edge)

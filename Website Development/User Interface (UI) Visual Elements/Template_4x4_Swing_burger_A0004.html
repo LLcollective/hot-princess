@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swing Chevron Burgers – Lace & Lime™</title>
+  <style>
+    body {
+      display:flex;
+      justify-content:space-around;
+      align-items:flex-start;
+      height:100vh;
+      background:#E6F4FF;
+      font-family: sans-serif;
+      padding-top: 40px;
+    }
+
+    .burger-wrapper {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+
+    .label {
+      font-size:14px;
+      font-weight:600;
+      color:#4f46e5;
+      text-align:center;
+    }
+
+    .burger {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      border: 2px solid #4f46e5;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+      cursor: pointer;
+      transition: background .4s ease, box-shadow .35s ease;
+    }
+
+    .burger span {
+      position: absolute;
+      left: 16px;
+      width: 24px;
+      height: 3px;
+      background: #4f46e5;
+      border-radius: 2px;
+      transition: opacity .3s ease, background .3s ease;
+      transform-origin: right center;
+    }
+
+    .burger span:nth-child(1) { top: 16px; }
+    .burger span:nth-child(2) { top: 26px; }
+    .burger span:nth-child(3) { top: 36px; }
+
+    .burger.open {
+      background: linear-gradient(90deg,#4f46e5,#9BE080);
+    }
+    .burger.open span { background:#fff; }
+    .burger.open span:nth-child(2) { opacity:0; }
+
+    /* --- Variant 1: Smooth Swing --- */
+    .swing1.open span:nth-child(1) {
+      animation: swingTop1 .5s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .swing1.open span:nth-child(3) {
+      animation: swingBot1 .5s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    @keyframes swingTop1 {
+      from { transform: rotate(0); top:16px; }
+      to   { transform: rotate(-28deg); top:26px; }
+    }
+    @keyframes swingBot1 {
+      from { transform: rotate(0); top:36px; }
+      to   { transform: rotate(28deg); top:26px; }
+    }
+
+    /* --- Variant 2: Elastic Swing --- */
+    .swing2.open span:nth-child(1) {
+      animation: swingTop2 .6s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    }
+    .swing2.open span:nth-child(3) {
+      animation: swingBot2 .6s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    }
+    @keyframes swingTop2 {
+      from { transform: rotate(0); top:16px; }
+      80%  { transform: rotate(-32deg); top:24px; }
+      to   { transform: rotate(-28deg); top:26px; }
+    }
+    @keyframes swingBot2 {
+      from { transform: rotate(0); top:36px; }
+      80%  { transform: rotate(32deg); top:28px; }
+      to   { transform: rotate(28deg); top:26px; }
+    }
+
+    /* --- Variant 3: Delay Swing (staggered arms) --- */
+    .swing3.open span:nth-child(1) {
+      animation: swingTop3 .5s ease forwards .1s;
+    }
+    .swing3.open span:nth-child(3) {
+      animation: swingBot3 .5s ease forwards .2s;
+    }
+    @keyframes swingTop3 {
+      from { transform: rotate(0); top:16px; }
+      to   { transform: rotate(-28deg); top:26px; }
+    }
+    @keyframes swingBot3 {
+      from { transform: rotate(0); top:36px; }
+      to   { transform: rotate(28deg); top:26px; }
+    }
+
+    /* --- Variant 4: Swing with Bounce --- */
+    .swing4.open span:nth-child(1) {
+      animation: swingTop4 .7s ease-out forwards;
+    }
+    .swing4.open span:nth-child(3) {
+      animation: swingBot4 .7s ease-out forwards;
+    }
+    @keyframes swingTop4 {
+      0%   { transform: rotate(0); top:16px; }
+      70%  { transform: rotate(-32deg); top:26px; }
+      85%  { transform: rotate(-25deg); }
+      100% { transform: rotate(-28deg); top:26px; }
+    }
+    @keyframes swingBot4 {
+      0%   { transform: rotate(0); top:36px; }
+      70%  { transform: rotate(32deg); top:26px; }
+      85%  { transform: rotate(25deg); }
+      100% { transform: rotate(28deg); top:26px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="burger-wrapper">
+    <div class="burger swing1"><span></span><span></span><span></span></div>
+    <div class="label">Smooth Swing</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger swing2"><span></span><span></span><span></span></div>
+    <div class="label">Elastic Swing</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger swing3"><span></span><span></span><span></span></div>
+    <div class="label">Delay Swing</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger swing4"><span></span><span></span><span></span></div>
+    <div class="label">Bounce Swing</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.burger').forEach(burger=>{
+      burger.addEventListener('click',()=>burger.classList.toggle('open'));
+    });
+  </script>
+</body>
+</html>

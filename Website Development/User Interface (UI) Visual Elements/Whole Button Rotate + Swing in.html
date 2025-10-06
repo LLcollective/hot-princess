@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin-In + Rotate Chevron Burger – Lace & Lime™</title>
+  <style>
+    body {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:#E6F4FF;
+      font-family:sans-serif;
+    }
+
+    .burger {
+      position:relative;
+      width:60px;
+      height:60px;
+      border:2px solid #4f46e5;
+      border-radius:14px;
+      background:#fff;
+      box-shadow:0 6px 12px rgba(0,0,0,0.18);
+      cursor:pointer;
+      transition:background .4s ease, box-shadow .35s ease;
+    }
+    .burger span {
+      position:absolute;
+      left:18px;
+      width:26px;
+      height:3px;
+      background:#4f46e5;
+      border-radius:2px;
+      transition:opacity .25s ease, background .3s ease;
+      transform-origin:right center;
+    }
+    .burger span:nth-child(1){top:18px;}
+    .burger span:nth-child(2){top:28px;}
+    .burger span:nth-child(3){top:38px;}
+
+    .burger.open {
+      background:linear-gradient(90deg,#4f46e5,#9BE080);
+      animation: rotateButton .6s ease;
+    }
+    .burger.open span {background:#fff;}
+    .burger.open span:nth-child(2){opacity:0;}
+
+    /* Chevron arms spin into place */
+    .burger.open span:nth-child(1){
+      animation: spinTop .6s ease forwards;
+    }
+    .burger.open span:nth-child(3){
+      animation: spinBot .6s ease forwards;
+    }
+    @keyframes spinTop {
+      0%{transform:rotate(-60deg); top:18px;}
+      100%{transform:rotate(-28deg); top:28px;}
+    }
+    @keyframes spinBot {
+      0%{transform:rotate(60deg); top:38px;}
+      100%{transform:rotate(28deg); top:28px;}
+    }
+
+    /* Whole button rotate */
+    @keyframes rotateButton {
+      0%{transform:rotate(0deg) scale(1);}
+      50%{transform:rotate(15deg) scale(1.05);}
+      100%{transform:rotate(0deg) scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <div class="burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+
+  <script>
+    const burger = document.getElementById("burger");
+    burger.addEventListener("click",()=>burger.classList.toggle("open"));
+  </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Narrative Builder | Lace & Lime™</title>
+
+  <!-- Fonts & Global -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+  .builder-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--gutter-desktop);
+  }
+
+  .builder-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .builder-header h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 2.3vw, 2.4rem);
+    color: var(--ink-dark);
+  }
+
+  .builder-header p {
+    color: var(--ink-med);
+    margin-top: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .intro-note {
+    font-style: italic;
+    color: var(--ink-med);
+    margin-top: 0.5rem;
+  }
+
+  form {
+    margin-top: var(--space-lg);
+  }
+
+  .prompt-block {
+    background: #fff;
+    border: 1px solid var(--ink-light);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.25rem, 2vw, 2rem);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .prompt-block label {
+    font-weight: 600;
+    color: var(--ink-dark);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 140px;
+    resize: vertical;
+    border: 1px solid var(--ink-light);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    font-family: inherit;
+    line-height: 1.5;
+    color: var(--ink-dark);
+    background: #fafafa;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+    background: #fff;
+  }
+
+  button {
+    margin-top: var(--space-md);
+    background: var(--brand-pill);
+    color: var(--brand-dark);
+    font-weight: 600;
+    padding: 0.65rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  button:hover {
+    background: var(--brand-light);
+    color: var(--ink-dark);
+    transform: translateY(-2px);
+  }
+
+  .output {
+    display: none;
+    background: var(--brand-lightest, #fafafa);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    margin-top: var(--space-xl);
+    text-align: left;
+  }
+
+  .output h3 {
+    font-family: var(--font-heading);
+    color: var(--ink-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .output p {
+    color: var(--ink-med);
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .cta-block {
+    text-align: center;
+    margin-top: var(--space-xl);
+  }
+
+  .cta-block h3 {
+    font-family: var(--font-heading);
+    color: var(--ink-dark);
+    margin-bottom: 0.25rem;
+  }
+
+  .cta-block p {
+    color: var(--ink-med);
+    margin-bottom: 0.75rem;
+  }
+
+  .path-cta {
+    display: inline-block;
+    background: var(--brand-pill);
+    color: var(--brand-dark);
+    font-weight: 600;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.25s ease;
+  }
+
+  .path-cta:hover {
+    background: var(--brand-light);
+    color: var(--ink-dark);
+    transform: translateY(-2px);
+  }
+  </style>
+</head>
+
+<body class="narrative-builder-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="ll-nav">
+    <div class="header-wrap">
+      <a class="logo-link" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span>
+          <span class="amp">&amp;</span>
+          <span class="lime">LIME</span>
+        </h1>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== BUILDER ===== -->
+  <section class="builder-container">
+    <div class="builder-header animate">
+      <span class="eyebrow">Next Step</span>
+      <h1>Narrative Builder</h1>
+      <p>Move customers and yourself with language built on clarity.<br> Define what your work stands for and how it connects.</p>
+      <p class="intro-note">Use this space to be present and write freely.</p>
+    </div>
+
+    <form id="builderForm">
+      <div class="prompt-block">
+        <label for="why">Focus Point</label>
+        <textarea id="why" name="why" placeholder="What change or feeling do you want your work to create?"></textarea>
+      </div>
+
+      <div class="prompt-block">
+        <label for="voice">Expression</label>
+        <textarea id="voice" name="voice" placeholder="How do you want people to feel when they read, see, or hear you?"></textarea>
+      </div>
+
+      <div class="prompt-block">
+        <label for="values">Alignment Check</label>
+        <textarea id="values" name="values" placeholder="Which principles or boundaries keep your work authentic?"></textarea>
+      </div>
+
+      <div class="prompt-block">
+        <label for="impact">Next Reach</label>
+        <textarea id="impact" name="impact" placeholder="What outcomes or transformations show that your message is working?"></textarea>
+      </div>
+
+      <button type="button" onclick="generateNarrative()">View Draft Narrative</button>
+    </form>
+
+    <div class="output" id="output">
+      <h3>Your Draft Narrative</h3>
+      <p id="narrativeText"></p>
+
+      <div class="cta-block animate">
+        <h3>Next Step</h3>
+        <p>Ready to turn your clarity into structure and next steps?</p>
+        <a href="book-now.html" class="path-cta">Translate insight to structure →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap-heavy">
+      <p class="legal">
+        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>
+        © 2025 Lace & Lime™ LLC. All rights reserved. ·
+        <a href="privacy-terms.html">Privacy and Terms</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+  function generateNarrative() {
+    const why = document.getElementById('why').value.trim();
+    const voice = document.getElementById('voice').value.trim();
+    const values = document.getElementById('values').value.trim();
+    const impact = document.getElementById('impact').value.trim();
+    const output = document.getElementById('output');
+    const text = document.getElementById('narrativeText');
+
+    let narrative = "";
+    if (why) narrative += `The work I do centers on ${why}. `;
+    if (voice) narrative += `I aim to communicate with a tone that feels ${voice}. `;
+    if (values) narrative += `My approach is guided by ${values}. `;
+    if (impact) narrative += `Ultimately, I hope to create ${impact}.`;
+
+    text.textContent = narrative || "Start writing above to build your narrative.";
+    output.style.display = "block";
+    output.scrollIntoView({ behavior: "smooth" });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const obs = new IntersectionObserver((entries, o) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("reveal");
+          o.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".animate").forEach(el => obs.observe(el));
+  });
+  </script>
+</body>
+</html>

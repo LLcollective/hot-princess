@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating Chevron Burgers – Lace & Lime™</title>
+  <style>
+    body {
+      display:flex;
+      justify-content:space-around;
+      align-items:flex-start;
+      height:100vh;
+      background:#E6F4FF;
+      font-family: sans-serif;
+      padding-top:40px;
+    }
+
+    .burger-wrapper {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+    .label {
+      font-size:14px;
+      font-weight:600;
+      color:#4f46e5;
+      text-align:center;
+    }
+
+    .burger {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      border: 2px solid #4f46e5;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+      cursor: pointer;
+      transition: background .4s ease, box-shadow .35s ease;
+    }
+    .burger span {
+      position: absolute;
+      left: 16px;
+      width: 24px;
+      height: 3px;
+      background: #4f46e5;
+      border-radius: 2px;
+      transition: opacity .25s ease, background .3s ease;
+      transform-origin: right center;
+    }
+    .burger span:nth-child(1){top:16px;}
+    .burger span:nth-child(2){top:26px;}
+    .burger span:nth-child(3){top:36px;}
+
+    .burger.open {
+      background:linear-gradient(90deg,#4f46e5,#9BE080);
+    }
+    .burger.open span {background:#fff;}
+    .burger.open span:nth-child(2){opacity:0;}
+
+    /* Base chevron morph positions */
+    .burger.open span:nth-child(1){top:26px;}
+    .burger.open span:nth-child(3){top:26px;}
+
+    /* --- Variant 1: Whole Button Rotate --- */
+    .rotate1.open {animation: rotateButton .5s ease;}
+    @keyframes rotateButton {
+      0%{transform:rotate(0deg) scale(1);}
+      50%{transform:rotate(15deg) scale(1.05);}
+      100%{transform:rotate(0deg) scale(1);}
+    }
+    .rotate1.open span:nth-child(1){transform:rotate(-28deg);}
+    .rotate1.open span:nth-child(3){transform:rotate(28deg);}
+
+    /* --- Variant 2: Arms Over-Rotate --- */
+    .rotate2.open span:nth-child(1){animation: armOverTop .5s ease forwards;}
+    .rotate2.open span:nth-child(3){animation: armOverBot .5s ease forwards;}
+    @keyframes armOverTop {
+      0%{transform:rotate(0);}
+      70%{transform:rotate(-45deg);}
+      100%{transform:rotate(-28deg);}
+    }
+    @keyframes armOverBot {
+      0%{transform:rotate(0);}
+      70%{transform:rotate(45deg);}
+      100%{transform:rotate(28deg);}
+    }
+
+    /* --- Variant 3: Chevron Nod --- */
+    .rotate3.open span:nth-child(1){animation: arrowNodTop .6s ease-in-out forwards;}
+    .rotate3.open span:nth-child(3){animation: arrowNodBot .6s ease-in-out forwards;}
+    @keyframes arrowNodTop {
+      0%{transform:rotate(-28deg);}
+      50%{transform:rotate(-35deg);}
+      100%{transform:rotate(-28deg);}
+    }
+    @keyframes arrowNodBot {
+      0%{transform:rotate(28deg);}
+      50%{transform:rotate(35deg);}
+      100%{transform:rotate(28deg);}
+    }
+
+    /* --- Variant 4: Combo Twist + Elastic Arms --- */
+    .rotate4.open {animation: rotateButton .6s ease;}
+    .rotate4.open span:nth-child(1){animation: armElasticTop .6s cubic-bezier(.68,-0.55,.27,1.55) forwards;}
+    .rotate4.open span:nth-child(3){animation: armElasticBot .6s cubic-bezier(.68,-0.55,.27,1.55) forwards;}
+    @keyframes armElasticTop {
+      0%{transform:rotate(0);}
+      75%{transform:rotate(-35deg);}
+      90%{transform:rotate(-25deg);}
+      100%{transform:rotate(-28deg);}
+    }
+    @keyframes armElasticBot {
+      0%{transform:rotate(0);}
+      75%{transform:rotate(35deg);}
+      90%{transform:rotate(25deg);}
+      100%{transform:rotate(28deg);}
+    }
+  </style>
+</head>
+<body>
+  <div class="burger-wrapper">
+    <div class="burger rotate1"><span></span><span></span><span></span></div>
+    <div class="label">Whole Button Rotate</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger rotate2"><span></span><span></span><span></span></div>
+    <div class="label">Arms Over-Rotate</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger rotate3"><span></span><span></span><span></span></div>
+    <div class="label">Chevron Nod</div>
+  </div>
+
+  <div class="burger-wrapper">
+    <div class="burger rotate4"><span></span><span></span><span></span></div>
+    <div class="label">Combo Twist + Elastic</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.burger').forEach(b=>{
+      b.addEventListener('click',()=>b.classList.toggle('open'));
+    });
+  </script>
+</body>
+</html>

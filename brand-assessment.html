@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Assessment | Lace & Lime™</title>
+
+  <!-- Global + Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+  /* --- LAYOUT --- */
+.assessment-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--gutter-desktop);
+}
+
+.assessment-header {
+  text-align: center;
+  margin-bottom: calc(var(--space-xl) * 1.2);
+}
+
+.assessment-header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 2.3vw, 2.4rem);
+  color: var(--ink-dark);
+  letter-spacing: -0.01em;
+}
+
+.assessment-header p {
+  color: var(--ink-med);
+  margin-top: 0.75rem;
+  line-height: 1.6;
+}
+
+/* --- QUESTIONS --- */
+form {
+  margin-top: var(--space-lg);
+}
+
+.question {
+  margin-bottom: var(--space-lg);
+}
+
+.question label {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink-dark);
+  margin-bottom: 0.4rem;
+  line-height: 1.45;
+}
+
+.question input[type="range"] {
+  width: 100%;
+  accent-color: var(--brand);
+  margin-top: 0.25rem;
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--ink-med);
+  margin-top: 0.35rem;
+  line-height: 1.3;
+}
+
+/* --- BUTTON --- */
+button {
+  margin-top: var(--space-md);
+  background: var(--brand-pill);
+  color: var(--brand-dark);
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  border: 1px solid rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background: var(--brand-light);
+  color: var(--ink-dark);
+  transform: translateY(-2px);
+}
+
+/* --- RESULTS --- */
+.results {
+  display: none;
+  margin-top: var(--space-xl);
+  background: var(--brand-lightest, #fafafa);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.results h3 {
+  font-family: var(--font-heading);
+  color: var(--ink-dark);
+  margin-bottom: 0.75rem;
+}
+
+.progress-wrap {
+  margin: 1rem 0;
+  background: #eee;
+  border-radius: 4px;
+  height: 10px;
+}
+
+.progress-fill {
+  height: 10px;
+  background: var(--brand);
+  border-radius: 4px;
+  width: 0;
+  transition: width 0.4s ease;
+}
+
+/* --- NEXT STEP CTA --- */
+.next-step {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+.next-step a {
+  display: inline-block;
+  background: var(--brand-pill);
+  color: var(--brand-dark);
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
+}
+
+.next-step a:hover {
+  background: var(--brand-light);
+  color: var(--ink-dark);
+  transform: translateY(-2px);
+}
+
+/* --- HIGHLIGHT CTA BLOCK --- */
+.highlight {
+  margin-top: var(--space-xl);
+  padding: 1.75rem 2rem;
+  border-left: 3px solid var(--brand-pill);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.5);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.highlight h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 0.25rem;
+  color: var(--ink-dark);
+}
+
+.highlight p {
+  color: var(--ink-med);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.btn-eyebrow {
+  margin-top: 1rem;
+}
+
+.next-step.highlight {
+  margin-top: var(--space-lg);
+}
+
+/* --- RESPONSIVE TWEAKS --- */
+@media (max-width: 768px) {
+  .assessment-container {
+    padding: var(--space-lg) var(--gutter-mobile);
+  }
+
+  .question label {
+    font-size: 1.05rem;
+  }
+
+  .highlight {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+
+  </style>
+</head>
+
+<body class="brand-assessment-page">
+
+  <header class="ll-nav">
+    <div class="header-wrap">
+      <a class="logo-link" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span>
+          <span class="amp">&amp;</span>
+          <span class="lime">LIME</span>
+        </h1>
+      </a>
+    </div>
+  </header>
+
+  <section class="assessment-container">
+    <div class="assessment-header">
+      <span class="eyebrow">Quick Diagnostic</span>
+      <h1>Brand Alignment Assessment</h1>
+      <p>
+        Measure how clearly your brand aligns with your values, systems, and story. This self-assessment gives you a snapshot of your current clarity, structure, and momentum.
+      </p>
+    <p><strong>
+A simplified version of a Energy Aligned, Action Defined™ assessment used within workshops and brand reviews; helping you see how clearly your energy and structure are working together and where they need support.
+</strong></p>
+</div>
+
+    <form id="assessmentForm">
+      <div class="question">
+        <label for="clarity">I can clearly describe what my brand stands for.</label>
+        <input type="range" id="clarity" name="clarity" min="1" max="5" step="1">
+        <div class="scale-labels"><span>No</span><span>Sometimes</span><span>Often</span><span>Yes</span><span>Always</span></div>
+      </div>
+
+      <div class="question">
+        <label for="systems">My operations and tools support my message consistently.</label>
+        <input type="range" id="systems" name="systems" min="1" max="5" step="1">
+        <div class="scale-labels"><span>No</span><span>Not yet</span><span>Somewhat</span><span>Mostly</span><span>Fully</span></div>
+      </div>
+
+      <div class="question">
+        <label for="visibility">My audience understands and recognizes my work.</label>
+        <input type="range" id="visibility" name="visibility" min="1" max="5" step="1">
+        <div class="scale-labels"><span>Unclear</span><span>Occasionally</span><span>Growing</span><span>Consistent</span><span>Recognized</span></div>
+      </div>
+
+      <div class="question">
+        <label for="values">My daily actions reflect my brand’s values.</label>
+        <input type="range" id="values" name="values" min="1" max="5" step="1">
+        <div class="scale-labels"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Mostly</span><span>Always</span></div>
+      </div>
+
+      <div class="question">
+        <label for="alignment">My brand feels cohesive and authentic across spaces.</label>
+        <input type="range" id="alignment" name="alignment" min="1" max="5" step="1">
+        <div class="scale-labels"><span>Disconnected</span><span>Somewhat</span><span>Balanced</span><span>Strong</span><span>Aligned</span></div>
+      </div>
+
+      <button type="button" onclick="calculateScore()">View My Results</button>
+    </form>
+
+    <div class="results" id="results">
+      <h3>Your Brand Snapshot</h3>
+      <div class="progress-wrap"><div id="progress-fill" class="progress-fill"></div></div>
+      <p id="scoreText"></p>
+      <p id="tierText"></p>
+      <div class="next-step">
+        <p>Want help interpreting your results?</p>
+        <a href="booknow.html">Book an Alignment Review →</a>
+      </div>
+    </div>
+  </section>
+
+
+
+
+<div class="section-divider"></div>
+
+<div class="next-step highlight animate" style="margin-top:2rem;">
+  <span class="eyebrow">Next Step</span>
+  <h3>Build Your Brand Narrative</h3>
+  <p>
+    Move customers and yourself with language built on clarity.<br>
+    Define what your work stands for and how it connects.
+  </p>
+  <a href="Narrative-Builder.html" class="btn-eyebrow">Start the Narrative Builder</a>
+</div>
+
+
+
+
+  <footer>
+    <div class="wrap-heavy">
+      <p class="legal">
+        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>  
+        © 2025 Lace & Lime™ LLC. All rights reserved. ·  
+        <a href="privacy-terms.html">Privacy and Terms</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+  function calculateScore() {
+    const inputs = document.querySelectorAll('input[type="range"]');
+    let total = 0;
+    inputs.forEach(i => total += parseInt(i.value || 0));
+    const avg = total / inputs.length;
+
+    const scoreText = document.getElementById('scoreText');
+    const tierText = document.getElementById('tierText');
+    const results = document.getElementById('results');
+    const fill = document.getElementById('progress-fill');
+
+    let tier = "";
+    if (avg < 2.5) {
+      tier = "Foundational. Your systems and message may need clearer structure before scaling.";
+    } else if (avg < 4) {
+      tier = "Balanced. You are building clarity and alignment and can refine consistency for stronger results.";
+    } else {
+      tier = "Growth Ready. You have a solid foundation for expansion and leadership visibility.";
+    }
+
+    fill.style.width = `${(avg / 5) * 100}%`;
+    scoreText.innerHTML = `<strong>Average Score:</strong> ${avg.toFixed(1)} / 5`;
+    tierText.innerHTML = `<strong>Tier:</strong> ${tier}`;
+    results.style.display = "block";
+    results.scrollIntoView({ behavior: "smooth" });
+  }
+  </script>
+</body>
+</html>

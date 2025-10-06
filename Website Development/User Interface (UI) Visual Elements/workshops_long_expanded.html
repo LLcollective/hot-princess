@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workshops | Lace & Lime™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --surface:#E6F4FF; --text:#1A2238; --muted:#405970; --line: rgba(26,34,56,.15);
+      --brand:#4f46e5; --brand-pill:#F3F4FF; --shadow:0 6px 20px rgba(26,34,56,.08);
+    }
+    html,body{margin:0; padding:0}
+    body{
+      background:transparent !important;
+      color:var(--text);
+      font-family:"Work Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.5;
+    }
+    body::before{
+      content:""; position:fixed; inset:0;
+      background:linear-gradient(180deg,#E6F4FF 0%, #DCEBFF 45%, #C7DBFF 75%, #BFD0FF 100%);
+      z-index:-1; pointer-events:none;
+    }
+    .wrap{width:min(1120px,92vw);margin-inline:auto}
+
+    /* Header */
+    .ll-nav{position:sticky; top:0; z-index:1000; background:var(--surface); border-bottom:1px solid var(--line)}
+    .ll-nav .wrap{padding:12px 16px; display:flex; align-items:center; gap:16px;}
+    .brand{font-family:'Tenor Sans',serif; letter-spacing:.08em; color:var(--brand); font-size:20px; font-weight:600;}
+    .ll-nav .brand .tm {font-size:.7em; vertical-align:super; position:relative; top:0.25em; margin-left:1px;}
+    nav.menu{margin-left:auto; display:flex; gap:18px;}
+    nav.menu a{font-weight:600; color:var(--text); padding:.35rem .6rem; border-radius:.6rem; text-decoration:none;}
+    nav.menu a.active{background:var(--brand-pill); color:var(--brand)}
+
+    /* Hero */
+    .hero{border-bottom:1px solid var(--line);}
+    .hero .wrap{padding:3rem 1rem 2rem}
+    .eyebrow{font-size:.9rem; letter-spacing:.12em; color:#7A66FF; font-weight:700;}
+    .tagline{font-family:"Tenor Sans",serif; font-size:clamp(1.6rem, 2.3vw + 1rem, 2.4rem); font-weight:600; line-height:1.15; margin:.4rem 0 .6rem;}
+    .hero-sub{color:var(--muted); max-width:70ch; font-size:1rem; margin:0;}
+    .hero-extra{color:var(--muted); font-size:.95rem; margin-top:.4rem;}
+
+    /* Pilot Banner */
+    .pilot-banner {
+      background:#ede9fe;
+      color:#4f46e5;
+      text-align:center;
+      font-weight:600;
+      padding:.75rem 1rem;
+      border-radius:.6rem;
+      margin:2rem 0 1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    /* Chips */
+    .chips{display:flex; flex-direction:column; gap:.9rem; margin:.6rem 0;}
+    .chip{border:1px solid var(--line); border-radius:1rem; box-shadow:var(--shadow); padding:1rem; display:flex; flex-direction:column; gap:.25rem; cursor:pointer;}
+    .chip:hover{filter:brightness(1.03)}
+    .chip:active{transform:scale(.995)}
+    .chip .chip-head{display:flex; align-items:center; gap:.5rem; flex-wrap:wrap}
+    .chip .chip-title{font-weight:700;}
+    .chip .chip-desc{margin:0; font-size:.95rem; font-weight:500; line-height:1.45;}
+    .chip.selected .chip-title::after{content:" 💜✔"; font-size:1rem; margin-left:.3rem;}
+
+    /* Chip colors */
+    .green{background:#d1f2d1; color:#065f46;}
+    .pink{background:#fde2f3; color:#9d174d;}
+    .lavender{background:#f7f2ff; color:#5b21b6;}
+    .gold{background:#fff8e1; color:#92400e;}
+
+    .price-chip{padding:.15rem .5rem; border-radius:.6rem; font-size:.75rem; font-weight:700; background:#f3f4f6; color:#374151}
+    .pilot{background:#ede9fe; color:#5b21b6}
+    .special{background:#14b8a6; color:#fff}
+
+    /* Sticky total bar */
+    .total-bar{position:fixed; bottom:0; left:0; right:0; background:#4f46e5; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:.8rem 1rem calc(.8rem + env(safe-area-inset-bottom)); font-size:1.05rem; z-index:1000;}
+    .total-bar span{font-weight:600;}
+    .total-bar button{background:#fff; color:#4f46e5; font-weight:700; border:none; border-radius:.6rem; padding:.5rem 1rem; cursor:pointer;}
+    .total-bar button:hover{background:#f3f4ff;}
+
+    /* Overlay */
+    .overlay{position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:1050; display:none;}
+    .overlay.show{display:block;}
+
+    /* Next Steps card */
+    .next-steps{position:fixed; left:0; right:0; bottom:-100%; background:#fff; box-shadow:0 -4px 12px rgba(0,0,0,.1); border-top-left-radius:1rem; border-top-right-radius:1rem; padding:1.5rem; z-index:1100; transition:bottom .3s ease-in-out, opacity .3s ease-in-out; opacity:0; max-height:80vh; overflow-y:auto;}
+    .next-steps.open{bottom:0; opacity:1;}
+    .next-steps h2{font-family:"Tenor Sans",serif; margin-top:0;}
+    .next-steps .step-label{font-size:.85rem; font-weight:500; color:var(--muted); margin-left:.5rem;}
+    .next-steps ul{padding-left:1.2rem;}
+    .next-steps .total{font-weight:700; margin-top:1rem;}
+    .next-steps .actions{margin-top:1.5rem; display:flex; flex-direction:column; gap:.75rem;}
+    .next-steps button{background:#4f46e5; color:#fff; font-weight:600; border:none; border-radius:.6rem; padding:.6rem 1.2rem; cursor:pointer;}
+    .next-steps button:hover{background:#4338ca;}
+    .next-steps p.note{font-size:.9rem; color:var(--muted);}
+    .next-steps .trust{font-size:.8rem; color:var(--muted); display:flex; align-items:center; gap:.3rem;}
+    .next-steps a{align-self:center; font-size:.9rem; color:var(--muted); text-decoration:underline; cursor:pointer;}
+    .secondary-cta{display:block; margin-top:.5rem; font-size:.95rem; font-weight:600; color:#4f46e5; text-decoration:none;}
+    .secondary-cta:hover{text-decoration:underline;}
+    .next-steps .pilot-note{background:#ede9fe; color:#4f46e5; font-weight:600; padding:.5rem; border-radius:.5rem; margin:.5rem 0;}
+
+    /* FAQ */
+    .faq {margin:3rem 0;}
+    .faq-title{font-family:"Tenor Sans",serif; font-size:1.5rem; margin-bottom:1rem;}
+    .faq-item{border-top:1px solid var(--line);}
+    .faq-question{width:100%; text-align:left; background:none; border:none; font-size:1rem; font-weight:600; padding:1rem 0; cursor:pointer;}
+    .faq-answer{display:none; padding-bottom:1rem; color:var(--muted); font-size:.95rem; max-width:70ch;}
+    .faq-item.open .faq-answer{display:block;}
+
+    /* Mobile tweaks */
+    @media(max-width:640px){
+      .tagline{font-size:1.6rem}
+      .hero-sub{font-size:.95rem}
+      .total-bar{font-size:1rem; flex-direction:column; gap:.5rem;}
+      .total-bar button{width:100%;}
+    }
+  </style>
+</head>
+<body>
+  <header class="ll-nav">
+    <div class="wrap">
+      <div class="brand">LACE AND LIME<span class="tm">™</span></div>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="founder.html">Founder</a>
+        <a href="workshops.html" class="active">Workshops</a>
+        <a href="journal.html">Journal</a>
+        <a href="explore.html">Explore</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">WORKSHOPS</span>
+        <h1 class="tagline">Start where it moves the needle the most.</h1>
+        <p class="hero-sub">Pick a single session or bundle, then add options. Your total updates automatically.</p>
+        <p class="hero-extra">No sign-up required to preview. Pick what resonates, change anytime.</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <!-- Pilot Pricing Banner -->
+      <div class="pilot-banner">
+        ✨ Fall Pilot Pricing is live through December 31. Lock in your path at early access rates.
+      </div>
+
+      <!-- Session Types -->
+      <div class="divider"><span>📌 Session Types</span></div>
+      <div class="chips">
+        <div class="chip green" data-price="30"><div class="chip-head"><span class="chip-title">Jumpstart Session · $30</span><span class="price-chip pilot">Pilot Pricing</span></div><p class="chip-desc">Get a quick framework and tools you can use right away.</p></div>
+        <div class="chip green" data-price="50"><div class="chip-head"><span class="chip-title">Momentum Workshop · $50</span><span class="price-chip pilot">Pilot Pricing</span></div><p class="chip-desc">An hour to reflect, act, and leave with a clear plan.</p></div>
+        <div class="chip green" data-price="175"><div class="chip-head"><span class="chip-title">1:1 Signature Session · $175</span><span class="price-chip pilot">Pilot Pricing</span><span class="price-chip">Regular $225</span></div><p class="chip-desc">Personalized coaching built entirely around you. A 45-minute deep dive into your goals, followed by a 30-minute follow-up within 2 weeks to check progress, refine, and keep you accountable.</p></div>
+      </div>
+
+      <!-- Career-Forward -->
+      <div class="divider"><span>💼 Career-Forward</span></div>
+      <div class="chips">
+        <div class="chip pink" data-price="95"><div class="chip-head"><span class="chip-title">Career Storyline · $95</span></div><p class="chip-desc">Shape your experience into a clear, compelling narrative.</p></div>
+        <div class="chip pink" data-price="75"><div class="chip-head"><span class="chip-title">Power in Communication · $75</span></div><p class="chip-desc">Strengthen your voice and speak with confidence under pressure.</p></div>
+        <div class="chip pink" data-price="160"><div class="chip-head"><span class="chip-title">Voice & Impact Bundle · $160</span><span class="price-chip special">Save $10</span></div><p class="chip-desc">Pair Career Storyline with Power in Communication for a full path forward.</p></div>
+      </div>
+
+      <!-- Respect-Forward -->
+      <div class="divider"><span>🤝 Respect-Forward</span></div>
+      <div class="chips">
+        <div class="chip lavender" data-price="75"><div class="chip-head"><span class="chip-title">Healthy Boundaries · $75</span></div><p class="chip-desc">Balance responsibilities, prevent burnout, and build sustainable relationships.</p></div>
+        <div class="chip lavender" data-price="75"><div class="chip-head"><span class="chip-title">Connected Awareness · $75</span></div><p class="chip-desc">Gain insight into patterns that shape how you connect with others.</p></div>
+        <div class="chip lavender" data-price="75"><div class="chip-head"><span class="chip-title">Respectful Voice · $75</span></div><p class="chip-desc">Share your perspective with clarity and confidence while strengthening collaboration.</p></div>
+        <div class="chip lavender" data-price="195"><div class="chip-head"><span class="chip-title">Laced Together™ Series · $195</span><span class="price-chip special">Save $30</span></div><p class="chip-desc">A guided three-part journey into trust, communication, and collaboration.</p></div>
+      </div>
+
+      <!-- Signature Workshop -->
+      <div class="divider"><span>🌟 Signature Workshop</span></div>
+      <div class="chips">
+        <div class="chip gold" data-price="125"><div class="chip-head"><span class="chip-title">The Lace & Lime™ Experience · $125</span><span class="price-chip pilot">Pilot Pricing</span><span class="price-chip">Regular $175</span></div><p class="chip-desc">A structured, step-by-step journey through the Lace & Lime™ framework. In your 45-minute core session, we’ll apply reflection and action tools to your own path. A 30-minute integration session helps you turn insight into practice, with support for applying it to past workshops or your next stage of growth. Journal included.</p></div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq">
+        <h2 class="faq-title">FAQs</h2>
+        <div class="faq-item"><button class="faq-question">How do I know which session is right for me?</button><div class="faq-answer"><p>Start by noticing where you feel the most stuck or where you want the most clarity. Each session is designed to give you both reflection and action steps so you’ll leave with something concrete either way.</p></div></div>
+        <div class="faq-item"><button class="faq-question">Do I need to prepare anything?</button><div class="faq-answer"><p>No prep needed. Just bring yourself, your curiosity, and an openness to explore. I’ll provide all tools and prompts during the session.</p></div></div>
+        <div class="faq-item"><button class="faq-question">What if I change my mind after choosing?</button><div class="faq-answer"><p>You can adjust your path anytime. The “Change My Path” option in Next Steps lets you revisit your choices before moving forward.</p></div></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sticky total bar -->
+  <div class="total-bar">
+    <span>Your Path Total: $<span id="total">0</span></span>
+    <button id="continueBtn">Continue Your Path</button>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Next Steps Card -->
+  <div class="next-steps" id="nextSteps">
+    <h2>Next Steps <span class="step-label">Step 1 of 2: Confirm Your Path</span></h2>
+    <p>You’ve selected:</p>
+    <ul id="selectedList"></ul>
+    <div class="pilot-note">✨ Fall Pilot Pricing is live through December 31.</div>
+    <p class="total">Total: $<span id="finalTotal">0</span></p>
+    <p><em>Pilot Pricing is available where noted.</em></p>
+    <div class="actions">
+      <button id="discoveryBtn">Book a Discovery Call ($15)</button>
+      <p class="note">Your $15 applies directly toward your workshop or 1:1 session.</p>
+      <a data-formkit-toggle="cada407188" href="https://laceandlime.kit.com/cada407188" class="secondary-cta">📧 Not ready to book? Join the Circle for updates</a>
+      <div class="trust">🔒 Secure and confidential. Your info stays private.</div>
+      <a id="closeSteps">Change My Path</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap
+      <p>© 2025 Lace & Lime™ LLC. All rights reserved.</p>
+      <p><a href="privacy-terms.html">Privacy &amp; Terms</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const totalEl = document.getElementById('total');
+      const finalTotalEl = document.getElementById('finalTotal');
+      const chips = document.querySelectorAll('.chip');
+      const groups = {};
+
+      chips.forEach(chip => {
+        const color = [...chip.classList].find(c => ['green','pink','lavender','gold'].includes(c));
+        if (!groups[color]) groups[color] = [];
+        groups[color].push(chip);
+
+        chip.addEventListener('click', () => {
+          if (chip.classList.contains('selected')) {
+            chip.classList.remove('selected');
+          } else {
+            groups[color].forEach(c => c.classList.remove('selected'));
+            chip.classList.add('selected');
+          }
+          updateTotal();
+        });
+      });
+
+      function updateTotal(){
+        let sum = 0;
+        const selectedList = document.getElementById('selectedList');
+        selectedList.innerHTML = '';
+        document.querySelectorAll('.chip.selected').forEach(chip => {
+          sum += parseFloat(chip.dataset.price || '0');
+          const li = document.createElement('li');
+          li.textContent = chip.querySelector('.chip-title').textContent;
+          selectedList.appendChild(li);
+        });
+        totalEl.textContent = sum;
+        finalTotalEl.textContent = sum;
+      }
+    })();
+
+    const continueBtn = document.getElementById('continueBtn');
+    const nextSteps = document.getElementById('nextSteps');
+    const closeSteps = document.getElementById('closeSteps');
+    const overlay = document.getElementById('overlay');
+
+    continueBtn.addEventListener('click', () => {
+      nextSteps.classList.add('open');
+      overlay.classList.add('show');
+      nextSteps.scrollTop = 0;
+    });
+
+    function closeDrawer(){
+      nextSteps.classList.remove('open');
+      overlay.classList.remove('show');
+    }
+
+    closeSteps.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    const discoveryBtn = document.getElementById('discoveryBtn');
+    discoveryBtn.addEventListener('click', () => {
+      alert("Discovery Call scheduling is coming soon. Your $15 applies directly toward your workshop or 1:1 session.");
+    });
+
+    document.querySelectorAll('.faq-question').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

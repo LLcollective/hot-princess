@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lace & Lime™ Chevron Burger</title>
+  <style>
+    body {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:#E6F4FF;
+    }
+
+    /* Burger container */
+    .burger {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      border: 2px solid #4f46e5;  /* brand purple */
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    /* Hover state → subtle glow */
+    .burger:hover {
+      box-shadow: 0 0 10px rgba(155,224,128,0.4); /* lime glow */
+      border-color: #9BE080;
+    }
+
+    .burger span {
+      position: absolute;
+      left: 13px;
+      width: 24px;
+      height: 3px;
+      background: #4f46e5;
+      border-radius: 2px;
+      transition: transform .35s cubic-bezier(.68,-0.55,.27,1.55),
+                  opacity .25s ease,
+                  background .3s ease;
+      transform-origin: right center; /* hinge from right */
+    }
+
+    /* initial positions */
+    .burger span:nth-child(1) { top: 14px; }
+    .burger span:nth-child(2) { top: 23px; }
+    .burger span:nth-child(3) { top: 32px; }
+
+    /* Open state */
+    .burger.open {
+      background: linear-gradient(90deg,#4f46e5,#9BE080); /* purple→lime */
+      border-color: transparent;
+    }
+    .burger.open span {
+      background: #fff; /* contrast inside gradient */
+    }
+
+    /* top bar → chevron arm */
+    .burger.open span:nth-child(1) {
+      top: 23px;
+      transform: rotate(-30deg); /* softer angle than -35 for a sharp arrowhead */
+    }
+    /* middle bar → slide + fade out */
+    .burger.open span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    /* bottom bar → chevron arm */
+    .burger.open span:nth-child(3) {
+      top: 23px;
+      transform: rotate(30deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="burger" id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <script>
+    const burger = document.getElementById("burger");
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("open");
+    });
+  </script>
+</body>
+</html>
