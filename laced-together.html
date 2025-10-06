@@ -188,7 +188,69 @@
   }
 
   footer { text-align: center; margin-top: var(--space-xl); }
-  </style>
+ 
+
+/* --- INTERSECTION SECTION --- */
+.intersection-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-xl) var(--gutter-desktop);
+  margin: var(--space-xl) auto;
+}
+
+.intersection-wrap {
+  max-width: 720px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(216, 122, 148, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 3rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
+}
+
+.intersection-wrap:hover {
+  background: rgba(255, 255, 255, 0.30);
+  border-color: rgba(216, 122, 148, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.intersection-wrap h3 {
+  font-family: var(--font-heading);
+  color: var(--ink-dark);
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.intersection-wrap p {
+  color: var(--ink-med);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.intersection-wrap .path-cta.outline {
+  display: inline-block;
+  border: 1.5px solid var(--brand-dark);
+  color: var(--brand-dark);
+  background: transparent;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+.intersection-wrap .path-cta.outline:hover {
+  background: var(--brand-light);
+  color: var(--ink-dark);
+  border-color: var(--brand-light);
+}
+
+ </style>
 </head>
 
 <body class="lacedtogether-page">
@@ -237,15 +299,15 @@
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- ===== REFLECTION ===== -->
-  <section class="reflection-block animate">
+ <!-- ===== INTERSECTION SECTION ===== -->
+<section class="intersection-section animate">
+  <div class="intersection-wrap">
     <h3>Where These Paths Intersect</h3>
-    <p>Your personal rhythm shapes your professional clarity.  
-    Laced Together reminds you that progress in one space strengthens the other.  
-    These tools are designed to help you reflect, align, and move with purpose.</p>
-  </section>
+    <p>Your personal rhythm shapes your professional clarity. Laced Together reminds you that progress in one space strengthens the other. These tools are designed to help you reflect, align, and move with purpose.</p>
+    <a href="book-now.html" class="path-cta outline">Continue Path →</a>
+  </div>
+</section>
+
 
   <!-- ===== FOOTER ===== -->
   <footer>

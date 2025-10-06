@@ -293,6 +293,51 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
+
+.waitlist-card {
+  background: rgba(255, 255, 255, 0.6);  /* semi-transparent glass */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(216, 122, 148, 0.6); /* softer pink outline */
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  max-width: 420px;
+  margin: 1.5rem auto 0;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.waitlist-card:hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(216, 122, 148, 0.8);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+
+.waitlist-form input {
+  background: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(216, 122, 148, 0.5);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  width: 100%;
+  font-family: inherit;
+  color: var(--ink-dark);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.waitlist-form input:focus {
+  outline: none;
+  border-color: #D87A94;
+  background: rgba(255,255,255,0.95);
+}
+
+
+.form-message {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--ink-med);
+  text-align: center;
+}
+
   </style>
 </head>
 
@@ -313,7 +358,7 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero-section animate">
-    <h1>Stillness Spiral</h1>
+    <h1>The Stillness Spiral™</h1>
     <p>This is your pause point, a moment to breathe, notice, and begin again.</p>
     <p><em>The spiral represents progress that circles inward before it moves forward.</em></p>
   </section>
@@ -347,33 +392,26 @@
     </div>
   </section>
 
- <!-- ===== CTA SECTION ===== -->
-<section class="cta-duo animate">
- <div class="cta-block animate">
-  <h3>Next Step</h3>
-  <p>Choose how you’d like to continue.</p>
-
-    <a href="rhythm-tracker.html" class="path-cta">Enter the Rhythm Tracker →</a>
-
-
-
-  <div class="cta-buttons">
-    <form id="waitlistForm" class="waitlist-form">
-      <input type="email" name="email" id="email" placeholder="Your email" required />
-      <button type="submit" class="path-cta outline">Join Journal Waitlist →</button>
-    </form>
-
-    <p id="formMessage" class="form-message"></p>
 <br>
 
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-duo animate">
+  <div class="cta-block">
+    <h3>Join the Next Spiral</h3>
+    <p>Be first to know when the Stillness Spiral journal opens for reflection and release.</p>
 
+    <div class="waitlist-card">
+      <form id="waitlistForm" class="waitlist-form">
+        <input type="email" name="email" id="email" placeholder="Your email" required />
+        <button type="submit" class="path-cta secondary-cta">Join Waitlist →</button>
+      </form>
+      <p id="formMessage" class="form-message"></p>
+    </div>
   </div>
-</div>
-
-
- 
-
 </section>
+
+
+<br><br>
 
 
   <footer>

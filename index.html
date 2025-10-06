@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lace & Lime™ Spiral Experience</title>
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="global.css" />
+
   <style>
     body {
       margin: 0;
@@ -81,6 +88,38 @@
       from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
       to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
+
+
+
+/* Floating Logo — Centered at Top, Above All Content */
+.floating-logo {
+  position: fixed;
+  top: 1.2rem;               /* keeps it breathing from top edge */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 0.35rem 1.25rem 0.4rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+  animation: fadeInTop 1.2s ease-in-out both;
+}
+
+/* Optional hover / scroll subtle fade */
+.floating-logo:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+@keyframes fadeInTop {
+  0% { opacity: 0; transform: translate(-50%, -8px); }
+  100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
+
   </style>
 
 
@@ -95,6 +134,16 @@
 <body>
 
 
+<!-- Floating Top-Centered Logo -->
+<header class="floating-logo">
+  <a href="index.html" class="logo-link">
+    <h1 class="logo-small-centered">
+      <span class="lace">lace</span>
+      <span class="amp">&amp;</span>
+      <span class="lime">LIME</span>
+    </h1>
+  </a>
+</header>
 
 
 
