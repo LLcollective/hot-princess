@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Individual Alignment | Lace & Lime™</title>
+
+  <!-- Global + Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="page.css" />
+</head>
+
+<body class="alignment-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="ll-nav">
+    <div class="header-wrap">
+      <a class="logo-link" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span>
+          <span class="amp">&amp;</span>
+          <span class="lime">LIME</span>
+        </h1>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== BUILDER ===== -->
+  <section class="builder-container">
+    <div class="builder-header animate">
+      <span class="eyebrow">Check-In</span>
+      <h1>Energy Aligned</h1>
+      <p>See how your energy, focus, and rhythm work together. <br>Use this space to check in with might need realignment.</p>
+         </div>
+
+    <form id="builderForm">
+
+      <div class="prompt-block">
+ <p class="intro-note">
+       Your notes stay private and saved in your browser. Clear them at the end when you’re ready to start fresh.
+      </p><br>
+
+
+
+        <label for="clarity">What helps you feel most clear and connected in your day-to-day life?</label>
+        <textarea id="clarity" name="clarity" placeholder="When do you feel most aligned or purposeful?"></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('clarity')">Save</button>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <label for="balance">How do you know when you’re balanced mentally and physically?</label>
+        <textarea id="balance" name="balance" placeholder="I feel balanced when..."></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('balance')">Save</button>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <label for="boundaries">Which boundaries or routines keep your energy steady?</label>
+        <textarea id="boundaries" name="boundaries" placeholder="What practices or limits protect your focus and energy?"></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('boundaries')">Save</button>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <label for="rhythm">When does your pace feel right for you?</label>
+        <textarea id="rhythm" name="rhythm" placeholder="What feels like a natural rhythm in your day or week?"></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('rhythm')">Save</button>
+        </div>
+      </div>
+
+      <div class="builder-actions">
+        <button type="button" class="btn-pink" onclick="generateReflection()">View My Reflection</button>
+        <button type="button" id="clearDrafts" class="btn-lime-link">Clear</button>
+      </div>
+    </form>
+
+    <div class="output" id="output">
+      <p id="alignmentText"></p>
+
+      <div class="cta-block animate">
+        <h3>Next Step</h3>
+        <p>Ready to explore your next phase of balance and structure?</p>
+        <a href="book-now.html" class="btn-lime-link">Explore Session Options →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap-heavy">
+      <p class="legal">
+        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>
+        © 2025 Lace & Lime™ LLC. All rights reserved. ·
+        <a href="privacy-terms.html">Privacy and Terms</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+  // === Auto-Save + Manual Save ===
+  document.addEventListener("DOMContentLoaded", () => {
+    const textareas = document.querySelectorAll("textarea");
+
+    textareas.forEach((ta) => {
+      const key = `laceandlime_${ta.id}`;
+      const saved = localStorage.getItem(key);
+      if (saved) ta.value = saved;
+      ta.addEventListener("input", () => localStorage.setItem(key, ta.value));
+    });
+  });
+
+  function saveDraft(id) {
+    const ta = document.getElementById(id);
+    if (ta) {
+      localStorage.setItem(`laceandlime_${id}`, ta.value);
+      ta.style.boxShadow = "0 0 0 2px var(--lime-med)";
+      setTimeout(() => (ta.style.boxShadow = ""), 800);
+    }
+  }
+
+  const clearBtn = document.querySelector("#clearDrafts");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      document.querySelectorAll("textarea").forEach((ta) =>
+        localStorage.removeItem(`laceandlime_${ta.id}`)
+      );
+      alert("All saved reflections have been cleared.");
+      location.reload();
+    });
+  }
+
+  // === Generate Reflection (First-Person Flow) ===
+  function generateReflection() {
+    const clarity = document.getElementById("clarity").value.trim();
+    const balance = document.getElementById("balance").value.trim();
+    const boundaries = document.getElementById("boundaries").value.trim();
+    const rhythm = document.getElementById("rhythm").value.trim();
+    const output = document.getElementById("alignmentText");
+    const container = document.getElementById("output");
+
+    let reflection = "";
+
+    if (clarity) reflection += `I feel most aligned when ${clarity.endsWith(".") ? clarity : clarity + "."} `;
+    if (balance) reflection += `I feel balanced when ${balance.endsWith(".") ? balance : balance + "."} `;
+    if (boundaries) reflection += `I support my energy by ${boundaries.endsWith(".") ? boundaries : boundaries + "."} `;
+    if (rhythm) reflection += `My pace feels right when ${rhythm.endsWith(".") ? rhythm : rhythm + "."}`;
+
+    output.textContent = reflection.trim() || "Start writing your reflections above to view your summary.";
+    container.style.display = "block";
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  </script>
+
+</body>
+</html>

@@ -14,10 +14,23 @@ button, input, textarea, select {
 
 
 
-
-
-/* rhythm-alignment.css — Lace & Lime™ page-specific styles */ .rhythm-container{max-width:800px;margin:0 auto;padding:var(--space-xl) var(--gutter-desktop);text-align:center;} /* Intro Section */ .public-intro{text-align:center;max-width:700px;margin:0 auto var(--space-xl);} .public-intro h1{font-family:var(--font-heading);font-size:clamp(1.8rem,2.5vw,2.3rem);color:var(--ink-dark);margin-bottom:var(--space-sm);} .public-intro p{color:var(--ink-med);line-height:1.65;font-size:1rem;} /* Spiral Visual Area */ .spiral-wrap{position:relative;width:100%;height:340px;display:flex;align-items:center;justify-content:center;margin:var(--space-xl) 0;} .spiral{width:300px;height:300px;position:relative;animation:rotateSpiral 24s linear infinite;opacity:.75;} .spiral svg path{stroke:var(--lime);stroke-width:2;fill:none;} @keyframes rotateSpiral{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}} /* Breathing Cue */ .breath-cue{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--ink-med);animation:fadeCue 8s ease-in-out infinite;} @keyframes fadeCue{0%,100%{opacity:0;transform:scale(.9);}25%,75%{opacity:1;transform:scale(1);}} /* Scroll Cue */ .scroll-cue{text-align:center;font-size:.85rem;color:var(--ink-med);margin-top:var(--space-lg);opacity:.7;animation:pulseArrow 3s ease-in-out infinite;} @keyframes pulseArrow{0%,100%{opacity:.3;transform:translateY(0);}50%{opacity:1;transform:translateY(6px);}} /* Reflection Blocks */ .reflection-block{text-align:left;background:rgba(255,255,255,.75);border-radius:var(--radius-md);padding:var(--space-lg);margin-bottom:var(--space-xl);box-shadow:var(--shadow-sm);} .reflection-block h2{font-family:var(--font-heading);font-size:1.25rem;margin-bottom:var(--space-sm);color:var(--ink-dark);} .reflection-block p{line-height:1.6;color:var(--ink-med);} /* Responsive */ @media(max-width:768px){.spiral{width:220px;height:220px;}.rhythm-container{padding:var(--space-lg) var(--gutter-mobile);}.reflection-block{padding:var(--space-md);}}
-
+/* rhythm-alignment.css — Lace & Lime™ page-specific only (no global overlap) */
+.rhythm-container{max-width:800px;margin:0 auto;padding:var(--space-xl) var(--gutter-desktop);text-align:center;}
+.public-intro{text-align:center;max-width:700px;margin:0 auto var(--space-xl);}
+.public-intro h1{font-family:var(--font-heading);font-size:clamp(1.8rem,2.5vw,2.3rem);color:var(--ink-dark);margin-bottom:var(--space-sm);}
+.public-intro p{color:var(--ink-med);line-height:1.65;font-size:1rem;}
+.spiral-wrap{position:relative;width:100%;height:340px;display:flex;align-items:center;justify-content:center;margin:var(--space-xl) 0;}
+.spiral{width:300px;height:300px;position:relative;animation:rotateSpiral 24s linear infinite;opacity:.75;}
+.spiral svg path{stroke:var(--lime-med);stroke-width:2;fill:none;}
+@keyframes rotateSpiral{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+.breath-cue{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--ink-med);animation:fadeCue 8s ease-in-out infinite;}
+@keyframes fadeCue{0%,100%{opacity:0;transform:scale(.9);}25%,75%{opacity:1;transform:scale(1);}}
+.scroll-cue{text-align:center;font-size:.85rem;color:var(--ink-med);margin-top:var(--space-lg);opacity:.7;animation:pulseArrow 3s ease-in-out infinite;}
+@keyframes pulseArrow{0%,100%{opacity:.3;transform:translateY(0);}50%{opacity:1;transform:translateY(6px);}}
+.reflection-block{text-align:left;background:rgba(255,255,255,.75);border-radius:var(--radius-md);padding:var(--space-lg);margin-bottom:var(--space-xl);box-shadow:var(--shadow-sm);}
+.reflection-block h2{font-family:var(--font-heading);font-size:1.25rem;margin-bottom:var(--space-sm);color:var(--ink-dark);}
+.reflection-block p{line-height:1.6;color:var(--ink-med);}
+@media(max-width:768px){.spiral{width:220px;height:220px;}.rhythm-container{padding:var(--space-lg) var(--gutter-mobile);}.reflection-block{padding:var(--space-md);}}
 
 
 
