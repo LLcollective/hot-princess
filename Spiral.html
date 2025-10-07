@@ -1,352 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Let's Spiral | Lace & Lime™</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <!-- Fonts & Global -->
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="global.css" />
-
-  <style>
-    :root {
-      --ink-dark: #1d2740;
-      --ink-med: #42536d;
-      --ink-light: #c5ced9;
-    }
-
-    body {
-      background: #fafafa;
-      overflow-x: hidden;
-    }
-
-    /* --- HEADER --- */
-    .ll-nav {
-      width: 100%;
-      padding: 1rem var(--gutter-desktop);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: transparent;
-      z-index: 10;
-    }
-
-    .logo-small-centered {
-      display: flex;
-      align-items: baseline;
-      gap: 0.25rem;
-      font-size: clamp(1.8rem, 2vw, 2.4rem);
-      line-height: 1;
-    }
-    .logo-small-centered .lace {
-      font-family: "Raleway", sans-serif;
-      font-weight: 200;
-      text-transform: lowercase;
-      font-size: 2.2rem;
-      color: #3f4a3c;
-      letter-spacing: -0.02em;
-    }
-    .logo-small-centered .amp {
-      font-weight: 400;
-      font-size: 1.4rem;
-      color: #3f4a3c;
-      position: relative;
-      top: 0.2rem;
-    }
-    .logo-small-centered .lime {
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: 2rem;
-      color: #d87a94;
-      letter-spacing: 0.02em;
-    }
-
-    /* --- HERO --- */
-    .hero-section {
-      text-align: center;
-      padding-top: var(--space-xl);
-      padding-bottom: var(--space-lg);
-      max-width: 800px;
-      margin: 0 auto;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1.2s ease;
-    }
-    .hero-section.reveal {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .hero-section h1 {
-      font-family: var(--font-heading);
-      color: var(--ink-dark);
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
-    }
-    .hero-section p {
-      color: var(--ink-med);
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-    }
-
-    /* --- SPIRAL --- */
-    .spiral-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 3rem auto;
-      max-width: 400px;
-      position: relative;
-      opacity: 0;
-      transform: scale(0.96);
-      transition: all 1.8s ease;
-    }
-    .spiral-wrap.reveal {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .spiral svg {
-      width: 100%;
-      height: auto;
-      animation: slowInhaleExhale 10s ease-in-out infinite;
-      transform-origin: center;
-    }
-    @keyframes slowInhaleExhale {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      25% { transform: scale(1.08); opacity: 0.95; }
-      50% { transform: scale(1.12); opacity: 0.9; }
-      75% { transform: scale(1.08); opacity: 0.95; }
-    }
-
-    @keyframes gradientFlow {
-      0% { stop-color: #d87a94; }
-      25% { stop-color: #dfa4b4; }
-      50% { stop-color: #9be080; }
-      75% { stop-color: #b4ec9f; }
-      100% { stop-color: #d87a94; }
-    }
-    #grad stop:first-child {
-      animation: gradientFlow 10s ease-in-out infinite alternate;
-    }
-    #grad stop:last-child {
-      animation: gradientFlow 10s ease-in-out infinite alternate-reverse;
-    }
-
-    /* --- REFLECTION --- */
-    .reflection-block {
-      max-width: 720px;
-      margin: var(--space-lg) auto;
-      text-align: center;
-      padding-inline: var(--gutter-desktop);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1.2s ease;
-    }
-    .reflection-block.reveal {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reflection-block h3 {
-      font-family: var(--font-heading);
-      color: var(--ink-dark);
-      margin-bottom: 0.5rem;
-    }
-    .reflection-block p {
-      color: var(--ink-med);
-      margin-bottom: 1.25rem;
-      line-height: 1.6;
-    }
-
-    .write-space {
-      background: #fff;
-      border: 1px solid var(--ink-light);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
-      text-align: left;
-      margin-top: 1rem;
-      transition: box-shadow 0.3s ease;
-    }
-    .write-space:hover {
-      box-shadow: 0 6px 14px rgba(0,0,0,0.07);
-    }
-    .write-space textarea {
-      width: 100%;
-      min-height: 140px;
-      border: none;
-      outline: none;
-      resize: none;
-      font-family: "Raleway", sans-serif;
-      font-size: 1rem;
-      color: var(--ink-dark);
-      background: transparent;
-    }
-
-    /* --- CTA BUTTONS --- */
-    .cta-duo {
-      text-align: center;
-      margin: var(--space-xl) auto;
-      padding-inline: var(--gutter-desktop);
-      max-width: 640px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1.2s ease;
-    }
-    .cta-duo.reveal {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .cta-duo h3 {
-      font-family: var(--font-heading);
-      color: var(--ink-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .cta-duo p {
-      color: var(--ink-med);
-      margin-bottom: 1.25rem;
-      line-height: 1.6;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .path-cta {
-      display: inline-block;
-      background: var(--brand-pill);
-      color: var(--brand-dark);
-      font-weight: 600;
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.4s ease;
-    }
-    .path-cta:hover {
-      background: var(--brand-light);
-      color: var(--ink-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    }
-
-    .path-cta.secondary-cta {
-      background: transparent;
-      border: 1px solid var(--brand-pill);
-      color: var(--brand-pill);
-    }
-    .path-cta.secondary-cta:hover {
-      background: var(--brand-light);
-      color: var(--ink-dark);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: var(--space-xl);
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
 
 
-/* --- WAITLIST FORM --- */
-.waitlist-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
+  <title>Stillness Spiral | Lace & Lime™</title>
+
+ <link rel="stylesheet" href="global.css" />
+ <link rel="stylesheet" href="page.css" />
+
+
+
+
+<style>
+/* ===== Fully center hero stack (mobile layout) ===== */
+@media (max-width: 960px) {
+  .sn-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+    padding: clamp(2rem, 6vw, 3rem) var(--gutter-mobile);
+  }
+
+  .sn-copy {
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto 1.5rem;
+  }
+
+  .sn-copy .eyebrow,
+  .sn-title,
+  .sn-sub {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sn-wait {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .sn-inline {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sn-inline input[type="email"] {
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  .sn-inline .sn-btn {
+    width: auto;
+  }
+
+  .sn-stage {
+    margin: 2rem auto 0;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .sn-spiralwrap {
+    margin: 0rem auto;
+    max-width: 320px;
+  }
+
+  .sn-spiral svg {
+    display: block;
+    margin: 0rem auto;
+  }
 }
 
-.waitlist-form input {
-  padding: 0.65rem 1rem;
-  border: 1.5px solid var(--brand-dark);
-  border-radius: 999px;
-  font-family: "Raleway", sans-serif;
-  font-size: 0.95rem;
-  min-width: 240px;
-  color: var(--ink-dark);
-  background: #fff;
-  transition: all 0.3s ease;
+/* ===== Reduce spacing between waitlist + spiral stage on mobile ===== */
+@media (max-width: 960px) {
+  .sn-wait {
+    margin-bottom: -1rem;   /* reduce space under the button */
+  }
+
+  .sn-stage {
+    margin-top: -1rem;        /* pull the spiral card upward */
+  }
 }
 
-.waitlist-form input:focus {
-  outline: none;
-  border-color: var(--brand-pill);
-  box-shadow: 0 0 0 3px rgba(216, 122, 148, 0.15);
-}
-
-.path-cta.secondary-cta {
-  background: transparent;
-  border: 1.8px solid var(--brand-dark);
-  color: var(--brand-dark);
-  font-weight: 600;
-}
-.path-cta.secondary-cta:hover {
-  background: var(--brand-light);
-  color: var(--ink-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
+</style>
 
 
-.waitlist-card {
-  background: rgba(255, 255, 255, 0.6);  /* semi-transparent glass */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(216, 122, 148, 0.6); /* softer pink outline */
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  max-width: 420px;
-  margin: 1.5rem auto 0;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-}
 
-.waitlist-card:hover {
-  background: rgba(255, 255, 255, 0.75);
-  border-color: rgba(216, 122, 148, 0.8);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-
-.waitlist-form input {
-  background: rgba(255,255,255,0.8);
-  border: 1.5px solid rgba(216, 122, 148, 0.5);
-  border-radius: 999px;
-  padding: 0.7rem 1rem;
-  width: 100%;
-  font-family: inherit;
-  color: var(--ink-dark);
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-.waitlist-form input:focus {
-  outline: none;
-  border-color: #D87A94;
-  background: rgba(255,255,255,0.95);
-}
-
-
-.form-message {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: var(--ink-med);
-  text-align: center;
-}
-
-  </style>
 </head>
 
-<body class="stillness-spiral-page">
-
-  <!-- ===== HEADER ===== -->
+<body class="spiral-night">
+  <!-- Your existing header pattern from global -->
   <header class="ll-nav">
     <div class="header-wrap">
-      <a class="logo-link" href="index.html">
+      <a class="logo-link" href="index.html" aria-label="Lace & Lime — Home">
         <h1 class="logo-small-centered">
           <span class="lace">lace</span>
           <span class="amp">&amp;</span>
@@ -356,122 +117,138 @@
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero-section animate">
-    <h1>The Stillness Spiral™</h1>
-    <p>This is your pause point, a moment to breathe, notice, and begin again.</p>
-    <p><em>The spiral represents progress that circles inward before it moves forward.</em></p>
-  </section>
+  <main class="sn-hero">
+    <!-- LEFT: copy + inline waitlist -->
+    <section class="sn-copy">
+      <span class="eyebrow">Open Practice</span>
+      <h1 class="sn-title">Stillness Spiral<span class="tm">TM</span></h1>
+      <p class="sn-sub">Let the line draw in and out like tide. Match your breath, soften your gaze, and give your mind one place to rest.</p>
 
-  <!-- ===== SPIRAL VISUAL ===== -->
-  <div class="spiral-wrap animate">
-    <div class="spiral">
-      <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M250,250 m-200,0 a200,200 0 1,0 400,0 a200,200 0 1,0 -400,0 
-                 m50,0 a150,150 0 1,0 300,0 a150,150 0 1,0 -300,0 
-                 m50,0 a100,100 0 1,0 200,0 a100,100 0 1,0 -200,0 
-                 m50,0 a50,50 0 1,0 100,0 a50,50 0 1,0 -100,0"
-              stroke="url(#grad)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <defs>
-          <linearGradient id="grad" x1="0" y1="0" x2="500" y2="500" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#D87A94" />
-            <stop offset="1" stop-color="#9BE080" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  </div>
+      <div class="sn-wait" aria-labelledby="join-waitlist">
+        <p id="join-waitlist">Continue your reflection in the Lace & Lime™ Journal</p>
+        <form id="waitlist-form" class="sn-inline"
+              action="https://script.google.com/macros/s/AKfycbwmrwokAxZ1MICPskcGAhyNb_L49ahbTjhNZNhxfnJYE4kaQY-zrpzB5L74tkAGiph7/exec"
+              method="POST" novalidate>
+          <label for="email" class="sr-only">Email address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email..." required>
+          <button type="submit" class="sn-btn">Join Waitlist →</button>
+        </form>
+        <div id="waitlist-success" class="sn-success" role="status" aria-live="polite">
+          You're on the list- thank you for joining.
+        </div>
+      </div>
+    </section>
 
-  <!-- ===== REFLECTION ===== -->
-  <section class="reflection-block animate">
-    <h3>Reflection</h3>
-    <p>What does stillness look like for you today?</p>
-    <p><em>Notice what feels calm, not what feels silent.</em></p>
-    <div class="write-space">
-      <textarea placeholder="Write freely here..."></textarea>
-    </div>
-  </section>
-
-<br>
-
-<!-- ===== CTA SECTION ===== -->
-<section class="cta-duo animate">
-  <div class="cta-block">
-    <h3>Join the Next Spiral</h3>
-    <p>Be first to know when the Stillness Spiral journal opens for reflection and release.</p>
-
-    <div class="waitlist-card">
-      <form id="waitlistForm" class="waitlist-form">
-        <input type="email" name="email" id="email" placeholder="Your email" required />
-        <button type="submit" class="path-cta secondary-cta">Join Waitlist →</button>
-      </form>
-      <p id="formMessage" class="form-message"></p>
-    </div>
-  </div>
-</section>
-
-
-<br><br>
-
+    <!-- RIGHT: spiral stage -->
+    <section class="sn-stage" aria-label="Breathing Spiral">
+      <div class="sn-spiralwrap">
+        <div class="sn-spiral">
+          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="sn-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%"/>
+                <stop offset="100%"/>
+              </linearGradient>
+            </defs>
+            <path id="sn-path" d="
+              M300,300
+              m0,-30 a30,30 0 1,1 0,60
+              a60,60 0 1,1 0,-120
+              a90,90 0 1,1 0,180
+              a120,120 0 1,1 0,-240
+              a150,150 0 1,1 0,300
+              a180,180 0 1,1 0,-360
+              a210,210 0 1,1 0,420
+              a240,240 0 1,1 0,-480
+              a260,260 0 1,1 0,520
+            " stroke="url(#sn-grad)" fill="none" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+      </div>
+      <p class="sn-cue" id="breathCue">Breathe in ·</p>
+    </section>
+  </main>
 
   <footer>
-    <p class="legal">
-      Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>  
-      © 2025 Lace & Lime™ LLC. All rights reserved.
-    </p>
+    <div class="wrap-heavy">
+      <p class="legal">
+        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>
+        © 2025 Lace & Lime™ LLC. All rights reserved. ·
+        <a href="privacy-terms.html">Privacy and Terms</a>
+      </p>
+    </div>
   </footer>
 
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal");
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll(".animate").forEach(el => observer.observe(el));
-  });
-
-
-
-
-
-
-document.getElementById("waitlistForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const msg = document.getElementById("formMessage");
-  const button = form.querySelector("button");
-
-  msg.textContent = "Submitting...";
-  button.disabled = true;
-
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbzaN2-soc0EmHRGNDEATpnS_r7jIL24Gxy8OSoRJVKXrmgDtV3g--9Mw6aO-CxNGTnU/exec", {
-      method: "POST",
-      mode: "no-cors",  // prevent CORS rejection
-      body: new FormData(form)
+  // ===== Waitlist → Google Apps Script
+  (function(){
+    const form = document.getElementById("waitlist-form");
+    const success = document.getElementById("waitlist-success");
+    if(!form) return;
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const resp = await fetch(form.action, { method: "POST", body: data });
+        if (resp.ok) { success.classList.add("visible"); form.reset(); }
+        else { alert("Something went wrong. Please try again later."); }
+      } catch (err) {
+        console.error(err);
+        alert("Connection issue. Please try again soon.");
+      }
     });
+  })();
 
-    msg.textContent = "✓ You’re on the waitlist!";
-    msg.style.color = "#D87A94";
-    form.reset();
+  // ===== Spiral “breath” by drawing/undrawing the line (16s cycle)
+  (function(){
+    const path = document.getElementById('sn-path');
+    const cue  = document.getElementById('breathCue');
+    if(!path) return;
 
-  } catch (err) {
-    msg.textContent = "Network error. Please try again later.";
-    msg.style.color = "#cc0000";
-  } finally {
-    button.disabled = false;
-  }
-});
+    const len = path.getTotalLength();
+    path.style.strokeDasharray  = String(len);
+    path.style.strokeDashoffset = String(len);
 
+    const duration = 16000; // 8s in + 8s out
 
+    if (path.animate) {
+      path.animate(
+        [
+          { strokeDashoffset: len }, // inhale → line draws in
+          { strokeDashoffset: 0 },
+          { strokeDashoffset: len }  // exhale → line releases
+        ],
+        { duration, iterations: Infinity, easing: 'ease-in-out' }
+      );
+    } else {
+      // fallback
+      let start = null;
+      function frame(t){
+        if(!start) start = t;
+        const progress = (t - start) % duration;
+        const half = duration/2;
+        const ratio = progress < half ? progress/half : 1 - ((progress-half)/half);
+        path.style.strokeDashoffset = String(len * (1 - ratio));
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
 
-
-
-
+    // cue: black on inhale, soft grey on exhale
+    let inhale = true;
+    function swapCue(){
+      if(inhale){
+        cue.textContent = "Breathe in ·";
+        cue.style.color = "#e9edf7"; // near-white on dark
+      } else {
+        cue.textContent = "Breathe out ·";
+        cue.style.color = "#aeb6c9"; // softer grey-blue
+      }
+      inhale = !inhale;
+    }
+    swapCue();
+    setInterval(swapCue, 8000);
+  })();
   </script>
 </body>
 </html>

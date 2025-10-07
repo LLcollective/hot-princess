@@ -9,136 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="global.css" />
 
-  <style>
-  /* ==========================
-     POLISH ENHANCEMENTS
-  =========================== */
-  :root {
-    --ink-dark: #1d2740;
-    --ink-med: #42536d;
-    --ink-light: #c5ced9;
-  }
+  <link rel="stylesheet" href="page.css" />
 
-  /* --- HEADER --- */
-  .ll-nav {
-    position: relative;
-    width: 100%;
-    padding: 1rem var(--gutter-desktop);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: transparent;
-  }
 
-  .logo-small-centered {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    letter-spacing: 0.02em;
-  }
-  .lace { color: var(--ink-dark); font-weight: 600; }
-  .amp { color: var(--brand-dark); margin: 0 0.15rem; }
-  .lime { color: var(--brand-dark); font-weight: 600; }
-
-  .burger {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    width: 28px;
-    height: 20px;
-  }
-
-  .burger span {
-    display: block;
-    height: 2px;
-    width: 100%;
-    background: var(--ink-dark);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  /* --- HERO --- */
-  .hero-section {
-    text-align: center;
-    margin-top: var(--space-xl);
-    margin-bottom: var(--space-lg);
-  }
-
-  .hero-headings { max-width: 800px; margin-inline: auto; }
-  .eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--brand-dark);
-    font-weight: 600;
-  }
-  .tagline {
-    font-family: var(--font-heading);
-    color: var(--ink-dark);
-    font-size: clamp(1.9rem, 2.4vw, 2.4rem);
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.01em;
-  }
-  .hero-sub {
-    color: var(--ink-med);
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-  }
-  .connector-phrase {
-    margin-top: 0.5rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--brand-dark);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
-  }
-
-  /* --- GRID --- */
-  .ecosystem-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: var(--space-lg);
-    max-width: 1100px;
-    margin: var(--space-xl) auto;
-    padding-inline: var(--gutter-desktop);
-  }
-
-  .ecosystem-card {
-    background: #fff;
-    border: 1px solid var(--ink-light);
-    border-radius: var(--radius-lg);
-    padding: clamp(1.25rem, 2vw, 2rem);
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  .ecosystem-card.reveal {
-    opacity: 1;
-    transform: translateY(0);
-    box-shadow: var(--shadow);
-  }
-  .ecosystem-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-  }
-
-  .ecosystem-card h4 {
-    font-family: var(--font-heading);
-    color: var(--ink-dark);
-    font-size: 1.3rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .ecosystem-card p {
-    color: var(--ink-med);
-    line-height: 1.55;
-    margin-bottom: 1rem;
-  }
 
   .path-cta {
     display: inline-block;
@@ -158,100 +31,7 @@
     transform: translateY(-2px);
   }
 
-  /* --- SECTION DIVIDER --- */
-  .section-divider {
-    height: 1px;
-    background: var(--ink-light);
-    opacity: 0.25;
-    margin: 3rem auto;
-    max-width: 800px;
-  }
-
-  /* --- REFLECTION --- */
-  .reflection-block {
-    text-align: center;
-    max-width: 720px;
-    margin: var(--space-xl) auto;
-    padding-inline: var(--gutter-desktop);
-  }
-
-  .reflection-block h3 {
-    font-family: var(--font-heading);
-    color: var(--ink-dark);
-    margin-bottom: 0.5rem;
-  }
-
-  .reflection-block p {
-    color: var(--ink-med);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-  }
-
-  footer { text-align: center; margin-top: var(--space-xl); }
- 
-
-/* --- INTERSECTION SECTION --- */
-.intersection-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: var(--space-xl) var(--gutter-desktop);
-  margin: var(--space-xl) auto;
-}
-
-.intersection-wrap {
-  max-width: 720px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(216, 122, 148, 0.3);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem 3rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transition: all 0.35s ease;
-}
-
-.intersection-wrap:hover {
-  background: rgba(255, 255, 255, 0.30);
-  border-color: rgba(216, 122, 148, 0.45);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.intersection-wrap h3 {
-  font-family: var(--font-heading);
-  color: var(--ink-dark);
-  margin-bottom: 0.75rem;
-  font-size: 1.2rem;
-  letter-spacing: -0.01em;
-}
-
-.intersection-wrap p {
-  color: var(--ink-med);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.intersection-wrap .path-cta.outline {
-  display: inline-block;
-  border: 1.5px solid var(--brand-dark);
-  color: var(--brand-dark);
-  background: transparent;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 0.7rem 1.3rem;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  transition: all 0.25s ease;
-}
-.intersection-wrap .path-cta.outline:hover {
-  background: var(--brand-light);
-  color: var(--ink-dark);
-  border-color: var(--brand-light);
-}
-
- </style>
-</head>
+ </head>
 
 <body class="lacedtogether-page">
   <!-- ===== HEADER ===== -->
@@ -270,7 +50,7 @@
   <!-- ===== HERO ===== -->
   <section class="hero-section wrap-medium animate">
     <div class="hero-headings">
-      <span class="eyebrow">Core Ecosystem</span>
+      <span class="eyebrow">Ecosystem</span>
       <h1 class="tagline">Laced Together</h1>
       <p class="hero-sub">
         You've done the work and made the plans, but something still feels scattered.<br>Laced Together is where reflection meets structure, helping clarity take form again.
@@ -288,14 +68,14 @@
       <h4>Individual Path</h4>
       <p>For when you're ready to understand yourself.  
       Explore your rhythm, focus, and clarity through tools that meet you where you are.</p>
-      <a href="rhythm-tracker.html" class="path-cta">Begin Reflection Entry →</a>
+      <a href="individual-alignment.html" class="path-cta">Begin Reflection Entry →</a>
     </div>
 
     <div class="ecosystem-card animate">
       <h4>Business Path</h4>
       <p>For when your ideas are clear but your systems feel misaligned.  
       Take the Brand Alignment Quiz and build your narrative around what truly connects.</p>
-      <a href="brand-assessment.html" class="path-cta">Start with Brand Quiz →</a>
+      <a href="business-alignment.html" class="path-cta">Start with Brand Quiz →</a>
     </div>
   </section>
 

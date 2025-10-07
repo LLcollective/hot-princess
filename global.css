@@ -1,81 +1,70 @@
-:root {
-  /* Core Ink Tones */
-  --ink-dark: #1e283d;    /* deeper navy slate — better contrast on paper */
-  --ink-med:  #46526a;    /* smoother blue-gray — improved body balance */
-  --ink-light: #d0d6de;   /* refined mist tone — soft but visible */
+/* =========================================================
+   LACE & LIME™ — GLOBAL.CSS
+   Brand system, eco rhythm, shared layout + reusable styles
+   ========================================================= */
 
-  /* Pink Brand Accent (refreshed) */
-  --brand: #F2C9CF;       /* light pink, core accent */
+:root {
+  /* --- Ink Tones --- */
+  --ink-dark: #1e283d;
+  --ink-med: #46526a;
+  --ink-light: #d0d6de;
+
+  /* --- Brand Pinks --- */
+  --brand: #F2C9CF;
   --brand-pill: #f7c1cb;
   --brand-light: #fde7ea;
   --brand-dark: #c2516a;
 
-  /* Lime Accent (secondary) */
+  /* --- Lime Secondary --- */
   --lime: #9BE080;
   --lime-dark: #6bb853;
   --lime-light: #c7f3aa;
 
-  /* Fonts */
+  /* --- Typography --- */
   --font-heading: 'Tenor Sans', serif;
   --font-body: 'Raleway', sans-serif;
 
-  /* Spacing */
+  /* --- Spacing System --- */
   --space-xs: .5rem;
   --space-sm: .75rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
 
-  /* Radii & Shadows */
+  /* --- Layout --- */
+  --content-max: 1300px;
+  --unified-cap: 1120px;
+  --gutter-desktop: 48px;
+  --gutter-mobile: 20px;
+  --header-gap: clamp(8px, 2vw, 24px);
+  --header-height: 64px;
+
+  /* --- Radii + Shadows --- */
   --radius-md: 8px;
   --radius-lg: 12px;
   --shadow-sm: 0 2px 6px rgba(0,0,0,.06);
   --shadow: 0 4px 10px rgba(0,0,0,.08);
 
-  /* Backgrounds */
+  /* --- Backgrounds --- */
   --frosted-bg: rgba(255,255,255,.35);
   --overlay: rgba(0,0,0,.4);
   --card-bg-mixed: rgba(255,255,255,.4);
-
-  /* Layout */
-  --content-max: 1300px;
-  --unified-cap: 1120px;
-  --gutter-desktop: 48px;
-  --gutter-mobile: 20px;
-  --section-pad: 24px;
-  --header-gap: clamp(8px, 2vw, 24px);
-  --header-height: 64px;
 }
 
 /* =======================================
-   Base Reset & Global Styles
+   BASE RESET & HTML BODY
    ======================================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 html, body {
   width: 100%;
-  max-width: 100%;
   overflow-x: hidden;
   font-family: var(--font-body);
   font-size: clamp(14px, 1.2vw, 16px);
   line-height: 1.55;
   font-weight: 400;
   color: var(--ink-med);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
   scroll-behavior: smooth;
-}
-
-/* =======================================
-   Body Background — Mobile-Safe Lined Paper
-   ======================================= */
-body {
   background-color: #f9f8f6;
   background-image: repeating-linear-gradient(
     to bottom,
@@ -84,94 +73,29 @@ body {
     rgba(36, 50, 74, 0.08) 1.6em,
     rgba(36, 50, 74, 0.08) 1.7em
   );
-  background-size: 100% auto;
   background-attachment: fixed;
-  padding: 0;
   margin: 0;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  transform: translateZ(0); /* fixes Chrome Android zoom issues */
+  padding: 0;
 }
 
-img, video, iframe {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+img, video, iframe { max-width: 100%; height: auto; display: block; }
 
 a {
   color: inherit;
   text-decoration: none;
-  font-weight: inherit;
 }
-a:hover, a:focus {
-  color: var(--brand);
-  text-decoration: underline;
-}
-a:active {
-  color: var(--lime-dark);
-}
+a:hover, a:focus { color: var(--brand); text-decoration: underline; }
+a:active { color: var(--lime-dark); }
 
 /* =======================================
-   Typography
+   TYPOGRAPHY
    ======================================= */
-h1, h2 {
-  margin: 0 0 0.5em;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  font-family: var(--font-heading);
-  color: var(--ink-dark);
-}
-h1 {
-  font-size: clamp(1.8rem, 2vw + 1rem, 2.1rem);
-}
-h2 {
-  font-size: clamp(1.4rem, 1.2vw + 0.9rem, 1.6rem);
-  font-weight: 600;
-}
+body, p, li, a, span { font-family: var(--font-body); }
+h1, h2, h3 { font-family: var(--font-heading); color: var(--ink-dark); }
+strong { font-weight: 600; color: var(--ink-dark); }
 
-h3, h4, h5, h6 {
-  margin: 0 0 0.5em;
-  font-family: var(--font-body);
-  line-height: 1.3;
-  color: var(--ink-med);
-}
-h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-h4 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--brand);
-}
-h5 {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--lime-dark);
-}
-h6 {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--ink-med);
-}
-
-p {
-  margin-bottom: 1em;
-  line-height: 1.55;
-  font-size: 1rem;
-  color: var(--ink-med);
-}
-
-strong {
-  font-weight: 600;
-  color: var(--ink-dark);
-}
-
-/* Eyebrow text */
 .eyebrow {
   display: block;
-  font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -180,36 +104,7 @@ strong {
 }
 
 /* =======================================
-   HERO HEADINGS
-   ======================================= */
-.hero-headings {
-  margin: 0 auto 2.5rem;
-  max-width: var(--unified-cap);
-  padding: 0 var(--gutter-mobile);
-  text-align: left;
-}
-.hero-headings .eyebrow {
-  margin-bottom: 0.5rem;
-}
-.hero-headings h1.tagline {
-  font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--ink-dark);
-  margin-bottom: 0.75rem;
-}
-.hero-headings .hero-sub {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--ink-med);
-  max-width: 720px;
-  margin: 0;
-  text-align: left;
-}
-
-/* =======================================
-   Logo & Nav
+   NAVIGATION & LOGO
    ======================================= */
 .ll-nav {
   position: relative;
@@ -239,122 +134,74 @@ strong {
   letter-spacing: -0.02em;
 }
 .logo-small-centered .amp {
-  font-family: "Raleway", sans-serif;
   font-weight: 400;
   font-size: 1.4rem;
-  line-height: 1;
   color: #3F4A3C;
-  margin: 0 -0.1rem;
   position: relative;
   top: 0.2rem;
 }
 .logo-small-centered .lime {
-  font-family: "Raleway", sans-serif;
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
   font-size: 2rem;
   color: #D87A94;
-  letter-spacing: 0.02em;
 }
 
 /* =======================================
-   Layout Utilities
+   LAYOUT UTILITIES
    ======================================= */
 .wrap-medium {
   max-width: var(--content-max);
   margin-inline: auto;
   padding-inline: var(--gutter-desktop);
-  box-sizing: border-box;
 }
 @media(max-width:768px){
   .wrap-medium { padding-inline: var(--gutter-mobile); }
 }
-
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
-
-.header-spacer {
-  height: var(--header-gap);
-}
+.header-spacer { height: var(--header-gap); }
 
 /* =======================================
-   Footer (Compact Always)
-   ======================================= */
-footer {
-  background: #f8f7f5;
-  color: var(--ink-med);
-  text-align: center;
-  padding: 1rem 0.75rem;
-  margin-top: 2rem;
-  border-top: 1px solid rgba(36,50,74,0.08);
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-footer .wrap-heavy {
-  max-width: 960px;
-  margin-inline: auto;
-  padding-inline: clamp(16px, 4vw, 40px);
-  text-align: center;
-}
-footer a {
-  color: var(--brand-dark);
-  text-decoration: underline;
-  font-weight: 500;
-  font-size: 0.85rem;
-  transition: color 0.2s ease;
-}
-footer a:hover {
-  color: var(--brand);
-}
-@media (max-width: 480px) {
-  footer {
-    font-size: 0.75rem;
-    padding: 0.75rem;
-  }
-  footer a {
-    font-size: 0.75rem;
-  }
-}
-
-/* =======================================
-   Highlight Blocks
+   GLOBAL REUSABLE COMPONENTS
    ======================================= */
 .highlight {
   background: rgba(255,255,255,0.85);
   border-left: 4px solid var(--brand);
   padding: 1.1rem 1.25rem;
   margin: 1rem 0;
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--ink-dark);
   border-radius: var(--radius-md);
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  backdrop-filter: blur(6px);
 }
-.highlight strong {
+.btn-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--brand-pill);
   color: var(--brand-dark);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-eyebrow:hover {
+  background: var(--brand-light);
+  color: var(--ink-dark);
+  transform: translateY(-1px);
 }
 
-
-/* ===== Completion Circle Animation ===== */
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ================================
-   Global Modal Safety
-   ================================ */
+/* =======================================
+   MODAL (Shared Safety)
+   ======================================= */
 .modal {
   display: none;
   visibility: hidden;
@@ -382,103 +229,88 @@ footer a:hover {
   box-shadow: var(--shadow);
 }
 
-/* ===== Eyebrow Style Buttons ===== */
-.btn-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: var(--brand-pill);
+/* =======================================
+   FOOTER
+   ======================================= */
+footer {
+  background: #f8f7f5;
+  color: var(--ink-med);
+  text-align: center;
+  padding: 1rem 0.75rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(36,50,74,0.08);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+footer a {
   color: var(--brand-dark);
-  padding: 0.4rem 0.8rem;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+}
+footer a:hover { color: var(--brand); }
+
+/* =======================================
+   ECO RHYTHM — Unified Page Spacing
+   ======================================= */
+section[class*="-container"],
+section[class*="-page"],
+section[class*="-section"],
+section[class*="-grid"],
+section[class*="-wrap"] {
+  max-width: 820px;
+  margin-inline: auto;
+  padding-inline: var(--gutter-desktop);
+  padding-block: var(--space-xl);
+  box-sizing: border-box;
+}
+.section-block + .section-block,
+.map-section + .map-section,
+.prompt-block + .prompt-block,
+.booknow-card + .booknow-card {
+  margin-top: calc(var(--space-xl) * 1.2);
+}
+.cta-block, .next-step {
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+.gradient-line, .thread-line {
+  width: 160px;
+  height: 3px;
+  margin: 2rem auto var(--space-lg);
+  background: linear-gradient(to right, #D87A94, #9BE080);
   border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: all 0.2s ease;
+  opacity: 0.85;
 }
-.btn-eyebrow::after {
-  content: "→";
-  font-size: 0.9rem;
-  line-height: 1;
-}
-.btn-eyebrow:hover {
-  background: var(--brand-light);
+textarea, .mapping-input {
+  width: 100%;
+  min-height: 120px;
+  border: 1px solid var(--ink-light);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
   color: var(--ink-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background: #fff;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+textarea:focus, .mapping-input:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px rgba(155, 224, 128, 0.25);
+  outline: none;
 }
 
 /* =======================================
-   Tier List (Fixed alignment for icons)
+   RESPONSIVE ADJUSTMENTS
    ======================================= */
-
-
-
-/* Tier list styling */
-.tier-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tier-list li {
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-.tier-list li:last-child {
-  border-bottom: none;
-}
-
-.icon-text {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  font-size: 1rem;
-  color: #24324a;
-}
-
-.icon-text .icon {
-  flex-shrink: 0;
-  color: #7B6CF6; /* accent color for icons */
-}
-
-.tier-list strong {
-  font-weight: 600;
-}
-
-.tier-list p {
-  margin: .4rem 0 0 1.9rem; /* indents under text, aligned to strong */
-  font-size: .9rem;
-  color: #465770;
-  line-height: 1.5;
-}
-
-
-.milestone.reveal {
-  --delay-step: 0.6s; /* how much to stagger each */
-}
-.milestone.reveal .dot,
-.milestone.reveal h4,
-.milestone.reveal p {
-  animation-delay: calc(var(--delay-step) * (var(--i, 0)));
-}
-
-
-/* Global: all cards edge-to-edge on mobile */
 @media (max-width: 768px) {
-  .section-box,
-  .card {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    border-radius: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  section[class*="-container"],
+  section[class*="-page"],
+  section[class*="-section"],
+  section[class*="-grid"] {
+    padding-inline: var(--gutter-mobile);
+    padding-block: var(--space-lg);
   }
 }
-

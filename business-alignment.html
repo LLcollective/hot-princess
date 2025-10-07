@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Alignment | Lace & Lime™</title>
+
+  <!-- Global + Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="page.css" />
+  <link rel="stylesheet" href="global.css" />
+
+
+  </head>
+
+<body class="business-alignment-page">
+
+  <header class="ll-nav">
+    <div class="header-wrap">
+      <a class="logo-link" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span>
+          <span class="amp">&amp;</span>
+          <span class="lime">LIME</span>
+        </h1>
+      </a>
+    </div>
+  </header>
+
+  <section class="alignment-container">
+    <div class="alignment-header">
+      <span class="eyebrow">Check-In</span>
+      <h1>Brand Alignment</h1>
+      <p>
+        Measure how clearly your brand aligns with your values, systems, and story. This check-in gives you a snapshot of your current clarity, structure, and momentum.
+      </p>
+      <p><strong>
+      A simplified version of an Energy Aligned, Action Defined™ used within workshops and brand reviews; helping you see how clearly your energy and structure are working together and where they need support.
+      </strong></p>
+    </div>
+
+    <form id="alignmentForm">
+      <div class="question">
+        <label for="clarity">I can clearly describe what my brand stands for.</label>
+        <input type="range" id="clarity" name="clarity" min="1" max="5" step="1">
+        <div class="scale-labels"><span>No</span><span>Sometimes</span><span>Often</span><span>Yes</span><span>Always</span></div>
+      </div>
+
+      <div class="question">
+        <label for="systems">My operations and tools support my message consistently.</label>
+        <input type="range" id="systems" name="systems" min="1" max="5" step="1">
+        <div class="scale-labels"><span>No</span><span>Not yet</span><span>Somewhat</span><span>Mostly</span><span>Fully</span></div>
+      </div>
+
+      <div class="question">
+        <label for="visibility">My audience understands and recognizes my work.</label>
+        <input type="range" id="visibility" name="visibility" min="1" max="5" step="1">
+        <div class="scale-labels"><span>Unclear</span><span>Occasionally</span><span>Growing</span><span>Consistent</span><span>Recognized</span></div>
+      </div>
+
+      <div class="question">
+        <label for="values">My daily actions reflect my brand’s values.</label>
+        <input type="range" id="values" name="values" min="1" max="5" step="1">
+        <div class="scale-labels"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Mostly</span><span>Always</span></div>
+      </div>
+
+      <div class="question">
+        <label for="alignment">My brand feels cohesive and authentic across spaces.</label>
+        <input type="range" id="alignment" name="alignment" min="1" max="5" step="1">
+        <div class="scale-labels"><span>Disconnected</span><span>Somewhat</span><span>Balanced</span><span>Strong</span><span>Aligned</span></div>
+      </div>
+
+      <button type="button" onclick="calculateScore()">View My Results</button>
+    </form>
+
+    <div class="results" id="results">
+      <h3>Your Brand Snapshot</h3>
+      <div class="progress-wrap"><div id="progress-fill" class="progress-fill"></div></div>
+      <p id="scoreText"></p>
+      <p id="tierText"></p>
+      <div class="next-step">
+        <p>Want help interpreting your results?</p>
+        <a href="booknow.html">Book an Alignment Review →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <div class="next-step highlight animate" style="margin-top:2rem;">
+    <span class="eyebrow">Next Step</span>
+    <h3>Build Your Brand Narrative</h3>
+    <p>
+      Move customers and yourself with language built on clarity.<br>
+      Define what your work stands for and how it connects.
+    </p>
+    <a href="Narrative-Builder.html" class="btn-eyebrow">Start the Narrative Builder</a>
+  </div>
+
+  <footer>
+    <div class="wrap-heavy">
+      <p class="legal">
+        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>  
+        © 2025 Lace & Lime™ LLC. All rights reserved. ·  
+        <a href="privacy-terms.html">Privacy and Terms</a>
+      </p>
+    </div>
+  </footer>
+
+
+
+
+
+<script>
+/* ================================
+   Business Alignment — Lace & Lime™
+   JS handles live slider fill, score,
+   progress animation, and result tier.
+=================================== */
+
+// Dynamic color fill for each slider
+document.querySelectorAll('.question input[type="range"]').forEach(slider => {
+  const updateFill = e => {
+    const value = ((e.target.value - e.target.min) / (e.target.max - e.target.min)) * 100;
+    e.target.style.setProperty('--value', value + '%');
+  };
+  slider.addEventListener('input', updateFill);
+  updateFill({ target: slider }); // initialize fill on load
+});
+
+// Calculate score + interpret results
+function calculateScore() {
+  const sliders = document.querySelectorAll('.question input[type="range"]');
+  let total = 0;
+  sliders.forEach(slider => total += Number(slider.value));
+
+  const maxScore = sliders.length * 5;
+  const percentage = Math.round((total / maxScore) * 100);
+
+  const progressFill = document.getElementById('progress-fill');
+  const results = document.getElementById('results');
+  const scoreText = document.getElementById('scoreText');
+  const tierText = document.getElementById('tierText');
+
+  // Reveal results section smoothly
+  results.style.display = 'block';
+  setTimeout(() => results.scrollIntoView({ behavior: 'smooth' }), 200);
+
+  // Animate progress bar
+  progressFill.style.width = '0%';
+  setTimeout(() => {
+    progressFill.style.width = percentage + '%';
+  }, 100);
+
+  // Output score and tier text
+  scoreText.textContent = `Your alignment score: ${percentage}%`;
+
+  let tier = '';
+  if (percentage < 40) {
+    tier = 'Your brand may need structural grounding — consider refining clarity and system support.';
+  } else if (percentage < 70) {
+    tier = 'You’re developing consistency — your message and systems are finding harmony.';
+  } else if (percentage < 90) {
+    tier = 'You’re mostly aligned — momentum is building and your story feels cohesive.';
+  } else {
+    tier = 'You’re fully aligned — your brand’s energy and structure are working together.';
+  }
+
+  tierText.textContent = tier;
+}
+</script>
+
+</body>
+</html>

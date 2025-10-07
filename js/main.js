@@ -205,7 +205,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* ===== Draw Spiral (Cross-Browser Safe) ===== */
+
+
+
+
+
+
+
+/* =======================================
+  TIGHTER HOME PAGE SPIRAL NAVIGATION
+   ======================================= */
 function drawSpiral() {
   const base = document.getElementById("spiral");
   const overlay = document.getElementById("spiral-overlay");
@@ -214,16 +223,26 @@ function drawSpiral() {
 
   const width = window.innerWidth;
   const height = window.innerHeight;
-  const cx = width / 2, cy = height / 2;
+  const cx = width / 2;
+  const cy = height / 2;
 
-  // Spiral params
-  const a = 10, b = 20;
-  const turns = 8;
+  /* ===== Detect device type ===== */
+  const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-  // Update viewBox to full viewport
-  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  /* ===== Spiral parameters ===== */
+  // Baseline (mobile) — tighter than before
+  let a = 6;   // smaller center offset
+  let b = 14;  // smaller step between loops
+  let turns = 8;
 
-  // Generate spiral points
+  // Desktop — slightly wider but still tighter overall
+  if (isDesktop) {
+    a = 8;     // modestly larger center
+    b = 18;    // still controlled growth
+    turns = 9;
+  }
+
+  /* ===== Generate spiral points ===== */
   const points = [];
   for (let t = 0; t < Math.PI * 2 * turns; t += 0.1) {
     const r = a + b * t;
@@ -233,6 +252,7 @@ function drawSpiral() {
   }
 
   const d = "M" + points.map(p => p.join(",")).join(" L");
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   base.setAttribute("d", d);
   overlay.setAttribute("d", d);
 
@@ -242,7 +262,7 @@ function drawSpiral() {
     path.style.strokeDashoffset = length;
   });
 
-  /* ===== Cross-browser animation helper ===== */
+  /* ===== Animation helper ===== */
   function animatePath(path, length, duration, forward = true, callback) {
     if (path.animate) {
       const anim = path.animate(
@@ -255,24 +275,17 @@ function drawSpiral() {
       return;
     }
 
-    // ---- Fallback for browsers without Web Animations API ----
     const start = performance.now();
     function frame(time) {
       const progress = Math.min((time - start) / duration, 1);
-      const offset = forward
-        ? length * (1 - progress)
-        : length * progress;
+      const offset = forward ? length * (1 - progress) : length * progress;
       path.setAttribute("stroke-dashoffset", offset);
-      if (progress < 1) {
-        requestAnimationFrame(frame);
-      } else if (callback) {
-        callback();
-      }
+      if (progress < 1) requestAnimationFrame(frame);
+      else if (callback) callback();
     }
     requestAnimationFrame(frame);
   }
 
-  // Black spiral draws first
   animatePath(base, length, 6000, true, () => {
     function animateOverlayLoop(forward = true) {
       animatePath(overlay, length, 6000, forward, () => {
@@ -282,38 +295,46 @@ function drawSpiral() {
     animateOverlayLoop(true);
   });
 
-  // Clear old links
+  /* ===== Clear old links ===== */
   document.querySelectorAll(".spiral-link").forEach(el => el.remove());
 
-  // Spiral nav links with manual multipliers
-  const linkLabels = [
-    { text: "Founder", href: "founder.html", factor: 0.21 },
-    { text: "Contact", href: "contact.html", factor: 0.12 },
-    { text: "Let's Spiral", href: "Spiral.html", factor: 0.16 },
-    { text: "Laced Together", href: "laced-together.html", factor: 0.08 },
-    { text: "Approach", href: "approach.html", factor: 0.23 },
+  /* ===== Spiral nav link positions ===== */
+  const linkLabels = isDesktop
+    ? [
+  { text: "Founder", href: "founder.html", factor: 0.16 },
+  { text: "Contact", href: "contact.html", factor: 0.32 },
+  { text: "Let's Spiral", href: "Spiral.html", factor: 0.08 },
+  { text: "Business Path", href: "business-alignment.html", factor: 0.22 },
+  { text: "Approach", href: "approach.html", factor: 0.29 },
+  { text: "Individual Path", href: "individual-alignment.html", factor: 0.25 },
 
-  ];
+      ]
+    : [
+        { text: "Founder", href: "founder.html", factor: 0.21 },
+        { text: "Contact", href: "contact.html", factor: 0.12 },
+        { text: "Let's Spiral", href: "Spiral.html", factor: 0.16 },
+        { text: "Laced Together", href: "laced-together.html", factor: 0.08 },
+        { text: "Approach", href: "approach.html", factor: 0.23 },
+      ];
 
-  // Each factor = % along spiral path (0 = center, 1 = edge)
+  /* ===== Create clickable link elements ===== */
   linkLabels.forEach((link, i) => {
     const idx = Math.floor(points.length * link.factor);
     const [x, y] = points[idx];
     const el = document.createElement("div");
     el.className = "spiral-link";
     el.textContent = link.text;
-    el.style.left = (x / width * 100) + "%";
-    el.style.top = (y / height * 100) + "%";
+    el.style.left = (x / width) * 100 + "%";
+    el.style.top = (y / height) * 100 + "%";
     el.style.animationDelay = `${1 + i * 0.4}s`;
-    el.onclick = () => location.href = link.href;
+    el.onclick = () => (location.href = link.href);
     container.appendChild(el);
   });
+
+  console.log(isDesktop ? "Desktop Spiral Active" : "Mobile Spiral Active");
 }
 
-// Initial draw
+/* ===== Initial draw & redraw ===== */
 drawSpiral();
-// Redraw on resize/rotation
 window.addEventListener("resize", drawSpiral);
-
-
-
+window.addEventListener("orientationchange", drawSpiral);
