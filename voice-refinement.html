@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voice Refinement Entry | Lace & Lime™</title>
+
+  <!-- Global + Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="page.css" />
+</head>
+
+<body class="Voice-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="ll-nav">
+    <div class="header-wrap">
+      <a class="logo-link" href="index.html">
+        <h1 class="logo-small-centered">
+          <span class="lace">lace</span>
+          <span class="amp">&amp;</span>
+          <span class="lime">LIME</span>
+        </h1>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== BUILDER ===== -->
+<section class="builder-container">
+  <div class="builder-header animate">
+    <span class="eyebrow">Next Step</span>
+    <h1>Voice Refinement</h1>
+    <p>Shape the story your work tells.<br> Use this space to stay present and put your thoughts into words.<br> The builder will show how they connect.</p>
+      </div>
+
+
+
+<form id="builderForm">
+
+  <div class="prompt-block">
+    <p class="intro-note">Your notes stay private and saved in your browser. Clear them at the end when you’re ready to start fresh.</p><br>
+
+    <label for="why">What change or feeling do you want your work to create?</label>
+    <textarea id="why" name="why" placeholder="What do you want people to feel or take away from your work?"></textarea>
+    <div class="builder-actions">
+      <button type="button" class="btn-lime" onclick="saveDraft('why')">Save</button>
+    </div>
+  </div>
+
+  <div class="prompt-block">
+    <label for="voice">How do you want people to feel when they read, see, or hear you?</label>
+    <textarea id="voice" name="voice" placeholder="Does your voice sound like you want it to?"></textarea>
+    <div class="builder-actions">
+      <button type="button" class="btn-lime" onclick="saveDraft('voice')">Save</button>
+    </div>
+  </div>
+
+  <div class="prompt-block">
+    <label for="values">Which principles or boundaries keep your work authentic?</label>
+    <textarea id="values" name="values" placeholder="What keeps your work aligned with what matters most to you?"></textarea>
+    <div class="builder-actions">
+      <button type="button" class="btn-lime" onclick="saveDraft('values')">Save</button>
+    </div>
+  </div>
+
+  <div class="prompt-block">
+    <label for="impact">What outcomes or transformations show that your message is working?</label>
+    <textarea id="impact" name="impact" placeholder="What would show that your message is landing or creating change?"></textarea>
+    <div class="builder-actions">
+      <button type="button" class="btn-lime" onclick="saveDraft('impact')">Save</button>
+    </div>
+  </div>
+</form>
+
+      <div class="builder-actions">
+        <button type="button" class="btn-pink" onclick="generateNarrative()">Refine My Voice</button>
+        <button type="button" id="clearDrafts" class="btn-lime-link">Clear</button>
+      </div>
+    </form>
+
+    <div class="output" id="output">
+      <p id="narrativeText"></p>
+
+      <div class="cta-block animate">
+        <h3>Next Step</h3>
+        <p>Ready to turn your clarity into structure and next steps?</p>
+        <a href="book-now.html" class="btn-lime-link">Translate insight to structure →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap-heavy">
+      <p class="legal">
+        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>
+        © 2025 Lace & Lime™ LLC. All rights reserved. ·
+        <a href="privacy-terms.html">Privacy and Terms</a>
+      </p>
+    </div>
+  </footer>
+
+
+
+
+
+<!-- === SCRIPT (Universal Auto-Save + Narrative Reshape) === -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const textareas = document.querySelectorAll("textarea");
+
+  // Load + autosave content
+  textareas.forEach((ta) => {
+    const key = `laceandlime_${ta.id}`;
+    const saved = localStorage.getItem(key);
+    if (saved) ta.value = saved;
+    ta.addEventListener("input", () => localStorage.setItem(key, ta.value));
+  });
+
+  // Manual save button
+  window.saveDraft = function(id) {
+    const ta = document.getElementById(id);
+    if (ta) {
+      localStorage.setItem(`laceandlime_${id}`, ta.value);
+      ta.style.boxShadow = "0 0 0 2px var(--lime-med)";
+      setTimeout(() => (ta.style.boxShadow = ""), 800);
+    }
+  };
+
+  // Clear all saved drafts + refresh
+  const clearBtn = document.querySelector("#clearDrafts");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      document.querySelectorAll("textarea").forEach((ta) =>
+        localStorage.removeItem(`laceandlime_${ta.id}`)
+      );
+      alert("All saved drafts have been cleared.");
+      location.reload(); // refreshes page after clearing
+    });
+  }
+
+  // Narrative generation (first-person flow)
+  window.generateNarrative = function() {
+    const why = document.getElementById("why")?.value.trim();
+    const voice = document.getElementById("voice")?.value.trim();
+    const values = document.getElementById("values")?.value.trim();
+    const impact = document.getElementById("impact")?.value.trim();
+    const output = document.getElementById("narrativeText");
+    const container = document.getElementById("output");
+
+    let narrative = "";
+
+    if (why) narrative += `I want my work to create ${why.endsWith(".") ? why : why + "."} `;
+    if (voice) narrative += `When people read, see, or hear me, I want them to feel ${voice.endsWith(".") ? voice : voice + "."} `;
+    if (values) narrative += `I stay grounded by ${values.endsWith(".") ? values : values + "."} `;
+    if (impact) narrative += `The impact I'm working toward is ${impact.endsWith(".") ? impact : impact + "."}`;
+
+    output.textContent =
+      narrative.trim() || "Start writing your reflections above to refine your voice.";
+
+    container.style.display = "block";
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+});
+</script>
+
+</body>
+</html>

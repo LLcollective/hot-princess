@@ -9,14 +9,15 @@
   --ink-med: #46526a;
   --ink-light: #d0d6de;
 
-  /* --- Brand Pinks --- */
-  --brand: #F2C9CF;
-  --brand-pill: #f7c1cb;
-  --brand-light: #fde7ea;
-  --brand-dark: #c2516a;
+
+/* --- Brand Pinks --- */
+--brand-light: #fde7ea;
+--brand-med: #f2c9cf;
+--brand-dark: #c2516a;
+
 
   /* --- Lime Secondary --- */
-  --lime: #9BE080;
+  --lime-med: #9BE080;
   --lime-dark: #6bb853;
   --lime-light: #c7f3aa;
 
@@ -81,7 +82,6 @@ html, body {
 img, video, iframe { max-width: 100%; height: auto; display: block; }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 a:hover, a:focus { color: var(--brand); text-decoration: underline; }
@@ -166,38 +166,8 @@ strong { font-weight: 600; color: var(--ink-dark); }
 }
 .header-spacer { height: var(--header-gap); }
 
-/* =======================================
-   GLOBAL REUSABLE COMPONENTS
-   ======================================= */
-.highlight {
-  background: rgba(255,255,255,0.85);
-  border-left: 4px solid var(--brand);
-  padding: 1.1rem 1.25rem;
-  margin: 1rem 0;
-  border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-.btn-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: var(--brand-pill);
-  color: var(--brand-dark);
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.btn-eyebrow:hover {
-  background: var(--brand-light);
-  color: var(--ink-dark);
-  transform: translateY(-1px);
-}
+
+
 
 /* =======================================
    MODAL (Shared Safety)
@@ -302,15 +272,113 @@ textarea:focus, .mapping-input:focus {
   outline: none;
 }
 
-/* =======================================
-   RESPONSIVE ADJUSTMENTS
-   ======================================= */
-@media (max-width: 768px) {
-  section[class*="-container"],
-  section[class*="-page"],
-  section[class*="-section"],
-  section[class*="-grid"] {
-    padding-inline: var(--gutter-mobile);
-    padding-block: var(--space-lg);
-  }
+
+/* === UNIVERSAL RANGE SLIDER (Lace & Lime™ global style, pink thumb) === */input[type="range"]{width:100%;height:6px;appearance:none;background:linear-gradient(to right,var(--lime-med)0%,var(--lime-med)var(--value,50%),var(--ink-light)var(--value,50%),var(--ink-light)100%);border-radius:999px;outline:none;transition:background .3s ease;margin-top:.25rem;}input[type="range"]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--brand-dark);cursor:pointer;transition:background .25s ease,transform .25s ease;}input[type="range"]:hover::-webkit-slider-thumb{background:var(--brand-light);transform:scale(1.1);}input[type="range"]::-moz-range-progress{background:var(--lime-med);}input[type="range"]::-moz-range-track{background:var(--ink-light);}input[type="range"]::-ms-fill-lower{background:var(--lime-med);}input[type="range"]::-ms-fill-upper{background:var(--ink-light);}.scale-labels{display:flex;justify-content:space-between;font-size:.9rem;color:var(--ink-med);margin-top:.35rem;line-height:1.3;}
+
+
+
+
+
+
+
+
+/* === TEXT BOX AREAS === */textarea,.prompt-block textarea{width:100%;min-height:120px;padding:.9rem 1rem;font-family:var(--font-body,"Raleway",sans-serif);font-size:.95rem;line-height:1.5;color:var(--ink-dark);background:rgba(255,255,255,.9);border:1px solid var(--ink-light);border-radius:var(--radius-md,8px);resize:vertical;transition:border-color .25s ease,box-shadow .25s ease;}textarea:focus{outline:none;border-color:var(--brand-med);box-shadow:0 0 0 2px rgba(242,201,207,.4);} .builder-actions{display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem;} .save-btn{font-size:.75rem;padding:.3rem .8rem;text-transform:none;}
+
+
+/* === BUTTONS (Lime + Pink unified — transparent base, ink border, global style) === */
+.btn-lime, .btn-pink {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  border:1.5px solid var(--ink-dark);
+  border-radius:999px;
+  font-family:var(--font-body,"Raleway",sans-serif);
+  font-weight:600;
+  font-size:.8rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  padding:.35rem .9rem;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .25s ease;
+  line-height:1.2;
+  min-height:36px;
+}
+
+/* Lime Variant */
+.btn-lime {
+  color:var(--lime-dark);
+}
+.btn-lime:hover {
+  background:var(--lime-light);
+  color:var(--ink-dark);
+  transform:translateY(-2px);
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Pink Variant */
+.btn-pink {
+  color:var(--brand-dark);
+}
+.btn-pink:hover {
+  background:var(--brand-light);
+  color:var(--ink-dark);
+  transform:translateY(-2px);
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+
+
+
+/* === BUTTON LINKS (Lime + Pink — transparent, no border, global style) === */
+.btn-lime-link, .btn-pink-link {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  border:none;
+  border-radius:999px;
+  font-family:var(--font-body,"Raleway",sans-serif);
+  font-weight:600;
+  font-size:.85rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  padding:.45rem 1rem;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .25s ease;
+  line-height:1.2;
+  min-height:36px;
+}
+
+/* Lime Variant */
+.btn-lime-link {
+  color:var(--lime-dark);
+}
+.btn-lime-link:hover {
+  background:var(--lime-light);
+  color:var(--ink-dark);
+  transform:translateY(-2px);
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Pink Variant */
+.btn-pink-link {
+  color:var(--brand-dark);
+}
+.btn-pink-link:hover {
+  background:var(--brand-light);
+  color:var(--ink-dark);
+  transform:translateY(-2px);
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+.intro-note {
+  font-size: 0.9rem;
+  color: var(--ink-med);
+  margin-top: 0.75rem;
+  font-style: italic;
 }
