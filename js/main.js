@@ -304,17 +304,19 @@ function drawSpiral() {
   { text: "Founder", href: "founder.html", factor: 0.16 },
   { text: "Contact", href: "contact.html", factor: 0.32 },
   { text: "Let's Spiral", href: "Spiral.html", factor: 0.08 },
-  { text: "Business Path", href: "b-energy-aligned.html", factor: 0.22 },
   { text: "Approach", href: "approach.html", factor: 0.29 },
+  { text: "Business Path", href: "b-energy-aligned.html", factor: 0.22 },
   { text: "Individual Path", href: "i-energy-aligned.html", factor: 0.25 },
 
       ]
     : [
-        { text: "Founder", href: "founder.html", factor: 0.21 },
-        { text: "Contact", href: "contact.html", factor: 0.12 },
-        { text: "Let's Spiral", href: "Spiral.html", factor: 0.16 },
-        { text: "Laced Together", href: "laced-together.html", factor: 0.08 },
-        { text: "Approach", href: "approach.html", factor: 0.23 },
+  { text: "Founder", href: "founder.html", factor: 0.23 },
+  { text: "Contact", href: "contact.html", factor: 0.475555 },
+  { text: "Let's Spiral", href: "Spiral.html", factor: 0.08 },
+  { text: "Approach", href: "approach.html", factor: 0.335 },
+ { text: "Individual Path", href: "i-energy-aligned.html", factor: 0.17 },
+ { text: "Business Path", href: "b-energy-aligned.html", factor: 0.28 },
+
       ];
 
   /* ===== Create clickable link elements ===== */
