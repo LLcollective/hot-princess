@@ -311,7 +311,7 @@ function drawSpiral() {
       ]
     : [
   { text: "Founder", href: "founder.html", factor: 0.23 },
-  { text: "Contact", href: "contact.html", factor: 0.475555 },
+  { text: "Contact", href: "contact.html", factor: 0.40 },
   { text: "Let's Spiral", href: "Spiral.html", factor: 0.08 },
   { text: "Approach", href: "approach.html", factor: 0.335 },
  { text: "Individual Path", href: "i-energy-aligned.html", factor: 0.17 },
