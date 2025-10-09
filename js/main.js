@@ -1,219 +1,5 @@
-
-
-
-// ===== BURGER + SIDEBAR =====
-const burger  = document.querySelector('.burger');
-const sidebar = document.querySelector('nav.sidebar');
-const scrim   = document.querySelector('.scrim');
-
-function closeSidebar() {
-  burger?.classList.remove('open');
-  sidebar?.classList.remove('show');
-  scrim?.classList.remove('active');
-  if (scrim) scrim.hidden = true;
-}
-
-function openSidebar() {
-  burger?.classList.add('open');
-  sidebar?.classList.add('show');
-  scrim?.classList.add('active');
-  if (scrim) scrim.hidden = false;
-}
-
-if (burger && sidebar && scrim) {
-  burger.addEventListener('click', () => {
-    const open = !sidebar.classList.contains('show');
-    if (open) openSidebar(); else closeSidebar();
-  });
-
-  scrim.addEventListener('click', closeSidebar);
-
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSidebar(); });
-  window.addEventListener('pageshow', closeSidebar);
-}
-
-// ===== DROPDOWN TOGGLE =====
-// ===== DROPDOWN TOGGLE =====
-const dropdownButtons = document.querySelectorAll('.dropdown > button');
-
-function closeAllDropdowns() {
-  dropdownButtons.forEach(btn => {
-    btn.setAttribute("aria-expanded", "false");
-    const dropdownContent = btn.nextElementSibling;
-    if (dropdownContent) {
-      dropdownContent.style.maxHeight = null;
-    }
-  });
-}
-
-dropdownButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const dropdownContent = button.nextElementSibling;
-    const expanded = button.getAttribute("aria-expanded") === "true";
-
-    // Close everything first
-    closeAllDropdowns();
-
-    if (!expanded) {
-      // Open the one just clicked
-      button.setAttribute("aria-expanded", "true");
-      if (dropdownContent) {
-        dropdownContent.style.maxHeight = dropdownContent.scrollHeight + "px";
-      }
-    }
-  });
-});
-
-// ===== CLOSE SIDEBAR + DROPDOWNS ON LINK CLICK =====
-document.querySelectorAll('.sidebar a').forEach(link => {
-  link.addEventListener('click', () => {
-    closeAllDropdowns();
-    closeSidebar();
-  });
-});
-
-document.querySelectorAll('.sidebar .dropdown-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    closeAllDropdowns();
-    closeSidebar();
-  });
-});
-
-
-
-
-
-/*PROGRESS BAR*/
-
-window.addEventListener("scroll", () => {
-  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (scrollTop / scrollHeight) * 100;
-  document.getElementById("progress-fill").style.width = scrolled + "%";
-});
-
-
-
-
-/* ======================
-   MODAL HANDLING (Index + Limeboard)
-   ====================== */
-document.addEventListener("DOMContentLoaded", () => {
-  function openModalById(id) {
-    const modal = document.querySelector(id);
-    if (modal) modal.classList.add("show");
-  }
-
-  // Trigger via data-modal-target
-  document.querySelectorAll("[data-modal-target]").forEach(trigger => {
-    trigger.addEventListener("click", e => {
-      e.preventDefault();
-      openModalById(trigger.getAttribute("data-modal-target"));
-    });
-  });
-
-  // Trigger via href="#id" (old pattern)
-  document.querySelectorAll('a[href^="#"]').forEach(trigger => {
-    const targetId = trigger.getAttribute("href");
-    if (targetId && targetId.startsWith("#") && targetId.length > 1) {
-      trigger.addEventListener("click", e => {
-        const modal = document.querySelector(targetId);
-        if (modal && modal.classList.contains("modal")) {
-          e.preventDefault();
-          openModalById(targetId);
-        }
-      });
-    }
-  });
-
-  // Close modal when clicking close button
-  document.querySelectorAll(".modal .close-modal").forEach(btn => {
-    btn.addEventListener("click", () => {
-      btn.closest(".modal").classList.remove("show");
-    });
-  });
-
-  // Close modal when clicking outside modal-box
-  document.querySelectorAll(".modal").forEach(modal => {
-    modal.addEventListener("click", e => {
-      if (e.target === modal) modal.classList.remove("show");
-    });
-  });
-
-  // Close modal on Escape
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-      document.querySelectorAll(".modal.show").forEach(m => m.classList.remove("show"));
-    }
-  });
-});
-
-
-
-
-
-
-  // Modal controls founder/
-  const openBtn = document.getElementById('systems-btn');
-  const modal = document.getElementById('systems-modal');
-  const closeBtn = modal?.querySelector('.modal-close');
-
-  openBtn?.addEventListener('click', () => modal.style.display = 'flex');
-  closeBtn?.addEventListener('click', () => modal.style.display = 'none');
-  modal?.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.style.display = 'none'; });
-
-
-
-/*animate on scroll*/
-document.addEventListener("DOMContentLoaded", () => {
-  const observers = document.querySelectorAll(".animate-on-scroll");
-  const options = { threshold: 0.2 };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target); // animate once
-      }
-    });
-  }, options);
-
-  observers.forEach(el => observer.observe(el));
-});
-
-
-// Founder bio toggle
-  function toggleFounderBio() {
-    const mobile = document.querySelector('.founder-mobile');
-    const desktop = document.querySelector('.founder-desktop');
-    if (!mobile || !desktop) return;
-
-    if (window.innerWidth <= 768) {
-      mobile.style.display = 'block';
-      desktop.style.display = 'none';
-    } else {
-      mobile.style.display = 'none';
-      desktop.style.display = 'block';
-    }
-  }
-  // run on load + resize
-  toggleFounderBio();
-  window.addEventListener('resize', toggleFounderBio);
-
- 
-
-
-
-
-
-
-
-
-
-
 /* =======================================
-  TIGHTER HOME PAGE SPIRAL NAVIGATION
+   TIGHTER HOME PAGE SPIRAL NAVIGATION
    ======================================= */
 function drawSpiral() {
   const base = document.getElementById("spiral");
@@ -221,28 +7,21 @@ function drawSpiral() {
   const svg = document.getElementById("spiral-svg");
   const container = document.querySelector(".spiral-container");
 
+  if (!base || !overlay || !svg || !container) return;
+
   const width = window.innerWidth;
   const height = window.innerHeight;
   const cx = width / 2;
   const cy = height / 2;
 
-  /* ===== Detect device type ===== */
   const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-  /* ===== Spiral parameters ===== */
-  // Baseline (mobile) — tighter than before
-  let a = 6;   // smaller center offset
-  let b = 14;  // smaller step between loops
-  let turns = 8;
+  // Spiral parameters (tightened)
+  let a = isDesktop ? 8 : 6;
+  let b = isDesktop ? 18 : 14;
+  let turns = isDesktop ? 9 : 8;
 
-  // Desktop — slightly wider but still tighter overall
-  if (isDesktop) {
-    a = 8;     // modestly larger center
-    b = 18;    // still controlled growth
-    turns = 9;
-  }
-
-  /* ===== Generate spiral points ===== */
+  // Generate spiral points
   const points = [];
   for (let t = 0; t < Math.PI * 2 * turns; t += 0.1) {
     const r = a + b * t;
@@ -262,7 +41,7 @@ function drawSpiral() {
     path.style.strokeDashoffset = length;
   });
 
-  /* ===== Animation helper ===== */
+  // Animation helper
   function animatePath(path, length, duration, forward = true, callback) {
     if (path.animate) {
       const anim = path.animate(
@@ -286,6 +65,7 @@ function drawSpiral() {
     requestAnimationFrame(frame);
   }
 
+  // Base + overlay animation sequence
   animatePath(base, length, 6000, true, () => {
     function animateOverlayLoop(forward = true) {
       animatePath(overlay, length, 6000, forward, () => {
@@ -295,31 +75,29 @@ function drawSpiral() {
     animateOverlayLoop(true);
   });
 
-  /* ===== Clear old links ===== */
+  // Remove old links
   document.querySelectorAll(".spiral-link").forEach(el => el.remove());
 
-  /* ===== Spiral nav link positions ===== */
+  // Spiral nav link positions
   const linkLabels = isDesktop
     ? [
-  { text: "Founder", href: "founder.html", factor: 0.16 },
-  { text: "Contact", href: "contact.html", factor: 0.32 },
-  { text: "Let's Spiral", href: "Spiral.html", factor: 0.08 },
-  { text: "Approach", href: "approach.html", factor: 0.29 },
-  { text: "Business Path", href: "b-energy-aligned.html", factor: 0.22 },
-  { text: "Individual Path", href: "i-energy-aligned.html", factor: 0.25 },
-
+        { text: "Founder", href: "founder.html", factor: 0.16 },
+        { text: "Contact", href: "contact.html", factor: 0.32 },
+        { text: "Let's Spiral", href: "Spiral.html", factor: 0.08 },
+        { text: "Approach", href: "approach.html", factor: 0.29 },
+        { text: "Business Path", href: "b-energy-aligned.html", factor: 0.22 },
+        { text: "Individual Path", href: "i-energy-aligned.html", factor: 0.25 },
       ]
     : [
-  { text: "Founder", href: "founder.html", factor: 0.23 },
-  { text: "Contact", href: "contact.html", factor: 0.40 },
-  { text: "Let's Spiral", href: "Spiral.html", factor: 0.08 },
-  { text: "Approach", href: "approach.html", factor: 0.335 },
- { text: "Individual Path", href: "i-energy-aligned.html", factor: 0.17 },
- { text: "Business Path", href: "b-energy-aligned.html", factor: 0.28 },
-
+        { text: "Founder", href: "founder.html", factor: 0.23 },
+        { text: "Contact", href: "contact.html", factor: 0.40 },
+        { text: "Let's Spiral", href: "Spiral.html", factor: 0.08 },
+        { text: "Approach", href: "approach.html", factor: 0.335 },
+        { text: "Individual Path", href: "i-energy-aligned.html", factor: 0.17 },
+        { text: "Business Path", href: "b-energy-aligned.html", factor: 0.28 },
       ];
 
-  /* ===== Create clickable link elements ===== */
+  // Create clickable link elements
   linkLabels.forEach((link, i) => {
     const idx = Math.floor(points.length * link.factor);
     const [x, y] = points[idx];
@@ -336,7 +114,139 @@ function drawSpiral() {
   console.log(isDesktop ? "Desktop Spiral Active" : "Mobile Spiral Active");
 }
 
-/* ===== Initial draw & redraw ===== */
+/* ===== Initial draw & redraw (debounced) ===== */
 drawSpiral();
-window.addEventListener("resize", drawSpiral);
-window.addEventListener("orientationchange", drawSpiral);
+["resize", "orientationchange"].forEach(evt => {
+  window.addEventListener(evt, () => {
+    clearTimeout(window._spiralResize);
+    window._spiralResize = setTimeout(drawSpiral, 200);
+  });
+});
+
+/* =======================================
+   SCROLL PROGRESS BAR
+   ======================================= */
+window.addEventListener("scroll", () => {
+  window.requestAnimationFrame(() => {
+    const st = document.documentElement.scrollTop || document.body.scrollTop;
+    const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById("progress-fill").style.width = (st / sh) * 100 + "%";
+  });
+});
+
+/* =======================================
+   ANIMATE ON SCROLL
+   ======================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const observers = document.querySelectorAll(".animate-on-scroll");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observers.forEach(el => observer.observe(el));
+});
+
+/* =======================================
+   BREATHING COIL SPIRAL
+   ======================================= */
+(function(){
+  const svg = document.getElementById('sn-spiral');
+  const path = document.getElementById('sn-path');
+  const cue = document.getElementById('breathCue');
+  if (!svg || !path || !cue) return;
+
+  const centerX = 300, centerY = 300;
+  const turns = 6;
+  const points = 800;
+  const baseRadius = 30;
+  const maxRadius = 240;
+
+  const duration = 16000;
+  let startTime = null;
+  let inhale = true;
+
+  function setCue(isInhale){
+    cue.textContent = isInhale ? "Breathe in ·" : "Breathe out ·";
+    cue.style.color = isInhale ? "#e9edf7" : "#aeb6c9";
+  }
+
+  setCue(true);
+
+  function drawSpiral(radiusScale){
+    let d = "";
+    for (let i = 0; i <= points; i++){
+      const angle = (i / points) * Math.PI * 2 * turns;
+      const radius = baseRadius + (maxRadius - baseRadius) * (i / points) * radiusScale;
+      const x = centerX + radius * Math.cos(angle);
+      const y = centerY + radius * Math.sin(angle);
+      d += (i === 0 ? "M" : "L") + x + "," + y + " ";
+    }
+    path.setAttribute("d", d);
+  }
+
+  function animate(t){
+    if (!startTime) startTime = t;
+    const elapsed = (t - startTime) % duration;
+    const half = duration / 2;
+    const progress = (elapsed < half ? elapsed / half : (elapsed - half) / half);
+    const easing = 0.5 - 0.5 * Math.cos(progress * Math.PI);
+
+    if (elapsed < half){
+      if (!inhale){ inhale = true; setCue(true); }
+      drawSpiral(easing);
+    } else {
+      if (inhale){ inhale = false; setCue(false); }
+      drawSpiral(1 - easing);
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
+
+/* =======================================
+   WAITLIST RESPONSE SPEEDUP
+   ======================================= */
+(function() {
+  const form = document.getElementById("waitlist-form");
+  const success = document.getElementById("waitlist-success");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const button = form.querySelector("button");
+
+    button.disabled = true;
+    button.textContent = "Adding...";
+    success.textContent = "Submitting...";
+    success.classList.add("visible");
+
+    setTimeout(() => {
+      success.textContent = "✓ You're on the list!";
+      success.style.color = "#d87a94";
+    }, 700);
+
+    fetch(form.action, { method: "POST", body: data })
+      .then((resp) => {
+        if (!resp.ok) throw new Error("Bad response");
+        form.reset();
+        setTimeout(() => {
+          button.disabled = false;
+          button.textContent = "Join Waitlist →";
+        }, 1500);
+      })
+      .catch(() => {
+        success.textContent = "Network issue — try again soon.";
+        success.style.color = "#b34a4a";
+        button.disabled = false;
+        button.textContent = "Join Waitlist →";
+      });
+  });
+})();

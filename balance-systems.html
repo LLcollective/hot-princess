@@ -6,8 +6,11 @@
   <title>Balance Systems | Lace & Lime™</title>
 
   <!-- Fonts + Global -->
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="global.css" />
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+
+<link rel="stylesheet" href="global.css">
+
 
   <style>
   /* --- CONTAINER --- */
@@ -270,25 +273,51 @@
   </footer>
 
   <script>
-  // Reveal on scroll
-  document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal");
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll(".animate").forEach(el => observer.observe(el));
-  });
+// ===== Spiral “breath” continuous unwind (no pause after inhale)
+(function(){
+  const path = document.getElementById('sn-path');
+  const cue  = document.getElementById('breathCue');
+  if(!path) return;
 
-  // Local save for reflections
-  document.querySelectorAll('.reflection-input').forEach((box, i) => {
-    const key = `balance-note-${i}`;
-    box.value = localStorage.getItem(key) || "";
-    box.addEventListener('input', () => localStorage.setItem(key, box.value));
-  });
+  const len = path.getTotalLength();
+  path.style.strokeDasharray  = String(len);
+  path.style.strokeDashoffset = String(len);
+
+  const inhaleDuration = 8000; // ms
+  const exhaleDuration = 8000; // ms
+
+  // Single continuous animation loop using keyTimes for seamless reversal
+  const timing = inhaleDuration + exhaleDuration;
+
+  const anim = path.animate(
+    [
+      { strokeDashoffset: len, offset: 0 },                // start hidden
+      { strokeDashoffset: 0, offset: inhaleDuration/timing, easing: 'ease-in' },  // draw in
+      { strokeDashoffset: len, offset: 1, easing: 'ease-out' }                    // unwind immediately
+    ],
+    {
+      duration: timing,
+      iterations: Infinity,
+      easing: 'linear',
+      fill: 'forwards'
+    }
+  );
+
+  // Keep breath cue synced to inhale/exhale
+  let phase = true; // true = inhale
+  function updateCue() {
+    if (phase) {
+      cue.textContent = "Breathe in ·";
+      cue.style.color = "#e9edf7";
+    } else {
+      cue.textContent = "Breathe out ·";
+      cue.style.color = "#aeb6c9";
+    }
+    phase = !phase;
+  }
+  updateCue();
+  setInterval(updateCue, inhaleDuration); // toggle every 8s
+})();
   </script>
 </body>
 </html>

@@ -143,26 +143,16 @@
     <section class="sn-stage" aria-label="Breathing Spiral">
       <div class="sn-spiralwrap">
         <div class="sn-spiral">
-          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="sn-grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%"/>
-                <stop offset="100%"/>
-              </linearGradient>
-            </defs>
-            <path id="sn-path" d="
-              M300,300
-              m0,-30 a30,30 0 1,1 0,60
-              a60,60 0 1,1 0,-120
-              a90,90 0 1,1 0,180
-              a120,120 0 1,1 0,-240
-              a150,150 0 1,1 0,300
-              a180,180 0 1,1 0,-360
-              a210,210 0 1,1 0,420
-              a240,240 0 1,1 0,-480
-              a260,260 0 1,1 0,520
-            " stroke="url(#sn-grad)" fill="none" vector-effect="non-scaling-stroke"/>
-          </svg>
+          <svg id="sn-spiral" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="sn-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e9edf7"/>
+      <stop offset="100%" stop-color="#aeb6c9"/>
+    </linearGradient>
+  </defs>
+  <path id="sn-path" fill="none" stroke="url(#sn-grad)" stroke-width="2" />
+</svg>
+
         </div>
       </div>
       <p class="sn-cue" id="breathCue">Breathe in ·</p>
@@ -179,76 +169,6 @@
     </div>
   </footer>
 
-  <script>
-  // ===== Waitlist → Google Apps Script
-  (function(){
-    const form = document.getElementById("waitlist-form");
-    const success = document.getElementById("waitlist-success");
-    if(!form) return;
-    form.addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      const data = new FormData(form);
-      try {
-        const resp = await fetch(form.action, { method: "POST", body: data });
-        if (resp.ok) { success.classList.add("visible"); form.reset(); }
-        else { alert("Something went wrong. Please try again later."); }
-      } catch (err) {
-        console.error(err);
-        alert("Connection issue. Please try again soon.");
-      }
-    });
-  })();
-
-  // ===== Spiral “breath” by drawing/undrawing the line (16s cycle)
-  (function(){
-    const path = document.getElementById('sn-path');
-    const cue  = document.getElementById('breathCue');
-    if(!path) return;
-
-    const len = path.getTotalLength();
-    path.style.strokeDasharray  = String(len);
-    path.style.strokeDashoffset = String(len);
-
-    const duration = 16000; // 8s in + 8s out
-
-    if (path.animate) {
-      path.animate(
-        [
-          { strokeDashoffset: len }, // inhale → line draws in
-          { strokeDashoffset: 0 },
-          { strokeDashoffset: len }  // exhale → line releases
-        ],
-        { duration, iterations: Infinity, easing: 'ease-in-out' }
-      );
-    } else {
-      // fallback
-      let start = null;
-      function frame(t){
-        if(!start) start = t;
-        const progress = (t - start) % duration;
-        const half = duration/2;
-        const ratio = progress < half ? progress/half : 1 - ((progress-half)/half);
-        path.style.strokeDashoffset = String(len * (1 - ratio));
-        requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    }
-
-    // cue: black on inhale, soft grey on exhale
-    let inhale = true;
-    function swapCue(){
-      if(inhale){
-        cue.textContent = "Breathe in ·";
-        cue.style.color = "#e9edf7"; // near-white on dark
-      } else {
-        cue.textContent = "Breathe out ·";
-        cue.style.color = "#aeb6c9"; // softer grey-blue
-      }
-      inhale = !inhale;
-    }
-    swapCue();
-    setInterval(swapCue, 8000);
-  })();
-  </script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -382,3 +382,13 @@ textarea:focus, .mapping-input:focus {
   margin-top: 0.75rem;
   font-style: italic;
 }
+#sn-spiral {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+#sn-path {
+  filter: drop-shadow(0 0 6px rgba(233,237,247,0.4));
+  transition: filter 0.3s ease;
+}
