@@ -6,13 +6,6 @@ html, body, h1, h2, h3, h4, h5, h6, p, figure {
 button, input, textarea, select {
   font: inherit;
 }
-<!-- Global + Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-
-  
-<link rel="stylesheet" href="global.css">
-<link rel="stylesheet" href="page.css">
 
 
 
@@ -43,6 +36,53 @@ button, input, textarea, select {
 
 
 
+/* ===== Focus Areas ===== */
+.focus-areas {
+  text-align: center;
+  padding: var(--space-xl) var(--gutter-desktop);
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.focus-areas h2.subhead {
+  font-family: var(--font-heading);
+  color: var(--ink-dark);
+  margin-bottom: 0.5rem;
+}
+
+.focus-areas p {
+  color: var(--ink-med);
+  margin-bottom: 1rem;
+}
+
+/* ===== Booknow Cards ===== */
+.booknow-page {
+  padding: var(--space-xl) var(--gutter-desktop);
+}
+
+.booknow-cards {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.booknow-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.booknow-card:hover {
+  transform: translateY(-4px);
+}
+
+.booknow-card.highlight {
+  border: 1.5px solid var(--brand);
+}
 
 
 
@@ -260,3 +300,79 @@ button, input, textarea, select {
 .tier-list p{margin:.4rem 0 0 1.9rem;font-size:.9rem;line-height:1.5;}
 .cta-block{text-align:center;margin-top:var(--space-xl);}
 @media(max-width:768px){.booknow-container{padding:var(--space-lg) var(--gutter-mobile);}.booknow-cards{gap:var(--space-md);}.booknow-card{padding:var(--space-md);}}
+
+
+
+/* ===== TIMELINE + CHIP OPTIMIZATIONS ===== */
+
+
+/* Proof timeline core */
+.proof-timeline {
+  position: relative;
+  text-align: center;
+  margin: 4rem auto;
+  padding: 2rem 0;
+  max-width: 1000px;
+}
+.timeline-line {
+  position: absolute;
+  top: 70px;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: var(--ink-light);
+  overflow: hidden;
+  border-radius: 2px;
+}
+.timeline-line::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0;
+  background: var(--brand-dark);
+  animation: none;
+}
+.proof-timeline.reveal .timeline-line::after {
+  animation: lineGrow 2s ease forwards;
+}
+@keyframes lineGrow {
+  to { width: 100%; }
+}
+
+/* Dots connect dynamically */
+.timeline-items .dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--brand);
+  border: 2px solid var(--brand-dark);
+  box-shadow: 0 0 6px rgba(216, 122, 148, 0.4);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.4s ease;
+}
+.milestone.reveal .dot {
+  background: var(--brand-dark);
+  transform: translateX(-50%) scale(1.15);
+}
+
+/* Milestone cards animate upward */
+.timeline-items .milestone {
+  background: rgba(255,255,255,0.4);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.2rem;
+  border: 1px solid var(--ink-light);
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.timeline-items .milestone.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+
+

@@ -392,3 +392,152 @@ textarea:focus, .mapping-input:focus {
   filter: drop-shadow(0 0 6px rgba(233,237,247,0.4));
   transition: filter 0.3s ease;
 }
+
+
+
+/* ===== Force Consistent Chips (Founder + Inline + Grids) ===== */
+.chip {
+  display: inline-block !important;
+  background: var(--brand-light, #fde4e8) !important;
+  color: var(--ink-dark, #1d2740) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 999px !important;
+  padding: 0.35rem 0.8rem !important;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+.chip:hover,
+.chip:focus {
+  background: var(--brand, #f2c9cf) !important;
+  color: #fff !important;
+  border-color: var(--brand-dark, #c2516a);
+  transform: translateY(-1px);
+}
+
+/* Inline chips (inside text or span) */
+p .chip,
+span.chip {
+  background: var(--brand-light, #fde4e8) !important;
+  color: var(--ink-dark, #1d2740) !important;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-weight: 600;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+/* ===== Chips ===== */
+.chips {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: center;
+  gap: 0.6rem 1rem;
+  margin-top: 1.5rem;
+}
+.chips span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--brand-pill), var(--brand-light));
+  border: 1px solid var(--brand-light);
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+/* Chips in container grid */
+.chips:not(:empty) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.75rem;
+}
+
+/* Animation state for reveal */
+.chip.animate {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.chip.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ===== Founder Card Bio – Enhanced Readability ===== */
+.founder-card p {
+  color: var(--ink-med);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  letter-spacing: 0.015em;
+  text-align: center;
+  text-wrap: balance;
+  word-spacing: 0.05em;
+  text-shadow: 0 0.5px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* First lines of both paragraphs — slightly darker and more defined */
+.founder-card p:first-of-type::first-line,
+.founder-card p:nth-of-type(2)::first-line {
+  color: var(--ink-dark);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0.6px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Strong emphasis — consistent and clear */
+.founder-card p strong {
+  color: var(--ink-dark);
+  font-weight: 600;
+  text-shadow: 0 0.5px 0 rgba(255,255,255,0.3);
+}
+
+/* Framework or emphasized phrases – brand tone */
+.founder-card p em {
+  color: var(--brand-dark);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Optional gradient emphasis for the framework phrase */
+.founder-card p em:contains("Energy Aligned, Action Defined") {
+  background: linear-gradient(90deg, var(--brand-dark), var(--brand-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* Subtle color shift on hover to make reading feel "alive" */
+.founder-card:hover p {
+  color: var(--ink-dark);
+  transition: color 0.3s ease;
+}
+
+/* Mobile fine-tuning */
+@media (max-width: 768px) {
+  .founder-card p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    text-align: left;
+    text-wrap: pretty;
+  }
+}
