@@ -3,22 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brand Alignment | Lace & Lime™</title>
+  <title>Energy Aligned | Lace & Lime™</title>
 
-<!-- Global + Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-
-  
-<link rel="stylesheet" href="global.css">
-<link rel="stylesheet" href="page.css">
-
-  
-
-
+  <!-- Global + Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="page.css" />
 </head>
 
-<body class="business-alignment-page">
+<body class="Voice-page">
 
   <!-- ===== HEADER ===== -->
   <header class="ll-nav">
@@ -33,70 +26,63 @@
     </div>
   </header>
 
+  <!-- ===== BUILDER ===== -->
+<section class="builder-container">
+  <div class="builder-header animate">
+    <span class="eyebrow">ENERGY ALIGNED Check-in</span>
+    <h1>Brand Voice Refinement</h1>
+    <p>Move customers with language built on clarity.<br>
+ Define what your work stands for and how it connects. <br>The generator below will show how they connect.</p>
+      </div>
 
 
-<!-- ===== ALIGNMENT SECTION ===== -->
-<section class="alignment-container">
-  <div class="alignment-header">
-    <span class="eyebrow">Check-In</span>
-    <h1>Energy Aligned</h1>
-    <p>See how clearly your energy and structure are working together and where they may need support.</p>
-    <p><strong>A simplified version of the Energy Aligned, Action Defined™ tool used during sessions.</strong></p>
+
+<form id="builderForm">
+
+  <div class="prompt-block">
+    <p class="intro-note">Your notes stay private and saved in your browser. Clear them at the end when you’re ready to start fresh.</p><br>
+
+    <label for="why">What change or feeling do you want your work to create?</label>
+    <textarea id="why" name="why" placeholder="What do you want people to feel or take away from your work?"></textarea>
+    <div class="builder-actions">
+      <button type="button" class="btn-lime" onclick="saveDraft('why')">Save</button>
+    </div>
   </div>
 
-
-  <!-- ===== FORM ===== -->
-  <form id="alignmentForm">
-    <div class="question">
-      <label for="clarity">I can clearly describe what my brand stands for.</label>
-      <input type="range" id="clarity" name="clarity" min="1" max="5" step="1">
-      <div class="scale-labels"><span>No</span><span>Sometimes</span><span>Often</span><span>Yes</span><span>Always</span></div>
+  <div class="prompt-block">
+    <label for="voice">How do you want people to feel when they read, see, or hear you?</label>
+    <textarea id="voice" name="voice" placeholder="Does your voice sound like you want it to?"></textarea>
+    <div class="builder-actions">
+      <button type="button" class="btn-lime" onclick="saveDraft('voice')">Save</button>
     </div>
-
-    <div class="question">
-      <label for="systems">My operations and tools support my message consistently.</label>
-      <input type="range" id="systems" name="systems" min="1" max="5" step="1">
-      <div class="scale-labels"><span>No</span><span>Not yet</span><span>Somewhat</span><span>Mostly</span><span>Fully</span></div>
-    </div>
-
-    <div class="question">
-      <label for="visibility">My audience understands and recognizes my work.</label>
-      <input type="range" id="visibility" name="visibility" min="1" max="5" step="1">
-      <div class="scale-labels"><span>Unclear</span><span>Occasionally</span><span>Growing</span><span>Consistent</span><span>Recognized</span></div>
-    </div>
-
-    <div class="question">
-      <label for="values">My daily actions reflect my brand’s values.</label>
-      <input type="range" id="values" name="values" min="1" max="5" step="1">
-      <div class="scale-labels"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Mostly</span><span>Always</span></div>
-    </div>
-
-    <div class="question">
-      <label for="alignment">My brand feels cohesive and authentic across spaces.</label>
-      <input type="range" id="alignment" name="alignment" min="1" max="5" step="1">
-      <div class="scale-labels"><span>Disconnected</span><span>Somewhat</span><span>Balanced</span><span>Strong</span><span>Aligned</span></div>
-    </div>
-
-    <button type="button" class="btn-pink" onclick="calculateScore()">View My Results</button>
-  </form>
-
-<!-- ===== RESULTS ===== -->
-<div class="results" id="results">
-  <h3>Your Brand Snapshot</h3>
-  <div class="progress-wrap">
-    <div id="progress-fill" class="progress-fill"></div>
   </div>
-  <p id="scoreText"></p>
-  <p id="tierText"></p>
 
-  <div class="next-step">
-    <p>Want help interpreting your results?</p>
-    <a href="book-now.html" class="btn-lime">Book an Alignment Review →</a>
+  <div class="prompt-block">
+    <label for="values">Which principles or boundaries keep your work authentic?</label>
+    <textarea id="values" name="values" placeholder="What keeps your work aligned with what matters most to you?"></textarea>
+    <div class="builder-actions">
+      <button type="button" class="btn-lime" onclick="saveDraft('values')">Save</button>
+    </div>
   </div>
-</div>
-</section>
 
-<div class="section-divider"></div>
+  <div class="prompt-block">
+    <label for="impact">What outcomes or transformations show that your message is working?</label>
+    <textarea id="impact" name="impact" placeholder="What would show that your message is landing or creating change?"></textarea>
+    <div class="builder-actions">
+      <button type="button" class="btn-lime" onclick="saveDraft('impact')">Save</button>
+    </div>
+  </div>
+</form>
+
+      <div class="builder-actions">
+        <button type="button" class="btn-pink" onclick="generateNarrative()">Refine My Voice</button>
+        <button type="button" id="clearDrafts" class="btn-lime-link">Clear</button>
+      </div>
+    </form>
+
+    <div class="output" id="output">
+      <p id="narrativeText"></p>
+
 
 <!-- ===== NEXT STEP ===== -->
 <div class="next-step highlight animate" style="margin-top:2rem;">
@@ -111,12 +97,13 @@
 
 
 
+
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="wrap-heavy">
       <p class="legal">
-        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>  
-        © 2025 Lace & Lime™ LLC. All rights reserved. ·  
+        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>
+        © 2025 Lace & Lime™ LLC. All rights reserved. ·
         <a href="privacy-terms.html">Privacy and Terms</a>
       </p>
     </div>
@@ -125,61 +112,63 @@
 
 
 
+
+<!-- === SCRIPT (Universal Auto-Save + Narrative Reshape) === -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Universal Lime Fill Update ---
-  const sliders = document.querySelectorAll('.question input[type="range"]');
-  sliders.forEach(slider => {
-    const updateFill = e => {
-      const value = ((e.target.value - e.target.min) / (e.target.max - e.target.min)) * 100;
-      e.target.style.background = `
-        linear-gradient(to right,
-          var(--lime-med, #9BE080) 0%,
-          var(--lime-med, #9BE080) ${value}%,
-          var(--ink-light, #d0d6de) ${value}%,
-          var(--ink-light, #d0d6de) 100%)
-      `;
-    };
-    slider.addEventListener("input", updateFill);
-    updateFill({ target: slider });
+  const textareas = document.querySelectorAll("textarea");
+
+  // Load + autosave content
+  textareas.forEach((ta) => {
+    const key = `laceandlime_${ta.id}`;
+    const saved = localStorage.getItem(key);
+    if (saved) ta.value = saved;
+    ta.addEventListener("input", () => localStorage.setItem(key, ta.value));
   });
 
-  // --- Score Calculation ---
-  window.calculateScore = function() {
-    const inputs = document.querySelectorAll('#alignmentForm input[type="range"]');
-    const results = document.getElementById('results');
-    const progressFill = document.getElementById('progress-fill');
-    const scoreText = document.getElementById('scoreText');
-    const tierText = document.getElementById('tierText');
-    if (!inputs.length || !results || !progressFill) return;
-
-    let total = 0;
-    inputs.forEach(input => total += Number(input.value));
-    const avg = total / inputs.length;
-    const percent = ((avg - 1) / 4) * 100;
-
-    progressFill.style.transition = "none";
-    progressFill.style.width = "0%";
-    progressFill.style.background = "var(--lime-med, #9BE080)";
-    setTimeout(() => {
-      progressFill.style.transition = "width 0.6s ease";
-      progressFill.style.width = percent + "%";
-    }, 100);
-
-    scoreText.textContent = `Score: ${avg.toFixed(1)} / 5  (${Math.round(percent)}%)`;
-
-    let tier = "";
-    if (avg <= 2) {
-      tier = "Emerging Alignment - your brand is forming its foundation. Clarify your message and supportive systems.";
-    } else if (avg <= 3.5) {
-      tier = "Evolving Alignment - your message and structure are growing in sync. Keep refining consistency.";
-    } else {
-      tier = "Strong Alignment - your clarity, systems, and story are working together.";
+  // Manual save button
+  window.saveDraft = function(id) {
+    const ta = document.getElementById(id);
+    if (ta) {
+      localStorage.setItem(`laceandlime_${id}`, ta.value);
+      ta.style.boxShadow = "0 0 0 2px var(--lime-med)";
+      setTimeout(() => (ta.style.boxShadow = ""), 800);
     }
+  };
 
-    tierText.textContent = tier;
-    results.style.display = "block";
-    results.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Clear all saved drafts + refresh
+  const clearBtn = document.querySelector("#clearDrafts");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      document.querySelectorAll("textarea").forEach((ta) =>
+        localStorage.removeItem(`laceandlime_${ta.id}`)
+      );
+      alert("All saved drafts have been cleared.");
+      location.reload(); // refreshes page after clearing
+    });
+  }
+
+  // Narrative generation (first-person flow)
+  window.generateNarrative = function() {
+    const why = document.getElementById("why")?.value.trim();
+    const voice = document.getElementById("voice")?.value.trim();
+    const values = document.getElementById("values")?.value.trim();
+    const impact = document.getElementById("impact")?.value.trim();
+    const output = document.getElementById("narrativeText");
+    const container = document.getElementById("output");
+
+    let narrative = "";
+
+    if (why) narrative += `I want my work to create ${why.endsWith(".") ? why : why + "."} `;
+    if (voice) narrative += `When people read, see, or hear me, I want them to feel ${voice.endsWith(".") ? voice : voice + "."} `;
+    if (values) narrative += `I stay grounded by ${values.endsWith(".") ? values : values + "."} `;
+    if (impact) narrative += `The impact I'm working toward is ${impact.endsWith(".") ? impact : impact + "."}`;
+
+    output.textContent =
+      narrative.trim() || "Start writing your reflections above to refine your voice.";
+
+    container.style.display = "block";
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 });
 </script>
