@@ -541,3 +541,43 @@ span.chip {
     text-wrap: pretty;
   }
 }
+.focus-areas {
+  text-align: center;
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+}
+
+.focus-question {
+  font-size: 1.2rem;
+  color: var(--ink-dark);
+  margin-bottom: 1.25rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.booknow-note {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink-med);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.booknow-note a {
+  color: var(--brand-dark);
+  text-decoration: underline;
+  transition: color 0.25s ease;
+}
+
+.booknow-note a:hover {
+  color: var(--brand);
+}

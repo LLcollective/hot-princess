@@ -282,6 +282,15 @@ button, input, textarea, select {
 
 
 /* book-now.css — page-specific only (minus global data) */
+.booknow-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--ink-med);
+  max-width: 700px;
+  margin: 0 auto 2.25rem;
+  line-height: 1.7;
+}
+
 .booknow-container{max-width:920px;margin:0 auto;padding:var(--space-xl) var(--gutter-desktop);}
 .hero-headings{text-align:center;margin-bottom:var(--space-xl);}
 .hero-headings h1{font-size:clamp(1.8rem,2.5vw,2.3rem);margin-bottom:var(--space-sm);}
@@ -303,76 +312,6 @@ button, input, textarea, select {
 
 
 
-/* ===== TIMELINE + CHIP OPTIMIZATIONS ===== */
-
-
-/* Proof timeline core */
-.proof-timeline {
-  position: relative;
-  text-align: center;
-  margin: 4rem auto;
-  padding: 2rem 0;
-  max-width: 1000px;
-}
-.timeline-line {
-  position: absolute;
-  top: 70px;
-  left: 10%;
-  width: 80%;
-  height: 3px;
-  background: var(--ink-light);
-  overflow: hidden;
-  border-radius: 2px;
-}
-.timeline-line::after {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 0;
-  background: var(--brand-dark);
-  animation: none;
-}
-.proof-timeline.reveal .timeline-line::after {
-  animation: lineGrow 2s ease forwards;
-}
-@keyframes lineGrow {
-  to { width: 100%; }
-}
-
-/* Dots connect dynamically */
-.timeline-items .dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--brand);
-  border: 2px solid var(--brand-dark);
-  box-shadow: 0 0 6px rgba(216, 122, 148, 0.4);
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: all 0.4s ease;
-}
-.milestone.reveal .dot {
-  background: var(--brand-dark);
-  transform: translateX(-50%) scale(1.15);
-}
-
-/* Milestone cards animate upward */
-.timeline-items .milestone {
-  background: rgba(255,255,255,0.4);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem 1.2rem;
-  border: 1px solid var(--ink-light);
-  transition: all 0.5s ease;
-  opacity: 0;
-  transform: translateY(30px);
-}
-.timeline-items .milestone.reveal {
-  opacity: 1;
-  transform: translateY(0);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
 
 
 
