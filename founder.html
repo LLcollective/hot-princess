@@ -99,6 +99,7 @@ section.section-box {
   background: var(--ink-light);
   overflow: hidden;
 }
+
 .timeline-line::after {
   content: "";
   display: block;
@@ -106,6 +107,7 @@ section.section-box {
   width: 0;
   background: var(--brand);
 }
+
 .proof-timeline.reveal .timeline-line::after {
   animation: lineGrow 2s ease forwards;
 }
@@ -250,23 +252,45 @@ section.section-box {
   margin-bottom: 0.5rem;
 }
 
+
+
+
+
 /* ===== Responsive Adjustments ===== */
 @media (max-width: 1024px) {
   .chips {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (max-width: 768px) {
+  /* Founder section: justified + flush right */
   .founder-card .founder {
     font-size: 1.15rem;
     line-height: 1.9;
     margin-left: 1rem;
     margin-right: 1rem;
     max-width: 100%;
+    text-align: justify;
+    text-justify: inter-word;
   }
+
+  /* Chips stretch fully on mobile */
   .chips {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    justify-items: stretch;
   }
+
+  .chip,
+  .chips span {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
   /* Mobile vertical timeline */
   .timeline-line {
     top: 0;
@@ -274,30 +298,37 @@ section.section-box {
     width: 3px;
     height: 100%;
   }
+
   .timeline-line::after {
     width: 100%;
     height: 0;
     animation: lineGrowVertical 2s ease forwards;
   }
+
   @keyframes lineGrowVertical {
     to { height: 100%; }
   }
+
   .timeline-items {
     flex-direction: column;
     align-items: flex-start;
     margin-left: 60px;
   }
+
   .timeline-items .milestone {
     width: 100%;
     margin: 1rem 0;
     text-align: left;
   }
+
   .timeline-items .dot {
     left: -30px;
     top: 20px;
     transform: none;
   }
-}/* ===== Animate States (Global) ===== */
+}
+
+/* ===== Animate States (Global) ===== */
 .animate {
   opacity: 0;
   transform: translateY(20px);
@@ -346,46 +377,30 @@ section.section-box {
   opacity: 1;
   transform: translateY(0);
 }
+
 /* ===== Proof of Impact Timeline Spacing ===== */
 .proof-timeline {
   position: relative;
   text-align: center;
-  margin: 4rem auto;         /* more breathing room around the section */
-  padding: 2rem 0;           /* extra vertical space inside */
+  margin: 4rem auto;
+  padding: 2rem 0;
 }
 
 .proof-timeline h2 {
-  margin-bottom: 2.5rem;     /* space below the heading */
+  margin-bottom: 2.5rem;
 }
 
 .timeline-line {
-  margin-top: 1.5rem;        /* space between heading and line */
+  margin-top: 1.5rem;
 }
 
 .timeline-items {
-  margin-top: 4rem;          /* push milestones further down */
-  gap: 2rem;                 /* add horizontal breathing space between milestones */
+  margin-top: 4rem;
+  gap: 2rem;
 }
 
 .timeline-items .milestone {
-  padding: 1.5rem 1.2rem;    /* more interior padding inside each card */
-}
-
-/* details body */
-.credentials .body {
-  padding: 1rem 1.25rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-body, var(--ink-med));
-}
-
-.credentials ul {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.credentials li {
-  margin-bottom: 0.5rem;
+  padding: 1.5rem 1.2rem;
 }
 
 /* ===== Credentials ===== */
@@ -403,61 +418,377 @@ section.section-box {
   color: var(--ink-dark);
 }
 
+/* stack as rows */
 .credential-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* always 3 equal columns */
-  gap: .10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center; /* center content horizontally */
 }
 
+/* card shell */
 .credential-cards details {
   background: var(--surface-alt, rgba(255,255,255,0.25));
   border: 1px solid var(--ink-light);
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.25s ease;
+  width: 100%;
+  max-width: 700px; /* keeps cards centered and aligned */
   display: flex;
   flex-direction: column;
+  align-items: center; /* centers summary text and bullet */
+  text-align: center;
 }
 
+/* open state */
 .credential-cards details[open] {
   background: var(--frosted-bg, rgba(255,255,255,0.45));
   box-shadow: var(--shadow);
 }
 
-/* summary */
+/* summary — bullet + text centered inline */
 .credential-cards summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 1rem 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.95rem;
   color: var(--ink-dark);
   cursor: pointer;
   text-align: center;
-  white-space: normal;
+}
+.credential-cards summary::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime-med, #b5d33b);
+  display: inline-block;
 }
 
-/* body */
+/* every other card semi-bold (summary + body) */
+.credential-cards details:nth-child(even) summary,
+.credential-cards details:nth-child(even) .body {
+  font-weight: 600 !important;
+}
+
+/* body text */
 .credential-cards .body {
   padding: 1rem 1.25rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
   line-height: 1.6;
   color: var(--ink-med);
+  text-align: center;
+}
+/* Make credentials container invisible but keep accordions visible */
+.credentials {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Keep accordion cards (details) styled and visible */
+.credential-cards details {
+  background: var(--surface-alt, rgba(255,255,255,0.85)); /* visible cards */
+  border: 1px solid var(--ink-light);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Optional: soften card edges for clarity on lined background */
+.credential-cards details[open] {
+  background: var(--frosted-bg, rgba(255,255,255,0.9));
+}
+
+
+/* === Founder mobile: force full justification + long chips === */
+@media (max-width: 768px) {
+  /* Text: fully justified, including the last line */
+  body.founder .founder-card .founder,
+  body.founder .founder-card p,
+  body.founder .founder p {
+    text-align: justify !important;
+    text-justify: inter-word;
+    text-align-last: justify;        /* last line flush on both sides */
+    -ms-text-justify: inter-word;    /* legacy */
+    text-wrap: normal;               /* cancel pretty/balance so justify wins */
+    hyphens: auto;                   /* allow hyphenation for better spacing */
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+  /* Helper to keep last line justified in some engines */
+  body.founder .founder-card p::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* Chips: long, full-width pills on mobile */
+  .chips {
+    display: grid;
+    grid-template-columns: 1fr;      /* one per row, long */
+    gap: 0.75rem;
+    width: 100%;
+    justify-items: stretch;
+  }
+  .chip,
+  .chips span {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Optional: make chips go edge-to-edge (full-bleed) on tiny screens.
+     Add class 'fullbleed' to the chips container if you want this. */
+  .chips.fullbleed {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-inline: var(--gutter-mobile);
+  }
+}
+/* ===== Animated Milestone Dots (Desktop + Mobile) ===== */
+.timeline-items .dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--brand);
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: dotPulse 0.6s ease forwards;
+}
+
+
+/* Pulse and fade-in animation for dots */
+@keyframes dotPulse {
+  0% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Trigger dots when milestones reveal */
+.milestone.reveal .dot {
+  animation: dotPulse 0.8s ease forwards;
+}
+
+/* ===== Mobile vertical timeline support ===== */
+@media (max-width: 768px) {
+  .timeline-items .dot {
+    left: -30px;
+    top: 20px;
+    transform: scale(0);
+    opacity: 0;
+    animation: dotPulseVertical 0.8s ease forwards;
+  }
+
+  @keyframes dotPulseVertical {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.3);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .milestone.reveal .dot {
+    animation: dotPulseVertical 0.8s ease forwards;
+  }
+}
+/* ===== Proof of Impact (Founder Page) ===== */
+
+/* Ensure proper layout context */
+.timeline-items { position: relative; overflow: visible; }
+.timeline-items .milestone { position: relative; overflow: visible; z-index: 2; }
+
+/* Line color — Lace pink */
+.timeline-line {
+  background: var(--lace-light, #f8d7dc) !important;
+}
+.proof-timeline.reveal .timeline-line::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--lace-med, #e3b7c2) !important;
+  animation: lineGrow 2s ease forwards;
+}
+
+/* Dot color — Lime green */
+.timeline-items .dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--lime-med, #b5d33b) !important;
+  position: absolute;
+  top: -67px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  z-index: 5;
+  animation-fill-mode: forwards;
+  box-shadow: 0 0 6px rgba(181,211,59,0.3);
+}
+
+/* Animation definitions */
+@keyframes dotPulse {
+  0%   { transform: translateX(-50%) scale(0); opacity: 0; }
+  60%  { transform: translateX(-50%) scale(1.3); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+@keyframes dotPulseVertical {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  .timeline-line {
+    top: 0;
+    left: 30px;
+    width: 3px;
+    height: 100%;
+    background: var(--lace-light, #f8d7dc) !important;
+  }
+  .proof-timeline.reveal .timeline-line::after {
+    width: 100%;
+    height: 0;
+    background: var(--lace-med, #e3b7c2) !important;
+    animation: lineGrowVertical 2s ease forwards;
+  }
+  .timeline-items .dot {
+    left: -30px;
+    top: 20px;
+  }
+}/* ===== Founder Paragraph Styling ===== */
+.founder-card p {
+  line-height: 1.8;
+  color: var(--ink-med);
+  text-align: justify;
+}
+
+/* Make the first line slightly darker + weight emphasis */
+.founder-card p::first-line {
+  color: var(--ink-dark);
+  font-weight: 500;
+}
+}
+/* ===== Journey Section Layout ===== */
+.journey-container {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.journey-container h2 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.journey-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
   text-align: left;
 }
 
-/* responsive fallback */
-@media (max-width: 1024px) {
-  .credential-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 768px) {
-  .credential-cards {
-    grid-template-columns: 1fr;
-  }
+.journey-step .journey-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  stroke-width: 1.7;
+  color: var(--lime-med, #b5d33b);
 }
 
+.step-title {
+  font-weight: 600;
+  color: var(--brand-med);
+  margin-bottom: 0.35rem;
+}
 
+/* ===== Completion Circle Base ===== */
+.completion-circle {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: var(--lace-light, #f8d7dc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 600;
+  color: var(--ink-dark);
+  margin: 2.5rem auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  z-index: 1;
+}
 
+/* ring SVG positioning */
+.completion-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* glowing lime animation */
+@keyframes ringDraw {
+  0% {
+    stroke-dashoffset: 340;
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+/* ===== Journey Step Title Override ===== */
+.journey-step .step-title {
+  font-weight: 600;
+  color: var(--brand-dark, #e3b7c2) !important; /* override stronger selectors */
+  margin-bottom: 0.35rem;
+  text-align: left;
+}
+.journey-step p::first-line {
+  font-weight: 500;
+}
+/* Ensure normal weight for the paragraph body */
+.journey-step p { font-weight: 400; }
+
+/* Semi-bold ONLY the first visible line */
+.journey-step p::first-line { font-weight: 600 !important; }
+
+/* If you're using a variable font, make the weight jump explicit */
+@supports (font-variation-settings: normal) {
+  .journey-step p::first-line { font-variation-settings: "wght" 600; }
+}
 
 </style>
 
@@ -518,26 +849,73 @@ section.section-box {
 </section>
 
 
-<!-- ===== PROOF OF IMPACT ===== -->
+
+<!-- ===== CREDENTIALS ===== -->
+<section class="section-box credentials">
+  <h2>Credentials</h2>
+  <div class="credential-cards">
+    <details>
+      <summary>Public Health Systems (MPH)</summary>
+      <div class="body">
+        <ul>
+          <li>Tracking population health via epidemiology</li>
+          <li>Biostatistics & data analysis for decision-making</li>
+          <li>Health care finance & reimbursement systems</li>
+          <li>Program design & outcome evaluation</li>
+          <li>Social, behavioral & global health policy</li>
+        </ul>
+      </div>
+    </details>
+    <details>
+    
+<summary>Certified Health Education (CHES®)</summary>
+<div class="body">
+  <ul>
+    <li>Assessing needs & building community capacity</li>
+    <li>Planning & delivering education programs</li>
+    <li>Evaluating & researching program impact</li>
+    <li>Advocacy & communication for societal change</li>
+    <li>Leading, managing & upholding professional ethics</li>
+  </ul>
+</div>
+    </details>
+    <details>
+  <summary>Compliance & Accreditation</summary>
+<div class="body">
+  <ul>
+    <li>Advising on public health emergency response</li>
+    <li>Managing medical education accreditation</li>
+    <li>Overseeing compliance & regulatory training</li>
+    <li>Aligning nonprofit programs & systems</li>
+  </ul>
+</div>
+</section>
+
+
+<!-- ===== PROOF OF IMPACT ===== !-->
 <section class="section-box proof-timeline animate">
-  <h2>Proof of Impact</h2>
+<h2>Proof of Impact</h2>
   <div class="timeline-line"></div>
+
   <div class="timeline-items">
     <div class="milestone animate">
       <div class="dot"></div>
       <h4>Under 30 days</h4>
       <p>Brand and framework launched and trademarked.</p>
     </div>
+
     <div class="milestone animate">
       <div class="dot"></div>
       <h4>Under 60 days</h4>
-      <p>3 workshops and website program launched, site live.</p>
+      <p>Two workshops and website program launched, site live.</p>
     </div>
+
     <div class="milestone animate">
       <div class="dot"></div>
       <h4>Under 90 days</h4>
       <p>Journal in production with full launch prep underway.</p>
     </div>
+
     <div class="milestone animate">
       <div class="dot"></div>
       <h4>5,000+ hours</h4>
@@ -611,46 +989,7 @@ section.section-box {
 </section>
 
 
-<!-- ===== CREDENTIALS ===== -->
-<section class="section-box credentials">
-  <h2>Credentials</h2>
-  <div class="credential-cards">
-    <details>
-      <summary>Public Health Systems (MPH)</summary>
-      <div class="body">
-        <ul>
-          <li>Tracking population health via epidemiology</li>
-          <li>Biostatistics & data analysis for decision-making</li>
-          <li>Health care finance & reimbursement systems</li>
-          <li>Program design & outcome evaluation</li>
-          <li>Social, behavioral & global health policy</li>
-        </ul>
-      </div>
-    </details>
-    <details>
-    
-<summary>Certified Health Education (CHES®)</summary>
-<div class="body">
-  <ul>
-    <li>Assessing needs & building community capacity</li>
-    <li>Planning & delivering education programs</li>
-    <li>Evaluating & researching program impact</li>
-    <li>Advocacy & communication for societal change</li>
-    <li>Leading, managing & upholding professional ethics</li>
-  </ul>
-</div>
-    </details>
-    <details>
-  <summary>Compliance & Accreditation</summary>
-<div class="body">
-  <ul>
-    <li>Advising on public health emergency response</li>
-    <li>Managing medical education accreditation</li>
-    <li>Overseeing compliance & regulatory training</li>
-    <li>Aligning nonprofit programs & systems</li>
-  </ul>
-</div>
-</section>
+
 
 <!-- ===== FOOTER ===== -->
 
@@ -667,9 +1006,8 @@ section.section-box {
 
 
 <script>
-
-/* FOUNDER PAGE*/
-document.documentElement.classList.add("no-js"); // fallback until JS runs
+/* FOUNDER PAGE */
+document.documentElement.classList.add("no-js");
 
 document.addEventListener("DOMContentLoaded", () => {
   document.documentElement.classList.remove("no-js");
@@ -678,7 +1016,6 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
 
-        // Animate chips in sequence
         if (entry.target.classList.contains("chips")) {
           const chips = entry.target.querySelectorAll("span.animate");
           chips.forEach((chip, i) => {
@@ -687,9 +1024,8 @@ document.addEventListener("DOMContentLoaded", () => {
           obs.unobserve(entry.target);
         }
 
-        // Animate proof timeline milestones (left → right)
         else if (entry.target.classList.contains("proof-timeline")) {
-          entry.target.classList.add("reveal"); // trigger line
+          entry.target.classList.add("reveal");
           const milestones = entry.target.querySelectorAll(".milestone");
           milestones.forEach((ms, i) => {
             setTimeout(() => ms.classList.add("reveal"), i * 400);
@@ -697,7 +1033,6 @@ document.addEventListener("DOMContentLoaded", () => {
           obs.unobserve(entry.target);
         }
 
-        // Animate journey steps in sequence
         else if (entry.target.classList.contains("journey-container")) {
           const steps = entry.target.querySelectorAll(".journey-step.animate");
           steps.forEach((step, i) => {
@@ -710,7 +1045,6 @@ document.addEventListener("DOMContentLoaded", () => {
           obs.unobserve(entry.target);
         }
 
-        // Normal reveal
         else {
           entry.target.classList.add("reveal");
           obs.unobserve(entry.target);
@@ -719,10 +1053,79 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, { threshold: 0.2 });
 
-  // Observe containers only (not each milestone)
   document.querySelectorAll(
     ".chips, .journey-container, .proof-timeline"
   ).forEach(el => observer.observe(el));
+});
+
+/* FOUNDER PAGE TIMELINE DOTS */
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target.classList.contains("proof-timeline")) {
+        entry.target.classList.add("reveal");
+        const milestones = entry.target.querySelectorAll(".milestone");
+        const isMobile = window.innerWidth <= 768;
+
+        milestones.forEach((ms, i) => {
+          const dot = ms.querySelector(".dot");
+          setTimeout(() => {
+            ms.classList.add("reveal");
+            if (dot) {
+              dot.style.opacity = "1";
+              dot.style.animation = (isMobile ? "dotPulseVertical" : "dotPulse") + " 0.8s ease forwards";
+            }
+          }, i * 400); // 400ms stagger per milestone
+        });
+
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(document.querySelector(".proof-timeline"));
+});
+
+
+
+
+/* ===== Completion Circle Ring Creation & Animation ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const completion = document.querySelector(".completion-circle");
+  if (!completion) return;
+
+  // create SVG ring
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "completion-ring");
+  svg.setAttribute("width", "130");
+  svg.setAttribute("height", "130");
+  svg.setAttribute("viewBox", "0 0 130 130");
+
+  const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  ring.setAttribute("cx", "65");
+  ring.setAttribute("cy", "65");
+  ring.setAttribute("r", "60");
+  ring.setAttribute("fill", "none");
+  ring.setAttribute("stroke", "var(--lime-med, #b5d33b)");
+  ring.setAttribute("stroke-width", "5");
+  ring.setAttribute("stroke-dasharray", "380");
+  ring.setAttribute("stroke-dashoffset", "380");
+  ring.style.filter = "drop-shadow(0 0 6px rgba(181,211,59,0.4))";
+
+  svg.appendChild(ring);
+  completion.appendChild(svg);
+
+  // animate ring when revealed
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        ring.style.animation = "ringDraw 2.2s ease forwards";
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(completion);
 });
 
 </script>

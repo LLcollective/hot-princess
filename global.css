@@ -437,6 +437,7 @@ span.chip {
 
 
 
+
 /* ===== Chips ===== */
 .chips {
   display: grid;
@@ -458,6 +459,9 @@ span.chip {
   white-space: nowrap;
   transition: all 0.3s ease;
 }
+
+
+
 
 /* Chips in container grid */
 .chips:not(:empty) {
@@ -481,103 +485,15 @@ span.chip {
   transform: translateY(0);
 }
 
-
-/* ===== Founder Card Bio – Enhanced Readability ===== */
-.founder-card p {
-  color: var(--ink-med);
-  font-size: 1.08rem;
-  line-height: 1.85;
-  letter-spacing: 0.015em;
-  text-align: center;
-  text-wrap: balance;
-  word-spacing: 0.05em;
-  text-shadow: 0 0.5px 0 rgba(255, 255, 255, 0.35);
-}
-
-/* First lines of both paragraphs — slightly darker and more defined */
-.founder-card p:first-of-type::first-line,
-.founder-card p:nth-of-type(2)::first-line {
-  color: var(--ink-dark);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0.6px 0 rgba(255, 255, 255, 0.35);
-}
-
-/* Strong emphasis — consistent and clear */
-.founder-card p strong {
-  color: var(--ink-dark);
-  font-weight: 600;
-  text-shadow: 0 0.5px 0 rgba(255,255,255,0.3);
-}
-
-/* Framework or emphasized phrases – brand tone */
-.founder-card p em {
-  color: var(--brand-dark);
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-/* Optional gradient emphasis for the framework phrase */
-.founder-card p em:contains("Energy Aligned, Action Defined") {
-  background: linear-gradient(90deg, var(--brand-dark), var(--brand-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
-}
-
-/* Subtle color shift on hover to make reading feel "alive" */
-.founder-card:hover p {
-  color: var(--ink-dark);
-  transition: color 0.3s ease;
-}
-
-/* Mobile fine-tuning */
-@media (max-width: 768px) {
-  .founder-card p {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    text-align: left;
-    text-wrap: pretty;
+/* Responsive chips */
+@media (max-width: 1024px) {
+  .chips {
+    gap: 0.5rem;
   }
 }
-.focus-areas {
-  text-align: center;
-  margin: 3rem auto;
-  padding: 2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-lg);
-}
-
-.focus-question {
-  font-size: 1.2rem;
-  color: var(--ink-dark);
-  margin-bottom: 1.25rem;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem 1rem;
-  margin-bottom: 1.75rem;
-}
-
-.booknow-note {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--ink-med);
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.booknow-note a {
-  color: var(--brand-dark);
-  text-decoration: underline;
-  transition: color 0.25s ease;
-}
-
-.booknow-note a:hover {
-  color: var(--brand);
+@media (max-width: 768px) {
+  .chips {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
 }
