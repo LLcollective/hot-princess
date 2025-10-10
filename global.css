@@ -9,12 +9,10 @@
   --ink-med: #46526a;
   --ink-light: #d0d6de;
 
-
-/* --- Brand Pinks --- */
---brand-light: #fde7ea;
---brand-med: #f2c9cf;
---brand-dark: #c2516a;
-
+  /* --- Brand Pinks --- */
+  --brand-light: #fde7ea;
+  --brand-med: #f2c9cf;
+  --brand-dark: #c2516a;
 
   /* --- Lime Secondary --- */
   --lime-med: #9BE080;
@@ -53,7 +51,7 @@
 }
 
 /* =======================================
-   BASE RESET & HTML BODY
+   BASE RESET & BODY
    ======================================= */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -81,9 +79,7 @@ html, body {
 
 img, video, iframe { max-width: 100%; height: auto; display: block; }
 
-a {
-  text-decoration: none;
-}
+a { text-decoration: none; }
 a:hover, a:focus { color: var(--brand); text-decoration: underline; }
 a:active { color: var(--lime-dark); }
 
@@ -116,6 +112,7 @@ strong { font-weight: 600; color: var(--ink-dark); }
   background: transparent;
   z-index: 1000;
 }
+
 .logo-small-centered {
   margin: 0;
   line-height: 1;
@@ -125,6 +122,7 @@ strong { font-weight: 600; color: var(--ink-dark); }
   font-size: clamp(1.8rem, 2vw, 2.4rem);
   text-align: center;
 }
+
 .logo-small-centered .lace {
   font-family: "Raleway", sans-serif;
   font-weight: 200;
@@ -158,16 +156,15 @@ strong { font-weight: 600; color: var(--ink-dark); }
 @media(max-width:768px){
   .wrap-medium { padding-inline: var(--gutter-mobile); }
 }
+
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
+
 .header-spacer { height: var(--header-gap); }
-
-
-
 
 /* =======================================
    MODAL (Shared Safety)
@@ -235,16 +232,19 @@ section[class*="-wrap"] {
   padding-block: var(--space-xl);
   box-sizing: border-box;
 }
+
 .section-block + .section-block,
 .map-section + .map-section,
 .prompt-block + .prompt-block,
 .booknow-card + .booknow-card {
   margin-top: calc(var(--space-xl) * 1.2);
 }
+
 .cta-block, .next-step {
   margin-top: var(--space-xl);
   text-align: center;
 }
+
 .gradient-line, .thread-line {
   width: 160px;
   height: 3px;
@@ -253,6 +253,10 @@ section[class*="-wrap"] {
   border-radius: 999px;
   opacity: 0.85;
 }
+
+/* =======================================
+   FORM ELEMENTS
+   ======================================= */
 textarea, .mapping-input {
   width: 100%;
   min-height: 120px;
@@ -272,20 +276,41 @@ textarea:focus, .mapping-input:focus {
   outline: none;
 }
 
+/* Range Sliders */
+input[type="range"] {
+  width:100%;
+  height:6px;
+  appearance:none;
+  background:linear-gradient(to right,var(--lime-med)0%,var(--lime-med)var(--value,50%),var(--ink-light)var(--value,50%),var(--ink-light)100%);
+  border-radius:999px;
+  outline:none;
+  transition:background .3s ease;
+  margin-top:.25rem;
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance:none;
+  width:18px; height:18px;
+  border-radius:50%;
+  background:var(--brand-dark);
+  cursor:pointer;
+  transition:background .25s ease,transform .25s ease;
+}
+input[type="range"]:hover::-webkit-slider-thumb {
+  background:var(--brand-light);
+  transform:scale(1.1);
+}
+.scale-labels {
+  display:flex;
+  justify-content:space-between;
+  font-size:.9rem;
+  color:var(--ink-med);
+  margin-top:.35rem;
+  line-height:1.3;
+}
 
-/* === UNIVERSAL RANGE SLIDER (Lace & Lime™ global style, pink thumb) === */input[type="range"]{width:100%;height:6px;appearance:none;background:linear-gradient(to right,var(--lime-med)0%,var(--lime-med)var(--value,50%),var(--ink-light)var(--value,50%),var(--ink-light)100%);border-radius:999px;outline:none;transition:background .3s ease;margin-top:.25rem;}input[type="range"]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--brand-dark);cursor:pointer;transition:background .25s ease,transform .25s ease;}input[type="range"]:hover::-webkit-slider-thumb{background:var(--brand-light);transform:scale(1.1);}input[type="range"]::-moz-range-progress{background:var(--lime-med);}input[type="range"]::-moz-range-track{background:var(--ink-light);}input[type="range"]::-ms-fill-lower{background:var(--lime-med);}input[type="range"]::-ms-fill-upper{background:var(--ink-light);}.scale-labels{display:flex;justify-content:space-between;font-size:.9rem;color:var(--ink-med);margin-top:.35rem;line-height:1.3;}
-
-
-
-
-
-
-
-
-/* === TEXT BOX AREAS === */textarea,.prompt-block textarea{width:100%;min-height:120px;padding:.9rem 1rem;font-family:var(--font-body,"Raleway",sans-serif);font-size:.95rem;line-height:1.5;color:var(--ink-dark);background:rgba(255,255,255,.9);border:1px solid var(--ink-light);border-radius:var(--radius-md,8px);resize:vertical;transition:border-color .25s ease,box-shadow .25s ease;}textarea:focus{outline:none;border-color:var(--brand-med);box-shadow:0 0 0 2px rgba(242,201,207,.4);} .builder-actions{display:flex;justify-content:flex-end;gap:.5rem;margin-top:.5rem;} .save-btn{font-size:.75rem;padding:.3rem .8rem;text-transform:none;}
-
-
-/* === BUTTONS (Lime + Pink unified — transparent base, ink border, global style) === */
+/* =======================================
+   BUTTONS
+   ======================================= */
 .btn-lime, .btn-pink {
   display:inline-flex;
   align-items:center;
@@ -293,7 +318,7 @@ textarea:focus, .mapping-input:focus {
   background:transparent;
   border:1.5px solid var(--ink-dark);
   border-radius:999px;
-  font-family:var(--font-body,"Raleway",sans-serif);
+  font-family:var(--font-body);
   font-weight:600;
   font-size:.8rem;
   text-transform:uppercase;
@@ -314,7 +339,7 @@ textarea:focus, .mapping-input:focus {
   background:var(--lime-light);
   color:var(--ink-dark);
   transform:translateY(-2px);
-  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+  box-shadow:var(--shadow-sm);
 }
 
 /* Pink Variant */
@@ -325,22 +350,17 @@ textarea:focus, .mapping-input:focus {
   background:var(--brand-light);
   color:var(--ink-dark);
   transform:translateY(-2px);
-  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+  box-shadow:var(--shadow-sm);
 }
 
-
-
-
-
-/* === BUTTON LINKS (Lime + Pink — transparent, no border, global style) === */
+/* Link-style buttons */
 .btn-lime-link, .btn-pink-link {
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:transparent;
   border:none;
   border-radius:999px;
-  font-family:var(--font-body,"Raleway",sans-serif);
+  font-family:var(--font-body);
   font-weight:600;
   font-size:.85rem;
   text-transform:uppercase;
@@ -349,151 +369,74 @@ textarea:focus, .mapping-input:focus {
   cursor:pointer;
   text-decoration:none;
   transition:all .25s ease;
-  line-height:1.2;
   min-height:36px;
 }
+.btn-lime-link { color:var(--lime-dark); }
+.btn-lime-link:hover { background:var(--lime-light); color:var(--ink-dark); }
+.btn-pink-link { color:var(--brand-dark); }
+.btn-pink-link:hover { background:var(--brand-light); color:var(--ink-dark); }
 
-/* Lime Variant */
-.btn-lime-link {
-  color:var(--lime-dark);
-}
-.btn-lime-link:hover {
-  background:var(--lime-light);
-  color:var(--ink-dark);
-  transform:translateY(-2px);
-  box-shadow:0 2px 6px rgba(0,0,0,0.05);
-}
-
-/* Pink Variant */
-.btn-pink-link {
-  color:var(--brand-dark);
-}
-.btn-pink-link:hover {
-  background:var(--brand-light);
-  color:var(--ink-dark);
-  transform:translateY(-2px);
-  box-shadow:0 2px 6px rgba(0,0,0,0.05);
-}
-
-
-.intro-note {
-  font-size: 0.9rem;
-  color: var(--ink-med);
-  margin-top: 0.75rem;
-  font-style: italic;
-}
-#sn-spiral {
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
-}
-
-#sn-path {
-  filter: drop-shadow(0 0 6px rgba(233,237,247,0.4));
-  transition: filter 0.3s ease;
-}
-
-
-
-/* ===== Force Consistent Chips (Founder + Inline + Grids) ===== */
-.chip {
-  display: inline-block !important;
-  background: var(--brand-light, #fde4e8) !important;
-  color: var(--ink-dark, #1d2740) !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  border-radius: 999px !important;
-  padding: 0.35rem 0.8rem !important;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-decoration: none !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: all 0.25s ease;
-}
-
-.chip:hover,
-.chip:focus {
-  background: var(--brand, #f2c9cf) !important;
-  color: #fff !important;
-  border-color: var(--brand-dark, #c2516a);
-  transform: translateY(-1px);
-}
-
-/* Inline chips (inside text or span) */
-p .chip,
-span.chip {
-  background: var(--brand-light, #fde4e8) !important;
-  color: var(--ink-dark, #1d2740) !important;
-  border-radius: 999px;
-  padding: 0.25rem 0.65rem;
-  font-weight: 600;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-
-
-
-/* ===== Chips ===== */
+/* =======================================
+   CHIPS (Unified)
+   ======================================= */
 .chips {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  justify-content: center;
-  gap: 0.6rem 1rem;
-  margin-top: 1.5rem;
-}
-.chips span {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.35rem 0.9rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  background: linear-gradient(135deg, var(--brand-pill), var(--brand-light));
-  border: 1px solid var(--brand-light);
-  border-radius: 999px;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-}
-
-
-
-
-/* Chips in container grid */
-.chips:not(:empty) {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem 1rem;
   justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+.chip {
+  display: inline-flex;
   align-items: center;
-  margin-top: 1.75rem;
+  justify-content: center;
+  background: var(--brand-light);
+  color: var(--ink-dark);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
 }
-
-/* Animation state for reveal */
-.chip.animate {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.4s ease;
-}
-
-.chip.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive chips */
-@media (max-width: 1024px) {
-  .chips {
-    gap: 0.5rem;
-  }
+.chip:hover {
+  background: var(--brand-med);
+  color: #fff;
+  transform: translateY(-1px);
 }
 @media (max-width: 768px) {
-  .chips {
-    flex-direction: column;
-    gap: 0.4rem;
+  .chips { flex-direction: column; }
+  .chip { width: 100%; text-align: center; }
+}
+
+/* =======================================
+   GLOBAL CARD BALANCE
+   ======================================= */
+[class*="card"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* =======================================
+   RESPONSIVE REFINEMENTS
+   ======================================= */
+@media (max-width: 768px) {
+  .ll-nav { padding: 0.75rem var(--gutter-mobile); }
+  .logo-small-centered { font-size: 1.6rem; }
+
+  html, body {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      #f9f8f6 0,
+      #f9f8f6 2em,
+      rgba(36, 50, 74, 0.08) 2em,
+      rgba(36, 50, 74, 0.08) 2.1em
+    );
+  }
+
+  textarea {
+    border-width: 1px;
+    min-height: 100px;
   }
 }

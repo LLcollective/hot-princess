@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Action Defined | Lace & Lime™</title>
+  <title>Energy Aligned | Lace & Lime™</title>
 
   <!-- Fonts + Global Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="page.css">
 </head>
 
-<body class="action-defined-page">
+<body class="energy-aligned-page">
 
   <!-- ===== HEADER ===== -->
   <header class="ll-nav">
@@ -26,75 +26,58 @@
     </div>
   </header>
 
-  <!-- ===== ACTION DEFINED: INSIGHT PHASE ===== -->
-  <section class="alignment-container">
-    <div class="alignment-header">
+  <!-- ===== ENERGY ALIGNED SECTION ===== -->
+  <section class="builder-container">
+    <div class="builder-header animate">
       <span class="eyebrow">Check-In</span>
-      <h1>Action Defined: Energy in Motion</h1>
-      <p>Reflect on how your energy translates into movement. This check-in helps you see how ideas become progress and how clarity supports each next step.</p>
-      <p><strong>A guided version of the Action Defined reflection from Lace & Lime™ sessions.</strong></p>
+      <h1>Energy Aligned</h1>
+      <p>Reflect on what keeps your work, goals, and growth aligned. This space helps you reconnect with your clarity before defining your next actions.</p>
+      <p><strong>A self-guided reflection used in Energy Aligned, Action Defined™ sessions.</strong></p>
     </div>
 
-    <!-- ===== SLIDER FORM ===== -->
-    <form id="alignmentForm">
-
-      <div class="question">
-        <label for="clarity">I know what matters most and where to focus next.</label>
-        <input type="range" id="clarity" name="clarity" min="1" max="5" step="1" value="3">
-        <div class="scale-labels">
-          <span>Unclear</span><span>Somewhat</span><span>Mostly</span><span>Focused</span><span>Clear</span>
+    <form id="builderForm">
+      <div class="prompt-block">
+        <p class="intro-note">Your reflections stay private and saved in your browser. Clear them at any time when you’re ready for a reset.</p>
+        <label for="why">What change or feeling do you want your work to create?</label>
+        <textarea id="why" name="why" placeholder="Describe what drives or inspires your direction."></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('why')">Save</button>
         </div>
       </div>
 
-      <div class="question">
-        <label for="consistency">I take consistent action that supports my goals.</label>
-        <input type="range" id="consistency" name="consistency" min="1" max="5" step="1" value="3">
-        <div class="scale-labels">
-          <span>Rarely</span><span>Sometimes</span><span>Often</span><span>Usually</span><span>Always</span>
+      <div class="prompt-block">
+        <label for="voice">How do you want people to feel when they connect with your message?</label>
+        <textarea id="voice" name="voice" placeholder="What tone, emotion, or presence reflects your work best?"></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('voice')">Save</button>
         </div>
       </div>
 
-      <div class="question">
-        <label for="momentum">My work feels purposeful and well-paced.</label>
-        <input type="range" id="momentum" name="momentum" min="1" max="5" step="1" value="3">
-        <div class="scale-labels">
-          <span>Uneven</span><span>Developing</span><span>Steady</span><span>Strong</span><span>Flowing</span>
+      <div class="prompt-block">
+        <label for="values">Which principles or boundaries keep your work authentic?</label>
+        <textarea id="values" name="values" placeholder="What helps you stay consistent and grounded in your purpose?"></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('values')">Save</button>
         </div>
       </div>
 
-      <div class="question">
-        <label for="direction">I adapt well when plans shift or new priorities appear.</label>
-        <input type="range" id="direction" name="direction" min="1" max="5" step="1" value="3">
-        <div class="scale-labels">
-          <span>Difficult</span><span>Sometimes</span><span>Mostly</span><span>Usually</span><span>Fully</span>
+      <div class="prompt-block">
+        <label for="impact">What outcomes or transformations show your work is having impact?</label>
+        <textarea id="impact" name="impact" placeholder="Describe what alignment or change looks like when it’s working."></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('impact')">Save</button>
         </div>
       </div>
 
-      <div class="question">
-        <label for="confidence">I feel confident in my next step, even if small.</label>
-        <input type="range" id="confidence" name="confidence" min="1" max="5" step="1" value="3">
-        <div class="scale-labels">
-          <span>Unsure</span><span>Somewhat</span><span>Growing</span><span>Grounded</span><span>Assured</span>
-        </div>
+      <div class="builder-actions">
+        <button type="button" class="btn-pink" onclick="generateSummary()">View Summary</button>
+        <button type="button" id="clearDrafts" class="btn-lime-link">Clear Saved Reflections</button>
       </div>
-
-      <button type="button" class="btn-pink" onclick="calculateScore()">View My Reflection</button>
     </form>
 
-    <!-- ===== RESULTS ===== -->
-    <div class="results" id="results" style="display:none;">
-      <h3>Your Action Snapshot</h3>
-      <div class="progress-wrap">
-        <div id="progress-fill" class="progress-fill"></div>
-      </div>
-      <p id="scoreText"></p>
-      <p id="tierText"></p>
-      <p class="closing-note">This reflection marks where clarity becomes motion. Keep strengthening what helps your focus turn into steady progress.</p>
-
-      <div class="next-step">
-        <p>Ready to move from reflection to structure?</p>
-        <a href="action-defined-b.html" class="btn-lime">Continue to Structure</a>
-      </div>
+    <div class="output" id="output">
+      <h3>Your Alignment Summary</h3>
+      <p id="summaryText"></p>
     </div>
   </section>
 
@@ -111,64 +94,55 @@
 
   <!-- ===== SCRIPT ===== -->
   <script>
-  /* LACE & LIME™ — Action Defined: Energy in Motion */
+  /* LACE & LIME™ — Energy Aligned Builder */
 
+  // Restore any saved reflections
   document.addEventListener("DOMContentLoaded", () => {
-    const sliders = document.querySelectorAll('.question input[type="range"]');
-
-    // Gradient fill animation for sliders
-    sliders.forEach(slider => {
-      const updateFill = e => {
-        const value = ((e.target.value - e.target.min) / (e.target.max - e.target.min)) * 100;
-        e.target.style.background = `
-          linear-gradient(to right,
-            var(--lime-med) 0%,
-            var(--lime-med) ${value}%,
-            var(--ink-light) ${value}%,
-            var(--ink-light) 100%)`;
-      };
-      slider.addEventListener("input", updateFill);
-      updateFill({ target: slider });
+    const fields = ["why", "voice", "values", "impact"];
+    fields.forEach(id => {
+      const saved = localStorage.getItem(`laceandlime_${id}`);
+      if (saved) document.getElementById(id).value = saved;
     });
-
-    // Calculate and interpret reflection
-    window.calculateScore = function() {
-      const inputs = document.querySelectorAll('#alignmentForm input[type="range"]');
-      const results = document.getElementById('results');
-      const progressFill = document.getElementById('progress-fill');
-      const scoreText = document.getElementById('scoreText');
-      const tierText = document.getElementById('tierText');
-
-      let total = 0;
-      inputs.forEach(input => total += Number(input.value));
-      const avg = total / inputs.length;
-      const percent = ((avg - 1) / 4) * 100;
-
-      // Animate progress fill
-      progressFill.style.transition = "none";
-      progressFill.style.width = "0%";
-      setTimeout(() => {
-        progressFill.style.transition = "width 0.6s ease";
-        progressFill.style.width = percent + "%";
-      }, 100);
-
-      // Narration
-      scoreText.textContent = `Energy in Motion Score: ${avg.toFixed(1)} / 5 (${Math.round(percent)}%)`;
-
-      let tier = "";
-      if (avg <= 2) {
-        tier = "Emerging Alignment: You’re gaining clarity. Focus on one simple structure that helps energy stay consistent.";
-      } else if (avg <= 3.5) {
-        tier = "Evolving Alignment: Your rhythm is taking shape. Refine how you connect your message to daily systems.";
-      } else {
-        tier = "Defined Alignment: Your energy and structure move together with purpose. Keep that rhythm steady as you grow.";
-      }
-
-      tierText.textContent = tier;
-      results.style.display = "block";
-      results.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
   });
+
+  // Save individual drafts
+  function saveDraft(id) {
+    const value = document.getElementById(id).value.trim();
+    if (value) {
+      localStorage.setItem(`laceandlime_${id}`, value);
+      alert("Saved!");
+    } else {
+      alert("Please write something before saving.");
+    }
+  }
+
+  // Clear all drafts
+  document.getElementById("clearDrafts").addEventListener("click", () => {
+    ["why", "voice", "values", "impact"].forEach(id => localStorage.removeItem(`laceandlime_${id}`));
+    document.querySelectorAll("textarea").forEach(t => t.value = "");
+    document.getElementById("output").style.display = "none";
+  });
+
+  // Generate summary
+  function generateSummary() {
+    const data = {
+      why: document.getElementById("why").value.trim(),
+      voice: document.getElementById("voice").value.trim(),
+      values: document.getElementById("values").value.trim(),
+      impact: document.getElementById("impact").value.trim()
+    };
+
+    const summary = `
+      <p><strong>Purpose:</strong> ${data.why || "Not yet defined."}</p>
+      <p><strong>Expression:</strong> ${data.voice || "Not yet defined."}</p>
+      <p><strong>Authenticity:</strong> ${data.values || "Not yet defined."}</p>
+      <p><strong>Impact:</strong> ${data.impact || "Not yet defined."}</p>
+    `;
+
+    document.getElementById("summaryText").innerHTML = summary;
+    document.getElementById("output").style.display = "block";
+    document.getElementById("output").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
   </script>
 
 </body>
