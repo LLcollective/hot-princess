@@ -96,6 +96,80 @@
     margin-top: -1rem;        /* pull the spiral card upward */
   }
 }
+/* ===== MOBILE TIGHTENING: Spiral Box ===== */
+@media (max-width: 768px) {
+  .sn-stage {
+    padding: 1.25rem 0.75rem;   /* reduce inner padding */
+    border-radius: 16px;        /* slightly smaller corners */
+    max-width: 280px;           /* keep it compact on small screens */
+    margin: 1.5rem auto 0;      /* center and add gentle top spacing */
+  }
+
+  .sn-spiralwrap {
+    max-width: 240px;           /* shrink spiral itself */
+  }
+
+  .sn-spiral svg {
+    height: auto;
+  }
+
+  .sn-cue {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+/* ===== MOBILE OPTIMIZATION (Spiral Layout Adjustments) ===== */
+@media (max-width: 768px) {
+
+  /* Make the spiral box more square */
+  .sn-stage {
+    padding: 1.25rem;             /* slightly tighter */
+    border-radius: 18px;
+    aspect-ratio: 1 / 1;          /* enforce square shape */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Keep the spiral the same size and centered */
+  .sn-spiralwrap {
+    max-width: 260px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Force email + button to stay in one line on mobile */
+  .sn-inline {
+    display: flex;
+    flex-wrap: nowrap;            /* prevent wrapping */
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sn-inline input[type="email"] {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .sn-inline .sn-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 0.6rem 1rem;
+  }
+
+  /* Adjust spacing between form and spiral */
+  .sn-wait {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Slightly tighter overall hero */
+  .sn-hero {
+    padding: 2rem 1rem 2.5rem;
+    gap: 2rem;
+  }
+}
 
 </style>
 
@@ -132,7 +206,7 @@
               method="POST" novalidate>
           <label for="email" class="sr-only">Email address</label>
           <input type="email" id="email" name="email" placeholder="Enter your email..." required>
-          <button type="submit" class="sn-btn">Join Waitlist →</button>
+          <button type="submit" class="sn-btn">Join Waitlist</button>
 
         </form>
       </div>
