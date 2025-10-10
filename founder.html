@@ -960,7 +960,21 @@ section.section-box {
     font-size: 0.9rem;
   }
 
- 
+ @media (max-width: 768px) {
+  /* Reduce space between paragraphs */
+
+
+  /* Reduce space after full paragraph blocks */
+  .section-box {
+    padding-block: .5rem; /* reduces vertical spacing around sections */
+  }
+
+  /* Optional: tighten just the first block under the founder intro */
+  .founder-card__inner + p {
+    margin-top: 0.5rem;
+  }
+}
+
 </style>
 
 
@@ -1106,7 +1120,7 @@ section.section-box {
     </svg>
     <div>
       <div class="step-title">Starting Steady</div>
-      <p>You begin with clarity and steady support. <br>The first step feels welcoming, aligned, and well-guided.</p>
+     <p>You begin with clarity and steady support. <br><nobr>The first step feels welcoming, aligned, and well-guided.</p></nobr>
     </div>
   </div>
 
@@ -1118,7 +1132,7 @@ section.section-box {
     </svg>
     <div>
       <div class="step-title">Systems That Click</div>
-      <p>Scheduling, payment, and check-ins move smoothly. <br>Systems give you momentum without hidden barriers.</p>
+    <nobr>  <p>Scheduling, payment, and check-ins move smoothly. </nobr><br><nobr>Systems give you momentum without hidden barriers. </nobr></p>
     </div>
   </div>
 
@@ -1128,7 +1142,7 @@ section.section-box {
     </svg>
     <div>
       <div class="step-title">Progress You Can See</div>
-      <p>Progress is visible and collaborative. <Br>Communication feels clear, natural, and easy to sustain.</p>
+      <p>Progress is visible and collaborative. <Br><nobr>Communication feels clear, natural, and easy to sustain.</p></nobr>
     </div>
   </div>
 
@@ -1140,8 +1154,8 @@ section.section-box {
     </svg>
     <div>
       <div class="step-title">Support You Can Rely On</div>
-      <p>Your growth remains adaptable and supported. <br>Each step strengthens long-term trust and confidence.</p>
-    </div>
+  <nobr>    <p>Your growth remains adaptable and supported. </nobr><br><nobr>Each step strengthens long-term trust and confidence.</p>
+    </div></nobr>
   </div>
 
   <div class="journey-step animate">
@@ -1152,7 +1166,7 @@ section.section-box {
     </svg>
     <div>
       <div class="step-title">Momentum That Stays With You</div>
-      <p>The process leaves you ready to expand with clarity. <br>You step forward with alignment and momentum that lasts.</p>
+   <nobr>   <p>The process leaves you ready to expand. </nobr><br><nobr>You move forward clearly and with lasting momentum.</nobr></p>
     </div>
   </div>
 
