@@ -6,7 +6,7 @@
   <title>Clear & Steady | Lace & Lime™</title>
 
   <!-- Fonts + CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@100;200;300;400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="global.css" />
  <link rel="stylesheet" href="page.css" />
 
@@ -57,10 +57,10 @@
       <span class="eyebrow">Check-In</span>
       <h1>Clear & Steady</h1>
       <p>
-        This reflection helps you notice where your energy feels grounded and where it needs care.  
-        It’s not about performance; it’s about awareness. Write what feels true for you.
+        Notice what grounds your energy and where it needs care.  
+    <br>Write what feels true for you in this moment with honesty, not performance.
       </p>
-      <p><strong>A personal reflection from the Energy Aligned, Action Defined™ framework.</strong></p>
+      <p><strong>A simplified personal reflection from the Energy Aligned, Action Defined™ framework - tailored post Lace & Lime sessions.</strong></p>
     </div>
 
     <form id="builderForm">
@@ -147,10 +147,8 @@ function generateSummary() {
 
     if (value) {
       summary += `<strong>${label}</strong><br>${value}<br><br>`;
-
       const text = value.toLowerCase();
 
-      // Pttern feedback (Lace & Lime™)
       if (text.includes("tired") || text.includes("drained")) {
         feedback += `• ${theme}: You may be running on empty. Step back for a moment and remind yourself what feels simple and steady. Balance is not a break from progress; it is part of it.<br>`;
       } else if (text.includes("excited") || text.includes("ready")) {
@@ -166,7 +164,6 @@ function generateSummary() {
   });
 
   const output = document.getElementById("output");
-  const summaryText = document.getElementById("summaryText");
 
   if (!summary.trim()) {
     output.innerHTML = `
@@ -177,14 +174,16 @@ function generateSummary() {
     return;
   }
 
-  summaryText.innerHTML = summary;
-
   const insights = feedback
     ? `<h4>Your Energy Insights</h4><p>${feedback}</p>`
     : `<p>Your reflections feel balanced. Keep trusting your clarity and rhythm.</p>`;
 
-  output.innerHTML =
-    `<h3>Your Clear & Steady Reflection</h3><p>${summary}</p>${insights}`;
+  output.innerHTML = `
+    <h3>Your Clear & Steady Reflection</h3>
+    <div class="summary-block">${summary}</div>
+    <div class="insights-block">${insights}</div>
+  `;
+
   output.scrollIntoView({ behavior: "smooth" });
 }
 

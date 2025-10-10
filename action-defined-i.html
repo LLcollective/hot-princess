@@ -31,8 +31,8 @@
     <div class="alignment-header">
       <span class="eyebrow">Check-In</span>
       <h1>Energy and Structure Alignment</h1>
-      <p>Reflect on how clearly your energy supports your systems today. This check-in helps you see how structure moves with purpose and how momentum builds from balance.</p>
-      <p><strong>A self-guided version of the Action Defined framework used in Lace & Lime™ sessions.</strong></p>
+      <p>Reflect on how clearly your energy supports your systems. See if your structure is moving with purpose and how momentum builds from balance.</p>
+      <p><strong>A simplified self-guided version of the Action Defined framework tailored for clients post Lace & Lime™ sessions.</strong></p>
     </div>
 
     <!-- ===== SLIDER FORM ===== -->
@@ -88,7 +88,7 @@
         <div id="progress-fill" class="progress-fill"></div>
       </div>
       <p id="scoreText"></p>
-      <p id="tierText"></p>
+      <p id="tierText"></p><br><br>
       <p class="closing-note">Each reflection builds rhythm. Keep aligning clarity with structure as you move forward.</p>
 
       <div class="next-step">
@@ -155,14 +155,15 @@
       // Narration
       scoreText.textContent = `Structure Alignment Level: ${avg.toFixed(1)} / 5 (${Math.round(percent)}%)`;
 
-      let tier = "";
-      if (avg <= 2) {
-        tier = "Emerging Alignment: You’re gaining definition. Focus on one habit or anchor that brings your energy and systems into sync.";
-      } else if (avg <= 3.5) {
-        tier = "Evolving Alignment: Your clarity is forming shape. Refine how you share your message and strengthen the systems that support it.";
-      } else {
-        tier = "Defined Alignment: Your message, rhythm, and systems are working as one. This is your growth window—sustain momentum with structure that supports expansion.";
-      }
+let tier = "";
+if (avg <= 2) {
+  tier = "Emerging Alignment: You’re gaining definition. Begin by noticing what steadies you, a single habit, moment, or ritual that reminds you of your rhythm. Let that anchor guide your next action toward consistency.";
+} else if (avg <= 3.5) {
+  tier = "Evolving Alignment: Your clarity is taking shape. Refine how you communicate what matters, and align your pace with your priorities. Strengthen your rhythm by simplifying what drains you and focusing on what restores focus and ease.";
+} else {
+  tier = "Defined Alignment: Your message, rhythm, and systems are in sync. You’re moving from stability into growth. Sustain this phase by creating space for review and refinement, structure that protects your clarity while you expand.";
+}
+
 
       tierText.textContent = tier;
       results.style.display = "block";
