@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="page.css">
 </head>
 
-<body class="energy-aligned-page">
+<body class="action-defined-page">
 
   <!-- ===== HEADER ===== -->
   <header class="ll-nav">
@@ -26,95 +26,77 @@
     </div>
   </header>
 
-  <!-- ===== ENERGY ALIGNED SECTION ===== -->
+  <!-- ===== ACTION DEFINED B: STRUCTURE & CLARITY ===== -->
   <section class="alignment-container">
     <div class="alignment-header">
       <span class="eyebrow">Check-In</span>
-      <h1>Action Defined</h1>
-      <p>Notice how your energy feels across the areas that matter most. This reflection helps you see where you feel grounded, stretched, or ready to restore balance.</p>
-      <p><strong>A self-guided version of an Energy Aligned, Action Defined™ reflection used in sessions.</strong></p>
+      <h1>Energy and Structure Alignment</h1>
+      <p>Reflect on how clearly your energy supports your systems today. This check-in helps you see how structure moves with purpose and how momentum builds from balance.</p>
+      <p><strong>A self-guided version of the Action Defined framework used in Lace & Lime™ sessions.</strong></p>
     </div>
 
     <!-- ===== SLIDER FORM ===== -->
     <form id="alignmentForm">
 
       <div class="question">
-        <label for="clarity">I feel connected to what matters most to me.</label>
-        <input type="range" id="clarity" name="clarity" min="1" max="5" step="1" value="3">
+        <label for="systems">My tools and systems help my message stay consistent.</label>
+        <input type="range" id="systems" name="systems" min="1" max="5" step="1" value="3">
         <div class="scale-labels">
-          <span>Disconnected</span><span>Somewhat</span><span>Present</span><span>Grounded</span><span>Aligned</span>
+          <span>Unclear</span><span>Somewhat</span><span>Mostly</span><span>Consistent</span><span>Aligned</span>
         </div>
       </div>
 
       <div class="question">
-        <label for="balance">I know when to rest and when to move.</label>
-        <input type="range" id="balance" name="balance" min="1" max="5" step="1" value="3">
+        <label for="audience">My audience clearly recognizes what I stand for.</label>
+        <input type="range" id="audience" name="audience" min="1" max="5" step="1" value="3">
         <div class="scale-labels">
-          <span>No</span><span>Sometimes</span><span>Mostly</span><span>Usually</span><span>Always</span>
+          <span>Unclear</span><span>Somewhat</span><span>Recognizable</span><span>Clear</span><span>Distinct</span>
         </div>
       </div>
 
       <div class="question">
-        <label for="connection">I feel connected to myself and others.</label>
-        <input type="range" id="connection" name="connection" min="1" max="5" step="1" value="3">
+        <label for="workflow">My day-to-day workflow supports steady progress.</label>
+        <input type="range" id="workflow" name="workflow" min="1" max="5" step="1" value="3">
         <div class="scale-labels">
-          <span>Rarely</span><span>Sometimes</span><span>Often</span><span>Mostly</span><span>Fully</span>
+          <span>Rarely</span><span>Sometimes</span><span>Often</span><span>Usually</span><span>Always</span>
         </div>
       </div>
 
       <div class="question">
-        <label for="focus">My focus and energy feel clear and steady.</label>
-        <input type="range" id="focus" name="focus" min="1" max="5" step="1" value="3">
+        <label for="voice">My brand feels like me wherever it’s seen.</label>
+        <input type="range" id="voice" name="voice" min="1" max="5" step="1" value="3">
         <div class="scale-labels">
-          <span>Scattered</span><span>Unclear</span><span>Shifting</span><span>Centered</span><span>Strong</span>
+          <span>Disconnected</span><span>Somewhat</span><span>Mostly</span><span>Cohesive</span><span>Authentic</span>
         </div>
       </div>
 
       <div class="question">
-        <label for="presence">I give my attention to what truly matters right now.</label>
-        <input type="range" id="presence" name="presence" min="1" max="5" step="1" value="3">
+        <label for="momentum">My message and systems are building sustainable momentum.</label>
+        <input type="range" id="momentum" name="momentum" min="1" max="5" step="1" value="3">
         <div class="scale-labels">
-          <span>Rarely</span><span>Sometimes</span><span>Mostly</span><span>Often</span><span>Always</span>
+          <span>Still Forming</span><span>Developing</span><span>Steady</span><span>Growing</span><span>Flowing</span>
         </div>
       </div>
 
-      <button type="button" class="btn-pink" onclick="calculateScore()">View My Results</button>
+      <button type="button" class="btn-pink" onclick="calculateScore()">View My Reflection</button>
     </form>
 
     <!-- ===== RESULTS ===== -->
     <div class="results" id="results" style="display:none;">
-      <h3>Your Energy Snapshot</h3>
+      <h3>Your Alignment Snapshot</h3>
       <div class="progress-wrap">
         <div id="progress-fill" class="progress-fill"></div>
       </div>
       <p id="scoreText"></p>
       <p id="tierText"></p>
+      <p class="closing-note">Each reflection builds rhythm. Keep aligning clarity with structure as you move forward.</p>
 
       <div class="next-step">
-        <p>Ready to turn awareness into action?</p>
-        <a href="action-defined-b.html" class="btn-lime">Go to Action Defined →</a>
+        <p>Ready to deepen your structure and flow?</p>
+        <a href="book-now.html" class="btn-lime">Continue to Coaching or Session</a>
       </div>
     </div>
   </section>
-
-
-
-
-<!-- ===== NEXT STEP ===== -->
-<div class="next-step highlight animate" style="margin-top:2rem;">
-  <span class="eyebrow">Next Step</span>
-  <h3>Energy Aligned, Action Defined</h3>
-  <p>
-    Ready for more?
-  </p>
-  <a href="book-now.html" class="btn-lime-link">Next Step</a>
-</div>
-
-
-
-
-
-
 
   <!-- ===== FOOTER ===== -->
   <footer>
@@ -129,12 +111,12 @@
 
   <!-- ===== SCRIPT ===== -->
   <script>
-  /* LACE & LIME™ Energy Aligned — Personal Reflection Version */
+  /* LACE & LIME™ — Action Defined (Part B) Reflection */
 
   document.addEventListener("DOMContentLoaded", () => {
     const sliders = document.querySelectorAll('.question input[type="range"]');
 
-    // Update gradient fill for sliders
+    // Gradient fill animation for sliders
     sliders.forEach(slider => {
       const updateFill = e => {
         const value = ((e.target.value - e.target.min) / (e.target.max - e.target.min)) * 100;
@@ -149,7 +131,7 @@
       updateFill({ target: slider });
     });
 
-    // Calculate and display score
+    // Calculate and interpret reflection
     window.calculateScore = function() {
       const inputs = document.querySelectorAll('#alignmentForm input[type="range"]');
       const results = document.getElementById('results');
@@ -162,7 +144,7 @@
       const avg = total / inputs.length;
       const percent = ((avg - 1) / 4) * 100;
 
-      // Animate bar fill
+      // Animate progress fill
       progressFill.style.transition = "none";
       progressFill.style.width = "0%";
       setTimeout(() => {
@@ -170,17 +152,16 @@
         progressFill.style.width = percent + "%";
       }, 100);
 
-      // Display score
-      scoreText.textContent = `Energy Balance Score: ${avg.toFixed(1)} / 5  (${Math.round(percent)}%)`;
+      // Narration
+      scoreText.textContent = `Structure Alignment Level: ${avg.toFixed(1)} / 5 (${Math.round(percent)}%)`;
 
-      // Tier feedback
       let tier = "";
       if (avg <= 2) {
-        tier = "Emerging Alignment: Your awareness is growing. Take gentle pauses and return to what steadies you.";
+        tier = "Emerging Alignment: You’re gaining definition. Focus on one habit or anchor that brings your energy and systems into sync.";
       } else if (avg <= 3.5) {
-        tier = "Evolving Alignment: Your energy is finding rhythm. Notice what restores balance when things stretch thin.";
+        tier = "Evolving Alignment: Your clarity is forming shape. Refine how you share your message and strengthen the systems that support it.";
       } else {
-        tier = "Aligned: Your awareness, focus, and rhythm feel integrated. Keep honoring your balance as it evolves.";
+        tier = "Defined Alignment: Your message, rhythm, and systems are working as one. This is your growth window—sustain momentum with structure that supports expansion.";
       }
 
       tierText.textContent = tier;
