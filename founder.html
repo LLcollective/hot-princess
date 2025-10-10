@@ -789,7 +789,178 @@ section.section-box {
 @supports (font-variation-settings: normal) {
   .journey-step p::first-line { font-variation-settings: "wght" 600; }
 }
+@media (max-width: 480px) {
+  /* slightly widen cards for narrow phones */
+  .timeline-items .milestone {
+    max-width: 90%;
+    margin: 1.25rem auto;
+  }
 
+  /* make the text a bit larger for readability */
+  .timeline-items .milestone h4 {
+    font-size: 1.05rem;
+  }
+  .timeline-items .milestone p {
+    font-size: 0.95rem;
+  }
+
+  /* tighten line + dot positioning */
+  .timeline-line {
+    left: 20px;
+  }
+  .timeline-items .dot {
+    left: -25px;
+  }
+
+  /* soften animation pacing for smoother scroll */
+  @keyframes lineGrowVertical {
+    to { height: 100%; }
+  }
+}
+/* ============================================================
+   🌸 LACE & LIME™ — RESPONSIVE PACK (Founder Page)
+   ============================================================ */
+
+/* ====== GLOBAL TYPOGRAPHY ====== */
+@media (max-width: 900px) {
+  body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+/* ============================================================
+   🌸 PROOF OF IMPACT — Timeline
+   ============================================================ */
+@media (max-width: 768px) {
+  .proof-timeline {
+    padding: 1.5rem 0;
+    margin: 3rem auto;
+  }
+
+  .proof-timeline h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-items {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 0;
+  }
+
+  .timeline-items .milestone {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.25rem 1rem;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(4px);
+    border-radius: var(--radius-md);
+  }
+
+  .timeline-items .milestone h4 {
+    font-size: 1.05rem;
+  }
+  .timeline-items .milestone p {
+    font-size: 0.95rem;
+  }
+
+  /* vertical line + dot tweaks */
+  .timeline-line {
+    left: 22px;
+    width: 3px;
+    background: var(--lace-light, #f8d7dc);
+  }
+  .timeline-items .dot {
+    left: -26px;
+  }
+}
+
+/* ============================================================
+   💚 JOURNEY — Working Together Feels Like
+   ============================================================ */
+@media (max-width: 768px) {
+  .journey-container {
+    padding: 2rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .journey-step {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    text-align: left;
+  }
+
+  .journey-step .journey-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .journey-step .step-title {
+    color: var(--lace-med, #e3b7c2);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .journey-step p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+/* ============================================================
+   🎓 CREDENTIALS — Accordion List
+   ============================================================ */
+@media (max-width: 768px) {
+  .credentials {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .credential-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .credential-cards details {
+    width: 90%;
+    max-width: 480px;
+    text-align: center;
+  }
+
+  .credential-cards summary {
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .credential-cards .body {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+/* ============================================================
+   ✨ MICRO-OPTIMIZATION FOR SMALL PHONES
+   ============================================================ */
+@media (max-width: 480px) {
+  .proof-timeline h2,
+  .journey-container h2,
+  .credentials h2 {
+    font-size: 1.2rem;
+  }
+
+  .journey-step p,
+  .timeline-items .milestone p,
+  .credential-cards .body {
+    font-size: 0.9rem;
+  }
+
+ 
 </style>
 
 
@@ -927,7 +1098,7 @@ section.section-box {
 
 <!-- ===== JOURNEY ===== -->
 <section class="section-box journey journey-container">
-  <h2>Working Together Feels Like</h2>
+  <h2>     Working Together Feels Like:</h2>
 
   <div class="journey-step animate">
     <svg class="journey-icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
