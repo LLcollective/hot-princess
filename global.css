@@ -440,3 +440,226 @@ input[type="range"]:hover::-webkit-slider-thumb {
     min-height: 100px;
   }
 }
+
+
+/* =========================================================
+   LACE & LIME™ — GLOBAL RESPONSIVENESS
+   Applies to: all pages, forms, heroes, cards, timelines, grids
+   ========================================================= */
+
+/* === TABLET (≤1024px) === */
+@media (max-width: 1024px) {
+  body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  header.ll-nav {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .wrap-medium,
+  .container,
+  section[class*="-container"],
+  section[class*="-page"],
+  section[class*="-section"] {
+    padding-inline: 2rem;
+    max-width: 100%;
+  }
+
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+
+  .chips {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .booknow-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .timeline-items,
+  .journey-step {
+    max-width: 95%;
+    margin-inline: auto;
+  }
+}
+
+/* === MOBILE (≤768px) === */
+@media (max-width: 768px) {
+
+  /* General layout */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  section[class*="-container"],
+  section[class*="-page"],
+  section[class*="-section"],
+  .builder-container,
+  .booknow-container,
+  .proof-timeline,
+  .founder-card {
+    padding-inline: 1rem;
+    padding-block: 1.5rem;
+    max-width: 100%;
+  }
+
+  /* Hero and headers */
+  .hero-headings,
+  .alignment-header,
+  .builder-header,
+  .sn-hero {
+    text-align: left;
+    padding-inline: 1.25rem;
+    max-width: 100%;
+  }
+
+  .hero-headings h1,
+  .alignment-header h1,
+  .builder-header h1 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    line-height: 1.2;
+  }
+
+  .hero-headings p,
+  .alignment-header p,
+  .builder-header p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: left;
+    max-width: 100%;
+  }
+
+  /* Cards + form blocks */
+  .booknow-card,
+  .prompt-block,
+  .output,
+  .section-box,
+  .credential-cards details,
+  .journey-step {
+    margin-inline: 0.75rem;
+    width: calc(100% - 1.5rem);
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+
+  /* Cards stack naturally */
+  .booknow-cards {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Buttons */
+  .btn-lime,
+  .btn-pink,
+  .btn-lime-link,
+  .btn-pink-link {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    margin-inline: auto;
+    font-size: 0.9rem;
+  }
+
+  /* Textareas and forms */
+  textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="range"] {
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  /* Timelines and milestones */
+  .timeline-items {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .milestone {
+    margin-inline: 0.75rem;
+    width: auto;
+  }
+
+  /* Spiral / hero visuals */
+  .sn-stage {
+    padding: 1.5rem 1rem;
+    border-radius: 18px;
+  }
+  .sn-spiralwrap {
+    max-width: 300px;
+    margin-inline: auto;
+  }
+
+  /* Chips */
+  .chips {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.6rem;
+    justify-content: center;
+  }
+  .chip {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.75rem;
+  }
+
+  /* Founder card + credentials */
+  .founder-card__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  .founder-card__figure img {
+    width: 180px;
+    height: auto;
+  }
+
+  /* Footer */
+  footer {
+    padding: 1.25rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  /* Misc: reduce spacing between stacked sections */
+  .section-box + .section-box,
+  .prompt-block + .prompt-block,
+  .journey-step + .journey-step {
+    margin-top: 1.25rem;
+  }
+}
+
+/* === SMALL MOBILE (≤480px) === */
+@media (max-width: 480px) {
+  .hero-headings h1 {
+    font-size: 1.6rem;
+  }
+  .hero-headings p,
+  .alignment-header p {
+    font-size: 0.9rem;
+  }
+
+  .booknow-card,
+  .prompt-block {
+    padding: 1rem;
+  }
+
+  .chips {
+    gap: 0.4rem;
+  }
+
+  .btn-lime,
+  .btn-pink {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  footer {
+    font-size: 0.75rem;
+  }
+}

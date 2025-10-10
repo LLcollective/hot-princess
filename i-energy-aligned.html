@@ -6,9 +6,34 @@
   <title>Energy Aligned | Lace & Lime™</title>
 
   <!-- Fonts + Global Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="global.css">
   <link rel="stylesheet" href="page.css">
+
+  <style>
+    /* === Force builder buttons right-aligned === */
+    .builder-actions {
+      display: flex;
+      justify-content: flex-end !important;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    /* tighten prompt boxes a bit for better balance */
+    .prompt-block {
+      margin-bottom: 1.5rem;
+    }
+
+    /* mobile spacing */
+    @media (max-width: 768px) {
+      .builder-container {
+        padding: 1.5rem 1.25rem 2.5rem;
+      }
+      .prompt-block textarea {
+        min-height: 100px;
+      }
+    }
+  </style>
 </head>
 
 <body class="energy-aligned-page">
@@ -20,130 +45,149 @@
         <h1 class="logo-small-centered">
           <span class="lace">lace</span>
           <span class="amp">&amp;</span>
-          <span class="lime">LIME</span>
+          <span class="lime">lime</span>
         </h1>
       </a>
     </div>
   </header>
 
-  <!-- ===== ENERGY ALIGNED SECTION ===== -->
+  <!-- ===== ENERGY ALIGNED BUILDER ===== -->
   <section class="builder-container">
     <div class="builder-header animate">
       <span class="eyebrow">Check-In</span>
       <h1>Energy Aligned</h1>
-      <p>Reflect on what keeps your work, goals, and growth aligned. This space helps you reconnect with your clarity before defining your next actions.</p>
-      <p><strong>A self-guided reflection used in Energy Aligned, Action Defined™ sessions.</strong></p>
+      <p>
+        This reflection helps you notice where your energy feels grounded and where it needs care.  
+        It’s not about performance; it’s about awareness. Write what feels true for you.
+      </p>
+      <p><strong>A personal reflection from the Energy Aligned, Action Defined™ framework.</strong></p>
     </div>
 
     <form id="builderForm">
+
       <div class="prompt-block">
-        <p class="intro-note">Your reflections stay private and saved in your browser. Clear them at any time when you’re ready for a reset.</p>
-        <label for="why">What change or feeling do you want your work to create?</label>
-        <textarea id="why" name="why" placeholder="Describe what drives or inspires your direction."></textarea>
+        <p class="intro-note">Your notes stay private and are saved in your browser until you clear them.</p><br>
+
+        <label for="presence">What moments, places, or people help you feel fully present?</label>
+        <textarea id="presence" name="presence" placeholder="Where do I feel most connected to myself as of lately?"></textarea>
         <div class="builder-actions">
-          <button type="button" class="btn-lime" onclick="saveDraft('why')">Save</button>
+          <button type="button" class="btn-lime" onclick="saveDraft('presence')">Save</button>
         </div>
       </div>
 
       <div class="prompt-block">
-        <label for="voice">How do you want people to feel when they connect with your message?</label>
-        <textarea id="voice" name="voice" placeholder="What tone, emotion, or presence reflects your work best?"></textarea>
+        <label for="balance">What part of my life feels steady, and what part feels stretched thin?</label>
+        <textarea id="balance" name="balance" placeholder="Notice where you feel balanced or off-center."></textarea>
         <div class="builder-actions">
-          <button type="button" class="btn-lime" onclick="saveDraft('voice')">Save</button>
+          <button type="button" class="btn-lime" onclick="saveDraft('balance')">Save</button>
         </div>
       </div>
 
       <div class="prompt-block">
-        <label for="values">Which principles or boundaries keep your work authentic?</label>
-        <textarea id="values" name="values" placeholder="What helps you stay consistent and grounded in your purpose?"></textarea>
+        <label for="clarity">What helps me return to calm and clarity when things get loud?</label>
+        <textarea id="clarity" name="clarity" placeholder="List rituals, habits, or anchors that steady you."></textarea>
         <div class="builder-actions">
-          <button type="button" class="btn-lime" onclick="saveDraft('values')">Save</button>
+          <button type="button" class="btn-lime" onclick="saveDraft('clarity')">Save</button>
         </div>
       </div>
 
       <div class="prompt-block">
-        <label for="impact">What outcomes or transformations show your work is having impact?</label>
-        <textarea id="impact" name="impact" placeholder="Describe what alignment or change looks like when it’s working."></textarea>
+        <label for="connection">Who or what supports my growth right now?</label>
+        <textarea id="connection" name="connection" placeholder="Think of people, communities, or environments that feel restorative."></textarea>
         <div class="builder-actions">
-          <button type="button" class="btn-lime" onclick="saveDraft('impact')">Save</button>
+          <button type="button" class="btn-lime" onclick="saveDraft('connection')">Save</button>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <label for="direction">What feels ready for movement or change?</label>
+        <textarea id="direction" name="direction" placeholder="Describe the area of your life that’s asking for next steps."></textarea>
+        <div class="builder-actions">
+          <button type="button" class="btn-lime" onclick="saveDraft('direction')">Save</button>
         </div>
       </div>
 
       <div class="builder-actions">
         <button type="button" class="btn-pink" onclick="generateSummary()">View Summary</button>
-        <button type="button" id="clearDrafts" class="btn-lime-link">Clear Saved Reflections</button>
+        <button type="button" id="clearDrafts" class="btn-lime-link">Clear Saved Entries</button>
       </div>
     </form>
 
     <div class="output" id="output">
-      <h3>Your Alignment Summary</h3>
+      <h3>Your Energy Reflection</h3>
       <p id="summaryText"></p>
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
   <footer>
-    <div class="wrap-heavy">
-      <p class="legal">
-        Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>  
-        © 2025 Lace & Lime™ LLC. All rights reserved. ·  
-        <a href="privacy-terms.html">Privacy and Terms</a>
-      </p>
-    </div>
+    <p class="legal">
+      Lace & Lime™ · <span class="anchor">Energy Aligned, Action Defined™</span>  
+      © 2025 Lace & Lime™ LLC · <a href="privacy-terms.html">Privacy & Terms</a>
+    </p>
   </footer>
 
-  <!-- ===== SCRIPT ===== -->
-  <script>
-  /* LACE & LIME™ — Energy Aligned Builder */
 
-  // Restore any saved reflections
-  document.addEventListener("DOMContentLoaded", () => {
-    const fields = ["why", "voice", "values", "impact"];
-    fields.forEach(id => {
-      const saved = localStorage.getItem(`laceandlime_${id}`);
-      if (saved) document.getElementById(id).value = saved;
-    });
-  });
+<script>
+function generateSummary() {
+  const fields = [
+    { id: "presence", theme: "Clear & Steady" },
+    { id: "balance", theme: "Boundaries" },
+    { id: "clarity", theme: "Focus" },
+    { id: "connection", theme: "Support" },
+    { id: "direction", theme: "Movement" }
+  ];
 
-  // Save individual drafts
-  function saveDraft(id) {
+  let summary = "";
+  let feedback = "";
+
+  fields.forEach(({ id, theme }) => {
+    const label = document.querySelector(`label[for=${id}]`).innerText;
     const value = document.getElementById(id).value.trim();
-    if (value) {
-      localStorage.setItem(`laceandlime_${id}`, value);
-      alert("Saved!");
-    } else {
-      alert("Please write something before saving.");
-    }
-  }
 
-  // Clear all drafts
-  document.getElementById("clearDrafts").addEventListener("click", () => {
-    ["why", "voice", "values", "impact"].forEach(id => localStorage.removeItem(`laceandlime_${id}`));
-    document.querySelectorAll("textarea").forEach(t => t.value = "");
-    document.getElementById("output").style.display = "none";
+    if (value) {
+      summary += `<strong>${label}</strong><br>${value}<br><br>`;
+
+      const text = value.toLowerCase();
+
+      // Pttern feedback (Lace & Lime™)
+      if (text.includes("tired") || text.includes("drained")) {
+        feedback += `• ${theme}: You may be running on empty. Step back for a moment and remind yourself what feels simple and steady. Balance is not a break from progress; it is part of it.<br>`;
+      } else if (text.includes("excited") || text.includes("ready")) {
+        feedback += `• ${theme}: You are tuned in and aligned. Choose one action that feels clear and light, something that builds quiet confidence rather than pressure.<br>`;
+      } else if (text.includes("unsure") || text.includes("stuck")) {
+        feedback += `• ${theme}: Uncertainty often means you are learning what matters next. Notice what feels honest, even if it is small, and move gently from there.<br>`;
+      } else if (text.includes("grateful") || text.includes("peace")) {
+        feedback += `• ${theme}: You are finding rhythm and ease. Let that peace remind you that clarity grows through consistency, not control.<br>`;
+      } else {
+        feedback += `• ${theme}: Keep noticing what steadies you. The more clearly you name what feels right, the easier it becomes to stay balanced in motion.<br>`;
+      }
+    }
   });
 
-  // Generate summary
-  function generateSummary() {
-    const data = {
-      why: document.getElementById("why").value.trim(),
-      voice: document.getElementById("voice").value.trim(),
-      values: document.getElementById("values").value.trim(),
-      impact: document.getElementById("impact").value.trim()
-    };
+  const output = document.getElementById("output");
+  const summaryText = document.getElementById("summaryText");
 
-    const summary = `
-      <p><strong>Purpose:</strong> ${data.why || "Not yet defined."}</p>
-      <p><strong>Expression:</strong> ${data.voice || "Not yet defined."}</p>
-      <p><strong>Authenticity:</strong> ${data.values || "Not yet defined."}</p>
-      <p><strong>Impact:</strong> ${data.impact || "Not yet defined."}</p>
-    `;
-
-    document.getElementById("summaryText").innerHTML = summary;
-    document.getElementById("output").style.display = "block";
-    document.getElementById("output").scrollIntoView({ behavior: "smooth", block: "start" });
+  if (!summary.trim()) {
+    output.innerHTML = `
+      <h3>Your Clear & Steady Reflection</h3>
+      <p>Start your reflection to see your energy summary come to life. 
+      Write a few notes in the boxes above and then tap <strong>View Summary</strong>.</p>`;
+    output.scrollIntoView({ behavior: "smooth" });
+    return;
   }
-  </script>
 
+  summaryText.innerHTML = summary;
+
+  const insights = feedback
+    ? `<h4>Your Energy Insights</h4><p>${feedback}</p>`
+    : `<p>Your reflections feel balanced. Keep trusting your clarity and rhythm.</p>`;
+
+  output.innerHTML =
+    `<h3>Your Clear & Steady Reflection</h3><p>${summary}</p>${insights}`;
+  output.scrollIntoView({ behavior: "smooth" });
+}
+
+</script>
 </body>
 </html>
