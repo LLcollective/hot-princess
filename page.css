@@ -230,7 +230,75 @@ button, input, textarea, select {
 .spiral-night footer{background:transparent;border-top:1px solid rgba(255,255,255,.08);}
 .spiral-night .legal{color:#aeb6c9;}
 .spiral-night .legal a{color:var(--brand-light);}
-@media(prefers-reduced-motion:reduce){.sn-stage::before,.sn-spiral path,.sn-stage #sn-grad stop{animation:none!important;}}
+@media(prefers-reduced-motion:reduce){.sn-stage::before,.sn-spiral path,.sn-stage #sn-grad stop{animation:none!important;}} /* ===== Mobile Optimization: Spiral Page ===== */
+@media (max-width: 768px) {
+
+  /* tighter container padding */
+  .sn-hero {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem 3rem;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  /* intro block */
+  .sn-copy {
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  .sn-title {
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    line-height: 1.1;
+  }
+
+  .sn-sub {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* email form stack */
+  .sn-inline {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .sn-inline input[type="email"] {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* stage block */
+  .sn-stage {
+    padding: 2rem 1rem;
+    border-radius: 20px;
+  }
+  .sn-spiralwrap {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* make spiral more visible */
+  .sn-spiral path {
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 14px rgba(242, 201, 207, 0.35));
+  }
+
+  /* cue text spacing */
+  .sn-cue {
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  /* footer */
+  footer {
+    padding: 1.5rem 0 2.5rem;
+    text-align: center;
+  }
+
+
+
+
 
 
 
