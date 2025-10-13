@@ -159,22 +159,27 @@
 
 
 
-
-
-
-
-<!-- SCRIPTS -->
 <script>
   async function handleFormSubmit(e) {
-    e.preventDefault(); // prevent default form POST
+    e.preventDefault();
 
     const form = document.getElementById("contactForm");
+    const status = document.getElementById("formStatus");
+    const thankYou = document.getElementById("thankYou");
+    const submitBtn = document.getElementById("submitBtn");
+
+    status.textContent = "";
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
     const formData = new FormData(form);
 
-    // Grab captcha token
+    // Get captcha token
     const token = grecaptcha.getResponse();
     if (!token) {
       alert("Please complete the captcha.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send";
       return;
     }
     formData.append("g-recaptcha-response", token);
@@ -182,36 +187,47 @@
     try {
       const res = await fetch("/api/send", {
         method: "POST",
-        body: formData
+        body: formData,
       });
       const data = await res.json();
 
       if (data.ok) {
-        document.getElementById("thankYou").showModal();
+        // Reset form and captcha
         form.reset();
-        grecaptcha.reset(); // reset captcha for next submission
+        grecaptcha.reset();
+
+        // Show thank-you modal if it exists
+        if (thankYou && typeof thankYou.showModal === "function") {
+          thankYou.showModal();
+        } else {
+          alert("Message sent successfully!");
+        }
+
+        status.textContent = "Message sent successfully.";
       } else {
-        alert("Something went wrong: " + (data.error || "Unknown error"));
+        const errMsg = data.error || "Something went wrong.";
+        alert(errMsg);
+        status.textContent = errMsg;
       }
     } catch (err) {
       console.error("SEND_ERROR", err);
       alert("Network error, please try again.");
+      status.textContent = "Network error.";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send";
     }
   }
 
-  // Attach handler on DOM load
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
-    if (form) {
-      form.addEventListener("submit", handleFormSubmit);
-    }
-
     const closeBtn = document.getElementById("closeModal");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        document.getElementById("thankYou").close();
-      });
-    }
+
+    if (form) form.addEventListener("submit", handleFormSubmit);
+    if (closeBtn) closeBtn.addEventListener("click", () => {
+      const thankYou = document.getElementById("thankYou");
+      if (thankYou) thankYou.close();
+    });
   });
 </script>
 
