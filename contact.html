@@ -164,39 +164,43 @@
     e.preventDefault();
 
     const form = document.getElementById("contactForm");
-    const status = document.getElementById("formStatus");
     const thankYou = document.getElementById("thankYou");
     const submitBtn = document.getElementById("submitBtn");
+    const status = document.getElementById("formStatus");
 
-    status.textContent = "";
     submitBtn.disabled = true;
     submitBtn.textContent = "Sending...";
+    status.textContent = "";
 
-    const formData = new FormData(form);
+    // Collect data manually
+    const payload = {
+      firstName: form.firstName.value.trim(),
+      lastName: form.lastName.value.trim(),
+      email: form.email.value.trim(),
+      subject: form.subject.value.trim(),
+      message: form.message.value.trim(),
+      "g-recaptcha-response": grecaptcha.getResponse(),
+    };
 
-    // Get captcha token
-    const token = grecaptcha.getResponse();
-    if (!token) {
+    if (!payload["g-recaptcha-response"]) {
       alert("Please complete the captcha.");
       submitBtn.disabled = false;
       submitBtn.textContent = "Send";
       return;
     }
-    formData.append("g-recaptcha-response", token);
 
     try {
       const res = await fetch("/api/send", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
       const data = await res.json();
 
       if (data.ok) {
-        // Reset form and captcha
         form.reset();
         grecaptcha.reset();
 
-        // Show thank-you modal if it exists
         if (thankYou && typeof thankYou.showModal === "function") {
           thankYou.showModal();
         } else {
@@ -205,9 +209,8 @@
 
         status.textContent = "Message sent successfully.";
       } else {
-        const errMsg = data.error || "Something went wrong.";
-        alert(errMsg);
-        status.textContent = errMsg;
+        alert(data.error || "Something went wrong.");
+        status.textContent = data.error || "Something went wrong.";
       }
     } catch (err) {
       console.error("SEND_ERROR", err);
@@ -222,7 +225,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
     const closeBtn = document.getElementById("closeModal");
-
     if (form) form.addEventListener("submit", handleFormSubmit);
     if (closeBtn) closeBtn.addEventListener("click", () => {
       const thankYou = document.getElementById("thankYou");
@@ -230,6 +232,7 @@
     });
   });
 </script>
+
 
 <!-- Google reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
