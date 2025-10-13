@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
+
+
+
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -37,18 +43,200 @@
 </head>
 
 <style>
-
-/* ===== contact.html ===== */
-@media (max-width: 600px) {
-  .form-row {
-    flex-direction: column;
-  }
-  .form-group {
-    width: 100%;
-  }
+/* ========== CONTACT FORM LAYOUT ========== */
+.contact-form {
+  max-width: 640px;
+  margin: 4rem auto;
+  padding: 2.5rem 1.5rem;
+  font-family: var(--font-body);
+  color: var(--ink-med);
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
 }
 
+.hero-headings {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--brand-dark); /* pink tone */
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.tagline {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--ink-dark);
+  margin: 0.25rem 0;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--ink-med);
+  max-width: 440px;
+  margin: 0.25rem auto 0 auto;
+}
+
+/* ========== FORM GRID ========== */
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group.full {
+  width: 100%;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--ink-dark);
+}
+
+input,
+textarea {
+  font: inherit;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ink-light);
+  border-radius: var(--radius-md);
+  background: #fff;
+  transition: all 0.25s ease;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ========== FOCUS STATES ========== */
+input:focus,
+textarea:focus {
+  border-color: var(--brand-dark);
+  box-shadow: 0 0 0 3px rgba(210, 81, 106, 0.15); /* soft pink focus */
+  outline: none;
+}
+
+/* ========== BUTTONS & STATUS ========== */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  background: var(--lime-dark);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background: var(--lime-med);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.status {
+  font-size: 0.9rem;
+  color: var(--ink-med);
+  min-height: 1rem;
+}
+
+/* ========== RECAPTCHA + EMAIL LINK ========== */
+.g-recaptcha {
+  transform: scale(0.9);
+  transform-origin: center;
+}
+
+.small {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ink-med);
+  margin-top: 2rem;
+}
+
+.small a {
+  color: var(--brand-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.small a:hover {
+  text-decoration: underline;
+}
+
+/* ========== THANK YOU MODAL ========== */
+dialog.thank-you {
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  text-align: center;
+  font-family: var(--font-body);
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+dialog.thank-you::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+dialog.thank-you p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--ink-dark);
+}
+
+dialog.thank-you .btn {
+  background: var(--lime-dark);
+  padding: 0.7rem 1.8rem;
+  border-radius: var(--radius-md);
+  color: #fff;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  .form-grid {
+    flex-direction: column;
+  }
+
+  .tagline {
+    font-size: 1.7rem;
+  }
+
+  input,
+  textarea {
+    font-size: 0.95rem;
+  }
+}
 </style>
+
+
 
 <body class="contact">
 
